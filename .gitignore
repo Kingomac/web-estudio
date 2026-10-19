@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.git-history/
+.agents/
+.aws/
+.codex/
+.sites-runtime/
+.playwright/
+.cache/
+test-results/
+playwright-report/
