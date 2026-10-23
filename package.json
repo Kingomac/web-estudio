@@ -20,6 +20,10 @@
     "content:check": "bun scripts/content/cli.ts check",
     "content:impact": "bun scripts/content/cli.ts impact",
     "content:report": "bun scripts/content/cli.ts report",
+    "calendar:sync": "bun scripts/calendar/sync.ts",
+    "calendar:query": "bun scripts/calendar/cli.ts query",
+    "calendar:sources": "bun scripts/calendar/cli.ts sources",
+    "calendar:check": "bun scripts/calendar/cli.ts check",
     "test:unit": "bun test",
     "test:e2e": "playwright test --project=firefox",
     "test:install": "playwright install firefox",
@@ -29,6 +33,7 @@
   "dependencies": {
     "@astrojs/mdx": "8.1.0",
     "astro": "7.4.1",
+    "ical.js": "2.2.1",
     "parse5": "^7.3.0",
     "pdf-lib": "^1.17.1",
     "zod": "4.6.5"

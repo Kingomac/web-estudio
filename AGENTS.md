@@ -3,6 +3,7 @@
 El usuario proporciona en su prompt una ruta de su PC y el objetivo de estudio. El agente lee esos archivos, organiza el catálogo, escribe lecturas y preguntas y verifica el resultado. El usuario no prepara JSON ni mueve materiales manualmente.
 
 - Lee `docs/autoria.md` y consulta `bun run content:list --json` antes de crear contenido.
+- Los calendarios son contexto para agentes; Google Calendar sigue siendo la agenda del usuario. Antes de planificar por fechas, ejecuta `bun run calendar:sync` y consulta `calendar:query --from AAAA-MM-DD --to AAAA-MM-DD --json`. Usa `calendar:sources --json` para conocer IDs, alcance y vigencia. Si una fuente falla, indica la última sincronización; no deduzcas ausencia de entregas, disponibilidad personal ni tareas completadas a partir de una consulta vacía.
 - Las rutas externas son entradas de autoría. Conserva intactos los originales. Copia los PDF incorporados mediante `content:import`; la web y la compilación solo dependen del repositorio.
 - `content/` contiene el contenido editable; `src/` contiene la aplicación. Nunca edites `dist/`.
 - Reutiliza IDs y tags existentes. No reutilices el ID de una pregunta para una pregunta distinta. Consulta `content:impact` antes de cambiar recursos compartidos.

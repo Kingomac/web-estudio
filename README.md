@@ -50,6 +50,29 @@ Las fuentes de esta muestra son las páginas físicas 9 y 39 del PDF original de
 
 La impresión cuenta con estilos A4 y alternativas estáticas. La prueba automatizada verifica visibilidad con CSS de impresión; la revisión de los cortes en la salida paginada de Firefox sigue siendo manual.
 
+## Calendarios como contexto para agentes
+
+Google Calendar sigue siendo la agenda del usuario. El repositorio conserva los 16 calendarios de Google y la exportación de Moovi como conocimiento temporal para agentes: permiten consultar clases, entregas y fechas al organizar el estudio. No hay una vista de calendario en la web ni un servicio de actualización en el navegador.
+
+`content/assets/calendario-fuentes.json` registra las fuentes; `content/assets/calendario.json` contiene su última copia normalizada, con procedencia y fechas de sincronización. Son datos auxiliares, separados del catálogo académico y no incluidos en el sitio compilado. Los contratos se definen en `src/schemas/content.ts`.
+
+```bash
+bun run calendar:sync
+bun run calendar:sources --json
+bun run calendar:query --from 2026-10-26 --to 2026-11-01 --json
+bun run calendar:query --from 2026-10-26 --to 2026-11-01 --search protocolos --json
+bun run calendar:check
+bun run check
+```
+
+El agente sincroniza cuando necesita usar fechas para planificar y después consulta la copia local. No hay sincronización periódica ni es necesario compilar o publicar para actualizar este contexto. La consulta no accede a la red; devuelve los eventos, las fuentes, su alcance y avisos de datos antiguos, fallos o detalles limitados. Las fechas del filtro son inclusivas y se interpretan en Madrid. Sin filtros temporales se consultan hoy y los 13 días siguientes. `--source ID,ID` filtra por IDs de fuente; `--search TEXTO` busca en título, nombre de fuente y lugar, sin distinguir mayúsculas ni tildes. `--root RUTA` permite consultar otra copia del repositorio.
+
+El enlace privado de Moovi está únicamente en `MOOVI_CALENDAR_URL`, dentro de `.env.local` (ignorado por Git, permisos locales restringidos) o en el entorno del agente. No uses un prefijo `PUBLIC_`. Nunca guardes el enlace en JSON, HTML ni documentación. Los ICS originales solo se inspeccionan en `.cache/`, también ignorada. El contexto conserva título, fecha, horario, lugar y enlaces de actividad permitidos; omite descripciones, asistentes y organizadores. No almacena credenciales. Los eventos se modifican en sus fuentes originales.
+
+Si una fuente falla, se conserva su última copia y se marca como no actualizada; una descarga válida vacía elimina sus eventos. La escritura del conjunto es atómica. El comando devuelve código 1 si alguna fuente falla, sin imprimir URLs privadas ni errores que puedan contenerlas. Los eventos recurrentes se expanden dentro del curso 2026/27, con sus excepciones y zonas horarias declaradas; una zona desconocida falla en vez de inventar un horario.
+
+Moovi ofrece eventos recientes y próximos 60 días desde la sincronización, no todo el curso. Una consulta vacía no demuestra que no haya obligaciones. Google debe permitir acceso público; para obtener títulos, el permiso debe ser «Ver todos los detalles de los eventos». Consulta [el uso del contexto temporal por agentes](docs/autoria.md#contexto-temporal-del-máster) antes de formular planes con estos datos.
+
 ## Publicación
 
 La base por defecto es `/web-estudio`. `BASE_PATH` permite cambiarla, y `SITE_URL` configura el origen de la web. La compilación no necesita los archivos externos del PC ni acceso a las universidades.

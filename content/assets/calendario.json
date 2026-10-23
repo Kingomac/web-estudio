@@ -1,0 +1,2329 @@
+{
+  "version": 1,
+  "timezone": "Europe/Madrid",
+  "from": "2026-09-01",
+  "until": "2027-09-01",
+  "updatedAt": "2026-10-23T14:47:18.640Z",
+  "sources": [
+    {
+      "id": "google",
+      "label": "MUIoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-02",
+      "label": "MUIoT - Aprendizaxe Automática",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-03",
+      "label": "MUIoT - Big Data",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-04",
+      "label": "MUIoT - Ciberseguridade en IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-05",
+      "label": "MUIoT - Computación na Nube para IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-06",
+      "label": "MUIoT - Dispositivos IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-07",
+      "label": "MUIoT - Enxeñería de Datos para IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-08",
+      "label": "MUIoT - Green IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-09",
+      "label": "MUIoT - Innovación e Emprendemento en IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-10",
+      "label": "MUIoT - Integración de Sistemas en IIoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-11",
+      "label": "MUIoT - Novas Arquitecturas e Paradigmas IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-12",
+      "label": "MUIoT - Protocolos de Comunicacións en IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-13",
+      "label": "MUIoT - Redes de Comunicacións en IoT",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-14",
+      "label": "MUIoT - Sistemas Encaixados",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-15",
+      "label": "MUIoT - Xemelgos Dixitais en plantas industriais",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "google-16",
+      "label": "MUIoT - Análise de Vídeo",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    },
+    {
+      "id": "moovi",
+      "label": "Moovi · Entregas",
+      "status": "ok",
+      "checkedAt": "2026-10-23T14:47:18.640Z",
+      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "limitedDetails": false
+    }
+  ],
+  "events": [
+    {
+      "id": "d85f5d3adf4e9f8d3fddc505",
+      "sourceId": "google",
+      "title": "Acto de Benvida ao Mestrado",
+      "allDay": false,
+      "start": "2026-09-14T13:30:00.000Z",
+      "end": "2026-09-14T14:00:00.000Z"
+    },
+    {
+      "id": "fc28422f83f0b14e0f860fe9",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-14T14:00:00.000Z",
+      "end": "2026-09-14T16:00:00.000Z"
+    },
+    {
+      "id": "6b4bc1aa361aa6685deaab8f",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-09-14T16:00:00.000Z",
+      "end": "2026-09-14T18:00:00.000Z"
+    },
+    {
+      "id": "1ba2a0e505dcc398f94e6c24",
+      "sourceId": "google-05",
+      "title": "Computacion na Nube para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-09-15T13:30:00.000Z",
+      "end": "2026-09-15T16:30:00.000Z"
+    },
+    {
+      "id": "f6151482332973ef9efb768b",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-15T16:30:00.000Z",
+      "end": "2026-09-15T18:00:00.000Z"
+    },
+    {
+      "id": "49a6acce13f055a8e29e9c0a",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-16T13:30:00.000Z",
+      "end": "2026-09-16T16:30:00.000Z"
+    },
+    {
+      "id": "27453f16b63da26a1fe27731",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-09-16T16:30:00.000Z",
+      "end": "2026-09-16T18:00:00.000Z"
+    },
+    {
+      "id": "47c54d3ccef441a4b0e7d23e",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-17T13:30:00.000Z",
+      "end": "2026-09-17T16:30:00.000Z"
+    },
+    {
+      "id": "9eb786efff45abc212ec7e1c",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-18T14:00:00.000Z",
+      "end": "2026-09-18T16:00:00.000Z"
+    },
+    {
+      "id": "e59e5473504f0a67d8b46e37",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-09-18T16:00:00.000Z",
+      "end": "2026-09-18T18:00:00.000Z"
+    },
+    {
+      "id": "d6ae05c41b9d2302e1400f54",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-21T14:00:00.000Z",
+      "end": "2026-09-21T16:00:00.000Z"
+    },
+    {
+      "id": "0ea484a96a95b4f2f664094b",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-09-21T16:00:00.000Z",
+      "end": "2026-09-21T18:00:00.000Z"
+    },
+    {
+      "id": "4914c1d5de9b607c56a32e8a",
+      "sourceId": "google-05",
+      "title": "Computacion na Nube para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-09-22T13:30:00.000Z",
+      "end": "2026-09-22T16:30:00.000Z"
+    },
+    {
+      "id": "89ac0c76d34a2224707d2ded",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-22T16:30:00.000Z",
+      "end": "2026-09-22T18:00:00.000Z"
+    },
+    {
+      "id": "2cdc55e87b81127044698180",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-23T13:30:00.000Z",
+      "end": "2026-09-23T16:30:00.000Z"
+    },
+    {
+      "id": "af752e92543254b9469bf1a8",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-09-23T16:30:00.000Z",
+      "end": "2026-09-23T18:00:00.000Z"
+    },
+    {
+      "id": "68e0f5d2c5338eeb87fe65b6",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-24T13:30:00.000Z",
+      "end": "2026-09-24T16:30:00.000Z"
+    },
+    {
+      "id": "96c29bb7f8dfa347a443c5f0",
+      "sourceId": "google",
+      "title": "Non Lectivo - Patrón da UVigo",
+      "allDay": true,
+      "start": "2026-09-25",
+      "end": "2026-09-26"
+    },
+    {
+      "id": "0d251221c00ca7d46eab4f72",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-28T14:00:00.000Z",
+      "end": "2026-09-28T16:00:00.000Z"
+    },
+    {
+      "id": "22b69614f8b7998ba38c5f01",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-09-28T16:00:00.000Z",
+      "end": "2026-09-28T18:00:00.000Z"
+    },
+    {
+      "id": "a25366aa8be49f2dfc6ffa8e",
+      "sourceId": "google-05",
+      "title": "Computacion na Nube para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-09-29T13:30:00.000Z",
+      "end": "2026-09-29T16:30:00.000Z"
+    },
+    {
+      "id": "09b440e1f95ced310fccacac",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-29T16:30:00.000Z",
+      "end": "2026-09-29T18:00:00.000Z"
+    },
+    {
+      "id": "a780e091cf7b51eb848fdd33",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-09-30T13:30:00.000Z",
+      "end": "2026-09-30T16:30:00.000Z"
+    },
+    {
+      "id": "eb52bceff825d7c618db5cfe",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-09-30T16:30:00.000Z",
+      "end": "2026-09-30T18:00:00.000Z"
+    },
+    {
+      "id": "426d2c834792d4f3ae4fa819",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-01T13:30:00.000Z",
+      "end": "2026-10-01T16:30:00.000Z"
+    },
+    {
+      "id": "7568e1daf7960c1507557f86",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-02T13:30:00.000Z",
+      "end": "2026-10-02T15:00:00.000Z"
+    },
+    {
+      "id": "e479bc541fdfc9988edb2daa",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-05T14:00:00.000Z",
+      "end": "2026-10-05T16:00:00.000Z"
+    },
+    {
+      "id": "e8dcefa72d68ad499b0e801d",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-05T16:00:00.000Z",
+      "end": "2026-10-05T18:00:00.000Z"
+    },
+    {
+      "id": "c5133163b86b306cbe94a042",
+      "sourceId": "google-05",
+      "title": "Computacion na Nube para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-10-06T13:30:00.000Z",
+      "end": "2026-10-06T16:30:00.000Z"
+    },
+    {
+      "id": "de326659c812593dd65796da",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-06T16:30:00.000Z",
+      "end": "2026-10-06T18:00:00.000Z"
+    },
+    {
+      "id": "b382da758abf130641d74c8c",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2026-10-07",
+      "end": "2026-10-08"
+    },
+    {
+      "id": "a1ae76032b07ce83f3f1d208",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-08T13:30:00.000Z",
+      "end": "2026-10-08T16:30:00.000Z"
+    },
+    {
+      "id": "4ced4540891d127648b9a8b6",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-09T13:30:00.000Z",
+      "end": "2026-10-09T16:30:00.000Z"
+    },
+    {
+      "id": "3a77a82f46d0278591af55f1",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2026-10-12",
+      "end": "2026-10-13"
+    },
+    {
+      "id": "604702314a756ae91e3599bc",
+      "sourceId": "google-05",
+      "title": "Computacion na Nube para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-10-13T13:30:00.000Z",
+      "end": "2026-10-13T16:30:00.000Z"
+    },
+    {
+      "id": "37b39a832e94dac3e3925af2",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-13T16:30:00.000Z",
+      "end": "2026-10-13T18:00:00.000Z"
+    },
+    {
+      "id": "74049080b8ae1bd0db283b4c",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-14T13:30:00.000Z",
+      "end": "2026-10-14T16:30:00.000Z"
+    },
+    {
+      "id": "5a135dda1ac71733a03f9fed",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-14T16:30:00.000Z",
+      "end": "2026-10-14T18:00:00.000Z"
+    },
+    {
+      "id": "9b1414decff4c0c5aad8850d",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-15T13:30:00.000Z",
+      "end": "2026-10-15T16:30:00.000Z"
+    },
+    {
+      "id": "e97eca7dd21fbd456993558b",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-16T13:30:00.000Z",
+      "end": "2026-10-16T16:30:00.000Z"
+    },
+    {
+      "id": "1658d97032bc6a36a800ece2",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-16T16:30:00.000Z",
+      "end": "2026-10-16T18:00:00.000Z"
+    },
+    {
+      "id": "fb9051564f2d3e6b4123f475",
+      "sourceId": "moovi",
+      "title": "Vencimiento de Tarea 2: Lab IPv6",
+      "allDay": false,
+      "start": "2026-10-19T07:00:00.000Z",
+      "end": "2026-10-19T07:00:00.000Z"
+    },
+    {
+      "id": "1f51fc5bd1893e19dc1dcc60",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-19T14:00:00.000Z",
+      "end": "2026-10-19T16:00:00.000Z"
+    },
+    {
+      "id": "d17dd6bf0917759f936be4fb",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-19T16:00:00.000Z",
+      "end": "2026-10-19T18:00:00.000Z"
+    },
+    {
+      "id": "207363cedcb28c31409e80ed",
+      "sourceId": "moovi",
+      "title": "Se cierra Tarea 3: Cuestionario previo al Examen Parcial",
+      "allDay": false,
+      "start": "2026-10-19T16:30:00.000Z",
+      "end": "2026-10-19T16:30:00.000Z"
+    },
+    {
+      "id": "81c1386d9b20b96f2ee52448",
+      "sourceId": "moovi",
+      "title": "Entrega práctica 3 pendente de entrega",
+      "allDay": false,
+      "start": "2026-10-20T13:00:00.000Z",
+      "end": "2026-10-20T13:00:00.000Z"
+    },
+    {
+      "id": "a965056b8bbff9dd926bd5a6",
+      "sourceId": "google-05",
+      "title": "Computacion na Nube para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-10-20T13:30:00.000Z",
+      "end": "2026-10-20T16:30:00.000Z"
+    },
+    {
+      "id": "bd44808e5eb88c06da37e47c",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións de IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-20T16:30:00.000Z",
+      "end": "2026-10-20T18:00:00.000Z"
+    },
+    {
+      "id": "5032a6659c45e1893651d077",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-21T13:30:00.000Z",
+      "end": "2026-10-21T16:30:00.000Z"
+    },
+    {
+      "id": "ccf0b8c75cb3d3c0edcf49db",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-21T16:30:00.000Z",
+      "end": "2026-10-21T18:00:00.000Z"
+    },
+    {
+      "id": "4979e12d5874a9487c4fccc9",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-22T13:30:00.000Z",
+      "end": "2026-10-22T16:30:00.000Z"
+    },
+    {
+      "id": "b95e6a45eefc7e7b06744812",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-23T14:00:00.000Z",
+      "end": "2026-10-23T16:00:00.000Z"
+    },
+    {
+      "id": "37c293dc374d43f0b14621af",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-23T16:00:00.000Z",
+      "end": "2026-10-23T18:00:00.000Z"
+    },
+    {
+      "id": "202d5ff05e9a105b9db6ef4f",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-26T15:00:00.000Z",
+      "end": "2026-10-26T17:00:00.000Z"
+    },
+    {
+      "id": "0fec1783b64bf232c25f9867",
+      "sourceId": "google-14",
+      "title": "Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-26T17:00:00.000Z",
+      "end": "2026-10-26T19:00:00.000Z"
+    },
+    {
+      "id": "871ba4f2d0787d11006aade4",
+      "sourceId": "moovi",
+      "title": "Entrega Práctica 5 pendente de entrega",
+      "allDay": false,
+      "start": "2026-10-26T22:59:00.000Z",
+      "end": "2026-10-26T22:59:00.000Z"
+    },
+    {
+      "id": "1f64623931b4c9aa6922cb36",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-27T14:00:00.000Z",
+      "end": "2026-10-27T15:30:00.000Z"
+    },
+    {
+      "id": "329070b34c9a803eccf55a50",
+      "sourceId": "moovi",
+      "title": "Entrega práctica 4 pendente de entrega",
+      "allDay": false,
+      "start": "2026-10-27T14:00:00.000Z",
+      "end": "2026-10-27T14:00:00.000Z"
+    },
+    {
+      "id": "60ecf5c21fbe47a422965e13",
+      "sourceId": "google-05",
+      "title": "Computacion na Nube para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-10-27T15:30:00.000Z",
+      "end": "2026-10-27T18:30:00.000Z"
+    },
+    {
+      "id": "3594692ba00b98cc80fa0075",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-28T14:30:00.000Z",
+      "end": "2026-10-28T17:30:00.000Z"
+    },
+    {
+      "id": "89daab0aa64c0e937c215ac6",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-28T17:30:00.000Z",
+      "end": "2026-10-28T19:00:00.000Z"
+    },
+    {
+      "id": "40147244fb4c412c972224c6",
+      "sourceId": "moovi",
+      "title": "Ejercicios temas 4 y 5 pendente de entrega",
+      "allDay": false,
+      "start": "2026-10-28T22:59:00.000Z",
+      "end": "2026-10-28T22:59:00.000Z"
+    },
+    {
+      "id": "6ebc264d6aaccd614d925fc2",
+      "sourceId": "moovi",
+      "title": "Memoria prácticas 4 y 5 pendente de entrega",
+      "allDay": false,
+      "start": "2026-10-28T22:59:00.000Z",
+      "end": "2026-10-28T22:59:00.000Z"
+    },
+    {
+      "id": "8980a56e1b8d40ab2752fe2e",
+      "sourceId": "google-12",
+      "title": "Protocolos de Comunicacións en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-29T14:30:00.000Z",
+      "end": "2026-10-29T17:30:00.000Z"
+    },
+    {
+      "id": "27fd1a8a8221d3dd62283948",
+      "sourceId": "moovi",
+      "title": "Entrega Proyecto (I) pendente de entrega",
+      "allDay": false,
+      "start": "2026-10-29T22:59:00.000Z",
+      "end": "2026-10-29T22:59:00.000Z"
+    },
+    {
+      "id": "621140f53aac9b91b93ca670",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-10-30T14:30:00.000Z",
+      "end": "2026-10-30T17:30:00.000Z"
+    },
+    {
+      "id": "8caf0a87cc3c3f99bfc23b8f",
+      "sourceId": "google-06",
+      "title": "Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-10-30T17:30:00.000Z",
+      "end": "2026-10-30T19:00:00.000Z"
+    },
+    {
+      "id": "99c990026fcda8e804c3ad62",
+      "sourceId": "google-05",
+      "title": "Exame Computacion na Nube para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-02T17:00:00.000Z",
+      "end": "2026-11-02T19:00:00.000Z"
+    },
+    {
+      "id": "2edb519104c0085c1ff07dbd",
+      "sourceId": "google-14",
+      "title": "Exame Sistemas Encaixados",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-04T15:00:00.000Z",
+      "end": "2026-11-04T17:00:00.000Z"
+    },
+    {
+      "id": "6db1a73e96c2a9f3034a825f",
+      "sourceId": "google-06",
+      "title": "Exame Dispositivos IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-06T15:00:00.000Z",
+      "end": "2026-11-06T17:00:00.000Z"
+    },
+    {
+      "id": "76e5d28c01d734c2f6f5abb6",
+      "sourceId": "moovi",
+      "title": "Entrega: Controlador del sistema de climatización pendente de entrega",
+      "allDay": false,
+      "start": "2026-11-06T22:59:00.000Z",
+      "end": "2026-11-06T22:59:00.000Z"
+    },
+    {
+      "id": "9d45da45fbc84d2e0c35b6d9",
+      "sourceId": "moovi",
+      "title": "Ejercicios tema 6 pendente de entrega",
+      "allDay": false,
+      "start": "2026-11-07T22:59:00.000Z",
+      "end": "2026-11-07T22:59:00.000Z"
+    },
+    {
+      "id": "def517ce24fc524cee5a080a",
+      "sourceId": "moovi",
+      "title": "Memoria prácticas 6 a 8 pendente de entrega",
+      "allDay": false,
+      "start": "2026-11-07T22:59:00.000Z",
+      "end": "2026-11-07T22:59:00.000Z"
+    },
+    {
+      "id": "b0374877a03bf22d740e2bae",
+      "sourceId": "moovi",
+      "title": "Entrega: Supervisor del sistema de climatización pendente de entrega",
+      "allDay": false,
+      "start": "2026-11-11T22:59:00.000Z",
+      "end": "2026-11-11T22:59:00.000Z"
+    },
+    {
+      "id": "e86fe827e26b9fb1fd28e7f6",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-11-12T15:00:00.000Z",
+      "end": "2026-11-12T17:00:00.000Z"
+    },
+    {
+      "id": "d6432495b6b1a996bb3e8d8c",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-12T17:00:00.000Z",
+      "end": "2026-11-12T18:00:00.000Z"
+    },
+    {
+      "id": "17fe186e5bb927d4735b7a25",
+      "sourceId": "google-12",
+      "title": "Exame Protocolos de Comunicacións en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-13T14:00:00.000Z",
+      "end": "2026-11-13T16:00:00.000Z"
+    },
+    {
+      "id": "b8ef513800db8d6129592051",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-13T16:00:00.000Z",
+      "end": "2026-11-13T20:30:00.000Z"
+    },
+    {
+      "id": "9f5d70302aac759b393a72e0",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-16T15:00:00.000Z",
+      "end": "2026-11-16T19:00:00.000Z"
+    },
+    {
+      "id": "553a10e1ef0af6e8a0bd246a",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-17T15:00:00.000Z",
+      "end": "2026-11-17T16:30:00.000Z"
+    },
+    {
+      "id": "22072d5875e6eb688f8daf6d",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-17T16:30:00.000Z",
+      "end": "2026-11-17T18:00:00.000Z"
+    },
+    {
+      "id": "ff62814603f68198fff711c5",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-18T15:00:00.000Z",
+      "end": "2026-11-18T16:00:00.000Z"
+    },
+    {
+      "id": "e3054ea3903add0e29e418a1",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-18T16:00:00.000Z",
+      "end": "2026-11-18T18:00:00.000Z"
+    },
+    {
+      "id": "93681dd118b9ab1c7a83de29",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-11-19T15:00:00.000Z",
+      "end": "2026-11-19T17:00:00.000Z"
+    },
+    {
+      "id": "12b774d479770a751d457bcf",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-19T17:00:00.000Z",
+      "end": "2026-11-19T18:00:00.000Z"
+    },
+    {
+      "id": "92dffdfbe3149eb2368fd054",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-20T15:00:00.000Z",
+      "end": "2026-11-20T16:30:00.000Z"
+    },
+    {
+      "id": "ea5f9eb0748a00a0448fe9ea",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-23T15:00:00.000Z",
+      "end": "2026-11-23T19:00:00.000Z"
+    },
+    {
+      "id": "dd4d1e55ba8d22f44206f3c7",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-24T15:00:00.000Z",
+      "end": "2026-11-24T16:30:00.000Z"
+    },
+    {
+      "id": "a2d853902b498bf12b0b1288",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-24T16:30:00.000Z",
+      "end": "2026-11-24T19:30:00.000Z"
+    },
+    {
+      "id": "5308e32212a952f501a971ea",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-25T15:00:00.000Z",
+      "end": "2026-11-25T16:00:00.000Z"
+    },
+    {
+      "id": "f42bb709e50b46c666c2c1d7",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-25T16:00:00.000Z",
+      "end": "2026-11-25T18:00:00.000Z"
+    },
+    {
+      "id": "0aa34da1fea9155ca7bc77a0",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-11-26T15:00:00.000Z",
+      "end": "2026-11-26T17:00:00.000Z"
+    },
+    {
+      "id": "2320d63482a064a5f36e8813",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-11-26T17:00:00.000Z",
+      "end": "2026-11-26T18:00:00.000Z"
+    },
+    {
+      "id": "a1628f378cd704a1762fbf98",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-27T15:00:00.000Z",
+      "end": "2026-11-27T19:00:00.000Z"
+    },
+    {
+      "id": "6b3a87c2285bd2097c23d5db",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-11-30T15:00:00.000Z",
+      "end": "2026-11-30T19:00:00.000Z"
+    },
+    {
+      "id": "06c2ff22ec3b5a49cc7da809",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-01T15:00:00.000Z",
+      "end": "2026-12-01T16:30:00.000Z"
+    },
+    {
+      "id": "233758ad40c55c8453af1935",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-01T16:30:00.000Z",
+      "end": "2026-12-01T18:00:00.000Z"
+    },
+    {
+      "id": "d83effdb2ba2e9a9ef849d00",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-02T15:00:00.000Z",
+      "end": "2026-12-02T16:00:00.000Z"
+    },
+    {
+      "id": "f502c6558dd9553e19451d17",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-02T16:00:00.000Z",
+      "end": "2026-12-02T18:00:00.000Z"
+    },
+    {
+      "id": "905c85eac4757b8d7a0b30ec",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-12-03T15:00:00.000Z",
+      "end": "2026-12-03T17:00:00.000Z"
+    },
+    {
+      "id": "a9604ddff9479334c9af937a",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-03T17:00:00.000Z",
+      "end": "2026-12-03T18:00:00.000Z"
+    },
+    {
+      "id": "8d8242326e5bfa61300d29e9",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-04T15:00:00.000Z",
+      "end": "2026-12-04T16:00:00.000Z"
+    },
+    {
+      "id": "f091a343b5b20444d1b15c44",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-04T16:00:00.000Z",
+      "end": "2026-12-04T18:00:00.000Z"
+    },
+    {
+      "id": "6c08d870ee96c454ac1f8a7d",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-07T15:00:00.000Z",
+      "end": "2026-12-07T19:00:00.000Z"
+    },
+    {
+      "id": "a58d0ca767836767917ef378",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2026-12-08",
+      "end": "2026-12-09"
+    },
+    {
+      "id": "3ad9bd5b9be755c4c5f68a76",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-09T15:00:00.000Z",
+      "end": "2026-12-09T16:00:00.000Z"
+    },
+    {
+      "id": "38a49ec18343780505ab0681",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-09T16:00:00.000Z",
+      "end": "2026-12-09T18:00:00.000Z"
+    },
+    {
+      "id": "d88ab402fb063c5378d8cd25",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-12-10T15:00:00.000Z",
+      "end": "2026-12-10T17:00:00.000Z"
+    },
+    {
+      "id": "84d779a719b003a34ce7a331",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-10T17:00:00.000Z",
+      "end": "2026-12-10T18:00:00.000Z"
+    },
+    {
+      "id": "c50e03649892cb00887b8227",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-12-11T15:00:00.000Z",
+      "end": "2026-12-11T16:30:00.000Z"
+    },
+    {
+      "id": "0aeb2317dd19ab4a49ad24ef",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-14T15:00:00.000Z",
+      "end": "2026-12-14T19:00:00.000Z"
+    },
+    {
+      "id": "dde3cf3d1eb9bf23fb452575",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-15T15:00:00.000Z",
+      "end": "2026-12-15T16:30:00.000Z"
+    },
+    {
+      "id": "c03b67beb41e72d5bb5fe8f5",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-15T16:30:00.000Z",
+      "end": "2026-12-15T19:30:00.000Z"
+    },
+    {
+      "id": "4a8184e797348db4ae67f482",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2026-12-16T15:00:00.000Z",
+      "end": "2026-12-16T16:00:00.000Z"
+    },
+    {
+      "id": "8b6f5091336b6432c9138dc4",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-16T16:00:00.000Z",
+      "end": "2026-12-16T18:00:00.000Z"
+    },
+    {
+      "id": "aa277cbdb72710d4b670a852",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2026-12-17T15:00:00.000Z",
+      "end": "2026-12-17T17:00:00.000Z"
+    },
+    {
+      "id": "ef45af46bae2cddb8183be0b",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2026-12-17T17:00:00.000Z",
+      "end": "2026-12-17T18:00:00.000Z"
+    },
+    {
+      "id": "c6c5d32dfedf9763b1245119",
+      "sourceId": "google-11",
+      "title": "Novas Arquitecturas e Paradigmas IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-01-11T15:00:00.000Z",
+      "end": "2027-01-11T19:00:00.000Z"
+    },
+    {
+      "id": "c671d520d3232b20acb000ab",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-01-12T15:00:00.000Z",
+      "end": "2027-01-12T16:30:00.000Z"
+    },
+    {
+      "id": "e3f4fcff7b6f211d7df5939e",
+      "sourceId": "google-09",
+      "title": "Innovación e Emprendemento en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-01-12T16:30:00.000Z",
+      "end": "2027-01-12T18:00:00.000Z"
+    },
+    {
+      "id": "fdeca6d6f772408af1bb215a",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-01-13T15:00:00.000Z",
+      "end": "2027-01-13T16:00:00.000Z"
+    },
+    {
+      "id": "d7e4f59d28e1c8d2e4399810",
+      "sourceId": "google-07",
+      "title": "Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-01-13T16:00:00.000Z",
+      "end": "2027-01-13T18:00:00.000Z"
+    },
+    {
+      "id": "ea999c9d2b6fdc3c49c3c198",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-01-14T15:00:00.000Z",
+      "end": "2027-01-14T17:00:00.000Z"
+    },
+    {
+      "id": "227b4feb584e78740efc18d5",
+      "sourceId": "google-13",
+      "title": "Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-01-14T17:00:00.000Z",
+      "end": "2027-01-14T18:00:00.000Z"
+    },
+    {
+      "id": "f5ecb2239639402e7a348459",
+      "sourceId": "google-07",
+      "title": "Exame Enxeñería de Datos para IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-01-19T15:00:00.000Z",
+      "end": "2027-01-19T17:00:00.000Z"
+    },
+    {
+      "id": "ff0620ea352441aa585b47fa",
+      "sourceId": "google-11",
+      "title": "Exame Novas Arquitecturas e Paradigmas IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-01-21T15:00:00.000Z",
+      "end": "2027-01-21T19:00:00.000Z"
+    },
+    {
+      "id": "a2e7b045ccb56876ad95707c",
+      "sourceId": "google-13",
+      "title": "Exame Redes de Comunicacións IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-01-26T15:00:00.000Z",
+      "end": "2027-01-26T17:00:00.000Z"
+    },
+    {
+      "id": "6e788088215381ed58cf2c6e",
+      "sourceId": "google-09",
+      "title": "Exame Innovación e Emprendemento en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-01-28T15:00:00.000Z",
+      "end": "2027-01-28T19:00:00.000Z"
+    },
+    {
+      "id": "4e15ce6b3d7fd663c493f9bd",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2027-01-29",
+      "end": "2027-01-30"
+    },
+    {
+      "id": "83a15a276fb87d649f39a577",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-01T14:30:00.000Z",
+      "end": "2027-02-01T16:00:00.000Z"
+    },
+    {
+      "id": "df229c42b8275aaaf665f92c",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-03T14:30:00.000Z",
+      "end": "2027-02-03T16:00:00.000Z"
+    },
+    {
+      "id": "605a5d5ce2ac37ddf82f9d95",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-03T16:00:00.000Z",
+      "end": "2027-02-03T17:30:00.000Z"
+    },
+    {
+      "id": "30d461e3007e1ed1b68d8af1",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-03T17:30:00.000Z",
+      "end": "2027-02-03T19:00:00.000Z"
+    },
+    {
+      "id": "a10ce4f9aa948064ce845c9e",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-04T14:30:00.000Z",
+      "end": "2027-02-04T16:00:00.000Z"
+    },
+    {
+      "id": "8d3d42e300ed523187e92d85",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-02-04T16:00:00.000Z",
+      "end": "2027-02-04T17:30:00.000Z"
+    },
+    {
+      "id": "b55f8fc43d9ae284be1972f7",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-04T17:30:00.000Z",
+      "end": "2027-02-04T19:00:00.000Z"
+    },
+    {
+      "id": "0aad6f386d9e811994727e66",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-05T14:30:00.000Z",
+      "end": "2027-02-05T16:30:00.000Z"
+    },
+    {
+      "id": "2e1a20e3937dd1f889ee4d48",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-05T16:30:00.000Z",
+      "end": "2027-02-05T18:30:00.000Z"
+    },
+    {
+      "id": "b750886d11028a672df55ec8",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2027-02-08",
+      "end": "2027-02-09"
+    },
+    {
+      "id": "b09e238d0ba1f90b4eacf77d",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2027-02-09",
+      "end": "2027-02-10"
+    },
+    {
+      "id": "b4aada3e83b96e045e01f70f",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-10T14:30:00.000Z",
+      "end": "2027-02-10T16:00:00.000Z"
+    },
+    {
+      "id": "8ef8ce1346cb02e7b1cd8c94",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-10T16:00:00.000Z",
+      "end": "2027-02-10T17:30:00.000Z"
+    },
+    {
+      "id": "b8af9b5c20ee6e25782a88f8",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-10T17:30:00.000Z",
+      "end": "2027-02-10T19:00:00.000Z"
+    },
+    {
+      "id": "54095005fc4ed1619e84f9ba",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-11T14:30:00.000Z",
+      "end": "2027-02-11T16:00:00.000Z"
+    },
+    {
+      "id": "5727f6bdaa993e9230a7f21e",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-02-11T16:00:00.000Z",
+      "end": "2027-02-11T18:00:00.000Z"
+    },
+    {
+      "id": "131ea537e69df8f8a4b70dc1",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-11T18:00:00.000Z",
+      "end": "2027-02-11T19:00:00.000Z"
+    },
+    {
+      "id": "35810abb77cfc1711f5c25a2",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-12T14:30:00.000Z",
+      "end": "2027-02-12T16:30:00.000Z"
+    },
+    {
+      "id": "7f358ef7997558b3dd5aa8ef",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-12T16:30:00.000Z",
+      "end": "2027-02-12T18:30:00.000Z"
+    },
+    {
+      "id": "3145088dcd2c7be20ef25e62",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-15T14:30:00.000Z",
+      "end": "2027-02-15T16:00:00.000Z"
+    },
+    {
+      "id": "e1a91df04fea262b81617073",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-17T14:30:00.000Z",
+      "end": "2027-02-17T16:00:00.000Z"
+    },
+    {
+      "id": "39a4d61445cb7e57b17386bc",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-17T16:00:00.000Z",
+      "end": "2027-02-17T17:30:00.000Z"
+    },
+    {
+      "id": "90c8bb4ea3053e525eeb17cf",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-17T17:30:00.000Z",
+      "end": "2027-02-17T19:00:00.000Z"
+    },
+    {
+      "id": "e48c340102b0617ad5e18893",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-18T14:30:00.000Z",
+      "end": "2027-02-18T16:00:00.000Z"
+    },
+    {
+      "id": "56e92a274a6ad9bf2666a6d2",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-02-18T16:00:00.000Z",
+      "end": "2027-02-18T17:30:00.000Z"
+    },
+    {
+      "id": "1fa2db567379c012b5eaa2e1",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-18T17:30:00.000Z",
+      "end": "2027-02-18T19:00:00.000Z"
+    },
+    {
+      "id": "7699a8520a0d59ca118725ab",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-19T14:30:00.000Z",
+      "end": "2027-02-19T16:30:00.000Z"
+    },
+    {
+      "id": "c651f95846a5be81e363b385",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-19T16:30:00.000Z",
+      "end": "2027-02-19T18:30:00.000Z"
+    },
+    {
+      "id": "56d612fdf29842be8992fd69",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-22T14:30:00.000Z",
+      "end": "2027-02-22T16:00:00.000Z"
+    },
+    {
+      "id": "1f163b0a48110535d4d2976a",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-24T14:30:00.000Z",
+      "end": "2027-02-24T16:00:00.000Z"
+    },
+    {
+      "id": "72ce5af191f274832b313443",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-24T16:00:00.000Z",
+      "end": "2027-02-24T17:30:00.000Z"
+    },
+    {
+      "id": "738cb27b0866c6e011a5d34f",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-24T17:30:00.000Z",
+      "end": "2027-02-24T19:00:00.000Z"
+    },
+    {
+      "id": "63b9283814b6c31f73e0014a",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-25T14:30:00.000Z",
+      "end": "2027-02-25T16:00:00.000Z"
+    },
+    {
+      "id": "8db4a3f480853375a2d3dcb5",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-02-25T16:00:00.000Z",
+      "end": "2027-02-25T18:00:00.000Z"
+    },
+    {
+      "id": "654d61f7d0b54707704ace6c",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-25T18:00:00.000Z",
+      "end": "2027-02-25T19:00:00.000Z"
+    },
+    {
+      "id": "b11c7db8ae5255150ac1fc07",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-02-26T14:30:00.000Z",
+      "end": "2027-02-26T16:30:00.000Z"
+    },
+    {
+      "id": "a5f86fc23e077378bb709f25",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-02-26T16:30:00.000Z",
+      "end": "2027-02-26T18:30:00.000Z"
+    },
+    {
+      "id": "a8d0f8424db51329ced45295",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-01T14:30:00.000Z",
+      "end": "2027-03-01T16:00:00.000Z"
+    },
+    {
+      "id": "038a299e551304e676aab18d",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-03T14:30:00.000Z",
+      "end": "2027-03-03T16:00:00.000Z"
+    },
+    {
+      "id": "8d305af6b1c23615ab96ebf0",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-03T16:00:00.000Z",
+      "end": "2027-03-03T17:30:00.000Z"
+    },
+    {
+      "id": "489096adb366c7b74ab7061a",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-03T17:30:00.000Z",
+      "end": "2027-03-03T19:00:00.000Z"
+    },
+    {
+      "id": "bda3ff8c86882b86cdb1d52a",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-04T14:30:00.000Z",
+      "end": "2027-03-04T16:00:00.000Z"
+    },
+    {
+      "id": "f164feb5843ccd2832c4752e",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-03-04T16:00:00.000Z",
+      "end": "2027-03-04T18:00:00.000Z"
+    },
+    {
+      "id": "a96fa085bbf099265f8bf6f3",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-04T18:00:00.000Z",
+      "end": "2027-03-04T19:00:00.000Z"
+    },
+    {
+      "id": "636219348914f42b5e2ced9c",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-05T14:30:00.000Z",
+      "end": "2027-03-05T16:30:00.000Z"
+    },
+    {
+      "id": "cf01d2b2e29ccb704d9747d5",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-05T16:30:00.000Z",
+      "end": "2027-03-05T18:30:00.000Z"
+    },
+    {
+      "id": "dfdd1220a836011dcdec5680",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-08T14:30:00.000Z",
+      "end": "2027-03-08T16:00:00.000Z"
+    },
+    {
+      "id": "be206e0658942a690dfba7d8",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-10T14:30:00.000Z",
+      "end": "2027-03-10T16:00:00.000Z"
+    },
+    {
+      "id": "af65fe815899db8e843c204a",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-10T16:00:00.000Z",
+      "end": "2027-03-10T17:30:00.000Z"
+    },
+    {
+      "id": "670a44b6ffae0a5c7dda630d",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-10T17:30:00.000Z",
+      "end": "2027-03-10T19:00:00.000Z"
+    },
+    {
+      "id": "07d419bebb3c4d0d4147d6b9",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-11T14:30:00.000Z",
+      "end": "2027-03-11T16:00:00.000Z"
+    },
+    {
+      "id": "90fc91893d61921fe260e8cf",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-03-11T16:00:00.000Z",
+      "end": "2027-03-11T18:00:00.000Z"
+    },
+    {
+      "id": "2557f91b34d61235fcef90bf",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-11T18:00:00.000Z",
+      "end": "2027-03-11T19:00:00.000Z"
+    },
+    {
+      "id": "8a3a815c50b1f76651bda837",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-12T14:30:00.000Z",
+      "end": "2027-03-12T16:30:00.000Z"
+    },
+    {
+      "id": "ee8c8a310d9c600c71e58c27",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-12T16:30:00.000Z",
+      "end": "2027-03-12T18:30:00.000Z"
+    },
+    {
+      "id": "c4f60014782ea504b3840d55",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-15T14:30:00.000Z",
+      "end": "2027-03-15T16:00:00.000Z"
+    },
+    {
+      "id": "ca07800ce333d0bfb91a8428",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-17T14:30:00.000Z",
+      "end": "2027-03-17T16:00:00.000Z"
+    },
+    {
+      "id": "573ba5ab3586e95ded787519",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-17T16:00:00.000Z",
+      "end": "2027-03-17T17:30:00.000Z"
+    },
+    {
+      "id": "2397edfa5be74945bf5b7bef",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-17T17:30:00.000Z",
+      "end": "2027-03-17T19:00:00.000Z"
+    },
+    {
+      "id": "6c9069d816b2ebe88e065618",
+      "sourceId": "google-10",
+      "title": "Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-18T14:30:00.000Z",
+      "end": "2027-03-18T16:00:00.000Z"
+    },
+    {
+      "id": "0c8653f1b7512c347ad35acb",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-03-18T16:00:00.000Z",
+      "end": "2027-03-18T18:00:00.000Z"
+    },
+    {
+      "id": "448b3169a51549735efbcad9",
+      "sourceId": "google-08",
+      "title": "Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-18T18:00:00.000Z",
+      "end": "2027-03-18T19:00:00.000Z"
+    },
+    {
+      "id": "43bc9509b871f92fb0145c63",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2027-03-19",
+      "end": "2027-03-20"
+    },
+    {
+      "id": "569ee406895dd454e0933cf1",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2027-03-22",
+      "end": "2027-03-27"
+    },
+    {
+      "id": "3c0172ffaa5659661c0d6f42",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-03-31T13:30:00.000Z",
+      "end": "2027-03-31T15:00:00.000Z"
+    },
+    {
+      "id": "6c7af0110de04e917fcc364a",
+      "sourceId": "google-02",
+      "title": "Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-03-31T15:00:00.000Z",
+      "end": "2027-03-31T16:30:00.000Z"
+    },
+    {
+      "id": "c00a007887a39d1bbeb9eb3e",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-04-02T13:30:00.000Z",
+      "end": "2027-04-02T15:30:00.000Z"
+    },
+    {
+      "id": "c4f3e60a9596eba629c5ab8f",
+      "sourceId": "google-04",
+      "title": "Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-02T15:30:00.000Z",
+      "end": "2027-04-02T17:30:00.000Z"
+    },
+    {
+      "id": "0c4d88fff9a25fec0c8a2291",
+      "sourceId": "google-10",
+      "title": "Exame Integración de Sistemas en IIoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-06T14:00:00.000Z",
+      "end": "2027-04-06T16:00:00.000Z"
+    },
+    {
+      "id": "c0e6c04307836f15a6941e0f",
+      "sourceId": "google-04",
+      "title": "Exame Ciberseguridade en IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-09T14:00:00.000Z",
+      "end": "2027-04-09T16:00:00.000Z"
+    },
+    {
+      "id": "28a33089ec6c27a1f0361867",
+      "sourceId": "google-08",
+      "title": "Exame Green IoT",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-12T16:00:00.000Z",
+      "end": "2027-04-12T18:00:00.000Z"
+    },
+    {
+      "id": "81fa010ebc50307a51365ee9",
+      "sourceId": "google-02",
+      "title": "Exame Aprendizaxe Automática",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-15T14:00:00.000Z",
+      "end": "2027-04-15T18:00:00.000Z"
+    },
+    {
+      "id": "1542a86b3e13ff1e9bbce899",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-04-20T13:30:00.000Z",
+      "end": "2027-04-20T15:00:00.000Z"
+    },
+    {
+      "id": "c61be23658a01dfe73baed51",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-20T15:00:00.000Z",
+      "end": "2027-04-20T16:30:00.000Z"
+    },
+    {
+      "id": "b85cddb07230e91bcfd2df85",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-04-22T13:30:00.000Z",
+      "end": "2027-04-22T15:00:00.000Z"
+    },
+    {
+      "id": "1b9626b19fcec78a34c094d1",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-04-22T15:00:00.000Z",
+      "end": "2027-04-22T16:30:00.000Z"
+    },
+    {
+      "id": "7aaec273b5c47118707ac4cf",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-22T16:30:00.000Z",
+      "end": "2027-04-22T18:00:00.000Z"
+    },
+    {
+      "id": "488227d690fdec3664db7041",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-04-27T13:30:00.000Z",
+      "end": "2027-04-27T15:00:00.000Z"
+    },
+    {
+      "id": "add6dc772df62924c74c964c",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-27T15:00:00.000Z",
+      "end": "2027-04-27T16:30:00.000Z"
+    },
+    {
+      "id": "511f23672e345407fb0621ea",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-04-29T13:30:00.000Z",
+      "end": "2027-04-29T15:00:00.000Z"
+    },
+    {
+      "id": "549291b18e9ce39f0e176a35",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-04-29T15:00:00.000Z",
+      "end": "2027-04-29T16:30:00.000Z"
+    },
+    {
+      "id": "eb439fe3bb8a177b321e6355",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-04-29T16:30:00.000Z",
+      "end": "2027-04-29T18:00:00.000Z"
+    },
+    {
+      "id": "d870f98a27afde476174263c",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-05-04T13:30:00.000Z",
+      "end": "2027-05-04T15:00:00.000Z"
+    },
+    {
+      "id": "ad5002384e6743fc3ce9ed83",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-04T15:00:00.000Z",
+      "end": "2027-05-04T16:30:00.000Z"
+    },
+    {
+      "id": "2d4fe87242001ba569a8afc3",
+      "sourceId": "google",
+      "title": "Festivo UVigo",
+      "allDay": true,
+      "start": "2027-05-06",
+      "end": "2027-05-07"
+    },
+    {
+      "id": "8deb5a4e627e65a63301c40a",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-05-11T13:30:00.000Z",
+      "end": "2027-05-11T15:00:00.000Z"
+    },
+    {
+      "id": "4c0fb76e59dfbd2f3dd9d407",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-11T15:00:00.000Z",
+      "end": "2027-05-11T16:30:00.000Z"
+    },
+    {
+      "id": "0a51ae7e6d6d1d675435a993",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-05-13T13:30:00.000Z",
+      "end": "2027-05-13T15:00:00.000Z"
+    },
+    {
+      "id": "13b80f42326bc4326d1c39d7",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-05-13T15:00:00.000Z",
+      "end": "2027-05-13T16:30:00.000Z"
+    },
+    {
+      "id": "d5ac6d22f50b238578693042",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-13T16:30:00.000Z",
+      "end": "2027-05-13T18:00:00.000Z"
+    },
+    {
+      "id": "54e49885e893a3c5ac13a939",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-05-18T13:30:00.000Z",
+      "end": "2027-05-18T15:00:00.000Z"
+    },
+    {
+      "id": "5bbb2a795f3795adb7f73609",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-18T15:00:00.000Z",
+      "end": "2027-05-18T16:30:00.000Z"
+    },
+    {
+      "id": "57ec463cfc7f8df07caf6307",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-05-20T13:30:00.000Z",
+      "end": "2027-05-20T15:00:00.000Z"
+    },
+    {
+      "id": "94a5a7192382a0ea3894b220",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-05-20T15:00:00.000Z",
+      "end": "2027-05-20T16:30:00.000Z"
+    },
+    {
+      "id": "a4d620e4120f6bd8cbf87d82",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-20T16:30:00.000Z",
+      "end": "2027-05-20T18:00:00.000Z"
+    },
+    {
+      "id": "7a8878c78038a2d6c5b1b2c1",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-21T13:30:00.000Z",
+      "end": "2027-05-21T18:00:00.000Z"
+    },
+    {
+      "id": "e5dabe39850575cf834708d3",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-05-25T13:30:00.000Z",
+      "end": "2027-05-25T15:00:00.000Z"
+    },
+    {
+      "id": "28dbca3eae99cd6740af5a15",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-25T15:00:00.000Z",
+      "end": "2027-05-25T16:30:00.000Z"
+    },
+    {
+      "id": "0aeb71c85c2c34f22369eabb",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-05-27T13:30:00.000Z",
+      "end": "2027-05-27T15:00:00.000Z"
+    },
+    {
+      "id": "e5bdcd05a72df12e5793556c",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-05-27T15:00:00.000Z",
+      "end": "2027-05-27T16:30:00.000Z"
+    },
+    {
+      "id": "0d5751de7a8cacb94e1dff5d",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-27T16:30:00.000Z",
+      "end": "2027-05-27T18:00:00.000Z"
+    },
+    {
+      "id": "94e94b36d56707e8954fa58f",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-05-28T13:30:00.000Z",
+      "end": "2027-05-28T18:00:00.000Z"
+    },
+    {
+      "id": "0bf65d73322f1a291e1c8100",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-06-01T13:30:00.000Z",
+      "end": "2027-06-01T15:00:00.000Z"
+    },
+    {
+      "id": "8d9b85190740e1193cbffe8e",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-01T15:00:00.000Z",
+      "end": "2027-06-01T16:30:00.000Z"
+    },
+    {
+      "id": "18e951b5e181cf65deb9eaa7",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-06-03T13:30:00.000Z",
+      "end": "2027-06-03T15:00:00.000Z"
+    },
+    {
+      "id": "3e9686ecfeed522569ab9a50",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-06-03T15:00:00.000Z",
+      "end": "2027-06-03T16:30:00.000Z"
+    },
+    {
+      "id": "5c2554889ade82de67a74d75",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-03T16:30:00.000Z",
+      "end": "2027-06-03T18:00:00.000Z"
+    },
+    {
+      "id": "2c113dc15da7a58992bbc14d",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-04T13:30:00.000Z",
+      "end": "2027-06-04T18:00:00.000Z"
+    },
+    {
+      "id": "38b04f5e2e46082cf90b901f",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110",
+      "allDay": false,
+      "start": "2027-06-08T13:30:00.000Z",
+      "end": "2027-06-08T15:00:00.000Z"
+    },
+    {
+      "id": "b41febd165d7987c13b630ac",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-08T15:00:00.000Z",
+      "end": "2027-06-08T16:30:00.000Z"
+    },
+    {
+      "id": "1b1c2dd9cb5cd78b64c29872",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-06-10T13:30:00.000Z",
+      "end": "2027-06-10T15:00:00.000Z"
+    },
+    {
+      "id": "9b17bd586c087de5959cf2c7",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "B006 (Remoto)",
+      "allDay": false,
+      "start": "2027-06-10T15:00:00.000Z",
+      "end": "2027-06-10T16:30:00.000Z"
+    },
+    {
+      "id": "a39cf0e3bf266ad72b3cf5ed",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-10T16:30:00.000Z",
+      "end": "2027-06-10T18:00:00.000Z"
+    },
+    {
+      "id": "aeabe3d26bd56d28fb657f1b",
+      "sourceId": "google-15",
+      "title": "Xemelgos Dixitais en plantas industriais",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-14T14:00:00.000Z",
+      "end": "2027-06-14T18:00:00.000Z"
+    },
+    {
+      "id": "fa7aada9197fc3a6434da1be",
+      "sourceId": "google-03",
+      "title": "Big Data",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-17T16:00:00.000Z",
+      "end": "2027-06-17T18:00:00.000Z"
+    },
+    {
+      "id": "7c6ffdafc0a3ca7e292acf64",
+      "sourceId": "google-16",
+      "title": "Análise de Vídeo",
+      "location": "T110/AS04/BS02",
+      "allDay": false,
+      "start": "2027-06-18T16:00:00.000Z",
+      "end": "2027-06-18T18:00:00.000Z"
+    }
+  ]
+}

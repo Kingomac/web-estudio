@@ -1,5 +1,55 @@
 import { z } from 'zod';
 
+const calendarSourceId = z.string().regex(/^[a-z0-9-]+$/);
+const calendarSourceDisplay = { id: calendarSourceId, label: z.string().min(1) };
+export const calendarSourcesSchema = z.array(z.discriminatedUnion('kind', [
+  z.strictObject({ ...calendarSourceDisplay, kind: z.literal('google'), calendarId: z.string().endsWith('@group.calendar.google.com') }),
+  z.strictObject({ ...calendarSourceDisplay, kind: z.literal('moovi') }),
+])).min(1).refine(sources => new Set(sources.map(s => s.id)).size === sources.length, 'Fuentes duplicadas.');
+const calendarEventBase = {
+  id: z.string().min(1), sourceId: calendarSourceId, title: z.string().min(1),
+  location: z.string().optional(), url: z.url().startsWith('https://').optional(),
+};
+export const calendarEventSchema = z.discriminatedUnion('allDay', [
+  z.strictObject({ ...calendarEventBase, allDay: z.literal(true), start: z.iso.date(), end: z.iso.date() }),
+  z.strictObject({ ...calendarEventBase, allDay: z.literal(false), start: z.iso.datetime(), end: z.iso.datetime() }),
+]).refine(e => e.allDay ? e.end > e.start : e.end >= e.start, 'Fin de evento inválido.');
+const calendarSourceStateSchema = z.strictObject({
+  ...calendarSourceDisplay, status: z.enum(['ok', 'error']),
+  checkedAt: z.iso.datetime(), lastSuccessAt: z.iso.datetime().nullable(),
+  limitedDetails: z.boolean().default(false),
+});
+export const calendarSnapshotSchema = z.strictObject({
+  version: z.literal(1), timezone: z.literal('Europe/Madrid'),
+  from: z.iso.date(), until: z.iso.date(), updatedAt: z.iso.datetime(),
+  sources: z.array(calendarSourceStateSchema).min(1),
+  events: z.array(calendarEventSchema),
+}).superRefine((snapshot, ctx) => {
+  if (snapshot.from >= snapshot.until) ctx.addIssue({ code: 'custom', message: 'Intervalo del calendario inválido.' });
+  if (new Set(snapshot.sources.map(s => s.id)).size !== snapshot.sources.length) ctx.addIssue({ code: 'custom', message: 'Fuentes duplicadas.' });
+  if (new Set(snapshot.events.map(e => e.id)).size !== snapshot.events.length) ctx.addIssue({ code: 'custom', message: 'Eventos duplicados.' });
+  if (snapshot.events.some(e => !snapshot.sources.some(s => s.id === e.sourceId))) ctx.addIssue({ code: 'custom', message: 'Fuente de evento desconocida.' });
+});
+export type CalendarEvent = z.infer<typeof calendarEventSchema>;
+export type CalendarSnapshot = z.infer<typeof calendarSnapshotSchema>;
+export type CalendarSourceId = CalendarSnapshot['sources'][number]['id'];
+export type CalendarSources = z.infer<typeof calendarSourcesSchema>;
+export const calendarQuerySchema = z.strictObject({
+  from: z.iso.date(), to: z.iso.date(),
+  sourceIds: z.array(calendarSourceId).min(1).optional(),
+  search: z.string().trim().min(1).optional(),
+}).refine(query => query.from <= query.to, 'La fecha inicial debe ser anterior o igual a la final.');
+export const calendarContextSchema = z.strictObject({
+  timezone: z.literal('Europe/Madrid'), query: calendarQuerySchema,
+  snapshotUpdatedAt: z.iso.datetime(), coverage: z.strictObject({ from: z.iso.date(), until: z.iso.date() }),
+  sources: z.array(calendarSourceStateSchema.extend({
+    kind: z.enum(['google', 'moovi']), stale: z.boolean(),
+    scope: z.string(), referenceUrl: z.url().startsWith('https://'),
+  })),
+  events: z.array(calendarEventSchema), warnings: z.array(z.string()),
+});
+export type CalendarQuery = z.infer<typeof calendarQuerySchema>;
+
 const text = z.string().trim().min(1);
 const id = text.regex(/^[a-z0-9]+(?:[.-][a-z0-9]+)*$/, 'Usa un ID estable con letras minúsculas, números, puntos y guiones.');
 const slug = text.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);

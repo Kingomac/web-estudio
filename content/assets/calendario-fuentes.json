@@ -1,0 +1,103 @@
+[
+  {
+    "id": "google",
+    "kind": "google",
+    "label": "MUIoT",
+    "calendarId": "912d1238df3a0042cce93ed7b9ab6c55e429cfb0c4b9e29ec761a743105e5509@group.calendar.google.com"
+  },
+  {
+    "id": "google-02",
+    "kind": "google",
+    "label": "MUIoT - Aprendizaxe Automática",
+    "calendarId": "f4d8280ab0f88037a8ccd83829e3ecee9ccdb40e0689a58a13e45e8026eed829@group.calendar.google.com"
+  },
+  {
+    "id": "google-03",
+    "kind": "google",
+    "label": "MUIoT - Big Data",
+    "calendarId": "70706d12b311e906cc6443d8e15ad0cacef2127e0deb3eeb6c66c907cc92b17b@group.calendar.google.com"
+  },
+  {
+    "id": "google-04",
+    "kind": "google",
+    "label": "MUIoT - Ciberseguridade en IoT",
+    "calendarId": "42f6db6570fdd039f268043ec140e48703811e124f9614079555f925379ed6ed@group.calendar.google.com"
+  },
+  {
+    "id": "google-05",
+    "kind": "google",
+    "label": "MUIoT - Computación na Nube para IoT",
+    "calendarId": "cb67a8d4e4f0558ed1473e4c64012592af253a769e63615cb3662522edea75e9@group.calendar.google.com"
+  },
+  {
+    "id": "google-06",
+    "kind": "google",
+    "label": "MUIoT - Dispositivos IoT",
+    "calendarId": "d2e9343ad75a1954f6c3241fd6bfcea5e3986cfb47130efb05511084c5eee3d3@group.calendar.google.com"
+  },
+  {
+    "id": "google-07",
+    "kind": "google",
+    "label": "MUIoT - Enxeñería de Datos para IoT",
+    "calendarId": "769e6ff26ce36917eba14d388d6e456c128a4c21b3de5222defcee36270e3640@group.calendar.google.com"
+  },
+  {
+    "id": "google-08",
+    "kind": "google",
+    "label": "MUIoT - Green IoT",
+    "calendarId": "f4855333922a869e2811162a0c6025fd252ea816bd0c177d3f73a3c2e9ff83f5@group.calendar.google.com"
+  },
+  {
+    "id": "google-09",
+    "kind": "google",
+    "label": "MUIoT - Innovación e Emprendemento en IoT",
+    "calendarId": "00039b5c850eb54cb84f7eaf2490ae13e11d152ba1e68bb0f32d77b85e70dd2b@group.calendar.google.com"
+  },
+  {
+    "id": "google-10",
+    "kind": "google",
+    "label": "MUIoT - Integración de Sistemas en IIoT",
+    "calendarId": "81a3acdeaea22228cd0062ffe1811247ebfcfab0f9311bf995b0067ce88507f6@group.calendar.google.com"
+  },
+  {
+    "id": "google-11",
+    "kind": "google",
+    "label": "MUIoT - Novas Arquitecturas e Paradigmas IoT",
+    "calendarId": "a53a31f0868f4c8bb45bbaebe00f09acb79e6c0cebe8d69a379bdbc08f1a1a3e@group.calendar.google.com"
+  },
+  {
+    "id": "google-12",
+    "kind": "google",
+    "label": "MUIoT - Protocolos de Comunicacións en IoT",
+    "calendarId": "9b1025d704cea33ec7df19fdf9c2c25074b2033856e6431509442b3763b49110@group.calendar.google.com"
+  },
+  {
+    "id": "google-13",
+    "kind": "google",
+    "label": "MUIoT - Redes de Comunicacións en IoT",
+    "calendarId": "cd35263206d587a3952d1a752f4ed904f91447ee276fadbf2c9a958a2c2ad7f9@group.calendar.google.com"
+  },
+  {
+    "id": "google-14",
+    "kind": "google",
+    "label": "MUIoT - Sistemas Encaixados",
+    "calendarId": "bc00e046ee334ce0207a020c7386343fb7f58ffc0265d8c49a38a55ea54a8654@group.calendar.google.com"
+  },
+  {
+    "id": "google-15",
+    "kind": "google",
+    "label": "MUIoT - Xemelgos Dixitais en plantas industriais",
+    "calendarId": "3dfb7ae88910191aea7ed248357827d716f5a7c74c189d2f5a3652c0e3c7e7b5@group.calendar.google.com"
+  },
+  {
+    "id": "google-16",
+    "kind": "google",
+    "label": "MUIoT - Análise de Vídeo",
+    "calendarId": "51c86660c3c952b48441c82b856b3c320207f56bc739769c8e5e529f87281077@group.calendar.google.com"
+  },
+  {
+    "id": "moovi",
+    "kind": "moovi",
+    "label": "Moovi · Entregas"
+  }
+]
