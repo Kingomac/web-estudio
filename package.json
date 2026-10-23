@@ -1,0 +1,43 @@
+{
+  "name": "web-estudio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.4",
+  "engines": {
+    "bun": "1.4.4"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "bun scripts/build.ts",
+    "preview": "bun scripts/serve-built.ts --port 4321",
+    "content:new": "bun scripts/content/cli.ts new",
+    "content:import": "bun scripts/content/cli.ts import",
+    "content:inspect": "bun scripts/content/cli.ts inspect",
+    "content:list": "bun scripts/content/cli.ts list",
+    "content:show": "bun scripts/content/cli.ts show",
+    "content:schema": "bun scripts/content/cli.ts schema",
+    "content:check": "bun scripts/content/cli.ts check",
+    "content:impact": "bun scripts/content/cli.ts impact",
+    "content:report": "bun scripts/content/cli.ts report",
+    "test:unit": "bun test",
+    "test:e2e": "playwright test --project=firefox",
+    "test:install": "playwright install firefox",
+    "check": "bun scripts/check.ts",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "8.1.0",
+    "astro": "7.4.1",
+    "parse5": "^7.3.0",
+    "pdf-lib": "^1.17.1",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@playwright/test": "1.64.1",
+    "@types/bun": "1.4.3",
+    "@types/node": "24.19.2",
+    "typescript": "6.0.3"
+  }
+}

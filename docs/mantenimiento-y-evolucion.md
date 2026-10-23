@@ -1,8 +1,8 @@
 # Mantenimiento y evolución de la web durante el curso
 
-Plan de mantenimiento actualizado con las decisiones del usuario. Complementa el [diseño principal](diseno-arquitectura.md). Este documento define la arquitectura y su verificación; no implementa herramientas ni funcionalidades.
+Plan de mantenimiento actualizado con las decisiones del usuario. Complementa el [diseño principal](diseno-arquitectura.md). Este documento define las prioridades y su verificación. La implementación comenzó el 22 de octubre de 2026; README.md y docs/autoria.md describen las herramientas disponibles y el alcance actual.
 
-La prioridad durante 2026/27 es añadir y corregir contenido con agentes, mantener claras sus relaciones y ofrecer práctica con preguntas y opciones aleatorias. La conservación del progreso es secundaria. Se mantiene un único repositorio y una web estática con Astro, MDX, JavaScript vanilla y CSS vanilla.
+La prioridad durante 2026/27 es añadir y corregir contenido con agentes, mantener claras sus relaciones y ofrecer práctica con preguntas y opciones aleatorias. La conservación del progreso es secundaria. Se mantiene un único repositorio y una web estática con Astro, MDX, TypeScript compilado a JavaScript vanilla y CSS vanilla.
 
 ## Prioridades acordadas
 
@@ -25,15 +25,15 @@ La CLI de autoría y su documentación son entregables principales del proyecto.
 
 | Comando previsto | Contrato |
 | --- | --- |
-| `npm run content:new` | Crear una lectura, pregunta, test, ejercicio o ficha de material; generar IDs y estructura sin sobrescribir archivos. |
-| `npm run content:check` | Validar esquema, alcance, tags, fuentes, páginas, explicaciones, composición de tests y contenido compatible con la mezcla. |
-| `npm run content:impact` | Consultar usos directos e indirectos por ID o archivo, con campos y rutas afectadas. |
-| `npm run content:report` | Mostrar cobertura por tags, posibles duplicados y problemas del catálogo. |
-| `npm run test:unit` | Ejecutar las pruebas unitarias. |
-| `npm run test:e2e` | Ejecutar las E2E en Firefox sobre el sitio compilado. |
-| `npm run check` | Validar contenido, ejecutar unitarias, compilar y ejecutar E2E. |
+| `bun run content:new` | Crear una lectura, pregunta, test, ejercicio o ficha de material; generar IDs y estructura sin sobrescribir archivos. |
+| `bun run content:check` | Validar esquema, alcance, tags, fuentes, páginas, explicaciones, composición de tests y contenido compatible con la mezcla. |
+| `bun run content:impact` | Consultar usos directos e indirectos por ID o archivo, con campos y rutas afectadas. |
+| `bun run content:report` | Mostrar cobertura por tags, posibles duplicados y problemas del catálogo. |
+| `bun run test:unit` | Ejecutar las pruebas unitarias. |
+| `bun run test:e2e` | Ejecutar las E2E en Firefox sobre el sitio compilado. |
+| `bun run check` | Validar contenido, ejecutar unitarias, compilar y ejecutar E2E. |
 
-Estos comandos aún no existen. Su implementación ofrecerá salida legible y una opción JSON, códigos de salida fiables y errores con archivo, campo y causa. Crear un recurso debe producir una plantilla coherente y señalar los datos editoriales que falten; no inventar fuentes para hacerla pasar por completa.
+El primer incremento implementa estos comandos, junto con inspect, import, list, show y schema. Ofrecen salida estructurada, códigos de salida fiables y errores con archivo, campo y causa; el manual de autoría recoge su uso. Crear un recurso debe producir una plantilla coherente y señalar los datos editoriales que falten; no inventar fuentes para hacerla pasar por completa.
 
 `AGENTS.md` será breve y operativo: dónde trabajar, qué contratos conservar y cómo verificar. `docs/autoria.md` desarrolla ejemplos y formatos. Los esquemas de `src/schemas/` son la única definición de datos; la CLI, Astro y las plantillas los reutilizan. Los esquemas del editor se generan o derivan, no se mantienen como una definición contradictoria.
 
@@ -90,7 +90,7 @@ Resetear un test no borra los ejercicios ni otros tests. Resetear un ejercicio d
 
 ## Pruebas obligatorias
 
-Se propone `node:test` para unitarias y Playwright Test configurado con Firefox para E2E. Firefox es parte de la puerta de validación en desarrollo y CI. Playwright utiliza una compilación de Firefox compatible con su versión; se instala junto a las dependencias de pruebas. [Pruebas de Node](https://nodejs.org/api/test.html), [Firefox en Playwright](https://playwright.dev/docs/browsers#firefox).
+Las unitarias utilizan `bun:test` y las E2E, Playwright Test con Firefox. `bunfig.toml` limita el descubrimiento de `bun test` a `tests/unit/`; las E2E se ejecutan con `bun run test:e2e`. Firefox es parte de la puerta de validación en desarrollo y CI. Playwright utiliza una compilación de Firefox compatible con su versión, instalada con `bun run test:install`. [Pruebas de Bun](https://bun.sh/docs/test), [Firefox en Playwright](https://playwright.dev/docs/browsers#firefox).
 
 | Nivel | Cobertura principal |
 | --- | --- |
@@ -108,7 +108,7 @@ Las pull requests validan contenido, ejecutan unitarias, compilan y pasan E2E en
 
 ## Mantenimiento cotidiano
 
-Se fija la versión de Node y el archivo de bloqueo, y las actualizaciones de dependencias se separan de los cambios de temario. La compilación usa contenido local y no necesita consultar muiot.es para reconstruir el sitio.
+Se fijan la versión de Bun en `.bun-version` y las dependencias en `bun.lock`, y las actualizaciones de dependencias se separan de los cambios de temario. La compilación usa contenido local y no necesita consultar muiot.es para reconstruir el sitio.
 
 Un catálogo pequeño de componentes mantiene coherencia de lectura e impresión. Los nuevos visuales permanecen en su asignatura hasta que exista reutilización real. Las animaciones costosas pueden inicializarse al acercarse a la zona visible, manteniendo todo el texto y alternativas impresas en el HTML inicial.
 

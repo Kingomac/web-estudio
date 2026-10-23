@@ -1,0 +1,18 @@
+@page { size: A4; margin: 18mm; }
+@media print {
+  :root { color: #000 !important; background: #fff !important; font-size: 11pt !important; }
+  body { margin: 0 !important; background: #fff !important; color: #000 !important; }
+  .sidebar, .topbar, .site-footer, .breadcrumbs, .guide-link, .section-back, .reading-toolbar, .toc, .skip-link, .visual-controls, .relations, .resource-header .tags, .mobile-toc-dialog, .mobile-toc-toggle:not([hidden]) { display: none !important; }
+  html body .mobile-toc-toggle:not([hidden]) { display: none !important; }
+  .site-main { margin: 0 !important; } main { padding: 0 !important; max-width: none !important; min-height: 0 !important; }
+  .resource-header { margin: 0 0 20pt !important; }.resource-header h1 { font-size: 25pt !important; }.resource-header .scope { border-color: #777 !important; }
+  .reading-grid { display: block !important; }.prose { max-width: none !important; font-size: 11pt !important; line-height: 1.55 !important; }
+  h2, h3, h4 { break-after: avoid; }h2 { font-size: 18pt !important; }h3 { font-size: 13pt !important; }
+  p, li { orphans: 3; widows: 3; }
+  pre { white-space: pre-wrap !important; overflow: visible !important; background: #fff !important; }pre code, code { overflow-wrap: anywhere !important; }
+  .table-scroll { overflow: visible !important; }thead { display: table-header-group; }tr { break-inside: avoid; }th, td { color: #000 !important; background: #fff !important; font-size: 9pt !important; }
+  .ndp-visual, .sources, .callout { color: #000 !important; background: #fff !important; border-color: #999 !important; }
+  .ndp-diagram { display: none !important; }.ndp-steps li { background: #fff !important; break-inside: avoid; }.ndp-steps p { font-size: 10pt !important; }
+  .sources { padding: 12pt !important; margin-top: 20pt !important; }.sources li { font-size: 9pt !important; }a { color: #000 !important; }
+  * { box-shadow: none !important; text-shadow: none !important; }
+}

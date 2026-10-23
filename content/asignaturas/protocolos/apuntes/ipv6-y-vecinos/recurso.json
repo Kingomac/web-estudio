@@ -1,0 +1,31 @@
+{
+  "id": "protocolos.apuntes.ipv6-y-vecinos",
+  "kind": "apuntes",
+  "subjectId": "protocolos",
+  "slug": "ipv6-y-vecinos",
+  "title": "IPv6, del destino al vecino",
+  "description": "Una dirección identifica la interfaz. NDP permite encontrarla en el enlace.",
+  "scope": "Representación y tipos de dirección IPv6 (pág. 9) y resolución de vecinos NDP (pág. 39). No cubre SLAAC, DHCPv6 ni 6LoWPAN.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.ndp"
+  ],
+  "order": 10,
+  "body": "body.astro",
+  "printIntent": "screen",
+  "sources": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9,
+        39
+      ]
+    }
+  ],
+  "componentIds": [
+    "protocolos.ndp"
+  ],
+  "aliases": [
+    "/asignaturas/protocolos/apuntes/introduccion-ipv6/"
+  ]
+}

@@ -1,0 +1,8 @@
+---
+import { siteCatalog, resourceUrl, url } from '../lib/sitio.ts';
+import { isResource } from '../lib/catalogo.ts';
+export async function getStaticPaths() { const catalog = await siteCatalog(); return catalog.entries.filter(isResource).flatMap(entry => entry.aliases.map(alias => ({ params: { alias: alias.slice(1, -1) }, props: { target: resourceUrl(entry, catalog), title: entry.title } }))); }
+interface Props { target: string; title: string }
+const { target, title } = Astro.props;
+---
+<!doctype html><html lang="es"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><meta http-equiv="refresh" content={`0;url=${target}`} /><title>{title} · Nueva dirección</title><link rel="icon" href={url('/favicon.svg')} /></head><body><main id="contenido"><h1>Esta lectura ha cambiado de dirección</h1><p><a href={target}>Continuar a {title}</a></p></main><script>const destination = document.querySelector<HTMLAnchorElement>('main a')?.href; if (destination) location.replace(destination + location.hash);</script></body></html>

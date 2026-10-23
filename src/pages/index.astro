@@ -1,0 +1,17 @@
+---
+import Site from '../layouts/Site.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import { siteCatalog, resourceUrl, url } from '../lib/sitio.ts';
+import { isResource } from '../lib/catalogo.ts';
+const catalog = await siteCatalog();
+const subjects = catalog.entries.filter(e => e.kind === 'asignatura');
+const resources = catalog.entries.filter(isResource);
+const bimesters = catalog.entries.filter(e => e.kind === 'bimestre');
+---
+<Site title="Mi cuaderno">
+  <header class="home-hero"><div><p class="eyebrow">MENOS MEMORIZAR. MÁS COMPRENDER.</p><h1>Tu espacio para<br />entender y <em>practicar.</em></h1><p>Conecta los apuntes con sus fuentes, pon a prueba lo que sabes y vuelve a lo que necesitas repasar.</p></div><div class="hero-note"><span class="hero-note-number">26<span>/</span>27</span><p>Un curso.<br />Muchas conexiones.</p><div class="hero-lines" aria-hidden="true"><i></i><i></i><i></i></div></div></header>
+  <section class="home-section"><div class="section-heading"><div><p class="eyebrow">ORGANIZA TU RECORRIDO</p><h2>El curso, por bimestres</h2></div><span class="muted">4 bimestres · A tu ritmo</span></div><div class="bimester-grid">{bimesters.map(b => { const count = subjects.filter(s => s.bimesterId === b.id).length; return <a class:list={['bimester-card', { available: count > 0 }]} href={resourceUrl(b, catalog)}><span class="eyebrow">0{b.order}</span><strong>{b.title}</strong><span>{count ? `${count} asignatura disponible` : 'Por incorporar'}<span aria-hidden="true">↗</span></span></a>; })}</div></section>
+  <section class="home-section"><div class="section-heading"><div><p class="eyebrow">ABRE UNA NUEVA CONEXIÓN</p><h2>Asignaturas</h2></div><span class="muted">{subjects.length} en tu cuaderno</span></div><div class="subject-grid">{subjects.map(subject => <a class="subject-card" href={resourceUrl(subject, catalog)}><div><span class="eyebrow">{subject.bimesterId.toUpperCase()} · COMUNICACIONES</span><h3>{subject.title}</h3><p>{subject.description}</p><span class="subject-meta">{resources.filter(r => r.subjectId === subject.id).length} recursos · Apuntes, práctica y originales</span></div><span class="subject-symbol" aria-hidden="true">↗</span></a>)}</div></section>
+  <section class="home-section"><div class="section-heading"><div><p class="eyebrow">UN BUEN PUNTO DE PARTIDA</p><h2>Lee. Relaciona. Comprueba.</h2></div></div><div class="resource-grid">{resources.filter(r => ['apuntes', 'resumen', 'test'].includes(r.kind)).slice(0, 3).map(entry => <ResourceCard entry={entry} catalog={catalog} />)}</div></section>
+  <div class="study-note"><span aria-hidden="true">↳</span><p><strong>Las fuentes, siempre a mano.</strong> Cada actividad enlaza al material original para que puedas comprobar la explicación y seguir aprendiendo.</p><a href={url('/asignaturas/protocolos/materiales/')}>Ver originales →</a></div>
+</Site>

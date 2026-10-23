@@ -1,0 +1,15 @@
+---
+import Site from '../../../layouts/Site.astro';
+import ResourceList from '../../../components/ResourceList.astro';
+import { siteCatalog, url } from '../../../lib/sitio.ts';
+import { isResource } from '../../../lib/catalogo.ts';
+import { sections, labels } from '../../../lib/rutas.ts';
+import type { Subject, Tag } from '../../../schemas/content.ts';
+export async function getStaticPaths() { const catalog = await siteCatalog(); return catalog.entries.filter(e => e.kind === 'asignatura').map(entry => ({ params: { subject: entry.slug }, props: { entry } })); }
+interface Props { entry: Subject }
+const { entry } = Astro.props;
+const catalog = await siteCatalog();
+const resources = catalog.entries.filter(isResource).filter(e => e.subjectId === entry.id);
+const tags = catalog.entries.filter((e): e is Tag => e.kind === 'tag' && e.subjectId === entry.id);
+---
+<Site title={entry.title} subject={entry}><header class="resource-header"><p class="eyebrow">{entry.bimesterId.toUpperCase()} · TU ASIGNATURA</p><h1>{entry.title}</h1><p class="page-description">{entry.description}</p></header><nav class="section-tabs" aria-label="Tipos de recurso"><a href={url(`/asignaturas/${entry.slug}/`)} aria-current="page">Todos los recursos</a>{Object.entries(sections).map(([kind, section]) => <a href={url(`/asignaturas/${entry.slug}/${section}/`)}>{labels[kind as keyof typeof labels]}</a>)}</nav><ResourceList entries={resources} tags={tags} catalog={catalog} /></Site>

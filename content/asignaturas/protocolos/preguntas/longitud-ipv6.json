@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.longitud-ipv6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuántos bits tiene una dirección IPv6?",
+  "explanation": "Una dirección IPv6 se representa con ocho grupos de 16 bits: 8 × 16 = 128 bits.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.ipv6-y-vecinos",
+      "anchor": "direcciones"
+    }
+  ],
+  "options": [
+    {
+      "id": "bits-32",
+      "text": "32 bits",
+      "explanation": "Es el tamaño de una dirección IPv4; una IPv6 tiene cuatro veces más bits."
+    },
+    {
+      "id": "bits-64",
+      "text": "64 bits",
+      "explanation": "64 bits pueden identificar una parte de una dirección IPv6, pero no la dirección completa."
+    },
+    {
+      "id": "bits-128",
+      "text": "128 bits",
+      "explanation": "Ocho grupos de 16 bits suman 128 bits, equivalentes a 16 bytes."
+    },
+    {
+      "id": "bits-256",
+      "text": "256 bits",
+      "explanation": "Esta cifra duplica la longitud de una dirección IPv6."
+    }
+  ],
+  "answer": "bits-128"
+}

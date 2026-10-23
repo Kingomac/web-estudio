@@ -1,0 +1,8 @@
+[run]
+# Ejecuta también Astro, Playwright y sus procesos hijos con Bun.
+bun = true
+shell = "bun"
+
+[test]
+# Playwright descubre y ejecuta las E2E por separado.
+root = "./tests/unit"

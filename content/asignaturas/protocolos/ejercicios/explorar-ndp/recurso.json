@@ -1,0 +1,30 @@
+{
+  "id": "protocolos.ejercicios.explorar-ndp",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "explorar-ndp",
+  "title": "Sigue un intercambio NDP",
+  "description": "Recorre una solicitud, la respuesta y la actualización de la caché.",
+  "scope": "Resolución básica de un vecino que responde; página 39. No simula pérdidas, tiempos de espera ni NUD.",
+  "tagIds": [
+    "protocolos.tags.ndp"
+  ],
+  "order": 50,
+  "mode": "workshop",
+  "workshopId": "protocolos.ndp",
+  "prompt": "Avanza por las tres etapas para observar qué información obtiene el solicitante.",
+  "sources": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.ipv6-y-vecinos",
+      "anchor": "vecinos"
+    }
+  ]
+}

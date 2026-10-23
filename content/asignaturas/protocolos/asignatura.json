@@ -1,0 +1,14 @@
+{
+  "id": "protocolos",
+  "kind": "asignatura",
+  "slug": "protocolos",
+  "title": "Protocolos de comunicación para IoT",
+  "description": "Entiende cómo se comunican los dispositivos: direccionamiento IPv6 y descubrimiento de vecinos.",
+  "bimesterId": "b1",
+  "order": 10,
+  "teachingGuide": {
+    "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01104",
+    "title": "Guía docente · Protocolos de comunicación para IoT",
+    "academicYear": "2026/27"
+  }
+}

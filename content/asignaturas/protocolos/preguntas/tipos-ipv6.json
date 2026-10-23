@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.tipos-ipv6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "multiple",
+  "prompt": "Selecciona todos los tipos de dirección que existen en IPv6.",
+  "explanation": "IPv6 distingue unicast, multicast y anycast. No define direcciones broadcast.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.ipv6-y-vecinos",
+      "anchor": "direcciones"
+    }
+  ],
+  "options": [
+    {
+      "id": "unicast",
+      "text": "Unicast",
+      "explanation": "Identifica una interfaz dentro de su ámbito de comunicación."
+    },
+    {
+      "id": "multicast",
+      "text": "Multicast",
+      "explanation": "Identifica un grupo de interfaces que reciben el tráfico dirigido al grupo."
+    },
+    {
+      "id": "anycast",
+      "text": "Anycast",
+      "explanation": "Varias interfaces comparten una dirección y el encaminamiento entrega el paquete a la más cercana según sus métricas."
+    },
+    {
+      "id": "broadcast",
+      "text": "Broadcast",
+      "explanation": "IPv6 no define broadcast; utiliza multicast para las comunicaciones con grupos."
+    }
+  ],
+  "answer": [
+    "unicast",
+    "multicast",
+    "anycast"
+  ]
+}

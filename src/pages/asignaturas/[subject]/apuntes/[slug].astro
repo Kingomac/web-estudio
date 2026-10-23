@@ -1,0 +1,18 @@
+---
+import Resource from '../../../../layouts/Resource.astro';
+import Reading from '../../../../layouts/Reading.astro';
+import { resourcePaths } from '../../../../lib/paths.ts';
+import { siteCatalog } from '../../../../lib/sitio.ts';
+import type { Reading as ReadingEntry } from '../../../../schemas/content.ts';
+import type { AstroInstance } from 'astro';
+import { bodyKey } from '../../../../lib/cuerpos.ts';
+export async function getStaticPaths() { return resourcePaths('apuntes'); }
+interface Props { entry: ReadingEntry }
+const { entry } = Astro.props;
+const bodies = import.meta.glob<AstroInstance>('/content/asignaturas/*/apuntes/*/body.{astro,mdx}');
+const key = await bodyKey(entry);
+if (!bodies[key]) throw new Error(`Cuerpo no encontrado: ${entry.id}`);
+const Body = (await bodies[key]()).default;
+const catalog = await siteCatalog();
+---
+<Resource entry={entry}><Reading entry={entry} catalog={catalog}><Body /></Reading></Resource>

@@ -1,0 +1,8 @@
+---
+import type { SourceReference } from '../schemas/content.ts';
+import type { Catalog } from '../lib/catalogo.ts';
+import { sourceUrl } from '../lib/sitio.ts';
+interface Props { references: SourceReference[]; catalog: Catalog; prominent?: boolean }
+const { references, catalog, prominent = false } = Astro.props;
+---
+{references.length > 0 && <div class:list={['sources', { prominent }]}><p class="eyebrow">{prominent ? 'REVISAR EN LOS APUNTES ORIGINALES' : 'FUENTES ORIGINALES'}</p><ul>{references.map(ref => { const material = catalog.byId.get(ref.materialId); return <li><a href={sourceUrl(ref, catalog)} target="_blank" rel="noopener">{material?.kind === 'material' ? material.title : ref.materialId} · {ref.pdfPages.length === 1 ? 'pág.' : 'págs.'} {ref.pdfPages.join(', ')} <span class="external-note">(nueva pestaña)</span></a>{ref.label && <span> · {ref.label}</span>}</li>; })}</ul></div>}

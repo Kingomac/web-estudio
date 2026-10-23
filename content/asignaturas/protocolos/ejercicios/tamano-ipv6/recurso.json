@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.ejercicios.tamano-ipv6",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "tamano-ipv6",
+  "title": "De bits a bytes",
+  "description": "Calcula el tamaño de una dirección IPv6 a partir de su representación.",
+  "scope": "Conversión de los ocho grupos de 16 bits a bits y bytes; página 9 del original.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 40,
+  "mode": "form",
+  "prompt": "Una dirección IPv6 tiene ocho grupos de 16 bits. Calcula su tamaño completo.",
+  "explanation": "8 × 16 = 128 bits. Como cada byte contiene 8 bits, 128 ÷ 8 = 16 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.ipv6-y-vecinos",
+      "anchor": "direcciones"
+    }
+  ],
+  "fields": [
+    {
+      "id": "bits",
+      "label": "Tamaño en bits",
+      "type": "number",
+      "answer": 128,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "bits",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Ocho grupos de 16 bits: 8 × 16 = 128 bits."
+    },
+    {
+      "id": "bytes",
+      "label": "Tamaño en bytes",
+      "type": "number",
+      "answer": 16,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "bytes",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Cada byte son 8 bits: 128 ÷ 8 = 16 bytes."
+    }
+  ]
+}

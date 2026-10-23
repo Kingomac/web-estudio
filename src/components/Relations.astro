@@ -1,0 +1,11 @@
+---
+import type { Resource } from '../schemas/content.ts';
+import type { Catalog } from '../lib/catalogo.ts';
+import { impact, isResource } from '../lib/catalogo.ts';
+import { resourceUrl } from '../lib/sitio.ts';
+interface Props { resource: Resource; catalog: Catalog }
+const { resource, catalog } = Astro.props;
+const incoming = impact(catalog, resource.id).map(item => ({ ...item, entry: catalog.byId.get(item.id) })).filter(item => item.entry && isResource(item.entry));
+const outgoing = [...new Set([...resource.relatedResourceIds, ...resource.readingReferences.map(r => r.resourceId)])].map(id => catalog.byId.get(id)).filter((e): e is Resource => !!e && isResource(e));
+---
+{(outgoing.length > 0 || incoming.length > 0) && <aside class="relations"><h2>Conecta lo que estudias</h2><div class="relations-columns">{outgoing.length > 0 && <div><h3>Lecturas y recursos de apoyo</h3><ul>{outgoing.map(e => <li><a href={resourceUrl(e, catalog)}>{e.title} →</a></li>)}</ul></div>}{incoming.length > 0 && <div><h3>Utilizado en</h3><ul>{incoming.map(({ entry, depth }) => entry && isResource(entry) && <li><a href={resourceUrl(entry, catalog)}>{entry.title} →</a>{depth > 1 && <small>{entry.kind === 'test' ? 'Contiene preguntas vinculadas a este recurso.' : 'Relación indirecta.'}</small>}</li>)}</ul></div>}</div></aside>}

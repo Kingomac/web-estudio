@@ -1,0 +1,32 @@
+<h2 id="cifras">Las cifras esenciales</h2>
+
+Una dirección IPv6 contiene **128 bits = 16 bytes = 8 grupos de 16 bits**.
+
+Cada grupo se representa con hasta cuatro dígitos hexadecimales. Los grupos se separan con `:`.
+
+<h2 id="notacion">Escribir menos, representar lo mismo</h2>
+
+```text
+Completa:  2001:0db8:0010:0000:0000:0000:0000:0025
+Abreviada: 2001:db8:10::25
+```
+
+- Elimina los ceros iniciales de cada grupo.
+- Utiliza `::` una sola vez para una secuencia contigua de grupos cero.
+- La abreviatura conserva los 128 bits de la dirección.
+
+<h2 id="destinos">Identificar el destino</h2>
+
+| Tipo | Idea principal |
+| --- | --- |
+| Unicast | Una interfaz. |
+| Multicast | Un grupo de interfaces. |
+| Anycast | Una interfaz de un conjunto que comparte dirección. |
+
+**IPv6 no define broadcast.** La dirección sin especificar es `::` y la dirección de loopback es `::1`.
+
+<h2 id="autoevaluacion">Comprueba que lo recuerdas</h2>
+
+Explica con tus palabras por qué `::1` representa una dirección de 128 bits aunque tenga muy pocos caracteres. Después, distingue multicast de anycast sin recurrir al número de interfaces que comparten el identificador.
+
+Fuente: página física 9 de *Tema 3 · IP en IoT*. Este resumen cubre esa página; no desarrolla configuración automática ni resolución NDP.

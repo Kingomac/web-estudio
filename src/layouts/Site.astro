@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import { siteCatalog, url, resourceUrl } from '../lib/sitio.ts';
+import type { Subject } from '../schemas/content.ts';
+interface Props { title: string; description?: string; subject?: Subject }
+const { title, description = 'Apuntes, fuentes y práctica para comprender el Internet de las cosas.', subject } = Astro.props;
+const catalog = await siteCatalog();
+const bimesters = catalog.entries.filter(e => e.kind === 'bimestre');
+const current = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#163f35" />
+    <title>{title} · Cuaderno IoT</title>
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside class="sidebar" aria-label="Navegación principal">
+      <a class="brand" href={url('/')} aria-label="Cuaderno IoT · Inicio"><span class="brand-mark" aria-hidden="true">c.</span><span>cuaderno<span class="brand-sub">INTERNET DE LAS COSAS</span></span></a>
+      <div class="sidebar-course"><span class="eyebrow">TU ESPACIO DE ESTUDIO</span><span>Curso 2026 / 27</span></div>
+      <nav aria-label="Catálogo">
+        <a class:list={['nav-link', { active: current === url('/') }]} href={url('/')} aria-current={current === url('/') ? 'page' : undefined}><span aria-hidden="true">⌂</span> Mi cuaderno</a>
+        <p class="nav-label">EL CURSO</p>
+        {bimesters.map(b => <a class:list={['nav-link', { active: current === resourceUrl(b, catalog) || subject?.bimesterId === b.id }]} href={resourceUrl(b, catalog)} aria-current={current === resourceUrl(b, catalog) ? 'page' : undefined}><span class="nav-number">0{b.order}</span>{b.title}</a>)}
+      </nav>
+      <div class="sidebar-note"><span class="small-symbol" aria-hidden="true">↗</span><p>Entender.<br />Relacionar.<br /><strong>Volver a intentarlo.</strong></p></div>
+      <div class="sidebar-bottom">A tu ritmo, sin cronómetro.</div>
+    </aside>
+    <div class="site-main">
+      <header class="topbar"><span>MÁSTER EN INTERNET DE LAS COSAS</span><span class="course-pill"><span aria-hidden="true">●</span> 2026 / 27</span></header>
+      <main id="contenido" tabindex="-1">
+        {subject && <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href={url('/')}>Mi cuaderno</a><span aria-hidden="true">/</span><a href={url(`/bimestres/${subject.bimesterId}/`)}>{subject.bimesterId.toUpperCase()}</a><span aria-hidden="true">/</span><a href={resourceUrl(subject, catalog)}>{subject.id === 'protocolos' ? 'Protocolos' : subject.title}</a></nav>}
+        {subject && <a class="guide-link" href={subject.teachingGuide.url}>Guía docente 2026/27 <span aria-hidden="true">↗</span></a>}
+        <slot />
+      </main>
+      <footer class="site-footer"><span>Cuaderno IoT <span aria-hidden="true">·</span> Aprender, una conexión cada vez.</span><a href={url('/')}>Volver al inicio ↑</a></footer>
+    </div>
+  </body>
+</html>

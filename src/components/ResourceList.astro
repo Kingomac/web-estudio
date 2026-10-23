@@ -1,0 +1,44 @@
+---
+import ResourceCard from './ResourceCard.astro';
+import type { Resource, Tag } from '../schemas/content.ts';
+import type { Catalog } from '../lib/catalogo.ts';
+interface Props { entries: Resource[]; tags: Tag[]; catalog: Catalog }
+const { entries, tags, catalog } = Astro.props;
+---
+<resource-list>
+  <div class="filter-bar" role="group" aria-label="Filtrar por tema o preparación">
+    <button type="button" class="filter active" data-tag="" aria-pressed="true">Todos</button>
+    {tags.map(tag => <button type="button" class="filter" data-tag={tag.slug} aria-pressed="false">{tag.title}</button>)}
+  </div>
+  <p class="filter-count" role="status">{entries.length} recursos para estudiar</p>
+  <div class="resource-grid">{entries.map(entry => <ResourceCard entry={entry} catalog={catalog} />)}</div>
+  <p class="empty-state" data-empty hidden>No hay recursos con esta etiqueta todavía.</p>
+  <noscript><p>Se muestran todos los recursos. Activa JavaScript para filtrar por etiqueta.</p></noscript>
+</resource-list>
+<script>
+  class ResourceList extends HTMLElement {
+    connectedCallback() {
+      const buttons = [...this.querySelectorAll<HTMLButtonElement>('[data-tag]')];
+      const apply = (tag: string, updateUrl = false) => {
+        if (!buttons.some(b => b.dataset.tag === tag)) tag = '';
+        let count = 0;
+        this.querySelectorAll<HTMLElement>('[data-resource]').forEach(card => {
+          card.hidden = !!tag && !(card.dataset.tags || '').split(' ').includes(tag);
+          if (!card.hidden) count++;
+        });
+        buttons.forEach(b => { const active = b.dataset.tag === tag; b.setAttribute('aria-pressed', String(active)); b.classList.toggle('active', active); });
+        this.querySelector<HTMLElement>('[data-empty]')!.hidden = count > 0;
+        this.querySelector<HTMLElement>('[role="status"]')!.textContent = `${count} recursos para estudiar`;
+        if (updateUrl) { const url = new URL(location.href); tag ? url.searchParams.set('tag', tag) : url.searchParams.delete('tag'); history.pushState(null, '', url); }
+      };
+      const abort = new AbortController();
+      this.cleanup = () => abort.abort();
+      buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.tag || '', true), { signal: abort.signal }));
+      window.addEventListener('popstate', () => apply(new URL(location.href).searchParams.get('tag') || ''), { signal: abort.signal });
+      apply(new URL(location.href).searchParams.get('tag') || '');
+    }
+    cleanup?: () => void;
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('resource-list', ResourceList);
+</script>

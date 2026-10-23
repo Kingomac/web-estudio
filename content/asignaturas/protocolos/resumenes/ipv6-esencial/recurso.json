@@ -1,0 +1,30 @@
+{
+  "id": "protocolos.resumenes.ipv6-esencial",
+  "kind": "resumen",
+  "subjectId": "protocolos",
+  "slug": "ipv6-esencial",
+  "title": "IPv6 en una página",
+  "description": "Las cifras y distinciones que conviene recordar antes de practicar.",
+  "scope": "Tamaño, notación y tipos de direcciones IPv6; página 9 del original.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.repaso"
+  ],
+  "order": 20,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "sources": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.ipv6-y-vecinos",
+      "anchor": "direcciones"
+    }
+  ]
+}

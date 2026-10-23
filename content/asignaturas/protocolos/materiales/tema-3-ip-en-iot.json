@@ -1,0 +1,23 @@
+{
+  "id": "protocolos.materiales.tema-3-ip-en-iot",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "tema-3-ip-en-iot",
+  "title": "Tema 3 · IP en IoT",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo: 55 páginas sobre IP en IoT. La muestra de estudio utiliza las páginas 9 y 39.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.ndp"
+  ],
+  "order": 0,
+  "file": "materiales/protocolos/tema-3-ip-en-iot.pdf",
+  "format": "pdf",
+  "providedName": "Tema 3 - IP en IoT.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 55,
+  "sha256": "f07ae7b26edb78de0255b91b84033d7de13373b94f4806e7f6194763650797f6"
+}

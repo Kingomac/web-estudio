@@ -1,0 +1,39 @@
+---
+interface Props { id?: string }
+const { id = 'ndp' } = Astro.props;
+const steps = [
+  { title: 'Solicitar', code: 'NS', text: 'El solicitante pregunta por la dirección de enlace de su vecino mediante Neighbor Solicitation.' },
+  { title: 'Responder', code: 'NA', text: 'El vecino devuelve un Neighbor Advertisement con su dirección de enlace.' },
+  { title: 'Recordar', code: 'CACHÉ', text: 'El solicitante guarda la correspondencia IPv6–MAC para poder utilizarla.' },
+];
+---
+<ndp-explorer class="ndp-visual" data-component="protocolos.ndp">
+  <div class="visual-header"><span class="eyebrow">DEL PAQUETE AL ENLACE</span><span>Resolución NDP</span></div>
+  <div class="ndp-diagram" aria-hidden="true"><div class="node"><span>01</span><strong>Solicitante</strong><small>Conoce la IPv6</small></div><div class="connection"><span data-message>NS →</span><div></div></div><div class="node"><span>02</span><strong>Vecino</strong><small>Devuelve su MAC</small></div></div>
+  <ol class="ndp-steps">{steps.map((step, i) => <li data-step={i}><span class="step-number">0{i + 1}</span><div><strong>{step.title} <code>{step.code}</code></strong><p>{step.text}</p></div></li>)}</ol>
+  <div class="visual-controls" hidden><button type="button" class="button secondary" data-previous aria-label="Paso anterior">← Anterior</button><p id={`${id}-status`} role="status" data-status>Paso 1 de 3</p><button type="button" class="button" data-next aria-label="Paso siguiente">Siguiente →</button><button type="button" class="text-button" data-reset>Reiniciar</button></div>
+  <p class="visual-caption">Escenario: el vecino responde y la caché no contiene una entrada previa. Fuente: Tema 3, página 39.</p>
+</ndp-explorer>
+<script>
+  class NdpExplorer extends HTMLElement {
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      let step = 0;
+      const previous = this.querySelector<HTMLButtonElement>('[data-previous]')!;
+      const next = this.querySelector<HTMLButtonElement>('[data-next]')!;
+      const update = () => {
+        this.querySelectorAll<HTMLElement>('[data-step]').forEach((el, i) => { el.classList.toggle('current', i === step); });
+        this.querySelector('[data-status]')!.textContent = `Paso ${step + 1} de 3`;
+        this.querySelector('[data-message]')!.textContent = ['NS →', '← NA', 'IPv6 ↔ MAC'][step];
+        previous.disabled = step === 0; next.disabled = step === 2;
+      };
+      previous.addEventListener('click', () => { step--; update(); }, { signal: controller.signal });
+      next.addEventListener('click', () => { step++; update(); }, { signal: controller.signal });
+      this.querySelector('[data-reset]')!.addEventListener('click', () => { step = 0; update(); }, { signal: controller.signal });
+      this.querySelector<HTMLElement>('.visual-controls')!.hidden = false; update();
+    }
+    cleanup?: () => void;
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('ndp-explorer', NdpExplorer);
+</script>

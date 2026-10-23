@@ -1,0 +1,34 @@
+{
+  "id": "protocolos.tests.repaso-ipv6",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "repaso-ipv6",
+  "title": "Comprueba lo esencial",
+  "description": "Tres preguntas para conectar direcciones IPv6 y resolución de vecinos.",
+  "scope": "Tamaño y tipos de direcciones IPv6; secuencia básica NS → NA → caché. Páginas 9 y 39 del original.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.ndp",
+    "protocolos.tags.repaso"
+  ],
+  "order": 30,
+  "groups": [
+    {
+      "id": "direcciones",
+      "title": "Direcciones IPv6",
+      "context": "Responde sobre la dirección completa y los tipos definidos por IPv6.",
+      "questionIds": [
+        "protocolos.preguntas.longitud-ipv6",
+        "protocolos.preguntas.tipos-ipv6"
+      ]
+    },
+    {
+      "id": "vecinos",
+      "title": "Descubrimiento de vecinos",
+      "context": "Considera una resolución que termina con una respuesta del vecino.",
+      "questionIds": [
+        "protocolos.preguntas.intercambio-ndp"
+      ]
+    }
+  ]
+}

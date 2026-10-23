@@ -1,0 +1,24 @@
+---
+import Resource from '../../../../layouts/Resource.astro';
+import Practice from '../../../../components/Practice.astro';
+import Relations from '../../../../components/Relations.astro';
+import Sources from '../../../../components/Sources.astro';
+import type { SourceReference } from '../../../../schemas/content.ts';
+import { resourcePaths } from '../../../../lib/paths.ts';
+import { siteCatalog } from '../../../../lib/sitio.ts';
+import type { Test } from '../../../../schemas/content.ts';
+export async function getStaticPaths() { return resourcePaths('test'); }
+interface Props { entry: Test }
+const { entry } = Astro.props;
+const catalog = await siteCatalog();
+const refs = new Map<string, Set<number>>();
+for (const id of entry.groups.flatMap(g => g.questionIds)) {
+  const question = catalog.byId.get(id);
+  if (question?.kind === 'pregunta') for (const ref of question.originalReferences) {
+    const pages = refs.get(ref.materialId) || new Set<number>();
+    ref.pdfPages.forEach(page => pages.add(page)); refs.set(ref.materialId, pages);
+  }
+}
+const sources: SourceReference[] = [...refs].map(([materialId, pages]) => ({ materialId, pdfPages: [...pages].sort((a,b) => a-b) }));
+---
+<Resource entry={entry}><Practice test={entry} catalog={catalog} /><Sources references={sources} catalog={catalog} /><Relations resource={entry} catalog={catalog} /></Resource>

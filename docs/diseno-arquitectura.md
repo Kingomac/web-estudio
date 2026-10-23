@@ -1,8 +1,8 @@
 # Diseño de arquitectura de la web de estudio
 
-Diseño previo a la implementación, con decisiones acordadas y propuestas pendientes. Fecha: 19 de octubre de 2026.
+Diseño de referencia, con decisiones acordadas y propuestas pendientes. Revisión inicial: 19 de octubre de 2026. Implementación iniciada el 22 de octubre de 2026; se adopta TypeScript estricto por decisión del usuario. El alcance ejecutable actual se describe en README.md y docs/autoria.md.
 
-La tecnología acordada es **Astro con generación estática, cuerpos MDX o Astro, JavaScript vanilla y CSS vanilla**. También queda acordado que cada pregunta debe ofrecer una corrección completa: explicar la solución y justificar todas las alternativas. El contenido se organiza por asignaturas; los bimestres son una clasificación del catálogo. Los apuntes y resúmenes producen HTML completo, los tests utilizan preguntas declarativas y los talleres permiten código específico. Los PDF originales se conservan como materiales propios de cada asignatura y sirven como fuentes citables.
+La tecnología acordada es **Astro con generación estática, cuerpos MDX o Astro, TypeScript compilado a JavaScript vanilla y CSS vanilla**. También queda acordado que cada pregunta debe ofrecer una corrección completa: explicar la solución y justificar todas las alternativas. El contenido se organiza por asignaturas; los bimestres son una clasificación del catálogo. Los apuntes y resúmenes producen HTML completo, los tests utilizan preguntas declarativas y los talleres permiten código específico. Los PDF originales se conservan como materiales propios de cada asignatura y sirven como fuentes citables.
 
 El objetivo es que añadir una lectura, una pregunta o un PDF sea una tarea local y predecible para una persona o un agente LLM: crear archivos pequeños con contratos claros, validarlos y obtener automáticamente sus páginas y enlaces. La lógica compartida, la presentación y el contenido deben poder evolucionar por separado.
 
@@ -44,13 +44,13 @@ El alcance no incluye cuentas, sincronización, un CMS, corrección mediante IA,
 | Alternativa | Ventajas para este proyecto | Coste y limitaciones |
 | --- | --- | --- |
 | HTML, CSS y JS sin compilación | Inicio sencillo; máxima cercanía al proyecto de Protocolos. | Hay que mantener navegación, índices, layouts y validación con convenciones o herramientas propias. La duplicación aumenta con las asignaturas. |
-| Astro estático y JS vanilla | Plantillas comunes, páginas generadas desde contenido, componentes de lectura y scripts por página. | Requiere Node y un proceso de compilación durante el desarrollo y despliegue. |
+| Astro estático y JS vanilla | Plantillas comunes, páginas generadas desde contenido, componentes de lectura y scripts por página. | Utiliza Bun y un proceso de compilación durante el desarrollo y despliegue. |
 
-**Se acuerda Astro**, conservando JavaScript vanilla para el navegador. No son opciones excluyentes: Astro genera los documentos y los módulos de JS aportan la interacción. Astro permite crear componentes interactivos con elementos personalizados sin añadir un framework de interfaz. [Documentación de scripts de Astro](https://docs.astro.build/en/guides/client-side-scripts/).
+**Se acuerda Astro**, conservando TypeScript compilado a JavaScript vanilla para el navegador. No son opciones excluyentes: Astro genera los documentos y los módulos de JS aportan la interacción. Astro permite crear componentes interactivos con elementos personalizados sin añadir un framework de interfaz. [Documentación de scripts de Astro](https://docs.astro.build/en/guides/client-side-scripts/).
 
-Se acuerda CSS vanilla con variables de diseño, sin un framework de estilos. Para mantener un único lenguaje de lógica, la propuesta de implementación usa JavaScript también en esquemas y módulos compartidos, con JSDoc cuando ayude a documentar sus contratos. No se propone incorporar React o Vue.
+Se acuerda CSS vanilla con variables de diseño, sin un framework de estilos. La implementación usa TypeScript estricto en esquemas, lógica, herramientas y scripts del navegador; los tipos de contenido se derivan de Zod. TypeScript comprueba el código y Zod valida los archivos de contenido en ejecución. No se propone incorporar React o Vue.
 
-La configuración será explícitamente estática. Las versiones concretas de Astro, Node y las dependencias se fijarán al implementar, junto con el archivo de bloqueo. Los ejemplos de este documento describen contratos de la aplicación, no una configuración lista para ejecutar.
+La configuración es explícitamente estática. Las versiones de Astro, Bun y las dependencias están fijadas en `package.json`, `.bun-version` y `bun.lock`. Los ejemplos de este documento describen contratos de la aplicación, no una configuración lista para ejecutar.
 
 ## Organización de la información
 
@@ -80,7 +80,7 @@ El único curso del sitio es **2026/27**. Se registra una vez en la configuraci�
 
 ### Identificadores y rutas
 
-Cada entidad tiene un identificador estable para referencias y progreso; cada recurso publicable tiene además un `slug` para su URL. Cambiar el título o el orden no cambia el identificador. Si cambia el `slug`, se conserva una página estática de redirección desde la ruta anterior.
+Cada entidad tiene un identificador estable para referencias y progreso; cada recurso publicable tiene además un `slug` para su URL. Cambiar el título o el orden no cambia el identificador. Si cambia el `slug`, se registra la ruta anterior en `aliases` y se genera una página estática de redirección. Los aliases son rutas completas relativas a la raíz del sitio, sin la base de despliegue, y se validan contra colisiones.
 
 Rutas propuestas, relativas a la base de despliegue:
 
@@ -139,7 +139,7 @@ content/
       materiales/
         tema-3-ip-en-iot.json         # ficha del PDF original
 src/
-  content.config.js                  # colecciones y conexión con esquemas
+  content.config.ts                  # colecciones y conexión con esquemas
   schemas/                           # contratos de contenido
   layouts/                           # sitio, asignatura y lectura
   components/
@@ -159,11 +159,11 @@ src/
       cabeceras/
   client/                            # adaptadores DOM y almacenamiento
   lib/
-    catalogo.js                      # consultas y relaciones directas e inversas
-    dependencias.js                  # análisis de impacto y proyección para la UI
-    rutas.js                         # URLs, base y anclas
-    cuerpos.js                       # descubrimiento de body.mdx y body.astro
-    talleres.js                      # registro explícito de talleres
+    catalogo.ts                      # consultas y relaciones directas e inversas
+    dependencias.ts                  # análisis de impacto y proyección para la UI
+    rutas.ts                         # URLs, base y anclas
+    cuerpos.ts                       # descubrimiento de body.mdx y body.astro
+    talleres.ts                      # registro explícito de talleres
   styles/                            # variables, lectura, componentes e impresión
   pages/                             # plantillas de rutas, sin temario incrustado
 public/
@@ -410,7 +410,7 @@ No se eliminarán tildes o diferencias de mayúsculas indiscriminadamente: puede
 
 ### Talleres programados
 
-Un taller interactivo tiene su componente, datos, estilos específicos y lógica de dominio. Su manifiesto apunta a una clave conocida del registro `talleres.js`; ese registro resuelve el módulo durante la compilación. Un ID desconocido hace fallar la validación. Los imports se mantienen por taller para no enviar todos sus scripts a todas las páginas.
+Un taller interactivo tiene su componente, datos, estilos específicos y lógica de dominio. Su manifiesto apunta a una clave conocida del registro `talleres.ts`; ese registro resuelve el módulo durante la compilación. Un ID desconocido hace fallar la validación. Los imports se mantienen por taller para no enviar todos sus scripts a todas las páginas.
 
 El contrato mínimo incluye título, instrucciones, representación inicial útil, controles accesibles, reinicio, explicación y comportamiento sin JavaScript. Los talleres con ejercicios guardan su estado mediante el adaptador común y permiten resetear cada ejercicio; si no tienen respuestas calificables, pueden conservar el escenario explorado sin inventar una nota.
 
@@ -465,19 +465,23 @@ Cada test y ejercicio permite resetear su estado independientemente. Resetear un
 
 ## Herramientas para agentes como parte esencial
 
-**La autoría mediante agentes es una capacidad principal del proyecto**, junto con la lectura y la práctica. Se diseña desde el primer incremento funcional, no como una mejora futura. El repositorio incluirá `AGENTS.md`, `docs/autoria.md`, plantillas verificadas, ejemplos completos, esquemas únicos y una CLI de contenido en JavaScript.
+El usuario indica en su prompt una ruta local de su PC y el trabajo de estudio deseado. El agente puede leer archivos o carpetas externas al repositorio, organizar el catálogo, incorporar originales y generar todo el contenido. Las rutas locales son entradas de autoría: la compilación y la web dependen únicamente de lo incorporado al proyecto. Los originales externos permanecen intactos. `content:inspect` inventaría la ruta; `content:import` copia los PDF seleccionados y registra páginas e identidad; `content:list` y `content:show` permiten consultar las entidades existentes.
+
+El primer incremento incluye tipos estrictos, CLI, esquemas compartidos y una muestra funcional completa. Las capacidades restantes del diseño se incorporarán sobre esa base; véase el manual de autoría para las limitaciones actuales.
+
+**La autoría mediante agentes es una capacidad principal del proyecto**, junto con la lectura y la práctica. Se diseña desde el primer incremento funcional, no como una mejora futura. El repositorio incluirá `AGENTS.md`, `docs/autoria.md`, plantillas verificadas, ejemplos completos, esquemas únicos y una CLI de contenido en TypeScript.
 
 | Comando previsto | Responsabilidad |
 | --- | --- |
-| `npm run content:new` | Crear un recurso del tipo elegido, con IDs y archivos coherentes, sin sobrescribir contenido existente. |
-| `npm run content:check` | Validar formatos, alcance, tags, referencias, explicaciones, grupos y requisitos de mezcla. |
-| `npm run content:impact` | Consultar qué recursos usan una pregunta, material, apartado o componente antes de modificarlo. |
-| `npm run content:report` | Resumir cobertura por tags, referencias incompletas y posibles duplicados. |
-| `npm run test:unit` | Ejecutar las pruebas unitarias del proyecto. |
-| `npm run test:e2e` | Ejecutar los flujos E2E obligatorios en Firefox. |
-| `npm run check` | Ejecutar la puerta de validación completa: contenido, unitarias, compilación y E2E. |
+| `bun run content:new` | Crear un recurso del tipo elegido, con IDs y archivos coherentes, sin sobrescribir contenido existente. |
+| `bun run content:check` | Validar formatos, alcance, tags, referencias, explicaciones, grupos y requisitos de mezcla. |
+| `bun run content:impact` | Consultar qué recursos usan una pregunta, material, apartado o componente antes de modificarlo. |
+| `bun run content:report` | Resumir cobertura por tags, referencias incompletas y posibles duplicados. |
+| `bun run test:unit` | Ejecutar las pruebas unitarias del proyecto. |
+| `bun run test:e2e` | Ejecutar los flujos E2E obligatorios en Firefox. |
+| `bun run check` | Ejecutar la puerta de validación completa: contenido, unitarias, compilación y E2E. |
 
-Son contratos para la implementación, todavía no comandos disponibles. Los comandos de contenido ofrecen salida legible y una opción JSON con IDs, rutas, errores y dependencias, para que los agentes puedan consumir resultados sin interpretar mensajes libres. Los códigos de salida distinguen éxito de errores. Los esquemas se definen una sola vez y los usan tanto Astro como la CLI y la validación de plantillas.
+Estos comandos están disponibles en el primer incremento; el manual de autoría documenta el alcance y los comandos adicionales de incorporación desde rutas locales. Los comandos de contenido ofrecen salida legible y una opción JSON con IDs, rutas, errores y dependencias, para que los agentes puedan consumir resultados sin interpretar mensajes libres. Los códigos de salida distinguen éxito de errores. Los esquemas se definen una sola vez y los usan tanto Astro como la CLI y la validación de plantillas.
 
 Flujo de autoría:
 
@@ -521,7 +525,7 @@ La validación rechaza IDs inexistentes y anclas o archivos rotos. `content:impa
 | Impresión | Lectura corta, lectura larga con tablas y apunte animado; revisar cortes, contenido oculto y alternativa estática. |
 | Despliegue | Sitio bajo una subruta, acceso a todos los materiales catalogados, enlaces con anclas y assets. |
 
-La propuesta de herramientas es `node:test` para las funciones puras de JavaScript y Playwright Test con un proyecto **Firefox** para E2E. Node incluye un ejecutor de pruebas; Playwright dispone de Firefox y utiliza su propia compilación compatible del navegador, que se instalará en desarrollo y CI. [Ejecutor de Node](https://nodejs.org/api/test.html), [Firefox en Playwright](https://playwright.dev/docs/browsers#firefox).
+Las herramientas son `bun:test` para las funciones puras de TypeScript y Playwright Test con un proyecto **Firefox** para E2E. Bun ejecuta los scripts y las herramientas de desarrollo; `bunfig.toml` limita sus unitarias a `tests/unit/`. Playwright utiliza su propia compilación compatible de Firefox, instalada en desarrollo y CI. [Ejecutor de Bun](https://bun.sh/docs/test), [Firefox en Playwright](https://playwright.dev/docs/browsers#firefox).
 
 Las E2E sirven `dist/` por HTTP bajo una subruta representativa de GitHub Pages. Cubren escritorio y viewport estrecho en Firefox, sin presentar esa emulación como prueba en un móvil físico. Usan fixtures con soluciones conocidas y aleatoriedad controlada; responden por ID o nombre accesible, no por la posición de las opciones. Comprueban mezclas esperadas para semillas concretas y que la corrección y las explicaciones sobreviven a la permutación, evitando pruebas probabilísticas frágiles.
 
@@ -575,7 +579,7 @@ Las plantillas y validaciones se construyen con cada fase, para que el contenido
 
 ## Decisiones cerradas y detalles restantes
 
-Quedan acordados Astro estático, cuerpos MDX o Astro, JavaScript vanilla, CSS vanilla, tags múltiples, lecturas con scroll continuo e índice lateral ocultable, corrección completa con referencia original en los fallos, acierto solo por respuesta completa, reintentos ilimitados sin historial, mezcla obligatoria de preguntas y respuestas, guardado mínimo secundario en `localStorage` y reset por test o ejercicio. El sitio se centra en 2026/27, no incorpora buscador y prioriza lectura responsive con excepciones localizadas para talleres o animaciones complejas.
+Quedan acordados Astro estático, cuerpos MDX o Astro, TypeScript compilado a JavaScript vanilla, CSS vanilla, tags múltiples, lecturas con scroll continuo e índice lateral ocultable, corrección completa con referencia original en los fallos, acierto solo por respuesta completa, reintentos ilimitados sin historial, mezcla obligatoria de preguntas y respuestas, guardado mínimo secundario en `localStorage` y reset por test o ejercicio. El sitio se centra en 2026/27, no incorpora buscador y prioriza lectura responsive con excepciones localizadas para talleres o animaciones complejas.
 
 La composición exacta de las tarjetas, colores y tipografía se resolverá al diseñar la interfaz. El filtro queda limitado a Todos o un tag activo. Los tags no generan tests ni modifican sus listas de preguntas; solo clasifican recursos. Las herramientas de autoría, las relaciones visibles y las pruebas unitarias y E2E en Firefox son requisitos del núcleo.
 

@@ -1,0 +1,47 @@
+{
+  "id": "protocolos.preguntas.intercambio-ndp",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ndp"
+  ],
+  "type": "ordering",
+  "prompt": "Ordena estas etapas de una resolución NDP sin una entrada previa en la caché, suponiendo que el vecino responde.",
+  "explanation": "La solicitud NS inicia la resolución. El vecino devuelve su dirección de enlace mediante NA y el solicitante incorpora la correspondencia a su caché.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.ipv6-y-vecinos",
+      "anchor": "vecinos"
+    }
+  ],
+  "items": [
+    {
+      "id": "solicitud",
+      "text": "El solicitante envía un Neighbor Solicitation (NS).",
+      "placementExplanation": "La consulta se envía antes de recibir la información del vecino."
+    },
+    {
+      "id": "respuesta",
+      "text": "El vecino responde con un Neighbor Advertisement (NA).",
+      "placementExplanation": "La respuesta a la solicitud transporta la dirección de enlace del vecino."
+    },
+    {
+      "id": "cache",
+      "text": "El solicitante guarda la correspondencia IPv6–MAC en su caché.",
+      "placementExplanation": "La correspondencia se conserva después de recibir la respuesta que permite conocerla."
+    }
+  ],
+  "answer": [
+    "solicitud",
+    "respuesta",
+    "cache"
+  ]
+}

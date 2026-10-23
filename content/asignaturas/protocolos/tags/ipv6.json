@@ -1,0 +1,9 @@
+{
+  "id": "protocolos.tags.ipv6",
+  "kind": "tag",
+  "subjectId": "protocolos",
+  "slug": "ipv6",
+  "title": "Direcciones IPv6",
+  "type": "topic",
+  "order": 10
+}

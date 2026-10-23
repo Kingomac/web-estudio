@@ -1,0 +1,41 @@
+---
+import { createHash } from 'node:crypto';
+import type { Question, Test } from '../schemas/content.ts';
+import type { Catalog } from '../lib/catalogo.ts';
+import { jsonForHtml, resourceUrl } from '../lib/sitio.ts';
+import { inlineMarkdown } from '../lib/html.ts';
+import Sources from './Sources.astro';
+interface Props { test: Test; catalog: Catalog }
+const { test, catalog } = Astro.props;
+const questions = test.groups.flatMap(g => g.questionIds.map(id => catalog.byId.get(id))).filter((q): q is Question => q?.kind === 'pregunta');
+const payload = { test, questions };
+const revision = createHash('sha256').update(JSON.stringify(payload)).digest('hex').slice(0, 16);
+const typeLabels = { single: 'Una respuesta', multiple: 'Varias respuestas', ordering: 'Ordenar pasos' };
+---
+<study-test data-id={test.id} data-revision={revision} data-base={import.meta.env.BASE_URL}>
+  <script type="application/json" data-payload set:html={jsonForHtml(payload)} />
+  <div class="practice-bar"><p data-summary role="status">{questions.length} preguntas pendientes</p><button type="button" class="button secondary" data-reset disabled>Reiniciar test</button></div>
+  <p class="practice-intro">Comprueba cada respuesta y lee su explicación. Puedes intentarlo tantas veces como necesites.</p>
+  <noscript><p class="callout">Activa JavaScript para responder, mezclar las preguntas y comprobar tus respuestas.</p></noscript>
+  <div data-groups>{test.groups.map(group => <section class="question-group" data-group={group.id}>
+    <header class="group-header"><h2>{group.title}</h2>{group.context && <p>{group.context}</p>}</header>
+    <div data-questions>{group.questionIds.map(id => {
+      const q = questions.find(q => q.id === id)!;
+      const local = q.id.split('.').at(-1);
+      return <article class="question" id={`pregunta-${local}`} data-question={q.id} data-type={q.type}>
+        <div class="question-top"><span class="eyebrow">{typeLabels[q.type]}</span><a class="question-permalink" href={`#pregunta-${local}`} aria-label={`Enlace a esta pregunta: ${q.prompt}`}>#</a></div>
+        <fieldset><legend set:html={inlineMarkdown(q.prompt)} />
+          {q.type === 'ordering' ? <ol class="ordering-options" data-options>{q.items.map(item => <li data-option={item.id}><span class="ordering-text" set:html={inlineMarkdown(item.text)} /><span class="ordering-controls"><button type="button" data-up aria-label={`Subir: ${item.text}`} disabled>↑</button><button type="button" data-down aria-label={`Bajar: ${item.text}`} disabled>↓</button></span></li>)}</ol> : <div class="choice-options" data-options>{q.options.map(option => <label data-option={option.id}><input type={q.type === 'single' ? 'radio' : 'checkbox'} name={q.id} value={option.id} disabled /><span set:html={inlineMarkdown(option.text)} /></label>)}</div>}
+        </fieldset>
+        <div class="answer-actions"><button type="button" class="button" data-check disabled>Comprobar</button><span data-result role="status" aria-live="polite"></span></div>
+        <section class="feedback" data-feedback hidden aria-label="Corrección completa">
+          <p class="feedback-explanation" set:html={inlineMarkdown(q.explanation)} />
+          {q.type === 'ordering' ? <ol class="feedback-options">{q.answer.map(itemId => { const item = q.items.find(i => i.id === itemId)!; return <li><strong set:html={inlineMarkdown(item.text)} /><p set:html={inlineMarkdown(item.placementExplanation)} /></li>; })}</ol> : <ul class="feedback-options">{q.options.map(option => <li><span class="outcome" data-outcome={option.id}></span><strong set:html={inlineMarkdown(option.text)} /><p set:html={inlineMarkdown(option.explanation)} /></li>)}</ul>}
+          <Sources references={q.originalReferences} catalog={catalog} prominent />
+          {q.readingReferences.length > 0 && <div class="support-readings"><p class="eyebrow">LECTURAS DE APOYO</p><ul>{q.readingReferences.map(ref => { const reading = catalog.byId.get(ref.resourceId); return reading && (reading.kind === 'apuntes' || reading.kind === 'resumen') && <li><a href={`${resourceUrl(reading, catalog)}${ref.anchor ? `#${ref.anchor}` : ''}`}>{reading.title} →</a></li>; })}</ul></div>}
+        </section>
+      </article>;
+    })}</div>
+  </section>)}</div>
+</study-test>
+<script>import '../client/practice.ts';</script>

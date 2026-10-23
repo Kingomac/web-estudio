@@ -1,0 +1,9 @@
+{
+  "id": "protocolos.tags.repaso",
+  "kind": "tag",
+  "subjectId": "protocolos",
+  "slug": "repaso",
+  "title": "Repaso esencial",
+  "type": "study",
+  "order": 30
+}
