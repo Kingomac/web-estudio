@@ -10,6 +10,6 @@ const subject = catalog.byId.get(entry.subjectId);
 if (subject?.kind !== 'asignatura') throw new Error('Asignatura inexistente.');
 ---
 <Site title={entry.title} description={entry.description} subject={subject}>
-  <header class="resource-header"><a class="eyebrow section-back" href={url(`/asignaturas/${subject.slug}/${sections[entry.kind]}/`)}>← {labels[entry.kind]}</a><h1>{entry.title}</h1><p class="page-description">{entry.description}</p><p class="scope"><strong>Qué cubre</strong> {entry.scope}</p><div class="tags">{entry.tagIds.map(id => { const tag = catalog.byId.get(id); return tag?.kind === 'tag' && <a href={`${resourceUrl(subject, catalog)}?tag=${tag.slug}`}>{tag.title}</a>; })}</div></header>
+  <header class:list={['resource-header', { 'reading-header': entry.kind === 'apuntes' || entry.kind === 'resumen' }]}><a class="section-back" href={url(`/asignaturas/${subject.slug}/${sections[entry.kind]}/`)}>← {labels[entry.kind]}</a><h1>{entry.title}</h1><p class="scope"><strong>Alcance:</strong> {entry.scope}</p><div class="tags">{entry.tagIds.map(id => { const tag = catalog.byId.get(id); return tag?.kind === 'tag' && <a href={`${resourceUrl(subject, catalog)}?tag=${tag.slug}`}>{tag.title}</a>; })}</div></header>
   <slot />
 </Site>

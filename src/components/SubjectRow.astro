@@ -1,0 +1,21 @@
+---
+import type { Subject } from '../schemas/content.ts';
+import type { Catalog } from '../lib/catalogo.ts';
+import { isResource } from '../lib/catalogo.ts';
+import { sections, labels } from '../lib/rutas.ts';
+import { resourceUrl, url } from '../lib/sitio.ts';
+interface Props { entry: Subject; catalog: Catalog; heading?: 'h2' | 'h3' }
+const { entry, catalog, heading: Heading = 'h2' } = Astro.props;
+const resources = catalog.entries.filter(isResource).filter(e => e.subjectId === entry.id);
+---
+<article class="subject-row">
+  <Heading><a href={resourceUrl(entry, catalog)}>{entry.title}</a></Heading>
+  <p>{entry.description}</p>
+  <nav class="subject-resources" aria-label={`Recursos de ${entry.title}`}>
+    {Object.entries(sections).map(([kind, section]) => {
+      const count = resources.filter(e => e.kind === kind).length;
+      return count > 0 && <a href={url(`/asignaturas/${entry.slug}/${section}/`)}>{labels[kind as keyof typeof labels]} <span class="resource-count">{count}</span></a>;
+    })}
+    {!resources.length && <span class="muted">Sin recursos incorporados</span>}
+  </nav>
+</article>

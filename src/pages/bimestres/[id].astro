@@ -1,11 +1,16 @@
 ---
 import Site from '../../layouts/Site.astro';
-import { siteCatalog, resourceUrl } from '../../lib/sitio.ts';
-import type { Entry } from '../../schemas/content.ts';
+import SubjectRow from '../../components/SubjectRow.astro';
+import { siteCatalog } from '../../lib/sitio.ts';
+import type { Entry, Subject } from '../../schemas/content.ts';
 export async function getStaticPaths() { const catalog = await siteCatalog(); return catalog.entries.filter(e => e.kind === 'bimestre').map(entry => ({ params: { id: entry.id }, props: { entry } })); }
 interface Props { entry: Extract<Entry, { kind: 'bimestre' }> }
 const { entry } = Astro.props;
 const catalog = await siteCatalog();
-const subjects = catalog.entries.filter(e => e.kind === 'asignatura' && e.bimesterId === entry.id);
+const subjects = catalog.entries.filter((e): e is Subject => e.kind === 'asignatura' && e.bimesterId === entry.id);
 ---
-<Site title={entry.title}><header class="resource-header"><p class="eyebrow">CURSO 2026 / 27</p><h1>{entry.title}</h1><p class="page-description">Las asignaturas y materiales de este tramo del curso.</p></header><div class="subject-grid">{subjects.map(subject => subject.kind === 'asignatura' && <a class="subject-card" href={resourceUrl(subject, catalog)}><div><h2>{subject.title}</h2><p>{subject.description}</p></div><span aria-hidden="true">↗</span></a>)}</div>{subjects.length === 0 && <div class="empty-state"><h2>Este bimestre está por preparar</h2><p>Las asignaturas aparecerán aquí cuando se incorporen sus materiales al cuaderno.</p></div>}</Site>
+<Site title={entry.title}>
+  <header class="page-header"><p class="eyebrow">Curso 2026 / 27</p><h1>{entry.title}</h1><p class="page-summary">{subjects.length} {subjects.length === 1 ? 'asignatura' : 'asignaturas'} con materiales</p></header>
+  <div class="subject-list">{subjects.map(subject => <SubjectRow entry={subject} catalog={catalog} />)}</div>
+  {subjects.length === 0 && <p class="empty-state">No hay materiales incorporados en este bimestre.</p>}
+</Site>

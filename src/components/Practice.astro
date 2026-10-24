@@ -15,7 +15,7 @@ const typeLabels = { single: 'Una respuesta', multiple: 'Varias respuestas', ord
 <study-test data-id={test.id} data-revision={revision} data-base={import.meta.env.BASE_URL}>
   <script type="application/json" data-payload set:html={jsonForHtml(payload)} />
   <div class="practice-bar"><p data-summary role="status">{questions.length} preguntas pendientes</p><button type="button" class="button secondary" data-reset disabled>Reiniciar test</button></div>
-  <p class="practice-intro">Comprueba cada respuesta y lee su explicación. Puedes intentarlo tantas veces como necesites.</p>
+  <p class="practice-intro">Cada respuesta incluye corrección, explicación y fuentes.</p>
   <noscript><p class="callout">Activa JavaScript para responder, mezclar las preguntas y comprobar tus respuestas.</p></noscript>
   <div data-groups>{test.groups.map(group => <section class="question-group" data-group={group.id}>
     <header class="group-header"><h2>{group.title}</h2>{group.context && <p>{group.context}</p>}</header>

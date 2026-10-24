@@ -1,11 +1,13 @@
 ---
 import '../styles/global.css';
 import { siteCatalog, url, resourceUrl } from '../lib/sitio.ts';
+import { labels, sections } from '../lib/rutas.ts';
 import type { Subject } from '../schemas/content.ts';
 interface Props { title: string; description?: string; subject?: Subject }
-const { title, description = 'Apuntes, fuentes y práctica para comprender el Internet de las cosas.', subject } = Astro.props;
+const { title, description = 'Materiales de estudio del máster en Internet de las Cosas.', subject } = Astro.props;
 const catalog = await siteCatalog();
 const bimesters = catalog.entries.filter(e => e.kind === 'bimestre');
+const subjects = catalog.entries.filter(e => e.kind === 'asignatura');
 const current = Astro.url.pathname;
 ---
 <!doctype html>
@@ -21,24 +23,38 @@ const current = Astro.url.pathname;
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <aside class="sidebar" aria-label="Navegación principal">
-      <a class="brand" href={url('/')} aria-label="Cuaderno IoT · Inicio"><span class="brand-mark" aria-hidden="true">c.</span><span>cuaderno<span class="brand-sub">INTERNET DE LAS COSAS</span></span></a>
-      <div class="sidebar-course"><span class="eyebrow">TU ESPACIO DE ESTUDIO</span><span>Curso 2026 / 27</span></div>
-      <nav aria-label="Catálogo">
-        <a class:list={['nav-link', { active: current === url('/') }]} href={url('/')} aria-current={current === url('/') ? 'page' : undefined}><span aria-hidden="true">⌂</span> Mi cuaderno</a>
-        <p class="nav-label">EL CURSO</p>
-        {bimesters.map(b => <a class:list={['nav-link', { active: current === resourceUrl(b, catalog) || subject?.bimesterId === b.id }]} href={resourceUrl(b, catalog)} aria-current={current === resourceUrl(b, catalog) ? 'page' : undefined}><span class="nav-number">0{b.order}</span>{b.title}</a>)}
-      </nav>
-      <div class="sidebar-note"><span class="small-symbol" aria-hidden="true">↗</span><p>Entender.<br />Relacionar.<br /><strong>Volver a intentarlo.</strong></p></div>
-      <div class="sidebar-bottom">A tu ritmo, sin cronómetro.</div>
+      <a class="brand" href={url('/')} aria-label="Cuaderno IoT · Inicio">Cuaderno IoT<span class="brand-sub">Curso 2026 / 27</span></a>
+      <details class="site-navigation" open>
+        <summary>Menú</summary>
+        <nav aria-label="Catálogo">
+          <a class:list={['nav-link', { active: current === url('/') }]} href={url('/')} aria-current={current === url('/') ? 'page' : undefined}>Inicio</a>
+          {bimesters.map(b => <div class="nav-group">
+            <a class:list={['nav-bimester', { active: current === resourceUrl(b, catalog) }]} href={resourceUrl(b, catalog)} aria-current={current === resourceUrl(b, catalog) ? 'page' : undefined}>{b.title}</a>
+            {subjects.filter(s => s.bimesterId === b.id).map(s => <div class="nav-subject">
+              <a class:list={['nav-link', { active: subject?.id === s.id }]} href={resourceUrl(s, catalog)} aria-current={current === resourceUrl(s, catalog) ? 'page' : undefined}>{s.title}</a>
+              {subject?.id === s.id && <ul class="nav-sections">{Object.entries(sections).map(([kind, section]) => {
+                const href = url(`/asignaturas/${s.slug}/${section}/`);
+                return <li><a class:list={{ active: current.startsWith(href) }} href={href} aria-current={current === href ? 'page' : current.startsWith(href) ? 'location' : undefined}>{labels[kind as keyof typeof labels]}</a></li>;
+              })}</ul>}
+            </div>)}
+          </div>)}
+        </nav>
+      </details>
+      <p class="sidebar-bottom">Máster en Internet de las Cosas</p>
     </aside>
     <div class="site-main">
-      <header class="topbar"><span>MÁSTER EN INTERNET DE LAS COSAS</span><span class="course-pill"><span aria-hidden="true">●</span> 2026 / 27</span></header>
       <main id="contenido" tabindex="-1">
-        {subject && <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href={url('/')}>Mi cuaderno</a><span aria-hidden="true">/</span><a href={url(`/bimestres/${subject.bimesterId}/`)}>{subject.bimesterId.toUpperCase()}</a><span aria-hidden="true">/</span><a href={resourceUrl(subject, catalog)}>{subject.id === 'protocolos' ? 'Protocolos' : subject.title}</a></nav>}
-        {subject && <a class="guide-link" href={subject.teachingGuide.url}>Guía docente 2026/27 <span aria-hidden="true">↗</span></a>}
+        {subject && <div class="context-bar"><nav class="breadcrumbs" aria-label="Ruta de navegación"><a href={url('/')}>Inicio</a><span aria-hidden="true">/</span><a href={url(`/bimestres/${subject.bimesterId}/`)}>{subject.bimesterId.toUpperCase()}</a><span aria-hidden="true">/</span><a href={resourceUrl(subject, catalog)}>{subject.id === 'protocolos' ? 'Protocolos' : subject.title}</a></nav><a class="guide-link" href={subject.teachingGuide.url}>Guía docente <span aria-hidden="true">↗</span></a></div>}
         <slot />
       </main>
-      <footer class="site-footer"><span>Cuaderno IoT <span aria-hidden="true">·</span> Aprender, una conexión cada vez.</span><a href={url('/')}>Volver al inicio ↑</a></footer>
+      <footer class="site-footer"><span>Cuaderno IoT · 2026/27</span><a href={url('/')}>Inicio</a></footer>
     </div>
   </body>
 </html>
+<script>
+  const navigation = document.querySelector<HTMLDetailsElement>('.site-navigation');
+  const mobile = matchMedia('(max-width: 900px)');
+  const update = () => { if (navigation) navigation.open = !mobile.matches; };
+  update();
+  mobile.addEventListener('change', update);
+</script>

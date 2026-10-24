@@ -4,8 +4,8 @@ const quizPath = `${subject}tests/repaso-ipv6/`;
 
 test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', async ({ page }) => {
   await page.goto('./');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('entender');
-  await page.getByRole('link', { name: /B1 · COMUNICACIONES/ }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Materiales del máster');
+  await page.getByRole('main').getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();
   await page.getByRole('button', { name: 'Descubrimiento de vecinos', exact: true }).click();
   await expect(page).toHaveURL(/tag=ndp/);
   await expect(page.locator('[data-resource]:visible')).toHaveCount(4);
@@ -13,6 +13,26 @@ test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', 
   await expect(page.locator('[data-resource]:visible')).toHaveCount(5);
   await page.goBack();
   await expect(page.getByRole('button', { name: 'Descubrimiento de vecinos', exact: true })).toHaveAttribute('aria-pressed', 'true');
+});
+test('el menú móvil permite navegar por asignatura y sección sin desplazar el contenido inicial', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('./');
+  const navigation = page.locator('.site-navigation');
+  await expect(navigation).not.toHaveAttribute('open');
+  await expect(page.locator('.subject-row h3')).toBeInViewport();
+  await navigation.locator('summary').focus();
+  await page.keyboard.press('Enter');
+  await navigation.getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();
+  await expect(navigation).not.toHaveAttribute('open');
+  await expect(page.locator('[data-resource]').first()).toBeInViewport();
+  await navigation.locator('summary').click();
+  await navigation.getByRole('link', { name: 'Apuntes', exact: true }).click();
+  await expect(page).toHaveURL(/\/protocolos\/apuntes\/$/);
+  await page.getByRole('main').getByRole('link', { name: 'IPv6, del destino al vecino', exact: true }).click();
+  await expect(page.locator('.toc details')).not.toHaveAttribute('open');
+  await expect(page.locator('.prose > p').first()).toBeInViewport();
+  await navigation.locator('summary').click();
+  await expect(navigation.getByRole('link', { name: 'Apuntes', exact: true })).toHaveAttribute('aria-current', 'location');
 });
 test('la lectura contiene índice, visual independiente y fuentes; el resumen usa MDX', async ({ page }) => {
   await page.goto(`${subject}apuntes/ipv6-y-vecinos/`);

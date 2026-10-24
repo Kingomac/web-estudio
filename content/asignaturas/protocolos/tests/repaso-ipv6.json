@@ -3,8 +3,8 @@
   "kind": "test",
   "subjectId": "protocolos",
   "slug": "repaso-ipv6",
-  "title": "Comprueba lo esencial",
-  "description": "Tres preguntas para conectar direcciones IPv6 y resolución de vecinos.",
+  "title": "Test de IPv6 y NDP",
+  "description": "Tres preguntas sobre direcciones IPv6 y resolución de vecinos.",
   "scope": "Tamaño y tipos de direcciones IPv6; secuencia básica NS → NA → caché. Páginas 9 y 39 del original.",
   "tagIds": [
     "protocolos.tags.ipv6",

@@ -8,8 +8,8 @@ interface Props { entry: Reading; catalog: Catalog }
 const { entry, catalog } = Astro.props;
 const { html, headings } = readingHtml(await Astro.slots.render('default'));
 ---
-<div class="reading-toolbar"><span class="paper-badge">{entry.printIntent === 'paper' ? 'Pensado para imprimir' : 'Pensado para pantalla'}</span><button class="button secondary print-button" type="button">Imprimir lectura ↗</button></div>
-<div class="reading-grid">
+<div class="reading-toolbar"><span class="muted">{entry.printIntent === 'paper' ? 'Lectura imprimible' : 'Lectura para pantalla'}</span><button class="button secondary print-button" type="button">Imprimir lectura</button></div>
+<div class:list={['reading-grid', { 'paper-reading': entry.printIntent === 'paper' }]}>
   <aside class="toc"><details open><summary>Contenido</summary><nav aria-label="Índice de la lectura"><ol>{headings.map(h => <li class:list={{ subheading: h.level === 3 }}><a href={`#${h.id}`}>{h.title}</a></li>)}</ol></nav></details></aside>
   <article class="prose"><Fragment set:html={html} /></article>
 </div>
@@ -30,6 +30,11 @@ const { html, headings } = readingHtml(await Astro.slots.render('default'));
   window.addEventListener('afterprint', () => { closed.forEach(el => { el.open = false; }); closed = []; });
   const opener = document.querySelector<HTMLButtonElement>('[data-open-toc]');
   const dialog = document.querySelector<HTMLDialogElement>('.mobile-toc-dialog');
+  const inlineToc = document.querySelector<HTMLDetailsElement>('.toc details');
+  const mobile = matchMedia('(max-width: 900px)');
+  const updateToc = () => { if (inlineToc) inlineToc.open = !mobile.matches; };
+  updateToc();
+  mobile.addEventListener('change', updateToc);
   if (opener && dialog) {
     opener.hidden = false;
     opener.addEventListener('click', () => dialog.showModal());
