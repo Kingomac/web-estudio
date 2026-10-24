@@ -30,7 +30,7 @@ const typeLabels = { single: 'Una respuesta', multiple: 'Varias respuestas', ord
         <section class="feedback" data-feedback hidden aria-label="Corrección completa">
           <p class="feedback-explanation" set:html={inlineMarkdown(q.explanation)} />
           {q.type === 'ordering' ? <ol class="feedback-options">{q.answer.map(itemId => { const item = q.items.find(i => i.id === itemId)!; return <li><strong set:html={inlineMarkdown(item.text)} /><p set:html={inlineMarkdown(item.placementExplanation)} /></li>; })}</ol> : <ul class="feedback-options">{q.options.map(option => <li><span class="badge badge--danger outcome" data-outcome={option.id}></span><strong set:html={inlineMarkdown(option.text)} /><p set:html={inlineMarkdown(option.explanation)} /></li>)}</ul>}
-          <Sources references={q.originalReferences} catalog={catalog} prominent />
+          <Sources references={q.originalReferences} external={q.externalReferences} catalog={catalog} prominent />
           {q.readingReferences.length > 0 && <div class="support-readings"><p class="eyebrow">Lecturas de apoyo</p><ul>{q.readingReferences.map(ref => { const reading = catalog.byId.get(ref.resourceId); return reading && (reading.kind === 'apuntes' || reading.kind === 'resumen') && <li><a href={`${resourceUrl(reading, catalog)}${ref.anchor ? `#${ref.anchor}` : ''}`}>{reading.title} →</a></li>; })}</ul></div>}
         </section>
       </article>;

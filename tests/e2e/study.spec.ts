@@ -6,13 +6,23 @@ test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', 
   await page.goto('./');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Materiales del máster');
   await page.getByRole('main').getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();
-  await page.getByRole('button', { name: 'Descubrimiento de vecinos', exact: true }).click();
-  await expect(page).toHaveURL(/tag=ndp/);
-  await expect(page.locator('[data-resource]:visible')).toHaveCount(4);
-  await page.getByRole('button', { name: 'Direcciones IPv6', exact: true }).click();
-  await expect(page.locator('[data-resource]:visible')).toHaveCount(5);
+  const rows = page.locator('[data-resource]');
+  const total = await rows.count();
+  const filtered = async (slug: string) => {
+    const visible = page.locator('[data-resource]:visible');
+    const count = await visible.count();
+    expect(count).toBeGreaterThan(0);
+    expect(count).toBeLessThan(total);
+    for (const tags of await visible.evaluateAll(els => els.map(el => (el as HTMLElement).dataset.tags || ''))) expect(tags.split(' ')).toContain(slug);
+  };
+  await page.getByRole('button', { name: 'IP en IoT', exact: true }).click();
+  await expect(page).toHaveURL(/tag=ipv6/);
+  await filtered('ipv6');
+  await page.getByRole('button', { name: 'Redes LoWPAN', exact: true }).click();
+  await expect(page).toHaveURL(/tag=lowpan/);
+  await filtered('lowpan');
   await page.goBack();
-  await expect(page.getByRole('button', { name: 'Descubrimiento de vecinos', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: 'IP en IoT', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 test('el menú móvil permite navegar por asignatura y sección sin desplazar el contenido inicial', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });

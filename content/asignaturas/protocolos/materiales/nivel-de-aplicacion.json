@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.nivel-de-aplicacion",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "nivel-de-aplicacion",
+  "title": "Tema 2 · Nivel de aplicación",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo del nivel de aplicación: arquitecturas, HTTP, WebSocket, webhooks, OPC UA, SOAP, CoAP, MQTT y descubrimiento.",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "order": 20,
+  "file": "materiales/protocolos/nivel-de-aplicacion.pdf",
+  "format": "pdf",
+  "providedName": "aplicacion.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 61,
+  "sha256": "ad00658b3d4a5b63ff73bbd6b3335ebb0c61358b14441022ae9104c66699387e"
+}

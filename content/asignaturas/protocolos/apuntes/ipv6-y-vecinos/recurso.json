@@ -7,8 +7,7 @@
   "description": "Una dirección identifica la interfaz. NDP permite encontrarla en el enlace.",
   "scope": "Representación y tipos de dirección IPv6 (pág. 9) y resolución de vecinos NDP (pág. 39). No cubre SLAAC, DHCPv6 ni 6LoWPAN.",
   "tagIds": [
-    "protocolos.tags.ipv6",
-    "protocolos.tags.ndp"
+    "protocolos.tags.ipv6"
   ],
   "order": 10,
   "body": "body.astro",

@@ -3,7 +3,7 @@
   "kind": "pregunta",
   "subjectId": "protocolos",
   "tagIds": [
-    "protocolos.tags.ndp"
+    "protocolos.tags.ipv6"
   ],
   "type": "ordering",
   "prompt": "Ordena estas etapas de una resolución NDP sin una entrada previa en la caché, suponiendo que el vecino responde.",

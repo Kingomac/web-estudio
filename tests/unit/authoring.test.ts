@@ -31,7 +31,7 @@ test('incorporar un original desde una ruta externa es idempotente y conserva su
     const manifest = path.join(root, 'content/asignaturas/protocolos/materiales/tema-3-ip-en-iot.json');
     await rm(manifest);
     await rm(path.join(root, 'public/materiales/protocolos/tema-3-ip-en-iot.pdf'));
-    const imported = run(root, 'import', '--source', original, '--subject', 'protocolos', '--slug', 'tema-3-ip-en-iot', '--title', 'IP en IoT', '--scope', 'Original completo', '--tags', 'protocolos.tags.ipv6,protocolos.tags.ndp');
+    const imported = run(root, 'import', '--source', original, '--subject', 'protocolos', '--slug', 'tema-3-ip-en-iot', '--title', 'IP en IoT', '--scope', 'Original completo', '--tags', 'protocolos.tags.ipv6');
     assert.equal(imported.pageCount, 55);
     assert.deepEqual(await readFile(path.join(root, 'public/materiales/protocolos/tema-3-ip-en-iot.pdf')), before);
   } finally { await rm(root, { recursive: true, force: true }); }

@@ -1,0 +1,9 @@
+{
+  "id": "protocolos.tags.aplicacion",
+  "kind": "tag",
+  "subjectId": "protocolos",
+  "slug": "aplicacion",
+  "title": "Nivel de aplicación",
+  "type": "topic",
+  "order": 20
+}

@@ -2,13 +2,16 @@
 import type { SourceReference } from '../schemas/content.ts';
 import type { Catalog } from '../lib/catalogo.ts';
 import { sourceUrl } from '../lib/sitio.ts';
-// `prominent`: inside a correction, as a call to review the original.
-interface Props { references: SourceReference[]; catalog: Catalog; prominent?: boolean }
-const { references, catalog, prominent = false } = Astro.props;
+// `prominent`: inside a correction, as a call to review the original. External references are listed apart.
+interface Props { references: SourceReference[]; external?: { title: string; url: string }[]; catalog: Catalog; prominent?: boolean }
+const { references, external = [], catalog, prominent = false } = Astro.props;
 ---
-{references.length > 0 && <div class:list={['sources', { callout: prominent, section: !prominent }]}>
-  <p class="eyebrow">{prominent ? 'Revisar en los apuntes originales' : 'Fuentes originales'}</p>
-  <ul>{references.map(ref => { const material = catalog.byId.get(ref.materialId); return <li><a href={sourceUrl(ref, catalog)} target="_blank" rel="noopener">{material?.kind === 'material' ? material.title : ref.materialId} · {ref.pdfPages.length === 1 ? 'pág.' : 'págs.'} {ref.pdfPages.join(', ')} <span class="new-tab">(nueva pestaña)</span></a>{ref.label && <span class="meta"> · {ref.label}</span>}</li>; })}</ul>
+{references.length + external.length > 0 && <div class:list={['sources', { callout: prominent, section: !prominent }]}>
+  {references.length > 0 && <p class="eyebrow">{prominent ? 'Revisar en los apuntes originales' : 'Fuentes originales'}</p>}
+  {references.length > 0 && <ul>{references.map(ref => { const material = catalog.byId.get(ref.materialId); return <li><a href={sourceUrl(ref, catalog)} target="_blank" rel="noopener">{material?.kind === 'material' ? material.title : ref.materialId} · {ref.pdfPages.length === 1 ? 'pág.' : 'págs.'} {ref.pdfPages.join(', ')} <span class="new-tab">(nueva pestaña)</span></a>{ref.label && <span class="meta"> · {ref.label}</span>}</li>; })}</ul>}
+  {external.length > 0 && <p class="eyebrow external">Referencias complementarias</p>}
+  {external.length > 0 && <ul>{external.map(ref => <li><a href={ref.url} target="_blank" rel="noopener">{ref.title} <span aria-hidden="true">↗</span><span class="new-tab"> (nueva pestaña)</span></a></li>)}</ul>}
+  {prominent && references.length === 0 && <p class="meta note">Práctica complementaria: no cita páginas del material de la asignatura.</p>}
 </div>}
 <style>
   .sources.section { padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
@@ -17,5 +20,8 @@ const { references, catalog, prominent = false } = Astro.props;
   li { font-size: var(--text-sm); }
   li + li { margin-top: var(--space-1); }
   .new-tab { font-size: var(--text-xs); color: var(--color-text-muted); }
+  .external { margin-top: var(--space-4); }
+  .external:first-child { margin-top: 0; }
+  .note { margin: var(--space-3) 0 0; font-size: var(--text-xs); }
   @media print { .sources { break-inside: avoid; } .new-tab { display: none; } }
 </style>

@@ -68,3 +68,18 @@ test('la normalización de texto conserva las diferencias elegidas por el autor'
   assert.notEqual(normalizeText('arbol ipv6', policy), 'Árbol IPv6');
   assert.equal(normalizeText('  Árbol  ', { ...policy, caseSensitive: false, accentSensitive: false }), 'arbol');
 });
+test('formatos de red: equivalencias IPv6, prefijos, MAC, binario y hex', () => {
+  const field = (format: Extract<Field, { type: 'format' }>['format'], answer: string): Field => ({ id: 'f', type: 'format', label: 'Campo', format, answer, explanation: 'Razón' });
+  assert.equal(gradeField(field('ipv6', 'fe80::1222:33ff:fe44:5566'), 'FE80:0:0:0:1222:33ff:fe44:5566').correct, true);
+  for (const input of ['fe80::1222:33ff:fe44:5567', 'fe80::1::2', 'fe80:::1', '']) assert.equal(gradeField(field('ipv6', 'fe80::1'), input).correct, false);
+  assert.equal(gradeField(field('ipv6-expanded', '2001:0db8:0000:0007:0000:0000:000a:0005'), '2001:db8:0:7::a:5').correct, false);
+  assert.equal(gradeField(field('ipv6-expanded', '2001:0db8:0000:0007:0000:0000:000a:0005'), '2001:0DB8:0000:0007:0000:0000:000A:0005').correct, true);
+  assert.equal(gradeField(field('ipv6-canonical', '2001:db8::a:0:0:b'), '2001:db8:0:0:a::b').correct, false);
+  assert.equal(gradeField(field('prefix', '2000::/62'), '2000:0::/62').correct, true);
+  assert.equal(gradeField(field('prefix', '2000::/62'), '2000::/64').correct, false);
+  assert.equal(gradeField(field('iid', '1222:33ff:fe44:5566'), '1222:33FF:FE44:5566').correct, true);
+  assert.equal(gradeField(field('mac', '33:33:ff:44:55:66'), '33-33-FF-44-55-66').correct, true);
+  assert.equal(gradeField(field('bits', '011'), '11').correct, false);
+  assert.equal(gradeField(field('hex', 'ff80'), '0xFF 80').correct, true);
+  assert.equal(gradeField(field('integer', '16'), '16.0').correct, false);
+});

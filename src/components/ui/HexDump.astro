@@ -1,0 +1,43 @@
+---
+// Byte inspector: offsets, hex bytes and the selected byte in hex, decimal and binary.
+interface Props { bytes: string; label?: string }
+const { bytes, label = 'Volcado hexadecimal' } = Astro.props;
+const values = bytes.split(' ');
+const perRow = 8;
+const rows = Array.from({ length: Math.ceil(values.length / perRow) }, (_, r) => values.slice(r * perRow, r * perRow + perRow));
+---
+<hex-dump class="hex-dump">
+  <p class="eyebrow">{label} · {values.length} bytes</p>
+  <div class="grid" role="group" aria-label={label}>
+    {rows.map((row, r) => <div class="row"><span class="offset" aria-hidden="true">{String(r * perRow).padStart(3, '0')}</span>{row.map((byte, i) => <button type="button" class="byte" data-offset={r * perRow + i} aria-label={`Byte ${r * perRow + i}: ${byte}`}>{byte}</button>)}</div>)}
+  </div>
+  <p class="meta inspector" data-inspector role="status">Selecciona un byte para ver su offset y su valor en decimal y binario.</p>
+</hex-dump>
+<style>
+  hex-dump { display: block; margin: 0 0 var(--space-5); padding: var(--space-4); border-radius: var(--radius-sm); background: var(--color-surface-muted); overflow-x: auto; }
+  .grid { display: grid; gap: var(--space-1); font-family: var(--font-mono); font-size: var(--text-sm); }
+  .row { display: flex; align-items: center; gap: var(--space-1); }
+  .offset { min-width: 3.5ch; margin-right: var(--space-2); color: var(--color-text-muted); font-size: var(--text-xs); }
+  .byte { min-width: 2.75ch; padding: 2px var(--space-1); border: 1px solid transparent; border-radius: 4px; background: var(--color-surface); font: inherit; color: var(--color-text); }
+  .byte:hover { border-color: var(--color-border-strong); }
+  .byte[aria-pressed="true"] { background: var(--color-accent); color: var(--color-on-accent); }
+  .inspector { margin: var(--space-3) 0 0; font-family: var(--font-mono); font-size: var(--text-xs); }
+  @media print { .inspector { display: none; } .byte { border-color: var(--color-border); } }
+</style>
+<script>
+  class HexDump extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const inspector = this.querySelector('[data-inspector]')!;
+      const buttons = [...this.querySelectorAll<HTMLButtonElement>('[data-offset]')];
+      buttons.forEach(button => button.addEventListener('click', () => {
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+        const value = parseInt(button.textContent!, 16);
+        inspector.textContent = `Offset ${button.dataset.offset} · 0x${button.textContent} · ${value} · ${value.toString(2).padStart(8, '0')}`;
+      }, { signal: controller.signal }));
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('hex-dump', HexDump);
+</script>

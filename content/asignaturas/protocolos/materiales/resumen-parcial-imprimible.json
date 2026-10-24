@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.resumen-parcial-imprimible",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "resumen-parcial-imprimible",
+  "title": "El parcial, en unas pocas hojas",
+  "description": "Resumen propio del primer parcial para imprimir a doble cara.",
+  "scope": "Resumen propio en 4 caras A4 hasta el tema 4, página 37: IPv6, IPHC, 6LoWPAN y aplicación.",
+  "tagIds": [
+    "protocolos.tags.parcial-1"
+  ],
+  "order": 60,
+  "file": "materiales/protocolos/resumen-parcial-imprimible.pdf",
+  "format": "pdf",
+  "providedName": "resumen-parcial-hasta-t4-37.pdf",
+  "origin": {
+    "label": "Elaborado durante la preparación del parcial"
+  },
+  "category": "resumen-propio",
+  "pageCount": 4,
+  "sha256": "39e3a2d4a8fed9832bc8392c8decab35cf2838dffb29332645c5ae7c96fb67e7"
+}

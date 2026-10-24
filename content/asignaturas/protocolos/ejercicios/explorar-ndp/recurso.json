@@ -7,7 +7,7 @@
   "description": "Recorre una solicitud, la respuesta y la actualización de la caché.",
   "scope": "Resolución básica de un vecino que responde; página 39. No simula pérdidas, tiempos de espera ni NUD.",
   "tagIds": [
-    "protocolos.tags.ndp"
+    "protocolos.tags.ipv6"
   ],
   "order": 50,
   "mode": "workshop",

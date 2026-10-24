@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.cuestionario-previo-moovi",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "cuestionario-previo-moovi",
+  "title": "Cuestionario previo al parcial (Moovi)",
+  "description": "Cuestionario previo al examen parcial descargado de Moovi.",
+  "scope": "Revisión del intento del cuestionario previo al examen parcial: 20 preguntas en 6 páginas. No incluye clave oficial.",
+  "tagIds": [
+    "protocolos.tags.parcial-1"
+  ],
+  "order": 50,
+  "file": "materiales/protocolos/cuestionario-previo-moovi.pdf",
+  "format": "pdf",
+  "providedName": "test-moovi-original.pdf",
+  "origin": {
+    "label": "Moovi · Tarea 3, revisión del intento"
+  },
+  "category": "cuestionario",
+  "pageCount": 6,
+  "sha256": "8ea00985204641396aa91e10e498360c82d50827320077a94a1248d020cb4a85"
+}

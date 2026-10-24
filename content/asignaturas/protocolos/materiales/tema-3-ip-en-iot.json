@@ -5,12 +5,11 @@
   "slug": "tema-3-ip-en-iot",
   "title": "Tema 3 · IP en IoT",
   "description": "Documento original de la asignatura.",
-  "scope": "Documento original completo: 55 páginas sobre IP en IoT. La muestra de estudio utiliza las páginas 9 y 39.",
+  "scope": "Documento original completo del tema 3: arquitectura y rutas, direccionamiento IPv6, configuración (SLAAC, DHCPv6), NDP y descubrimiento de servicios.",
   "tagIds": [
-    "protocolos.tags.ipv6",
-    "protocolos.tags.ndp"
+    "protocolos.tags.ipv6"
   ],
-  "order": 0,
+  "order": 30,
   "file": "materiales/protocolos/tema-3-ip-en-iot.pdf",
   "format": "pdf",
   "providedName": "Tema 3 - IP en IoT.pdf",

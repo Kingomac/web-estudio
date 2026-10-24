@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.tema-4-lowpan",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "tema-4-lowpan",
+  "title": "Tema 4 · Redes LoWPAN",
+  "description": "Documento original de la asignatura.",
+  "scope": "Edición del 7/10/2026, la citada por las preguntas y los apuntes: tecnologías, 6LoWPAN, reenvío, NDP optimizado, Thread, Wi-SUN y RPL.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 40,
+  "file": "materiales/protocolos/tema-4-lowpan.pdf",
+  "format": "pdf",
+  "providedName": "Tema 4 - LoWPAN.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 85,
+  "sha256": "8cdbf42fb96d80fe54189634272059416aa02bef0383bf4ac898aa61a95dabf0"
+}

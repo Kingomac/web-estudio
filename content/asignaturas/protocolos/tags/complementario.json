@@ -1,0 +1,9 @@
+{
+  "id": "protocolos.tags.complementario",
+  "kind": "tag",
+  "subjectId": "protocolos",
+  "slug": "complementario",
+  "title": "Complemento con RFC",
+  "type": "study",
+  "order": 70
+}

@@ -8,7 +8,6 @@
   "scope": "Tamaño y tipos de direcciones IPv6; secuencia básica NS → NA → caché. Páginas 9 y 39 del original.",
   "tagIds": [
     "protocolos.tags.ipv6",
-    "protocolos.tags.ndp",
     "protocolos.tags.repaso"
   ],
   "order": 30,

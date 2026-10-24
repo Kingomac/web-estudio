@@ -13,7 +13,7 @@ const { html, headings } = readingHtml(await Astro.slots.render('default'));
   <aside class="toc no-print"><details open><summary class="eyebrow">Contenido</summary><nav aria-label="Índice de la lectura"><ol>{headings.map(h => <li class:list={{ subheading: h.level === 3 }}><a href={`#${h.id}`}>{h.title}</a></li>)}</ol></nav></details></aside>
   <article class="prose"><Fragment set:html={html} /></article>
 </div>
-<Sources references={entry.sources} catalog={catalog} />
+<Sources references={entry.sources} external={entry.externalReferences} catalog={catalog} />
 <Relations resource={entry} catalog={catalog} />
 <button class="button mobile-toc-toggle no-print" type="button" data-open-toc hidden>Contenido ↑</button>
 <dialog class="mobile-toc-dialog no-print" aria-labelledby="indice-movil">

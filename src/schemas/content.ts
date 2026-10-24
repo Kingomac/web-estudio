@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { formats } from '../domain/formatos.ts';
 
 const calendarSourceId = z.string().regex(/^[a-z0-9-]+$/);
 const calendarSourceDisplay = { id: calendarSourceId, label: z.string().min(1) };
@@ -57,8 +58,11 @@ const ids = z.array(id).refine(xs => new Set(xs).size === xs.length, 'Hay IDs du
 const httpUrl = z.url().refine(s => /^https?:\/\//.test(s), 'Se requiere una URL HTTP(S).');
 const reference = z.strictObject({ materialId: id, pdfPages: z.array(z.number().int().positive()).min(1), label: text.optional() });
 const readingReference = z.strictObject({ resourceId: id, anchor: text.regex(/^[a-zA-Z][\w.-]*$/).optional() });
+// Complementary sources outside the subject material (RFCs, specifications); never replace page citations.
+const externalReference = z.strictObject({ title: text, url: z.url().startsWith('https://') });
 const relations = {
   sources: z.array(reference).default([]),
+  externalReferences: z.array(externalReference).default([]),
   readingReferences: z.array(readingReference).default([]),
   relatedResourceIds: ids.default([]),
 };
@@ -75,8 +79,12 @@ export const fieldSchema = z.discriminatedUnion('type', [
   z.strictObject({ ...fieldBase, type: z.literal('number'), answer: z.number(), absTol: z.number().nonnegative(), relTol: z.number().nonnegative(), unit: text, decimalPolicy: z.literal('comma-or-point') }),
   z.strictObject({ ...fieldBase, type: z.literal('text'), answers: z.array(text).min(1), normalization: z.strictObject({ trim: z.boolean(), collapseSpaces: z.boolean(), caseSensitive: z.boolean(), accentSensitive: z.boolean() }) }),
   z.strictObject({ ...fieldBase, type: z.literal('select'), options: z.array(z.strictObject({ id, text })).min(2), answer: id }),
+  z.strictObject({ ...fieldBase, type: z.literal('format'), format: z.enum(formats), answer: text }),
 ]);
-const questionBase = { kind: z.literal('pregunta'), id, subjectId: id, tagIds: ids.min(1), prompt: text, explanation: text, originalReferences: z.array(reference).min(1), ...relations };
+// At least one citation: a page of the subject material or, for complementary practice, an external reference.
+const cited = (e: { originalReferences: unknown[]; externalReferences: unknown[] }) => e.originalReferences.length + e.externalReferences.length > 0;
+const citedMessage = { message: 'Cita al menos una página del material original o una referencia complementaria.', path: ['originalReferences'] };
+const questionBase = { kind: z.literal('pregunta'), id, subjectId: id, tagIds: ids.min(1), prompt: text, explanation: text, originalReferences: z.array(reference).default([]), ...relations };
 export const questionSchema = z.discriminatedUnion('type', [
   z.strictObject({ ...questionBase, type: z.literal('single'), options: z.array(option).min(2), answer: id }),
   z.strictObject({ ...questionBase, type: z.literal('multiple'), options: z.array(option).min(2), answer: ids.min(1) }),
@@ -87,6 +95,7 @@ export const questionSchema = z.discriminatedUnion('type', [
   const answers = Array.isArray(q.answer) ? q.answer : [q.answer];
   if (answers.some(a => !choices.includes(a))) ctx.addIssue({ code: 'custom', path: ['answer'], message: 'La solución contiene IDs que no existen.' });
   if (q.type === 'ordering' && answers.length !== choices.length) ctx.addIssue({ code: 'custom', path: ['answer'], message: 'La secuencia debe incluir todos los elementos.' });
+  if (!cited(q)) ctx.addIssue({ code: 'custom', ...citedMessage });
 });
 const lecture = <K extends 'apuntes' | 'resumen'>(kind: K) => z.strictObject({ ...resource, kind: z.literal(kind), body: z.enum(['body.mdx', 'body.astro']), printIntent: z.enum(['paper', 'screen']), componentIds: ids.default([]) });
 export const entrySchema = z.union([
@@ -96,7 +105,13 @@ export const entrySchema = z.union([
   lecture('apuntes'), lecture('resumen'), questionSchema,
   z.strictObject({ ...resource, kind: z.literal('material'), file: text.regex(/^materiales\/[a-z0-9-]+\/[a-z0-9-]+\.pdf$/), format: z.literal('pdf'), providedName: text, origin: z.strictObject({ label: text, url: httpUrl.optional() }), category: text, pageCount: z.number().int().positive(), sha256: text.regex(/^[a-f0-9]{64}$/) }),
   z.strictObject({ ...resource, kind: z.literal('test'), groups: z.array(z.strictObject({ id, title: text, context: text.optional(), questionIds: ids.min(1) })).min(1) }),
-  z.strictObject({ ...resource, kind: z.literal('ejercicio'), mode: z.literal('form'), prompt: text, explanation: text, originalReferences: z.array(reference).min(1), fields: z.array(fieldSchema).min(1) }),
+  z.strictObject({
+    ...resource, kind: z.literal('ejercicio'), mode: z.literal('form'), prompt: text, explanation: text,
+    originalReferences: z.array(reference).default([]), fields: z.array(fieldSchema).min(1),
+    hint: text.optional(), steps: z.array(text).default([]),
+    // Hex bytes shown in an inspector, and the hops of a packet when the statement follows a path.
+    dump: text.regex(/^[0-9a-f]{2}( [0-9a-f]{2})*$/).optional(), path: z.array(text).default([]),
+  }).refine(cited, citedMessage),
   z.strictObject({ ...resource, kind: z.literal('ejercicio'), mode: z.literal('workshop'), workshopId: id, prompt: text }),
 ]);
 

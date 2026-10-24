@@ -3,7 +3,7 @@
   "kind": "tag",
   "subjectId": "protocolos",
   "slug": "ipv6",
-  "title": "Direcciones IPv6",
+  "title": "IP en IoT",
   "type": "topic",
-  "order": 10
+  "order": 30
 }

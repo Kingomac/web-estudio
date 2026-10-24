@@ -1,4 +1,5 @@
 import type { Question, Field } from '../schemas/content.ts';
+import { matchesFormat } from './formatos.ts';
 export type Answer = string | string[];
 export function gradeQuestion(question: Question, answer: Answer | undefined) {
   const options = question.type === 'ordering' ? question.items : question.options;
@@ -25,5 +26,6 @@ export function gradeField(field: Field, raw: string) {
     return { correct: Number.isFinite(value) && Math.abs(value - field.answer) <= Math.max(field.absTol, field.relTol * Math.abs(field.answer)), message: field.explanation };
   }
   if (field.type === 'text') return { correct: field.answers.some(a => normalizeText(raw, field.normalization) === normalizeText(a, field.normalization)), message: field.explanation };
+  if (field.type === 'format') return { correct: matchesFormat(field.format, raw, field.answer), message: field.explanation };
   return { correct: raw === field.answer, message: field.explanation };
 }

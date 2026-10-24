@@ -1,0 +1,9 @@
+{
+  "id": "protocolos.tags.lowpan",
+  "kind": "tag",
+  "subjectId": "protocolos",
+  "slug": "lowpan",
+  "title": "Redes LoWPAN",
+  "type": "topic",
+  "order": 40
+}

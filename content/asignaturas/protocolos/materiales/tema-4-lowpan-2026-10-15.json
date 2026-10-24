@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.tema-4-lowpan-2026-10-15",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "tema-4-lowpan-2026-10-15",
+  "title": "Tema 4 · Redes LoWPAN (edición del 15/10)",
+  "description": "Edición revisada del documento original del tema 4.",
+  "scope": "Edición revisada del 15/10/2026. Cambian las páginas 31, 50–53 y 55–85 respecto a la del 7/10; las citas de la web usan la edición anterior.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 41,
+  "file": "materiales/protocolos/tema-4-lowpan-2026-10-15.pdf",
+  "format": "pdf",
+  "providedName": "Tema 4 - LoWPAN.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 85,
+  "sha256": "fdcd091be20fd1809bea5fb8ea85717bfe5f4b5af38ec59718a4e5d549186063"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.tema-1-introduccion",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "tema-1-introduccion",
+  "title": "Tema 1 · Introducción a IoT",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo del tema 1: dispositivos, modularidad, recursos y redes LLN.",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "order": 10,
+  "file": "materiales/protocolos/tema-1-introduccion.pdf",
+  "format": "pdf",
+  "providedName": "Tema 1 - Intro.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 14,
+  "sha256": "fc59f7169025a769abf1382a974022542d6810698d98837e77bdeab82d6ef95b"
+}
