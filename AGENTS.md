@@ -14,7 +14,7 @@ El usuario proporciona en su prompt una ruta de su PC y el objetivo de estudio. 
 - Los correctores de `src/domain/` son funciones puras. No importan Astro, DOM, archivos ni almacenamiento.
 - Usa la versión de Bun de `.bun-version` y `bun install --frozen-lockfile`. `bun.lock` es el único archivo de bloqueo; actualízalo con Bun cuando cambien las dependencias.
 - `bunfig.toml` fuerza Bun también para Astro y Playwright. En herramientas locales, aprovecha Bun Shell, `Bun.file` y `Bun.spawn` cuando simplifiquen el trabajo. Conserva las escrituras exclusivas (`wx` y `COPYFILE_EXCL`) para no sobrescribir contenido.
-- Ejecuta `bun run check` antes de dar por válido un cambio. Incluye tipos estrictos, unitarias, validación, compilación y E2E con Firefox bajo `/web-estudio/`. `bun test` ejecuta solo las unitarias; `bun run check` es la comprobación completa del proyecto.
+- Antes de dar por válido un cambio: si solo afecta a `content/` o `public/materiales/`, ejecuta `bun run check:content` (unitarias, validación, compilación y enlaces). Si toca código, configuración, pruebas o scripts, ejecuta `bun run check`, que añade tipos estrictos y E2E con Firefox bajo `/web-estudio/`. CI ejecuta siempre `bun run check`. `bun test` ejecuta solo las unitarias.
 - La revisión académica y la impresión paginada requieren inspección adicional; las pruebas automáticas no las sustituyen.
 
 - Usa TypeScript estricto; deriva los tipos desde Zod. No uses `any` ni desactives el comprobador para resolver errores.

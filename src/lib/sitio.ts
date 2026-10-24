@@ -4,9 +4,16 @@ import type { Catalog } from './catalogo.ts';
 import { resourcePath, withBase } from './rutas.ts';
 import type { Entry, Resource, SourceReference } from '../schemas/content.ts';
 
-export async function siteCatalog(): Promise<Catalog> {
+// The collection is immutable during a build; in dev it changes, so rebuild on each request.
+let cached: Promise<Catalog> | undefined;
+export function siteCatalog(): Promise<Catalog> {
+  if (import.meta.env.DEV) return createSiteCatalog();
+  return cached ||= createSiteCatalog();
+}
+async function createSiteCatalog(): Promise<Catalog> {
   const entries = await getCollection('catalogo');
-  return buildCatalog(entries.map(e => e.data));
+  const files = new Map(entries.flatMap(e => e.filePath ? [[e.data.id, e.filePath] as const] : []));
+  return buildCatalog(entries.map(e => e.data), files);
 }
 export const url = (path: string) => withBase(path, import.meta.env.BASE_URL);
 export const resourceUrl = (entity: Resource | Extract<Entry, { kind: 'bimestre' | 'asignatura' }>, catalog: Catalog) => url(resourcePath(entity, catalog.byId));

@@ -28,6 +28,7 @@
     "test:e2e": "playwright test --project=firefox",
     "test:install": "playwright install firefox",
     "check": "bun scripts/check.ts",
+    "check:content": "bun scripts/check.ts --content",
     "typecheck": "astro check"
   },
   "dependencies": {

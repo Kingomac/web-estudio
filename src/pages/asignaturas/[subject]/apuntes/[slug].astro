@@ -10,9 +10,9 @@ export async function getStaticPaths() { return resourcePaths('apuntes'); }
 interface Props { entry: ReadingEntry }
 const { entry } = Astro.props;
 const bodies = import.meta.glob<AstroInstance>('/content/asignaturas/*/apuntes/*/body.{astro,mdx}');
-const key = await bodyKey(entry);
+const catalog = await siteCatalog();
+const key = bodyKey(entry, catalog);
 if (!bodies[key]) throw new Error(`Cuerpo no encontrado: ${entry.id}`);
 const Body = (await bodies[key]()).default;
-const catalog = await siteCatalog();
 ---
 <Resource entry={entry}><Reading entry={entry} catalog={catalog}><Body /></Reading></Resource>

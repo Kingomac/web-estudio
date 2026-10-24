@@ -4,11 +4,17 @@ import { requireCatalog, buildCatalog, impact } from '../../src/lib/catalogo.ts'
 import { parseEntry } from '../../src/schemas/content.ts';
 import { readingHtml, inlineMarkdown } from '../../src/lib/html.ts';
 import { resourcePath, withBase } from '../../src/lib/rutas.ts';
+import { components, workshops } from '../../src/lib/registro.ts';
+import { workshopModules } from '../../src/lib/talleres.ts';
 
 const catalog = await requireCatalog();
 test('la muestra atraviesa todos los contratos y resuelve sus fuentes', () => {
   assert.equal(catalog.errors.length, 0);
   for (const kind of ['bimestre', 'asignatura', 'tag', 'material', 'apuntes', 'resumen', 'pregunta', 'test', 'ejercicio']) assert.ok(catalog.entries.some(e => e.kind === kind));
+});
+test('cada taller registrado tiene módulo y componente declarados', () => {
+  assert.deepEqual(Object.keys(workshopModules).sort(), Object.keys(workshops).sort());
+  for (const componentId of Object.values(workshops)) assert.ok(components[componentId], `Componente no registrado: ${componentId}`);
 });
 test('detecta citas fuera del PDF y referencias inexistentes', () => {
   const entries = structuredClone(catalog.entries);

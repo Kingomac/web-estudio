@@ -10,7 +10,8 @@ export function catalogLoader(): Loader {
       const root = fileURLToPath(config.root);
       const directories = [path.join(root, 'content'), path.join(root, 'public/materiales')];
       async function sync() {
-        const catalog = await requireCatalog({ root });
+        // Body and PDF checks (hash, page count) run in content:check before every build.
+        const catalog = await requireCatalog({ root, checkFiles: false });
         const entries = await Promise.all(catalog.entries.map(async entry => {
           const filePath = catalog.files.get(entry.id)!;
           const data = await parseData({ id: entry.id, data: entry, filePath });
