@@ -20,6 +20,8 @@ bun run test:install
 bun run check
 ```
 
+`check:content` es la comprobación para cambios que solo afectan a `content/` o `public/materiales/`: unitarias, validación de contenido y PDF, compilación y revisión del HTML, sin `astro check` ni E2E.
+
 `check` comprueba tipos, ejecuta las unitarias, valida contenido y PDF, compila, revisa enlaces y anclas del HTML y ejecuta los flujos E2E en Firefox. `bun run test:e2e` requiere un `dist/` actualizado. Para Linux sin las bibliotecas de Firefox, usa `bun run test:install --with-deps`.
 
 Usa `bun run check` para esta verificación completa. `bun check` es un comando propio de Bun y no ejecuta el script del proyecto. El comprobador de tipos de Astro sigue siendo necesario para validar también los componentes `.astro`.
@@ -74,6 +76,8 @@ Si una fuente falla, se conserva su última copia y se marca como no actualizada
 Moovi ofrece eventos recientes y próximos 60 días desde la sincronización, no todo el curso. Una consulta vacía no demuestra que no haya obligaciones. Google debe permitir acceso público; para obtener títulos, el permiso debe ser «Ver todos los detalles de los eventos». Consulta [el uso del contexto temporal por agentes](docs/autoria.md#contexto-temporal-del-máster) antes de formular planes con estos datos.
 
 ## Publicación
+
+**Decisión pendiente de implementar (24/10/2026):** la web se usará en local y, cuando se despliegue, será de forma privada en Cloudflare Pages protegida con Cloudflare Access (acceso por cuenta autorizada), subiendo `dist/` desde el PC con `wrangler pages deploy`. No se publicará en GitHub Pages: los PDF originales son material docente y no deben quedar públicos. Falta adaptar `BASE_PATH`, añadir el script de despliegue, retirar la publicación del workflow y configurar Access para el dominio de producción y las previsualizaciones. Pages limita cada archivo a 25 MiB. Mientras tanto, lo que sigue describe el estado actual.
 
 La base por defecto es `/web-estudio`. `BASE_PATH` permite cambiarla, y `SITE_URL` configura el origen de la web. La compilación no necesita los archivos externos del PC ni acceso a las universidades.
 

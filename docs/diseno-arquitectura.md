@@ -535,6 +535,8 @@ Las comprobaciones externas de guías docentes se ejecutan aparte para no depend
 
 ### GitHub Pages
 
+> **Pendiente (24/10/2026):** se sustituye GitHub Pages por un despliegue privado en Cloudflare Pages con Cloudflare Access, porque los PDF originales no deben publicarse en abierto. Hasta implementarlo, la web se usa en local. Esta sección describe el diseño anterior; véase README.md, «Publicación».
+
 GitHub Actions instalará las dependencias bloqueadas y Firefox para las pruebas, validará el contenido, ejecutará las unitarias, compilará y ejecutará las E2E de Firefox sobre el resultado. Solo después publicará `dist/`. Las pull requests pasan las mismas comprobaciones sin desplegar; la rama principal publica tras superar esa puerta. GitHub documenta el flujo de compilación, subida de artefacto y despliegue de Pages mediante acciones. [Workflows personalizados de Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
 Se configurarán `site` y `base` según el dominio y repositorio definitivos. Si la web vive en `https://usuario.github.io/web-estudio/`, la base es `/web-estudio`; no se escribirán enlaces internos suponiendo que la web está en `/`. Astro requiere incorporar esa base a los enlaces internos. [Despliegue de Astro en GitHub Pages](https://docs.astro.build/en/guides/deploy/github/).
