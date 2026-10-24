@@ -3,142 +3,142 @@
   "timezone": "Europe/Madrid",
   "from": "2026-09-01",
   "until": "2027-09-01",
-  "updatedAt": "2026-10-23T14:47:18.640Z",
+  "updatedAt": "2026-10-23T16:48:31.321Z",
   "sources": [
     {
       "id": "google",
       "label": "MUIoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-02",
       "label": "MUIoT - Aprendizaxe Automática",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-03",
       "label": "MUIoT - Big Data",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-04",
       "label": "MUIoT - Ciberseguridade en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-05",
       "label": "MUIoT - Computación na Nube para IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-06",
       "label": "MUIoT - Dispositivos IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-07",
       "label": "MUIoT - Enxeñería de Datos para IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-08",
       "label": "MUIoT - Green IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-09",
       "label": "MUIoT - Innovación e Emprendemento en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-10",
       "label": "MUIoT - Integración de Sistemas en IIoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-11",
       "label": "MUIoT - Novas Arquitecturas e Paradigmas IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-12",
       "label": "MUIoT - Protocolos de Comunicacións en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-13",
       "label": "MUIoT - Redes de Comunicacións en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-14",
       "label": "MUIoT - Sistemas Encaixados",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-15",
       "label": "MUIoT - Xemelgos Dixitais en plantas industriais",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "google-16",
       "label": "MUIoT - Análise de Vídeo",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     },
     {
       "id": "moovi",
       "label": "Moovi · Entregas",
       "status": "ok",
-      "checkedAt": "2026-10-23T14:47:18.640Z",
-      "lastSuccessAt": "2026-10-23T14:47:18.640Z",
+      "checkedAt": "2026-10-23T16:48:31.321Z",
+      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
       "limitedDetails": false
     }
   ],
