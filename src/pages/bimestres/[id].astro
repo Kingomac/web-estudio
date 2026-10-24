@@ -1,5 +1,6 @@
 ---
 import Site from '../../layouts/Site.astro';
+import PageHeader from '../../components/ui/PageHeader.astro';
 import SubjectRow from '../../components/SubjectRow.astro';
 import { siteCatalog } from '../../lib/sitio.ts';
 import type { Entry, Subject } from '../../schemas/content.ts';
@@ -10,7 +11,10 @@ const catalog = await siteCatalog();
 const subjects = catalog.entries.filter((e): e is Subject => e.kind === 'asignatura' && e.bimesterId === entry.id);
 ---
 <Site title={entry.title}>
-  <header class="page-header"><p class="eyebrow">Curso 2026 / 27</p><h1>{entry.title}</h1><p class="page-summary">{subjects.length} {subjects.length === 1 ? 'asignatura' : 'asignaturas'} con materiales</p></header>
-  <div class="subject-list">{subjects.map(subject => <SubjectRow entry={subject} catalog={catalog} />)}</div>
+  <PageHeader eyebrow="Curso 2026/27" title={entry.title} description={`${subjects.length} ${subjects.length === 1 ? 'asignatura' : 'asignaturas'} con materiales`} />
+  <div class="subject-grid">{subjects.map(subject => <SubjectRow entry={subject} catalog={catalog} />)}</div>
   {subjects.length === 0 && <p class="empty-state">No hay materiales incorporados en este bimestre.</p>}
 </Site>
+<style>
+  .subject-grid { display: grid; gap: var(--space-4); }
+</style>

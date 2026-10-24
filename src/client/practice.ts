@@ -41,7 +41,7 @@ class StudyTest extends HTMLElement {
         const right = Array.isArray(q.answer) ? q.answer.includes(option) : q.answer === option;
         const chosen = Array.isArray(answer) ? answer.includes(option) : answer === option;
         label.textContent = q.type === 'multiple' ? right ? chosen ? 'Correcta seleccionada' : 'Correcta omitida' : chosen ? 'Incorrecta seleccionada' : 'Incorrecta descartada' : `${right ? 'Correcta' : 'Incorrecta'}${chosen ? ' · Tu respuesta' : ''}`;
-        label.classList.toggle('right', right);
+        label.classList.toggle('is-right', right);
       });
     };
     const orderingButtons = (element: HTMLElement) => {

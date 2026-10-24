@@ -4,6 +4,7 @@ Web estática de estudio para el máster MUIoT 2026/27: lecturas, tests aleatori
 
 - [Arquitectura y decisiones](docs/arquitectura.md)
 - [Manual de autoría](docs/autoria.md) e [instrucciones del agente](AGENTS.md)
+- [Guía de diseño](docs/diseno.md)
 - [Catálogo académico 2026/27](docs/catalogo-academico-2026-27.md)
 
 ## Ejecutar
@@ -45,6 +46,7 @@ Falta: compilar con `BASE_PATH` adecuado, añadir el script de despliegue, retir
 | `src/lib/` | Catálogo, rutas y registros compartidos por CLI y Astro. |
 | `src/domain/` | Corrección y sesiones, funciones puras. |
 | `src/client/` | Interacción en el navegador y guardado local. |
-| `src/pages/`, `layouts/`, `components/` | Plantillas; no contienen temario. |
+| `src/pages/`, `layouts/`, `components/` | Plantillas; no contienen temario. `components/ui/` guarda las piezas comunes. |
+| `src/styles/` | Tokens, primitivas, estructura, lectura e impresión ([guía](docs/diseno.md)). |
 | `scripts/content/`, `scripts/calendar/` | CLI para agentes. |
 | `tests/unit/`, `tests/e2e/` | `bun:test` y Playwright con Firefox. |

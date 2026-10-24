@@ -17,6 +17,7 @@ El usuario indica en su prompt una ruta de su PC y un objetivo de estudio. El ag
 - `content/` es contenido editable y `src/` la aplicación. Nunca edites `dist/`.
 - `src/schemas/content.ts` es la única definición de contratos; CLI y Astro comparten `src/lib/catalogo.ts`.
 - `src/domain/` contiene funciones puras: sin Astro, DOM, archivos ni almacenamiento.
+- Interfaz según `docs/diseno.md`: tokens de `src/styles/tokens.css`, primitivas y componentes existentes antes que estilos nuevos. Sin colores ni tamaños literales fuera de los tokens.
 - TypeScript estricto con tipos derivados de Zod. Sin `any` ni desactivar el comprobador.
 - Usa Bun (`.bun-version`) e instala con `bun install --frozen-lockfile`; `bun.lock` es el único bloqueo. Conserva las escrituras exclusivas (`wx`, `COPYFILE_EXCL`) que evitan sobrescribir contenido.
 

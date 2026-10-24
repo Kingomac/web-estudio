@@ -8,14 +8,22 @@ interface Props { entry: Subject; catalog: Catalog; heading?: 'h2' | 'h3' }
 const { entry, catalog, heading: Heading = 'h2' } = Astro.props;
 const resources = catalog.entries.filter(isResource).filter(e => e.subjectId === entry.id);
 ---
-<article class="subject-row">
+<article class="subject-row panel">
   <Heading><a href={resourceUrl(entry, catalog)}>{entry.title}</a></Heading>
-  <p>{entry.description}</p>
-  <nav class="subject-resources" aria-label={`Recursos de ${entry.title}`}>
+  <p class="meta">{entry.description}</p>
+  <nav class="sections" aria-label={`Recursos de ${entry.title}`}>
     {Object.entries(sections).map(([kind, section]) => {
       const count = resources.filter(e => e.kind === kind).length;
-      return count > 0 && <a href={url(`/asignaturas/${entry.slug}/${section}/`)}>{labels[kind as keyof typeof labels]} <span class="resource-count">{count}</span></a>;
+      return count > 0 && <a class="button button--secondary button--small" href={url(`/asignaturas/${entry.slug}/${section}/`)}>{labels[kind as keyof typeof labels]} <span class="count">{count}</span></a>;
     })}
-    {!resources.length && <span class="muted">Sin recursos incorporados</span>}
+    {!resources.length && <span class="meta">Sin recursos incorporados</span>}
   </nav>
 </article>
+<style>
+  h2, h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
+  h2 a, h3 a { color: var(--color-text); text-decoration: none; }
+  h2 a:hover, h3 a:hover { color: var(--color-accent); text-decoration: underline; }
+  .meta { max-width: var(--measure); margin-bottom: var(--space-4); }
+  .sections { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .count { color: var(--color-text-muted); font-weight: var(--weight-regular); font-variant-numeric: tabular-nums; }
+</style>

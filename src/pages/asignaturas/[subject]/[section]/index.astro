@@ -1,7 +1,9 @@
 ---
 import Site from '../../../../layouts/Site.astro';
+import PageHeader from '../../../../components/ui/PageHeader.astro';
+import SectionTabs from '../../../../components/ui/SectionTabs.astro';
 import ResourceList from '../../../../components/ResourceList.astro';
-import { siteCatalog, url } from '../../../../lib/sitio.ts';
+import { siteCatalog } from '../../../../lib/sitio.ts';
 import { isResource } from '../../../../lib/catalogo.ts';
 import { sections, labels } from '../../../../lib/rutas.ts';
 import type { Subject, Tag, Resource } from '../../../../schemas/content.ts';
@@ -12,4 +14,8 @@ const catalog = await siteCatalog();
 const resources = catalog.entries.filter(isResource).filter(e => e.subjectId === subject.id && e.kind === kind);
 const tags = catalog.entries.filter((e): e is Tag => e.kind === 'tag' && e.subjectId === subject.id);
 ---
-<Site title={labels[kind]} subject={subject}><header class="resource-header"><p class="eyebrow">{subject.title}</p><h1>{labels[kind]}</h1></header><nav class="section-tabs" aria-label="Tipos de recurso"><a href={url(`/asignaturas/${subject.slug}/`)}>Todos los recursos</a>{Object.entries(sections).map(([k, section]) => <a href={url(`/asignaturas/${subject.slug}/${section}/`)} aria-current={kind === k ? 'page' : undefined}>{labels[k as keyof typeof labels]}</a>)}</nav><ResourceList entries={resources} tags={tags} catalog={catalog} /></Site>
+<Site title={labels[kind]} subject={subject}>
+  <PageHeader eyebrow={subject.title} title={labels[kind]} />
+  <SectionTabs subject={subject} current={kind} />
+  <ResourceList entries={resources} tags={tags} catalog={catalog} />
+</Site>

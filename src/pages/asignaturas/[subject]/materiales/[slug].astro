@@ -11,4 +11,23 @@ const { entry } = Astro.props;
 const catalog = await siteCatalog();
 const size = (await stat(`public/${entry.file}`)).size;
 ---
-<Resource entry={entry}><section class="material-panel"><div><p class="eyebrow">Documento PDF</p><h2>{entry.providedName}</h2><dl class="material-details"><div><dt>Extensión</dt><dd>{entry.pageCount} páginas</dd></div><div><dt>Tamaño</dt><dd>{(size / 1024 / 1024).toLocaleString('es', { maximumFractionDigits: 1 })} MB</dd></div><div><dt>Procedencia</dt><dd>{entry.origin.label}</dd></div></dl><div class="answer-actions"><a class="button" href={url(entry.file)} target="_blank" rel="noopener">Abrir PDF <span class="external-note">(nueva pestaña)</span> ↗</a><a class="button secondary" href={url(entry.file)} download={entry.providedName}>Descargar original ↓</a></div></div></section><Relations resource={entry} catalog={catalog} /></Resource>
+<Resource entry={entry}>
+  <section class="material-panel panel">
+    <p class="eyebrow">Documento PDF</p>
+    <h2>{entry.providedName}</h2>
+    <dl class="details">
+      <div><dt>Extensión</dt><dd>{entry.pageCount} páginas</dd></div>
+      <div><dt>Tamaño</dt><dd>{(size / 1024 / 1024).toLocaleString('es', { maximumFractionDigits: 1 })} MB</dd></div>
+      <div><dt>Procedencia</dt><dd>{entry.origin.label}</dd></div>
+    </dl>
+    <div class="actions"><a class="button" href={url(entry.file)} target="_blank" rel="noopener">Abrir PDF <span class="visually-hidden">(nueva pestaña)</span> ↗</a><a class="button button--secondary" href={url(entry.file)} download={entry.providedName}>Descargar original ↓</a></div>
+  </section>
+  <Relations resource={entry} catalog={catalog} />
+</Resource>
+<style>
+  h2 { font-size: var(--text-lg); }
+  .details { display: grid; gap: var(--space-2); margin-bottom: var(--space-5); font-size: var(--text-sm); }
+  .details div { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  .details dt { min-width: 6rem; color: var(--color-text-muted); }
+  .details dd { margin: 0; }
+</style>

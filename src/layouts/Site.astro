@@ -16,38 +16,43 @@ const current = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#163f35" />
+    <meta name="theme-color" content="#1f5f4b" />
     <title>{title} · Cuaderno IoT</title>
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
   </head>
   <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
-    <aside class="sidebar" aria-label="Navegación principal">
-      <a class="brand" href={url('/')} aria-label="Cuaderno IoT · Inicio">Cuaderno IoT<span class="brand-sub">Curso 2026 / 27</span></a>
+    <a class="skip-link no-print" href="#contenido">Saltar al contenido</a>
+    <aside class="sidebar no-print" aria-label="Navegación principal">
+      <a class="brand" href={url('/')} aria-label="Cuaderno IoT · Inicio">Cuaderno IoT<span class="brand-sub">MUIoT · Curso 2026/27</span></a>
       <details class="site-navigation" open>
-        <summary>Menú</summary>
+        <summary class="button button--secondary button--small">Menú</summary>
         <nav aria-label="Catálogo">
-          <a class:list={['nav-link', { active: current === url('/') }]} href={url('/')} aria-current={current === url('/') ? 'page' : undefined}>Inicio</a>
-          {bimesters.map(b => <div class="nav-group">
-            <a class:list={['nav-bimester', { active: current === resourceUrl(b, catalog) }]} href={resourceUrl(b, catalog)} aria-current={current === resourceUrl(b, catalog) ? 'page' : undefined}>{b.title}</a>
-            {subjects.filter(s => s.bimesterId === b.id).map(s => <div class="nav-subject">
-              <a class:list={['nav-link', { active: subject?.id === s.id }]} href={resourceUrl(s, catalog)} aria-current={current === resourceUrl(s, catalog) ? 'page' : undefined}>{s.title}</a>
-              {subject?.id === s.id && <ul class="nav-sections">{Object.entries(sections).map(([kind, section]) => {
-                const href = url(`/asignaturas/${s.slug}/${section}/`);
-                return <li><a class:list={{ active: current.startsWith(href) }} href={href} aria-current={current === href ? 'page' : current.startsWith(href) ? 'location' : undefined}>{labels[kind as keyof typeof labels]}</a></li>;
-              })}</ul>}
-            </div>)}
-          </div>)}
+          <a class:list={['nav-link', { 'is-active': current === url('/') }]} href={url('/')} aria-current={current === url('/') ? 'page' : undefined}>Inicio</a>
+          {bimesters.map(b => {
+            const entries = subjects.filter(s => s.bimesterId === b.id);
+            const href = resourceUrl(b, catalog);
+            return <div class="nav-group">
+              <a class:list={['eyebrow', { 'is-active': current === href }]} href={href} aria-current={current === href ? 'page' : undefined}>{b.title}</a>
+              {entries.length === 0 && <p class="nav-empty">Sin asignaturas</p>}
+              {entries.map(s => <div class="nav-subject">
+                <a class:list={['nav-link', { 'is-active': subject?.id === s.id }]} href={resourceUrl(s, catalog)} aria-current={current === resourceUrl(s, catalog) ? 'page' : undefined}>{s.title}</a>
+                {subject?.id === s.id && <ul class="nav-sections">{Object.entries(sections).map(([kind, section]) => {
+                  const sectionHref = url(`/asignaturas/${s.slug}/${section}/`);
+                  return <li><a class:list={{ 'is-active': current.startsWith(sectionHref) }} href={sectionHref} aria-current={current === sectionHref ? 'page' : current.startsWith(sectionHref) ? 'location' : undefined}>{labels[kind as keyof typeof labels]}</a></li>;
+                })}</ul>}
+              </div>)}
+            </div>;
+          })}
         </nav>
       </details>
       <p class="sidebar-bottom">Máster en Internet de las Cosas</p>
     </aside>
     <div class="site-main">
       <main id="contenido" tabindex="-1">
-        {subject && <div class="context-bar"><nav class="breadcrumbs" aria-label="Ruta de navegación"><a href={url('/')}>Inicio</a><span aria-hidden="true">/</span><a href={url(`/bimestres/${subject.bimesterId}/`)}>{subject.bimesterId.toUpperCase()}</a><span aria-hidden="true">/</span><a href={resourceUrl(subject, catalog)}>{subject.id === 'protocolos' ? 'Protocolos' : subject.title}</a></nav><a class="guide-link" href={subject.teachingGuide.url}>Guía docente <span aria-hidden="true">↗</span></a></div>}
+        {subject && <div class="context-bar no-print"><nav class="breadcrumbs" aria-label="Ruta de navegación"><a href={url('/')}>Inicio</a><span aria-hidden="true">/</span><a href={url(`/bimestres/${subject.bimesterId}/`)}>{subject.bimesterId.toUpperCase()}</a><span aria-hidden="true">/</span><a href={resourceUrl(subject, catalog)}>{subject.id === 'protocolos' ? 'Protocolos' : subject.title}</a></nav><a href={subject.teachingGuide.url}>Guía docente <span aria-hidden="true">↗</span></a></div>}
         <slot />
       </main>
-      <footer class="site-footer"><span>Cuaderno IoT · 2026/27</span><a href={url('/')}>Inicio</a></footer>
+      <footer class="site-footer no-print"><span>Cuaderno IoT · 2026/27</span><a href={url('/')}>Inicio</a></footer>
     </div>
   </body>
 </html>

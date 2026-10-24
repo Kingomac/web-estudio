@@ -1,5 +1,6 @@
 export const sections = { apuntes: 'apuntes', resumen: 'resumenes', test: 'tests', ejercicio: 'ejercicios', material: 'materiales' };
 export const labels = { apuntes: 'Apuntes', resumen: 'Resúmenes', test: 'Tests', ejercicio: 'Ejercicios', material: 'Material original' };
+export const kindLabels = { apuntes: 'Apuntes', resumen: 'Resumen', test: 'Test', ejercicio: 'Ejercicio', material: 'Material original' };
 export function withBase(path: string, base = '/') {
   return `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 }

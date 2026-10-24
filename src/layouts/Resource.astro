@@ -1,6 +1,8 @@
 ---
 import Site from './Site.astro';
-import { siteCatalog, url, resourceUrl } from '../lib/sitio.ts';
+import PageHeader from '../components/ui/PageHeader.astro';
+import TagList from '../components/ui/TagList.astro';
+import { siteCatalog, url } from '../lib/sitio.ts';
 import { labels, sections } from '../lib/rutas.ts';
 import type { Resource } from '../schemas/content.ts';
 interface Props { entry: Resource }
@@ -10,6 +12,13 @@ const subject = catalog.byId.get(entry.subjectId);
 if (subject?.kind !== 'asignatura') throw new Error('Asignatura inexistente.');
 ---
 <Site title={entry.title} description={entry.description} subject={subject}>
-  <header class:list={['resource-header', { 'reading-header': entry.kind === 'apuntes' || entry.kind === 'resumen' }]}><a class="section-back" href={url(`/asignaturas/${subject.slug}/${sections[entry.kind]}/`)}>← {labels[entry.kind]}</a><h1>{entry.title}</h1><p class="scope"><strong>Alcance:</strong> {entry.scope}</p><div class="tags">{entry.tagIds.map(id => { const tag = catalog.byId.get(id); return tag?.kind === 'tag' && <a href={`${resourceUrl(subject, catalog)}?tag=${tag.slug}`}>{tag.title}</a>; })}</div></header>
+  <PageHeader title={entry.title} back={{ href: url(`/asignaturas/${subject.slug}/${sections[entry.kind]}/`), label: labels[entry.kind] }}>
+    <p class="scope meta"><strong>Alcance:</strong> {entry.scope}</p>
+    <div class="no-print"><TagList tagIds={entry.tagIds} catalog={catalog} linkTo={subject} /></div>
+  </PageHeader>
   <slot />
 </Site>
+<style>
+  .scope { max-width: var(--measure); margin-bottom: var(--space-3); }
+  .scope strong { color: var(--color-text); font-weight: var(--weight-medium); }
+</style>

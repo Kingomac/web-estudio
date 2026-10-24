@@ -1,0 +1,12 @@
+---
+// Header for every page: optional back link and eyebrow, h1, description and extra content in the slot.
+interface Props { title: string; eyebrow?: string; description?: string; back?: { href: string; label: string } }
+const { title, eyebrow, description, back } = Astro.props;
+---
+<header class="page-header">
+  {back && <a class="page-header-back no-print" href={back.href}>← {back.label}</a>}
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h1>{title}</h1>
+  {description && <p class="page-description">{description}</p>}
+  <slot />
+</header>

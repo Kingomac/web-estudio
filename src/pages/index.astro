@@ -1,5 +1,6 @@
 ---
 import Site from '../layouts/Site.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
 import SubjectRow from '../components/SubjectRow.astro';
 import { siteCatalog, resourceUrl } from '../lib/sitio.ts';
 import { isResource } from '../lib/catalogo.ts';
@@ -7,20 +8,23 @@ const catalog = await siteCatalog();
 const subjects = catalog.entries.filter(e => e.kind === 'asignatura');
 const resources = catalog.entries.filter(isResource);
 const bimesters = catalog.entries.filter(e => e.kind === 'bimestre');
+const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 ---
 <Site title="Materiales del máster">
-  <header class="page-header">
-    <p class="eyebrow">Máster en Internet de las Cosas</p>
-    <h1>Materiales del máster</h1>
-    <p class="page-summary">Curso 2026/27 <span aria-hidden="true">·</span> {subjects.length} {subjects.length === 1 ? 'asignatura' : 'asignaturas'} <span aria-hidden="true">·</span> {resources.length} recursos</p>
-  </header>
-  <div class="course-index">
-    {bimesters.map(b => {
-      const entries = subjects.filter(s => s.bimesterId === b.id);
-      return <section class:list={['bimester-section', { 'is-empty': entries.length === 0 }]} aria-labelledby={`heading-${b.id}`}>
-        <div class="section-heading"><h2 id={`heading-${b.id}`}><a href={resourceUrl(b, catalog)}>{b.title}</a></h2><span class="muted">{entries.length ? `${entries.length} ${entries.length === 1 ? 'asignatura' : 'asignaturas'}` : 'Sin materiales incorporados'}</span></div>
-        {entries.map(entry => <SubjectRow entry={entry} catalog={catalog} heading="h3" />)}
-      </section>;
-    })}
-  </div>
+  <PageHeader eyebrow="Máster en Internet de las Cosas" title="Materiales del máster" description={`Curso 2026/27 · ${count(subjects.length, 'asignatura', 'asignaturas')} · ${count(resources.length, 'recurso', 'recursos')}`} />
+  {bimesters.map(b => {
+    const entries = subjects.filter(s => s.bimesterId === b.id);
+    return <section class="section bimester" aria-labelledby={`heading-${b.id}`}>
+      <div class="bimester-heading"><h2 id={`heading-${b.id}`} class="section-title"><a href={resourceUrl(b, catalog)}>{b.title}</a></h2><span class="meta">{entries.length ? count(entries.length, 'asignatura', 'asignaturas') : 'Sin materiales incorporados'}</span></div>
+      {entries.length > 0 && <div class="subject-grid">{entries.map(entry => <SubjectRow entry={entry} catalog={catalog} heading="h3" />)}</div>}
+    </section>;
+  })}
 </Site>
+<style>
+  .bimester { margin-top: var(--space-6); }
+  .bimester-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-1) var(--space-4); padding-bottom: var(--space-3); margin-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .bimester-heading h2 { margin: 0; }
+  .bimester-heading a { color: inherit; text-decoration: none; }
+  .bimester-heading a:hover { color: var(--color-accent); text-decoration: underline; }
+  .subject-grid { display: grid; gap: var(--space-4); }
+</style>

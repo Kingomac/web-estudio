@@ -14,6 +14,7 @@ Estudiar el máster MUIoT 2026/27 con lecturas, tests y ejercicios generados por
 | --- | --- |
 | Astro estático | Plantillas y páginas derivadas del contenido sin servidor. HTML, CSS y JS sin compilar obligaría a mantener índices y navegación a mano. |
 | TypeScript estricto, JS vanilla en el navegador, CSS vanilla | Ningún framework de interfaz aporta valor aquí. Los componentes interactivos son Custom Elements. |
+| CSS por capas con tokens | Tokens, primitivas compartidas y estilos con ámbito por componente mantienen la coherencia sin un framework CSS ([guía de diseño](diseno.md)). Inter se sirve desde el propio sitio. |
 | Zod como única definición de contratos | Astro, la CLI y las pruebas validan lo mismo; los tipos se derivan de los esquemas. |
 | Bun para scripts y herramientas, versiones fijadas | Un solo motor y un solo bloqueo (`bun.lock`). |
 

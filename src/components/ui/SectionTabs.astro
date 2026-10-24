@@ -1,0 +1,12 @@
+---
+import { url } from '../../lib/sitio.ts';
+import { sections, labels } from '../../lib/rutas.ts';
+import type { Resource, Subject } from '../../schemas/content.ts';
+// Tabs for a subject's sections; `current` undefined means «Todos los recursos».
+interface Props { subject: Subject; current?: Resource['kind'] }
+const { subject, current } = Astro.props;
+---
+<nav class="tabs" aria-label="Tipos de recurso">
+  <a href={url(`/asignaturas/${subject.slug}/`)} aria-current={current ? undefined : 'page'}>Todos los recursos</a>
+  {Object.entries(sections).map(([kind, section]) => <a href={url(`/asignaturas/${subject.slug}/${section}/`)} aria-current={current === kind ? 'page' : undefined}>{labels[kind as keyof typeof labels]}</a>)}
+</nav>

@@ -1,13 +1,26 @@
 ---
 import type { Resource } from '../schemas/content.ts';
 import type { Catalog } from '../lib/catalogo.ts';
-import { labels } from '../lib/rutas.ts';
+import TagList from './ui/TagList.astro';
+import { kindLabels } from '../lib/rutas.ts';
 import { resourceUrl } from '../lib/sitio.ts';
 interface Props { entry: Resource; catalog: Catalog }
 const { entry, catalog } = Astro.props;
 ---
 <article class="resource-row" data-resource data-tags={entry.tagIds.map(t => { const tag = catalog.byId.get(t); return tag?.kind === 'tag' ? tag.slug : ''; }).join(' ')}>
-  <div class="resource-kind"><span>{labels[entry.kind]}</span>{'printIntent' in entry && entry.printIntent === 'paper' && <span class="muted">Imprimible</span>}</div>
-  <div class="resource-description"><h2><a href={resourceUrl(entry, catalog)}>{entry.title}</a></h2><p>{entry.description}</p></div>
-  <ul class="resource-topics" aria-label="Etiquetas">{entry.tagIds.map(id => { const tag = catalog.byId.get(id); return tag?.kind === 'tag' && <li>{tag.title}</li>; })}</ul>
+  <div class="kind"><span class="badge">{kindLabels[entry.kind]}</span>{'printIntent' in entry && entry.printIntent === 'paper' && <span class="badge badge--neutral">Imprimible</span>}</div>
+  <div class="body">
+    <h2><a href={resourceUrl(entry, catalog)}>{entry.title}</a></h2>
+    <p class="meta">{entry.description}</p>
+    <TagList tagIds={entry.tagIds} catalog={catalog} />
+  </div>
 </article>
+<style>
+  .resource-row { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: var(--space-2) var(--space-5); padding: var(--space-5) 0; }
+  .kind { display: flex; flex-wrap: wrap; align-content: start; gap: var(--space-1); padding-top: 3px; }
+  h2 { font-size: var(--text-lg); margin-bottom: var(--space-1); }
+  h2 a { color: var(--color-text); text-decoration: none; }
+  h2 a:hover { color: var(--color-accent); text-decoration: underline; }
+  .meta { margin-bottom: var(--space-3); max-width: var(--measure); }
+  @media (max-width: 620px) { .resource-row { grid-template-columns: minmax(0, 1fr); } }
+</style>

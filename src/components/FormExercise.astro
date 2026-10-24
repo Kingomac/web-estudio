@@ -10,14 +10,21 @@ const revision = createHash('sha256').update(JSON.stringify(entry)).digest('hex'
 ---
 <form-exercise data-id={entry.id} data-revision={revision} data-base={import.meta.env.BASE_URL}>
   <script type="application/json" data-payload set:html={jsonForHtml(entry)} />
-  <form class="exercise-form"><p class="lead">{entry.prompt}</p>
-    {entry.fields.map(field => <div class="exercise-field"><label for={`campo-${field.id}`}>{field.label}{field.type === 'number' && <span class="field-unit"> ({field.unit})</span>}</label>{field.type === 'select' ? <select id={`campo-${field.id}`} name={field.id} disabled><option value="">Selecciona una opción</option>{field.options.map(o => <option value={o.id}>{o.text}</option>)}</select> : <input id={`campo-${field.id}`} name={field.id} type="text" inputmode={field.type === 'number' ? 'decimal' : 'text'} autocomplete="off" disabled />}<p class="field-feedback" data-field-result={field.id} role="status"></p></div>)}
-    <div class="answer-actions"><button type="submit" class="button" disabled>Comprobar ejercicio</button><button type="button" class="button secondary" data-reset disabled>Reiniciar ejercicio</button></div>
-    <p role="status" data-result></p>
+  <form class="exercise-form panel"><p class="lead">{entry.prompt}</p>
+    {entry.fields.map(field => <div class="field"><label class="field-label" for={`campo-${field.id}`}>{field.label}{field.type === 'number' && <span class="field-hint"> ({field.unit})</span>}</label>{field.type === 'select' ? <select class="input" id={`campo-${field.id}`} name={field.id} disabled><option value="">Selecciona una opción</option>{field.options.map(o => <option value={o.id}>{o.text}</option>)}</select> : <input class="input" id={`campo-${field.id}`} name={field.id} type="text" inputmode={field.type === 'number' ? 'decimal' : 'text'} autocomplete="off" disabled />}<p class="status field-feedback" data-field-result={field.id} role="status"></p></div>)}
+    <div class="actions no-print"><button type="submit" class="button" disabled>Comprobar ejercicio</button><button type="button" class="button button--secondary" data-reset disabled>Reiniciar ejercicio</button></div>
+    <p class="status result" role="status" data-result></p>
     <div data-feedback class="feedback" hidden><p>{entry.explanation}</p><Sources references={entry.originalReferences} catalog={catalog} prominent /></div>
   </form>
   <noscript><p class="callout">Activa JavaScript para introducir y comprobar tus respuestas.</p></noscript>
 </form-exercise>
+<style>
+  form-exercise { display: block; }
+  .field-feedback { margin-top: var(--space-2); }
+  .result { margin-top: var(--space-4); }
+  .feedback { margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+  @media (max-width: 620px) { .exercise-form { padding: var(--space-4); } }
+</style>
 <script>
   import { gradeField } from '../domain/evaluacion.ts';
   import { storageFor } from '../client/almacenamiento.ts';
@@ -36,7 +43,8 @@ const revision = createHash('sha256').update(JSON.stringify(entry)).digest('hex'
         const answers = raw.answers as Record<string, unknown>;
         controls.forEach(input => { const value = answers[input.name]; if (typeof value === 'string') input.value = value; });
       }
-      const clear = () => { this.querySelector<HTMLElement>('[data-feedback]')!.hidden = true; this.querySelector('[data-result]')!.textContent = ''; this.querySelectorAll('[data-field-result]').forEach(el => { el.textContent = ''; }); };
+      const mark = (el: Element, text: string, correct?: boolean) => { el.textContent = text; el.classList.toggle('is-correct', correct === true); el.classList.toggle('is-incorrect', correct === false); };
+      const clear = () => { this.querySelector<HTMLElement>('[data-feedback]')!.hidden = true; mark(this.querySelector('[data-result]')!, ''); this.querySelectorAll('[data-field-result]').forEach(el => mark(el, '')); };
       const check = () => {
         let correct = true;
         entry.fields.forEach(field => {
@@ -44,9 +52,9 @@ const revision = createHash('sha256').update(JSON.stringify(entry)).digest('hex'
           const result = gradeField(field, input.value);
           correct &&= result.correct;
           const feedback = [...this.querySelectorAll<HTMLElement>('[data-field-result]')].find(el => el.dataset.fieldResult === field.id)!;
-          feedback.textContent = `${result.correct ? '✓ Correcto.' : 'Revisar.'} ${result.message}`;
+          mark(feedback, `${result.correct ? '✓ Correcto.' : 'Revisar.'} ${result.message}`, result.correct);
         });
-        this.querySelector('[data-result]')!.textContent = correct ? '✓ Ejercicio correcto' : 'Revisa los campos indicados y vuelve a intentarlo.';
+        mark(this.querySelector('[data-result]')!, correct ? '✓ Ejercicio correcto' : 'Revisa los campos indicados y vuelve a intentarlo.', correct);
         this.querySelector<HTMLElement>('[data-feedback]')!.hidden = false;
       };
       const save = (checked: boolean) => store.write({ answers: Object.fromEntries(controls.map(c => [c.name, c.value])), checked });

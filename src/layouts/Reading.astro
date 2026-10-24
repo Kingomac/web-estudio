@@ -8,18 +8,48 @@ interface Props { entry: Reading; catalog: Catalog }
 const { entry, catalog } = Astro.props;
 const { html, headings } = readingHtml(await Astro.slots.render('default'));
 ---
-<div class="reading-toolbar"><span class="muted">{entry.printIntent === 'paper' ? 'Lectura imprimible' : 'Lectura para pantalla'}</span><button class="button secondary print-button" type="button">Imprimir lectura</button></div>
+<div class="reading-toolbar no-print"><span class="meta">{entry.printIntent === 'paper' ? 'Lectura revisada para papel' : 'Lectura para pantalla'}</span><button class="button button--secondary button--small print-button" type="button">Imprimir lectura</button></div>
 <div class:list={['reading-grid', { 'paper-reading': entry.printIntent === 'paper' }]}>
-  <aside class="toc"><details open><summary>Contenido</summary><nav aria-label="Índice de la lectura"><ol>{headings.map(h => <li class:list={{ subheading: h.level === 3 }}><a href={`#${h.id}`}>{h.title}</a></li>)}</ol></nav></details></aside>
+  <aside class="toc no-print"><details open><summary class="eyebrow">Contenido</summary><nav aria-label="Índice de la lectura"><ol>{headings.map(h => <li class:list={{ subheading: h.level === 3 }}><a href={`#${h.id}`}>{h.title}</a></li>)}</ol></nav></details></aside>
   <article class="prose"><Fragment set:html={html} /></article>
 </div>
 <Sources references={entry.sources} catalog={catalog} />
 <Relations resource={entry} catalog={catalog} />
-<button class="button mobile-toc-toggle" type="button" data-open-toc hidden>Contenido ↑</button>
-<dialog class="mobile-toc-dialog" aria-labelledby="indice-movil">
-  <div class="dialog-header"><h2 id="indice-movil">Contenido</h2><button type="button" class="button secondary" data-close-toc>Cerrar</button></div>
+<button class="button mobile-toc-toggle no-print" type="button" data-open-toc hidden>Contenido ↑</button>
+<dialog class="mobile-toc-dialog no-print" aria-labelledby="indice-movil">
+  <div class="dialog-header"><h2 id="indice-movil">Contenido</h2><button type="button" class="button button--secondary button--small" data-close-toc>Cerrar</button></div>
   <nav aria-label="Índice móvil de la lectura"><ol>{headings.map(h => <li class:list={{ subheading: h.level === 3 }}><a href={`#${h.id}`}>{h.title}</a></li>)}</ol></nav>
 </dialog>
+<style>
+  .reading-toolbar { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; margin-bottom: var(--space-6); border-block: 1px solid var(--color-border); }
+  .reading-grid { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: var(--space-7); }
+  .toc { position: sticky; top: var(--space-5); align-self: start; max-height: calc(100vh - 2 * var(--space-5)); overflow: auto; }
+  .toc summary { list-style: none; margin-bottom: var(--space-3); }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc ol, .mobile-toc-dialog ol { margin: 0; padding: 0; list-style: none; }
+  .toc ol { border-left: 1px solid var(--color-border); }
+  .toc li { line-height: 1.4; }
+  .toc a { display: block; margin-left: -1px; padding: 6px var(--space-3); border-left: 2px solid transparent; color: var(--color-text-muted); font-size: var(--text-sm); text-decoration: none; }
+  .toc a:hover { border-left-color: var(--color-accent); color: var(--color-accent); }
+  .toc .subheading a { padding-left: var(--space-5); font-size: var(--text-xs); }
+  .mobile-toc-toggle:not([hidden]) { display: none; }
+  .mobile-toc-dialog { width: min(360px, 90vw); height: 100dvh; max-height: 100dvh; margin: 0 0 0 auto; padding: var(--space-5); border: 0; border-left: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); }
+  .mobile-toc-dialog::backdrop { background: var(--color-backdrop); }
+  .dialog-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-5); }
+  .dialog-header h2 { margin: 0; font-size: var(--text-lg); }
+  .mobile-toc-dialog li { margin: var(--space-3) 0; }
+  .mobile-toc-dialog .subheading { padding-left: var(--space-4); }
+  .mobile-toc-dialog a { color: var(--color-text); text-decoration: none; }
+  @media (max-width: 1150px) { .reading-grid { grid-template-columns: 11rem minmax(0, 1fr); gap: var(--space-6); } }
+  @media (max-width: 900px) {
+    .reading-grid { display: flex; flex-direction: column; gap: var(--space-5); }
+    .toc { position: static; max-height: none; border-block: 1px solid var(--color-border); }
+    .toc summary { margin: 0; padding: var(--space-3) 0; list-style: revert; }
+    .toc ol { margin-bottom: var(--space-3); }
+    .mobile-toc-toggle:not([hidden]) { display: inline-flex; position: fixed; right: var(--space-4); bottom: var(--space-4); z-index: 10; box-shadow: var(--shadow-raised); }
+  }
+  @media print { .reading-grid { display: block; } }
+</style>
 <script>
   document.querySelectorAll('.print-button').forEach(button => button.addEventListener('click', () => window.print()));
   let closed: HTMLDetailsElement[] = [];

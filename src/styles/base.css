@@ -1,0 +1,46 @@
+/* Element defaults. No classes here except accessibility helpers. */
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: var(--leading);
+    color: var(--color-text);
+    background: var(--color-bg);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  [hidden] { display: none !important; }
+
+  h1, h2, h3, h4, p, ul, ol, dl, figure { margin-top: 0; }
+  h1, h2, h3, h4 { line-height: var(--leading-tight); font-weight: var(--weight-semibold); text-wrap: balance; overflow-wrap: anywhere; }
+  h1 { font-size: var(--text-2xl); letter-spacing: -.02em; margin-bottom: var(--space-3); }
+  h2 { font-size: var(--text-xl); letter-spacing: -.01em; margin-bottom: var(--space-4); }
+  h3 { font-size: var(--text-lg); margin-bottom: var(--space-3); }
+  h4 { font-size: var(--text-md); margin-bottom: var(--space-2); }
+  strong { font-weight: var(--weight-semibold); }
+
+  a { color: var(--color-accent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+  a:hover { color: var(--color-accent-hover); }
+  :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; border-radius: 2px; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button, summary { cursor: pointer; }
+  button:disabled { cursor: default; }
+  button, a, input, select, summary { -webkit-tap-highlight-color: transparent; }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  legend { padding: 0; }
+
+  code { font-family: var(--font-mono); font-size: .9em; overflow-wrap: anywhere; }
+  pre { overflow-x: auto; background: var(--color-surface-muted); border-radius: var(--radius-sm); padding: var(--space-4) var(--space-5); line-height: var(--leading); }
+  pre code { overflow-wrap: normal; font-size: var(--text-sm); }
+
+  .skip-link { position: fixed; top: -100px; left: var(--space-4); z-index: 100; background: var(--color-accent); color: var(--color-on-accent); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); }
+  .skip-link:focus { top: var(--space-4); }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+  }
+}

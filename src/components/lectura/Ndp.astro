@@ -7,13 +7,43 @@ const steps = [
   { title: 'Recordar', code: 'CACHÉ', text: 'El solicitante guarda la correspondencia IPv6–MAC para poder utilizarla.' },
 ];
 ---
-<ndp-explorer class="ndp-visual" data-component="protocolos.ndp">
-  <div class="visual-header"><span class="eyebrow">DEL PAQUETE AL ENLACE</span><span>Resolución NDP</span></div>
+<ndp-explorer class="ndp-visual panel panel--muted" data-component="protocolos.ndp">
+  <div class="visual-header"><span class="eyebrow">Del paquete al enlace</span><span class="meta">Resolución NDP</span></div>
   <div class="ndp-diagram" aria-hidden="true"><div class="node"><span>01</span><strong>Solicitante</strong><small>Conoce la IPv6</small></div><div class="connection"><span data-message>NS →</span><div></div></div><div class="node"><span>02</span><strong>Vecino</strong><small>Devuelve su MAC</small></div></div>
   <ol class="ndp-steps">{steps.map((step, i) => <li data-step={i}><span class="step-number">0{i + 1}</span><div><strong>{step.title} <code>{step.code}</code></strong><p>{step.text}</p></div></li>)}</ol>
-  <div class="visual-controls" hidden><button type="button" class="button secondary" data-previous aria-label="Paso anterior">← Anterior</button><p id={`${id}-status`} role="status" data-status>Paso 1 de 3</p><button type="button" class="button" data-next aria-label="Paso siguiente">Siguiente →</button><button type="button" class="text-button" data-reset>Reiniciar</button></div>
-  <p class="visual-caption">Escenario: el vecino responde y la caché no contiene una entrada previa. Fuente: Tema 3, página 39.</p>
+  <div class="visual-controls actions no-print" hidden><button type="button" class="button button--secondary button--small" data-previous aria-label="Paso anterior">← Anterior</button><button type="button" class="button button--small" data-next aria-label="Paso siguiente">Siguiente →</button><button type="button" class="button button--ghost button--small" data-reset>Reiniciar</button><p class="meta" id={`${id}-status`} role="status" data-status>Paso 1 de 3</p></div>
+  <p class="visual-caption meta">Escenario: el vecino responde y la caché no contiene una entrada previa. Fuente: Tema 3, página 39.</p>
 </ndp-explorer>
+<style>
+  .ndp-visual { display: block; margin: var(--space-6) 0; font-size: var(--text-md); line-height: var(--leading); }
+  .visual-header { display: flex; justify-content: space-between; gap: var(--space-3); }
+  .visual-header .eyebrow { margin: 0; }
+  .ndp-diagram { display: flex; justify-content: center; align-items: center; gap: var(--space-4); margin: var(--space-5) 0; }
+  .node { display: grid; gap: var(--space-1); min-width: 8rem; padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+  .node > span, .node small { font-size: var(--text-xs); color: var(--color-text-muted); }
+  .node strong { font-size: var(--text-sm); }
+  .connection { flex: 1; max-width: 10rem; text-align: center; }
+  .connection > span { font: var(--weight-semibold) var(--text-sm) var(--font-mono); color: var(--color-accent); }
+  .connection > div { height: 2px; margin-top: var(--space-2); background: var(--color-accent); }
+  .ndp-steps { margin: 0; padding: 0; list-style: none; }
+  .ndp-steps li { display: flex; align-items: start; gap: var(--space-3); padding: var(--space-3); border-top: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: background-color var(--duration); }
+  .ndp-steps li.is-current { background: var(--color-surface); border-top-color: transparent; box-shadow: inset 3px 0 0 var(--color-accent); }
+  .step-number { padding-top: 2px; font-size: var(--text-xs); font-weight: var(--weight-semibold); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+  .ndp-steps strong { font-size: var(--text-sm); }
+  .ndp-steps code { margin-left: var(--space-1); font-size: var(--text-xs); color: var(--color-accent); }
+  .ndp-steps p { margin: var(--space-1) 0 0; font-size: var(--text-sm); }
+  .visual-controls { margin-top: var(--space-4); }
+  .visual-controls p { margin: 0 0 0 auto; }
+  .visual-caption { margin: var(--space-4) 0 0; font-size: var(--text-xs); }
+  @media (max-width: 620px) {
+    .ndp-visual { padding: var(--space-4); }
+    .ndp-diagram { gap: var(--space-2); }
+    .node { min-width: 0; padding: var(--space-2); }
+    .visual-header .meta { display: none; }
+    .ndp-steps li { padding-inline: var(--space-1); }
+  }
+  @media print { .ndp-diagram { display: none; } .ndp-steps li { break-inside: avoid; } .ndp-steps li.is-current { box-shadow: none; border-top-color: var(--color-border); } }
+</style>
 <script>
   class NdpExplorer extends HTMLElement {
     connectedCallback() {
@@ -22,7 +52,7 @@ const steps = [
       const previous = this.querySelector<HTMLButtonElement>('[data-previous]')!;
       const next = this.querySelector<HTMLButtonElement>('[data-next]')!;
       const update = () => {
-        this.querySelectorAll<HTMLElement>('[data-step]').forEach((el, i) => { el.classList.toggle('current', i === step); });
+        this.querySelectorAll<HTMLElement>('[data-step]').forEach((el, i) => { el.classList.toggle('is-current', i === step); });
         this.querySelector('[data-status]')!.textContent = `Paso ${step + 1} de 3`;
         this.querySelector('[data-message]')!.textContent = ['NS →', '← NA', 'IPv6 ↔ MAC'][step];
         previous.disabled = step === 0; next.disabled = step === 2;

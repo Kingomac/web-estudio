@@ -2,7 +2,20 @@
 import type { SourceReference } from '../schemas/content.ts';
 import type { Catalog } from '../lib/catalogo.ts';
 import { sourceUrl } from '../lib/sitio.ts';
+// `prominent`: inside a correction, as a call to review the original.
 interface Props { references: SourceReference[]; catalog: Catalog; prominent?: boolean }
 const { references, catalog, prominent = false } = Astro.props;
 ---
-{references.length > 0 && <div class:list={['sources', { prominent }]}><p class="eyebrow">{prominent ? 'REVISAR EN LOS APUNTES ORIGINALES' : 'FUENTES ORIGINALES'}</p><ul>{references.map(ref => { const material = catalog.byId.get(ref.materialId); return <li><a href={sourceUrl(ref, catalog)} target="_blank" rel="noopener">{material?.kind === 'material' ? material.title : ref.materialId} · {ref.pdfPages.length === 1 ? 'pág.' : 'págs.'} {ref.pdfPages.join(', ')} <span class="external-note">(nueva pestaña)</span></a>{ref.label && <span> · {ref.label}</span>}</li>; })}</ul></div>}
+{references.length > 0 && <div class:list={['sources', { callout: prominent, section: !prominent }]}>
+  <p class="eyebrow">{prominent ? 'Revisar en los apuntes originales' : 'Fuentes originales'}</p>
+  <ul>{references.map(ref => { const material = catalog.byId.get(ref.materialId); return <li><a href={sourceUrl(ref, catalog)} target="_blank" rel="noopener">{material?.kind === 'material' ? material.title : ref.materialId} · {ref.pdfPages.length === 1 ? 'pág.' : 'págs.'} {ref.pdfPages.join(', ')} <span class="new-tab">(nueva pestaña)</span></a>{ref.label && <span class="meta"> · {ref.label}</span>}</li>; })}</ul>
+</div>}
+<style>
+  .sources.section { padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+  .sources.callout { margin: var(--space-4) 0 0; }
+  ul { margin: 0; padding-left: var(--space-5); }
+  li { font-size: var(--text-sm); }
+  li + li { margin-top: var(--space-1); }
+  .new-tab { font-size: var(--text-xs); color: var(--color-text-muted); }
+  @media print { .sources { break-inside: avoid; } .new-tab { display: none; } }
+</style>

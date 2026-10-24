@@ -3,9 +3,23 @@ import type { Resource } from '../schemas/content.ts';
 import type { Catalog } from '../lib/catalogo.ts';
 import { impact, isResource } from '../lib/catalogo.ts';
 import { resourceUrl } from '../lib/sitio.ts';
+import { kindLabels } from '../lib/rutas.ts';
 interface Props { resource: Resource; catalog: Catalog }
 const { resource, catalog } = Astro.props;
 const incoming = impact(catalog, resource.id).map(item => ({ ...item, entry: catalog.byId.get(item.id) })).filter(item => item.entry && isResource(item.entry));
 const outgoing = [...new Set([...resource.relatedResourceIds, ...resource.readingReferences.map(r => r.resourceId)])].map(id => catalog.byId.get(id)).filter((e): e is Resource => !!e && isResource(e));
 ---
-{(outgoing.length > 0 || incoming.length > 0) && <aside class="relations"><h2>Recursos relacionados</h2><div class="relations-columns">{outgoing.length > 0 && <div><h3>Lecturas y recursos de apoyo</h3><ul>{outgoing.map(e => <li><a href={resourceUrl(e, catalog)}>{e.title}</a></li>)}</ul></div>}{incoming.length > 0 && <div><h3>Utilizado en</h3><ul>{incoming.map(({ entry, depth }) => entry && isResource(entry) && <li><a href={resourceUrl(entry, catalog)}>{entry.title}</a>{depth > 1 && <small>{entry.kind === 'test' ? 'Contiene preguntas vinculadas a este recurso.' : 'Relación indirecta.'}</small>}</li>)}</ul></div>}</div></aside>}
+{(outgoing.length > 0 || incoming.length > 0) && <aside class="relations section no-print">
+  <h2 class="section-title">Recursos relacionados</h2>
+  <div class="columns">
+    {outgoing.length > 0 && <div><h3 class="eyebrow">Lecturas y recursos de apoyo</h3><ul>{outgoing.map(e => <li><span class="badge badge--neutral">{kindLabels[e.kind]}</span><a href={resourceUrl(e, catalog)}>{e.title}</a></li>)}</ul></div>}
+    {incoming.length > 0 && <div><h3 class="eyebrow">Utilizado en</h3><ul>{incoming.map(({ entry, depth }) => entry && isResource(entry) && <li><span class="badge badge--neutral">{kindLabels[entry.kind]}</span><a href={resourceUrl(entry, catalog)}>{entry.title}</a>{depth > 1 && <small class="meta">{entry.kind === 'test' ? 'Contiene preguntas vinculadas a este recurso.' : 'Relación indirecta.'}</small>}</li>)}</ul></div>}
+  </div>
+</aside>}
+<style>
+  .relations { padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+  .columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-5); }
+  ul { margin: 0; padding: 0; list-style: none; }
+  li { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-2); padding: var(--space-2) 0; font-size: var(--text-sm); }
+  small { flex-basis: 100%; font-size: var(--text-xs); }
+</style>

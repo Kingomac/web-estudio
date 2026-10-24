@@ -1,0 +1,64 @@
+/* Design tokens: the only place with literal colours, sizes and fonts. See docs/diseno.md. */
+@layer tokens {
+  :root {
+    /* Colour: neutral surfaces, one accent and two result states. */
+    --color-bg: #f6f7f4;
+    --color-surface: #ffffff;
+    --color-surface-muted: #eef1ec;
+    --color-border: #dde2da;
+    --color-border-strong: #c3cbbf;
+    --color-border-input: #8a9586; /* 3:1 against white, required for field outlines */
+    --color-text: #1c2925;
+    --color-text-muted: #56635d;
+    --color-accent: #1f5f4b;
+    --color-accent-hover: #164837;
+    --color-accent-soft: #e2eee8;
+    --color-on-accent: #ffffff;
+    --color-focus: #2f8a69;
+    --color-success: #23704a;
+    --color-success-soft: #e3f2e9;
+    --color-danger: #a8392a;
+    --color-danger-soft: #fbe9e5;
+    --color-backdrop: rgb(20 39 30 / .4);
+
+    /* Typography. */
+    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Consolas, monospace;
+    --text-xs: .8125rem;   /* 13px: minimum size, labels and metadata */
+    --text-sm: .875rem;    /* 14px: secondary text, navigation */
+    --text-md: 1rem;       /* 16px: interface text */
+    --text-prose: 1.0625rem; /* 17px: readings and statements */
+    --text-lg: 1.1875rem;  /* 19px: card titles */
+    --text-xl: 1.5rem;     /* 24px: h2 */
+    --text-2xl: 2.125rem;  /* 34px: h1 */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --leading-tight: 1.25;
+    --leading: 1.55;
+    --leading-prose: 1.7;
+
+    /* Spacing on a 4px base. */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+
+    /* Shape and layout. */
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-pill: 999px;
+    --shadow: 0 1px 2px rgb(28 41 37 / .05);
+    --shadow-raised: 0 4px 14px rgb(28 41 37 / .16);
+    --sidebar-width: 264px;
+    --content-width: 1080px;
+    --measure: 70ch;
+    --duration: 120ms;
+  }
+  @media (max-width: 1150px) { :root { --sidebar-width: 232px; } }
+  @media (max-width: 620px) { :root { --text-2xl: 1.75rem; --text-xl: 1.3125rem; } }
+}

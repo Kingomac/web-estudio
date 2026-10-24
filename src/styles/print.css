@@ -1,23 +1,28 @@
+/* Print: A4, no navigation or controls. Hide an element with .no-print; component tweaks live in the component. */
 @page { size: A4; margin: 18mm; }
-@media print {
-  :root { color: #000 !important; background: #fff !important; font-size: 11pt !important; }
-  body { margin: 0 !important; background: #fff !important; color: #000 !important; }
-  .sidebar, .context-bar, .site-footer, .breadcrumbs, .guide-link, .section-back, .reading-toolbar, .toc, .skip-link, .visual-controls, .relations, .resource-header .tags, .mobile-toc-dialog, .mobile-toc-toggle:not([hidden]) { display: none !important; }
-  html body .mobile-toc-toggle:not([hidden]) { display: none !important; }
-  .site-main { display: block !important; min-height: 0 !important; margin: 0 !important; } main { padding: 0 !important; max-width: none !important; min-height: 0 !important; }
-  .resource-header { margin: 0 0 20pt !important; }.resource-header h1 { font-size: 25pt !important; }.resource-header .scope { border-color: #777 !important; }
-  .reading-grid { display: block !important; }.prose { max-width: none !important; font-size: 11pt !important; line-height: 1.55 !important; }
-  h2, h3, h4 { break-after: avoid; }h2 { font-size: 18pt !important; }h3 { font-size: 13pt !important; }
-  .prose h2 { margin: 16pt 0 8pt !important; }.prose h3 { margin: 12pt 0 6pt !important; }
-  .prose p { margin-bottom: 8pt; }.prose ul, .prose ol { margin-block: 8pt; }
-  .paper-reading .prose { line-height: 1.4 !important; }
-  .paper-reading .prose h2 { font-size: 16pt !important; margin: 12pt 0 6pt !important; }
-  .paper-reading + .sources { margin-top: 8pt !important; padding: 6pt !important; }
-  p, li { orphans: 3; widows: 3; }
-  pre { white-space: pre-wrap !important; overflow: visible !important; background: #fff !important; padding: 8pt !important; margin-block: 10pt !important; }pre code, code { overflow-wrap: anywhere !important; }
-  .table-scroll { overflow: visible !important; }table { margin-block: 10pt !important; }thead { display: table-header-group; }tr { break-inside: avoid; }th, td { color: #000 !important; background: #fff !important; font-size: 9pt !important; padding: 6pt 8pt !important; }
-  .ndp-visual, .sources, .callout { color: #000 !important; background: #fff !important; border-color: #999 !important; }
-  .ndp-diagram { display: none !important; }.ndp-steps li { background: #fff !important; break-inside: avoid; }.ndp-steps p { font-size: 10pt !important; }
-  .sources { padding: 8pt !important; margin-top: 12pt !important; break-inside: avoid; }.sources li { font-size: 9pt !important; }a { color: #000 !important; }
-  * { box-shadow: none !important; text-shadow: none !important; }
+@layer print {
+  @media print {
+    .no-print { display: none !important; }
+    :root { --color-bg: #fff; --color-surface: #fff; --color-surface-muted: #fff; --color-accent-soft: #fff; --color-text: #000; --color-text-muted: #333; --color-accent: #000; --color-border: #999; --color-border-strong: #777; --shadow: none; font-size: 11pt; }
+    .site-main { display: block; min-height: 0; margin: 0; }
+    main { padding: 0; max-width: none; }
+    .page-header { margin-bottom: 16pt; }
+    .page-header h1 { font-size: 24pt; }
+    .prose { max-width: none; font-size: 11pt; line-height: 1.55; }
+    .prose h2 { font-size: 16pt; margin: 16pt 0 8pt; }
+    .prose h3 { font-size: 13pt; margin: 12pt 0 6pt; }
+    .prose p, .prose ul, .prose ol { margin-bottom: 8pt; }
+    h2, h3, h4 { break-after: avoid; }
+    p, li { orphans: 3; widows: 3; }
+    pre { white-space: pre-wrap; overflow: visible; border: 1px solid var(--color-border); padding: 8pt; margin-block: 10pt; }
+    pre code, code { overflow-wrap: anywhere; }
+    .table-scroll { overflow: visible; }
+    thead { display: table-header-group; }
+    tr, .callout, .panel { break-inside: avoid; }
+    th, td { font-size: 9pt; padding: 5pt 7pt; }
+    .callout { border: 1px solid var(--color-border); border-left-width: 3px; }
+    a { color: var(--color-text); text-decoration: none; }
+    .paper-reading .prose { line-height: 1.4; }
+    .paper-reading .prose h2 { font-size: 15pt; margin: 12pt 0 6pt; }
+  }
 }
