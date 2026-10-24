@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.ejercicios.campos-frecuentes",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "campos-frecuentes",
+  "title": "Campos frecuentes",
+  "description": "Traffic Class=0, Flow Label=0 y Hop Limit=64.",
+  "scope": "Procedimiento de la página 21 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 120,
+  "mode": "form",
+  "prompt": "Traffic Class=0, Flow Label=0 y Hop Limit=64. La siguiente cabecera se comprime mediante LOWPAN_NHC. Indica los bits TF, NH y HLIM.",
+  "explanation": "TF=11 porque TC y FL son cero; NH=1 activa NHC; HLIM=10 codifica 64. No se envían bytes adicionales para esos campos.",
+  "hint": "TF=11 omite ambos campos nulos. Los valores HLIM se muestran en la p. 21.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "tf-2-bits",
+      "label": "TF, 2 bits",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "TC y FL valen cero: TF=11 los suprime."
+    },
+    {
+      "id": "nh-1-bit",
+      "label": "NH, 1 bit",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "NH=1 indica que la siguiente cabecera va comprimida con LOWPAN_NHC."
+    },
+    {
+      "id": "hlim-2-bits",
+      "label": "HLIM, 2 bits",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "Hop Limit 64 se codifica con HLIM=10, sin byte en línea."
+    }
+  ]
+}

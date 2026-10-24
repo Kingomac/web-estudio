@@ -1,0 +1,84 @@
+{
+  "id": "protocolos.ejercicios.cid-0-tambien-permite-contexto",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "cid-0-tambien-permite-contexto",
+  "title": "CID=0 también permite contexto",
+  "description": "Taller de cabeceras · Descomprimir IPHC: bits de control, contexto y campos en línea.",
+  "scope": "Taller complementario, bloque 05 (Descomprimir IPHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 227,
+  "mode": "form",
+  "prompt": "IPHC=7e 77. Contexto 0 = 2001:db8:44::/64. Enlace directo con origen corto 0x1001 y destino corto 0x1002. El contexto está compartido.",
+  "explanation": "77 = 0|1|11|0|1|11. Si falta contexto, no inventes fe80:: como sustituto.",
+  "hint": "Separa la decisión de usar estado (SAC/DAC) de la de transmitir identificadores (CID).",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "sac",
+      "label": "SAC",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "El origen usa compresión con estado."
+    },
+    {
+      "id": "dac",
+      "label": "DAC",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "El destino usa compresión con estado."
+    },
+    {
+      "id": "identificador-de-contexto-usado",
+      "label": "Identificador de contexto usado",
+      "type": "format",
+      "format": "integer",
+      "answer": "0",
+      "explanation": "CID=0 omite el byte de identificadores, no el contexto 0."
+    },
+    {
+      "id": "origen-ipv6",
+      "label": "Origen IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:44::ff:fe00:1001",
+      "explanation": "Contexto 0 y dirección corta origen."
+    },
+    {
+      "id": "destino-ipv6",
+      "label": "Destino IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:44::ff:fe00:1002",
+      "explanation": "Contexto 0 y dirección corta destino."
+    },
+    {
+      "id": "puede-reconstruirse-el-prefijo-sin-conocer",
+      "label": "¿Puede reconstruirse el prefijo sin conocer el contexto 0?",
+      "type": "select",
+      "options": [
+        {
+          "id": "si",
+          "text": "sí"
+        },
+        {
+          "id": "no",
+          "text": "no"
+        }
+      ],
+      "answer": "no",
+      "explanation": "Los bytes por sí solos no contienen ese prefijo."
+    }
+  ],
+  "dump": "7e 77"
+}

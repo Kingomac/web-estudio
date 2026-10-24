@@ -1,0 +1,43 @@
+{
+  "id": "protocolos.ejercicios.espacio-para-la-aplicacion",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "espacio-para-la-aplicacion",
+  "title": "Espacio para la aplicación",
+  "description": "Usa exactamente el ejemplo del profesor: trama 127 bytes, cabecera MAC 23, seguridad 21 y FCS 2.",
+  "scope": "Procedimiento de la página 15 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 140,
+  "mode": "form",
+  "prompt": "Usa exactamente el ejemplo del profesor: trama 127 bytes, cabecera MAC 23, seguridad 21 y FCS 2. Después descuenta IPv6 (40) y UDP (8), sin comprimir.",
+  "explanation": "127−23−21−2=81 bytes. Después, 81−40−8=33 bytes. Son los tamaños del ejemplo, no un valor fijo de toda trama.",
+  "hint": "Primero calcula carga MAC; después resta las dos cabeceras IP y UDP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "carga-mac-disponible-bytes",
+      "label": "Carga MAC disponible, bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "81",
+      "explanation": "127 − 23 (MAC) − 21 (seguridad) − 2 (FCS) = 81 bytes de carga MAC."
+    },
+    {
+      "id": "datos-de-aplicacion-bytes",
+      "label": "Datos de aplicación, bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "33",
+      "explanation": "81 − 40 (IPv6) − 8 (UDP) = 33 bytes para la aplicación."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.ejercicios.solo-un-puerto-comprimible",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "solo-un-puerto-comprimible",
+  "title": "Solo un puerto comprimible",
+  "description": "Origen 0x1234 y destino 0xf012.",
+  "scope": "Procedimiento de la página 27 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 142,
+  "mode": "form",
+  "prompt": "Origen 0x1234 y destino 0xf012. Aplica la tabla NHC UDP para comprimir solo el destino. Conserva checksum de 2 bytes y cuenta 1 byte de NHC.",
+  "explanation": "P=01: origen completo de 16 bits y destino de 8 bits. Son 24 bits=3 bytes. Total: 1+3+2=6 bytes.",
+  "hint": "El destino pertenece a 0xf000-0xf0ff; el origen no está en un rango comprimible.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "p-2-bits",
+      "label": "P, 2 bits",
+      "type": "format",
+      "format": "bits",
+      "answer": "01",
+      "explanation": "El destino 0xf012 está en 0xf000–0xf0ff y el origen no: P=01."
+    },
+    {
+      "id": "bits-de-puertos-en-total",
+      "label": "Bits de puertos en total",
+      "type": "format",
+      "format": "integer",
+      "answer": "24",
+      "explanation": "16 bits del origen completo + 8 del destino = 24 bits."
+    },
+    {
+      "id": "total-nhc-udp-bytes",
+      "label": "Total NHC UDP, bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "6",
+      "explanation": "1 byte NHC + 3 de puertos + 2 de checksum = 6 bytes."
+    }
+  ]
+}

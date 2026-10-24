@@ -1,0 +1,35 @@
+{
+  "id": "protocolos.ejercicios.agregar-cuatro-subredes",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "agregar-cuatro-subredes",
+  "title": "Agregar cuatro subredes",
+  "description": "Las rutas 2000::/64, 2000:0:0:1::/64, 2000:0:0:2::/64 y 2000:0:0:3::/64 comparten siguiente salto.",
+  "scope": "Procedimiento de la página 26 del Tema 3.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 105,
+  "mode": "form",
+  "prompt": "Las rutas 2000::/64, 2000:0:0:1::/64, 2000:0:0:2::/64 y 2000:0:0:3::/64 comparten siguiente salto. Indica el prefijo agregado exacto.",
+  "explanation": "Los dos últimos bits del ID de subred varían de 00 a 11. El bloque alineado se resume en 2000::/62.",
+  "hint": "Cuatro subredes requieren dos bits variables: resta 2 a la longitud /64.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "prefijo-agregado-con-longitud",
+      "label": "Prefijo agregado, con /longitud",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2000::/62",
+      "explanation": "Las cuatro /64 varían en los dos últimos bits del ID de subred (00 a 11) y forman un bloque alineado: 64 − 2 = /62."
+    }
+  ]
+}

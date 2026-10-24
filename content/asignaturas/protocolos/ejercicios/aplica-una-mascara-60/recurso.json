@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.ejercicios.aplica-una-mascara-60",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "aplica-una-mascara-60",
+  "title": "Aplica una máscara /60",
+  "description": "Taller de cabeceras · Pensar en bits de red: repartos, límites no alineados y rutas.",
+  "scope": "Taller complementario, bloque 02 (Pensar en bits de red). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 207,
+  "mode": "form",
+  "prompt": "Dirección: 2001:db8:1234:abcf::9/60. Calcula el bloque al que pertenece.",
+  "explanation": "Los primeros 15 dígitos hexadecimales de la dirección son la red. Las /64 van desde abc0 hasta abcf.",
+  "hint": "Un dígito hexadecimal equivale a cuatro bits.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · prefijos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "prefijo-de-red-60",
+      "label": "Prefijo de red /60",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2001:db8:1234:abc0::/60",
+      "explanation": "Conserva abc y pone a cero los cuatro bits restantes del cuarto hexteto."
+    },
+    {
+      "id": "numero-de-64-en-ese-60",
+      "label": "Número de /64 en ese /60",
+      "type": "format",
+      "format": "integer",
+      "answer": "16",
+      "explanation": "64 − 60 = 4 bits."
+    },
+    {
+      "id": "ultima-64-del-bloque",
+      "label": "Última /64 del bloque",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2001:db8:1234:abcf::/64",
+      "explanation": "El nibble de subred llega a f."
+    }
+  ]
+}

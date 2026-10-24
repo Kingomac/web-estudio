@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.ejercicios.reparte-un-48-en-enlaces-64",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "reparte-un-48-en-enlaces-64",
+  "title": "Reparte un /48 en enlaces /64",
+  "description": "Taller de cabeceras · Pensar en bits de red: repartos, límites no alineados y rutas.",
+  "scope": "Taller complementario, bloque 02 (Pensar en bits de red). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 205,
+  "mode": "form",
+  "prompt": "Dispones de 2001:db8:5a00::/48. Numera las subredes /64 desde cero.",
+  "explanation": "El cuarto hexteto es el identificador de subred de 16 bits. No restes dos subredes por una regla heredada de IPv4.",
+  "hint": "En un /48 están fijados los tres primeros hextetos.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · prefijos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "numero-de-subredes-64",
+      "label": "Número de subredes /64",
+      "type": "format",
+      "format": "integer",
+      "answer": "65536",
+      "explanation": "Quedan 64 − 48 = 16 bits: 2^16."
+    },
+    {
+      "id": "subred-de-indice-decimal-42",
+      "label": "Subred de índice decimal 42",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2001:db8:5a00:2a::/64",
+      "explanation": "42 decimal = 002a hexadecimal en el cuarto hexteto."
+    },
+    {
+      "id": "ultima-subred-64",
+      "label": "Última subred /64",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2001:db8:5a00:ffff::/64",
+      "explanation": "Todos los bits del identificador de subred valen uno."
+    }
+  ]
+}

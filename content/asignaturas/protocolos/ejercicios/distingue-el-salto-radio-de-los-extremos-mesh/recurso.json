@@ -1,0 +1,92 @@
+{
+  "id": "protocolos.ejercicios.distingue-el-salto-radio-de-los-extremos-mesh",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "distingue-el-salto-radio-de-los-extremos-mesh",
+  "title": "Distingue el salto radio de los extremos Mesh",
+  "description": "Taller de cabeceras · Seguir el paquete por la malla: mesh, fragmentos y reenvío ipv6.",
+  "scope": "Taller complementario, bloque 07 (Seguir el paquete por la malla). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 232,
+  "mode": "form",
+  "prompt": "Trayecto A(0x1234) → B(0x5678) → C(0xabcd). Observas en B la cabecera Mesh recibida desde A. El Hop Limit IPv6 de datos es 64. B reenvía por debajo de IPv6.",
+  "explanation": "Al salir de B la MAC origen es 5678 y la MAC destino abcd. Mesh sigue conservando Originator=1234 y Final=abcd.",
+  "hint": "b5 = 10|1|1|0101. El destino final Mesh no es el siguiente salto radio.",
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · Mesh y fragmentos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5"
+    },
+    {
+      "title": "RFC 6282 · derivación del IID",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.2.2"
+    }
+  ],
+  "fields": [
+    {
+      "id": "v",
+      "label": "V",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "Originator usa 16 bits."
+    },
+    {
+      "id": "f",
+      "label": "F",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "Final Destination usa 16 bits."
+    },
+    {
+      "id": "hops-left-recibido",
+      "label": "Hops Left recibido",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "Nibble bajo de b5."
+    },
+    {
+      "id": "originator-4-cifras-hex",
+      "label": "Originator (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "1234",
+      "explanation": "Son los bytes 12 34."
+    },
+    {
+      "id": "final-destination-4-cifras-hex",
+      "label": "Final Destination (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "abcd",
+      "explanation": "Son ab cd."
+    },
+    {
+      "id": "primer-byte-mesh-al-salir-de",
+      "label": "Primer byte Mesh al salir de B",
+      "type": "format",
+      "format": "hex",
+      "answer": "b4",
+      "explanation": "B reduce Hops Left de 5 a 4."
+    },
+    {
+      "id": "hop-limit-ipv6-al-salir-de",
+      "label": "Hop Limit IPv6 al salir de B",
+      "type": "format",
+      "format": "integer",
+      "answer": "64",
+      "explanation": "No hay reenvío IPv6 en B."
+    }
+  ],
+  "dump": "b5 12 34 ab cd",
+  "path": [
+    "A · 1234",
+    "B · 5678",
+    "C · abcd"
+  ]
+}

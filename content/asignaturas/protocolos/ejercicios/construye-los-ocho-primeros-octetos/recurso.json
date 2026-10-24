@@ -1,0 +1,34 @@
+{
+  "id": "protocolos.ejercicios.construye-los-ocho-primeros-octetos",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "construye-los-ocho-primeros-octetos",
+  "title": "Construye los ocho primeros octetos",
+  "description": "Taller de cabeceras · Leer la cabecera IPv6: campos que cruzan bytes, offsets y extensiones.",
+  "scope": "Taller complementario, bloque 04 (Leer la cabecera IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 220,
+  "mode": "form",
+  "prompt": "Escribe la cabecera base inicial para: Version=6; Traffic Class=0x2e; Flow Label=0xabcde; Payload Length=32; Next Header=58 (ICMPv6); Hop Limit=255.",
+  "explanation": "La primera palabra de 32 bits es 62eabcde. 32 = 0x0020; 58 = 0x3a; 255 = 0xff.",
+  "hint": "Une los nibbles antes de reagrupar en bytes. 32 y 58 están expresados en decimal.",
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · cabeceras",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "ocho-octetos-en-hexadecimal",
+      "label": "Ocho octetos en hexadecimal",
+      "type": "format",
+      "format": "hex",
+      "answer": "62 ea bc de 00 20 3a ff",
+      "explanation": "6 | 2e | abcde ocupa cuatro bytes; los demás campos van alineados."
+    }
+  ]
+}

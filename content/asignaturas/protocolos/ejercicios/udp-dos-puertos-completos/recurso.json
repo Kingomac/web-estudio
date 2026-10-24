@@ -1,0 +1,75 @@
+{
+  "id": "protocolos.ejercicios.udp-dos-puertos-completos",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "udp-dos-puertos-completos",
+  "title": "UDP: dos puertos completos",
+  "description": "Taller de cabeceras · Reconstruir UDP con NHC: los cuatro modos de puertos y sus tamaños.",
+  "scope": "Taller complementario, bloque 06 (Reconstruir UDP con NHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 228,
+  "mode": "form",
+  "prompt": "Se muestra solo NHC UDP con sus campos en línea. El checksum es un valor de ejercicio: no se valida su suma al no mostrar direcciones ni payload. A continuación llegarían 12 bytes de aplicación.",
+  "explanation": "P=00 obliga a leer dos bytes por puerto. UDP Length se deduce, no aparece en el volcado.",
+  "hint": "El patrón del puerto no cambia el modo que el emisor ha codificado.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · NHC UDP",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4.3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "p",
+      "label": "P",
+      "type": "format",
+      "format": "bits",
+      "answer": "00",
+      "explanation": "f0 = 11110|0|00."
+    },
+    {
+      "id": "puerto-origen-decimal",
+      "label": "Puerto origen, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "5683",
+      "explanation": "1633 hexadecimal."
+    },
+    {
+      "id": "puerto-destino-decimal",
+      "label": "Puerto destino, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "61616",
+      "explanation": "f0b0 hexadecimal; aquí se transmite entero."
+    },
+    {
+      "id": "checksum-4-cifras-hex",
+      "label": "Checksum (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "9abc",
+      "explanation": "C=0: checksum presente."
+    },
+    {
+      "id": "tamano-de-nhc-udp-con-campos",
+      "label": "Tamaño de NHC UDP con campos",
+      "type": "format",
+      "format": "integer",
+      "answer": "7",
+      "explanation": "1 + 2 + 2 + 2."
+    },
+    {
+      "id": "udp-length-reconstruido",
+      "label": "UDP Length reconstruido",
+      "type": "format",
+      "format": "integer",
+      "answer": "20",
+      "explanation": "8 + 12."
+    }
+  ],
+  "dump": "f0 16 33 f0 b0 9a bc"
+}

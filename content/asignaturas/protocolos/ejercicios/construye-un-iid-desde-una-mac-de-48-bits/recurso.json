@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.ejercicios.construye-un-iid-desde-una-mac-de-48-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "construye-un-iid-desde-una-mac-de-48-bits",
+  "title": "Construye un IID desde una MAC de 48 bits",
+  "description": "Taller de cabeceras · Escribir e identificar IPv6: notación, prefijos e identificadores de interfaz.",
+  "scope": "Taller complementario, bloque 01 (Escribir e identificar IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 203,
+  "mode": "form",
+  "prompt": "Para este ejercicio se exige EUI-64 modificado. MAC Ethernet 00:1a:2b:3c:4d:5e y prefijo 2001:db8:42:7::/64. Este método no es obligatorio para todos los hosts actuales.",
+  "explanation": "00:1a:2b:ff:fe:3c:4d:5e tiene 64 bits. La máscara U/L es 02, no 01. El IID es 02:1a:2b:ff:fe:3c:4d:5e.",
+  "hint": "Separa los tres primeros bytes de los tres últimos antes de insertar ff:fe.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direcciones",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    },
+    {
+      "title": "RFC 5952 · notación",
+      "url": "https://www.rfc-editor.org/rfc/rfc5952.html#section-4"
+    }
+  ],
+  "fields": [
+    {
+      "id": "iid-cuatro-hextetos",
+      "label": "IID (cuatro hextetos)",
+      "type": "format",
+      "format": "iid",
+      "answer": "021a:2bff:fe3c:4d5e",
+      "explanation": "Inserta ff:fe e invierte U/L: 00 XOR 02 = 02."
+    },
+    {
+      "id": "direccion-global-resultante",
+      "label": "Dirección global resultante",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:42:7:21a:2bff:fe3c:4d5e",
+      "explanation": "Concatena el /64 con los 64 bits del IID."
+    },
+    {
+      "id": "direccion-link-local-con-ese-iid",
+      "label": "Dirección link-local con ese IID",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::21a:2bff:fe3c:4d5e",
+      "explanation": "Usa fe80:0000:0000:0000 como mitad superior."
+    }
+  ]
+}

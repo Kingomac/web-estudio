@@ -1,0 +1,99 @@
+{
+  "id": "protocolos.ejercicios.udp-dos-nibbles-dos-puertos",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "udp-dos-nibbles-dos-puertos",
+  "title": "UDP: dos nibbles, dos puertos",
+  "description": "Taller de cabeceras · Reconstruir UDP con NHC: los cuatro modos de puertos y sus tamaños.",
+  "scope": "Taller complementario, bloque 06 (Reconstruir UDP con NHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 231,
+  "mode": "form",
+  "prompt": "Se muestra solo NHC UDP con sus campos en línea. El checksum es un valor de ejercicio: no se valida su suma al no mostrar direcciones ni payload. El byte de puertos es 3a. Hay 10 bytes de aplicación.",
+  "explanation": "C=1 no es una optimización libre: exige las condiciones y autorización previstas por RFC 6282. No deduzcas el protocolo de aplicación solo por usar este rango de puertos.",
+  "hint": "En P=11 se conserva el nibble bajo de cada puerto de f0b0 a f0bf.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · NHC UDP",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4.3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "c",
+      "label": "C",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "El checksum viaja en línea."
+    },
+    {
+      "id": "p",
+      "label": "P",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "Ambos puertos se reducen a cuatro bits."
+    },
+    {
+      "id": "puerto-origen-4-cifras-hex",
+      "label": "Puerto origen (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "f0b3",
+      "explanation": "f0b0 + nibble 3."
+    },
+    {
+      "id": "puerto-destino-4-cifras-hex",
+      "label": "Puerto destino (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "f0ba",
+      "explanation": "f0b0 + nibble a."
+    },
+    {
+      "id": "bytes-de-nhc-udp-y-campos",
+      "label": "Bytes de NHC UDP y campos",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "1 + 1 + 2."
+    },
+    {
+      "id": "ipv6-udp-comprimidos-con-iphc-de",
+      "label": "IPv6 + UDP comprimidos con IPHC de 2 bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "6",
+      "explanation": "2 + 4; no incluye los datos."
+    },
+    {
+      "id": "payload-length-ipv6-reconstruido",
+      "label": "Payload Length IPv6 reconstruido",
+      "type": "format",
+      "format": "integer",
+      "answer": "18",
+      "explanation": "8 de UDP original + 10 de aplicación."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona el checksum transmitido: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "2",
+      "explanation": "Ocupa los bytes 2 a 3, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona el checksum transmitido: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "Ocupa los bytes 2 a 3, contados desde 0."
+    }
+  ],
+  "dump": "f3 3a 9a bc"
+}

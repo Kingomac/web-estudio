@@ -1,0 +1,35 @@
+{
+  "id": "protocolos.ejercicios.abreviar-una-ipv6",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "abreviar-una-ipv6",
+  "title": "Abreviar una IPv6",
+  "description": "Escribe la forma abreviada de 2001:0db8:0010:0000:0000:0000:0000:0025.",
+  "scope": "Procedimiento de la página 9 del Tema 3.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 100,
+  "mode": "form",
+  "prompt": "Escribe la forma abreviada de 2001:0db8:0010:0000:0000:0000:0000:0025.",
+  "explanation": "Los grupos 0000 consecutivos se sustituyen por ::. Resultado: 2001:db8:10::25.",
+  "hint": "Elimina ceros a la izquierda y sustituye el bloque contiguo de grupos cero por ::.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "direccion-abreviada",
+      "label": "Dirección abreviada",
+      "type": "format",
+      "format": "ipv6-canonical",
+      "answer": "2001:db8:10::25",
+      "explanation": "Se eliminan los ceros iniciales (0db8 → db8, 0010 → 10, 0025 → 25) y los cinco grupos 0000 consecutivos se sustituyen por un único ::."
+    }
+  ]
+}

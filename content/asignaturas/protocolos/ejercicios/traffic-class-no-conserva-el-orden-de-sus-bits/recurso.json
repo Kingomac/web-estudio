@@ -1,0 +1,75 @@
+{
+  "id": "protocolos.ejercicios.traffic-class-no-conserva-el-orden-de-sus-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "traffic-class-no-conserva-el-orden-de-sus-bits",
+  "title": "Traffic Class no conserva el orden de sus bits",
+  "description": "Taller de cabeceras · Descomprimir IPHC: bits de control, contexto y campos en línea.",
+  "scope": "Taller complementario, bloque 05 (Descomprimir IPHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 225,
+  "mode": "form",
+  "prompt": "Cabecera IPv6 comprimida completa antes de NHC: 76 33 ab. En este ejercicio no necesitas reconstruir direcciones; céntrate en TF.",
+  "explanation": "ab = 10|101011; recoloca como 101011|10. Copiar directamente ab al Traffic Class daría un valor distinto.",
+  "hint": "En línea se ordena ECN|DSCP; en Traffic Class IPv6, DSCP|ECN.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "tf",
+      "label": "TF",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "Se transmite un octeto ECN+DSCP; Flow Label se omite."
+    },
+    {
+      "id": "ecn-decimal",
+      "label": "ECN, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "2",
+      "explanation": "Los dos bits altos de ab = 10."
+    },
+    {
+      "id": "dscp-decimal",
+      "label": "DSCP, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "43",
+      "explanation": "Los seis bits bajos de ab = 101011."
+    },
+    {
+      "id": "traffic-class-original-2-cifras-hex",
+      "label": "Traffic Class original (2 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "ae",
+      "explanation": "En IPv6 es DSCP|ECN: 101011|10 = ae."
+    },
+    {
+      "id": "flow-label",
+      "label": "Flow Label",
+      "type": "format",
+      "format": "integer",
+      "answer": "0",
+      "explanation": "TF=10 lo reconstruye como cero."
+    },
+    {
+      "id": "tamano-comprimido-de-ipv6",
+      "label": "Tamaño comprimido de IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "Dos bytes base y un byte de TF."
+    }
+  ],
+  "dump": "76 33 ab"
+}

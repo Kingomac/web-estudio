@@ -1,0 +1,175 @@
+{
+  "id": "protocolos.ejercicios.distingue-alcance-y-tipo",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "distingue-alcance-y-tipo",
+  "title": "Distingue alcance y tipo",
+  "description": "Taller de cabeceras · Escribir e identificar IPv6: notación, prefijos e identificadores de interfaz.",
+  "scope": "Taller complementario, bloque 01 (Escribir e identificar IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 202,
+  "mode": "form",
+  "prompt": "Clasifica cada dirección. Usa: link-local, ULA, multicast, loopback o no especificada.",
+  "explanation": "No deduzcas que dos direcciones comparten enlace solo por pertenecer a una misma clase. Una dirección de documentación 2001:db8::/32 tampoco implica conectividad pública.",
+  "hint": "Mira primero los bits iniciales; :: y ::1 son casos especiales.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direcciones",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    },
+    {
+      "title": "RFC 5952 · notación",
+      "url": "https://www.rfc-editor.org/rfc/rfc5952.html#section-4"
+    }
+  ],
+  "fields": [
+    {
+      "id": "fe80-1234",
+      "label": "fe80::1234",
+      "type": "select",
+      "options": [
+        {
+          "id": "link-local",
+          "text": "link-local"
+        },
+        {
+          "id": "ula",
+          "text": "ULA"
+        },
+        {
+          "id": "multicast",
+          "text": "multicast"
+        },
+        {
+          "id": "loopback",
+          "text": "loopback"
+        },
+        {
+          "id": "no-especificada",
+          "text": "no especificada"
+        }
+      ],
+      "answer": "link-local",
+      "explanation": "Pertenece a fe80::/10."
+    },
+    {
+      "id": "fd42-10-5",
+      "label": "fd42:10::5",
+      "type": "select",
+      "options": [
+        {
+          "id": "link-local",
+          "text": "link-local"
+        },
+        {
+          "id": "ula",
+          "text": "ULA"
+        },
+        {
+          "id": "multicast",
+          "text": "multicast"
+        },
+        {
+          "id": "loopback",
+          "text": "loopback"
+        },
+        {
+          "id": "no-especificada",
+          "text": "no especificada"
+        }
+      ],
+      "answer": "ula",
+      "explanation": "Pertenece a fc00::/7; fd corresponde al uso local."
+    },
+    {
+      "id": "ff05-2",
+      "label": "ff05::2",
+      "type": "select",
+      "options": [
+        {
+          "id": "link-local",
+          "text": "link-local"
+        },
+        {
+          "id": "ula",
+          "text": "ULA"
+        },
+        {
+          "id": "multicast",
+          "text": "multicast"
+        },
+        {
+          "id": "loopback",
+          "text": "loopback"
+        },
+        {
+          "id": "no-especificada",
+          "text": "no especificada"
+        }
+      ],
+      "answer": "multicast",
+      "explanation": "El primer octeto es ff; el scope 5 indica sitio."
+    },
+    {
+      "id": "campo-1",
+      "label": "::1",
+      "type": "select",
+      "options": [
+        {
+          "id": "link-local",
+          "text": "link-local"
+        },
+        {
+          "id": "ula",
+          "text": "ULA"
+        },
+        {
+          "id": "multicast",
+          "text": "multicast"
+        },
+        {
+          "id": "loopback",
+          "text": "loopback"
+        },
+        {
+          "id": "no-especificada",
+          "text": "no especificada"
+        }
+      ],
+      "answer": "loopback",
+      "explanation": "Es el bucle local."
+    },
+    {
+      "id": "campo",
+      "label": "::",
+      "type": "select",
+      "options": [
+        {
+          "id": "link-local",
+          "text": "link-local"
+        },
+        {
+          "id": "ula",
+          "text": "ULA"
+        },
+        {
+          "id": "multicast",
+          "text": "multicast"
+        },
+        {
+          "id": "loopback",
+          "text": "loopback"
+        },
+        {
+          "id": "no-especificada",
+          "text": "no especificada"
+        }
+      ],
+      "answer": "no-especificada",
+      "explanation": "Es la dirección sin especificar."
+    }
+  ]
+}

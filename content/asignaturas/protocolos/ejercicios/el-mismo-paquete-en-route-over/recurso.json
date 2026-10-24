@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.ejercicios.el-mismo-paquete-en-route-over",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "el-mismo-paquete-en-route-over",
+  "title": "El mismo paquete en route-over",
+  "description": "Mismo paquete IPv6 del nodo 5 al nodo 1, con contexto 0, pero recorrido route-over 5 → 3 → 1.",
+  "scope": "Procedimiento de la página 57 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 123,
+  "mode": "form",
+  "prompt": "Mismo paquete IPv6 del nodo 5 al nodo 1, con contexto 0, pero recorrido route-over 5 → 3 → 1. La MAC de cada salto solo identifica a su transmisor y receptor. Escribe SAM y DAM de cada salto.",
+  "explanation": "5→3: SAM=11, DAM=10, se envía 0x0001. 3→1: SAM=10, DAM=11, se envía 0x0005. Los extremos IPv6 son los mismos; cambia qué permite deducir cada trama.",
+  "hint": "En 5→3 se conoce el origen final 5; en 3→1 se conoce el destino final 1. El otro extremo necesita 16 bits.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "sam-en-5-3",
+      "label": "SAM en 5→3",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "En 5→3 el emisor MAC es 5, el origen IPv6: SAM=11."
+    },
+    {
+      "id": "dam-en-5-3",
+      "label": "DAM en 5→3",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "El receptor MAC es 3, no el destino 1: DAM=10 y se envía 0x0001."
+    },
+    {
+      "id": "sam-en-3-1",
+      "label": "SAM en 3→1",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "En 3→1 el emisor MAC es 3, no el origen 5: SAM=10 y se envía 0x0005."
+    },
+    {
+      "id": "dam-en-3-1",
+      "label": "DAM en 3→1",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "El receptor MAC es 1, el destino IPv6: DAM=11."
+    }
+  ]
+}

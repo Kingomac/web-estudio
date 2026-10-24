@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.ejercicios.destino-multicast-compacto",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "destino-multicast-compacto",
+  "title": "Destino multicast compacto",
+  "description": "Destino IPv6 ff02::1, sin contexto para el multicast.",
+  "scope": "Procedimiento de la página 26 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 124,
+  "mode": "form",
+  "prompt": "Destino IPv6 ff02::1, sin contexto para el multicast. Utiliza el patrón ff02::00GG de la tabla y determina M, DAC, DAM y los bits transmitidos.",
+  "explanation": "M=1, DAC=0 y DAM=11. Solo se envía el último byte 0x01; el resto se reconstruye como ff02::00GG.",
+  "hint": "M identifica multicast; el modo de 8 bits usa DAM=11.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "m-1-bit",
+      "label": "M, 1 bit",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "M=1 indica destino multicast."
+    },
+    {
+      "id": "dac-1-bit",
+      "label": "DAC, 1 bit",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "Sin contexto multicast: DAC=0."
+    },
+    {
+      "id": "dam-2-bits",
+      "label": "DAM, 2 bits",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "ff02::1 encaja en ff02::00GG: DAM=11."
+    },
+    {
+      "id": "bits-en-linea",
+      "label": "Bits en línea",
+      "type": "format",
+      "format": "integer",
+      "answer": "8",
+      "explanation": "Solo se envía el octeto GG (0x01): 8 bits."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "protocolos.ejercicios.direccion-corta-de-16-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "direccion-corta-de-16-bits",
+  "title": "Dirección corta de 16 bits",
+  "description": "Dirección corta IEEE 802.15.4: 0x1122.",
+  "scope": "Procedimiento de la página 17 del Tema 3.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 103,
+  "mode": "form",
+  "prompt": "Dirección corta IEEE 802.15.4: 0x1122. PAN_ID=0. Usa el patrón del ejemplo para formar la link-local.",
+  "explanation": "IID = 0000:00ff:fe00:1122. Dirección = fe80::ff:fe00:1122.",
+  "hint": "El IID es 0000:00ff:fe00:XXXX, con XXXX igual a la dirección corta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "direccion-link-local",
+      "label": "Dirección link-local",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:1122",
+      "explanation": "Con PAN_ID=0 el IID es 0000:00ff:fe00:1122; con fe80::/64 y los ceros abreviados queda fe80::ff:fe00:1122."
+    }
+  ]
+}

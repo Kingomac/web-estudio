@@ -1,0 +1,66 @@
+{
+  "id": "protocolos.ejercicios.comprime-all-nodes-multicast",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "comprime-all-nodes-multicast",
+  "title": "Comprime all-nodes multicast",
+  "description": "Taller de cabeceras · Descomprimir IPHC: bits de control, contexto y campos en línea.",
+  "scope": "Taller complementario, bloque 05 (Descomprimir IPHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 226,
+  "mode": "form",
+  "prompt": "El destino es ff02::1. Origen link-local deducible del enlace. Traffic Class=0, Flow Label=0, Next Header=58 explícito y Hop Limit=255. Usa la forma sin estado más corta.",
+  "explanation": "7b = 011|11|0|11; 3b = 0|0|11|1|0|11. DAM=11 transporta un byte en este caso, no cero.",
+  "hint": "Para multicast, la tabla DAM no es la tabla unicast.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "m",
+      "label": "M",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "El destino es multicast."
+    },
+    {
+      "id": "dac",
+      "label": "DAC",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "Se usa la codificación multicast sin contexto."
+    },
+    {
+      "id": "dam",
+      "label": "DAM",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "ff02::00XX cabe en ocho bits."
+    },
+    {
+      "id": "iphc-y-todos-los-campos-ipv6",
+      "label": "IPHC y todos los campos IPv6 en línea",
+      "type": "format",
+      "format": "hex",
+      "answer": "7b 3b 3a 01",
+      "explanation": "IPHC 7b3b, NH 3a, último byte del grupo 01."
+    },
+    {
+      "id": "tamano-comprimido-de-ipv6",
+      "label": "Tamaño comprimido de IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "2 base + 1 NH + 1 destino."
+    }
+  ]
+}

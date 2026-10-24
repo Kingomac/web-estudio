@@ -1,0 +1,67 @@
+{
+  "id": "protocolos.ejercicios.detecta-una-captura-truncada",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "detecta-una-captura-truncada",
+  "title": "Detecta una captura truncada",
+  "description": "Taller de cabeceras · Leer la cabecera IPv6: campos que cruzan bytes, offsets y extensiones.",
+  "scope": "Taller complementario, bloque 04 (Leer la cabecera IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 219,
+  "mode": "form",
+  "prompt": "Una captura desde el inicio de IPv6 conserva 52 bytes. La base de 40 bytes anuncia Payload Length=20, Next Header=17 y no hay extensiones. Se conservan los 8 bytes UDP y 4 bytes de aplicación.",
+  "explanation": "La aplicación anunciada ocupa 12 bytes, de los que solo ves cuatro. Antes de acusar al emisor, comprueba el límite de captura.",
+  "hint": "Distingue longitud capturada y longitud declarada.",
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · cabeceras",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "tamano-ipv6-anunciado",
+      "label": "Tamaño IPv6 anunciado",
+      "type": "format",
+      "format": "integer",
+      "answer": "60",
+      "explanation": "40 + 20."
+    },
+    {
+      "id": "bytes-que-faltan-en-la-captura",
+      "label": "Bytes que faltan en la captura",
+      "type": "format",
+      "format": "integer",
+      "answer": "8",
+      "explanation": "60 − 52 = 8."
+    },
+    {
+      "id": "bytes-de-aplicacion-anunciados",
+      "label": "Bytes de aplicación anunciados",
+      "type": "format",
+      "format": "integer",
+      "answer": "12",
+      "explanation": "20 − 8 de UDP."
+    },
+    {
+      "id": "la-truncacion-demuestra-por-si-sola",
+      "label": "¿La truncación demuestra por sí sola un paquete inválido?",
+      "type": "select",
+      "options": [
+        {
+          "id": "si",
+          "text": "sí"
+        },
+        {
+          "id": "no",
+          "text": "no"
+        }
+      ],
+      "answer": "no",
+      "explanation": "La captura puede haber recortado un paquete válido."
+    }
+  ]
+}

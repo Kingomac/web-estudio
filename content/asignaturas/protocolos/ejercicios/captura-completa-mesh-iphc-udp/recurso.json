@@ -1,0 +1,117 @@
+{
+  "id": "protocolos.ejercicios.captura-completa-mesh-iphc-udp",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "captura-completa-mesh-iphc-udp",
+  "title": "Captura completa: Mesh + IPHC + UDP",
+  "description": "Taller de cabeceras · Resolver capturas completas: combina direcciones, compresión y recorrido.",
+  "scope": "Taller complementario, bloque 08 (Resolver capturas completas). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 236,
+  "mode": "form",
+  "prompt": "Carga MAC 6LoWPAN completa, sin fragmentación: B(0x5678) recibe de A(0x1234), y reenviará hacia C(0xabcd). Se muestra desde Mesh hasta los cuatro bytes de aplicación. Los campos Mesh están representados en el orden de octetos del RFC, no como una cabecera MAC 802.15.4 cruda.",
+  "explanation": "El checksum se ha calculado para el IPv6 reconstruido y el payload de este ejemplo. 15 bytes de carga MAC representan un datagrama IPv6 de 52 bytes; cinco de esos quince son Mesh. B reduce Hops Left, conserva HL=64 y no sustituye los extremos Mesh.",
+  "hint": "Avanza por capas: 5 bytes Mesh, 2 IPHC, 4 NHC UDP y el resto aplicación.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html"
+    },
+    {
+      "title": "RFC 4944",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html"
+    }
+  ],
+  "fields": [
+    {
+      "id": "bytes-de-mesh",
+      "label": "Bytes de Mesh",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "b5 indica dos direcciones cortas."
+    },
+    {
+      "id": "offset-local-del-comienzo-de-iphc",
+      "label": "Offset local del comienzo de IPHC",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "Después de b5 1234 abcd."
+    },
+    {
+      "id": "origen-ipv6",
+      "label": "Origen IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:1234",
+      "explanation": "Con Mesh, el IID elidido usa Originator."
+    },
+    {
+      "id": "destino-ipv6",
+      "label": "Destino IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:abcd",
+      "explanation": "Con Mesh, el IID elidido usa Final Destination, no B."
+    },
+    {
+      "id": "puerto-origen-4-cifras-hex",
+      "label": "Puerto origen (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "f0b3",
+      "explanation": "Nibble alto de 3a."
+    },
+    {
+      "id": "puerto-destino-4-cifras-hex",
+      "label": "Puerto destino (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "f0ba",
+      "explanation": "Nibble bajo de 3a."
+    },
+    {
+      "id": "payload-length-ipv6",
+      "label": "Payload Length IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "12",
+      "explanation": "8 de UDP + 4 datos."
+    },
+    {
+      "id": "longitud-ipv6-descomprimida",
+      "label": "Longitud IPv6 descomprimida",
+      "type": "format",
+      "format": "integer",
+      "answer": "52",
+      "explanation": "40 + 12."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona los bytes de aplicación: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "11",
+      "explanation": "Ocupa los bytes 11 a 14, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona los bytes de aplicación: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "14",
+      "explanation": "Ocupa los bytes 11 a 14, contados desde 0."
+    }
+  ],
+  "dump": "b5 12 34 ab cd 7e 33 f3 3a c7 c6 de ad be ef",
+  "path": [
+    "A · 1234",
+    "B · 5678",
+    "C · abcd"
+  ]
+}

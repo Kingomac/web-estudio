@@ -6,6 +6,7 @@ import { readingHtml, inlineMarkdown } from '../../src/lib/html.ts';
 import { resourcePath, withBase } from '../../src/lib/rutas.ts';
 import { components, workshops } from '../../src/lib/registro.ts';
 import { workshopModules } from '../../src/lib/talleres.ts';
+import { gradeField } from '../../src/domain/evaluacion.ts';
 
 const catalog = await requireCatalog();
 test('la muestra atraviesa todos los contratos y resuelve sus fuentes', () => {
@@ -72,4 +73,13 @@ test('los enunciados admiten formato sin ejecutar HTML', () => {
   assert.ok(result.includes('<strong>Recuerda</strong>'));
   assert.ok(!result.includes('<script>'));
   assert.ok(!result.includes('<img'));
+});
+test('la solución de cada campo de ejercicio supera su propia corrección', () => {
+  for (const entry of catalog.entries) {
+    if (entry.kind !== 'ejercicio' || entry.mode !== 'form') continue;
+    for (const field of entry.fields) {
+      const answer = field.type === 'number' ? String(field.answer) : field.type === 'text' ? field.answers[0] : field.answer;
+      assert.equal(gradeField(field, answer).correct, true, `${entry.id} · ${field.id}`);
+    }
+  }
 });

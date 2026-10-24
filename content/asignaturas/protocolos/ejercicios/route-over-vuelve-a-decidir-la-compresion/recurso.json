@@ -1,0 +1,83 @@
+{
+  "id": "protocolos.ejercicios.route-over-vuelve-a-decidir-la-compresion",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "route-over-vuelve-a-decidir-la-compresion",
+  "title": "Route-over vuelve a decidir la compresión",
+  "description": "Taller de cabeceras · Seguir el paquete por la malla: mesh, fragmentos y reenvío ipv6.",
+  "scope": "Taller complementario, bloque 07 (Seguir el paquete por la malla). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 234,
+  "mode": "form",
+  "prompt": "A(0x0001) → R(0x0002) → D(0x0003). Los extremos IPv6 son 2001:db8:7::ff:fe00:1 y 2001:db8:7::ff:fe00:3. Contexto 0=2001:db8:7::/64, TC=FL=0 y NH=1. R enruta IPv6, sin Mesh, sin cambio de direcciones. A envía HL=64. Elige el modo más corto válido en cada enlace.",
+  "explanation": "A→R usa 7e 76 00 03 (4 bytes). R→D usa 7c 67 3f 00 01 (5 bytes). UDP se cuenta aparte.",
+  "hint": "Para omitir un IID, compáralo con la MAC del salto que estás codificando.",
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · Mesh y fragmentos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5"
+    },
+    {
+      "title": "RFC 6282 · derivación del IID",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.2.2"
+    }
+  ],
+  "fields": [
+    {
+      "id": "sam-en-a-r",
+      "label": "SAM en A → R",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "El origen IPv6 deriva del emisor MAC A."
+    },
+    {
+      "id": "dam-en-a-r",
+      "label": "DAM en A → R",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "La MAC destino es R, no D; se envía el sufijo 0003."
+    },
+    {
+      "id": "sam-en-r-d",
+      "label": "SAM en R → D",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "La MAC origen ahora es R, pero el origen IPv6 sigue siendo A."
+    },
+    {
+      "id": "dam-en-r-d",
+      "label": "DAM en R → D",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "D sí es el receptor del enlace."
+    },
+    {
+      "id": "hop-limit-en-r-d",
+      "label": "Hop Limit en R → D",
+      "type": "format",
+      "format": "integer",
+      "answer": "63",
+      "explanation": "R hace un reenvío IPv6."
+    },
+    {
+      "id": "bytes-ipv6-comprimidos-en-r-d",
+      "label": "Bytes IPv6 comprimidos en R → D",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "2 base + 1 HLIM + 2 origen; CID=0."
+    }
+  ],
+  "path": [
+    "A · 0001",
+    "R · 0002",
+    "D · 0003"
+  ]
+}

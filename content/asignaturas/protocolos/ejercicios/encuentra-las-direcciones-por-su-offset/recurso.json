@@ -1,0 +1,75 @@
+{
+  "id": "protocolos.ejercicios.encuentra-las-direcciones-por-su-offset",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "encuentra-las-direcciones-por-su-offset",
+  "title": "Encuentra las direcciones por su offset",
+  "description": "Taller de cabeceras · Leer la cabecera IPv6: campos que cruzan bytes, offsets y extensiones.",
+  "scope": "Taller complementario, bloque 04 (Leer la cabecera IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 216,
+  "mode": "form",
+  "prompt": "La cabecera base es la misma que en el ejercicio anterior. Los offsets empiezan en cero y se expresan en decimal.",
+  "explanation": "No busques un campo de longitud de cabecera como el IHL de IPv4. El offset de UDP es 40 porque Next Header identifica UDP directamente.",
+  "hint": "Cada dirección ocupa 16 bytes: ocho hextetos.",
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · cabeceras",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "ipv6-origen",
+      "label": "IPv6 origen",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:1::10",
+      "explanation": "Bytes 8 a 23, agrupados de dos en dos."
+    },
+    {
+      "id": "ipv6-destino",
+      "label": "IPv6 destino",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:2::20",
+      "explanation": "Bytes 24 a 39."
+    },
+    {
+      "id": "offset-donde-empieza-la-carga-ipv6",
+      "label": "Offset donde empieza la carga IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "40",
+      "explanation": "La cabecera base tiene tamaño fijo."
+    },
+    {
+      "id": "tamano-total-ipv6-anunciado",
+      "label": "Tamaño total IPv6 anunciado",
+      "type": "format",
+      "format": "integer",
+      "answer": "60",
+      "explanation": "40 + 20 = 60; no incluye cabecera de enlace."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona la dirección IPv6 destino completa: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "24",
+      "explanation": "Ocupa los bytes 24 a 39, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona la dirección IPv6 destino completa: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "39",
+      "explanation": "Ocupa los bytes 24 a 39, contados desde 0."
+    }
+  ],
+  "dump": "6a b1 23 45 00 14 11 40 20 01 0d b8 00 01 00 00 00 00 00 00 00 00 00 10 20 01 0d b8 00 02 00 00 00 00 00 00 00 00 00 20"
+}

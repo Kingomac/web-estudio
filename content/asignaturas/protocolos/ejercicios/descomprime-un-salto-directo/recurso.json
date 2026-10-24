@@ -1,0 +1,67 @@
+{
+  "id": "protocolos.ejercicios.descomprime-un-salto-directo",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "descomprime-un-salto-directo",
+  "title": "Descomprime un salto directo",
+  "description": "Taller de cabeceras · Descomprimir IPHC: bits de control, contexto y campos en línea.",
+  "scope": "Taller complementario, bloque 05 (Descomprimir IPHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 222,
+  "mode": "form",
+  "prompt": "IPHC=7e 33. Enlace IEEE 802.15.4 sin Mesh, origen corto 0x1234 y destino corto 0xabcd. El siguiente NHC identifica UDP. Hay 10 bytes de aplicación, sin extensiones.",
+  "explanation": "Versión=6, Traffic Class=0 y Flow Label=0 se reconstruyen. La longitud IPv6 describe el datagrama descomprimido.",
+  "hint": "No conviertas 0x1234 en fe80::1234; hay un patrón de IID específico.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "origen-ipv6",
+      "label": "Origen IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:1234",
+      "explanation": "IID corto: 0000:00ff:fe00:1234."
+    },
+    {
+      "id": "destino-ipv6",
+      "label": "Destino IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:abcd",
+      "explanation": "Se deriva del destino corto del enlace."
+    },
+    {
+      "id": "hop-limit",
+      "label": "Hop Limit",
+      "type": "format",
+      "format": "integer",
+      "answer": "64",
+      "explanation": "HLIM=10."
+    },
+    {
+      "id": "payload-length-reconstruido",
+      "label": "Payload Length reconstruido",
+      "type": "format",
+      "format": "integer",
+      "answer": "18",
+      "explanation": "8 bytes UDP más 10 de aplicación, aunque UDP esté comprimido."
+    },
+    {
+      "id": "bytes-de-iphc-y-campos-ipv6",
+      "label": "Bytes de IPHC y campos IPv6 en línea",
+      "type": "format",
+      "format": "integer",
+      "answer": "2",
+      "explanation": "Todo se infiere; NHC se contabiliza por separado."
+    }
+  ],
+  "dump": "7e 33"
+}

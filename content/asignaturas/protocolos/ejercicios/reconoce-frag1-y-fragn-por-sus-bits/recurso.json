@@ -1,0 +1,87 @@
+{
+  "id": "protocolos.ejercicios.reconoce-frag1-y-fragn-por-sus-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "reconoce-frag1-y-fragn-por-sus-bits",
+  "title": "Reconoce FRAG1 y FRAGN por sus bits",
+  "description": "Taller de cabeceras · Seguir el paquete por la malla: mesh, fragmentos y reenvío ipv6.",
+  "scope": "Taller complementario, bloque 07 (Seguir el paquete por la malla). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 235,
+  "mode": "form",
+  "prompt": "El volcado muestra dos cabeceras de fragmentación 6LoWPAN consecutivas solo para compararlas: los primeros cuatro bytes son FRAG1; los cinco siguientes son FRAGN de otra trama del mismo datagrama. Se omiten las cargas.",
+  "explanation": "No interpretes c1 como un tamaño completo. FRAGN no repite IPHC: transporta la porción del datagrama que corresponde a su offset.",
+  "hint": "Los cinco bits altos identifican el tipo; los tres bajos son parte del tamaño.",
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · Mesh y fragmentos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5"
+    },
+    {
+      "title": "RFC 6282 · derivación del IID",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.2.2"
+    }
+  ],
+  "fields": [
+    {
+      "id": "datagram-size-en-bytes",
+      "label": "datagram_size, en bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "300",
+      "explanation": "(c1 AND 07) × 256 + 2c = 300; e1 codifica el mismo tamaño."
+    },
+    {
+      "id": "datagram-tag-4-cifras-hex",
+      "label": "datagram_tag (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "1234",
+      "explanation": "Coincide en ambos fragmentos."
+    },
+    {
+      "id": "datagram-offset-de-fragn-unidades-de",
+      "label": "datagram_offset de FRAGN, unidades de 8 bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "12",
+      "explanation": "0c hexadecimal."
+    },
+    {
+      "id": "offset-de-fragn-en-bytes",
+      "label": "Offset de FRAGN en bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "96",
+      "explanation": "12 × 8 respecto al datagrama IPv6 descomprimido."
+    },
+    {
+      "id": "payload-length-del-ipv6-original",
+      "label": "Payload Length del IPv6 original",
+      "type": "format",
+      "format": "integer",
+      "answer": "260",
+      "explanation": "datagram_size − 40."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona la cabecera FRAGN completa: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "Ocupa los bytes 4 a 8, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona la cabecera FRAGN completa: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "8",
+      "explanation": "Ocupa los bytes 4 a 8, contados desde 0."
+    }
+  ],
+  "dump": "c1 2c 12 34 e1 2c 12 34 0c"
+}

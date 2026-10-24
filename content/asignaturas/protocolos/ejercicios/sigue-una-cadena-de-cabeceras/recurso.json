@@ -1,0 +1,67 @@
+{
+  "id": "protocolos.ejercicios.sigue-una-cadena-de-cabeceras",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "sigue-una-cadena-de-cabeceras",
+  "title": "Sigue una cadena de cabeceras",
+  "description": "Taller de cabeceras · Leer la cabecera IPv6: campos que cruzan bytes, offsets y extensiones.",
+  "scope": "Taller complementario, bloque 04 (Leer la cabecera IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 217,
+  "mode": "form",
+  "prompt": "La base IPv6 anuncia Payload Length=28 y Next Header=0. En el offset 40 aparecen estos ocho bytes de Hop-by-Hop. Después hay UDP y 12 bytes de aplicación. El volcado comienza en el offset local 0 de la extensión.",
+  "explanation": "Los 28 bytes de carga IPv6 incluyen la extensión de 8 bytes. Un Hdr Ext Len de cero no significa una extensión de cero bytes.",
+  "hint": "Next Header siempre describe lo que viene inmediatamente después.",
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · cabeceras",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "next-header-de-la-extension-decimal",
+      "label": "Next Header de la extensión, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "17",
+      "explanation": "11 hexadecimal = UDP."
+    },
+    {
+      "id": "tamano-de-hop-by-hop-en",
+      "label": "Tamaño de Hop-by-Hop, en bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "8",
+      "explanation": "(Hdr Ext Len + 1) × 8 = (0 + 1) × 8."
+    },
+    {
+      "id": "offset-absoluto-del-inicio-de-udp",
+      "label": "Offset absoluto del inicio de UDP",
+      "type": "format",
+      "format": "integer",
+      "answer": "48",
+      "explanation": "40 de la base + 8 de extensión."
+    },
+    {
+      "id": "udp-length-reconstruido",
+      "label": "UDP Length reconstruido",
+      "type": "format",
+      "format": "integer",
+      "answer": "20",
+      "explanation": "8 de UDP + 12 de aplicación."
+    },
+    {
+      "id": "longitud-total-ipv6",
+      "label": "Longitud total IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "68",
+      "explanation": "40 + 28 = 68."
+    }
+  ],
+  "dump": "11 00 01 04 00 00 00 00"
+}

@@ -1,0 +1,126 @@
+{
+  "id": "protocolos.ejercicios.elige-la-ruta-por-longitud-de-prefijo",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "elige-la-ruta-por-longitud-de-prefijo",
+  "title": "Elige la ruta por longitud de prefijo",
+  "description": "Taller de cabeceras · Pensar en bits de red: repartos, límites no alineados y rutas.",
+  "scope": "Taller complementario, bloque 02 (Pensar en bits de red). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 209,
+  "mode": "form",
+  "prompt": "Tabla: ::/0 → R0; 2001:db8:1200::/40 → R1; 2001:db8:1234::/48 → R2; 2001:db8:1234:ab00::/56 → R3. No hay otras rutas ni empates.",
+  "explanation": "La ruta por defecto cubre cualquier destino, pero solo gana si no hay coincidencia más específica. Un /40 termina dentro del tercer hexteto.",
+  "hint": "Comprueba todos los prefijos que coinciden antes de elegir el más largo.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · prefijos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "siguiente-salto-de-2001-db8-1234",
+      "label": "Siguiente salto de 2001:db8:1234:ab99::1",
+      "type": "select",
+      "options": [
+        {
+          "id": "r0",
+          "text": "R0"
+        },
+        {
+          "id": "r1",
+          "text": "R1"
+        },
+        {
+          "id": "r2",
+          "text": "R2"
+        },
+        {
+          "id": "r3",
+          "text": "R3"
+        }
+      ],
+      "answer": "r3",
+      "explanation": "Coincide con /40, /48 y /56; gana /56."
+    },
+    {
+      "id": "siguiente-salto-de-2001-db8-1234-2",
+      "label": "Siguiente salto de 2001:db8:1234:ac01::1",
+      "type": "select",
+      "options": [
+        {
+          "id": "r0",
+          "text": "R0"
+        },
+        {
+          "id": "r1",
+          "text": "R1"
+        },
+        {
+          "id": "r2",
+          "text": "R2"
+        },
+        {
+          "id": "r3",
+          "text": "R3"
+        }
+      ],
+      "answer": "r2",
+      "explanation": "No coincide con abXX; sí con /48."
+    },
+    {
+      "id": "siguiente-salto-de-2001-db8-12fe",
+      "label": "Siguiente salto de 2001:db8:12fe::1",
+      "type": "select",
+      "options": [
+        {
+          "id": "r0",
+          "text": "R0"
+        },
+        {
+          "id": "r1",
+          "text": "R1"
+        },
+        {
+          "id": "r2",
+          "text": "R2"
+        },
+        {
+          "id": "r3",
+          "text": "R3"
+        }
+      ],
+      "answer": "r1",
+      "explanation": "El /40 fija 12 como primer byte del tercer hexteto."
+    },
+    {
+      "id": "siguiente-salto-de-2001-db8-1300",
+      "label": "Siguiente salto de 2001:db8:1300::1",
+      "type": "select",
+      "options": [
+        {
+          "id": "r0",
+          "text": "R0"
+        },
+        {
+          "id": "r1",
+          "text": "R1"
+        },
+        {
+          "id": "r2",
+          "text": "R2"
+        },
+        {
+          "id": "r3",
+          "text": "R3"
+        }
+      ],
+      "answer": "r0",
+      "explanation": "Ningún prefijo específico coincide."
+    }
+  ]
+}

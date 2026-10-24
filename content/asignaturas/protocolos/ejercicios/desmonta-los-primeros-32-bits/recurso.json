@@ -1,0 +1,91 @@
+{
+  "id": "protocolos.ejercicios.desmonta-los-primeros-32-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "desmonta-los-primeros-32-bits",
+  "title": "Desmonta los primeros 32 bits",
+  "description": "Taller de cabeceras · Leer la cabecera IPv6: campos que cruzan bytes, offsets y extensiones.",
+  "scope": "Taller complementario, bloque 04 (Leer la cabecera IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 215,
+  "mode": "form",
+  "prompt": "Se muestran exactamente los 40 bytes de una cabecera base IPv6. Traffic Class y Flow Label cruzan fronteras de byte.",
+  "explanation": "No interpretes el byte ab como si apareciese alineado en el volcado. Payload Length excluye los 40 bytes de la cabecera base.",
+  "hint": "Separa 6 | ab | 12345: 4 + 8 + 20 bits.",
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · cabeceras",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "version",
+      "label": "Versión",
+      "type": "format",
+      "format": "integer",
+      "answer": "6",
+      "explanation": "El nibble alto de 6a es 6."
+    },
+    {
+      "id": "traffic-class-2-cifras-hex",
+      "label": "Traffic Class (2 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "ab",
+      "explanation": "Combina el nibble bajo de 6a con el nibble alto de b1."
+    },
+    {
+      "id": "flow-label-5-cifras-hex",
+      "label": "Flow Label (5 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "12345",
+      "explanation": "Nibble bajo de b1 y los bytes 23 45."
+    },
+    {
+      "id": "payload-length-en-bytes",
+      "label": "Payload Length, en bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "20",
+      "explanation": "0014 hexadecimal = 20."
+    },
+    {
+      "id": "next-header-decimal",
+      "label": "Next Header, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "17",
+      "explanation": "11 hexadecimal identifica UDP."
+    },
+    {
+      "id": "hop-limit-decimal",
+      "label": "Hop Limit, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "64",
+      "explanation": "40 hexadecimal = 64."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona los bytes de Payload Length: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "Ocupa los bytes 4 a 5, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona los bytes de Payload Length: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "Ocupa los bytes 4 a 5, contados desde 0."
+    }
+  ],
+  "dump": "6a b1 23 45 00 14 11 40 20 01 0d b8 00 01 00 00 00 00 00 00 00 00 00 10 20 01 0d b8 00 02 00 00 00 00 00 00 00 00 00 20"
+}

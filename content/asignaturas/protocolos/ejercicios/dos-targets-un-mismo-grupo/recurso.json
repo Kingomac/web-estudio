@@ -1,0 +1,88 @@
+{
+  "id": "protocolos.ejercicios.dos-targets-un-mismo-grupo",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "dos-targets-un-mismo-grupo",
+  "title": "Dos targets, un mismo grupo",
+  "description": "Taller de cabeceras · Del vecino a la MAC: solicited-node, ethernet multicast y ndp.",
+  "scope": "Taller complementario, bloque 03 (Del vecino a la MAC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 211,
+  "mode": "form",
+  "prompt": "A = 2001:db8:1::12:3456; B = 2001:db8:2:9:abcd:ef00:ab12:3456. Responde sí o no cuando corresponda.",
+  "explanation": "Pertenecer al mismo grupo multicast no implica tener la misma dirección unicast. Un NS contiene el Target de 128 bits, además de su destino IPv6 multicast.",
+  "hint": "Compara solo los últimos seis dígitos hexadecimales.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · multicast",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.7.1"
+    },
+    {
+      "title": "RFC 2464 · Ethernet",
+      "url": "https://www.rfc-editor.org/rfc/rfc2464.html#section-7"
+    },
+    {
+      "title": "RFC 4861 · NS",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-4.3"
+    },
+    {
+      "title": "RFC 4862 · DAD",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.html#section-5.4"
+    }
+  ],
+  "fields": [
+    {
+      "id": "solicited-node-de-a",
+      "label": "Solicited-node de A",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "ff02::1:ff12:3456",
+      "explanation": "Los 24 bits bajos son 12:34:56."
+    },
+    {
+      "id": "solicited-node-de-b",
+      "label": "Solicited-node de B",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "ff02::1:ff12:3456",
+      "explanation": "B tiene el mismo sufijo de 24 bits."
+    },
+    {
+      "id": "comparten-grupo-solicited-node",
+      "label": "¿Comparten grupo solicited-node?",
+      "type": "select",
+      "options": [
+        {
+          "id": "si",
+          "text": "sí"
+        },
+        {
+          "id": "no",
+          "text": "no"
+        }
+      ],
+      "answer": "si",
+      "explanation": "El mapeo no es inyectivo."
+    },
+    {
+      "id": "compartir-grupo-demuestra-una-direccion-duplicad",
+      "label": "¿Compartir grupo demuestra una dirección duplicada?",
+      "type": "select",
+      "options": [
+        {
+          "id": "si",
+          "text": "sí"
+        },
+        {
+          "id": "no",
+          "text": "no"
+        }
+      ],
+      "answer": "no",
+      "explanation": "El Target completo del NS distingue las direcciones."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.ejercicios.una-frontera-dentro-de-un-byte-73",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "una-frontera-dentro-de-un-byte-73",
+  "title": "Una frontera dentro de un byte: /73",
+  "description": "Taller de cabeceras · Pensar en bits de red: repartos, límites no alineados y rutas.",
+  "scope": "Taller complementario, bloque 02 (Pensar en bits de red). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 208,
+  "mode": "form",
+  "prompt": "Dirección: 2001:db8:1234:5678:abcd:1111:2222:3333/73. Se trata de cálculo de prefijos; no presupone SLAAC en ese /73.",
+  "explanation": "abcd = 1010101111001101. Conserva 101010111 y sustituye los últimos siete bits por ceros: 1010101110000000 = ab80.",
+  "hint": "Escribe abcd en binario y corta después del noveno bit.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · prefijos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "prefijo-de-red-73",
+      "label": "Prefijo de red /73",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2001:db8:1234:5678:ab80::/73",
+      "explanation": "Tras los primeros 64 bits, conserva nueve del quinto hexteto: abcd AND ff80 = ab80."
+    },
+    {
+      "id": "mascara-del-quinto-hexteto-4-cifras",
+      "label": "Máscara del quinto hexteto (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "ff80",
+      "explanation": "Nueve unos seguidos de siete ceros."
+    },
+    {
+      "id": "bits-restantes-tras-el-prefijo",
+      "label": "Bits restantes tras el prefijo",
+      "type": "format",
+      "format": "integer",
+      "answer": "55",
+      "explanation": "128 − 73 = 55."
+    }
+  ]
+}

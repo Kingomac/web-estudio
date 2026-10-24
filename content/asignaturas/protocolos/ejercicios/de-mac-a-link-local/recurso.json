@@ -1,0 +1,43 @@
+{
+  "id": "protocolos.ejercicios.de-mac-a-link-local",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "de-mac-a-link-local",
+  "title": "De MAC a link-local",
+  "description": "MAC Ethernet: 10:22:33:44:55:66.",
+  "scope": "Procedimiento de la página 17 del Tema 3.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 101,
+  "mode": "form",
+  "prompt": "MAC Ethernet: 10:22:33:44:55:66. Construye el IID EUI-64 modificado y la dirección link-local del ejemplo.",
+  "explanation": "10:22:33:ff:fe:44:55:66 → 12:22:33:ff:fe:44:55:66. IID = 1222:33ff:fe44:5566. Se antepone fe80::/64.",
+  "hint": "Inserta ff:fe tras 33 e invierte el bit U/L del primer octeto (10 → 12).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "iid-en-4-grupos-hexadecimales",
+      "label": "IID, en 4 grupos hexadecimales",
+      "type": "format",
+      "format": "iid",
+      "answer": "1222:33ff:fe44:5566",
+      "explanation": "Se insertan ff:fe tras el tercer octeto (10:22:33:ff:fe:44:55:66) y se invierte el bit U/L: 10 → 12."
+    },
+    {
+      "id": "direccion-link-local-sin-64",
+      "label": "Dirección link-local, sin /64",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::1222:33ff:fe44:5566",
+      "explanation": "La link-local antepone fe80::/64 al IID: fe80::1222:33ff:fe44:5566."
+    }
+  ]
+}

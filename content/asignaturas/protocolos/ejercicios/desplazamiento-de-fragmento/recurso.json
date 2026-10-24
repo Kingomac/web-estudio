@@ -1,0 +1,43 @@
+{
+  "id": "protocolos.ejercicios.desplazamiento-de-fragmento",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "desplazamiento-de-fragmento",
+  "title": "Desplazamiento de fragmento",
+  "description": "Un FRAGN tiene datagram_offset=12.",
+  "scope": "Procedimiento de la página 28 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 143,
+  "mode": "form",
+  "prompt": "Un FRAGN tiene datagram_offset=12. Calcula su posición en bytes respecto al datagrama IPv6 sin comprimir e indica la longitud de la cabecera FRAGN.",
+  "explanation": "12×8=96 bytes desde el inicio del datagrama original. FRAGN ocupa 5 bytes; FRAG1 ocupa 4.",
+  "hint": "El offset se expresa en unidades de 8 bytes. FRAGN añade el campo offset a FRAG1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "desplazamiento-bytes",
+      "label": "Desplazamiento, bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "96",
+      "explanation": "datagram_offset va en unidades de 8 bytes: 12 × 8 = 96."
+    },
+    {
+      "id": "cabecera-fragn-bytes",
+      "label": "Cabecera FRAGN, bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "FRAGN ocupa 5 bytes: los 4 de FRAG1 más el byte de offset."
+    }
+  ]
+}

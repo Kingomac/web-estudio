@@ -1,0 +1,67 @@
+{
+  "id": "protocolos.ejercicios.contexto-0-y-mesh-under",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "contexto-0-y-mesh-under",
+  "title": "Contexto 0 y mesh-under",
+  "description": "Ejemplo del profesor: contexto 0 = 2001:11::/64; origen 2001:11::ff:fe00:5, destino 2001:11::ff:fe00:1.",
+  "scope": "Procedimiento de la página 57 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 122,
+  "mode": "form",
+  "prompt": "Ejemplo del profesor: contexto 0 = 2001:11::/64; origen 2001:11::ff:fe00:5, destino 2001:11::ff:fe00:1. La cabecera Mesh conserva las direcciones cortas 5 y 1. Omite el byte opcional de identificadores de contexto.",
+  "explanation": "CID=0 selecciona implícitamente el contexto 0. SAC=DAC=1 omite los prefijos mediante contexto y SAM=DAM=11 permite deducir los IID desde Mesh.",
+  "hint": "Usa contexto para ambos prefijos. Mesh permite reconstruir ambos IID.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "cid-1-bit",
+      "label": "CID, 1 bit",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "CID=0 usa implícitamente el contexto 0 sin añadir el byte SCI/DCI."
+    },
+    {
+      "id": "sac-1-bit",
+      "label": "SAC, 1 bit",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "SAC=1: el prefijo de origen sale del contexto 0."
+    },
+    {
+      "id": "dac-1-bit",
+      "label": "DAC, 1 bit",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "DAC=1: el prefijo de destino sale del contexto 0."
+    },
+    {
+      "id": "sam-2-bits",
+      "label": "SAM, 2 bits",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "SAM=11: el IID de origen se deduce del Originator de la cabecera Mesh (5)."
+    },
+    {
+      "id": "dam-2-bits",
+      "label": "DAM, 2 bits",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "DAM=11: el IID de destino se deduce del Final Destination de Mesh (1)."
+    }
+  ]
+}

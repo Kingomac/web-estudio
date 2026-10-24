@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.ejercicios.fuente-link-local-de-direccion-corta",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "fuente-link-local-de-direccion-corta",
+  "title": "Fuente link-local de dirección corta",
+  "description": "Fuente fe80::ff:fe00:5.",
+  "scope": "Procedimiento de la página 23 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 121,
+  "mode": "form",
+  "prompt": "Fuente fe80::ff:fe00:5. No se usa contexto. El receptor no puede deducir el IID de la cabecera de enlace, pero sí usar el patrón 0000:00ff:fe00:XXXX. Escoge la codificación más compacta del tema.",
+  "explanation": "SAC=0 utiliza el prefijo link-local. SAM=10 representa el patrón de IID con 16 bits finales explícitos: 0x0005.",
+  "hint": "Sin contexto se usa SAC=0. La parte XXXX se transmite en 16 bits.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "sac-1-bit",
+      "label": "SAC, 1 bit",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "Sin contexto se usa compresión sin estado: SAC=0, con prefijo fe80::/64."
+    },
+    {
+      "id": "sam-2-bits",
+      "label": "SAM, 2 bits",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "SAM=10 reconstruye el patrón 0000:00ff:fe00:XXXX y solo envía XXXX."
+    },
+    {
+      "id": "bits-de-direccion-en-linea",
+      "label": "Bits de dirección en línea",
+      "type": "format",
+      "format": "integer",
+      "answer": "16",
+      "explanation": "Se envían los 16 bits XXXX (0x0005)."
+    }
+  ]
+}

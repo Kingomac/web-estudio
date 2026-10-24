@@ -1,0 +1,104 @@
+{
+  "id": "protocolos.ejercicios.un-solicited-node-no-cabe-en-el-modo-de-ocho-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "un-solicited-node-no-cabe-en-el-modo-de-ocho-bits",
+  "title": "Un solicited-node no cabe en el modo de ocho bits",
+  "description": "Taller de cabeceras · Resolver capturas completas: combina direcciones, compresión y recorrido.",
+  "scope": "Taller complementario, bloque 08 (Resolver capturas completas). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 238,
+  "mode": "form",
+  "prompt": "Se muestra IPHC y todos los campos IPv6 en línea de un paquete ICMPv6, sin el mensaje ICMPv6. Enlace origen corto 0x1234, sin Mesh. Es un ejercicio de codificación; no prescribe cómo desplegar NDP en una LoWPAN.",
+  "explanation": "La dirección solicited-node tiene el grupo 1:ffab:cdef; no encaja en ff02::00XX. Tampoco encaja en el modo de 32 bits ffXX::00XX:XXXX.",
+  "hint": "Para M=1,DAC=0,DAM=01, el primer byte en línea lleva flags y scope.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html"
+    },
+    {
+      "title": "RFC 4944",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html"
+    }
+  ],
+  "fields": [
+    {
+      "id": "m",
+      "label": "M",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "El destino es multicast."
+    },
+    {
+      "id": "dam",
+      "label": "DAM",
+      "type": "format",
+      "format": "bits",
+      "answer": "01",
+      "explanation": "Codificación multicast de 48 bits."
+    },
+    {
+      "id": "origen-ipv6",
+      "label": "Origen IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:1234",
+      "explanation": "SAM=11 sin estado."
+    },
+    {
+      "id": "destino-ipv6",
+      "label": "Destino IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "ff02::1:ffab:cdef",
+      "explanation": "Reconstruye ffXX::00XX:XXXX:XXXX a partir de 02 01 ff ab cd ef."
+    },
+    {
+      "id": "next-header-decimal",
+      "label": "Next Header, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "58",
+      "explanation": "3a hexadecimal."
+    },
+    {
+      "id": "hop-limit",
+      "label": "Hop Limit",
+      "type": "format",
+      "format": "integer",
+      "answer": "255",
+      "explanation": "HLIM=11."
+    },
+    {
+      "id": "tamano-comprimido-de-ipv6",
+      "label": "Tamaño comprimido de IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "9",
+      "explanation": "2 base + 1 NH + 6 destino."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona el destino multicast en línea: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "Ocupa los bytes 3 a 8, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona el destino multicast en línea: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "8",
+      "explanation": "Ocupa los bytes 3 a 8, contados desde 0."
+    }
+  ],
+  "dump": "7b 39 3a 02 01 ff ab cd ef"
+}

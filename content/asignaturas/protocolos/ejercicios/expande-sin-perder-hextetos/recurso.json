@@ -1,0 +1,46 @@
+{
+  "id": "protocolos.ejercicios.expande-sin-perder-hextetos",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "expande-sin-perder-hextetos",
+  "title": "Expande sin perder hextetos",
+  "description": "Taller de cabeceras · Escribir e identificar IPv6: notación, prefijos e identificadores de interfaz.",
+  "scope": "Taller complementario, bloque 01 (Escribir e identificar IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 200,
+  "mode": "form",
+  "prompt": "Expande 2001:db8:0:7::a:5. Escribe los ocho hextetos con cuatro cifras cada uno.",
+  "explanation": "Escribe 2001, db8, 0, 7, a y 5: seis grupos. Inserta dos grupos 0000 entre 7 y a y completa cada grupo hasta cuatro cifras.",
+  "hint": "Cuenta los grupos explícitos a ambos lados de ::.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direcciones",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    },
+    {
+      "title": "RFC 5952 · notación",
+      "url": "https://www.rfc-editor.org/rfc/rfc5952.html#section-4"
+    }
+  ],
+  "fields": [
+    {
+      "id": "direccion-expandida",
+      "label": "Dirección expandida",
+      "type": "format",
+      "format": "ipv6-expanded",
+      "answer": "2001:0db8:0000:0007:0000:0000:000a:0005",
+      "explanation": "Hay seis hextetos escritos; :: aporta los dos que faltan."
+    },
+    {
+      "id": "numero-de-hextetos-sustituidos-por",
+      "label": "Número de hextetos sustituidos por ::",
+      "type": "format",
+      "format": "integer",
+      "answer": "2",
+      "explanation": "La dirección siempre ocupa ocho hextetos."
+    }
+  ]
+}

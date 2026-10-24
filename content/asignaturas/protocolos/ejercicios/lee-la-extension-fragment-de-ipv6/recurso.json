@@ -1,0 +1,67 @@
+{
+  "id": "protocolos.ejercicios.lee-la-extension-fragment-de-ipv6",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "lee-la-extension-fragment-de-ipv6",
+  "title": "Lee la extensión Fragment de IPv6",
+  "description": "Taller de cabeceras · Leer la cabecera IPv6: campos que cruzan bytes, offsets y extensiones.",
+  "scope": "Taller complementario, bloque 04 (Leer la cabecera IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 218,
+  "mode": "form",
+  "prompt": "Se muestra solo una extensión Fragment de IPv6, no una cabecera FRAGN de 6LoWPAN. El paquete tiene Next Header=44 en su cabecera base.",
+  "explanation": "0019 = 0000000000011 | 00 | 1. Este no es el primer fragmento: sus datos no empiezan con la cabecera UDP aunque Next Header sea 17.",
+  "hint": "En el campo de 16 bits: Offset ocupa 13, después hay 2 reservados y finalmente M.",
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · cabeceras",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "protocolo-siguiente-decimal",
+      "label": "Protocolo siguiente, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "17",
+      "explanation": "11 hexadecimal = UDP."
+    },
+    {
+      "id": "fragment-offset-en-unidades-de-8",
+      "label": "Fragment Offset en unidades de 8 bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "El campo 0019 desplazado tres bits a la derecha da 3."
+    },
+    {
+      "id": "desplazamiento-en-bytes",
+      "label": "Desplazamiento en bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "24",
+      "explanation": "3 × 8 = 24."
+    },
+    {
+      "id": "bandera-m-1-bit",
+      "label": "Bandera M (1 bit)",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "0019 tiene a uno su bit menos significativo."
+    },
+    {
+      "id": "identification-8-cifras-hex",
+      "label": "Identification (8 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "12345678",
+      "explanation": "Son los últimos cuatro octetos."
+    }
+  ],
+  "dump": "11 00 00 19 12 34 56 78"
+}

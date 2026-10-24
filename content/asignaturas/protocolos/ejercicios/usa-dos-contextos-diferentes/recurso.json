@@ -1,0 +1,75 @@
+{
+  "id": "protocolos.ejercicios.usa-dos-contextos-diferentes",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "usa-dos-contextos-diferentes",
+  "title": "Usa dos contextos diferentes",
+  "description": "Taller de cabeceras · Descomprimir IPHC: bits de control, contexto y campos en línea.",
+  "scope": "Taller complementario, bloque 05 (Descomprimir IPHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 224,
+  "mode": "form",
+  "prompt": "Cabecera comprimida IPv6 completa antes de NHC. Contexto 3 = 2001:db8:10::/64; contexto 5 = 2001:db8:20::/64. Origen corto del enlace 0x1234. Ambos contextos están disponibles y son válidos.",
+  "explanation": "7c = 011|11|1|00; f6 = 1|1|11|0|1|10. No uses 0x35 como Hop Limit.",
+  "hint": "El byte de contextos va inmediatamente después de IPHC, antes de los campos IPv6 en línea.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "sci",
+      "label": "SCI",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "Nibble alto de 35."
+    },
+    {
+      "id": "dci",
+      "label": "DCI",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "Nibble bajo de 35."
+    },
+    {
+      "id": "hop-limit",
+      "label": "Hop Limit",
+      "type": "format",
+      "format": "integer",
+      "answer": "63",
+      "explanation": "HLIM=00: 3f va en línea."
+    },
+    {
+      "id": "origen-ipv6",
+      "label": "Origen IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:10::ff:fe00:1234",
+      "explanation": "SAC=1, SAM=11: contexto 3 e IID del enlace."
+    },
+    {
+      "id": "destino-ipv6",
+      "label": "Destino IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:20::ff:fe00:abcd",
+      "explanation": "DAC=1, DAM=10: contexto 5 y abcd en línea."
+    },
+    {
+      "id": "tamano-comprimido-de-ipv6",
+      "label": "Tamaño comprimido de IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "6",
+      "explanation": "2 base + 1 CID + 1 HLIM + 2 destino."
+    }
+  ],
+  "dump": "7c f6 35 3f ab cd"
+}

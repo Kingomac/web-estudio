@@ -1,0 +1,35 @@
+{
+  "id": "protocolos.ejercicios.direccion-de-enlace-de-64-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "direccion-de-enlace-de-64-bits",
+  "title": "Dirección de enlace de 64 bits",
+  "description": "Dirección IEEE 802.15.4: 11:22:33:44:55:66:77:88.",
+  "scope": "Procedimiento de la página 17 del Tema 3.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 102,
+  "mode": "form",
+  "prompt": "Dirección IEEE 802.15.4: 11:22:33:44:55:66:77:88. Forma la link-local por el procedimiento del tema.",
+  "explanation": "El IID modificado es 1322:3344:5566:7788. Con el prefijo link-local resulta fe80::1322:3344:5566:7788.",
+  "hint": "Ya hay 64 bits: no insertes ff:fe. Invierte U/L: 11 → 13.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "direccion-link-local",
+      "label": "Dirección link-local",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::1322:3344:5566:7788",
+      "explanation": "La dirección ya tiene 64 bits: no se inserta ff:fe, solo se invierte U/L (11 → 13) y se antepone fe80::/64."
+    }
+  ]
+}

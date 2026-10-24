@@ -1,0 +1,71 @@
+{
+  "id": "protocolos.ejercicios.mesh-con-contador-ampliado",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "mesh-con-contador-ampliado",
+  "title": "Mesh con contador ampliado",
+  "description": "Taller de cabeceras · Seguir el paquete por la malla: mesh, fragmentos y reenvío ipv6.",
+  "scope": "Taller complementario, bloque 07 (Seguir el paquete por la malla). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 233,
+  "mode": "form",
+  "prompt": "Se muestra una cabecera Mesh con direcciones cortas. El nibble Hops Left vale 0xf y activa un octeto Deep Hops Left.",
+  "explanation": "El nibble f es un indicador, no un contador de quince saltos. Si el decremento llega a cero, el nodo no reenvía.",
+  "hint": "El byte 14 no pertenece a la dirección origen.",
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · Mesh y fragmentos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5"
+    },
+    {
+      "title": "RFC 6282 · derivación del IID",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.2.2"
+    }
+  ],
+  "fields": [
+    {
+      "id": "hops-left-efectivo",
+      "label": "Hops Left efectivo",
+      "type": "format",
+      "format": "integer",
+      "answer": "20",
+      "explanation": "Deep Hops Left=14 hexadecimal=20."
+    },
+    {
+      "id": "originator-4-cifras-hex",
+      "label": "Originator (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "1234",
+      "explanation": "Comienza después del contador ampliado."
+    },
+    {
+      "id": "final-destination-4-cifras-hex",
+      "label": "Final Destination (4 cifras hex)",
+      "type": "format",
+      "format": "hex",
+      "answer": "abcd",
+      "explanation": "Últimos dos bytes."
+    },
+    {
+      "id": "tamano-de-cabecera-mesh",
+      "label": "Tamaño de cabecera Mesh",
+      "type": "format",
+      "format": "integer",
+      "answer": "6",
+      "explanation": "1 control + 1 contador + 2 + 2 direcciones."
+    },
+    {
+      "id": "cabecera-despues-de-un-reenvio",
+      "label": "Cabecera después de un reenvío",
+      "type": "format",
+      "format": "hex",
+      "answer": "bf 13 12 34 ab cd",
+      "explanation": "Se reduce el contador extendido a 19=0x13."
+    }
+  ],
+  "dump": "bf 14 12 34 ab cd"
+}

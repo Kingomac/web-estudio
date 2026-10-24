@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.ejercicios.una-direccion-extendida-ya-tiene-64-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "una-direccion-extendida-ya-tiene-64-bits",
+  "title": "Una dirección extendida ya tiene 64 bits",
+  "description": "Taller de cabeceras · Escribir e identificar IPv6: notación, prefijos e identificadores de interfaz.",
+  "scope": "Taller complementario, bloque 01 (Escribir e identificar IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 204,
+  "mode": "form",
+  "prompt": "La dirección IEEE 802.15.4 extendida es 00:12:4b:00:01:ab:cd:ef. Deriva el IID usado para compresión sin estado.",
+  "explanation": "La dirección ya contiene ocho octetos. 00 XOR 02 = 02; el resto se conserva.",
+  "hint": "No apliques mecánicamente el algoritmo de una MAC Ethernet de 48 bits.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "iid-cuatro-hextetos",
+      "label": "IID (cuatro hextetos)",
+      "type": "format",
+      "format": "iid",
+      "answer": "0212:4b00:01ab:cdef",
+      "explanation": "Solo se invierte U/L; aquí no se inserta ff:fe."
+    },
+    {
+      "id": "ipv6-link-local",
+      "label": "IPv6 link-local",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::212:4b00:1ab:cdef",
+      "explanation": "Los 64 bits altos son fe80::/64."
+    }
+  ]
+}

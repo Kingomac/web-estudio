@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.ejercicios.puertos-udp-de-4-bits",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "puertos-udp-de-4-bits",
+  "title": "Puertos UDP de 4 bits",
+  "description": "Ejercicio con valores dentro del rango de la tabla: origen 0xf0b3 y destino 0xf0ba.",
+  "scope": "Procedimiento de la página 27 del Tema 4.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 141,
+  "mode": "form",
+  "prompt": "Ejercicio con valores dentro del rango de la tabla: origen 0xf0b3 y destino 0xf0ba. Usa P=11 y conserva el checksum (2 bytes). Calcula los bits de puertos y el total de NHC UDP: 1 byte de NHC + puertos + checksum.",
+  "explanation": "4+4=8 bits de puertos, es decir, 1 byte. Total: 1+1+2=4 bytes. Los nibbles transmitidos son 3 y a.",
+  "hint": "P=11 transmite 4 bits de cada puerto. Ocho bits forman un byte.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "bits-transmitidos-del-puerto-origen",
+      "label": "Bits transmitidos del puerto origen",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "Con P=11 se envía el nibble bajo del origen (3): 4 bits."
+    },
+    {
+      "id": "bits-transmitidos-del-puerto-destino",
+      "label": "Bits transmitidos del puerto destino",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "Con P=11 se envía el nibble bajo del destino (a): 4 bits."
+    },
+    {
+      "id": "total-nhc-udp-bytes",
+      "label": "Total NHC UDP, bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "1 byte NHC + 1 byte de puertos (4 + 4 bits) + 2 de checksum = 4 bytes."
+    }
+  ]
+}

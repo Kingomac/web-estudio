@@ -1,0 +1,99 @@
+{
+  "id": "protocolos.ejercicios.lee-los-16-bits-de-control",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "lee-los-16-bits-de-control",
+  "title": "Lee los 16 bits de control",
+  "description": "Taller de cabeceras · Descomprimir IPHC: bits de control, contexto y campos en línea.",
+  "scope": "Taller complementario, bloque 05 (Descomprimir IPHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 221,
+  "mode": "form",
+  "prompt": "Se muestran los dos bytes de IPHC, sin campos siguientes. Identifica todos los campos. La estructura es 011 | TF | NH | HLIM / CID | SAC | SAM | M | DAC | DAM.",
+  "explanation": "7e = 011 | 11 | 1 | 10. 33 = 0 | 0 | 11 | 0 | 0 | 11. NH=1 no significa necesariamente UDP.",
+  "hint": "Convierte 7e y 33 por separado a ocho bits.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "tf-2-bits",
+      "label": "TF (2 bits)",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "Los bits 4 y 3 del primer byte son 11."
+    },
+    {
+      "id": "nh-1-bit",
+      "label": "NH (1 bit)",
+      "type": "format",
+      "format": "bits",
+      "answer": "1",
+      "explanation": "La cabecera siguiente usa NHC; aún no sabes cuál."
+    },
+    {
+      "id": "hlim-2-bits",
+      "label": "HLIM (2 bits)",
+      "type": "format",
+      "format": "bits",
+      "answer": "10",
+      "explanation": "Codifica Hop Limit=64."
+    },
+    {
+      "id": "cid-1-bit",
+      "label": "CID (1 bit)",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "No se añade byte SCI/DCI."
+    },
+    {
+      "id": "sac-1-bit",
+      "label": "SAC (1 bit)",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "Origen sin contexto."
+    },
+    {
+      "id": "sam-2-bits",
+      "label": "SAM (2 bits)",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "Origen deducido del enlace."
+    },
+    {
+      "id": "m-1-bit",
+      "label": "M (1 bit)",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "Destino unicast."
+    },
+    {
+      "id": "dac-1-bit",
+      "label": "DAC (1 bit)",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "Destino sin contexto."
+    },
+    {
+      "id": "dam-2-bits",
+      "label": "DAM (2 bits)",
+      "type": "format",
+      "format": "bits",
+      "answer": "11",
+      "explanation": "Destino deducido del enlace."
+    }
+  ],
+  "dump": "7e 33"
+}

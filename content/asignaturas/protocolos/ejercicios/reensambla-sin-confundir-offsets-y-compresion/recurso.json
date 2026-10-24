@@ -1,0 +1,87 @@
+{
+  "id": "protocolos.ejercicios.reensambla-sin-confundir-offsets-y-compresion",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "reensambla-sin-confundir-offsets-y-compresion",
+  "title": "Reensambla sin confundir offsets y compresión",
+  "description": "Taller de cabeceras · Resolver capturas completas: combina direcciones, compresión y recorrido.",
+  "scope": "Taller complementario, bloque 08 (Resolver capturas completas). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 239,
+  "mode": "form",
+  "prompt": "Datagrama IPv6 original de 200 bytes: 40 IPv6 + 8 UDP + 152 aplicación. Las cabeceras IPv6+UDP se comprimen a 6 bytes. Cada trama admite 81 bytes de carga MAC. No hay Mesh ni seguridad adicional dentro de esos 81 bytes. Usa FRAG1=4 bytes y FRAGN=5; maximiza cada fragmento no final respetando la alineación de 8 bytes del datagrama original.",
+  "explanation": "FRAG1 consume 4+6+64=74 bytes de carga MAC. FRAGN 2 consume 5+72=77 y FRAGN 3 consume 5+16=21. En mesh-under básico reensambla el extremo de la malla. En route-over básico cada router reensambla antes de procesar IPv6; aquí no se modelan optimizaciones de reenvío de fragmentos.",
+  "hint": "El offset se mide en el datagrama descomprimido. En FRAG1, seis bytes representan 48.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html"
+    },
+    {
+      "title": "RFC 4944",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html"
+    }
+  ],
+  "fields": [
+    {
+      "id": "aplicacion-que-cabe-en-frag1-respetando",
+      "label": "Aplicación que cabe en FRAG1 respetando alineación",
+      "type": "format",
+      "format": "integer",
+      "answer": "64",
+      "explanation": "81 − 4 − 6 = 71 disponibles; 48 + datos debe ser múltiplo de 8, así que son 64."
+    },
+    {
+      "id": "bytes-originales-cubiertos-por-frag1",
+      "label": "Bytes originales cubiertos por FRAG1",
+      "type": "format",
+      "format": "integer",
+      "answer": "112",
+      "explanation": "48 de cabeceras descomprimidas + 64 de aplicación."
+    },
+    {
+      "id": "offset-codificado-del-segundo-fragmento",
+      "label": "Offset codificado del segundo fragmento",
+      "type": "format",
+      "format": "integer",
+      "answer": "14",
+      "explanation": "112/8 = 14, aunque FRAG1 solo transporta 70 bytes comprimidos."
+    },
+    {
+      "id": "datos-en-el-segundo-fragmento",
+      "label": "Datos en el segundo fragmento",
+      "type": "format",
+      "format": "integer",
+      "answer": "72",
+      "explanation": "81 − 5 = 76; el mayor múltiplo de 8 es 72."
+    },
+    {
+      "id": "offset-codificado-del-tercer-fragmento",
+      "label": "Offset codificado del tercer fragmento",
+      "type": "format",
+      "format": "integer",
+      "answer": "23",
+      "explanation": "(112 + 72)/8 = 23."
+    },
+    {
+      "id": "datos-en-el-ultimo-fragmento",
+      "label": "Datos en el último fragmento",
+      "type": "format",
+      "format": "integer",
+      "answer": "16",
+      "explanation": "200 − 184 = 16."
+    },
+    {
+      "id": "numero-total-de-fragmentos",
+      "label": "Número total de fragmentos",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "Cubren [0,112), [112,184) y [184,200)."
+    }
+  ]
+}

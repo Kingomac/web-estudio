@@ -1,0 +1,43 @@
+{
+  "id": "protocolos.ejercicios.solicited-node-y-mac-multicast",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "solicited-node-y-mac-multicast",
+  "title": "Solicited-node y MAC multicast",
+  "description": "IPv6 objetivo: fe80::1322:33ff:fe44:5566.",
+  "scope": "Procedimiento de la página 37 del Tema 3.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 104,
+  "mode": "form",
+  "prompt": "IPv6 objetivo: fe80::1322:33ff:fe44:5566. Calcula el grupo solicited-node y su MAC multicast Ethernet.",
+  "explanation": "Los últimos 24 bits son 44:55:66: grupo ff02::1:ff44:5566. Sus últimos 32 bits son ff:44:55:66; MAC 33:33:ff:44:55:66.",
+  "hint": "Usa los últimos 24 bits para solicited-node; después 33:33 más los últimos 32 bits del multicast para la MAC.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "grupo-solicited-node",
+      "label": "Grupo solicited-node",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "ff02::1:ff44:5566",
+      "explanation": "Los últimos 24 bits de la objetivo son 44:55:66; añadidos a ff02::1:ff00:0/104 dan ff02::1:ff44:5566."
+    },
+    {
+      "id": "mac-multicast",
+      "label": "MAC multicast",
+      "type": "format",
+      "format": "mac",
+      "answer": "33:33:ff:44:55:66",
+      "explanation": "33:33 seguido de los últimos 32 bits del grupo (ff:44:55:66)."
+    }
+  ]
+}

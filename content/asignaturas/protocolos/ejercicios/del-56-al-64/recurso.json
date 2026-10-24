@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.ejercicios.del-56-al-64",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "del-56-al-64",
+  "title": "Del /56 al /64",
+  "description": "Taller de cabeceras · Pensar en bits de red: repartos, límites no alineados y rutas.",
+  "scope": "Taller complementario, bloque 02 (Pensar en bits de red). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 206,
+  "mode": "form",
+  "prompt": "Bloque asignado: 2001:db8:1234:ab00::/56. Asigna /64 consecutivos desde el índice 0.",
+  "explanation": "Conserva ab y cambia el último byte de 00 a ff. No confundas el índice decimal 171 con el hexadecimal 0171.",
+  "hint": "El cuarto hexteto es abXX, no XXXX.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · prefijos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "cantidad-de-64",
+      "label": "Cantidad de /64",
+      "type": "format",
+      "format": "integer",
+      "answer": "256",
+      "explanation": "Se pueden variar ocho bits."
+    },
+    {
+      "id": "subred-de-indice-decimal-171",
+      "label": "Subred de índice decimal 171",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2001:db8:1234:abab::/64",
+      "explanation": "171 decimal = ab; los primeros ocho bits del cuarto hexteto siguen siendo ab."
+    },
+    {
+      "id": "ultima-64-del-bloque",
+      "label": "Última /64 del bloque",
+      "type": "format",
+      "format": "prefix",
+      "answer": "2001:db8:1234:abff::/64",
+      "explanation": "Solo el último byte del cuarto hexteto es variable."
+    }
+  ]
+}

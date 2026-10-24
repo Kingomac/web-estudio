@@ -1,0 +1,109 @@
+{
+  "id": "protocolos.ejercicios.captura-completa-salida-de-un-router-ipv6",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "captura-completa-salida-de-un-router-ipv6",
+  "title": "Captura completa: salida de un router IPv6",
+  "description": "Taller de cabeceras · Resolver capturas completas: combina direcciones, compresión y recorrido.",
+  "scope": "Taller complementario, bloque 08 (Resolver capturas completas). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 237,
+  "mode": "form",
+  "prompt": "Captura R(0x0002) → D(0x0003), sin Mesh. Contexto 0=2001:db8:7::/64. A(0x0001) originó los datos y R ya ha decrementado Hop Limit. Se muestra toda la carga MAC 6LoWPAN.",
+  "explanation": "IPHC y campos ocupan 5 bytes; NHC y campos, 4. La longitud comprimida total es 13 bytes, frente a 52 del IPv6 original.",
+  "hint": "67 = 0|1|10|0|1|11. CID=0 usa el contexto 0.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html"
+    },
+    {
+      "title": "RFC 4944",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html"
+    }
+  ],
+  "fields": [
+    {
+      "id": "hop-limit",
+      "label": "Hop Limit",
+      "type": "format",
+      "format": "integer",
+      "answer": "63",
+      "explanation": "3f va en línea porque HLIM=00."
+    },
+    {
+      "id": "origen-ipv6",
+      "label": "Origen IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:7::ff:fe00:1",
+      "explanation": "SAM=10 y sufijo 0001; no se usa el emisor MAC R."
+    },
+    {
+      "id": "destino-ipv6",
+      "label": "Destino IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "2001:db8:7::ff:fe00:3",
+      "explanation": "DAM=11 usa el receptor corto D."
+    },
+    {
+      "id": "offset-local-de-nhc-udp",
+      "label": "Offset local de NHC UDP",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "2 base + 1 HLIM + 2 origen."
+    },
+    {
+      "id": "bytes-de-aplicacion",
+      "label": "Bytes de aplicación",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "aa bb cc dd después de NHC UDP."
+    },
+    {
+      "id": "payload-length-ipv6",
+      "label": "Payload Length IPv6",
+      "type": "format",
+      "format": "integer",
+      "answer": "12",
+      "explanation": "UDP original de 8 bytes más 4 de datos."
+    },
+    {
+      "id": "ahorro-de-cabeceras-ipv6-udp-en",
+      "label": "Ahorro de cabeceras IPv6+UDP, en bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "39",
+      "explanation": "48 originales − (5 IPHC + 4 NHC) = 39."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona el origen transmitido en línea: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "Ocupa los bytes 3 a 4, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona el origen transmitido en línea: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "Ocupa los bytes 3 a 4, contados desde 0."
+    }
+  ],
+  "dump": "7c 67 3f 00 01 f3 3a 4d 4a aa bb cc dd",
+  "path": [
+    "A · 0001",
+    "R · 0002",
+    "D · 0003"
+  ]
+}

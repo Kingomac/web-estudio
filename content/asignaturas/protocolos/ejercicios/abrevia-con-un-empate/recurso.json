@@ -1,0 +1,46 @@
+{
+  "id": "protocolos.ejercicios.abrevia-con-un-empate",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "abrevia-con-un-empate",
+  "title": "Abrevia con un empate",
+  "description": "Taller de cabeceras · Escribir e identificar IPv6: notación, prefijos e identificadores de interfaz.",
+  "scope": "Taller complementario, bloque 01 (Escribir e identificar IPv6). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 201,
+  "mode": "form",
+  "prompt": "Normaliza 2001:0db8:0000:0000:0001:0000:0000:000a según RFC 5952.",
+  "explanation": "Queda 2001:db8:0:0:1:0:0:a. En el empate, sustituye el primer bloque 0:0 por ::. Usa minúsculas.",
+  "hint": "Primero elimina ceros iniciales. Solo puedes utilizar :: una vez.",
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direcciones",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    },
+    {
+      "title": "RFC 5952 · notación",
+      "url": "https://www.rfc-editor.org/rfc/rfc5952.html#section-4"
+    }
+  ],
+  "fields": [
+    {
+      "id": "forma-canonica",
+      "label": "Forma canónica",
+      "type": "format",
+      "format": "ipv6-canonical",
+      "answer": "2001:db8::1:0:0:a",
+      "explanation": "Los dos bloques de ceros tienen longitud dos; se comprime el de más a la izquierda."
+    },
+    {
+      "id": "longitud-de-un-hexteto-en-bits",
+      "label": "Longitud de un hexteto, en bits",
+      "type": "format",
+      "format": "integer",
+      "answer": "16",
+      "explanation": "Cuatro cifras hexadecimales por cuatro bits."
+    }
+  ]
+}

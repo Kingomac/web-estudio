@@ -1,0 +1,83 @@
+{
+  "id": "protocolos.ejercicios.direcciones-cortas-transmitidas-en-linea",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "direcciones-cortas-transmitidas-en-linea",
+  "title": "Direcciones cortas transmitidas en línea",
+  "description": "Taller de cabeceras · Descomprimir IPHC: bits de control, contexto y campos en línea.",
+  "scope": "Taller complementario, bloque 05 (Descomprimir IPHC). Ejemplo sintético contrastado con los RFC enlazados; va más allá del alcance del parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 223,
+  "mode": "form",
+  "prompt": "Se muestran IPHC y todos sus campos IPv6 en línea; no el payload ICMPv6. El paquete no lleva Mesh.",
+  "explanation": "Tras IPHC viene Next Header; HLIM=10 no consume octeto adicional. El orden en línea es origen y después destino.",
+  "hint": "7a=011|11|0|10; 22=0|0|10|0|0|10.",
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3"
+    }
+  ],
+  "fields": [
+    {
+      "id": "nh",
+      "label": "NH",
+      "type": "format",
+      "format": "bits",
+      "answer": "0",
+      "explanation": "Next Header va explícito."
+    },
+    {
+      "id": "next-header-decimal",
+      "label": "Next Header, decimal",
+      "type": "format",
+      "format": "integer",
+      "answer": "58",
+      "explanation": "El byte 3a es ICMPv6."
+    },
+    {
+      "id": "origen-ipv6",
+      "label": "Origen IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:1234",
+      "explanation": "SAM=10: los bytes 12 34 completan el IID."
+    },
+    {
+      "id": "destino-ipv6",
+      "label": "Destino IPv6",
+      "type": "format",
+      "format": "ipv6",
+      "answer": "fe80::ff:fe00:abcd",
+      "explanation": "DAM=10: ab cd completa el IID."
+    },
+    {
+      "id": "tamano-comprimido-de-ipv6-en-bytes",
+      "label": "Tamaño comprimido de IPv6, en bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "7",
+      "explanation": "2 base + 1 NH + 2 origen + 2 destino."
+    },
+    {
+      "id": "offset-inicial",
+      "label": "Selecciona los bytes de dirección origen en línea: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "3",
+      "explanation": "Ocupa los bytes 3 a 4, contados desde 0."
+    },
+    {
+      "id": "offset-final",
+      "label": "Selecciona los bytes de dirección origen en línea: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "4",
+      "explanation": "Ocupa los bytes 3 a 4, contados desde 0."
+    }
+  ],
+  "dump": "7a 22 3a 12 34 ab cd"
+}
