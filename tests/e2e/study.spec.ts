@@ -180,6 +180,34 @@ test('la impresión mantiene explicación estática y oculta controles', async (
   await expect(page.locator('.mobile-toc-toggle')).toBeHidden();
 });
 
+test('los laboratorios imprimen todos los casos y supuestos cerrados incluso sin JavaScript', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  try {
+    for (const path of ['tema-3-ip-en-iot', 'tema-4-lowpan']) {
+      await page.emulateMedia({ media: 'screen' });
+      await page.goto(`${baseURL}${subject}apuntes/${path}/`);
+      const details = page.locator('.lab details');
+      expect(await details.count()).toBeGreaterThan(0);
+      const contents = details.locator(':scope > :not(summary)');
+      for (const content of await contents.all()) await expect(content).toBeHidden();
+      // Preserve the reader's choice when returning from print to screen.
+      await details.first().locator('summary').click();
+      await page.emulateMedia({ media: 'print' });
+      for (const content of await contents.all()) await expect(content).toBeVisible();
+      for (const control of await page.locator('.lab button, .lab input, .lab select').all()) await expect(control).toBeHidden();
+      await page.emulateMedia({ media: 'screen' });
+      await expect(details.first()).toHaveAttribute('open');
+      for (const detail of (await details.all()).slice(1)) {
+        await expect(detail).not.toHaveAttribute('open');
+        for (const content of await detail.locator(':scope > :not(summary)').all()) await expect(content).toBeHidden();
+      }
+    }
+  } finally {
+    await context.close();
+  }
+});
+
 test('laboratorios de los apuntes: NDP, EUI-64, IPHC y presupuesto responden y caben en móvil', async ({ page }) => {
   await page.goto(`${subject}apuntes/tema-3-ip-en-iot/`);
   const slaac = page.locator('#ndp-slaac');

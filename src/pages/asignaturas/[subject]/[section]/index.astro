@@ -3,6 +3,7 @@ import Site from '../../../../layouts/Site.astro';
 import PageHeader from '../../../../components/ui/PageHeader.astro';
 import SectionTabs from '../../../../components/ui/SectionTabs.astro';
 import ResourceList from '../../../../components/ResourceList.astro';
+import PrintableSummaries from '../../../../components/PrintableSummaries.astro';
 import { siteCatalog } from '../../../../lib/sitio.ts';
 import { isResource } from '../../../../lib/catalogo.ts';
 import { sections, labels } from '../../../../lib/rutas.ts';
@@ -17,5 +18,6 @@ const tags = catalog.entries.filter((e): e is Tag => e.kind === 'tag' && e.subje
 <Site title={labels[kind]} subject={subject}>
   <PageHeader eyebrow={subject.title} title={labels[kind]} />
   <SectionTabs subject={subject} current={kind} />
+  {(kind === 'apuntes' || kind === 'test') && <PrintableSummaries subjectId={subject.id} catalog={catalog} />}
   <ResourceList entries={resources} tags={tags} catalog={catalog} />
 </Site>

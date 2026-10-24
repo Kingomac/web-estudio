@@ -9,3 +9,10 @@ const { id, title, intro, label = 'Laboratorio · Prueba y observa', component }
   <p class="lab-intro">{intro}</p>
   <slot />
 </section>
+<style>
+  @media print {
+    .lab { break-inside: auto; }
+    /* Reveal static cases and assumptions even when the disclosure is closed, without JavaScript. */
+    .lab :global(details::details-content) { display: block; content-visibility: visible; }
+  }
+</style>

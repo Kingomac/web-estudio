@@ -1,0 +1,40 @@
+{
+  "id": "protocolos.resumenes.parcial-en-pocas-hojas",
+  "kind": "resumen",
+  "subjectId": "protocolos",
+  "slug": "parcial-en-pocas-hojas",
+  "title": "El parcial, en unas pocas hojas",
+  "description": "El resumen completo del parcial, con tablas y acceso al PDF de 4 caras A4 (2 hojas a doble cara).",
+  "scope": "Temas 1–3 y tema 4 hasta la diapositiva 37 incluida. Adaptación íntegra de las cuatro páginas del resumen propio; excluye 6LFF y el desarrollo posterior de NDP optimizado, Thread y RPL.",
+  "tagIds": [
+    "protocolos.tags.parcial-1",
+    "protocolos.tags.repaso",
+    "protocolos.tags.intro",
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.aplicacion"
+  ],
+  "order": 10,
+  "body": "body.astro",
+  "printIntent": "screen",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "protocolos.materiales.resumen-parcial-imprimible",
+      "pdfPages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "label": "Resumen propio de cuatro caras; fuente de esta adaptación web."
+    }
+  ],
+  "relatedResourceIds": [
+    "protocolos.apuntes.tema-1-introduccion",
+    "protocolos.apuntes.tema-2-aplicacion",
+    "protocolos.apuntes.tema-3-ip-en-iot",
+    "protocolos.apuntes.tema-4-lowpan",
+    "protocolos.tests.simulacro-primer-parcial"
+  ]
+}

@@ -1,0 +1,366 @@
+---
+import { url } from '../../../../../src/lib/sitio.ts';
+const pdfUrl = url('materiales/protocolos/resumen-parcial-imprimible.pdf');
+---
+<p class="lead">El repaso completo de las cuatro caras del parcial: IPv6 y NDP, tablas de IPHC, 6LoWPAN y aplicación.</p>
+<p class="callout">Para conservar las <strong>4 caras A4 (2 hojas a doble cara)</strong>, <a href={pdfUrl} target="_blank" rel="noopener">abre el PDF para imprimir</a> o <a href={pdfUrl} download="resumen-parcial-hasta-t4-37.pdf">descarga el resumen</a>. Imprime a tamaño real (100 %), a doble cara por el borde largo. Esta lectura adapta el mismo contenido a la pantalla; su impresión ocupa más páginas.</p>
+<h2 id="ipv6-rutas-ndp">IPv6: direcciones, rutas y NDP</h2>
+
+<p><a href={`${pdfUrl}#page=1`} target="_blank" rel="noopener">Página 1 del resumen original</a>. Alcance: temas 1-3 completos y tema 4 hasta la diapositiva 37, incluida.</p>
+
+<h3 id="direcciones-que-hay-que-reconocer">Direcciones que hay que reconocer</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Dirección / prefijo</th><th scope="col">Qué significa</th></tr></thead>
+<tbody>
+<tr><td><code>:: / ::1</code></td><td>No especificada / loopback.</td></tr>
+<tr><td><code>fe80::/10</code></td><td>Link-local. Formato habitual fe80::/64; no cruza routers.</td></tr>
+<tr><td><code>fc00::/7</code></td><td>ULA; se usa fd00::/8. Enrutables internamente, no en Internet.</td></tr>
+<tr><td><code>2000::/3</code></td><td>Bloque de unicast global del tema.</td></tr>
+<tr><td><code>ff00::/8</code></td><td>Multicast; scope 2 = enlace.</td></tr>
+<tr><td><code>ff02::1</code><br/><code>ff02::2</code></td><td>All-nodes / all-routers.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>128 bits = 8 hextetos.</strong> Se quitan ceros a la izquierda; <code>::</code> abrevia una sola secuencia de hextetos cero. No hay broadcast IPv6. <strong>Anycast:</strong> una unicast compartida; se alcanza el nodo más cercano según las rutas.</p>
+
+<p><strong>/64:</strong> prefijo de subred + IID de 64 bits. Una interfaz puede tener varias direcciones. Subredes /b dentro de /a: <strong>2<sup>b-a</sup></strong>; /56 a /64 = 256.</p>
+
+<h3 id="iid-eui-64-modificado">IID EUI-64 modificado</h3>
+
+<p><strong>MAC de 48 bits:</strong> insertar <code>ff:fe</code> en medio e invertir U/L: primer octeto XOR <code>02</code>.<br/><code>00:25:96:12:34:56</code><br/><code>0225:96ff:fe12:3456</code> (IID).</p>
+
+<p><strong>MAC de 64 bits:</strong> invertir U/L, sin insertar nada. <strong>Corta de 16 bits:</strong> el tema usa PAN_ID:00ff:fe00:XXXX, con U/L=0. Si PAN_ID=0: <code>0000:00ff:fe00:XXXX</code>.</p>
+
+<h3 id="cabecera-base-ipv6-40-bytes">Cabecera base IPv6: 40 bytes</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Campo</th><th scope="col">Bits / regla</th></tr></thead>
+<tbody>
+<tr><td>Version / Traffic Class</td><td>4 / 8 (DSCP 6 + ECN 2).</td></tr>
+<tr><td>Flow Label / Payload Length</td><td>20 / 16. Length NO incluye los 40 B de cabecera base.</td></tr>
+<tr><td>Next Header / Hop Limit</td><td>8 / 8. NH: TCP 6, UDP 17, ICMPv6 58; también extensiones.</td></tr>
+<tr><td>Origen / destino</td><td>128 / 128 bits.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Hop Limit</strong> baja en cada router; si se agota, se descarta. No hay checksum de cabecera IPv6 ni fragmentación IPv6 en routers. La fragmentación de adaptación 6LoWPAN es otro mecanismo.</p>
+
+<p><strong>ICMPv6:</strong> errores 1 = destino inalcanzable, 2 = paquete demasiado grande, 3 = tiempo excedido.</p>
+
+<h3 id="rutas-resolver-antes-de-calcular-la-mac">Rutas: resolver antes de calcular la MAC</h3>
+
+<p><strong>1.</strong> Expandir destino y buscar coincidencias.<br/><strong>2.</strong> Elegir el prefijo más largo (<strong>LPM</strong>): /128 gana a /64; /0 es el último recurso.<br/><strong>3.</strong> Determinar siguiente salto e interfaz; resolver su MAC con NDP.</p>
+
+<p><code>2001:db8:6::b</code> no está en <code>2001:db8:6:b::/64</code>: cuarto hexteto 0, no b.</p>
+
+<p><strong>RIB:</strong> información de rutas. <strong>FIB:</strong> reenvío. Sin coincidencia ni /0: descarte y, normalmente, ICMPv6 Destination Unreachable.</p>
+
+<p><strong>G:</strong> 0 = salida por interfaz; 1 = gateway. Distancia: estática 1, conectada 0. Compara candidatos al <strong>mismo prefijo</strong>; no sustituye LPM. Next-hop link-local: indicar interfaz.</p>
+
+<p><strong>Agregar:</strong> mismo siguiente salto y bloque contiguo <strong>alineado</strong>. Los /64 con cuarto hexteto 20 y 21 forman /63; 21 y 22 no. En IOS: C = conectada, L = local /128, S = estática.</p>
+
+<h3 id="ndp-usa-icmpv6-no-arp">NDP usa ICMPv6, no ARP</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Mensaje</th><th scope="col">Tipo</th><th scope="col">Función / destino típico</th></tr></thead>
+<tbody>
+<tr><td>RS / RA</td><td>133 / 134</td><td>Buscar router / anunciarlo. RS a ff02::2; RA periódico a ff02::1.</td></tr>
+<tr><td>NS / NA</td><td>135 / 136</td><td>Resolver vecino / anunciar dirección de enlace.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Destino remoto:</strong> se resuelve al gateway, no al host remoto. <strong>Destino on-link:</strong> se resuelve al propio destino. El paquete conserva su destino IPv6 final; la trama lleva la MAC del siguiente salto.</p>
+
+<p class="callout"><strong>Solicited-node:</strong> <code>ff02::1:ff00:0/104</code> + últimos <strong>24 bits</strong> del Target.<br/><strong>MAC multicast Ethernet:</strong> <code>33:33</code> + últimos <strong>32 bits</strong> del IPv6 multicast.</p>
+
+<p>Objetivo <code>fe80::1234:5678</code> → grupo <code>ff02::1:ff34:5678</code> → MAC <code>33:33:ff:34:56:78</code>. Dos vecinos pueden compartir grupo; solo responde quien posee el <strong>Target completo</strong>.</p>
+
+<h3 id="arranque-y-mantenimiento">Arranque y mantenimiento</h3>
+
+<p><strong>SLAAC:</strong> link-local + DAD → RS/RA → prefijo apto + IID → DAD de la nueva dirección. El IID puede ser EUI-64 u opaco. Gateway: origen link-local del RA, si su Router Lifetime es positivo.</p>
+
+<p><strong>RA:</strong> A autoriza SLAAC; L indica prefijo on-link. M señala DHCPv6 para direcciones; O para otros datos. DHCPv6: UDP cliente <strong>546</strong>, servidor <strong>547</strong>; grupo <code>ff02::1:2</code>. No suministra por sí solo el gateway.</p>
+
+<p><strong>DAD:</strong> NS con origen <code>::</code>, Target = dirección tentativa, destino = su solicited-node. <strong>NUD:</strong> comprueba alcanzabilidad; STALE no implica fallo. Puede usar NS unicast.</p>
+
+<p><small>Fuente: Tema 3 - IP en IoT, pp. 6-44. Páginas contadas desde la portada. NDP/SLAAC: RFC 4861 y 4862. Impresión: A4, 100 %, doble cara, borde largo.</small></p>
+
+<h2 id="iphc">IPHC: la hoja de los bits</h2>
+
+<p><a href={`${pdfUrl}#page=2`} target="_blank" rel="noopener">Página 2 del resumen original</a>. S/D = origen/destino; AC = Address Compression; AM = Address Mode.</p>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Byte 1: 8 bits</th><th scope="col">Byte 2: 8 bits</th></tr></thead>
+<tbody>
+<tr><td><code>011 | TF(2) | NH(1) | HLIM(2)</code></td><td><code>CID | SAC | SAM(2) | M | DAC | DAM(2)</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Base: 2 bytes.</strong> Después: byte SCI/DCI si CID=1, campos IPv6 en línea y, si NH=1, NHC. Version=6 se omite; Payload Length se deduce. <strong>M=0:</strong> unicast; <strong>M=1:</strong> multicast.</p>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">TF</th><th scope="col">Qué va en línea</th><th scope="col">B</th></tr></thead>
+<tbody>
+<tr><td>00</td><td>ECN + DSCP + relleno + Flow Label</td><td>4</td></tr>
+<tr><td>01</td><td>ECN + relleno + Flow Label; DSCP=0</td><td>3</td></tr>
+<tr><td>10</td><td>ECN + DSCP; Flow Label=0</td><td>1</td></tr>
+<tr><td>11</td><td>Nada: Traffic Class=0 y Flow Label=0</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Campo</th><th scope="col">Interpretación</th></tr></thead>
+<tbody>
+<tr><td>NH</td><td><strong>0:</strong> Next Header (1 B) en línea.<br/><strong>1:</strong> siguiente cabecera con NHC.</td></tr>
+<tr><td>HLIM</td><td><strong>00:</strong> 1 B en línea. <strong>01:</strong> 1.<br/><strong>10:</strong> 64. <strong>11:</strong> 255.</td></tr>
+<tr><td>CID</td><td><strong>0:</strong> sin byte extra; contexto 0 si se usa.<br/><strong>1:</strong> SCI(4) + DCI(4), 1 B extra.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="fuente-unicast-sac-sam">Fuente unicast: SAC + SAM</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">SAM</th><th scope="col">SAC=0: sin contexto</th><th scope="col">SAC=1: con contexto</th></tr></thead>
+<tbody>
+<tr><td>00</td><td><strong>128 bits</strong>: dirección completa en línea.</td><td><strong>0 bits</strong>: dirección no especificada <code>::</code>.</td></tr>
+<tr><td>01</td><td><strong>64 bits</strong>: prefijo fe80::/64 + IID en línea.</td><td><strong>64 bits</strong>: prefijo del contexto SCI + IID en línea.</td></tr>
+<tr><td>10</td><td><strong>16 bits</strong>: fe80::/64 + IID corto*; XXXX en línea.</td><td><strong>16 bits</strong>: contexto SCI + IID corto*; XXXX en línea.</td></tr>
+<tr><td>11</td><td><strong>0 bits</strong>: fe80::/64 + IID derivado del enlace.</td><td><strong>0 bits</strong>: contexto SCI + IID derivado del enlace.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>* IID corto reconstruido: <code>0000:00ff:fe00:XXXX</code>. La columna indica bits de dirección enviados, no el tamaño total de IPHC.</p>
+
+<h3 id="destino-unicast-m-0-dac-dam">Destino unicast: M=0, DAC + DAM</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">DAM</th><th scope="col">DAC=0: sin contexto</th><th scope="col">DAC=1: con contexto</th></tr></thead>
+<tbody>
+<tr><td>00</td><td><strong>128 bits</strong>: dirección completa en línea.</td><td><strong>Reservado.</strong> NO significa destino <code>::</code>.</td></tr>
+<tr><td>01</td><td><strong>64 bits</strong>: fe80::/64 + IID en línea.</td><td><strong>64 bits</strong>: contexto DCI + IID en línea.</td></tr>
+<tr><td>10</td><td><strong>16 bits</strong>: fe80::/64 + IID corto*.</td><td><strong>16 bits</strong>: contexto DCI + IID corto*.</td></tr>
+<tr><td>11</td><td><strong>0 bits</strong>: fe80::/64 + IID derivado del enlace.</td><td><strong>0 bits</strong>: contexto DCI + IID derivado del enlace.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="destino-multicast-m-1-dac-0">Destino multicast: M=1, DAC=0</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">DAM</th><th scope="col">Bits en línea</th><th scope="col">Forma que debe tener la dirección</th><th scope="col">Ejemplo / regla</th></tr></thead>
+<tbody>
+<tr><td>00</td><td>128</td><td>Dirección completa.</td><td>Cuando no encaja en las formas cortas.</td></tr>
+<tr><td>01</td><td>48</td><td><code>ffFS::00GG:GGGG:GGGG</code></td><td>FS (1 B) + grupo (5 B).</td></tr>
+<tr><td>10</td><td>32</td><td><code>ffFS::00GG:GGGG</code></td><td>FS (1 B) + grupo (3 B).</td></tr>
+<tr><td>11</td><td>8</td><td><code>ff02::00GG</code></td><td>ff02::2 → enviar 02.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>F = flags; S = scope; G = dígitos hexadecimales del grupo. <strong>M=1, DAC=1:</strong> multicast basado en contexto; DAM=00 lleva 48 bits, los demás valores están reservados.</p>
+
+<p class="callout"><strong>Tres trampas:</strong> CID=0 <strong>sí permite contexto 0</strong>. En unicast, SAM/DAM=11 exige un IID reconstruible. En route-over, la MAC del salto actual puede no corresponder al extremo IPv6.</p>
+
+<p><strong>Ejemplo:</strong> M=0, DAC=0, DAM=10, XXXX=5a20 → <code>fe80::ff:fe00:5a20</code>.<br/><strong>Cuenta en bytes (bits ÷ 8):</strong> 2 B base + 1 B si CID=1 + TF + NH en línea + HLIM en línea + origen + destino. Añadir NHC y sus campos aparte.</p>
+
+<p><small>Fuente: Tema 4 - LoWPAN, pp. 18-26. Tablas precisadas con RFC 6282, §3.1.1-3.2.4. Los casos de contexto se muestran con prefijos /64; &quot;en línea&quot; = bits realmente transmitidos.</small></p>
+
+<h2 id="lowpan">6LoWPAN y redes de bajo consumo</h2>
+
+<p><a href={`${pdfUrl}#page=3`} target="_blank" rel="noopener">Página 3 del resumen original</a>. Compresión, tamaño de trama y saltos: no confundir lo que cambia en cada capa.</p>
+
+<h3 id="nhc-udp-11110-c-p-2">NHC UDP: <code>11110 | C | P(2)</code></h3>
+
+<p><strong>C=0:</strong> checksum presente, 2 B. <strong>C=1:</strong> omitido y reconstruido si se cumplen las condiciones de integridad. No asumirlo por usar 6LoWPAN. <strong>UDP Length</strong> se deduce.</p>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">P</th><th scope="col">Origen</th><th scope="col">Destino</th><th scope="col">Condición</th></tr></thead>
+<tbody>
+<tr><td>00</td><td>16 bits</td><td>16 bits</td><td>Cualquier puerto.</td></tr>
+<tr><td>01</td><td>16 bits</td><td>8 bits</td><td>Destino f000-f0ff.</td></tr>
+<tr><td>10</td><td>8 bits</td><td>16 bits</td><td>Origen f000-f0ff.</td></tr>
+<tr><td>11</td><td>4 bits</td><td>4 bits</td><td>Ambos f0b0-f0bf.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="callout">Puertos <code>0xf0b3 / 0xf0ba</code> → P=11, byte <code>3a</code>. Con C=0: <strong>1 B NHC + 1 B puertos + 2 B checksum = 4 B</strong>. Si IPHC ocupa 2 B, IPv6+UDP = <strong>6 B</strong>.</p>
+
+<p><strong>NHC de extensiones:</strong> <code>1110 | EID(3) | NH</code>. EID identifica la cabecera; NH=1 continúa con otra NHC.</p>
+
+<h3 id="presupuesto-de-trama-y-cabeceras">Presupuesto de trama y cabeceras</h3>
+
+<p><strong>802.15.4: 127 B</strong> por trama; MAC de 16 o 64 bits, PAN ID de 16 bits. IPv6 exige MTU mínima de <strong>1280 B</strong>: la adaptación salva la diferencia.</p>
+
+<p>Ejemplo del tema: 23 B MAC + 21 B seguridad + 2 B FCS = 46 B. Quedan <strong>81 B</strong>. Sin comprimir IPv6/UDP: 81-40-8 = <strong>33 B</strong> de aplicación. Si las cabeceras comprimidas ocupan 6 B y no hay otras: <strong>75 B</strong>.</p>
+
+<p class="callout"><strong>Orden:</strong> MAC | <strong>Mesh | Fragmentación | Compresión</strong> | datos. Se omite lo innecesario. Solo el primer fragmento lleva la cabecera comprimida; los posteriores no la repiten.</p>
+
+<p><strong>Dispatch:</strong> <code>011</code> IPHC; <code>10</code> Mesh; <code>11000</code> FRAG1; <code>11100</code> FRAGN; <code>01000001</code> IPv6 sin comprimir.</p>
+
+<h3 id="fragmentacion-4-b-5-b">Fragmentación: 4 B / 5 B</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Campo</th><th scope="col">Memorizar</th></tr></thead>
+<tbody>
+<tr><td>datagram_size</td><td>11 bits. Tamaño IPv6 sin comprimir.</td></tr>
+<tr><td>datagram_tag</td><td>16 bits. Misma etiqueta en los fragmentos.</td></tr>
+<tr><td>datagram_offset</td><td>8 bits, solo FRAGN. Unidades de 8 B del datagrama original.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>FRAG1: 4 B.</strong> Offset 0 implícito. <strong>FRAGN: 5 B.</strong> Offset 12 = 96 B, no 12 B. Identificación: tamaño + tag + extremos de enlace (o extremos Mesh). El tag no es globalmente único.</p>
+
+<p>Puede llegar FRAGN antes que FRAG1: todos llevan tamaño. Temporizador desde el <strong>primer fragmento recibido</strong>, máximo 60 s; si no se completa, se descarta.</p>
+
+<h3 id="mesh-under-frente-a-route-over">Mesh-under frente a route-over</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Clave</th><th scope="col">Mesh-under</th><th scope="col">Route-over</th></tr></thead>
+<tbody>
+<tr><td>Reenvía</td><td>6LoWPAN, usando MAC final.</td><td>IPv6, usando destino IP.</td></tr>
+<tr><td>Intermedio</td><td>Función bridge.</td><td>Router 6LR.</td></tr>
+<tr><td>Saltos</td><td>Varios radio; un salto IPv6 hasta el borde.</td><td>Cada router añade un salto IPv6.</td></tr>
+<tr><td>Adaptación</td><td>Reensamblar y descomprimir en extremos.</td><td>En cada router; luego comprimir y fragmentar si hace falta.</td></tr>
+<tr><td>Contador</td><td>Hops Left de Mesh.</td><td>Hop Limit IPv6.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>A → B → C:</strong> MAC del salto A→B, luego B→C. Destino IPv6 final: C. En Mesh, Originator/Final conservan A/C; Hops Left disminuye.</p>
+
+<p><strong>Mesh:</strong> V/F=0 → direcciones de 64 bits; V/F=1 → 16 bits. Hops Left: 4 bits; valor 15 indica otro byte de contador. <strong>6LN:</strong> nodo; <strong>6LR:</strong> router interno route-over; <strong>6LBR:</strong> router de borde.</p>
+
+<h3 id="iot-y-lln-ideas-que-se-comparan">IoT y LLN: ideas que se comparan</h3>
+
+<p><strong>MCU:</strong> CPU + memoria + E/S; puede ir sin SO. Sensor mide; actuador actúa. Modularidad permite sustituir bloques; deep sleep ahorra batería.</p>
+
+<p><strong>LLN:</strong> bajo consumo, pérdidas y tasas bajas. Acceso: nodos-borde; troncal: borde-aplicación. Gateway adapta nodos no IP; border router conecta redes IP.</p>
+
+<p><strong>Estrella:</strong> simple. <strong>Árbol:</strong> alcance. <strong>Malla:</strong> rutas alternativas. LoWPAN: proximidad. LPWAN: kilómetros; MTU muy pequeña y recepción breve tras transmitir dificultan 6LoWPAN.</p>
+
+<p><strong>Clases (tema):</strong> 0: &lt;10 KB RAM / &lt;100 KB ROM, sin pila IP; 1: pila reducida (RFD); 2: &gt;50 KB RAM / &gt;250 KB ROM, pila completa y reenvío (FFD).</p>
+
+<h3 id="tecnologias-solo-la-introduccion">Tecnologías: solo la introducción</h3>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Tecnología</th><th scope="col">Asociación clave</th></tr></thead>
+<tbody>
+<tr><td>BLE / Bluetooth Mesh</td><td>BLE: proximidad, normalmente estrella. Mesh: inundación controlada; sin IPv6 nativo.</td></tr>
+<tr><td>Zigbee / Thread</td><td>802.15.4 a 2,4 GHz, 250 kbit/s. Zigbee: no IP. Thread: IPv6 + 6LoWPAN.</td></tr>
+<tr><td>Wi-SUN FAN</td><td>802.15.4g + 6LoWPAN + RPL; sub-GHz, servicios públicos y ciudades.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>802.15.4: PHY/MAC, CSMA/CA y ACK. La malla se forma por encima. Sin multicast MAC nativo: usa broadcast corto <code>ffff</code>.</p>
+
+<p><small>Fuentes: Tema 1 - Intro, pp. 2-13; Tema 4 - LoWPAN, pp. 3-17 y 27-37; RFC 4944 §5 y RFC 6282 §4. Fuera del corte: 6LFF (p. 38) y desarrollo posterior de NDP optimizado, Thread y RPL.</small></p>
+
+<h2 id="aplicacion-descubrimiento">Aplicación y descubrimiento</h2>
+
+<p><a href={`${pdfUrl}#page=4`} target="_blank" rel="noopener">Página 4 del resumen original</a>. Un protocolo transporta mensajes; una URI identifica recursos; un topic organiza publicaciones.</p>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">HTTP / HTTPS</th><th scope="col">CoAP / CoAPS</th><th scope="col">MQTT / seguro</th></tr></thead>
+<tbody>
+<tr><td>TCP / TLS: <strong>80 / 443</strong>.<br/>HTTP/3: QUIC sobre UDP 443.</td><td>UDP / DTLS: <strong>5683 / 5684</strong>.<br/>También existe TCP/TLS.</td><td>TCP / TLS: <strong>1883 / 8883</strong>.<br/>Publicación-suscripción; broker.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="coap-sobre-udp-fiable-sin-tcp">CoAP sobre UDP: fiable sin TCP</h3>
+
+<p><strong>Cabecera fija: 4 B.</strong> Ver(2)=1, Type(2), TKL(4), Code(8), MID(16). Token 0-8 B, opciones y, si hay payload, marcador <code>ff</code>.</p>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">Tipo</th><th scope="col">Valor</th><th scope="col">Idea</th></tr></thead>
+<tbody>
+<tr><td>CON / NON</td><td>0 / 1</td><td>CON requiere ACK; NON no. Multicast: NON.</td></tr>
+<tr><td>ACK / RST</td><td>2 / 3</td><td>Confirmación / rechazo de un mensaje que no puede procesarse.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="callout"><strong>MID:</strong> fiabilidad, duplicados y ACK/RST.<br/><strong>Token:</strong> une petición con respuesta.<br/><strong>Piggyback:</strong> ACK + respuesta juntos.<br/><strong>Separada:</strong> ACK vacío; luego respuesta con el mismo Token y otro MID.</p>
+
+<p>Sin ACK: retroceso exponencial, hasta <strong>4 retransmisiones</strong>. ACK vacío no implica operación terminada. Un error de aplicación puede ir en 4.xx/5.xx, no necesariamente en RST.</p>
+
+<p><strong>Códigos:</strong> GET 0.01, POST 0.02, PUT 0.03, DELETE 0.04. 2.xx éxito; 4.xx cliente; 5.xx servidor. Clase(3 bits) + detalle(5): 2.05 = 2×32+5 = 69 = <code>0x45</code>.</p>
+
+<p><strong>Opciones:</strong> Uri-Path 11, Content-Format 12, Max-Age 14, Uri-Query 15, Accept 17. <strong>Observe:</strong> GET con 0 registra; 1 cancela. El servidor notifica al cliente/Token; no hace falta broker.</p>
+
+<h3 id="http-rest-y-comunicacion-por-eventos">HTTP, REST y comunicación por eventos</h3>
+
+<p><strong>REST:</strong> recursos, cliente/servidor, peticiones autosuficientes, caché y capas. JSON y XML son formatos de datos, no protocolos.</p>
+
+<p><strong>GET</strong> consulta; <strong>PUT</strong> establece/actualiza; <strong>POST</strong> procesa/crea; <strong>DELETE</strong> elimina. 2xx éxito, 3xx redirección/caché, 4xx cliente, 5xx servidor. 304 permite reutilizar caché tras una petición condicional.</p>
+
+<p><strong>Persistencia:</strong> reutiliza conexión. <strong>HTTP/1.1 pipelining:</strong> varias peticiones pendientes, respuestas en orden. <strong>HTTP/2:</strong> multiplexa streams. Cookies mantienen estado; proxy intermedia y puede cachear.</p>
+
+<p><strong>WebSocket:</strong> bidireccional persistente; Upgrade HTTP/1.1 → <strong>101</strong>. Texto/binario; Ping/Pong/Close no se fragmentan. <strong>Webhook:</strong> evento → POST a una URL; avisos esporádicos.</p>
+
+<h3 id="opc-ua-y-soap">OPC UA y SOAP</h3>
+
+<p><strong>OPC UA:</strong> servicios industriales, seguridad; binario TCP <strong>4840</strong> o variantes web/XML. <strong>SOAP:</strong> XML con Envelope, Header opcional, Body obligatorio y Fault para error. Habitualmente sobre HTTP.</p>
+
+<h3 id="mqtt-secuencias-y-significado">MQTT: secuencias y significado</h3>
+
+<p><strong>CONNECT → CONNACK.</strong><br/><strong>SUBSCRIBE → SUBACK.</strong><br/>Publicador → broker → suscriptores al topic. La URI CoAP y el topic MQTT no son intercambiables.</p>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th scope="col">QoS</th><th scope="col">Secuencia</th><th scope="col">Entrega</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>PUBLISH</td><td>Como mucho una; puede perderse.</td></tr>
+<tr><td>1</td><td>PUBLISH → PUBACK</td><td>Al menos una; admite duplicados.</td></tr>
+<tr><td>2</td><td>PUBLISH → PUBREC → PUBREL → PUBCOMP</td><td>Exactamente una en ese intercambio; más estado y latencia.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Cabecera fija 2-5 B:</strong> tipo/flags + Remaining Length (1-4 B; bit alto = continuación). Longitud = cabecera variable + payload, no paquete completo.</p>
+
+<p><strong>DUP=1:</strong> retransmisión, no prueba de recepción previa. El Packet ID puede reutilizarse. <strong>RETAIN:</strong> último valor guardado por topic para nuevos suscriptores; no historial ni garantía de actualidad.</p>
+
+<p><strong>LWT:</strong> testamento configurado en CONNECT; el broker publica ante desconexión inesperada. En el caso normal del tema, DISCONNECT evita publicarlo. <strong>MQTT 5:</strong> petición/respuesta mediante Response Topic y Correlation Data.</p>
+
+<p><strong>MQTT-SN:</strong> formato para sensores, sobre UDP en el tema; gateway traduce a MQTT. Transparente: conexión por cliente; agregador: varios clientes comparten conexión al broker.</p>
+
+<h3 id="de-localizar-el-nodo-a-leer-el-recurso">De localizar el nodo a leer el recurso</h3>
+
+<p><strong>IP + transporte + puerto:</strong> extremo de comunicación. <strong>Host:</strong> DNS AAAA obtiene IPv6. <strong>UUID:</strong> identidad de 128 bits, no dirección de acceso. <strong>URI:</strong> esquema + host + puerto + ruta.</p>
+
+<p><strong>DNS-SD:</strong> consultar <code>_servicio._tcp</code> o <code>_servicio._udp</code> en un dominio.<br/><strong>PTR</strong> → instancias. <strong>SRV</strong> → host y puerto.<br/><strong>TXT</strong> → metadatos. <strong>AAAA</strong> → IPv6 del host de SRV.</p>
+
+<p><strong>mDNS:</strong> UDP <strong>5353</strong>, <code>ff02::fb</code>, nombres .local; ámbito del enlace. DNS-SD también funciona con DNS unicast entre subredes. NDP no descubre servicios ni recursos.</p>
+
+<p><strong>CoAP:</strong> GET <code>/.well-known/core</code> descubre enlaces; <strong>rt</strong> describe el tipo, no la ruta ni el valor. <code>&lt;/s/9&gt;;rt=&quot;hum-pct&quot;</code> → GET <code>/s/9</code> para leer humedad.</p>
+
+<p><strong>Resource Directory:</strong> guarda enlaces/descripciones que los nodos renuevan. El cliente consulta y luego accede al recurso. Registro no garantiza que el nodo esté despierto.</p>
+
+<p><small>Fuentes: aplicacion.pdf, pp. 4-61; Tema 3 - IP en IoT, pp. 45-55. CoAP: RFC 7252; DNS-SD: RFC 6763. Material de repaso elaborado a partir del temario; no sustituye los ejemplos de las diapositivas.</small></p>

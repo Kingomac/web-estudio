@@ -1,0 +1,23 @@
+---
+import type { Catalog } from '../lib/catalogo.ts';
+import { resourceUrl, url } from '../lib/sitio.ts';
+interface Props { subjectId: string; catalog: Catalog }
+const { subjectId, catalog } = Astro.props;
+// The reading links to the imported printable: keep its title, file and page count in the catalog.
+const summaries = catalog.entries.flatMap(entry => {
+  if (entry.kind !== 'resumen' || entry.subjectId !== subjectId) return [];
+  const material = entry.sources.map(source => catalog.byId.get(source.materialId))
+    .find(source => source?.kind === 'material' && source.category === 'resumen-propio');
+  return material?.kind === 'material' ? [{ reading: entry, material }] : [];
+}).sort((a, b) => a.reading.order - b.reading.order);
+---
+{summaries.map(({ reading, material }) => <section class="callout no-print" aria-label={`Resumen imprimible: ${reading.title}`}>
+  <p class="eyebrow">Resumen imprimible · {material.pageCount} páginas</p>
+  <h2 class="section-title">{reading.title}</h2>
+  <p>{reading.description}</p>
+  <div class="actions">
+    <a class="button" href={url(material.file)} target="_blank" rel="noopener">Abrir PDF para imprimir <span class="visually-hidden">(nueva pestaña)</span> ↗</a>
+    <a class="button button--secondary" href={url(material.file)} download={material.providedName}>Descargar PDF ↓</a>
+    <a href={resourceUrl(reading, catalog)}>Leer en la web →</a>
+  </div>
+</section>)}

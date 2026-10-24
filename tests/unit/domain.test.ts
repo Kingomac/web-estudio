@@ -75,6 +75,8 @@ test('formatos de red: equivalencias IPv6, prefijos, MAC, binario y hex', () => 
   assert.equal(gradeField(field('ipv6-expanded', '2001:0db8:0000:0007:0000:0000:000a:0005'), '2001:db8:0:7::a:5').correct, false);
   assert.equal(gradeField(field('ipv6-expanded', '2001:0db8:0000:0007:0000:0000:000a:0005'), '2001:0DB8:0000:0007:0000:0000:000A:0005').correct, true);
   assert.equal(gradeField(field('ipv6-canonical', '2001:db8::a:0:0:b'), '2001:db8:0:0:a::b').correct, false);
+  assert.equal(gradeField(field('ipv6-canonical', '2001:db8::a:0:0:b'), '2001:DB8::A:0:0:B').correct, false);
+  assert.equal(gradeField(field('ipv6-canonical', '2001:db8::a:0:0:b'), ' 2001:db8::a:0:0:b ').correct, true);
   assert.equal(gradeField(field('prefix', '2000::/62'), '2000:0::/62').correct, true);
   assert.equal(gradeField(field('prefix', '2000::/62'), '2000::/64').correct, false);
   assert.equal(gradeField(field('iid', '1222:33ff:fe44:5566'), '1222:33FF:FE44:5566').correct, true);

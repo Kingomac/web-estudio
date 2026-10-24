@@ -39,7 +39,7 @@ export function matchesFormat(format: Format, input: string, answer: string): bo
   switch (format) {
     case 'ipv6': return sameIpv6(s, expected);
     case 'ipv6-expanded': return /^[0-9a-f]{4}(:[0-9a-f]{4}){7}$/.test(s) && sameIpv6(s, expected);
-    case 'ipv6-canonical': return s === expected;
+    case 'ipv6-canonical': return input.trim() === expected;
     case 'prefix': {
       const [address, length, ...rest] = s.split('/'), [expectedAddress, expectedLength] = expected.split('/');
       return !rest.length && /^\d{1,3}$/.test(length ?? '') && Number(length) === Number(expectedLength) && sameIpv6(address, expectedAddress);

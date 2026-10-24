@@ -29,7 +29,7 @@
       "type": "format",
       "format": "ipv6-canonical",
       "answer": "2001:db8:10::25",
-      "explanation": "Se eliminan los ceros iniciales (0db8 → db8, 0010 → 10, 0025 → 25) y los cinco grupos 0000 consecutivos se sustituyen por un único ::."
+      "explanation": "Se eliminan los ceros iniciales (0db8 → db8, 0010 → 10, 0025 → 25) y los cuatro grupos 0000 consecutivos se sustituyen por un único ::."
     }
   ],
   "readingReferences": [
