@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Dos dispositivos ya pueden intercambiar datagramas, pero no acuerdan el significado ni el orden de sus mensajes de medida. ¿En qué capa debe definirse ese intercambio?",
+  "explanation": "La capa de aplicación define los recursos, la representación de los datos y el formato y orden de los mensajes. La conectividad IP por sí sola no define ese diálogo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "aplicacion",
+      "text": "Aplicación.",
+      "explanation": "La capa de aplicación define la representación de los datos y el formato y orden de los mensajes."
+    },
+    {
+      "id": "fisica",
+      "text": "Física.",
+      "explanation": "La capa física transmite bits; no da significado a los mensajes."
+    },
+    {
+      "id": "enlace",
+      "text": "Enlace.",
+      "explanation": "La capa de enlace entrega tramas entre vecinos; no define el diálogo de la aplicación."
+    },
+    {
+      "id": "red",
+      "text": "Red.",
+      "explanation": "La capa de red ya permite intercambiar datagramas; el significado de los mensajes se define encima."
+    }
+  ],
+  "answer": "aplicacion"
+}

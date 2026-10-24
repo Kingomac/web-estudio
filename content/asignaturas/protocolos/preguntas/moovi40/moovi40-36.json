@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un directorio de recursos devuelve el enlace de un sensor que registró sus recursos antes de dormir. ¿Qué puede concluir el cliente únicamente a partir de esa entrada?",
+  "explanation": "El RD almacena enlaces y descripciones registrados, que requieren renovación. Su presencia facilita encontrar recursos, pero no garantiza accesibilidad instantánea ni convierte al RD en un almacén obligatorio de sus medidas. El acceso posterior se dirige al recurso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        55
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-sensor-esta-despierto-porque",
+      "text": "El sensor está despierto, porque el directorio verifica cada enlace antes de responder.",
+      "explanation": "La respuesta del directorio no prueba que el dispositivo esté despierto."
+    },
+    {
+      "id": "el-directorio-posee-obligatoriamente-la",
+      "text": "El directorio posee obligatoriamente la medida actual y responderá en lugar del sensor.",
+      "explanation": "Almacenar descripciones no implica almacenar todos los valores de los recursos."
+    },
+    {
+      "id": "el-sensor-mantiene-una-conexion",
+      "text": "El sensor mantiene una conexión TCP permanente con todos los clientes del directorio.",
+      "explanation": "El registro no exige conexiones TCP permanentes con los futuros clientes."
+    },
+    {
+      "id": "conoce-un-enlace-registrado-pero",
+      "text": "Conoce un enlace registrado, pero todavía debe comprobar si el sensor puede atender la consulta en ese momento.",
+      "explanation": "Distingue disponer de una descripción de tener conectividad actual con el nodo."
+    }
+  ],
+  "answer": "conoce-un-enlace-registrado-pero"
+}

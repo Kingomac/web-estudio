@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-46",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué caracteriza a un LFN de Wi-SUN FAN 1.1?",
+  "explanation": "El padre proporciona conectividad al LFN y anuncia su alcanzabilidad.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        73
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "es-una-hoja-que-puede",
+      "text": "Es una hoja que puede dormir, no ejecuta RPL y no reenvía tráfico ajeno.",
+      "explanation": "El LFN es una hoja que puede dormir, no ejecuta RPL ni reenvía tráfico ajeno."
+    },
+    {
+      "id": "es-un-router-ffn-que",
+      "text": "Es un router FFN que ejecuta RPL y reenvía a sus vecinos.",
+      "explanation": "Ese es el papel de un router FFN."
+    },
+    {
+      "id": "es-el-border-router-que",
+      "text": "Es el border router que conserva toda la topología.",
+      "explanation": "El border router es la raíz del DODAG, no un LFN."
+    },
+    {
+      "id": "es-una-hoja-que-siempre",
+      "text": "Es una hoja que siempre debe ejecutar RPL aunque pueda dormir.",
+      "explanation": "Los LFN no ejecutan RPL; su padre gestiona su alcanzabilidad."
+    }
+  ],
+  "answer": "es-una-hoja-que-puede"
+}

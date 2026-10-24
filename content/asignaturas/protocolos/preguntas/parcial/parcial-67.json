@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-67",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una entrada de la caché de vecinos pasa a STALE. ¿Qué interpretación es correcta?",
+  "explanation": "STALE no demuestra que el vecino sea inalcanzable. NUD comprueba su alcanzabilidad, usando confirmaciones disponibles o NS unicast y el correspondiente NA solicitado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        42
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "falta-una-confirmacion-reciente-pero",
+      "text": "Falta una confirmación reciente, pero la entrada puede usarse mientras se inicia la comprobación.",
+      "explanation": "STALE indica que falta una confirmación reciente; la entrada se sigue usando mientras NUD comprueba al vecino."
+    },
+    {
+      "id": "la-direccion-mac-se-ha",
+      "text": "La dirección MAC se ha demostrado duplicada en la red.",
+      "explanation": "STALE no tiene relación con direcciones duplicadas, que se detectan con DAD."
+    },
+    {
+      "id": "el-vecino-ha-enviado-necesariamente",
+      "text": "El vecino ha enviado necesariamente un mensaje de desconexión.",
+      "explanation": "No implica ningún mensaje de desconexión; solo ha pasado tiempo sin confirmación."
+    },
+    {
+      "id": "el-nodo-debe-borrar-todas",
+      "text": "El nodo debe borrar todas sus direcciones y repetir SLAAC.",
+      "explanation": "STALE afecta a una entrada de la caché de vecinos, no a las direcciones propias del nodo."
+    }
+  ],
+  "answer": "falta-una-confirmacion-reciente-pero"
+}

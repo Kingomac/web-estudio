@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-42",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se divide RLOC16?",
+  "explanation": "Child ID=0 corresponde al propio router; los hijos tienen identificadores gestionados por su padre.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        64
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-6-bits-de-router-id",
+      "text": "6 bits de Router ID y 10 bits de Child ID.",
+      "explanation": "RLOC16 se divide en Router ID (6 bits) y Child ID (10 bits); Child ID=0 identifica al router."
+    },
+    {
+      "id": "o-8-bits-de-puerto-y",
+      "text": "8 bits de puerto y 8 bits de checksum.",
+      "explanation": "Puerto y checksum son campos de UDP."
+    },
+    {
+      "id": "o-10-bits-de-router-id",
+      "text": "10 bits de Router ID y 6 bits de Flow Label.",
+      "explanation": "Los tamaños están invertidos y Flow Label es un campo de IPv6."
+    },
+    {
+      "id": "o-16-bits-de-prefijo-global",
+      "text": "16 bits de prefijo global sin identificador de hijo.",
+      "explanation": "RLOC16 es un localizador corto de la malla, no un prefijo global."
+    }
+  ],
+  "answer": "o-6-bits-de-router-id"
+}

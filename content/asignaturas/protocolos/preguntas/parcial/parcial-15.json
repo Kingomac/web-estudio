@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Para enviar medidas muy pequeñas desde sensores dispersos a varios kilómetros, ¿qué perfil de red del tema encaja mejor?",
+  "explanation": "El tema contrapone el mayor alcance y las tasas muy bajas de LPWAN a la cobertura de corto o medio alcance de LoWPAN, que puede ampliarse mediante multisalto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "lpwan-gran-cobertura-y-tasas",
+      "text": "LPWAN: gran cobertura y tasas de transmisión muy bajas.",
+      "explanation": "LPWAN ofrece kilómetros de cobertura con tasas muy bajas, adecuada para medidas pequeñas y dispersas."
+    },
+    {
+      "id": "lowpan-cobertura-de-proximidad-sin",
+      "text": "LoWPAN: cobertura de proximidad sin necesidad de extensión.",
+      "explanation": "LoWPAN cubre 10–100 m; necesitaría multisalto para extenderse y no llega a kilómetros por salto."
+    },
+    {
+      "id": "red-troncal-acceso-directo-de",
+      "text": "Red troncal: acceso directo de sensores sin tecnología radio.",
+      "explanation": "La red troncal une la pasarela con la nube; los sensores no se conectan directamente a ella."
+    },
+    {
+      "id": "malla-de-corto-alcance-un",
+      "text": "Malla de corto alcance: un único salto de varios kilómetros por definición.",
+      "explanation": "Una malla de corto alcance no cubre kilómetros en un solo salto: se extiende con múltiples saltos."
+    }
+  ],
+  "answer": "lpwan-gran-cobertura-y-tasas"
+}

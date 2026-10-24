@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué función cumple el gateway del escenario MQTT-SN?",
+  "explanation": "El tema presenta un formato MQTT-SN más pequeño y gateways transparentes o agregadores hacia MQTT.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "traducir-mensajes-entre-mqtt-sn",
+      "text": "Traducir mensajes entre MQTT-SN y MQTT.",
+      "explanation": "El gateway MQTT-SN traduce los mensajes MQTT-SN a MQTT, de forma transparente o agregándolos."
+    },
+    {
+      "id": "distribuir-directamente-mensajes-coap-a",
+      "text": "Distribuir directamente mensajes CoAP a suscriptores sin traducción.",
+      "explanation": "MQTT-SN no es CoAP y el gateway sí traduce."
+    },
+    {
+      "id": "comprimir-unicamente-cabeceras-ipv6-medi",
+      "text": "Comprimir únicamente cabeceras IPv6 mediante IPHC.",
+      "explanation": "IPHC comprime cabeceras IPv6 en 6LoWPAN; es otra capa."
+    },
+    {
+      "id": "actuar-exclusivamente-como-cache-http",
+      "text": "Actuar exclusivamente como caché HTTP del broker.",
+      "explanation": "El gateway no es una caché HTTP sino un traductor hacia el broker MQTT."
+    }
+  ],
+  "answer": "traducir-mensajes-entre-mqtt-sn"
+}

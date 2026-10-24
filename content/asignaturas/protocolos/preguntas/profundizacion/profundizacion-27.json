@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.profundizacion-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un compresor quiere cambiar C=0 a C=1 en NHC UDP solo porque la trama IEEE 802.15.4 lleva FCS. No ha recibido autorización de la capa superior. ¿Es correcto?",
+  "explanation": "La posibilidad de elidir el checksum UDP en RFC 6282 está condicionada, entre otras cosas, a autorización de la capa superior. Un FCS de enlace no aporta por sí solo esa autorización ni justifica eliminar la protección del datagrama UDP.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · NHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4"
+    },
+    {
+      "title": "RFC 8200 · checksum superior",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-8.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "si-udp-sobre-ipv6-nunca",
+      "text": "Sí: UDP sobre IPv6 nunca necesita checksum.",
+      "explanation": "La regla general de UDP/IPv6 exige checksum; la elisión comprimida es un mecanismo condicionado."
+    },
+    {
+      "id": "si-siempre-que-p-11",
+      "text": "Sí, siempre que P=11, porque los puertos cortos protegen también los datos.",
+      "explanation": "P describe cómo se codifican los puertos y no ofrece protección de integridad."
+    },
+    {
+      "id": "no-el-fcs-por-si",
+      "text": "No: el FCS por sí solo no permite omitir el checksum UDP; se requieren las condiciones y autorización del estándar.",
+      "explanation": "La razón dada no satisface las condiciones para C=1."
+    },
+    {
+      "id": "si-cualquier-fcs-de-enlace",
+      "text": "Sí: cualquier FCS de enlace reemplaza automáticamente la integridad de extremo a extremo.",
+      "explanation": "El FCS pertenece a una trama y a un enlace, no sustituye por sí solo el control extremo a extremo."
+    }
+  ],
+  "answer": "no-el-fcs-por-si"
+}

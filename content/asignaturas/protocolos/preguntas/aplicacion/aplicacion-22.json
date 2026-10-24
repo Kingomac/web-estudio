@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se gestionan los reintentos de un mensaje CoAP CON sin ACK en el ejemplo?",
+  "explanation": "El mecanismo mostrado aplica exponential backoff a los mensajes confirmables.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "hasta-cuatro-retransmisiones-duplicando",
+      "text": "Hasta cuatro retransmisiones, duplicando el tiempo entre reintentos.",
+      "explanation": "Sin ACK, el cliente retransmite el mensaje confirmable hasta 4 veces, duplicando la espera (exponential backoff)."
+    },
+    {
+      "id": "reintentos-infinitos-sin-espera",
+      "text": "Reintentos infinitos sin espera.",
+      "explanation": "Los reintentos están limitados a 4 y su espera crece exponencialmente."
+    },
+    {
+      "id": "una-retransmision-por-cada-suscriptor",
+      "text": "Una retransmisión por cada suscriptor MQTT.",
+      "explanation": "Los suscriptores MQTT no intervienen en la fiabilidad de CoAP."
+    },
+    {
+      "id": "no-hay-retransmision-porque-con",
+      "text": "No hay retransmisión porque CON significa no confirmable.",
+      "explanation": "CON significa confirmable; NON es el modo sin ACK."
+    }
+  ],
+  "answer": "hasta-cuatro-retransmisiones-duplicando"
+}

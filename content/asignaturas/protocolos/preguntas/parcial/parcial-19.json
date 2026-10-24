@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sensor publica en el topic edificio/aula/temperatura y tres aplicaciones están suscritas a él. ¿Quién distribuye normalmente la actualización a esas aplicaciones?",
+  "explanation": "En publicación/suscripción, el publicador entrega datos al broker asociados a un topic. El broker los distribuye a los suscriptores correspondientes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-broker-al-que-llega",
+      "text": "El broker al que llega la publicación.",
+      "explanation": "El broker recibe la publicación del topic y la notifica a todas las aplicaciones suscritas."
+    },
+    {
+      "id": "el-sensor-mediante-tres-conexiones",
+      "text": "El sensor mediante tres conexiones directas obligatorias.",
+      "explanation": "El publicador solo envía al broker; no mantiene conexiones con cada suscriptor."
+    },
+    {
+      "id": "el-servidor-dns-que-resuelve",
+      "text": "El servidor DNS que resuelve el nombre del sensor.",
+      "explanation": "DNS resuelve nombres; no distribuye publicaciones."
+    },
+    {
+      "id": "el-router-de-acceso-al",
+      "text": "El router de acceso al consultar su tabla de rutas.",
+      "explanation": "El router reenvía paquetes IP; no conoce los topics ni a los suscriptores."
+    }
+  ],
+  "answer": "el-broker-al-que-llega"
+}

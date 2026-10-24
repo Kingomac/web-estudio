@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Dónde se realiza segmentación/reensamblado en la adaptación IPv6 sobre BLE estudiada?",
+  "explanation": "La adaptación reutiliza compresión y NDP, pero utiliza el mecanismo del enlace BLE para segmentar.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        47
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "en-l2cap-sin-cabeceras-de",
+      "text": "En L2CAP, sin cabeceras de fragmentación 6LoWPAN.",
+      "explanation": "En IPv6 sobre BLE (RFC 7668) la segmentación y el reensamblado los hace L2CAP; no se usan las cabeceras de fragmentación 6LoWPAN."
+    },
+    {
+      "id": "mediante-las-cabeceras-frag1-y",
+      "text": "Mediante las cabeceras FRAG1 y FRAGN de 6LoWPAN.",
+      "explanation": "FRAG1 y FRAGN son de 6LoWPAN sobre 802.15.4; la adaptación a BLE no las utiliza."
+    },
+    {
+      "id": "en-ipv6-fragmentando-en-cada",
+      "text": "En IPv6, fragmentando en cada router de la estrella.",
+      "explanation": "IPv6 no fragmenta en los routers; además el modelo BLE es una estrella."
+    },
+    {
+      "id": "en-el-6lbr-exclusivamente-sin",
+      "text": "En el 6LBR exclusivamente, sin intervención de L2CAP.",
+      "explanation": "El 6LBR no sustituye a L2CAP: la segmentación es un mecanismo del enlace BLE."
+    }
+  ],
+  "answer": "en-l2cap-sin-cabeceras-de"
+}

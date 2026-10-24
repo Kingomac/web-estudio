@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un proxy envía un GET con If-Modified-Since y recibe 304 Not Modified. ¿Cómo debe interpretar esa respuesta?",
+  "explanation": "El ejemplo de petición condicional usa 304 para indicar que el recurso no se ha modificado. Esto permite utilizar la copia de la caché sin transferir de nuevo su contenido.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-copia-almacenada-no-ha",
+      "text": "La copia almacenada no ha cambiado según la condición consultada.",
+      "explanation": "304 Not Modified indica que el recurso no ha cambiado desde la fecha indicada: la copia en caché sigue siendo válida."
+    },
+    {
+      "id": "el-recurso-se-ha-trasladado",
+      "text": "El recurso se ha trasladado permanentemente a otra URI.",
+      "explanation": "El traslado permanente a otra URI es 301 Moved Permanently."
+    },
+    {
+      "id": "el-cliente-no-tiene-permiso",
+      "text": "El cliente no tiene permiso para acceder al recurso.",
+      "explanation": "La falta de permisos sería un error 4xx, no un 304."
+    },
+    {
+      "id": "el-servidor-ha-creado-una",
+      "text": "El servidor ha creado una nueva versión del recurso.",
+      "explanation": "Una nueva versión se devolvería con su contenido (200 OK); 304 indica que no hay cambios."
+    }
+  ],
+  "answer": "la-copia-almacenada-no-ha"
+}

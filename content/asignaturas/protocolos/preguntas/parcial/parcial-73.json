@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-73",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una red local resuelve nombres terminados en .local sin disponer de servidor DNS. ¿Qué mecanismo del tema utiliza multicast y UDP 5353 para ello?",
+  "explanation": "mDNS resuelve nombres locales usando multicast de ámbito de enlace y el puerto UDP 5353. Puede combinarse con DNS-SD para descubrir servicios.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mdns",
+      "text": "mDNS.",
+      "explanation": "mDNS resuelve nombres .local sin servidor, por multicast de enlace en UDP 5353."
+    },
+    {
+      "id": "dhcpv6",
+      "text": "DHCPv6.",
+      "explanation": "DHCPv6 asigna direcciones y configuración; no resuelve nombres .local."
+    },
+    {
+      "id": "ndp",
+      "text": "NDP.",
+      "explanation": "NDP resuelve direcciones de enlace de vecinos, no nombres."
+    },
+    {
+      "id": "http-persistente",
+      "text": "HTTP persistente.",
+      "explanation": "HTTP es un protocolo de aplicación; no resuelve nombres."
+    }
+  ],
+  "answer": "mdns"
+}

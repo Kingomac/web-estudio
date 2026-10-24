@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sensor publicó una temperatura de 19 °C con RETAIN=1 y después dejó de transmitir. Más tarde se suscribe un nuevo cliente al topic. ¿Qué implica recibir inmediatamente esos 19 °C del broker?",
+  "explanation": "El broker conserva el último mensaje retenido por topic para entregarlo a nuevos suscriptores. No necesita que el publicador vuelva a enviar ni esté conectado. La retención por sí sola tampoco aporta una garantía de actualidad de la medida.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-broker-ha-entregado-todas",
+      "text": "El broker ha entregado todas las temperaturas históricas publicadas en ese topic.",
+      "explanation": "Se conserva el último mensaje retenido, no un historial completo por defecto."
+    },
+    {
+      "id": "retain-ha-transformado-la-publicacion",
+      "text": "RETAIN ha transformado la publicación en una petición CoAP al sensor.",
+      "explanation": "RETAIN es una función MQTT y no cambia el protocolo de acceso al sensor."
+    },
+    {
+      "id": "ha-recibido-el-ultimo-valor",
+      "text": "Ha recibido el último valor retenido; eso no demuestra que el sensor esté conectado ni que la medida sea reciente.",
+      "explanation": "Distingue un dato almacenado de una lectura obtenida en ese instante."
+    },
+    {
+      "id": "el-sensor-ha-respondido-a",
+      "text": "El sensor ha respondido a una consulta en tiempo real iniciada automáticamente por el broker.",
+      "explanation": "La entrega de un retenido no requiere interrogar al publicador."
+    }
+  ],
+  "answer": "ha-recibido-el-ultimo-valor"
+}

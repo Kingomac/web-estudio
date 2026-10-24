@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-51",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es la función de DIO en RPL?",
+  "explanation": "DIO anuncia el grafo; DIS solicita información y DAO anuncia destinos para rutas descendentes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        77
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "anunciar-informacion-del-dodag-rank",
+      "text": "Anunciar información del DODAG, Rank y configuración.",
+      "explanation": "DIO anuncia el DODAG: ID, versión, Rank y configuración."
+    },
+    {
+      "id": "solicitar-a-los-vecinos-informacion",
+      "text": "Solicitar a los vecinos información para descubrir un DODAG.",
+      "explanation": "Solicitar información a los vecinos es DIS."
+    },
+    {
+      "id": "anunciar-destinos-para-construir-rutas",
+      "text": "Anunciar destinos para construir rutas descendentes.",
+      "explanation": "Anunciar destinos para las rutas descendentes es DAO."
+    },
+    {
+      "id": "confirmar-un-dao-cuando-se",
+      "text": "Confirmar un DAO cuando se solicita.",
+      "explanation": "Confirmar un DAO es DAO-ACK."
+    }
+  ],
+  "answer": "anunciar-informacion-del-dodag-rank"
+}

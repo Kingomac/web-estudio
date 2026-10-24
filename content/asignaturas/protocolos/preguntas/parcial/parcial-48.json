@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-48",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB contiene ::/0 vía A, 2001:db8::/32 vía B y 2001:db8:12::/48 vía C. ¿Qué ruta se usa para 2001:db8:12:5::9?",
+  "explanation": "Coinciden las tres entradas, pero se elige el prefijo más largo: /48. La ruta por defecto se utiliza cuando no hay una coincidencia más específica.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-ruta-via-c",
+      "text": "La ruta vía C.",
+      "explanation": "Las tres rutas coinciden, pero /48 (vía C) es la de prefijo más largo."
+    },
+    {
+      "id": "la-ruta-via-b",
+      "text": "La ruta vía B.",
+      "explanation": "/32 coincide, pero es menos específica que /48."
+    },
+    {
+      "id": "la-ruta-via-a",
+      "text": "La ruta vía A.",
+      "explanation": "::/0 solo se usa si no hay ninguna coincidencia más específica."
+    },
+    {
+      "id": "las-tres-rutas-por-tener",
+      "text": "Las tres rutas por tener prefijos coincidentes.",
+      "explanation": "LPM elige una sola ruta; el reparto entre varias solo ocurre con prefijos de igual longitud."
+    }
+  ],
+  "answer": "la-ruta-via-c"
+}

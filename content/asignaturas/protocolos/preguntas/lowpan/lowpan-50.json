@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-50",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el modelo ETX=1/PDR de la diapositiva, ¿qué significa un ETX menor?",
+  "explanation": "ETX es una métrica de calidad de enlace expresada como número esperado de transmisiones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        75
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "menos-transmisiones-medias-necesarias-pa",
+      "text": "Menos transmisiones medias necesarias para entregar un paquete.",
+      "explanation": "ETX es el número medio de transmisiones para entregar un paquete: un valor menor indica mejor enlace."
+    },
+    {
+      "id": "peor-calidad-del-enlace-y",
+      "text": "Peor calidad del enlace y más retransmisiones esperadas.",
+      "explanation": "Un ETX mayor indicaría peor calidad."
+    },
+    {
+      "id": "mayor-rank-de-la-raiz",
+      "text": "Mayor Rank de la raíz en todos los casos.",
+      "explanation": "El Rank de la raíz es el inicial (MinHopRankIncrease); no depende del ETX de otros enlaces."
+    },
+    {
+      "id": "mayor-numero-obligatorio-de-padres",
+      "text": "Mayor número obligatorio de padres candidatos.",
+      "explanation": "El número de padres candidatos no se deriva del ETX."
+    }
+  ],
+  "answer": "menos-transmisiones-medias-necesarias-pa"
+}

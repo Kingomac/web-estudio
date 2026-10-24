@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router recibe un paquete unicast reenviable para 2001:db8:99::8. Su FIB solo contiene 2001:db8:10::/64 y 2001:db8:20::/64, y no tiene ruta por defecto. ¿Qué ocurre?",
+  "explanation": "La búsqueda requiere coincidencia de bits del prefijo. Ninguna de las dos rutas coincide y falta ::/0, así que no hay salida válida. El tema describe la notificación Destination Unreachable al origen; una entrada de vecinos no sustituye una ruta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "no-puede-reenviarlo-lo-descarta",
+      "text": "No puede reenviarlo: lo descarta y, en condiciones normales, informa con ICMPv6 Destination Unreachable.",
+      "explanation": "Reconoce que no existe una ruta coincidente para ese destino."
+    },
+    {
+      "id": "usa-la-ruta-cuyo-prefijo",
+      "text": "Usa la ruta cuyo prefijo es numéricamente más cercano al destino.",
+      "explanation": "Longest prefix match no compara distancias numéricas entre direcciones."
+    },
+    {
+      "id": "envia-el-paquete-por-las",
+      "text": "Envía el paquete por las dos interfaces para averiguar cuál alcanza el destino.",
+      "explanation": "El reenvío IP unicast no prueba todas las interfaces mediante difusión."
+    },
+    {
+      "id": "genera-automaticamente-una-ruta-0",
+      "text": "Genera automáticamente una ruta ::/0 a partir de cualquier vecino de su caché.",
+      "explanation": "La caché de vecinos aporta direcciones de enlace, no crea gateways por defecto."
+    }
+  ],
+  "answer": "no-puede-reenviarlo-lo-descarta"
+}

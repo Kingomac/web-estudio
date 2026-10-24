@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "A tiene 2001:db8:8::1234:9abc y B tiene 2001:db8:8::ab34:9abc. Ambos reciben un NS cuyo Target es la dirección de A. Sin proxy NDP ni duplicados, ¿qué interpretación es correcta?",
+  "explanation": "Los grupos solicited-node dependen únicamente de los últimos 24 bits, aquí 34:9a:bc para ambos. Recibir la consulta no implica ser su objetivo: la comprobación del Target completo distingue al propietario que debe responder.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 §7.2 · resolución de vecinos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "responde-el-nodo-cuya-direccion",
+      "text": "Responde el nodo cuya dirección MAC termine en 34:9a:bc.",
+      "explanation": "El Target se compara con una dirección IPv6 propia, no con el sufijo de la MAC."
+    },
+    {
+      "id": "comparten-ff02-1-ff34-9abc",
+      "text": "Comparten ff02::1:ff34:9abc, pero solo A debe responder porque el Target coincide con su dirección.",
+      "explanation": "Distingue pertenencia al grupo multicast y propiedad de la dirección objetivo."
+    },
+    {
+      "id": "comparten-el-grupo-y-ambos",
+      "text": "Comparten el grupo y ambos deben responder porque recibir un NS obliga a anunciarse.",
+      "explanation": "La recepción multicast no obliga a responder por direcciones de otros vecinos."
+    },
+    {
+      "id": "pertenecen-a-grupos-distintos-porque",
+      "text": "Pertenecen a grupos distintos porque difiere uno de los 32 bits finales.",
+      "explanation": "La diferencia está fuera de los últimos 24 bits usados para el grupo."
+    }
+  ],
+  "answer": "comparten-ff02-1-ff34-9abc"
+}

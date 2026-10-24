@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-77",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Para la modalidad IEEE 802.15.4 a 2,4 GHz descrita para Zigbee y Thread, ¿qué pareja de tasa física y tamaño máximo de trama es correcta?",
+  "explanation": "Las diapositivas indican 250 kbit/s y tramas de hasta 127 bytes, incluidos los campos MAC. Los 1280 bytes corresponden a la MTU mínima que IPv6 requiere del enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-250-kbit-s-y-127",
+      "text": "250 kbit/s y 127 bytes.",
+      "explanation": "En 2,4 GHz, IEEE 802.15.4 ofrece 250 kbit/s y tramas de hasta 127 bytes con los campos MAC."
+    },
+    {
+      "id": "o-250-kbit-s-y-1280",
+      "text": "250 kbit/s y 1280 bytes.",
+      "explanation": "1280 bytes es la MTU mínima que exige IPv6, no la trama 802.15.4."
+    },
+    {
+      "id": "o-2-mbit-s-y-127",
+      "text": "2 Mbit/s y 127 bytes.",
+      "explanation": "~2 Mbit/s es el máximo de algunas LoWPAN, no la tasa de 802.15.4 a 2,4 GHz."
+    },
+    {
+      "id": "o-50-kbit-s-y-1500",
+      "text": "50 kbit/s y 1500 bytes.",
+      "explanation": "50 kbit/s es el máximo de LPWAN y 1500 bytes la MTU de Ethernet."
+    }
+  ],
+  "answer": "o-250-kbit-s-y-127"
+}

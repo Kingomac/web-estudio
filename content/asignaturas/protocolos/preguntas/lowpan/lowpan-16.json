@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Con SAC=1 y SAM=11, ¿cómo se reconstruye la dirección fuente?",
+  "explanation": "Se omite la dirección: el contexto proporciona el prefijo y el enlace permite deducir el IID.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        24
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "con-el-contexto-y-la",
+      "text": "Con el contexto y la información de la dirección de enlace.",
+      "explanation": "SAC=1 y SAM=11 no transmiten bits: el prefijo sale del contexto SCI y el IID de la MAC de origen."
+    },
+    {
+      "id": "con-el-prefijo-fe80-64",
+      "text": "Con el prefijo fe80::/64 sin usar contexto.",
+      "explanation": "fe80::/64 sin contexto corresponde a SAC=0."
+    },
+    {
+      "id": "con-un-iid-completo-de",
+      "text": "Con un IID completo de 64 bits transmitido en línea.",
+      "explanation": "El IID de 64 bits en línea es SAM=01."
+    },
+    {
+      "id": "con-la-direccion-sin-especificar",
+      "text": "Con la dirección sin especificar ::.",
+      "explanation": "La dirección sin especificar es SAC=1 con SAM=00."
+    }
+  ],
+  "answer": "con-el-contexto-y-la"
+}

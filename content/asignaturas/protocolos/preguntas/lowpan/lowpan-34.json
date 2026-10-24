@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué debe hacer un host para conservar su registro durante periodos de sueño?",
+  "explanation": "El Registration Lifetime se expresa en minutos y puede mantenerse aunque no haya datos nuevos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        52
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "renovarlo-antes-de-caducar-con",
+      "text": "Renovarlo antes de caducar con una validez que cubra el reposo previsto.",
+      "explanation": "El host renueva el registro antes de que expire, con un Registration Lifetime que cubra el sueño previsto."
+    },
+    {
+      "id": "esperar-indefinidamente-sin-volver-a",
+      "text": "Esperar indefinidamente sin volver a contactar.",
+      "explanation": "Si no renueva, el registro expira y el router elimina la entrada."
+    },
+    {
+      "id": "cambiar-de-direccion-global-cada",
+      "text": "Cambiar de dirección global cada segundo.",
+      "explanation": "Cambiar de dirección constantemente no mantiene el registro y gastaría energía."
+    },
+    {
+      "id": "enviar-siempre-mensajes-broadcast-mientr",
+      "text": "Enviar siempre mensajes broadcast mientras duerme.",
+      "explanation": "Un nodo dormido no transmite; además el broadcast es lo que se quiere evitar."
+    }
+  ],
+  "answer": "renovarlo-antes-de-caducar-con"
+}

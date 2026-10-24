@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el route-over descrito en las diapositivas hasta la 37, un 6LR recibe un datagrama fragmentado destinado a otro nodo. ¿Qué secuencia corresponde al reenvío habitual?",
+  "explanation": "En este modelo cada 6LR actúa como router: la adaptación reconstruye el paquete y lo entrega a IPv6 para decidir el siguiente salto. La salida vuelve a aplicar compresión y, si hace falta, fragmentación. El destino IPv6 sigue siendo el extremo final.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        36
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "conservar-los-fragmentos-hasta-que",
+      "text": "Conservar los fragmentos hasta que el border router consulte la FIB del 6LR.",
+      "explanation": "El router intermedio puede consultar su propia tabla sin delegar cada decisión al borde."
+    },
+    {
+      "id": "cambiar-el-destino-ipv6-por",
+      "text": "Cambiar el destino IPv6 por la dirección del siguiente salto antes de reconstruir la cabecera.",
+      "explanation": "La dirección del siguiente salto determina la entrega local, no reemplaza al destino IPv6."
+    },
+    {
+      "id": "reensamblar-y-descomprimir-consultar-la",
+      "text": "Reensamblar y descomprimir, consultar la ruta IPv6 y comprimir y fragmentar de nuevo si es necesario.",
+      "explanation": "Respeta el procesamiento por salto del modelo route-over del parcial."
+    },
+    {
+      "id": "consultar-final-de-mesh-y",
+      "text": "Consultar Final de Mesh y reenviar cada fragmento sin entregar el datagrama a IPv6.",
+      "explanation": "Describe el reenvío por debajo de IPv6 propio de mesh-under."
+    }
+  ],
+  "answer": "reensamblar-y-descomprimir-consultar-la"
+}

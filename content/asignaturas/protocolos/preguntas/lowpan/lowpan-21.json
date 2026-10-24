@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuándo comienza el temporizador de reensamblado descrito?",
+  "explanation": "Los fragmentos pueden llegar desordenados; el máximo del temporizador indicado es 60 segundos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "al-llegar-el-primer-fragmento",
+      "text": "Al llegar el primer fragmento recibido del datagrama, aunque no sea FRAG1.",
+      "explanation": "El temporizador arranca con el primer fragmento recibido del datagrama, aunque no sea FRAG1."
+    },
+    {
+      "id": "unicamente-al-recibir-frag1-aunque",
+      "text": "Únicamente al recibir FRAG1, aunque antes lleguen otros fragmentos.",
+      "explanation": "Los fragmentos pueden llegar desordenados; esperar a FRAG1 no es lo que describe el tema."
+    },
+    {
+      "id": "despues-de-recibir-el-ultimo",
+      "text": "Después de recibir el último fragmento.",
+      "explanation": "Si empezara tras el último fragmento, no podría limitar la espera de los que faltan."
+    },
+    {
+      "id": "cuando-finaliza-la-descompresion-del",
+      "text": "Cuando finaliza la descompresión del datagrama completo.",
+      "explanation": "El temporizador controla el reensamblado; la descompresión es posterior."
+    }
+  ],
+  "answer": "al-llegar-el-primer-fragmento"
+}

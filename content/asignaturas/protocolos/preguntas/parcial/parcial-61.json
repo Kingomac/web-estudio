@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-61",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router no encuentra ninguna ruta que coincida con el destino y tampoco tiene ruta por defecto. ¿Qué comportamiento describe el tema?",
+  "explanation": "Sin una ruta coincidente, incluida ::/0, el router no dispone de siguiente salto. El tema indica el envío de un error ICMPv6 Destination Unreachable al origen.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "envia-al-origen-un-error",
+      "text": "Envía al origen un error ICMPv6 Destination Unreachable.",
+      "explanation": "Sin ninguna coincidencia ni ruta por defecto, el router envía ICMPv6 Destination Unreachable al origen."
+    },
+    {
+      "id": "reenvia-el-paquete-por-todas",
+      "text": "Reenvía el paquete por todas sus interfaces.",
+      "explanation": "Un router no inunda paquetes por todas sus interfaces."
+    },
+    {
+      "id": "envia-un-rs-para-que",
+      "text": "Envía un RS para que el destino anuncie su MAC.",
+      "explanation": "RS sirve para descubrir routers; no resuelve destinos remotos."
+    },
+    {
+      "id": "transforma-automaticamente-la-direccion",
+      "text": "Transforma automáticamente la dirección destino en una link-local.",
+      "explanation": "El router no reescribe la dirección destino."
+    }
+  ],
+  "answer": "envia-al-origen-un-error"
+}

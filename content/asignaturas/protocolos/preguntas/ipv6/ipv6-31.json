@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué dirección fuente utiliza el NS de DAD mostrado en el tema?",
+  "explanation": "DAD comprueba si la dirección obtenida está duplicada antes de utilizarla normalmente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-direccion-sin-especificar",
+      "text": "La dirección sin especificar ::.",
+      "explanation": "El NS de DAD usa como fuente la dirección sin especificar (::)."
+    },
+    {
+      "id": "o-1",
+      "text": "::1.",
+      "explanation": "::1 es la loopback y no se usa como origen en el enlace."
+    },
+    {
+      "id": "ff02-1",
+      "text": "ff02::1.",
+      "explanation": "ff02::1 es un grupo multicast y no puede ser dirección origen."
+    },
+    {
+      "id": "la-direccion-que-se-esta",
+      "text": "La dirección que se está comprobando como si ya estuviera asignada.",
+      "explanation": "La dirección en prueba aún no puede usarse: podría estar duplicada."
+    }
+  ],
+  "answer": "la-direccion-sin-especificar"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué comando habilita el reenvío IPv6 entre interfaces en Cisco IOS?",
+  "explanation": "ipv6 enable actúa en una interfaz; ipv6 unicast-routing habilita el reenvío entre interfaces.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        19
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ipv6-unicast-routing",
+      "text": "ipv6 unicast-routing.",
+      "explanation": "ipv6 unicast-routing habilita el reenvío IPv6 entre interfaces en Cisco IOS."
+    },
+    {
+      "id": "show-ipv6-route",
+      "text": "show ipv6 route.",
+      "explanation": "show ipv6 route solo muestra la tabla de reenvío."
+    },
+    {
+      "id": "ipv6-address-fe80-1-link",
+      "text": "ipv6 address fe80::1 link-local como único comando global.",
+      "explanation": "ipv6 address … link-local configura una dirección en una interfaz; no activa el reenvío."
+    },
+    {
+      "id": "no-ipv6-route",
+      "text": "no ipv6 route.",
+      "explanation": "no ipv6 route eliminaría rutas estáticas; no habilita el reenvío."
+    }
+  ],
+  "answer": "ipv6-unicast-routing"
+}

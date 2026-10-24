@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué bloque /61 contiene la dirección 2001:db8:22:9abd::5, y cuántas subredes /64 contiene ese bloque?",
+  "explanation": "El /61 conserva 13 bits del cuarto hexteto. 0x9abd AND 0xfff8 = 0x9ab8. Los tres bits que faltan hasta /64 permiten ocho subredes, de 9ab8 a 9abf. No se aplica una resta de dos propia de ciertos cálculos IPv4.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-22-9ab8-61",
+      "text": "2001:db8:22:9ab8::/61; 6 subredes /64.",
+      "explanation": "Resta dos subredes sin que exista esa reserva en este reparto IPv6."
+    },
+    {
+      "id": "o-2001-db8-22-9ab8-61-2",
+      "text": "2001:db8:22:9ab8::/61; 8 subredes /64.",
+      "explanation": "Aplica la máscara fff8 y cuenta 2^3 posibilidades."
+    },
+    {
+      "id": "o-2001-db8-22-9ab0-61",
+      "text": "2001:db8:22:9ab0::/61; 16 subredes /64.",
+      "explanation": "Alinea como un /60 y cuenta cuatro bits de subred."
+    },
+    {
+      "id": "o-2001-db8-22-9abd-61",
+      "text": "2001:db8:22:9abd::/61; 8 subredes /64.",
+      "explanation": "No pone a cero los tres bits que quedan fuera del /61."
+    }
+  ],
+  "answer": "o-2001-db8-22-9ab8-61-2"
+}

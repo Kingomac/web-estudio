@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué función cumple el gateway en la arquitectura con nodos no IP?",
+  "explanation": "El gateway proporciona intermediación entre el nodo no IP y la infraestructura IP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "relacionar-el-identificador-del-nodo",
+      "text": "Relacionar el identificador del nodo con sus datos o servicios.",
+      "explanation": "Con nodos no IP, el gateway relaciona el identificador de cada nodo con sus datos o servicios."
+    },
+    {
+      "id": "reenviar-ip-extremo-a-extremo",
+      "text": "Reenviar IP extremo a extremo sin interpretar identificadores no IP.",
+      "explanation": "La comunicación IP extremo a extremo es propia de la arquitectura con nodos IP, no de la de nodos no IP."
+    },
+    {
+      "id": "proporcionar-unicamente-conmutacion-mac",
+      "text": "Proporcionar únicamente conmutación MAC dentro de una subred Ethernet.",
+      "explanation": "La conmutación MAC en una subred es la función de un bridge, no la del gateway de nodos no IP."
+    },
+    {
+      "id": "responder-unicamente-a-mensajes-rs",
+      "text": "Responder únicamente a mensajes RS con el prefijo global.",
+      "explanation": "Responder a RS con prefijos es tarea de un router IPv6 en SLAAC, ajena a este esquema."
+    }
+  ],
+  "answer": "relacionar-el-identificador-del-nodo"
+}

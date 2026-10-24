@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué grupo IPv6 identifica a todos los routers del enlace?",
+  "explanation": "ff02::1 es all-nodes y ff02::2 es all-routers.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-2",
+      "text": "ff02::2.",
+      "explanation": "ff02::2 es el grupo de todos los routers del enlace (all-routers)."
+    },
+    {
+      "id": "ff02-1",
+      "text": "ff02::1.",
+      "explanation": "ff02::1 es el grupo de todos los nodos (all-nodes)."
+    },
+    {
+      "id": "ff02-fb",
+      "text": "ff02::fb.",
+      "explanation": "ff02::fb es la dirección multicast de mDNS."
+    },
+    {
+      "id": "o-1",
+      "text": "::1.",
+      "explanation": "::1 es la loopback, no un grupo multicast."
+    }
+  ],
+  "answer": "ff02-2"
+}

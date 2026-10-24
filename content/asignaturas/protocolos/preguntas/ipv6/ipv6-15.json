@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Puede una interfaz disponer de varias direcciones IPv6 en el material?",
+  "explanation": "La subred puede tener varios prefijos y una interfaz varias direcciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "si-del-mismo-prefijo-o",
+      "text": "Sí, del mismo prefijo o de distintos prefijos de la subred.",
+      "explanation": "Una interfaz puede tener varias direcciones IPv6, del mismo prefijo o de distintos prefijos de la subred."
+    },
+    {
+      "id": "no-una-interfaz-solo-puede",
+      "text": "No, una interfaz solo puede tener una dirección IPv6 en total.",
+      "explanation": "El tema muestra subredes con varios prefijos e interfaces con varias direcciones."
+    },
+    {
+      "id": "solo-puede-tener-varias-si",
+      "text": "Solo puede tener varias si todas son link-local.",
+      "explanation": "La multiplicidad no se limita a las link-local."
+    },
+    {
+      "id": "puede-tener-una-global-o",
+      "text": "Puede tener una global o una ULA, pero nunca ambas.",
+      "explanation": "Una interfaz puede tener a la vez direcciones ULA, globales y link-local."
+    }
+  ],
+  "answer": "si-del-mismo-prefijo-o"
+}

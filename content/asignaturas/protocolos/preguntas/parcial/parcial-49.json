@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-49",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es la forma abreviada de 2001:0db8:0000:0000:0000:0000:0007:000a?",
+  "explanation": "Se eliminan los ceros iniciales de cada grupo y la secuencia de cuatro grupos nulos se sustituye por un único ::. Los grupos 7 y a deben mantenerse separados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-7-a",
+      "text": "2001:db8::7:a.",
+      "explanation": "Se quitan los ceros iniciales y los cuatro grupos nulos se sustituyen por un único :: → 2001:db8::7:a."
+    },
+    {
+      "id": "o-2001-db8-7a",
+      "text": "2001:db8::7a.",
+      "explanation": "Unir 7 y a en un solo grupo cambia la dirección: 7a no equivale a los grupos 0007 y 000a."
+    },
+    {
+      "id": "o-2001-db8-7-a-2",
+      "text": "2001::db8::7:a.",
+      "explanation": "Dos :: hacen ambigua la expansión."
+    },
+    {
+      "id": "o-2001-db8-0-7-a",
+      "text": "2001:db8:0:7:a.",
+      "explanation": "Solo hay cinco grupos sin ::; se han perdido grupos nulos."
+    }
+  ],
+  "answer": "o-2001-db8-7-a"
+}

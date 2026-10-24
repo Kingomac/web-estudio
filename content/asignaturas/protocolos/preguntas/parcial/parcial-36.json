@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente quiere recibir cambios sucesivos de un recurso CoAP sin realizar una nueva consulta por cada cambio. ¿Qué debe solicitar?",
+  "explanation": "Observe: 0 permite registrarse como observador. El servidor mantiene la relación cliente/Token y envía actualizaciones; Observe: 1 se utiliza para darse de baja.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "una-observacion-mediante-observe-0",
+      "text": "Una observación mediante Observe: 0.",
+      "explanation": "Con Observe: 0 el cliente se registra y el servidor le envía las actualizaciones del recurso."
+    },
+    {
+      "id": "una-baja-mediante-observe-1",
+      "text": "Una baja mediante Observe: 1.",
+      "explanation": "Observe: 1 sirve para darse de baja."
+    },
+    {
+      "id": "una-conexion-mqtt-mediante-el",
+      "text": "Una conexión MQTT mediante el mismo Token.",
+      "explanation": "Observe es una opción de CoAP; no abre conexiones MQTT."
+    },
+    {
+      "id": "un-rst-periodico-al-servidor",
+      "text": "Un RST periódico al servidor del recurso.",
+      "explanation": "RST indica que no se ha podido procesar un mensaje; no sirve para suscribirse."
+    }
+  ],
+  "answer": "una-observacion-mediante-observe-0"
+}

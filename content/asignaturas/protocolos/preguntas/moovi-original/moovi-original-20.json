@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-original-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un nodo ofrece temperatura por CoAP y también la publica en un broker MQTT. Una aplicación conoce la URI CoAP; otra conoce el acceso al broker y el topic de temperatura. ¿Qué afirmación distingue correctamente ambas formas de acceso?",
+  "explanation": "La URI CoAP identifica el recurso al que accede la primera aplicación. En MQTT, la otra aplicación se suscribe al topic correspondiente y recibe publicaciones a través del broker. El significado del topic se acuerda en la aplicación: no es por sí mismo una URI ni una consulta DNS o NDP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        48
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-primera-necesita-conocer-la",
+      "text": "La primera necesita conocer la ruta del recurso; la segunda obtiene el topic consultando la caché NDP correspondiente al broker.",
+      "explanation": "NDP no proporciona ni descubre topics MQTT."
+    },
+    {
+      "id": "la-primera-consulta-un-recurso",
+      "text": "La primera consulta un recurso del nodo; la segunda debe interpretar el topic como una URI con el mismo host y puerto que el servicio CoAP.",
+      "explanation": "El topic no tiene que ser una URI ni compartir host y puerto con CoAP."
+    },
+    {
+      "id": "la-primera-identifica-el-recurso",
+      "text": "La primera identifica el recurso mediante la URI; la segunda recibe publicaciones a través del broker según el significado asignado al topic.",
+      "explanation": "Distingue la identificación del recurso y la recepción mediante el broker."
+    },
+    {
+      "id": "la-primera-identifica-el-recurso-2",
+      "text": "La primera identifica el recurso mediante la URI; la segunda utiliza el topic para resolver por DNS la dirección IPv6 del nodo publicador.",
+      "explanation": "El topic no es una consulta DNS para localizar el nodo publicador."
+    }
+  ],
+  "answer": "la-primera-identifica-el-recurso"
+}

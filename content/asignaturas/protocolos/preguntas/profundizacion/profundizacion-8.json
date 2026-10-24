@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Tabla: ::/0→R0; 2001:db8:abcd::/48→R1; 2001:db8:abcd:1200::/56→R2; 2001:db8:abcd:12a0::/60→R3. ¿Qué siguiente salto se usa para 2001:db8:abcd:12b5::1?",
+  "explanation": "El /56 fija el byte 12 del cuarto hexteto y cubre 1200–12ff. El /60 de R3 cubre solo 12a0–12af. Primero se exige coincidencia; después se elige el prefijo más largo entre las rutas coincidentes.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 7608 · prefijos de encaminamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc7608.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "r3-porque-60-siempre-tiene",
+      "text": "R3, porque /60 siempre tiene prioridad sobre /56.",
+      "explanation": "Una ruta más específica que no coincide no puede seleccionarse."
+    },
+    {
+      "id": "r1-porque-la-coincidencia-debe",
+      "text": "R1, porque la coincidencia debe terminar en un hexteto completo.",
+      "explanation": "Los prefijos IPv6 pueden terminar dentro de un hexteto."
+    },
+    {
+      "id": "r0-porque-12b5-no-es",
+      "text": "R0, porque 12b5 no es igual a 1200.",
+      "explanation": "Los bits posteriores al /56 son variables; no se exige igualdad de los 128 bits."
+    },
+    {
+      "id": "r2-porque-el-56-coincide",
+      "text": "R2, porque el /56 coincide y el /60 no.",
+      "explanation": "12b5 pertenece a 12XX, pero no a 12aX."
+    }
+  ],
+  "answer": "r2-porque-el-56-coincide"
+}

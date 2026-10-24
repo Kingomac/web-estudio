@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-53",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router debe reenviar un paquete IPv6 recibido con Hop Limit=1. ¿Qué ocurre?",
+  "explanation": "Cada router disminuye el Hop Limit y el paquete se descarta cuando llega a cero. Este campo limita los saltos y evita la circulación indefinida de paquetes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "lo-descarta-al-agotar-el",
+      "text": "Lo descarta al agotar el Hop Limit.",
+      "explanation": "El router decrementa el Hop Limit; al llegar a 0, descarta el paquete."
+    },
+    {
+      "id": "lo-reenvia-con-hop-limit",
+      "text": "Lo reenvía con Hop Limit=0 al siguiente router.",
+      "explanation": "Un paquete con Hop Limit 0 no se reenvía."
+    },
+    {
+      "id": "restaura-el-hop-limit-al",
+      "text": "Restaura el Hop Limit al valor 64.",
+      "explanation": "Los routers no restauran el Hop Limit."
+    },
+    {
+      "id": "lo-fragmenta-para-conservar-el",
+      "text": "Lo fragmenta para conservar el Hop Limit.",
+      "explanation": "En IPv6 los routers no fragmentan, y fragmentar no afecta al Hop Limit."
+    }
+  ],
+  "answer": "lo-descarta-al-agotar-el"
+}

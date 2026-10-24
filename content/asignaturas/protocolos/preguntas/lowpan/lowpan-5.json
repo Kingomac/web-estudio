@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pila caracteriza a Wi-SUN FAN en el material?",
+  "explanation": "El tema la orienta a servicios públicos y ciudades, con malla IPv6 y encaminamiento RPL.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ieee-802-15-4g-6lowpan",
+      "text": "IEEE 802.15.4g + 6LoWPAN + RPL.",
+      "explanation": "Wi-SUN FAN se basa en IEEE 802.15.4g, 6LoWPAN y encaminamiento RPL."
+    },
+    {
+      "id": "ieee-802-15-4-pila",
+      "text": "IEEE 802.15.4 + pila de red Zigbee.",
+      "explanation": "802.15.4 con pila Zigbee describe Zigbee, que no es IP."
+    },
+    {
+      "id": "ble-bluetooth-mesh-sin-ipv6",
+      "text": "BLE + Bluetooth Mesh sin IPv6.",
+      "explanation": "BLE y Bluetooth Mesh son otra tecnología de malla sin IPv6 nativo."
+    },
+    {
+      "id": "ieee-802-15-4-6lowpan",
+      "text": "IEEE 802.15.4 + 6LoWPAN + MLE de Thread.",
+      "explanation": "MLE pertenece a Thread; Wi-SUN FAN usa RPL."
+    }
+  ],
+  "answer": "ieee-802-15-4g-6lowpan"
+}

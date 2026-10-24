@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-48",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué relación debe tener el Rank de un padre respecto al de su hijo?",
+  "explanation": "El Rank aumenta al alejarse de la raíz siguiendo las relaciones padre-hijo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        74
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "debe-ser-menor",
+      "text": "Debe ser menor.",
+      "explanation": "El Rank del padre debe ser menor que el del hijo: crece al alejarse de la raíz."
+    },
+    {
+      "id": "debe-ser-siempre-exactamente-igual",
+      "text": "Debe ser siempre exactamente igual.",
+      "explanation": "Si fueran iguales no habría orientación hacia la raíz."
+    },
+    {
+      "id": "debe-ser-siempre-mayor",
+      "text": "Debe ser siempre mayor.",
+      "explanation": "Es al revés: el hijo tiene mayor Rank que todos sus padres."
+    },
+    {
+      "id": "no-existe-ninguna-relacion-en",
+      "text": "No existe ninguna relación en el modelo.",
+      "explanation": "Esta relación es una regla de RPL que impide los ciclos."
+    }
+  ],
+  "answer": "debe-ser-menor"
+}

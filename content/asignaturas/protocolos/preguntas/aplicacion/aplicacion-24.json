@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué caracteriza a una respuesta CoAP piggybacked?",
+  "explanation": "Piggybacked combina confirmación y respuesta en un solo mensaje.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-respuesta-de-aplicacion-viaja",
+      "text": "La respuesta de aplicación viaja en el mismo mensaje que el ACK.",
+      "explanation": "En una respuesta piggybacked, el ACK y la respuesta se envían en el mismo mensaje."
+    },
+    {
+      "id": "el-ack-se-envia-vacio",
+      "text": "El ACK se envía vacío y la respuesta se entrega después por separado.",
+      "explanation": "Un ACK vacío seguido de la respuesta aparte describe una respuesta separada, no piggybacked."
+    },
+    {
+      "id": "la-respuesta-se-envia-sin",
+      "text": "La respuesta se envía sin ACK porque todas las peticiones son NON.",
+      "explanation": "Piggybacked aprovecha el ACK de una petición confirmable; en NON no hay ACK."
+    },
+    {
+      "id": "el-ack-solo-contiene-el",
+      "text": "El ACK solo contiene el token y nunca datos de aplicación.",
+      "explanation": "El ACK piggybacked lleva la respuesta, con sus datos de aplicación."
+    }
+  ],
+  "answer": "la-respuesta-de-aplicacion-viaja"
+}

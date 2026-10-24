@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué describe el nivel QoS 0 de MQTT?",
+  "explanation": "QoS 0 es fire-and-forget; la conexión TCP puede fallar y no existe la confirmación MQTT de QoS 1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        51
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "at-most-once-publicacion-sin",
+      "text": "At most once: publicación sin confirmación MQTT.",
+      "explanation": "QoS 0 es at most once: fire-and-forget, sin confirmación del broker."
+    },
+    {
+      "id": "at-least-once-con-puback",
+      "text": "At least once con PUBACK obligatorio.",
+      "explanation": "At least once con PUBACK es QoS 1."
+    },
+    {
+      "id": "exactly-once-con-cuatro-mensajes",
+      "text": "Exactly once con cuatro mensajes.",
+      "explanation": "Exactly once con cuatro mensajes es QoS 2."
+    },
+    {
+      "id": "una-consulta-multicast-confirmable",
+      "text": "Una consulta multicast confirmable.",
+      "explanation": "Las peticiones confirmables y el multicast son de CoAP, no niveles QoS de MQTT."
+    }
+  ],
+  "answer": "at-most-once-publicacion-sin"
+}

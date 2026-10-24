@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Para el destino 2001:db8:a234::9 hay cuatro rutas instaladas: 2001:db8:a234:9::/64, 2001:db8:8000::/34, 2001:db8::/32 y ::/0. ¿Qué prefijo se utiliza?",
+  "explanation": "El tercer hexteto a234 empieza en binario por 10, igual que 8000; el /34 cubre los terceros hextetos 8000–bfff. El /64 no coincide porque el cuarto hexteto del destino es 0, no 9. Entre /34, /32 y /0 gana /34.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-0",
+      "text": "::/0.",
+      "explanation": "Es menos específico que dos de las rutas que sí coinciden."
+    },
+    {
+      "id": "o-2001-db8-8000-34",
+      "text": "2001:db8:8000::/34.",
+      "explanation": "Los primeros 34 bits coinciden y no hay otra coincidencia más larga."
+    },
+    {
+      "id": "o-2001-db8-a234-9-64",
+      "text": "2001:db8:a234:9::/64.",
+      "explanation": "El 9 del destino está en el octavo hexteto, no en el cuarto."
+    },
+    {
+      "id": "o-2001-db8-32",
+      "text": "2001:db8::/32.",
+      "explanation": "Es válido para el destino, pero menos específico que el /34."
+    }
+  ],
+  "answer": "o-2001-db8-8000-34"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué NO descubre NDP según el material?",
+  "explanation": "Participar en la red no basta para saber qué servicio ofrece un dispositivo ni cómo consultar sus recursos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "las-aplicaciones-y-los-recursos",
+      "text": "Las aplicaciones y los recursos ofrecidos por un nodo.",
+      "explanation": "NDP descubre vecinos y routers, pero no las aplicaciones ni sus recursos."
+    },
+    {
+      "id": "los-vecinos-del-enlace",
+      "text": "Los vecinos del enlace.",
+      "explanation": "Descubrir vecinos del enlace es precisamente una función de NDP."
+    },
+    {
+      "id": "los-routers-vecinos",
+      "text": "Los routers vecinos.",
+      "explanation": "NDP también descubre routers mediante RS/RA."
+    },
+    {
+      "id": "correspondencias-entre-ipv6-y-direccione",
+      "text": "Correspondencias entre IPv6 y direcciones de enlace.",
+      "explanation": "NS/NA resuelven correspondencias IPv6–MAC: lo hace NDP."
+    }
+  ],
+  "answer": "las-aplicaciones-y-los-recursos"
+}

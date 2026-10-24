@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-49",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué combinación de función objetivo y métrica usa Wi-SUN FAN en el tema?",
+  "explanation": "El tema calcula costes a partir de Rank del padre y ETX del enlace, con histéresis.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        75
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mrhof-con-etx",
+      "text": "MRHOF con ETX.",
+      "explanation": "Wi-SUN FAN usa la función objetivo MRHOF con la métrica ETX."
+    },
+    {
+      "id": "vector-de-distancias-thread-con",
+      "text": "Vector de distancias Thread con costes 1, 2 y 4 exclusivamente.",
+      "explanation": "Los costes 1, 2 y 4 por RSSI son del vector de distancias de Thread."
+    },
+    {
+      "id": "slaac-con-eui-64-como",
+      "text": "SLAAC con EUI-64 como métrica de ruta.",
+      "explanation": "SLAAC configura direcciones; no es una métrica de ruta."
+    },
+    {
+      "id": "lpm-con-longitud-de-prefijo",
+      "text": "LPM con longitud de prefijo como métrica ETX.",
+      "explanation": "LPM elige rutas en una FIB por longitud de prefijo; no es la función objetivo de RPL."
+    }
+  ],
+  "answer": "mrhof-con-etx"
+}

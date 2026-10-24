@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un analizador recibe la cadena 2001:db8:1:2:3:4:5:6::. ¿Qué diagnóstico debe dar al interpretarla como una dirección IPv6?",
+  "explanation": "Los ocho grupos explícitos ya ocupan 128 bits. :: sustituye uno o más grupos cero, nunca cero grupos. Puede aparecer al principio o al final, pero solo si quedan grupos por representar.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "es-invalida-porque-solo-puede",
+      "text": "Es inválida porque :: solo puede escribirse en medio de la dirección.",
+      "explanation": "::1 y 2001:db8:: muestran que los extremos son posiciones válidas."
+    },
+    {
+      "id": "es-invalida-ya-hay-ocho",
+      "text": "Es inválida: ya hay ocho hextetos explícitos y :: tendría que representar al menos uno.",
+      "explanation": "Ocho grupos más el mínimo de uno implícito excederían los 128 bits."
+    },
+    {
+      "id": "es-valida-y-equivale-a",
+      "text": "Es válida y equivale a 2001:db8:1:2:3:4:5:6.",
+      "explanation": "Eliminar :: como si no añadiese grupos acepta una sintaxis inválida."
+    },
+    {
+      "id": "es-valida-y-anade-un",
+      "text": "Es válida y añade un noveno hexteto con valor cero.",
+      "explanation": "IPv6 tiene ocho hextetos, no nueve."
+    }
+  ],
+  "answer": "es-invalida-ya-hay-ocho"
+}

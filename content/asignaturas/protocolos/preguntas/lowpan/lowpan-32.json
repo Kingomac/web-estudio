@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué identifica la opción ABRO?",
+  "explanation": "ABRO permite reconocer actualizaciones de prefijos/contextos y evitar información antigua.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-border-router-que-origina",
+      "text": "El border router que origina la información y su versión.",
+      "explanation": "ABRO identifica al 6LBR que origina prefijos y contextos e incluye una versión para reconocer actualizaciones."
+    },
+    {
+      "id": "el-host-que-registra-su",
+      "text": "El host que registra su dirección y su EUI-64.",
+      "explanation": "El EUI-64 del host viaja en ARO, no en ABRO."
+    },
+    {
+      "id": "el-tiempo-de-registro-del",
+      "text": "El tiempo de registro del host expresado en minutos.",
+      "explanation": "El tiempo de registro en minutos es el Registration Lifetime de ARO."
+    },
+    {
+      "id": "los-dos-identificadores-sci-dci",
+      "text": "Los dos identificadores SCI/DCI de una cabecera IPHC.",
+      "explanation": "SCI/DCI son campos de la cabecera IPHC, no una opción del RA."
+    }
+  ],
+  "answer": "el-border-router-que-origina"
+}

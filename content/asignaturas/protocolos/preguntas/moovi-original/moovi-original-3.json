@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-original-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En un router se ejecutan los siguientes comandos:\ninterface f0/0\nipv6 address 2001:db8:1::1/64\nipv6 route 2001:db8:2:A::/64 2001:db8:1::2\nipv6 route 2001:db8::/32 2001:db8:1::3\nipv6 route ::/0 s0/1\n\n¿Qué ocurre si un paquete con dirección IPv6 destino 2001:db8:2::A llega al router?",
+  "explanation": "El destino 2001:db8:2::A tiene cuarto hexteto 0 y último hexteto A. Por tanto no coincide con 2001:db8:2:A::/64. Sí coincide con 2001:db8::/32 y con ::/0; gana /32. Su siguiente salto es 2001:db8:1::3, alcanzable por f0/0.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        1
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "se-reenvia-al-gateway-por",
+      "text": "Se reenvía al gateway por defecto vía s0/1",
+      "explanation": "La ruta /32 coincide y es más específica que la ruta por defecto."
+    },
+    {
+      "id": "es-descartado-ya-que-no",
+      "text": "Es descartado, ya que no hay una ruta válida",
+      "explanation": "Hay una ruta /32 válida para ese destino."
+    },
+    {
+      "id": "es-reenviado-a-2001-db8",
+      "text": "Es reenviado a 2001:db8:1::2 mediante la interfaz f0/0",
+      "explanation": "El /64 tiene A en el cuarto hexteto; el destino lo tiene en el último."
+    },
+    {
+      "id": "es-reenviado-a-2001-db8-2",
+      "text": "Es reenviado a 2001:db8:1::3 mediante la interfaz f0/0",
+      "explanation": "El /32 coincidente conduce a ::3 por la red de f0/0."
+    }
+  ],
+  "answer": "es-reenviado-a-2001-db8-2"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En mesh-under, un datagrama sigue A → B → C. B lo reenvía hacia C. ¿Qué pareja de direcciones debe aparecer en la trama MAC saliente y qué extremos conserva la cabecera Mesh?",
+  "explanation": "Las direcciones MAC de la trama describen el salto radio actual y cambian a B → C. Originator y Final de Mesh conservan A → C para el reenvío y el reensamblado. Esto no significa que todos los campos de Mesh sean invariables: su contador de saltos se actualiza.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mac-a-b-mesh-a",
+      "text": "MAC: A → B; Mesh: A → C.",
+      "explanation": "Describe la trama entrante a B, no la que B transmite a C."
+    },
+    {
+      "id": "mac-b-c-mesh-a",
+      "text": "MAC: B → C; Mesh: A → C.",
+      "explanation": "Distingue vecinos del salto actual y extremos del recorrido mesh-under."
+    },
+    {
+      "id": "mac-a-c-mesh-b",
+      "text": "MAC: A → C; Mesh: B → C.",
+      "explanation": "Intercambia el papel de las direcciones de la trama y los extremos Mesh."
+    },
+    {
+      "id": "mac-b-c-mesh-b",
+      "text": "MAC: B → C; Mesh: B → C.",
+      "explanation": "Pierde A como originador original al sustituirlo por el retransmisor B."
+    }
+  ],
+  "answer": "mac-b-c-mesh-a"
+}

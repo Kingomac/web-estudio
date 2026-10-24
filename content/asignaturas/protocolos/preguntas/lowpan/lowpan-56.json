@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-56",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo actúa Trickle cuando la red está estable?",
+  "explanation": "Ante inconsistencias reduce el intervalo para propagar antes la información actualizada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        82
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "aumenta-intervalos-de-dio-y",
+      "text": "Aumenta intervalos de DIO y puede suprimir anuncios redundantes.",
+      "explanation": "Con la red estable, Trickle alarga el intervalo entre DIO y puede suprimir anuncios redundantes."
+    },
+    {
+      "id": "reduce-siempre-los-intervalos-y",
+      "text": "Reduce siempre los intervalos y envía DIO más deprisa.",
+      "explanation": "Reducir el intervalo es la reacción ante una inconsistencia."
+    },
+    {
+      "id": "incrementa-la-version-del-dodag",
+      "text": "Incrementa la versión del DODAG en cada anuncio.",
+      "explanation": "Incrementar la versión del DODAG es una reparación global que inicia la raíz."
+    },
+    {
+      "id": "elimina-los-dao-y-deja",
+      "text": "Elimina los DAO y deja de mantener rutas descendentes.",
+      "explanation": "Trickle regula los DIO; no elimina los DAO ni las rutas descendentes."
+    }
+  ],
+  "answer": "aumenta-intervalos-de-dio-y"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué describe el uso de cookies HTTP que aparece en el temario?",
+  "explanation": "Las cookies permiten conservar información de estado en intercambios HTTP. Son cadenas definidas por el servidor que el cliente devuelve y pueden servir para sesiones o preferencias.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        19
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-servidor-proporciona-una-cadena",
+      "text": "El servidor proporciona una cadena que el cliente devuelve para mantener información de estado.",
+      "explanation": "El servidor define una cadena, el cliente la devuelve sin modificar y así se mantiene información de estado."
+    },
+    {
+      "id": "el-cliente-modifica-la-cookie",
+      "text": "El cliente modifica la cookie en cada salto para indicar la ruta recorrida.",
+      "explanation": "El cliente devuelve la cookie sin modificar; no registra saltos."
+    },
+    {
+      "id": "la-cookie-sustituye-al-puerto",
+      "text": "La cookie sustituye al puerto TCP de destino durante la conexión.",
+      "explanation": "La cookie viaja en los mensajes HTTP; no sustituye al puerto TCP."
+    },
+    {
+      "id": "el-router-anade-una-cookie",
+      "text": "El router añade una cookie a cada datagrama para resolver su dirección MAC.",
+      "explanation": "Los routers no añaden cookies; la MAC se resuelve con NDP o ARP."
+    }
+  ],
+  "answer": "el-servidor-proporciona-una-cadena"
+}

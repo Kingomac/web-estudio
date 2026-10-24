@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué respuesta acepta el cambio a WebSocket en el handshake HTTP/1.1 mostrado?",
+  "explanation": "La petición incluye Upgrade: websocket y la aceptación devuelve 101 con las cabeceras de cambio de protocolo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-101-switching-protocols",
+      "text": "101 Switching Protocols.",
+      "explanation": "El servidor acepta el cambio con 101 Switching Protocols y las cabeceras Upgrade y Connection."
+    },
+    {
+      "id": "o-200-ok-sin-cambio-de",
+      "text": "200 OK sin cambio de protocolo.",
+      "explanation": "200 OK sería una respuesta HTTP normal, sin cambio a WebSocket."
+    },
+    {
+      "id": "o-304-not-modified",
+      "text": "304 Not Modified.",
+      "explanation": "304 Not Modified valida contenido en caché; no cambia de protocolo."
+    },
+    {
+      "id": "o-301-moved-permanently",
+      "text": "301 Moved Permanently.",
+      "explanation": "301 Moved Permanently redirige a otra URL; no acepta el Upgrade."
+    }
+  ],
+  "answer": "o-101-switching-protocols"
+}

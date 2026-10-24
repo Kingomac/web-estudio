@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación solicita la temperatura y el sensor responde con la medida. En ese intercambio, ¿qué roles desempeñan?",
+  "explanation": "En el modelo petición/respuesta, el cliente inicia la petición y el servidor la atiende. Un dispositivo IoT con pocos recursos también puede desempeñar el papel de servidor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-aplicacion-es-cliente-y",
+      "text": "La aplicación es cliente y el sensor es servidor.",
+      "explanation": "Quien inicia la petición (la aplicación) es el cliente, y el sensor que responde con la medida es el servidor."
+    },
+    {
+      "id": "el-sensor-es-cliente-y",
+      "text": "El sensor es cliente y la aplicación es servidor.",
+      "explanation": "Invierte los papeles: el sensor responde, luego es el servidor."
+    },
+    {
+      "id": "ambos-son-brokers-de-publicacion",
+      "text": "Ambos son brokers de publicación/suscripción.",
+      "explanation": "En cliente/servidor no hay broker; los brokers son del modelo publicación/suscripción."
+    },
+    {
+      "id": "el-rol-depende-de-cual",
+      "text": "El rol depende de cuál tenga mayor capacidad de proceso.",
+      "explanation": "El rol depende de quién pide y quién responde, no de la capacidad de proceso."
+    }
+  ],
+  "answer": "la-aplicacion-es-cliente-y"
+}

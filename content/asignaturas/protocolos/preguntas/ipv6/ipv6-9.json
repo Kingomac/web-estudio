@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa C en show ipv6 route según las diapositivas?",
+  "explanation": "El material distingue L local, C connected, S static y letras de protocolos como O para OSPF.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "red-conectada",
+      "text": "Red conectada.",
+      "explanation": "C (connected) identifica la subred directamente conectada creada por ipv6 address."
+    },
+    {
+      "id": "direccion-local-de-la-interfaz",
+      "text": "Dirección local de la interfaz.",
+      "explanation": "L (local) es la entrada que relaciona la interfaz con su propia dirección."
+    },
+    {
+      "id": "ruta-estatica-configurada-manualmente",
+      "text": "Ruta estática configurada manualmente.",
+      "explanation": "S identifica las rutas estáticas creadas con ipv6 route."
+    },
+    {
+      "id": "ruta-aprendida-mediante-ospf",
+      "text": "Ruta aprendida mediante OSPF.",
+      "explanation": "O indica una ruta dinámica aprendida por OSPF."
+    }
+  ],
+  "answer": "red-conectada"
+}

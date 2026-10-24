@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "DNS-SD devuelve PTR hacia Invernadero._coap._udp.local y un SRV de esa instancia con host nodo17.local y puerto 61616, además de su TXT. No hay direcciones en caché ni registros AAAA en la respuesta. ¿Qué falta para obtener el extremo IPv6?",
+  "explanation": "El PTR nombra la instancia; el SRV identifica el host y puerto reales. Falta resolver nodo17.local mediante AAAA. El puerto anunciado puede diferir del puerto habitual de CoAP; los metadatos TXT no sustituyen el registro de dirección del host.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6763 §5 · resolución de instancias",
+      "url": "https://www.rfc-editor.org/rfc/rfc6763.html#section-5"
+    }
+  ],
+  "options": [
+    {
+      "id": "consultar-el-aaaa-de-nodo17",
+      "text": "Consultar el AAAA de nodo17.local y usar el puerto 61616 del SRV.",
+      "explanation": "Resuelve el host concreto nombrado en SRV y respeta su puerto."
+    },
+    {
+      "id": "consultar-el-aaaa-de-coap",
+      "text": "Consultar el AAAA de _coap._udp.local y usar el puerto 5683 por obligación.",
+      "explanation": "El nombre de tipo de servicio no es el host de la instancia y no se debe ignorar SRV."
+    },
+    {
+      "id": "consultar-el-aaaa-de-invernadero",
+      "text": "Consultar el AAAA de Invernadero._coap._udp.local y descartar el host del SRV.",
+      "explanation": "Confunde el nombre de instancia con el nombre del host que presta el servicio."
+    },
+    {
+      "id": "usar-el-contenido-del-txt",
+      "text": "Usar el contenido del TXT como dirección IPv6 sin otra resolución.",
+      "explanation": "TXT describe metadatos y no constituye por sí solo un registro AAAA."
+    }
+  ],
+  "answer": "consultar-el-aaaa-de-nodo17"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué condición describe el tema para agregar exactamente varias rutas?",
+  "explanation": "La agregación reduce la tabla y los anuncios si los prefijos pueden resumirse de esa forma.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mismo-next-hop-y-bloque",
+      "text": "Mismo next-hop y bloque de prefijos contiguo y alineado.",
+      "explanation": "Para agregar rutas, deben tener el mismo next-hop y formar un bloque contiguo y alineado."
+    },
+    {
+      "id": "prefijos-arbitrarios-con-distintos-sigui",
+      "text": "Prefijos arbitrarios con distintos siguientes saltos.",
+      "explanation": "Con prefijos arbitrarios o next-hops distintos, una ruta resumen cambiaría el reenvío."
+    },
+    {
+      "id": "direcciones-de-destino-multicast-exclusi",
+      "text": "Direcciones de destino multicast exclusivamente.",
+      "explanation": "La agregación se aplica a rutas unicast; no depende de que el destino sea multicast."
+    },
+    {
+      "id": "que-todas-las-rutas-sean",
+      "text": "Que todas las rutas sean /128 y no compartan bits.",
+      "explanation": "Las /128 sin bits comunes no forman un bloque contiguo que pueda resumirse."
+    }
+  ],
+  "answer": "mismo-next-hop-y-bloque"
+}

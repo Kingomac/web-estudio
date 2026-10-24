@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un receptor recibe fragmentos sin cabecera Mesh desde A y desde B. Coinciden datagram_tag y datagram_size, pero A y B tienen distintas direcciones de enlace origen. ¿Debe mezclarlos en un único reensamblado?",
+  "explanation": "La identificación usa datagram_size, datagram_tag y los extremos de enlace; con cabecera Mesh se usan sus extremos originales/finales. Dos emisores distintos pueden reutilizar el mismo tag. La coincidencia de tamaño no los convierte en un único datagrama.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 §5.3 · fragmentación",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
+    }
+  ],
+  "options": [
+    {
+      "id": "si-la-igualdad-de-datagram",
+      "text": "Sí: la igualdad de datagram_tag basta aunque los emisores sean distintos.",
+      "explanation": "La etiqueta no es un identificador global único para todos los nodos."
+    },
+    {
+      "id": "si-la-igualdad-de-datagram-2",
+      "text": "Sí: la igualdad de datagram_size demuestra que son el mismo paquete.",
+      "explanation": "Muchos datagramas distintos pueden tener exactamente la misma longitud."
+    },
+    {
+      "id": "solo-si-los-fragmentos-llegan",
+      "text": "Solo si los fragmentos llegan por orden de recepción creciente.",
+      "explanation": "El orden de llegada no sustituye la identificación de los fragmentos."
+    },
+    {
+      "id": "no-las-direcciones-de-enlace",
+      "text": "No: las direcciones de enlace también forman parte de la identificación del datagrama.",
+      "explanation": "Mantiene separados los datagramas cuyos extremos de enlace difieren."
+    }
+  ],
+  "answer": "no-las-direcciones-de-enlace"
+}

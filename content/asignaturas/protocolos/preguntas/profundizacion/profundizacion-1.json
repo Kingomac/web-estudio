@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es la representación canónica de 2001:0db8:0000:0000:000a:0000:0000:000b según RFC 5952?",
+  "explanation": "Hay dos secuencias máximas de dos hextetos cero. El empate se resuelve comprimiendo la primera. Además, se eliminan los ceros iniciales de cada hexteto y se usan minúsculas.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 5952 · representación",
+      "url": "https://www.rfc-editor.org/rfc/rfc5952.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-a-0-0",
+      "text": "2001:db8::a:0:0:b",
+      "explanation": "Comprime la primera secuencia máxima y elimina ceros iniciales."
+    },
+    {
+      "id": "o-2001-db8-0-0-a",
+      "text": "2001:db8:0:0:a::b",
+      "explanation": "Es una dirección equivalente y válida, pero no es la forma canónica: comprime la segunda secuencia del empate."
+    },
+    {
+      "id": "o-2001-db8-a-b",
+      "text": "2001:db8::a::b",
+      "explanation": "Dos apariciones de :: hacen ambigua la expansión; la notación es inválida."
+    },
+    {
+      "id": "o-2001-0db8-000a-0-0",
+      "text": "2001:0db8::000a:0:0:000b",
+      "explanation": "Conserva ceros iniciales que deben eliminarse para la forma canónica."
+    }
+  ],
+  "answer": "o-2001-db8-a-0-0"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En un sistema IoT, ¿qué trayecto corresponde a la red de acceso?",
+  "explanation": "La red de acceso conecta los dispositivos con el gateway o border router. La red troncal comunica ese equipo con la aplicación, normalmente a través de Internet.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "desde-el-sensor-hasta-la",
+      "text": "Desde el sensor hasta la pasarela o el router de borde.",
+      "explanation": "La red de acceso va desde los dispositivos IoT hasta la pasarela o el border router."
+    },
+    {
+      "id": "desde-la-pasarela-hasta-la",
+      "text": "Desde la pasarela hasta la aplicación remota a través de Internet.",
+      "explanation": "De la pasarela a la aplicación a través de Internet es la red troncal."
+    },
+    {
+      "id": "desde-el-servicio-en-la",
+      "text": "Desde el servicio en la nube hasta su base de datos interna.",
+      "explanation": "La comunicación interna de un servicio en la nube no forma parte de la red de acceso IoT."
+    },
+    {
+      "id": "desde-un-servidor-dns-publico",
+      "text": "Desde un servidor DNS público hasta otro servidor DNS público.",
+      "explanation": "La comunicación entre servidores DNS es infraestructura de Internet, no acceso de los dispositivos."
+    }
+  ],
+  "answer": "desde-el-sensor-hasta-la"
+}

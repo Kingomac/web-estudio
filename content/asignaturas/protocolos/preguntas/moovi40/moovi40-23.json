@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "IPHC indica destino unicast con M=0, DAC=0 y DAM=10. Los 16 bits de destino enviados en línea son 0x5a20. ¿Qué dirección se reconstruye?",
+  "explanation": "En este modo stateless de 16 bits se usa fe80::/64 y el IID 0000:00ff:fe00:XXXX. Sustituyendo XXXX por 5a20 resulta fe80::ff:fe00:5a20. No se transmite el IID completo ni se usa un prefijo de contexto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 §3.1.1 · modos IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-ff-fe00-5a20",
+      "text": "2001:db8::ff:fe00:5a20.",
+      "explanation": "Introduce un prefijo global que no puede inferirse con DAC=0 en este modo."
+    },
+    {
+      "id": "fe80-5a20-0",
+      "text": "fe80::5a20:0.",
+      "explanation": "Desplaza los bits recibidos y tampoco aplica la plantilla del IID."
+    },
+    {
+      "id": "fe80-ff-fe00-5a20",
+      "text": "fe80::ff:fe00:5a20.",
+      "explanation": "Aplica la plantilla de IID del modo DAM=10 sin contexto."
+    },
+    {
+      "id": "fe80-5a20",
+      "text": "fe80::5a20.",
+      "explanation": "Omite indebidamente los bits conocidos 00ff:fe00 del IID."
+    }
+  ],
+  "answer": "fe80-ff-fe00-5a20"
+}

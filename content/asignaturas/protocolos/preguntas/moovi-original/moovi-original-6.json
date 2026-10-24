@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.moovi-original-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Las redes inalámbricas usadas en IoT son del tipo LLN. Indique qqué característica de las indicadas NO es característica de este tipo de redes",
+  "explanation": "Las LLN del temario combinan bajo consumo, tasas de datos reducidas y enlaces con pérdidas, que pueden tener una relación señal/ruido baja. Una elevada capacidad de canal no corresponde al perfil de estas redes. Se conserva la errata «qqué» del enunciado original.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "baja-tasa-de-transmision",
+      "text": "Baja tasa de transmisión",
+      "explanation": "Las tasas reducidas sí encajan con el perfil LLN del temario."
+    },
+    {
+      "id": "elevadas-tasas-de-perdidas-de",
+      "text": "Elevadas tasas de pérdidas de paquetes",
+      "explanation": "Los enlaces con pérdidas son parte del perfil Lossy."
+    },
+    {
+      "id": "valor-bajo-de-snr",
+      "text": "Valor bajo de SNR",
+      "explanation": "Una relación señal/ruido baja encaja con enlaces de calidad limitada."
+    },
+    {
+      "id": "bajo-consumo-energetico",
+      "text": "Bajo consumo energético",
+      "explanation": "El bajo consumo corresponde a Low-power."
+    },
+    {
+      "id": "elevada-capacidad-de-canal",
+      "text": "Elevada capacidad de canal",
+      "explanation": "Una capacidad elevada no encaja con el perfil descrito."
+    }
+  ],
+  "answer": "elevada-capacidad-de-canal"
+}

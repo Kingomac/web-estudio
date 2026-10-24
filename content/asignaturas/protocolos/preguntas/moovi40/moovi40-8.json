@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Las rutas 2001:db8:55:21::/64 y 2001:db8:55:22::/64 usan el mismo siguiente salto. ¿Pueden sustituirse por un único prefijo que cubra exactamente su unión?",
+  "explanation": "Un /63 agrupa pares alineados: 20–21 o 22–23, nunca 21–22. El menor prefijo que contiene ambas es el /62 con base 20, pero añade las subredes 20 y 23. Compartir siguiente salto y ser contiguas no basta para un resumen exacto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "si-2001-db8-55-20",
+      "text": "Sí: 2001:db8:55:20::/63 cubre exactamente las dos.",
+      "explanation": "Ese /63 cubre 20 y 21, y deja fuera 22."
+    },
+    {
+      "id": "si-2001-db8-55-22",
+      "text": "Sí: 2001:db8:55:22::/63 cubre exactamente las dos.",
+      "explanation": "Ese /63 cubre 22 y 23, y deja fuera 21."
+    },
+    {
+      "id": "si-2001-db8-55-20-2",
+      "text": "Sí: 2001:db8:55:20::/62 cubre exactamente las dos.",
+      "explanation": "Ese /62 incluye las dos rutas, pero añade dos subredes ajenas a la unión."
+    },
+    {
+      "id": "no-son-contiguas-pero-no",
+      "text": "No: son contiguas, pero no están alineadas como un único bloque /63.",
+      "explanation": "Identifica la condición de alineación que falta."
+    }
+  ],
+  "answer": "no-son-contiguas-pero-no"
+}

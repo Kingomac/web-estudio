@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se necesita un chip que ejecute el control de un actuador e integre memoria y puertos de entrada/salida. ¿Qué componente se ajusta a esta descripción?",
+  "explanation": "La MCU reúne CPU, memoria y E/S en un chip y puede ejecutar por sí misma las tareas de control. Un transceptor y un regulador cumplen funciones diferentes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "una-mcu",
+      "text": "Una MCU.",
+      "explanation": "La MCU integra CPU, memoria y E/S en un chip y puede ejecutar el control por sí misma."
+    },
+    {
+      "id": "una-mpu-con-la-memoria",
+      "text": "Una MPU con la memoria obligatoriamente externa.",
+      "explanation": "Una MPU solo contiene la CPU y necesita periféricos externos; no integra memoria ni E/S."
+    },
+    {
+      "id": "un-transceptor-de-radio",
+      "text": "Un transceptor de radio.",
+      "explanation": "Un transceptor de radio comunica, pero no ejecuta el control ni integra los puertos de E/S descritos."
+    },
+    {
+      "id": "un-regulador-de-alimentacion",
+      "text": "Un regulador de alimentación.",
+      "explanation": "Un regulador gestiona la alimentación; no procesa ni controla."
+    }
+  ],
+  "answer": "una-mcu"
+}

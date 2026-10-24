@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un sensor aislado transmite 12 bytes cada hora y debe alcanzar una estación a varios kilómetros sin repetidores intermedios. ¿Qué perfil del temario se ajusta mejor?",
+  "explanation": "La cobertura de varios kilómetros con poco tráfico encaja con LPWAN. LoWPAN puede ampliar cobertura mediante multisalto, pero aquí se excluyen los nodos intermedios. El tamaño del mensaje no elimina las limitaciones de alcance radio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "red-troncal-de-alta-capacidad",
+      "text": "Red troncal de alta capacidad, porque toda comunicación IoT necesita una tasa elevada.",
+      "explanation": "Doce bytes por hora no justifican exigir una tasa de datos elevada."
+    },
+    {
+      "id": "malla-lowpan-aunque-no-haya",
+      "text": "Malla LoWPAN, aunque no haya nodos que puedan realizar los saltos intermedios.",
+      "explanation": "Una malla requiere nodos que proporcionen los caminos de varios saltos."
+    },
+    {
+      "id": "lpwan-por-su-gran-cobertura",
+      "text": "LPWAN, por su gran cobertura y su adecuación a tráfico pequeño y espaciado.",
+      "explanation": "Relaciona cobertura, frecuencia de envío y cantidad de datos."
+    },
+    {
+      "id": "lowpan-de-corto-alcance-porque",
+      "text": "LoWPAN de corto alcance, porque un paquete pequeño aumenta por sí solo el alcance a kilómetros.",
+      "explanation": "Reducir el tamaño del paquete no transforma una radio de corto alcance en una de gran cobertura."
+    }
+  ],
+  "answer": "lpwan-por-su-gran-cobertura"
+}

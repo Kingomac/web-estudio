@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-41",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo elige rutas Thread en el modelo de vector de distancias descrito?",
+  "explanation": "Cada router mantiene su información y escoge el siguiente salto de menor coste acumulado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        62
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "suma-coste-del-enlace-al",
+      "text": "Suma coste del enlace al vecino y coste anunciado por él hacia el destino.",
+      "explanation": "Cada router suma el coste del enlace al vecino al coste anunciado por este y elige el menor."
+    },
+    {
+      "id": "el-leader-calcula-y-reparte",
+      "text": "El Leader calcula y reparte centralizadamente todas las rutas.",
+      "explanation": "El Leader no calcula rutas de forma centralizada."
+    },
+    {
+      "id": "selecciona-siempre-el-camino-con",
+      "text": "Selecciona siempre el camino con menos saltos sin considerar su coste.",
+      "explanation": "Thread usa costes por calidad del enlace (RSSI), no solo el número de saltos."
+    },
+    {
+      "id": "elige-el-vecino-con-menor",
+      "text": "Elige el vecino con menor Router ID aunque el coste sea mayor.",
+      "explanation": "El Router ID identifica al router; la elección se basa en el coste."
+    }
+  ],
+  "answer": "suma-coste-del-enlace-al"
+}

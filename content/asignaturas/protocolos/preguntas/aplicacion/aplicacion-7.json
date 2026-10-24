@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué permite una conexión HTTP persistente?",
+  "explanation": "La conexión se mantiene abierta entre el mismo cliente y servidor para varios intercambios.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "reutilizar-la-conexion-para-multiples",
+      "text": "Reutilizar la conexión para múltiples peticiones y respuestas.",
+      "explanation": "La conexión TCP se mantiene abierta para varias peticiones y respuestas entre el mismo cliente y servidor."
+    },
+    {
+      "id": "enviar-datos-del-servidor-sin",
+      "text": "Enviar datos del servidor sin ninguna petición, como WebSocket.",
+      "explanation": "Enviar datos del servidor sin petición es lo que añade WebSocket; la persistencia de HTTP no lo permite."
+    },
+    {
+      "id": "abrir-una-conexion-tcp-nueva",
+      "text": "Abrir una conexión TCP nueva para cada recurso.",
+      "explanation": "Abrir una conexión nueva por recurso es justo lo que evita la conexión persistente."
+    },
+    {
+      "id": "eliminar-el-handshake-inicial-de",
+      "text": "Eliminar el handshake inicial de TCP en todas las peticiones.",
+      "explanation": "El handshake inicial se hace una vez; lo que se ahorra es repetirlo en las peticiones siguientes, no eliminarlo."
+    }
+  ],
+  "answer": "reutilizar-la-conexion-para-multiples"
+}

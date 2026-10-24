@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué relación hay entre Leader y border router en Thread?",
+  "explanation": "El Leader coordina la partición; el border router conecta con otras redes IPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        59
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "son-funciones-distintas-que-pueden",
+      "text": "Son funciones distintas que pueden coincidir en un dispositivo.",
+      "explanation": "Leader y border router son funciones distintas, aunque un router puede desempeñar ambas."
+    },
+    {
+      "id": "son-siempre-un-unico-rol",
+      "text": "Son siempre un único rol que no puede separarse.",
+      "explanation": "Son roles separables; una red puede tener varios border routers y un único Leader."
+    },
+    {
+      "id": "el-leader-calcula-centralizadamente-toda",
+      "text": "El Leader calcula centralizadamente todas las rutas y todos los paquetes lo atraviesan.",
+      "explanation": "El Leader coordina la partición, pero no calcula todas las rutas ni todo el tráfico pasa por él."
+    },
+    {
+      "id": "el-border-router-solo-coordina",
+      "text": "El border router solo coordina Router ID y no conecta redes externas.",
+      "explanation": "El border router conecta la malla con otras redes IPv6; los Router ID los asigna el Leader."
+    }
+  ],
+  "answer": "son-funciones-distintas-que-pueden"
+}

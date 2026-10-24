@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-74",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente conoce la dirección de un servidor CoAP y quiere averiguar qué recursos ofrece. Si el servidor implementa CoRE Link Format, ¿qué consulta realiza?",
+  "explanation": "El descubrimiento directo consulta /.well-known/core y obtiene enlaces y atributos descriptivos. Para leer una medida debe realizar después la consulta al recurso elegido.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "get-a-well-known-core",
+      "text": "GET a /.well-known/core.",
+      "explanation": "Un GET a /.well-known/core devuelve los enlaces y atributos de los recursos."
+    },
+    {
+      "id": "put-a-well-known-core",
+      "text": "PUT a /.well-known/core para asignar una dirección IP.",
+      "explanation": "El descubrimiento es una consulta GET; no asigna direcciones IP."
+    },
+    {
+      "id": "get-a-para-obtener-obligatoriamente",
+      "text": "GET a / para obtener obligatoriamente todas las medidas.",
+      "explanation": "GET a / no es el mecanismo de CoRE ni devuelve todas las medidas."
+    },
+    {
+      "id": "ns-al-servidor-con-el",
+      "text": "NS al servidor con el puerto CoAP en el campo Target.",
+      "explanation": "NS es un mensaje NDP y no descubre recursos CoAP."
+    }
+  ],
+  "answer": "get-a-well-known-core"
+}

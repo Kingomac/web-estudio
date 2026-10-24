@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Recibes IPHC con CID=0, SAC=1 y SAM=11. Conoces la dirección de enlace origen, pero desconoces el contexto 0. ¿Puedes reconstruir la dirección IPv6 origen completa?",
+  "explanation": "CID indica si se transmite un byte de identificadores; no decide por sí solo si existe compresión con estado. Con SAC=1 y CID=0 se utiliza contexto 0. Saber el IID no permite inventar los bits que debería aportar ese contexto.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-el-iid-puede-ser",
+      "text": "No: el IID puede ser deducible, pero falta la información de prefijo del contexto 0.",
+      "explanation": "Reconoce la información que falta en el receptor."
+    },
+    {
+      "id": "si-cid-0-obliga-a",
+      "text": "Sí: CID=0 obliga a usar fe80::/64.",
+      "explanation": "fe80::/64 se usa en determinados modos sin estado; aquí SAC=1 requiere contexto."
+    },
+    {
+      "id": "si-sac-1-significa-que",
+      "text": "Sí: SAC=1 significa que los 128 bits de origen van en línea.",
+      "explanation": "SAM=11 omite la dirección, no transmite 128 bits."
+    },
+    {
+      "id": "si-basta-con-anteponer-2001",
+      "text": "Sí: basta con anteponer 2001:db8::/64 al IID.",
+      "explanation": "Un prefijo de documentación no sustituye un contexto desconocido."
+    }
+  ],
+  "answer": "no-el-iid-puede-ser"
+}

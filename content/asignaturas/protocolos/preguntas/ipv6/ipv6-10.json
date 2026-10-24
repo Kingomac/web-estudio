@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué tamaño tiene una dirección IPv6?",
+  "explanation": "La dirección se representa mediante ocho grupos de 16 bits en hexadecimal.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-128-bits-equivalentes-a-16",
+      "text": "128 bits, equivalentes a 16 bytes.",
+      "explanation": "Una IPv6 ocupa 128 bits, es decir, 16 bytes: ocho grupos de 16 bits."
+    },
+    {
+      "id": "o-64-bits-equivalentes-a-8",
+      "text": "64 bits, equivalentes a 8 bytes.",
+      "explanation": "64 bits es el tamaño del IID o de un prefijo de subred, no de la dirección completa."
+    },
+    {
+      "id": "o-32-bits-equivalentes-a-4",
+      "text": "32 bits, equivalentes a 4 bytes.",
+      "explanation": "32 bits es el tamaño de una dirección IPv4."
+    },
+    {
+      "id": "o-40-bytes-como-la-cabecera",
+      "text": "40 bytes, como la cabecera básica IPv6.",
+      "explanation": "40 bytes es el tamaño de la cabecera básica, que contiene dos direcciones."
+    }
+  ],
+  "answer": "o-128-bits-equivalentes-a-16"
+}

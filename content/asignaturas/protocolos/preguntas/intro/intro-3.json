@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué integra normalmente un microcontrolador o MCU?",
+  "explanation": "La MCU integra los elementos necesarios para realizar tareas de forma independiente; puede incluir comunicaciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "cpu-memoria-y-puertos-de",
+      "text": "CPU, memoria y puertos de entrada/salida en un chip.",
+      "explanation": "La MCU es un sistema en un chip con CPU, RAM, ROM y puertos de E/S, y puede integrar comunicaciones."
+    },
+    {
+      "id": "solo-cpu-con-toda-la",
+      "text": "Solo CPU, con toda la memoria y E/S siempre externas.",
+      "explanation": "Solo CPU con memoria y E/S externas describe una MPU, que necesita periféricos adicionales."
+    },
+    {
+      "id": "solo-memoria-y-radio-sin",
+      "text": "Solo memoria y radio, sin capacidad de procesamiento.",
+      "explanation": "Sin procesador no habría «cerebro» del nodo; la MCU incluye la CPU además de la memoria."
+    },
+    {
+      "id": "solo-sensores-y-actuadores-sin",
+      "text": "Solo sensores y actuadores, sin puertos de E/S.",
+      "explanation": "Sensores y actuadores se conectan a la MCU a través de sus puertos de E/S; no forman la MCU."
+    }
+  ],
+  "answer": "cpu-memoria-y-puertos-de"
+}

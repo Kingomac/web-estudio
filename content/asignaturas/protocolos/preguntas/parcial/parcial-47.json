@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-47",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un paquete debe pasar de una subred IP a otra. ¿Qué función es necesaria para ese reenvío?",
+  "explanation": "Los routers permiten la comunicación entre subredes mediante reenvío IP. Los bridges operan en el enlace y consultan direcciones MAC para conmutar tramas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-router-que-consulte-rutas",
+      "text": "Un router que consulte rutas basadas en direcciones IP.",
+      "explanation": "Entre subredes IP hacen falta routers, que reenvían según direcciones IP."
+    },
+    {
+      "id": "un-bridge-que-consulte-exclusivamente",
+      "text": "Un bridge que consulte exclusivamente MAC destino.",
+      "explanation": "Un bridge conmuta dentro de una subred usando MAC."
+    },
+    {
+      "id": "un-broker-que-consulte-los",
+      "text": "Un broker que consulte los topics de suscripción.",
+      "explanation": "Un broker distribuye mensajes de aplicación; no reenvía paquetes entre redes."
+    },
+    {
+      "id": "un-sensor-que-cambie-el",
+      "text": "Un sensor que cambie el formato JSON de la medida.",
+      "explanation": "Cambiar el formato de los datos no permite cruzar subredes."
+    }
+  ],
+  "answer": "un-router-que-consulte-rutas"
+}

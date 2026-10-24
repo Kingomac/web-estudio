@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-50",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Varios nodos comparten una dirección y el encaminamiento entrega cada paquete al más cercano según la red. ¿Qué tipo de direccionamiento se está utilizando?",
+  "explanation": "Anycast utiliza direcciones de formato unicast compartidas por varios nodos y entrega al más cercano según el encaminamiento. Multicast pretende llegar a los miembros del grupo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "anycast",
+      "text": "Anycast.",
+      "explanation": "Anycast: varios nodos comparten una dirección unicast y el encaminamiento entrega al más cercano."
+    },
+    {
+      "id": "multicast",
+      "text": "Multicast.",
+      "explanation": "Multicast entrega a todos los miembros del grupo."
+    },
+    {
+      "id": "broadcast-ipv6",
+      "text": "Broadcast IPv6.",
+      "explanation": "IPv6 no tiene broadcast."
+    },
+    {
+      "id": "loopback",
+      "text": "Loopback.",
+      "explanation": "Loopback (::1) identifica al propio nodo."
+    }
+  ],
+  "answer": "anycast"
+}

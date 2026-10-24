@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un nodo mide la humedad del suelo y abre una electroválvula cuando es necesario. ¿Qué asignación de funciones es correcta?",
+  "explanation": "El sensor obtiene una medida, el actuador produce una acción física y la MCU procesa los datos para decidir qué hacer. La gestión de energía es otro bloque del nodo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "sensor-medida-de-humedad-actuador",
+      "text": "Sensor: medida de humedad; actuador: electroválvula; MCU: decisión de apertura.",
+      "explanation": "El sensor mide la humedad, la electroválvula es el actuador que produce la acción y la MCU decide cuándo abrir."
+    },
+    {
+      "id": "sensor-electrovalvula-actuador-medida-de",
+      "text": "Sensor: electroválvula; actuador: medida de humedad; MCU: alimentación.",
+      "explanation": "Intercambia sensor y actuador, y la alimentación es del bloque de energía, no de la MCU."
+    },
+    {
+      "id": "sensor-mcu-actuador-radio-electrovalvula",
+      "text": "Sensor: MCU; actuador: radio; electroválvula: almacenamiento.",
+      "explanation": "La MCU procesa, no mide; la radio comunica y la electroválvula no almacena datos."
+    },
+    {
+      "id": "sensor-bateria-actuador-mcu-medida",
+      "text": "Sensor: batería; actuador: MCU; medida de humedad: comunicación.",
+      "explanation": "La batería pertenece a la gestión de energía, la MCU no es un actuador y la medida no es comunicación."
+    }
+  ],
+  "answer": "sensor-medida-de-humedad-actuador"
+}

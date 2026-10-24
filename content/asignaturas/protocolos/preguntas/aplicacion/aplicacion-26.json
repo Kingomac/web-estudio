@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué opción CoAP identifica la ruta del recurso solicitado?",
+  "explanation": "Uri-Path contiene, por ejemplo, temperature; Max-Age está relacionado con la validez en caché.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        43
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "uri-path",
+      "text": "Uri-Path.",
+      "explanation": "Uri-Path identifica el recurso solicitado; en el ejemplo, temperature."
+    },
+    {
+      "id": "max-age",
+      "text": "Max-Age.",
+      "explanation": "Max-Age indica el tiempo máximo de la respuesta en caché."
+    },
+    {
+      "id": "content-format",
+      "text": "Content-Format.",
+      "explanation": "Content-Format describe el formato del payload, no la ruta del recurso."
+    },
+    {
+      "id": "accept",
+      "text": "Accept.",
+      "explanation": "Accept indica el formato que acepta el cliente, no el recurso."
+    }
+  ],
+  "answer": "uri-path"
+}

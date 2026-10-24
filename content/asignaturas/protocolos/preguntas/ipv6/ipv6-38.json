@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué combinación corresponde a mDNS IPv6 en el tema?",
+  "explanation": "mDNS permite resolución local sin servidor DNS; DNS-SD puede funcionar sobre mDNS o DNS convencional.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-fb-udp-5353-y",
+      "text": "ff02::fb, UDP 5353 y nombres .local.",
+      "explanation": "mDNS en IPv6 usa ff02::fb, UDP 5353 y el TLD .local."
+    },
+    {
+      "id": "ff02-2-tcp-80-y",
+      "text": "ff02::2, TCP 80 y nombres .global.",
+      "explanation": "ff02::2 es all-routers y mDNS no usa TCP 80 ni .global."
+    },
+    {
+      "id": "o-1-udp-547-y-nombres",
+      "text": "::1, UDP 547 y nombres .mqtt.",
+      "explanation": "::1 es la loopback y 547 el puerto del servidor DHCPv6."
+    },
+    {
+      "id": "ff02-1-2-tcp-1883",
+      "text": "ff02::1:2, TCP 1883 y nombres .core.",
+      "explanation": "ff02::1:2 es el grupo de DHCPv6 y TCP 1883 el de MQTT."
+    }
+  ],
+  "answer": "ff02-fb-udp-5353-y"
+}

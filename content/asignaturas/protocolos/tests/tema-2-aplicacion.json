@@ -1,0 +1,85 @@
+{
+  "id": "protocolos.tests.tema-2-aplicacion",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "tema-2-aplicacion",
+  "title": "Test · Nivel de aplicación",
+  "description": "40 preguntas sobre arquitecturas, HTTP, WebSocket, webhooks, OPC UA, SOAP, CoAP y MQTT.",
+  "scope": "Documento de nivel de aplicación completo (61 páginas).",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "order": 160,
+  "groups": [
+    {
+      "id": "arquitecturas",
+      "title": "Arquitecturas",
+      "questionIds": [
+        "protocolos.preguntas.aplicacion-1",
+        "protocolos.preguntas.aplicacion-2",
+        "protocolos.preguntas.aplicacion-3",
+        "protocolos.preguntas.aplicacion-4",
+        "protocolos.preguntas.aplicacion-5"
+      ]
+    },
+    {
+      "id": "http-y-web",
+      "title": "HTTP y Web",
+      "questionIds": [
+        "protocolos.preguntas.aplicacion-6",
+        "protocolos.preguntas.aplicacion-7",
+        "protocolos.preguntas.aplicacion-8",
+        "protocolos.preguntas.aplicacion-9",
+        "protocolos.preguntas.aplicacion-10",
+        "protocolos.preguntas.aplicacion-11",
+        "protocolos.preguntas.aplicacion-12",
+        "protocolos.preguntas.aplicacion-13",
+        "protocolos.preguntas.aplicacion-14",
+        "protocolos.preguntas.aplicacion-15",
+        "protocolos.preguntas.aplicacion-16"
+      ]
+    },
+    {
+      "id": "opc-ua-y-soap",
+      "title": "OPC UA y SOAP",
+      "questionIds": [
+        "protocolos.preguntas.aplicacion-17",
+        "protocolos.preguntas.aplicacion-18",
+        "protocolos.preguntas.aplicacion-19",
+        "protocolos.preguntas.aplicacion-40"
+      ]
+    },
+    {
+      "id": "coap",
+      "title": "CoAP",
+      "questionIds": [
+        "protocolos.preguntas.aplicacion-20",
+        "protocolos.preguntas.aplicacion-21",
+        "protocolos.preguntas.aplicacion-22",
+        "protocolos.preguntas.aplicacion-23",
+        "protocolos.preguntas.aplicacion-24",
+        "protocolos.preguntas.aplicacion-25",
+        "protocolos.preguntas.aplicacion-26",
+        "protocolos.preguntas.aplicacion-27",
+        "protocolos.preguntas.aplicacion-28",
+        "protocolos.preguntas.aplicacion-39"
+      ]
+    },
+    {
+      "id": "mqtt",
+      "title": "MQTT",
+      "questionIds": [
+        "protocolos.preguntas.aplicacion-29",
+        "protocolos.preguntas.aplicacion-30",
+        "protocolos.preguntas.aplicacion-31",
+        "protocolos.preguntas.aplicacion-32",
+        "protocolos.preguntas.aplicacion-33",
+        "protocolos.preguntas.aplicacion-34",
+        "protocolos.preguntas.aplicacion-35",
+        "protocolos.preguntas.aplicacion-36",
+        "protocolos.preguntas.aplicacion-37",
+        "protocolos.preguntas.aplicacion-38"
+      ]
+    }
+  ]
+}

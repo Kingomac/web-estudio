@@ -1,0 +1,101 @@
+{
+  "id": "protocolos.tests.profundizacion-ipv6-6lowpan",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "profundizacion-ipv6-6lowpan",
+  "title": "IPv6 y 6LoWPAN · Profundización",
+  "description": "36 casos para leer cabeceras, reconstruir direcciones y detectar errores de interpretación.",
+  "scope": "Práctica complementaria apoyada en los RFC (4291, 5952, 2464, 4861, 8200, 6282, 4944…). Va más allá del alcance del parcial y no cita páginas del temario.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
+  ],
+  "order": 140,
+  "groups": [
+    {
+      "id": "direcciones-e-iid",
+      "title": "Direcciones e IID",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-1",
+        "protocolos.preguntas.profundizacion-2",
+        "protocolos.preguntas.profundizacion-3",
+        "protocolos.preguntas.profundizacion-4"
+      ]
+    },
+    {
+      "id": "subredes-y-rutas",
+      "title": "Subredes y rutas",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-5",
+        "protocolos.preguntas.profundizacion-6",
+        "protocolos.preguntas.profundizacion-7",
+        "protocolos.preguntas.profundizacion-8"
+      ]
+    },
+    {
+      "id": "solicited-node-y-mac",
+      "title": "Solicited-node y MAC",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-9",
+        "protocolos.preguntas.profundizacion-10",
+        "protocolos.preguntas.profundizacion-11",
+        "protocolos.preguntas.profundizacion-12"
+      ]
+    },
+    {
+      "id": "cabeceras-ipv6",
+      "title": "Cabeceras IPv6",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-13",
+        "protocolos.preguntas.profundizacion-14",
+        "protocolos.preguntas.profundizacion-15",
+        "protocolos.preguntas.profundizacion-16",
+        "protocolos.preguntas.profundizacion-17"
+      ]
+    },
+    {
+      "id": "compresion-iphc",
+      "title": "Compresión IPHC",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-18",
+        "protocolos.preguntas.profundizacion-19",
+        "protocolos.preguntas.profundizacion-20",
+        "protocolos.preguntas.profundizacion-21",
+        "protocolos.preguntas.profundizacion-22",
+        "protocolos.preguntas.profundizacion-23",
+        "protocolos.preguntas.profundizacion-24"
+      ]
+    },
+    {
+      "id": "nhc-y-udp",
+      "title": "NHC y UDP",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-25",
+        "protocolos.preguntas.profundizacion-26",
+        "protocolos.preguntas.profundizacion-27",
+        "protocolos.preguntas.profundizacion-28"
+      ]
+    },
+    {
+      "id": "mesh-y-route-over",
+      "title": "Mesh y route-over",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-29",
+        "protocolos.preguntas.profundizacion-30",
+        "protocolos.preguntas.profundizacion-31",
+        "protocolos.preguntas.profundizacion-32"
+      ]
+    },
+    {
+      "id": "casos-integradores",
+      "title": "Casos integradores",
+      "questionIds": [
+        "protocolos.preguntas.profundizacion-33",
+        "protocolos.preguntas.profundizacion-34",
+        "protocolos.preguntas.profundizacion-35",
+        "protocolos.preguntas.profundizacion-36"
+      ]
+    }
+  ]
+}

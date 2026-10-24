@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿En qué información basa un bridge su reenvío?",
+  "explanation": "La tabla de un bridge relaciona MAC destino con interfaz de salida.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "en-direcciones-de-enlace-mac",
+      "text": "En direcciones de enlace MAC.",
+      "explanation": "Un bridge reenvía según pares (MAC destino, interfaz de salida)."
+    },
+    {
+      "id": "en-prefijos-ipv6-de-destino",
+      "text": "En prefijos IPv6 de destino.",
+      "explanation": "Los prefijos IPv6 de destino son la base del reenvío de un router (FIB), no de un bridge."
+    },
+    {
+      "id": "en-puertos-de-transporte-destino",
+      "text": "En puertos de transporte destino.",
+      "explanation": "Los puertos de transporte identifican aplicaciones; un bridge de nivel 2 no los usa."
+    },
+    {
+      "id": "en-nombres-de-instancia-dns",
+      "text": "En nombres de instancia DNS-SD.",
+      "explanation": "Los nombres DNS-SD sirven para descubrir servicios, no para reenviar tramas."
+    }
+  ],
+  "answer": "en-direcciones-de-enlace-mac"
+}

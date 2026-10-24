@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué se reduce el hardware al mínimo viable en muchos despliegues IoT?",
+  "explanation": "El número de dispositivos hace importante el coste por nodo; las diapositivas ilustran unos 5-30 €.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "para-contener-el-coste-al",
+      "text": "Para contener el coste al desplegar cientos o miles de nodos.",
+      "explanation": "Con cientos o miles de nodos, el coste por nodo (unos 5–30 €) obliga a reducir el hardware al mínimo viable."
+    },
+    {
+      "id": "para-aumentar-siempre-la-potencia",
+      "text": "Para aumentar siempre la potencia de transmisión.",
+      "explanation": "Reducir el hardware no persigue más potencia de transmisión; la comunicación es precisamente lo que más consume."
+    },
+    {
+      "id": "para-que-todos-los-nodos",
+      "text": "Para que todos los nodos sean de clase 2.",
+      "explanation": "Las clases de RFC 7228 describen capacidades; abaratar el hardware tiende a nodos más limitados, no a clase 2."
+    },
+    {
+      "id": "para-mantener-todos-los-receptores",
+      "text": "Para mantener todos los receptores activos permanentemente.",
+      "explanation": "Mantener receptores siempre activos aumentaría el consumo; no es el motivo de minimizar el hardware."
+    }
+  ],
+  "answer": "para-contener-el-coste-al"
+}

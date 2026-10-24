@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué datos incorpora la petición en el escenario petición/respuesta de MQTT 5?",
+  "explanation": "El servidor publica en el topic de respuesta e incluye los mismos datos de correlación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "response-topic-y-correlation-data",
+      "text": "Response Topic y Correlation Data.",
+      "explanation": "La petición incluye el Response Topic al que responder y el Correlation Data que identifica la petición."
+    },
+    {
+      "id": "message-id-y-observe",
+      "text": "Message ID y Observe.",
+      "explanation": "Message ID y Observe son campos de CoAP."
+    },
+    {
+      "id": "topic-del-lwt-y-flag",
+      "text": "Topic del LWT y flag RETAIN exclusivamente.",
+      "explanation": "El topic del LWT y el RETAIN no sirven para correlacionar petición y respuesta."
+    },
+    {
+      "id": "uri-path-y-max-age",
+      "text": "Uri-Path y Max-Age.",
+      "explanation": "Uri-Path y Max-Age son opciones de CoAP."
+    }
+  ],
+  "answer": "response-topic-y-correlation-data"
+}

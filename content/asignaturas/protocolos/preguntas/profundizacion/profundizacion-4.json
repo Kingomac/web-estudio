@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Solo conoces el valor 2001:db8:8::80, sin configuración ni información de la red. ¿Puedes determinar si se está usando como anycast?",
+  "explanation": "Anycast utiliza direcciones del espacio unicast asignadas a varias interfaces para entregar a una de ellas según el encaminamiento. El texto de esta dirección no demuestra por sí solo que esa configuración exista; 2001:db8 se usa aquí como prefijo de documentación.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "si-cualquier-direccion-terminada-en",
+      "text": "Sí: cualquier dirección terminada en ::80 es anycast.",
+      "explanation": "No hay un sufijo ::80 reservado que identifique el uso anycast."
+    },
+    {
+      "id": "si-anycast-se-identifica-siempre",
+      "text": "Sí: anycast se identifica siempre porque comienza por ff.",
+      "explanation": "ff identifica multicast, que es otro mecanismo."
+    },
+    {
+      "id": "no-puede-usarse-como-anycast",
+      "text": "No puede usarse como anycast porque contiene ::.",
+      "explanation": ":: es una abreviación de ceros y no impide el uso anycast."
+    },
+    {
+      "id": "no-el-uso-anycast-depende",
+      "text": "No: el uso anycast depende de la asignación y el encaminamiento, y no tiene un formato textual general distinto del unicast.",
+      "explanation": "Falta conocer cómo se ha asignado y anunciado la dirección."
+    }
+  ],
+  "answer": "no-el-uso-anycast-depende"
+}

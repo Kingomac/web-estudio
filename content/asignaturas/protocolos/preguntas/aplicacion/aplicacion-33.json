@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué DUP=1 no permite asumir que el receptor ya recibió ese PUBLISH?",
+  "explanation": "Los esquemas muestran pérdidas y reutilización de identificadores; QoS 1 puede entregar duplicados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        54
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "porque-puede-ser-la-retransmision",
+      "text": "Porque puede ser la retransmisión de una copia que se perdió antes de llegar.",
+      "explanation": "Un PUBLISH con DUP=1 puede ser la retransmisión de una copia perdida o reutilizar el identificador, por eso se trata como nuevo."
+    },
+    {
+      "id": "porque-dup-indica-retencion-no",
+      "text": "Porque DUP indica retención, no retransmisión.",
+      "explanation": "DUP indica retransmisión; la retención la marca el flag RETAIN."
+    },
+    {
+      "id": "porque-el-packet-identifier-nunca",
+      "text": "Porque el Packet Identifier nunca puede reutilizarse.",
+      "explanation": "El identificador sí puede reutilizarse para un mensaje nuevo, y esa es una de las causas de la ambigüedad."
+    },
+    {
+      "id": "porque-qos-1-elimina-todos",
+      "text": "Porque QoS 1 elimina todos los duplicados antes de llegar al broker.",
+      "explanation": "QoS 1 garantiza al menos una entrega y puede producir duplicados; no los elimina."
+    }
+  ],
+  "answer": "porque-puede-ser-la-retransmision"
+}

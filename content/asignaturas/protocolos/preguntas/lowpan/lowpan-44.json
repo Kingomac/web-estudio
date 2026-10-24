@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-44",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué mensajes buscan padre y completan la asociación de un hijo Thread?",
+  "explanation": "MLE utiliza estos intercambios para incorporar el dispositivo y asignarle su RLOC16.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        66
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "parent-request-response-y-child",
+      "text": "Parent Request/Response y Child ID Request/Response.",
+      "explanation": "El hijo busca padre con Parent Request/Response y completa la asociación con Child ID Request/Response."
+    },
+    {
+      "id": "link-request-link-accept-y",
+      "text": "Link Request/Link Accept y MLE Advertisement.",
+      "explanation": "Link Request/Accept y MLE Advertisement se usan entre routers."
+    },
+    {
+      "id": "address-query-address-notification-y",
+      "text": "Address Query/Address Notification y DIO.",
+      "explanation": "Address Query/Notification resuelve ML-EID a RLOC16; DIO es de RPL."
+    },
+    {
+      "id": "rs-ra-y-dar-dac",
+      "text": "RS/RA y DAR/DAC exclusivamente.",
+      "explanation": "RS/RA y DAR/DAC pertenecen a NDP y a 6LoWPAN-ND, no a MLE."
+    }
+  ],
+  "answer": "parent-request-response-y-child"
+}

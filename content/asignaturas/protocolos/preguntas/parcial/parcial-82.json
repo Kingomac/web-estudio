@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-82",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué principio justifica omitir ciertos campos durante la compresión 6LoWPAN?",
+  "explanation": "IPHC y NHC evitan transmitir información reconstruible. La descompresión recupera los campos necesarios mediante valores conocidos, información del enlace o contextos compartidos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-receptor-puede-reconstruirlos-a",
+      "text": "El receptor puede reconstruirlos a partir de valores conocidos, el enlace o un contexto compartido.",
+      "explanation": "Se omite lo que el receptor puede reconstruir con valores conocidos, información del enlace o contexto compartido."
+    },
+    {
+      "id": "los-campos-omitidos-dejan-de",
+      "text": "Los campos omitidos dejan de formar parte del paquete IPv6 entregado al receptor.",
+      "explanation": "Los campos omitidos se reconstruyen: el paquete IPv6 entregado está completo."
+    },
+    {
+      "id": "toda-direccion-ipv6-puede-eliminarse",
+      "text": "Toda dirección IPv6 puede eliminarse aunque el receptor no disponga de información adicional.",
+      "explanation": "Solo se omite la parte de una dirección deducible por enlace o contexto."
+    },
+    {
+      "id": "la-compresion-permite-sustituir-cualquie",
+      "text": "La compresión permite sustituir cualquier checksum por un valor aleatorio.",
+      "explanation": "Un checksum aleatorio rompería la verificación; solo se omite en casos permitidos."
+    }
+  ],
+  "answer": "el-receptor-puede-reconstruirlos-a"
+}

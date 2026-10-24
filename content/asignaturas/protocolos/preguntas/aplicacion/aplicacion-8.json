@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué permite el pipelining de HTTP/1.1 descrito en el tema?",
+  "explanation": "El tema contrasta el envío secuencial de HTTP/1.0 con la posibilidad de encadenar peticiones de HTTP/1.1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        16
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "enviar-varias-peticiones-sin-esperar",
+      "text": "Enviar varias peticiones sin esperar a recibir cada respuesta.",
+      "explanation": "Con pipelining, el cliente HTTP/1.1 envía varias peticiones sin esperar cada respuesta."
+    },
+    {
+      "id": "esperar-obligatoriamente-una-respuesta-a",
+      "text": "Esperar obligatoriamente una respuesta antes de enviar cada nueva petición.",
+      "explanation": "Esperar cada respuesta antes de la siguiente petición es el comportamiento de HTTP/1.0."
+    },
+    {
+      "id": "cambiar-la-conexion-http-a",
+      "text": "Cambiar la conexión HTTP a tramas WebSocket.",
+      "explanation": "El paso a WebSocket se hace con un handshake Upgrade, no con pipelining."
+    },
+    {
+      "id": "utilizar-quic-sobre-udp-para",
+      "text": "Utilizar QUIC sobre UDP para todas las peticiones.",
+      "explanation": "QUIC sobre UDP es el transporte de HTTP/3, no una característica de HTTP/1.1."
+    }
+  ],
+  "answer": "enviar-varias-peticiones-sin-esperar"
+}

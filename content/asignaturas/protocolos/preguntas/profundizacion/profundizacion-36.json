@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.profundizacion-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un registro conserva solo 7e 33 f3 a4 12 34: IPHC y NHC UDP, sin Mesh, sin direcciones de enlace y sin payload. ¿Qué información puede recuperarse sin inventar datos?",
+  "explanation": "7e 33 omite ambos IID y codifica HL=64. f3 indica UDP con dos puertos de cuatro bits, que a4 reconstruye como f0ba y f0b4. Los seis bytes mostrados son cabeceras comprimidas; no contienen los IID del enlace ni bastan para deducir la longitud original de UDP.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    },
+    {
+      "title": "RFC 6282 · IID",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.2.2"
+    },
+    {
+      "title": "RFC 6282 · NHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "hl-64-puertos-0xf0ba-0xf0b4",
+      "text": "HL=64, puertos 0xf0ba/0xf0b4 y direcciones fe80::a/fe80::4.",
+      "explanation": "Los nibbles a y 4 pertenecen a los puertos UDP y no a las direcciones IPv6."
+    },
+    {
+      "id": "hl-64-y-payload-length",
+      "text": "HL=64 y Payload Length=6, porque se ven seis bytes.",
+      "explanation": "La cantidad de bytes de cabecera comprimida no es la carga IPv6 original."
+    },
+    {
+      "id": "origen-y-destino-completos-porque",
+      "text": "Origen y destino completos, porque SAM=DAM=11 transmiten 128 bits por dirección.",
+      "explanation": "En unicast sin estado, SAM/DAM=11 omiten la dirección y requieren información del enlace."
+    },
+    {
+      "id": "hl-64-y-puertos-0xf0ba",
+      "text": "HL=64 y puertos 0xf0ba/0xf0b4; faltan las direcciones de enlace para los IID y la longitud para reconstruir Payload Length.",
+      "explanation": "Distingue los valores codificados de la información externa necesaria para descomprimir."
+    }
+  ],
+  "answer": "hl-64-y-puertos-0xf0ba"
+}

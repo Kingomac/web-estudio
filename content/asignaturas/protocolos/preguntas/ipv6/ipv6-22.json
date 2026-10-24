@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué bits de la dirección objetivo se usan para construir su grupo solicited-node?",
+  "explanation": "Se añaden al prefijo ff02::1:ff00:0/104.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "los-ultimos-24-bits",
+      "text": "Los últimos 24 bits.",
+      "explanation": "Solicited-node concatena los últimos 24 bits de la dirección al prefijo ff02::1:ff00:0/104."
+    },
+    {
+      "id": "los-primeros-24-bits",
+      "text": "Los primeros 24 bits.",
+      "explanation": "Se usan los bits finales, no los iniciales, que suelen ser el prefijo de red."
+    },
+    {
+      "id": "los-ultimos-64-bits-completos",
+      "text": "Los últimos 64 bits completos.",
+      "explanation": "El prefijo /104 deja solo 24 bits, no 64."
+    },
+    {
+      "id": "solo-los-bits-de-traffic",
+      "text": "Solo los bits de Traffic Class.",
+      "explanation": "Traffic Class es un campo de la cabecera, no parte de la dirección."
+    }
+  ],
+  "answer": "los-ultimos-24-bits"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En el esquema de LPWAN de esta diapositiva, ¿cómo se integra la conectividad?",
+  "explanation": "La diapositiva presenta conectividad híbrida: nodos no IP y troncal IP. La pregunta se refiere a ese esquema.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "dispositivos-no-ip-con-una",
+      "text": "Dispositivos no IP con una red troncal IP.",
+      "explanation": "El esquema LPWAN describe conectividad híbrida: dispositivos no IP y red troncal IP."
+    },
+    {
+      "id": "dispositivos-ip-con-ausencia-de",
+      "text": "Dispositivos IP con ausencia de red troncal.",
+      "explanation": "La LPWAN sí tiene troncal IP, y sus dispositivos no son IP."
+    },
+    {
+      "id": "nodos-y-troncal-exclusivamente-no",
+      "text": "Nodos y troncal exclusivamente no IP.",
+      "explanation": "La troncal es IP; solo los dispositivos son no IP."
+    },
+    {
+      "id": "una-red-de-acceso-ethernet",
+      "text": "Una red de acceso Ethernet obligatoria para cada sensor.",
+      "explanation": "El esquema no menciona Ethernet en el acceso; la LPWAN usa una topología en estrella inalámbrica."
+    }
+  ],
+  "answer": "dispositivos-no-ip-con-una"
+}

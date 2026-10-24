@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-69",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué puertos UDP corresponden al cliente y al servidor DHCPv6, respectivamente?",
+  "explanation": "DHCPv6 usa UDP 546 en el cliente y UDP 547 en el servidor. El puerto 5353 corresponde a mDNS, y 5683/5684 se emplean en CoAP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-546-y-547",
+      "text": "546 y 547.",
+      "explanation": "DHCPv6 usa UDP 546 en el cliente y 547 en el servidor."
+    },
+    {
+      "id": "o-547-y-546",
+      "text": "547 y 546.",
+      "explanation": "Invierte los puertos de cliente y servidor."
+    },
+    {
+      "id": "o-5353-y-5353",
+      "text": "5353 y 5353.",
+      "explanation": "5353 es el puerto de mDNS."
+    },
+    {
+      "id": "o-5683-y-5684",
+      "text": "5683 y 5684.",
+      "explanation": "5683 y 5684 son los puertos de CoAP y CoAP con DTLS."
+    }
+  ],
+  "answer": "o-546-y-547"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-68",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia un IID opaco estable de un IID EUI-64 modificado obtenido de la MAC?",
+  "explanation": "El IID opaco se calcula con parámetros y una clave secreta. Puede ser estable para una red y diferente en otra; estabilidad no equivale a renovación periódica de direcciones temporales.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        34
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "no-revela-directamente-la-mac",
+      "text": "No revela directamente la MAC y puede ser distinto en redes diferentes.",
+      "explanation": "El IID opaco se calcula con una clave secreta: no revela la MAC y puede cambiar de una red a otra."
+    },
+    {
+      "id": "obliga-a-que-la-direccion",
+      "text": "Obliga a que la dirección cambie en cada paquete.",
+      "explanation": "Es estable mientras no cambien sus parámetros; no cambia en cada paquete."
+    },
+    {
+      "id": "carece-de-identificador-de-interfaz",
+      "text": "Carece de identificador de interfaz y solo contiene el prefijo.",
+      "explanation": "Sigue siendo un identificador de interfaz de 64 bits que se combina con el prefijo."
+    },
+    {
+      "id": "impide-utilizar-slaac-sin-un",
+      "text": "Impide utilizar SLAAC sin un servidor DHCPv6.",
+      "explanation": "Se usa precisamente con SLAAC, sin servidor DHCPv6."
+    }
+  ],
+  "answer": "no-revela-directamente-la-mac"
+}

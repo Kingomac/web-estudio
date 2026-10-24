@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En route-over clásico, sin mecanismos de reenvío de fragmentos como 6LFF, un router intermedio recibe un datagrama repartido en varias tramas. ¿Qué procesamiento permite reenviarlo?",
+  "explanation": "En el modelo route-over estudiado, cada nodo que enruta reconstruye el datagrama para entregarlo a IPv6. Después aplica de nuevo la adaptación al enlace de salida. Se excluyen expresamente las optimizaciones de reenvío de fragmentos para no confundirlas con este funcionamiento clásico.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        36
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "tratar-todos-los-routers-intermedios",
+      "text": "Tratar todos los routers intermedios como un único salto IPv6 sin reensamblado.",
+      "explanation": "Cada router del recorrido constituye un salto IP; no es una única entrega por debajo de IPv6."
+    },
+    {
+      "id": "reensamblar-y-descomprimir-decidir-la",
+      "text": "Reensamblar y descomprimir, decidir la ruta en IPv6 y volver a comprimir y fragmentar si hace falta.",
+      "explanation": "Describe la adaptación y el reenvío por cada salto IPv6."
+    },
+    {
+      "id": "reenviar-los-fragmentos-por-su",
+      "text": "Reenviar los fragmentos por su dirección Final de Mesh sin reconstruir IPv6.",
+      "explanation": "Describe el principio de mesh-under, no el route-over indicado."
+    },
+    {
+      "id": "esperar-a-que-el-border",
+      "text": "Esperar a que el border router decida el siguiente salto por cada fragmento.",
+      "explanation": "El router intermedio dispone de su propia decisión de reenvío IPv6."
+    }
+  ],
+  "answer": "reensamblar-y-descomprimir-decidir-la"
+}

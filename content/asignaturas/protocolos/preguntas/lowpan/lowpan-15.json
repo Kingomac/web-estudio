@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Con SAC=0 y SAM=10, ¿qué se transmite de la dirección fuente?",
+  "explanation": "Se asume prefijo link-local y el patrón del IID; XXXX va en línea.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "los-ultimos-16-bits-del",
+      "text": "Los últimos 16 bits del IID con patrón 0:ff:fe00:XXXX.",
+      "explanation": "SAC=0 y SAM=10 usan fe80::/64 y el IID 0:ff:fe00:XXXX; solo van en línea los 16 bits XXXX."
+    },
+    {
+      "id": "los-128-bits-completos",
+      "text": "Los 128 bits completos.",
+      "explanation": "La dirección completa de 128 bits es SAM=00."
+    },
+    {
+      "id": "solo-el-prefijo-global-de",
+      "text": "Solo el prefijo global de 64 bits.",
+      "explanation": "Con SAC=0 el prefijo es fe80::/64 y no se transmite."
+    },
+    {
+      "id": "ningun-bit-sin-posibilidad-de",
+      "text": "Ningún bit, sin posibilidad de reconstrucción.",
+      "explanation": "Transmitir 0 bits es SAM=11, que deduce el IID de la MAC."
+    }
+  ],
+  "answer": "los-ultimos-16-bits-del"
+}

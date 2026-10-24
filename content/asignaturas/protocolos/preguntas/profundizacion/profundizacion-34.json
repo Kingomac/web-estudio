@@ -1,0 +1,46 @@
+{
+  "id": "protocolos.preguntas.profundizacion-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Comparas FRAG1=c2 58 a1 b2 y FRAGN=e2 58 a1 b2 10, de dos tramas del mismo datagrama. ¿Qué interpretación es correcta?",
+  "explanation": "Los tres bits bajos de c2/e2 forman parte de datagram_size: (2×256)+0x58=600. El offset 0x10 es 16 unidades de ocho bytes: 128. Tamaño y offset se refieren al IPv6 descomprimido; los FRAGN posteriores transportan su porción, sin repetir IPHC.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · fragmentación",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
+    },
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "datagrama-ipv6-original-de-600",
+      "text": "Datagrama IPv6 original de 600 bytes; FRAGN comienza en el byte 128 y repite IPHC antes de sus datos.",
+      "explanation": "El tamaño y offset son correctos, pero FRAGN no repite IPHC."
+    },
+    {
+      "id": "datagrama-ipv6-original-de-600-2",
+      "text": "Datagrama IPv6 original de 600 bytes; FRAGN comienza en el byte 128 de ese datagrama.",
+      "explanation": "Incluye los once bits del tamaño y aplica la escala del offset."
+    },
+    {
+      "id": "datagrama-ipv6-original-de-88",
+      "text": "Datagrama IPv6 original de 88 bytes; FRAGN comienza en el byte 16.",
+      "explanation": "Ignora los tres bits altos del tamaño y trata el offset como bytes."
+    },
+    {
+      "id": "datagrama-comprimido-de-600-bytes",
+      "text": "Datagrama comprimido de 600 bytes; FRAGN comienza en el byte 16 de la representación comprimida.",
+      "explanation": "Usa la referencia comprimida y además no multiplica el offset por ocho."
+    }
+  ],
+  "answer": "datagrama-ipv6-original-de-600-2"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué necesita hacer un router en route-over básico con un datagrama fragmentado?",
+  "explanation": "Es el coste por salto que motiva la optimización de Fragment Forwarding.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        36
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "reensamblar-y-descomprimir-antes-del",
+      "text": "Reensamblar y descomprimir antes del procesamiento IPv6, y adaptar de nuevo al siguiente enlace.",
+      "explanation": "En route-over básico, cada 6LR reensambla y descomprime, procesa IPv6 y vuelve a comprimir y fragmentar."
+    },
+    {
+      "id": "reenviar-cada-fragmento-usando-solo",
+      "text": "Reenviar cada fragmento usando solo su datagram_tag sin estado adicional.",
+      "explanation": "Reenviar fragmentos solo por datagram_tag es la idea de 6LFF, no del route-over básico."
+    },
+    {
+      "id": "consultar-siempre-una-cabecera-mesh",
+      "text": "Consultar siempre una cabecera Mesh que contiene las MAC finales.",
+      "explanation": "La cabecera Mesh se usa en mesh-under."
+    },
+    {
+      "id": "reensamblar-unicamente-en-el-border",
+      "text": "Reensamblar únicamente en el border router y nunca en los 6LR.",
+      "explanation": "En route-over básico el reensamblado ocurre en cada 6LR."
+    }
+  ],
+  "answer": "reensamblar-y-descomprimir-antes-del"
+}

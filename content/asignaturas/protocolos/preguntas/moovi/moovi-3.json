@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router tiene f0/0=2001:db8:10::1/64 y estas rutas operativas: 2001:db8:20:a::/64 vía 2001:db8:10::2; 2001:db8::/32 vía 2001:db8:10::3; ::/0 por s0/1. ¿Por dónde reenvía un paquete dirigido a 2001:db8:20::a?",
+  "explanation": "2001:db8:20::a se expande como 2001:0db8:0020:0000:0000:0000:0000:000a. Su cuarto hexteto es 0, no a; por tanto no pertenece a 2001:db8:20:a::/64. Sí coincide con /32 y /0; gana /32. El siguiente salto ::3 se alcanza por la red conectada a f0/0.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "por-s0-1-usando-la",
+      "text": "Por s0/1, usando la ruta por defecto.",
+      "explanation": "Existe una coincidencia /32, más específica que la ruta por defecto."
+    },
+    {
+      "id": "lo-descarta-porque-no-hay",
+      "text": "Lo descarta porque no hay un /64 que coincida.",
+      "explanation": "No se exige una coincidencia /64: /32 también es una ruta válida."
+    },
+    {
+      "id": "a-2001-db8-10-3",
+      "text": "A 2001:db8:10::3 por f0/0.",
+      "explanation": "Selecciona el prefijo más largo entre los que realmente coinciden."
+    },
+    {
+      "id": "a-2001-db8-10-2",
+      "text": "A 2001:db8:10::2 por f0/0.",
+      "explanation": "Confunde el a del último hexteto del destino con el cuarto hexteto del /64."
+    }
+  ],
+  "answer": "a-2001-db8-10-3"
+}

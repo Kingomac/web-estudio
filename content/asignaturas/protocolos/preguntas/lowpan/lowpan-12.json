@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué indica NH=1 en IPHC?",
+  "explanation": "NH distingue Next Header explícito de cabecera siguiente comprimida con NHC.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "que-la-siguiente-cabecera-se",
+      "text": "Que la siguiente cabecera se codifica mediante LOWPAN_NHC.",
+      "explanation": "NH=1 indica que la siguiente cabecera se codifica con LOWPAN_NHC."
+    },
+    {
+      "id": "que-se-envian-explicitos-los",
+      "text": "Que se envían explícitos los 8 bits de Next Header.",
+      "explanation": "Next Header explícito de 8 bits es NH=0."
+    },
+    {
+      "id": "que-hop-limit-se-reconstruye",
+      "text": "Que Hop Limit se reconstruye con valor 1.",
+      "explanation": "Hop Limit=1 se codifica con HLIM=01, no con NH."
+    },
+    {
+      "id": "que-la-direccion-destino-es",
+      "text": "Que la dirección destino es multicast.",
+      "explanation": "Que el destino sea multicast lo indica el bit M."
+    }
+  ],
+  "answer": "que-la-siguiente-cabecera-se"
+}

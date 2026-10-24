@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué función adicional pueden realizar los nodos de clase 2 según el material?",
+  "explanation": "La clase 2 puede soportar una pila IP más completa y actuar como nodo intermedio de reenvío.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ejecutar-encaminamiento-ligero-y-reenvia",
+      "text": "Ejecutar encaminamiento ligero y reenviar tráfico de otros nodos.",
+      "explanation": "La clase 2 puede ejecutar un protocolo de encaminamiento ligero y actuar como nodo intermedio de reenvío."
+    },
+    {
+      "id": "actuar-unicamente-como-sensor-sin",
+      "text": "Actuar únicamente como sensor sin pila IP.",
+      "explanation": "Un sensor sin pila IP describe la clase 0, no la 2."
+    },
+    {
+      "id": "reenviar-paquetes-solo-si-se",
+      "text": "Reenviar paquetes solo si se elimina la pila IP.",
+      "explanation": "El reenvío de la clase 2 se apoya en su pila IP completa; no requiere eliminarla."
+    },
+    {
+      "id": "funcionar-exclusivamente-como-rfd-sin",
+      "text": "Funcionar exclusivamente como RFD sin capacidad de reenvío.",
+      "explanation": "RFD es la denominación de la clase 1; la clase 2 es FFD y puede reenviar."
+    }
+  ],
+  "answer": "ejecutar-encaminamiento-ligero-y-reenvia"
+}

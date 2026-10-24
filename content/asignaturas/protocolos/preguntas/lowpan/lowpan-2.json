@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué define IEEE 802.15.4 por sí misma?",
+  "explanation": "Las capas superiores añaden formación de malla, encaminamiento y aplicaciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "las-capas-fisica-y-de",
+      "text": "Las capas física y de acceso al medio.",
+      "explanation": "IEEE 802.15.4 define las capas física y de acceso al medio (PHY/MAC)."
+    },
+    {
+      "id": "la-formacion-completa-de-malla",
+      "text": "La formación completa de malla y su protocolo de routing.",
+      "explanation": "La formación de la malla y el encaminamiento los aportan capas superiores como Zigbee, Thread o Wi-SUN."
+    },
+    {
+      "id": "las-capas-de-aplicacion-y",
+      "text": "Las capas de aplicación y presentación.",
+      "explanation": "Las aplicaciones también pertenecen a las capas superiores."
+    },
+    {
+      "id": "la-autoconfiguracion-ipv6-y-dns",
+      "text": "La autoconfiguración IPv6 y DNS-SD completos.",
+      "explanation": "La autoconfiguración IPv6 y DNS-SD quedan muy por encima de PHY/MAC."
+    }
+  ],
+  "answer": "las-capas-fisica-y-de"
+}

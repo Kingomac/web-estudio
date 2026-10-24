@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.profundizacion-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Solo has leído los dos bytes IPHC 7d 33; todavía no has leído el NHC siguiente. ¿Qué puedes afirmar?",
+  "explanation": "7d se divide como 011|11|1|01: TF=11, NH=1, HLIM=01. HLIM=01 reconstruye 1. NH=1 indica el uso de NHC, que puede codificar UDP o una extensión; no es el número de protocolo IPv6.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    },
+    {
+      "title": "RFC 6282 · NHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "hop-limit-va-en-el",
+      "text": "Hop Limit va en el siguiente byte y las dos direcciones completas van en línea.",
+      "explanation": "HLIM=01 omite el valor en línea y SAM=DAM=11 omiten las direcciones."
+    },
+    {
+      "id": "hop-limit-1-y-la",
+      "text": "Hop Limit=1 y la siguiente cabecera está comprimida, pero aún no se sabe qué protocolo identifica NHC.",
+      "explanation": "Extrae lo que permiten los bits y deja pendiente la identificación del NHC."
+    },
+    {
+      "id": "hop-limit-64-y-la",
+      "text": "Hop Limit=64 y la siguiente cabecera es necesariamente UDP.",
+      "explanation": "64 corresponde a HLIM=10; además, NH=1 no garantiza UDP."
+    },
+    {
+      "id": "hop-limit-1-y-next",
+      "text": "Hop Limit=1 y Next Header IPv6 tiene el valor numérico 1.",
+      "explanation": "El bit de control NH no se copia como valor de Next Header IPv6."
+    }
+  ],
+  "answer": "hop-limit-1-y-la"
+}

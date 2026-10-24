@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-64",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un RA permite SLAAC con el prefijo 2001:db8:40:2::/64. El host usa el IID 021a:2bff:fe3c:4d5e. ¿Qué dirección forma?",
+  "explanation": "SLAAC combina el prefijo /64 anunciado con los 64 bits del IID. El cero inicial de 021a puede omitirse en la notación, pero no se elimina ninguna parte del identificador.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-40-2-21a",
+      "text": "2001:db8:40:2:21a:2bff:fe3c:4d5e.",
+      "explanation": "SLAAC concatena el prefijo /64 y el IID completo: 2001:db8:40:2:21a:2bff:fe3c:4d5e."
+    },
+    {
+      "id": "o-2001-db8-40-21a-2bff",
+      "text": "2001:db8:40:21a:2bff:fe3c:4d5e:2.",
+      "explanation": "Desplaza el IID y deja el 2 del prefijo al final: la dirección resultante es distinta."
+    },
+    {
+      "id": "fe80-21a-2bff-fe3c-4d5e",
+      "text": "fe80::21a:2bff:fe3c:4d5e.",
+      "explanation": "fe80:: es la link-local; el RA da un prefijo global."
+    },
+    {
+      "id": "o-2001-db8-40-2-4d5e",
+      "text": "2001:db8:40:2::4d5e.",
+      "explanation": "Faltan tres grupos del IID."
+    }
+  ],
+  "answer": "o-2001-db8-40-2-21a"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo global con prefijo de red /48, ¿cómo se completa una dirección?",
+  "explanation": "La estructura del esquema es 48 de red + 16 de subred + 64 de identificador de interfaz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-16-bits-de-id-de",
+      "text": "16 bits de ID de subred y 64 bits de IID.",
+      "explanation": "Con un prefijo de red /48 quedan 16 bits de ID de subred y 64 de IID (48 + 16 + 64 = 128)."
+    },
+    {
+      "id": "o-64-bits-de-id-de",
+      "text": "64 bits de ID de subred y 16 bits de IID.",
+      "explanation": "Invierte los tamaños: la subred ocupa 16 bits y el IID 64."
+    },
+    {
+      "id": "o-32-bits-de-id-de",
+      "text": "32 bits de ID de subred y 48 bits de IID.",
+      "explanation": "El ID de subred es de 16 bits y el prefijo de subred resultante, de 64."
+    },
+    {
+      "id": "o-16-bits-de-id-de-2",
+      "text": "16 bits de ID de subred y 48 bits de IID.",
+      "explanation": "Con un IID de 48 bits la dirección sumaría solo 112 bits."
+    }
+  ],
+  "answer": "o-16-bits-de-id-de"
+}

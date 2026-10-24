@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Si el acceso usa CoAP y la aplicación del núcleo usa HTTP, ¿qué muestra el escenario del tema?",
+  "explanation": "El esquema de CoAP en acceso y HTTP en núcleo necesita traducción de mensajes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-proxy-o-gateway-que",
+      "text": "Un proxy o gateway que traduce entre ambos protocolos.",
+      "explanation": "Con CoAP en el acceso y HTTP en el núcleo hace falta un gateway o proxy que traduzca los mensajes."
+    },
+    {
+      "id": "un-broker-que-distribuye-los",
+      "text": "Un broker que distribuye los mismos mensajes sin traducirlos.",
+      "explanation": "Un broker pertenece a publicación/suscripción y no traduce entre CoAP y HTTP."
+    },
+    {
+      "id": "un-border-router-que-unicamente",
+      "text": "Un border router que únicamente cambia la dirección MAC y con ello traduce CoAP a HTTP.",
+      "explanation": "Cambiar direcciones MAC no traduce protocolos de aplicación."
+    },
+    {
+      "id": "un-servidor-dns-sd-que",
+      "text": "Un servidor DNS-SD que convierte el payload en cabeceras HTTP.",
+      "explanation": "DNS-SD sirve para descubrir servicios, no para traducir mensajes."
+    }
+  ],
+  "answer": "un-proxy-o-gateway-que"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-original-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica define el modo Mesh-Under en 6LoWPAN?",
+  "explanation": "Según la distinción del temario, mesh-under reenvía en la capa de adaptación 6LoWPAN utilizando direcciones IEEE 802.15.4 (MAC). Aunque funciona por debajo de IPv6, la alternativa de reenvío en capa 6LoWPAN con direcciones MAC identifica la capa concreta; la de reenvío en capa de enlace es menos precisa. Los nodos intermedios no hacen reensamblado IPv6 salto a salto como en route-over clásico.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        32
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "reenvio-en-capa-de-enlace",
+      "text": "Reenvío en capa de enlace basado en direcciones MAC",
+      "explanation": "Es una descripción general por debajo de IP; el temario precisa la capa de adaptación 6LoWPAN."
+    },
+    {
+      "id": "reenvio-en-capa-6lowpan-basado",
+      "text": "Reenvío en capa 6LoWPAN basado en direcciones IPv6",
+      "explanation": "Mesh-under utiliza direcciones de enlace, no direcciones IPv6 para el reenvío."
+    },
+    {
+      "id": "reensamblado-salto-a-salto",
+      "text": "Reensamblado salto a salto",
+      "explanation": "El reensamblado salto a salto corresponde al route-over clásico."
+    },
+    {
+      "id": "reenvio-en-capa-6lowpan-basado-2",
+      "text": "Reenvío en capa 6LoWPAN basado en direcciones MAC",
+      "explanation": "Identifica tanto la capa de adaptación como las direcciones utilizadas."
+    }
+  ],
+  "answer": "reenvio-en-capa-6lowpan-basado-2"
+}

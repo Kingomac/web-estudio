@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB contiene 2001:db8:6:b::/64 vía R1, 2001:db8:6::/48 vía R2, 2001:db8::/32 vía R3 y ::/0 vía R4. Todas las rutas están operativas. ¿Qué siguiente salto se elige para 2001:db8:6::b?",
+  "explanation": "El destino se expande como 2001:0db8:0006:0000:0000:0000:0000:000b. El cuarto hexteto es 0: no pertenece al /64 cuyo cuarto hexteto es b. Sí coincide con /48, /32 y /0; gana el /48 de R2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "r2",
+      "text": "R2.",
+      "explanation": "Es el prefijo más largo entre los que coinciden realmente."
+    },
+    {
+      "id": "r1",
+      "text": "R1.",
+      "explanation": "Confunde el último hexteto b del destino con el cuarto hexteto de la ruta."
+    },
+    {
+      "id": "r3",
+      "text": "R3.",
+      "explanation": "El /32 coincide, pero existe una coincidencia más específica /48."
+    },
+    {
+      "id": "r4",
+      "text": "R4.",
+      "explanation": "La ruta por defecto solo gana cuando no existe una coincidencia más específica."
+    }
+  ],
+  "answer": "r2"
+}

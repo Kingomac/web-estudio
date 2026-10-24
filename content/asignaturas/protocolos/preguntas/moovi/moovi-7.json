@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En IPHC se recibe M=0, DAC=0 y DAM=11. No hay cabecera Mesh y el IID destino puede derivarse de la dirección de enlace destino. ¿Cómo se reconstruye la dirección IPv6 destino?",
+  "explanation": "M=0 indica unicast y DAC=0 compresión sin contexto. DAM=11 omite por completo la dirección: el prefijo es link-local y el IID se deriva de la cabecera de enlace en el supuesto indicado. DAM=01 llevaría 64 bits y DAM=00 llevaría 128 bits.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 §3.1.1 · campos IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "con-el-prefijo-del-contexto",
+      "text": "Con el prefijo del contexto DCI y el IID derivado del enlace.",
+      "explanation": "El prefijo de contexto requiere compresión stateful, DAC=1."
+    },
+    {
+      "id": "con-los-128-bits-de",
+      "text": "Con los 128 bits de la dirección transmitidos en línea.",
+      "explanation": "La dirección completa se transmite con DAM=00."
+    },
+    {
+      "id": "con-fe80-64-y-el",
+      "text": "Con fe80::/64 y el IID derivado de la dirección de enlace destino; no se envían bits de esa dirección en línea.",
+      "explanation": "Usa el modo stateless de dirección completamente elidida."
+    },
+    {
+      "id": "con-fe80-64-y-un",
+      "text": "Con fe80::/64 y un IID de 64 bits transmitido en línea.",
+      "explanation": "Corresponde a DAM=01, no a DAM=11."
+    }
+  ],
+  "answer": "con-fe80-64-y-el"
+}

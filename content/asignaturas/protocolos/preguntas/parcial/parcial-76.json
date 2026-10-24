@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-76",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Se comparan dos LoWPAN con topología de malla, una con nodos IPv6 y otra sin IPv6. ¿Qué conclusión es correcta?",
+  "explanation": "El tema separa la clasificación por topología de la disponibilidad de IPv6. Con nodos no IP se necesita una pasarela; con nodos IPv6, la conexión a otras redes IP se realiza mediante un border router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-topologia-y-la-disponibilidad",
+      "text": "La topología y la disponibilidad de IPv6 son criterios de clasificación independientes.",
+      "explanation": "Topología y disponibilidad de IPv6 son criterios independientes: puede haber mallas IP y no IP."
+    },
+    {
+      "id": "toda-malla-utiliza-ipv6-porque",
+      "text": "Toda malla utiliza IPv6 porque requiere nodos intermedios.",
+      "explanation": "Existen mallas no IP, como Zigbee o Bluetooth Mesh."
+    },
+    {
+      "id": "una-red-sin-ipv6-solo",
+      "text": "Una red sin IPv6 solo puede adoptar topología en estrella.",
+      "explanation": "Una red sin IPv6 puede ser en estrella o en malla."
+    },
+    {
+      "id": "la-presencia-de-ipv6-elimina",
+      "text": "La presencia de IPv6 elimina la necesidad de equipos de frontera.",
+      "explanation": "Con nodos IPv6 sigue haciendo falta un border router en la frontera."
+    }
+  ],
+  "answer": "la-topologia-y-la-disponibilidad"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-55",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación describe correctamente una dirección link-local?",
+  "explanation": "Las link-local identifican interfaces dentro de un enlace. En el formato presentado se construyen con fe80::/64 y un IID; no se encaminan hacia otros enlaces.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "su-ambito-se-limita-al",
+      "text": "Su ámbito se limita al enlace y no sirve para alcanzar otra subred a través de routers.",
+      "explanation": "Una link-local solo es válida en su enlace y no sirve para llegar a otra subred a través de routers."
+    },
+    {
+      "id": "su-ambito-cubre-internet-siempre",
+      "text": "Su ámbito cubre Internet siempre que se configure una ruta por defecto.",
+      "explanation": "Una ruta por defecto no amplía el ámbito de una link-local."
+    },
+    {
+      "id": "es-una-direccion-multicast-que",
+      "text": "Es una dirección multicast que empieza por ff02.",
+      "explanation": "ff02 es el prefijo de grupos multicast link-local; las direcciones link-local unicast son fe80::/10."
+    },
+    {
+      "id": "es-una-direccion-ula-que",
+      "text": "Es una dirección ULA que debe obtenerse de un ISP.",
+      "explanation": "Las ULA son otro tipo de dirección, y no se piden a un ISP."
+    }
+  ],
+  "answer": "su-ambito-se-limita-al"
+}

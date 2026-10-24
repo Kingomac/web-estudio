@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se necesita que un nodo ejecute una pila IP completa y reenvíe tráfico de otros sensores. ¿Qué clase del temario es la candidata adecuada?",
+  "explanation": "La clase 2 dispone de recursos para una pila IP completa y puede ejecutar encaminamiento ligero y actuar como nodo intermedio. El material la asocia a FFD.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-2-asociada-a-dispositivos",
+      "text": "Clase 2, asociada a dispositivos FFD.",
+      "explanation": "La clase 2 ejecuta una pila IP completa, puede reenviar tráfico de otros nodos y corresponde a FFD."
+    },
+    {
+      "id": "clase-0-por-su-menor",
+      "text": "Clase 0, por su menor memoria.",
+      "explanation": "La clase 0 no puede implementar una pila IP; menos memoria no ayuda a reenviar."
+    },
+    {
+      "id": "clase-1-asociada-a-dispositivos",
+      "text": "Clase 1, asociada a dispositivos RFD sin esa capacidad completa.",
+      "explanation": "La clase 1 tiene una pila reducida y corresponde a RFD, que no actúa como nodo de reenvío."
+    },
+    {
+      "id": "cualquier-clase-porque-el-reenvio",
+      "text": "Cualquier clase, porque el reenvío solo depende de la antena.",
+      "explanation": "El reenvío depende de los recursos de proceso y de la pila, no solo de la antena."
+    }
+  ],
+  "answer": "clase-2-asociada-a-dispositivos"
+}

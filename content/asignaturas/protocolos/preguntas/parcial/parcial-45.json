@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-45",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Se usa MQTT-SN en la red de sensores y MQTT en el servidor. ¿Qué función del gateway permite combinar varios mensajes de sensores en un único mensaje MQTT?",
+  "explanation": "El gateway agregador combina varios mensajes MQTT-SN en un mensaje MQTT. El transparente realiza una correspondencia de un mensaje MQTT-SN a un mensaje MQTT.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-modo-agregador",
+      "text": "El modo agregador.",
+      "explanation": "El gateway agregador combina varios mensajes MQTT-SN en un único mensaje MQTT."
+    },
+    {
+      "id": "el-modo-transparente",
+      "text": "El modo transparente.",
+      "explanation": "El modo transparente genera un mensaje MQTT por cada mensaje MQTT-SN."
+    },
+    {
+      "id": "el-modo-de-observacion-coap",
+      "text": "El modo de observación CoAP.",
+      "explanation": "Observe es una opción de CoAP, no un modo del gateway MQTT-SN."
+    },
+    {
+      "id": "el-modo-de-resolucion-ndp",
+      "text": "El modo de resolución NDP.",
+      "explanation": "NDP resuelve vecinos IPv6; no es una función del gateway MQTT-SN."
+    }
+  ],
+  "answer": "el-modo-agregador"
+}

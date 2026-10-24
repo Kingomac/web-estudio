@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿En qué unidades se expresa datagram_offset?",
+  "explanation": "El offset sitúa el fragmento dentro del datagrama IPv6 original, no dentro del flujo comprimido.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "en-bloques-de-8-bytes",
+      "text": "En bloques de 8 bytes del datagrama sin comprimir.",
+      "explanation": "datagram_offset indica la posición en unidades de 8 bytes respecto al datagrama IPv6 sin comprimir."
+    },
+    {
+      "id": "en-bytes-del-datagrama-comprimido",
+      "text": "En bytes del datagrama comprimido.",
+      "explanation": "La unidad es de 8 bytes, no bytes, y se refiere al datagrama sin comprimir."
+    },
+    {
+      "id": "en-bits-del-datagrama-sin",
+      "text": "En bits del datagrama sin comprimir.",
+      "explanation": "La unidad son bloques de 8 bytes, no bits."
+    },
+    {
+      "id": "en-bloques-de-8-bytes-2",
+      "text": "En bloques de 8 bytes del datagrama comprimido.",
+      "explanation": "El desplazamiento se calcula sobre el datagrama sin comprimir."
+    }
+  ],
+  "answer": "en-bloques-de-8-bytes"
+}

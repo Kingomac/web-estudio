@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa CID=0 si la compresión necesita un contexto?",
+  "explanation": "CID=0 puede significar ausencia de contexto o uso del contexto por defecto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "que-se-usa-el-contexto",
+      "text": "Que se usa el contexto 0 sin añadir el byte SCI/DCI.",
+      "explanation": "Con CID=0 no se añade byte SCI/DCI; si se necesita contexto, se usa el contexto 0."
+    },
+    {
+      "id": "que-nunca-puede-usarse-compresion",
+      "text": "Que nunca puede usarse compresión basada en contexto.",
+      "explanation": "CID=0 no impide usar contexto: permite el contexto por defecto."
+    },
+    {
+      "id": "que-se-anade-un-byte",
+      "text": "Que se añade un byte SCI/DCI con ambos campos a cero.",
+      "explanation": "El byte SCI/DCI solo aparece si CID=1."
+    },
+    {
+      "id": "que-se-transmite-el-prefijo",
+      "text": "Que se transmite el prefijo IPv6 completo en todos los casos.",
+      "explanation": "Con SAC/DAC y el contexto 0 se puede omitir el prefijo sin transmitirlo."
+    }
+  ],
+  "answer": "que-se-usa-el-contexto"
+}

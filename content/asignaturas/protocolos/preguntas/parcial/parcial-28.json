@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una instalación industrial requiere intercambio de datos independiente del hardware y del sistema operativo, con cifrado, autenticación y auditoría. ¿Qué arquitectura del tema reúne esas características?",
+  "explanation": "OPC UA es una arquitectura orientada a servicios para entornos industriales. El tema destaca su independencia de plataforma y los mecanismos de seguridad integrados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "opc-ua",
+      "text": "OPC UA.",
+      "explanation": "OPC UA es una arquitectura orientada a servicios, independiente de plataforma, con cifrado, autenticación y auditoría."
+    },
+    {
+      "id": "dns-sd",
+      "text": "DNS-SD.",
+      "explanation": "DNS-SD descubre servicios; no es una arquitectura de intercambio industrial."
+    },
+    {
+      "id": "slaac",
+      "text": "SLAAC.",
+      "explanation": "SLAAC autoconfigura direcciones IPv6."
+    },
+    {
+      "id": "o-6lowpan",
+      "text": "6LoWPAN.",
+      "explanation": "6LoWPAN adapta IPv6 a IEEE 802.15.4."
+    }
+  ],
+  "answer": "opc-ua"
+}

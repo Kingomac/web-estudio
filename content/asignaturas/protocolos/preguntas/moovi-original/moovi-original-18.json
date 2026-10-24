@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.moovi-original-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una universidad quiere publicar instancias CoAP para clientes de varias subredes. Dispone de DNS unicast con los registros adecuados en campus.example. No hay reflectores, proxies ni extensiones de mDNS. ¿Qué diseño es coherente con DNS-SD?",
+  "explanation": "DNS-SD utiliza registros DNS para descubrir servicios y puede funcionar sobre DNS unicast. Los clientes de varias subredes pueden consultar los registros de _coap._udp.campus.example en ese DNS. mDNS hacia ff02::fb tiene alcance de enlace; el sufijo del nombre no amplía su alcance.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        50
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6763 · DNS-SD",
+      "url": "https://www.rfc-editor.org/rfc/rfc6763.html"
+    }
+  ],
+  "options": [
+    {
+      "id": "enviar-la-consulta-de-coap",
+      "text": "Enviar la consulta de _coap._udp.campus.example a ff02::fb; el sufijo campus.example permite atravesar los routers entre subredes.",
+      "explanation": "ff02::fb tiene alcance de enlace, independientemente del sufijo consultado."
+    },
+    {
+      "id": "consultar-por-dns-unicast-los",
+      "text": "Consultar por DNS unicast los registros de _coap._udp.campus.example; DNS-SD no requiere usar multicast para descubrir las instancias.",
+      "explanation": "DNS-SD puede utilizar DNS unicast para descubrir las instancias."
+    },
+    {
+      "id": "resolver-por-dns-unicast-el",
+      "text": "Resolver por DNS unicast el nombre del campus y enviar después por mDNS las consultas SRV; DNS-SD exige multicast para resolver instancias.",
+      "explanation": "DNS-SD no obliga a resolver los SRV mediante multicast."
+    },
+    {
+      "id": "publicar-las-instancias-bajo-local",
+      "text": "Publicar las instancias bajo .local y consultar por multicast desde cada subred; el ámbito de DNS-SD reúne automáticamente las respuestas.",
+      "explanation": "El funcionamiento normal de mDNS no reúne automáticamente subredes distintas."
+    }
+  ],
+  "answer": "consultar-por-dns-unicast-los"
+}

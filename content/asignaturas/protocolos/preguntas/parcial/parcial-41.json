@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-41",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Respecto a QoS 1, ¿qué compromiso introduce MQTT QoS 2 en el intercambio descrito?",
+  "explanation": "QoS 2 utiliza dos fases para confirmar recepción y publicación y evitar duplicados en la entrega correspondiente. Esto implica más sobrecarga y latencia que los niveles inferiores.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        56
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "evita-la-entrega-duplicada-mediante",
+      "text": "Evita la entrega duplicada mediante más intercambio de control y mayor latencia.",
+      "explanation": "QoS 2 evita duplicados con dos fases de confirmación, a costa de más sobrecarga y latencia."
+    },
+    {
+      "id": "reduce-el-intercambio-a-un",
+      "text": "Reduce el intercambio a un PUBLISH sin confirmación.",
+      "explanation": "Un PUBLISH sin confirmación es QoS 0."
+    },
+    {
+      "id": "conserva-los-duplicados-y-elimina",
+      "text": "Conserva los duplicados y elimina los identificadores de paquete.",
+      "explanation": "QoS 2 usa identificadores precisamente para evitar duplicados."
+    },
+    {
+      "id": "sustituye-tcp-por-udp-para",
+      "text": "Sustituye TCP por UDP para asegurar una sola entrega.",
+      "explanation": "MQTT va sobre TCP en todos los niveles QoS."
+    }
+  ],
+  "answer": "evita-la-entrega-duplicada-mediante"
+}

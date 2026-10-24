@@ -1,0 +1,69 @@
+{
+  "id": "protocolos.tests.cuestionario-previo-moovi",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "cuestionario-previo-moovi",
+  "title": "Cuestionario previo de Moovi",
+  "description": "Las 20 preguntas del cuestionario previo al parcial, con corrección orientativa.",
+  "scope": "Enunciados y alternativas literales del PDF de Moovi, erratas incluidas, barajados como el resto de tests. El PDF no trae clave oficial: la corrección se basa en el temario y cada explicación aclara las erratas y ambigüedades.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.intro",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.aplicacion",
+    "protocolos.tags.parcial-1"
+  ],
+  "order": 110,
+  "groups": [
+    {
+      "id": "multicast-y-ndp",
+      "title": "Multicast y NDP",
+      "questionIds": [
+        "protocolos.preguntas.moovi-original-1",
+        "protocolos.preguntas.moovi-original-12",
+        "protocolos.preguntas.moovi-original-16"
+      ]
+    },
+    {
+      "id": "rutas-ipv6",
+      "title": "Rutas IPv6",
+      "questionIds": [
+        "protocolos.preguntas.moovi-original-2",
+        "protocolos.preguntas.moovi-original-3",
+        "protocolos.preguntas.moovi-original-4",
+        "protocolos.preguntas.moovi-original-13",
+        "protocolos.preguntas.moovi-original-14"
+      ]
+    },
+    {
+      "id": "redes-iot-y-lln",
+      "title": "Redes IoT y LLN",
+      "questionIds": [
+        "protocolos.preguntas.moovi-original-5",
+        "protocolos.preguntas.moovi-original-6"
+      ]
+    },
+    {
+      "id": "6lowpan",
+      "title": "6LoWPAN",
+      "questionIds": [
+        "protocolos.preguntas.moovi-original-7",
+        "protocolos.preguntas.moovi-original-8",
+        "protocolos.preguntas.moovi-original-9",
+        "protocolos.preguntas.moovi-original-10",
+        "protocolos.preguntas.moovi-original-11",
+        "protocolos.preguntas.moovi-original-15"
+      ]
+    },
+    {
+      "id": "servicios-y-aplicacion",
+      "title": "Servicios y aplicación",
+      "questionIds": [
+        "protocolos.preguntas.moovi-original-17",
+        "protocolos.preguntas.moovi-original-18",
+        "protocolos.preguntas.moovi-original-19",
+        "protocolos.preguntas.moovi-original-20"
+      ]
+    }
+  ]
+}

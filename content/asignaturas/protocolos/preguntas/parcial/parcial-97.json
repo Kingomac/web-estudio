@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-97",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un sensor mesh-under alcanza el border router atravesando tres enlaces radio. ¿A cuántos saltos IPv6 está del border router en ese modo?",
+  "explanation": "Mesh-under oculta los saltos internos de enlace a IPv6. Aunque existan varios reenvíos radio, los nodos de la LoWPAN están a un salto IPv6 del border router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "a-un-salto-ipv6",
+      "text": "A un salto IPv6.",
+      "explanation": "En mesh-under, los nodos están a un salto IPv6 del 6LBR aunque haya varios saltos radio."
+    },
+    {
+      "id": "a-tres-saltos-ipv6",
+      "text": "A tres saltos IPv6.",
+      "explanation": "Contar un salto IPv6 por enlace radio es lo propio de route-over."
+    },
+    {
+      "id": "a-cuatro-saltos-ipv6",
+      "text": "A cuatro saltos IPv6.",
+      "explanation": "Los saltos IPv6 no dependen del número de enlaces radio en mesh-under."
+    },
+    {
+      "id": "a-tantos-saltos-ipv6-como",
+      "text": "A tantos saltos IPv6 como fragmentos tenga el datagrama.",
+      "explanation": "La fragmentación no influye en el número de saltos."
+    }
+  ],
+  "answer": "a-un-salto-ipv6"
+}

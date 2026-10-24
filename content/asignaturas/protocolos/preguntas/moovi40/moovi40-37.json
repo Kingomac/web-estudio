@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En CoAP sobre UDP, un cliente envía una petición CON con Message ID 0x3401 y Token 0xa7. Recibe un ACK vacío y después una respuesta separada. ¿Qué campo permite asociar esa respuesta con la petición?",
+  "explanation": "Token relaciona petición y respuesta; Message ID se emplea para fiabilidad, detección de duplicados y asociación de mensajes con sus ACK. Un ACK vacío confirma la recepción del mensaje, y la respuesta de aplicación puede llegar por separado con otro Message ID.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-token-0xa7-aunque-la",
+      "text": "El Token 0xa7, aunque la respuesta separada utilice otro Message ID.",
+      "explanation": "Utiliza el identificador diseñado para correlacionar petición y respuesta."
+    },
+    {
+      "id": "el-message-id-0x3401-que",
+      "text": "El Message ID 0x3401, que toda respuesta separada debe conservar.",
+      "explanation": "Confunde la confirmación de un mensaje con la correlación de la respuesta separada."
+    },
+    {
+      "id": "el-codigo-de-respuesta-porque",
+      "text": "El código de respuesta, porque distingue de forma única todas las peticiones pendientes.",
+      "explanation": "El código expresa éxito o error, pero varias respuestas pueden tener el mismo código."
+    },
+    {
+      "id": "el-puerto-udp-porque-no",
+      "text": "El puerto UDP, porque no puede haber varias peticiones pendientes al mismo servidor.",
+      "explanation": "Un mismo extremo UDP puede tener varias peticiones diferenciadas por Token."
+    }
+  ],
+  "answer": "el-token-0xa7-aunque-la"
+}

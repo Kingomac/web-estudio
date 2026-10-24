@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se obtiene una MAC multicast Ethernet a partir de una IPv6 multicast?",
+  "explanation": "El mapeo es directo; no debe confundirse con los 24 bits usados para construir solicited-node.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-33-33-seguido-de-los",
+      "text": "33:33 seguido de los últimos 32 bits de la IPv6.",
+      "explanation": "La MAC multicast Ethernet es 33:33 seguido de los últimos 32 bits de la IPv6 multicast."
+    },
+    {
+      "id": "ff-fe-seguido-de-los",
+      "text": "FF:FE seguido de los primeros 16 bits.",
+      "explanation": "FF:FE se inserta al construir un EUI-64; no interviene en el mapeo multicast."
+    },
+    {
+      "id": "la-ipv6-completa-de-128",
+      "text": "La IPv6 completa de 128 bits sin cambios.",
+      "explanation": "Una MAC tiene 48 bits y no puede contener los 128 de la IPv6."
+    },
+    {
+      "id": "el-prefijo-fe80-seguido-de",
+      "text": "El prefijo fe80 seguido de los últimos 64 bits.",
+      "explanation": "fe80 es el prefijo link-local; una MAC no lleva prefijos IPv6."
+    }
+  ],
+  "answer": "o-33-33-seguido-de-los"
+}

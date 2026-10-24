@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué tipo utiliza la petición multicast CoAP del esquema del profesor?",
+  "explanation": "La figura muestra GET con T=NON y respuestas de los dispositivos de forma individual.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        45
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "non",
+      "text": "NON.",
+      "explanation": "La petición multicast del esquema es un GET con T=NON y cada dispositivo responde por separado."
+    },
+    {
+      "id": "con",
+      "text": "CON.",
+      "explanation": "Una petición CON a un grupo obligaría a confirmar a cada miembro; el esquema usa NON."
+    },
+    {
+      "id": "ack",
+      "text": "ACK.",
+      "explanation": "ACK es un tipo de respuesta, no de la petición multicast."
+    },
+    {
+      "id": "rst",
+      "text": "RST.",
+      "explanation": "RST se usa cuando no se puede procesar un mensaje; no es el tipo de la petición."
+    }
+  ],
+  "answer": "non"
+}

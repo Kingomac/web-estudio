@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente quiere recibir cambios de temperatura directamente de un servidor CoAP mediante Observe. ¿Qué secuencia encaja con este mecanismo?",
+  "explanation": "Observe añade seguimiento de un recurso a CoAP: la petición con Observe=0 registra el interés y el servidor mantiene la observación asociada al cliente y Token. Observe=1 se utiliza para cancelar. No requiere introducir un broker MQTT.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "enviar-observe-1-para-darse",
+      "text": "Enviar Observe=1 para darse de alta y Observe=0 para cancelar.",
+      "explanation": "Invierte los valores de registro y cancelación."
+    },
+    {
+      "id": "registrar-la-observacion-con-observe",
+      "text": "Registrar la observación con Observe=0 y recibir notificaciones del servidor asociadas al Token.",
+      "explanation": "Describe el registro y la entrega de actualizaciones del mecanismo estudiado."
+    },
+    {
+      "id": "enviar-un-unico-get-sin",
+      "text": "Enviar un único GET sin Observe y esperar actualizaciones indefinidas automáticamente.",
+      "explanation": "Un GET normal obtiene una respuesta, no establece por sí solo una observación."
+    },
+    {
+      "id": "publicar-el-token-en-un",
+      "text": "Publicar el Token en un broker MQTT para que el servidor CoAP lo recupere.",
+      "explanation": "CoAP Observe no depende de publicar el Token mediante otro protocolo."
+    }
+  ],
+  "answer": "registrar-la-observacion-con-observe"
+}

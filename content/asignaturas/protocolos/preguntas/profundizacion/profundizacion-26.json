@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Puertos UDP: origen=0xf0b8, destino=0xf0c1. Con checksum en línea (C=0), ¿qué modos P permiten el tamaño mínimo de NHC UDP y sus campos?",
+  "explanation": "Ambos puertos pertenecen a f000–f0ff y, por tanto, cualquiera de ellos puede reducirse a ocho bits. P=01 comprime el destino y P=10 el origen: ambos cuestan 1+2+1+2=6 bytes. P=11 no sirve porque f0c1 queda fuera de f0b0–f0bf.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · NHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "solo-p-00-produce-7",
+      "text": "Solo P=00: produce 7 bytes.",
+      "explanation": "El modo completo es válido, pero no es el mínimo disponible."
+    },
+    {
+      "id": "p-01-y-p-10",
+      "text": "P=01 y P=10: ambos producen 6 bytes.",
+      "explanation": "Identifica dos codificaciones igualmente cortas y válidas."
+    },
+    {
+      "id": "solo-p-11-produce-4",
+      "text": "Solo P=11: produce 4 bytes.",
+      "explanation": "El destino no cabe en el rango de cuatro bits de P=11."
+    },
+    {
+      "id": "solo-p-01-produce-6",
+      "text": "Solo P=01: produce 6 bytes.",
+      "explanation": "El origen también puede reducirse a ocho bits; P=10 consigue el mismo tamaño."
+    }
+  ],
+  "answer": "p-01-y-p-10"
+}

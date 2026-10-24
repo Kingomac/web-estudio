@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-52",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué transporte de control utiliza RPL?",
+  "explanation": "Los códigos mostrados son DIS=0, DIO=1, DAO=2 y DAO-ACK=3.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        77
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "icmpv6-tipo-155-con-code",
+      "text": "ICMPv6 tipo 155, con Code para distinguir el mensaje.",
+      "explanation": "RPL envía sus mensajes de control como ICMPv6 tipo 155, y Code distingue DIS, DIO, DAO y DAO-ACK."
+    },
+    {
+      "id": "http-post-siempre-en-puerto",
+      "text": "HTTP POST siempre en puerto 80.",
+      "explanation": "RPL no usa HTTP."
+    },
+    {
+      "id": "mqtt-sobre-udp-5353",
+      "text": "MQTT sobre UDP 5353.",
+      "explanation": "MQTT va sobre TCP y 5353 es el puerto de mDNS."
+    },
+    {
+      "id": "arp-de-ipv4-exclusivamente",
+      "text": "ARP de IPv4 exclusivamente.",
+      "explanation": "ARP es de IPv4; RPL funciona sobre IPv6."
+    }
+  ],
+  "answer": "icmpv6-tipo-155-con-code"
+}

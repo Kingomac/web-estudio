@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Para qué sirve un identificador persistente de dispositivo?",
+  "explanation": "Puede ser un código, número de serie o UUID; necesita asociarse con un mecanismo de acceso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        47
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "para-reconocerlo-aunque-cambien-su",
+      "text": "Para reconocerlo aunque cambien su IP o su nombre de host.",
+      "explanation": "El identificador persistente permite reconocer al mismo dispositivo aunque cambien su IP o su nombre de host."
+    },
+    {
+      "id": "para-indicar-por-si-solo",
+      "text": "Para indicar por sí solo siempre la ruta IP completa.",
+      "explanation": "El identificador no indica por sí solo cómo acceder: hay que asociarlo a una dirección u otro mecanismo."
+    },
+    {
+      "id": "para-sustituir-todos-los-protocolos",
+      "text": "Para sustituir todos los protocolos de aplicación.",
+      "explanation": "Es un identificador, no un sustituto de los protocolos de aplicación."
+    },
+    {
+      "id": "para-garantizar-que-el-nodo",
+      "text": "Para garantizar que el nodo esté despierto.",
+      "explanation": "Identificar un dispositivo no dice nada sobre si está despierto."
+    }
+  ],
+  "answer": "para-reconocerlo-aunque-cambien-su"
+}

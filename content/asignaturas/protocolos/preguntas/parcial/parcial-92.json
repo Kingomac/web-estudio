@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-92",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué FRAGN ocupa un byte más que FRAG1 en la fragmentación 6LoWPAN?",
+  "explanation": "FRAG1 ocupa cuatro bytes y FRAGN cinco. Ambos incluyen tamaño y etiqueta, pero FRAGN añade el offset de ocho bits; en el primer fragmento el desplazamiento cero no se transmite.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "porque-fragn-incluye-datagram-offset",
+      "text": "Porque FRAGN incluye datagram_offset y FRAG1 tiene desplazamiento cero implícito.",
+      "explanation": "FRAGN añade datagram_offset (8 bits); en FRAG1 el desplazamiento es 0 y no se envía."
+    },
+    {
+      "id": "porque-fragn-repite-toda-la",
+      "text": "Porque FRAGN repite toda la cabecera IPv6 sin comprimir.",
+      "explanation": "FRAGN no repite la cabecera IPv6: solo la lleva el primer fragmento."
+    },
+    {
+      "id": "porque-fragn-usa-una-etiqueta",
+      "text": "Porque FRAGN usa una etiqueta de 24 bits y FRAG1 de 16.",
+      "explanation": "La etiqueta datagram_tag tiene 16 bits en ambos."
+    },
+    {
+      "id": "porque-frag1-no-contiene-datagram",
+      "text": "Porque FRAG1 no contiene datagram_size.",
+      "explanation": "FRAG1 sí contiene datagram_size."
+    }
+  ],
+  "answer": "porque-fragn-incluye-datagram-offset"
+}

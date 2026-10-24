@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-66",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo conoce la IPv6 de un vecino del enlace, pero no su MAC. En la resolución NDP, ¿qué dirección coloca en el campo Target del NS?",
+  "explanation": "Target identifica la dirección IPv6 que se está resolviendo. No debe confundirse con la dirección de destino del paquete NS, que en esta resolución es la solicited-node del vecino.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-ipv6-unicast-del-vecino",
+      "text": "La IPv6 unicast del vecino cuya MAC desea conocer.",
+      "explanation": "Target contiene la IPv6 unicast que se quiere resolver, es decir, la del vecino."
+    },
+    {
+      "id": "la-direccion-multicast-solicited-node",
+      "text": "La dirección multicast solicited-node a la que entrega el paquete.",
+      "explanation": "La solicited-node es la dirección de destino del paquete NS, no el Target."
+    },
+    {
+      "id": "la-ipv6-del-servidor-dns",
+      "text": "La IPv6 del servidor DNS configurado.",
+      "explanation": "El servidor DNS no interviene en la resolución NDP."
+    },
+    {
+      "id": "la-mac-del-router-por",
+      "text": "La MAC del router por defecto convertida a hexadecimal.",
+      "explanation": "Target es una dirección IPv6; la MAC es lo que se pregunta."
+    }
+  ],
+  "answer": "la-ipv6-unicast-del-vecino"
+}

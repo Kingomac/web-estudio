@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación cuenta eventos recibidos por MQTT con QoS 1. ¿Qué situación debe poder manejar?",
+  "explanation": "QoS 1 proporciona entrega at least once y admite duplicados. Una aplicación que cuenta eventos debe considerar ese comportamiento para no confundir duplicados con eventos nuevos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        55
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-recepcion-de-publicaciones-duplicadas",
+      "text": "La recepción de publicaciones duplicadas.",
+      "explanation": "QoS 1 es at least once y puede entregar duplicados; un contador debe detectarlos."
+    },
+    {
+      "id": "la-ausencia-de-cualquier-confirmacion",
+      "text": "La ausencia de cualquier confirmación MQTT por definición.",
+      "explanation": "QoS 1 sí tiene confirmación MQTT (PUBACK)."
+    },
+    {
+      "id": "la-recepcion-de-todos-los",
+      "text": "La recepción de todos los eventos exactamente una vez sin sobrecarga adicional.",
+      "explanation": "Entrega exactamente una vez es QoS 2, con más sobrecarga."
+    },
+    {
+      "id": "la-sustitucion-de-los-eventos",
+      "text": "La sustitución de los eventos por el último mensaje retenido de otro topic.",
+      "explanation": "Los retenidos son de cada topic y no sustituyen las publicaciones de otro."
+    }
+  ],
+  "answer": "la-recepcion-de-publicaciones-duplicadas"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuántas veces puede aparecer :: al abreviar una dirección IPv6?",
+  "explanation": "La doble separación sustituye una secuencia de grupos nulos y no debe repetirse.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "una-sola-vez",
+      "text": "Una sola vez.",
+      "explanation": ":: solo puede usarse una vez; si apareciera dos veces, no se sabría cuántos grupos sustituye cada una."
+    },
+    {
+      "id": "una-vez-por-cada-octeto",
+      "text": "Una vez por cada octeto cero.",
+      "explanation": ":: sustituye una secuencia contigua de grupos de 16 bits nulos, no octetos sueltos."
+    },
+    {
+      "id": "siempre-exactamente-dos-veces",
+      "text": "Siempre exactamente dos veces.",
+      "explanation": "Con dos :: la expansión sería ambigua."
+    },
+    {
+      "id": "un-numero-ilimitado-de-veces",
+      "text": "Un número ilimitado de veces.",
+      "explanation": "Repetir :: haría imposible reconstruir la dirección."
+    }
+  ],
+  "answer": "una-sola-vez"
+}

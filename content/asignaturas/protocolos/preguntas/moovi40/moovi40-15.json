@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "H está en 2001:db8:12::/64 y su única ruta a 2001:db8:90::8 usa fe80::2b:7c90 como gateway. La caché de vecinos está vacía. ¿Cuál es el destino IPv6 del NS inicial para resolver el siguiente salto?",
+  "explanation": "El vecino a resolver es el gateway, no el destino remoto. Los últimos 24 bits de fe80::2b:7c90 son 2b:7c:90, que se añaden a ff02::1:ff00:0/104. El NS inicial de resolución se envía a ese grupo solicited-node.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 §7.2 · resolución de vecinos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "fe80-2b-7c90",
+      "text": "fe80::2b:7c90.",
+      "explanation": "Es la dirección objetivo, pero el NS inicial de resolución se envía al grupo multicast."
+    },
+    {
+      "id": "ff02-2",
+      "text": "ff02::2.",
+      "explanation": "All-routers se emplea en RS; no es el grupo del NS de resolución."
+    },
+    {
+      "id": "ff02-1-ff2b-7c90",
+      "text": "ff02::1:ff2b:7c90.",
+      "explanation": "Construye el grupo solicited-node de la dirección del gateway."
+    },
+    {
+      "id": "ff02-1-ff00-8",
+      "text": "ff02::1:ff00:8.",
+      "explanation": "Construye el grupo del destino remoto, que no es el vecino de este enlace."
+    }
+  ],
+  "answer": "ff02-1-ff2b-7c90"
+}

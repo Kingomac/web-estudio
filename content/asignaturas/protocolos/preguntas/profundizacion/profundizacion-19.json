@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "IPHC y sus campos IPv6 en línea son 6e 33 c1 23 45. ¿Qué reconstrucción de Traffic Class y Flow Label es correcta?",
+  "explanation": "6e codifica TF=01, NH=1, HLIM=10. Los tres bytes TF contienen ECN(2), relleno(2) y Flow Label(20): c1=11|00|0001, seguido de 23 45. DSCP se reconstruye como cero, así que Traffic Class=000000|11=0x03.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "traffic-class-0x00-flow-label",
+      "text": "Traffic Class=0x00; Flow Label=0xc12345; IPv6 comprimido ocupa 5 bytes.",
+      "explanation": "Flow Label tiene veinte bits; los dos bits ECN y el relleno no pertenecen a él."
+    },
+    {
+      "id": "traffic-class-0x03-flow-label",
+      "text": "Traffic Class=0x03; Flow Label=0x00000; IPv6 comprimido ocupa 3 bytes.",
+      "explanation": "TF=01 transmite Flow Label y consume tres bytes además de los dos de IPHC."
+    },
+    {
+      "id": "traffic-class-0x03-flow-label-2",
+      "text": "Traffic Class=0x03; Flow Label=0x12345; IPv6 comprimido ocupa 5 bytes.",
+      "explanation": "Separa correctamente ECN, relleno y los veinte bits de Flow Label."
+    },
+    {
+      "id": "traffic-class-0xc1-flow-label",
+      "text": "Traffic Class=0xc1; Flow Label=0x02345; IPv6 comprimido ocupa 5 bytes.",
+      "explanation": "Copia el byte comprimido sin separar sus subcampos."
+    }
+  ],
+  "answer": "traffic-class-0x03-flow-label-2"
+}

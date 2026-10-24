@@ -1,0 +1,89 @@
+{
+  "id": "protocolos.tests.estilo-moovi-40",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "estilo-moovi-40",
+  "title": "Test estilo Moovi · 40 preguntas",
+  "description": "Nuevo ensayo del parcial con más peso de rutas, NDP y 6LoWPAN.",
+  "scope": "Temas 1 a 3 y tema 4 hasta la página 37 incluida: 4 preguntas de redes IoT y LLN, 10 de rutas y direccionamiento, 6 de multicast y NDP, 12 de 6LoWPAN y 8 de servicios y aplicación. Selección orientativa, no preguntas oficiales.",
+  "tagIds": [
+    "protocolos.tags.intro",
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.aplicacion",
+    "protocolos.tags.parcial-1"
+  ],
+  "order": 130,
+  "groups": [
+    {
+      "id": "redes-iot-y-lln",
+      "title": "Redes IoT y LLN",
+      "questionIds": [
+        "protocolos.preguntas.moovi40-1",
+        "protocolos.preguntas.moovi40-2",
+        "protocolos.preguntas.moovi40-3",
+        "protocolos.preguntas.moovi40-4"
+      ]
+    },
+    {
+      "id": "rutas-y-direcciones-ipv6",
+      "title": "Rutas y direcciones IPv6",
+      "questionIds": [
+        "protocolos.preguntas.moovi40-5",
+        "protocolos.preguntas.moovi40-6",
+        "protocolos.preguntas.moovi40-7",
+        "protocolos.preguntas.moovi40-8",
+        "protocolos.preguntas.moovi40-9",
+        "protocolos.preguntas.moovi40-10",
+        "protocolos.preguntas.moovi40-11",
+        "protocolos.preguntas.moovi40-12",
+        "protocolos.preguntas.moovi40-13",
+        "protocolos.preguntas.moovi40-14"
+      ]
+    },
+    {
+      "id": "multicast-y-ndp",
+      "title": "Multicast y NDP",
+      "questionIds": [
+        "protocolos.preguntas.moovi40-15",
+        "protocolos.preguntas.moovi40-16",
+        "protocolos.preguntas.moovi40-17",
+        "protocolos.preguntas.moovi40-18",
+        "protocolos.preguntas.moovi40-19",
+        "protocolos.preguntas.moovi40-20"
+      ]
+    },
+    {
+      "id": "6lowpan-hasta-la-37",
+      "title": "6LoWPAN hasta la 37",
+      "questionIds": [
+        "protocolos.preguntas.moovi40-21",
+        "protocolos.preguntas.moovi40-22",
+        "protocolos.preguntas.moovi40-23",
+        "protocolos.preguntas.moovi40-24",
+        "protocolos.preguntas.moovi40-25",
+        "protocolos.preguntas.moovi40-26",
+        "protocolos.preguntas.moovi40-27",
+        "protocolos.preguntas.moovi40-28",
+        "protocolos.preguntas.moovi40-29",
+        "protocolos.preguntas.moovi40-30",
+        "protocolos.preguntas.moovi40-31",
+        "protocolos.preguntas.moovi40-32"
+      ]
+    },
+    {
+      "id": "servicios-y-aplicacion",
+      "title": "Servicios y aplicación",
+      "questionIds": [
+        "protocolos.preguntas.moovi40-33",
+        "protocolos.preguntas.moovi40-34",
+        "protocolos.preguntas.moovi40-35",
+        "protocolos.preguntas.moovi40-36",
+        "protocolos.preguntas.moovi40-37",
+        "protocolos.preguntas.moovi40-38",
+        "protocolos.preguntas.moovi40-39",
+        "protocolos.preguntas.moovi40-40"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-54",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Al generar un IID EUI-64 modificado desde la MAC 00:1a:2b:3c:4d:5e, ¿qué resultado se obtiene?",
+  "explanation": "Se inserta ff:fe entre el tercer y cuarto octeto y se invierte el bit U/L del primero: 00 pasa a 02. Los ocho octetos resultantes forman 021a:2bff:fe3c:4d5e.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-021a-2bff-fe3c-4d5e",
+      "text": "021a:2bff:fe3c:4d5e.",
+      "explanation": "Se inserta ff:fe tras el tercer octeto y el bit U/L convierte 00 en 02: 021a:2bff:fe3c:4d5e."
+    },
+    {
+      "id": "o-001a-2bff-fe3c-4d5e",
+      "text": "001a:2bff:fe3c:4d5e.",
+      "explanation": "Falta invertir el bit U/L: el primer octeto debe pasar de 00 a 02."
+    },
+    {
+      "id": "o-021a-2b3c-fffe-4d5e",
+      "text": "021a:2b3c:fffe:4d5e.",
+      "explanation": "ff:fe va entre el tercer y el cuarto octeto, no tras el cuarto."
+    },
+    {
+      "id": "o-021a-2b00-003c-4d5e",
+      "text": "021a:2b00:003c:4d5e.",
+      "explanation": "Se insertan ff:fe, no ceros."
+    }
+  ],
+  "answer": "o-021a-2bff-fe3c-4d5e"
+}

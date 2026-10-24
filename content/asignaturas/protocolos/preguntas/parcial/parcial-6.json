@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se quiere cambiar la conectividad de un prototipo de LoRa a NB-IoT conservando el resto de sus bloques. ¿Qué propiedad facilita ese cambio?",
+  "explanation": "La modularidad permite combinar, sustituir y reutilizar bloques, incluido el de comunicación. La topología y el direccionamiento no hacen reemplazable el hardware.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-separacion-del-dispositivo-en",
+      "text": "La separación del dispositivo en módulos funcionales reemplazables.",
+      "explanation": "En un diseño modular, el módulo de comunicación (LoRa, NB-IoT…) se reemplaza sin tocar el resto de bloques."
+    },
+    {
+      "id": "la-integracion-inseparable-de-sensores",
+      "text": "La integración inseparable de sensores y radio en una sola placa.",
+      "explanation": "Integrar sensores y radio de forma inseparable impediría cambiar solo la conectividad."
+    },
+    {
+      "id": "el-uso-de-una-topologia",
+      "text": "El uso de una topología de red en estrella.",
+      "explanation": "La topología describe cómo se organiza la red, no si el hardware es reemplazable."
+    },
+    {
+      "id": "la-asignacion-de-una-direccion",
+      "text": "La asignación de una dirección IPv6 global a cada sensor.",
+      "explanation": "El direccionamiento IPv6 no tiene relación con poder sustituir el módulo de radio."
+    }
+  ],
+  "answer": "la-separacion-del-dispositivo-en"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo comprueba mediante DAD su dirección tentativa 2001:db8:8::4a antes de usarla. ¿Qué combinación corresponde al NS de comprobación?",
+  "explanation": "DAD utiliza la dirección no especificada :: como origen y pregunta por la dirección tentativa en Target. El destino es el grupo solicited-node de esa dirección. ::1 es loopback, no la dirección no especificada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "origen-1-destino-ff02-2",
+      "text": "Origen ::1; destino ff02::2; Target 2001:db8:8::4a.",
+      "explanation": "Confunde :: con loopback y usa all-routers en lugar de solicited-node."
+    },
+    {
+      "id": "origen-destino-2001-db8-8",
+      "text": "Origen ::; destino 2001:db8:8::4a; Target ff02::1:ff00:4a.",
+      "explanation": "Intercambia el destino multicast y la dirección objetivo unicast."
+    },
+    {
+      "id": "origen-destino-ff02-1-ff00",
+      "text": "Origen ::; destino ff02::1:ff00:4a; Target 2001:db8:8::4a.",
+      "explanation": "Comprueba la dirección tentativa sin utilizarla aún como origen normal."
+    },
+    {
+      "id": "origen-2001-db8-8-4a",
+      "text": "Origen 2001:db8:8::4a; destino ff02::1:ff00:4a; Target fe80::1.",
+      "explanation": "Utiliza la dirección tentativa como origen y pregunta por otro vecino."
+    }
+  ],
+  "answer": "origen-destino-ff02-1-ff00"
+}

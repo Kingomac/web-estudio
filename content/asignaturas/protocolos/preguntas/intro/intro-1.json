@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica del tráfico de muchas aplicaciones IoT permite utilizar tasas de datos bajas?",
+  "explanation": "El tema describe mensajes pequeños separados por intervalos de 1 a 5 minutos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mensajes-cortos-enviados-con-poca",
+      "text": "Mensajes cortos enviados con poca frecuencia.",
+      "explanation": "Es el patrón del tema: mensajes cortos cada 1–5 minutos, que no necesitan una tasa alta."
+    },
+    {
+      "id": "mensajes-grandes-enviados-continuamente",
+      "text": "Mensajes grandes enviados continuamente.",
+      "explanation": "Mensajes grandes y continuos exigirían una tasa alta; es lo contrario del tráfico IoT típico descrito."
+    },
+    {
+      "id": "mensajes-cortos-que-requieren-siempre",
+      "text": "Mensajes cortos que requieren siempre la máxima tasa física.",
+      "explanation": "Mensajes cortos e infrecuentes justifican tasas bajas; exigir la máxima tasa física contradice la conclusión de la diapositiva."
+    },
+    {
+      "id": "un-flujo-constante-de-datos",
+      "text": "Un flujo constante de datos sin intervalos de reposo.",
+      "explanation": "Un flujo constante sin reposo no deja intervalos entre mensajes, que son los que permiten bajar la tasa y el consumo."
+    }
+  ],
+  "answer": "mensajes-cortos-enviados-con-poca"
+}

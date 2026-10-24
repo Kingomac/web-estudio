@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación quiere recibir avisos HTTP cuando se dispare una alarma, evitando consultar cada pocos segundos. Configura una URL receptora y el sistema de alarmas le envía un POST al ocurrir el evento. ¿Qué mecanismo está usando?",
+  "explanation": "El patrón descrito es un webhook: el productor del evento inicia una petición HTTP hacia el endpoint configurado. Evita el sondeo periódico y resulta adecuado para notificaciones esporádicas. Un POST no establece por sí mismo un WebSocket.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "sondeo-periodico-http-iniciado-por",
+      "text": "Sondeo periódico HTTP iniciado por la aplicación receptora.",
+      "explanation": "En el sondeo sería el consumidor quien consultaría de forma periódica."
+    },
+    {
+      "id": "un-websocket-porque-cualquier-post",
+      "text": "Un WebSocket, porque cualquier POST conserva un canal bidireccional permanente.",
+      "explanation": "WebSocket requiere su establecimiento específico; no nace de cualquier POST."
+    },
+    {
+      "id": "descubrimiento-dns-sd-porque-el",
+      "text": "Descubrimiento DNS-SD, porque el POST publica un registro SRV.",
+      "explanation": "DNS-SD publica y consulta registros de servicio, no describe este envío de alarmas."
+    },
+    {
+      "id": "un-webhook-con-entrega-de",
+      "text": "Un webhook con entrega de eventos a la URL configurada.",
+      "explanation": "Reconoce el envío HTTP provocado por un evento a un endpoint registrado."
+    }
+  ],
+  "answer": "un-webhook-con-entrega-de"
+}

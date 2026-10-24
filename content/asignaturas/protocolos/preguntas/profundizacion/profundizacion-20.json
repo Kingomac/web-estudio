@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En 76 33 85, TF=10 y 85 es el octeto de Traffic Class comprimido. ¿Qué Traffic Class IPv6 se reconstruye?",
+  "explanation": "0x85 en binario es 10|000101: ECN=2 y DSCP=5. En IPv6 el orden es DSCP|ECN, de modo que 000101|10 = 00010110 = 0x16. Flow Label se reconstruye como cero.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-0x85-el-octeto-se-copia",
+      "text": "0x85: el octeto se copia sin cambios.",
+      "explanation": "La representación comprimida coloca ECN primero; no coincide con el orden IPv6."
+    },
+    {
+      "id": "o-0x86-se-conserva-el-orden",
+      "text": "0x86: se conserva el orden y se incrementa ECN.",
+      "explanation": "La compresión no incrementa ECN y 86 no es el resultado de reordenar esos bits."
+    },
+    {
+      "id": "o-0x05-ecn-se-pierde-al",
+      "text": "0x05: ECN se pierde al comprimir.",
+      "explanation": "TF=10 conserva ECN; no lo elimina."
+    },
+    {
+      "id": "o-0x16-dscp-5-y-ecn",
+      "text": "0x16: DSCP=5 y ECN=2.",
+      "explanation": "Reordena los seis bits DSCP y los dos bits ECN."
+    }
+  ],
+  "answer": "o-0x16-dscp-5-y-ecn"
+}

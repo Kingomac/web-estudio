@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estos elementos pertenece al bloque de actuadores?",
+  "explanation": "Los actuadores producen acciones; relés, motores y electroválvulas son ejemplos del tema.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-rele-que-enciende-o",
+      "text": "Un relé que enciende o apaga un dispositivo.",
+      "explanation": "Un relé produce una acción (encender o apagar) y figura entre los actuadores de la diapositiva."
+    },
+    {
+      "id": "un-sensor-de-humedad",
+      "text": "Un sensor de humedad.",
+      "explanation": "Un sensor de humedad mide el entorno: pertenece al bloque de sensores."
+    },
+    {
+      "id": "un-acelerometro-que-mide-movimiento",
+      "text": "Un acelerómetro que mide movimiento.",
+      "explanation": "El acelerómetro mide movimiento; aparece en la lista de sensores."
+    },
+    {
+      "id": "un-receptor-gps-que-obtiene",
+      "text": "Un receptor GPS que obtiene posición.",
+      "explanation": "El GPS obtiene una medida de posición; también está en el bloque de sensores."
+    }
+  ],
+  "answer": "un-rele-que-enciende-o"
+}

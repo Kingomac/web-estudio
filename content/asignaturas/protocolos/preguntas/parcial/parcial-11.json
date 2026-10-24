@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En una LLN, las interferencias provocan variaciones en la calidad de los enlaces. ¿Qué término describe específicamente esta característica?",
+  "explanation": "Lossy hace referencia a enlaces con pérdidas y rendimiento variable en entornos radio adversos. Low-power expresa la necesidad de bajo consumo de los nodos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "lossy",
+      "text": "Lossy.",
+      "explanation": "Lossy designa las pérdidas y la variabilidad del enlace por interferencias y entornos radio adversos."
+    },
+    {
+      "id": "low-power",
+      "text": "Low-power.",
+      "explanation": "Low-power se refiere al requisito de bajo consumo, no a la calidad del enlace."
+    },
+    {
+      "id": "backbone",
+      "text": "Backbone.",
+      "explanation": "Backbone es la red troncal entre la pasarela y la nube."
+    },
+    {
+      "id": "modular",
+      "text": "Modular.",
+      "explanation": "Modular describe la construcción del dispositivo, no el comportamiento del enlace."
+    }
+  ],
+  "answer": "lossy"
+}

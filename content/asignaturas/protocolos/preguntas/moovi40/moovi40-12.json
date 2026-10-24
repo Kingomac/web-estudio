@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una organización recibe 2001:db8:7a00::/56 y lo divide por completo en subredes /64. ¿Cuántos prefijos /64 distintos obtiene?",
+  "explanation": "Entre /56 y /64 quedan 64−56=8 bits para numerar subredes. Por tanto hay 2^8=256 prefijos /64. La cuenta usa la diferencia de longitudes, no la longitud total del prefijo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-16",
+      "text": "16.",
+      "explanation": "Dieciséis correspondería a cuatro bits, por ejemplo de /60 a /64."
+    },
+    {
+      "id": "o-64",
+      "text": "64.",
+      "explanation": "Confunde el número escrito en /64 con una cantidad de subredes."
+    },
+    {
+      "id": "o-65-536",
+      "text": "65 536.",
+      "explanation": "Ese resultado corresponde a dividir un /48 en /64, con dieciséis bits."
+    },
+    {
+      "id": "o-256",
+      "text": "256.",
+      "explanation": "Aplica 2 elevado a los ocho bits disponibles para subredes."
+    }
+  ],
+  "answer": "o-256"
+}

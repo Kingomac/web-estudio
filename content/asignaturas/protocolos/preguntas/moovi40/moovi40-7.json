@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Dos rutas con el mismo siguiente salto cubren 2001:db8:55:20::/64 y 2001:db8:55:21::/64. ¿Qué único prefijo resume exactamente ambos bloques, sin añadir destinos?",
+  "explanation": "Los valores hexadecimales 0020 y 0021 solo difieren en el último bit del cuarto hexteto. Al conservar 63 bits se agrupan exactamente esos dos /64. La base 20 está alineada para un bloque de dos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-55-48",
+      "text": "2001:db8:55::/48.",
+      "explanation": "Incluye todos los /64 del /48, muchos más que los dos solicitados."
+    },
+    {
+      "id": "o-2001-db8-55-20-64",
+      "text": "2001:db8:55:20::/64.",
+      "explanation": "Mantiene únicamente la primera de las dos subredes."
+    },
+    {
+      "id": "o-2001-db8-55-20-63",
+      "text": "2001:db8:55:20::/63.",
+      "explanation": "Agrupa los dos /64 contiguos y alineados sin ampliar la cobertura."
+    },
+    {
+      "id": "o-2001-db8-55-20-62",
+      "text": "2001:db8:55:20::/62.",
+      "explanation": "Cubre también los /64 con cuarto hexteto 22 y 23."
+    }
+  ],
+  "answer": "o-2001-db8-55-20-63"
+}

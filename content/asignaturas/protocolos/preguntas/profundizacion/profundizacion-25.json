@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "El NHC UDP es f1 f0 b2 23 12 34. ¿Qué puertos y tamaño de cabecera comprimida indica?",
+  "explanation": "f1=11110|0|01: checksum presente, origen de 16 bits y destino de 8 bits sumado a 0xf000. Se leen f0 b2, después 23 y finalmente checksum 12 34. El total es 1+2+1+2=6 bytes; UDP Length no se transmite.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · NHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "origen-0xf0b2-destino-0xf023-nhc",
+      "text": "Origen=0xf0b2; destino=0xf023; NHC UDP y campos=6 bytes.",
+      "explanation": "Interpreta correctamente P=01 y el orden de los campos."
+    },
+    {
+      "id": "origen-0xf0b2-destino-0xf0b3-nhc",
+      "text": "Origen=0xf0b2; destino=0xf0b3; NHC UDP y campos=4 bytes.",
+      "explanation": "Aplica la base f0b0 del modo de cuatro bits, aunque P no es 11."
+    },
+    {
+      "id": "origen-0xf0f0-destino-0xb223-nhc",
+      "text": "Origen=0xf0f0; destino=0xb223; NHC UDP y campos=6 bytes.",
+      "explanation": "Lee el formato P=10, intercambiando qué puerto está comprimido."
+    },
+    {
+      "id": "origen-0xf0b2-destino-0x0023-nhc",
+      "text": "Origen=0xf0b2; destino=0x0023; NHC UDP y campos=8 bytes.",
+      "explanation": "No restaura los bits altos del destino y confunde el tamaño comprimido con los ocho bytes UDP originales."
+    }
+  ],
+  "answer": "origen-0xf0b2-destino-0xf023-nhc"
+}

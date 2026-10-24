@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué solicita un NS con ARO y Registration Lifetime=0?",
+  "explanation": "La validez cero se utiliza para dar de baja el registro antes de su expiración.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        52
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-eliminacion-anticipada-del-registro",
+      "text": "La eliminación anticipada del registro.",
+      "explanation": "Un NS con ARO y Registration Lifetime = 0 pide eliminar el registro antes de que caduque."
+    },
+    {
+      "id": "un-registro-de-validez-infinita",
+      "text": "Un registro de validez infinita.",
+      "explanation": "Lifetime 0 da de baja; no significa validez infinita."
+    },
+    {
+      "id": "una-solicitud-de-duplicado-al",
+      "text": "Una solicitud de duplicado al 6LBR.",
+      "explanation": "La consulta de duplicados al 6LBR se hace con DAR, no con este NS."
+    },
+    {
+      "id": "una-renovacion-por-el-maximo",
+      "text": "Una renovación por el máximo de 60 segundos.",
+      "explanation": "El Registration Lifetime se expresa en minutos y 0 da de baja; 60 s es el máximo del reensamblado de fragmentos."
+    }
+  ],
+  "answer": "la-eliminacion-anticipada-del-registro"
+}

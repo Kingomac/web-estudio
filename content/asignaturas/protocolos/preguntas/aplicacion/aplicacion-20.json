@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pareja de puertos presenta el tema para CoAP sobre UDP y protegido con DTLS?",
+  "explanation": "CoAP usa UDP 5683; el transporte protegido con DTLS utiliza 5684 en el material.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        36
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-5683-y-5684",
+      "text": "5683 y 5684.",
+      "explanation": "CoAP usa UDP 5683 y DTLS 5684."
+    },
+    {
+      "id": "o-1883-y-8883",
+      "text": "1883 y 8883.",
+      "explanation": "1883 y 8883 son los puertos de MQTT sobre TCP y TLS/TCP."
+    },
+    {
+      "id": "o-546-y-547",
+      "text": "546 y 547.",
+      "explanation": "546 y 547 son los puertos UDP de DHCPv6 (cliente y servidor)."
+    },
+    {
+      "id": "o-80-y-4840",
+      "text": "80 y 4840.",
+      "explanation": "80 es HTTP y 4840 OPC UA sobre TCP."
+    }
+  ],
+  "answer": "o-5683-y-5684"
+}

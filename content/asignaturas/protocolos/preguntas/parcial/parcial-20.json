@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué combinación de versión HTTP y transporte coincide con el temario?",
+  "explanation": "El material presenta HTTP/3 sobre QUIC/UDP, frente al transporte TCP utilizado por las versiones anteriores. El puerto indicado para HTTP sobre QUIC es 443.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "http-3-sobre-quic-udp",
+      "text": "HTTP/3 sobre QUIC/UDP.",
+      "explanation": "El temario presenta HTTP/3 sobre QUIC/UDP, en el puerto 443."
+    },
+    {
+      "id": "http-3-sobre-icmpv6",
+      "text": "HTTP/3 sobre ICMPv6.",
+      "explanation": "ICMPv6 es un protocolo de control, no un transporte para HTTP."
+    },
+    {
+      "id": "http-1-1-sobre-udp",
+      "text": "HTTP/1.1 sobre UDP sin QUIC.",
+      "explanation": "HTTP/1.1 va sobre TCP; el uso de UDP llega con QUIC en HTTP/3."
+    },
+    {
+      "id": "http-2-sobre-dtls-udp",
+      "text": "HTTP/2 sobre DTLS/UDP.",
+      "explanation": "HTTP/2 va sobre TCP (o TLS/TCP); DTLS sobre UDP es la protección de CoAP."
+    }
+  ],
+  "answer": "http-3-sobre-quic-udp"
+}

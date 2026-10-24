@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Tras un IPHC con NH=1 aparece el octeto NHC e3. Su formato es 1110 | EID(3) | NH(1). ¿Qué significa?",
+  "explanation": "e3=1110|001|1: EID=1 identifica Routing Header y NH=1 anuncia otra codificación NHC después de sus campos. No permite deducir aún que esa cabecera posterior sea UDP; hay que continuar leyendo la cadena.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · NHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "es-udp-comprimido-con-ambos",
+      "text": "Es UDP comprimido con ambos puertos reducidos a cuatro bits.",
+      "explanation": "NHC UDP empieza por 11110, no por el identificador 1110 de extensiones."
+    },
+    {
+      "id": "es-una-fragment-header-ipv6",
+      "text": "Es una Fragment Header IPv6 y la siguiente cabecera va explícita.",
+      "explanation": "Fragment corresponde a EID=2 y NH=0 indicaría Next Header explícito."
+    },
+    {
+      "id": "es-ipv6-encapsulado-y-el",
+      "text": "Es IPv6 encapsulado y el siguiente campo es su Hop Limit.",
+      "explanation": "IPv6 encapsulado corresponde a EID=7 y su codificación tiene reglas diferentes."
+    },
+    {
+      "id": "es-una-routing-header-comprimida",
+      "text": "Es una Routing Header comprimida, y la cabecera que sigue a esa extensión también usa NHC.",
+      "explanation": "Decodifica EID y distingue esta extensión de la cabecera posterior."
+    }
+  ],
+  "answer": "es-una-routing-header-comprimida"
+}

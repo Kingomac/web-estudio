@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué puerto TCP nativo se menciona para OPC UA?",
+  "explanation": "La diapositiva también menciona HTTP 80 y HTTPS 443 como transportes del escenario OPC UA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-4840",
+      "text": "4840.",
+      "explanation": "OPC UA usa TCP en el puerto 4840, además de HTTP (80) y HTTPS (443)."
+    },
+    {
+      "id": "o-5353",
+      "text": "5353.",
+      "explanation": "5353 es el puerto de mDNS, no de OPC UA."
+    },
+    {
+      "id": "o-5683",
+      "text": "5683.",
+      "explanation": "5683 es el puerto de CoAP sobre UDP."
+    },
+    {
+      "id": "o-1883",
+      "text": "1883.",
+      "explanation": "1883 es el puerto de MQTT sobre TCP."
+    }
+  ],
+  "answer": "o-4840"
+}

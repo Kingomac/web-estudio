@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-62",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host acaba de arrancar y quiere acelerar el descubrimiento de routers IPv6. ¿Qué mensaje envía y a qué grupo?",
+  "explanation": "El host puede enviar un Router Solicitation al grupo all-routers, ff02::2. Los routers proporcionan la información de configuración mediante Router Advertisement.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "rs-a-ff02-2",
+      "text": "RS a ff02::2.",
+      "explanation": "Para acelerar el descubrimiento, el host envía un RS a ff02::2 (all-routers)."
+    },
+    {
+      "id": "ra-a-ff02-1",
+      "text": "RA a ff02::1.",
+      "explanation": "RA lo envían los routers, no el host."
+    },
+    {
+      "id": "ns-a-1",
+      "text": "NS a ::1.",
+      "explanation": "NS a ::1 no tiene sentido: ::1 es la loopback."
+    },
+    {
+      "id": "na-a-ff02-fb",
+      "text": "NA a ff02::fb.",
+      "explanation": "NA a ff02::fb no descubre routers; ff02::fb es el grupo de mDNS."
+    }
+  ],
+  "answer": "rs-a-ff02-2"
+}

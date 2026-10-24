@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-43",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Si un hijo cambia de padre dentro de la red Thread, ¿qué afirma el tema?",
+  "explanation": "ML-EID identifica al nodo independientemente de la topología; RLOC16 refleja su posición.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        65
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "cambia-rloc16-y-se-mantiene",
+      "text": "Cambia RLOC16 y se mantiene su ML-EID.",
+      "explanation": "Al cambiar de padre cambia su RLOC16, que refleja su posición, y se mantiene su ML-EID."
+    },
+    {
+      "id": "se-conserva-rloc16-y-cambia",
+      "text": "Se conserva RLOC16 y cambia obligatoriamente ML-EID.",
+      "explanation": "Invierte los papeles: el que cambia es RLOC16."
+    },
+    {
+      "id": "cambian-rloc16-y-ml-eid",
+      "text": "Cambian RLOC16 y ML-EID porque ambos reflejan exclusivamente el padre.",
+      "explanation": "ML-EID es independiente de la topología y no cambia con el padre."
+    },
+    {
+      "id": "no-cambia-ninguna-direccion-ni",
+      "text": "No cambia ninguna dirección ni localizador.",
+      "explanation": "El RLOC16 sí cambia porque contiene el Router ID del padre."
+    }
+  ],
+  "answer": "cambia-rloc16-y-se-mantiene"
+}

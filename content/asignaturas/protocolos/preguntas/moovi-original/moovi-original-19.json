@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.moovi-original-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente recibe de coap://sensor25.example:5683/.well-known/core la respuesta </m/7>;rt=\"temperature-c\",</m/8>;rt=\"relative-humidity\". La aplicación conoce el significado de ambos valores de rt. Quiere obtener la temperatura. ¿Qué actuación se deduce de esa respuesta?",
+  "explanation": "El atributo rt identifica /m/7 como el recurso de temperatura. La barra inicial indica una ruta desde la raíz del servidor: se conserva coap://sensor25.example:5683 y se solicita /m/7. El descubrimiento anuncia el enlace; para leer la medida hay que hacer ese GET posterior.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        53
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6690 §5 · descubrimiento CoRE",
+      "url": "https://www.rfc-editor.org/rfc/rfc6690.html#section-5"
+    }
+  ],
+  "options": [
+    {
+      "id": "enviar-get-a-coap-sensor25",
+      "text": "Enviar GET a coap://sensor25.example:5683/.well-known/core/m/7.",
+      "explanation": "/m/7 es una ruta absoluta desde la raíz, no un sufijo de /.well-known/core."
+    },
+    {
+      "id": "enviar-get-a-coap-sensor25-2",
+      "text": "Enviar GET a coap://sensor25.example:5683/m/7.",
+      "explanation": "Es la URI del enlace anunciado para la temperatura."
+    },
+    {
+      "id": "seleccionar-m-7-y-tomar",
+      "text": "Seleccionar /m/7 y tomar 7 como temperatura, pues el descubrimiento devuelve conjuntamente la ruta y el valor.",
+      "explanation": "El número 7 identifica parte de la ruta, no una medida."
+    },
+    {
+      "id": "enviar-get-a-coap-sensor25-3",
+      "text": "Enviar GET a coap://sensor25.example:5683/temperature-c, pues rt determina la ruta.",
+      "explanation": "rt describe el tipo de recurso; la ruta anunciada es /m/7."
+    }
+  ],
+  "answer": "enviar-get-a-coap-sensor25-2"
+}

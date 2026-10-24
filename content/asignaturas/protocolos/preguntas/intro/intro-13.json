@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué correspondencia presenta la diapositiva entre clases y funciones IEEE 802.15.4?",
+  "explanation": "Es la correspondencia utilizada en el esquema docente: Reduced-Function Device y Full-Function Device.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-1-con-rfd-y",
+      "text": "Clase 1 con RFD y clase 2 con FFD.",
+      "explanation": "La diapositiva asocia la clase 1 con Reduced-Function Device y la clase 2 con Full-Function Device."
+    },
+    {
+      "id": "clase-1-con-ffd-y",
+      "text": "Clase 1 con FFD y clase 2 con RFD.",
+      "explanation": "Invierte la correspondencia: RFD es la clase 1 y FFD la clase 2."
+    },
+    {
+      "id": "clase-0-con-ffd-y",
+      "text": "Clase 0 con FFD y clase 1 con RFD.",
+      "explanation": "La clase 0 no se asocia a FFD; FFD corresponde a la clase 2."
+    },
+    {
+      "id": "clase-0-y-clase-2",
+      "text": "Clase 0 y clase 2 con RFD; clase 1 con FFD.",
+      "explanation": "La clase 2 es FFD, no RFD, y la clase 1 es RFD, no FFD."
+    }
+  ],
+  "answer": "clase-1-con-rfd-y"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.moovi-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "H1 tiene 2001:db8:10::4/64 y debe enviar datos a 2001:db8:20::9, un destino fuera del enlace. Usa el router fe80::7 y su caché de vecinos está vacía. En NDP convencional sobre Ethernet, ¿qué destino IPv6 lleva el NS inicial para resolver la MAC necesaria?",
+  "explanation": "H1 necesita la MAC del siguiente salto local, fe80::7. El NS de resolución inicial se envía al solicited-node de ese router: ff02::1:ff00:7. El Target del NS es fe80::7, mientras que el paquete de datos conserva como destino 2001:db8:20::9.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 §7.2 · resolución de vecinos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7.2"
+    },
+    {
+      "title": "RFC 4291 §2.7.1 · solicited-node",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.7.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-1-ff00-9",
+      "text": "ff02::1:ff00:9",
+      "explanation": "Es el solicited-node del destino remoto, cuya MAC no se resuelve en el enlace de H1."
+    },
+    {
+      "id": "ff02-2",
+      "text": "ff02::2",
+      "explanation": "Es all-routers, empleado en otros intercambios; no es el grupo de resolución de fe80::7."
+    },
+    {
+      "id": "fe80-7",
+      "text": "fe80::7",
+      "explanation": "Es el Target; con la caché vacía, este NS inicial se envía por multicast, no como sondeo unicast."
+    },
+    {
+      "id": "ff02-1-ff00-7",
+      "text": "ff02::1:ff00:7",
+      "explanation": "Es el solicited-node del router siguiente salto."
+    }
+  ],
+  "answer": "ff02-1-ff00-7"
+}

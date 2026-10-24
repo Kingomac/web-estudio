@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué puertos UDP utiliza DHCPv6 en cliente y servidor?",
+  "explanation": "Es la pareja indicada en la diapositiva de DHCPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-546-en-cliente-y-547",
+      "text": "546 en cliente y 547 en servidor.",
+      "explanation": "DHCPv6 usa UDP 546 en el cliente y 547 en el servidor."
+    },
+    {
+      "id": "o-547-en-cliente-y-546",
+      "text": "547 en cliente y 546 en servidor.",
+      "explanation": "Invierte los puertos: 546 es el del cliente."
+    },
+    {
+      "id": "o-5683-en-cliente-y-5684",
+      "text": "5683 en cliente y 5684 en servidor.",
+      "explanation": "5683 y 5684 son los puertos de CoAP y CoAP con DTLS."
+    },
+    {
+      "id": "o-1883-en-cliente-y-8883",
+      "text": "1883 en cliente y 8883 en servidor.",
+      "explanation": "1883 y 8883 son los puertos de MQTT."
+    }
+  ],
+  "answer": "o-546-en-cliente-y-547"
+}

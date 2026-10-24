@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En NHC UDP, los puertos son 0xF0B2 y 0xF0BE y el checksum se transmite (C=0). Usando la máxima compresión de puertos disponible, ¿cuánto ocupa el conjunto NHC UDP, puertos y checksum?",
+  "explanation": "Ambos puertos pertenecen a 0xF0B0–0xF0BF, de modo que P=11 deja cuatro bits por puerto: 2 y e, reunidos en un byte. Con el byte NHC y los dos bytes de checksum son 4 bytes. La longitud UDP se deduce y no se transmite.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 §4.3.3 · NHC UDP",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4.3.3"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-5-bytes-1-de-nhc",
+      "text": "5 bytes: 1 de NHC, 2 para los puertos y 2 de checksum.",
+      "explanation": "El modo máximo usa cuatro bits por puerto, no un byte por puerto."
+    },
+    {
+      "id": "o-8-bytes-la-cabecera-udp",
+      "text": "8 bytes: la cabecera UDP no se puede comprimir en este caso.",
+      "explanation": "Los dos puertos cumplen la condición de compresión de cuatro bits."
+    },
+    {
+      "id": "o-4-bytes-1-de-nhc",
+      "text": "4 bytes: 1 de NHC, 1 para ambos puertos y 2 de checksum.",
+      "explanation": "Cuenta el byte NHC, los dos nibbles de puertos y el checksum presente."
+    },
+    {
+      "id": "o-3-bytes-1-de-nhc",
+      "text": "3 bytes: 1 de NHC y 2 de checksum, sin bits de puertos.",
+      "explanation": "Los cuatro bits finales de cada puerto deben transmitirse."
+    }
+  ],
+  "answer": "o-4-bytes-1-de-nhc"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera CoAP tiene Tipo=2. ¿Qué tipo de mensaje representa?",
+  "explanation": "Los dos bits de tipo codifican 0 para CON, 1 para NON, 2 para ACK y 3 para RST. El tipo no debe confundirse con el código de petición o respuesta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ack",
+      "text": "ACK.",
+      "explanation": "Tipo=2 es ACK."
+    },
+    {
+      "id": "con",
+      "text": "CON.",
+      "explanation": "CON es 0."
+    },
+    {
+      "id": "non",
+      "text": "NON.",
+      "explanation": "NON es 1."
+    },
+    {
+      "id": "rst",
+      "text": "RST.",
+      "explanation": "RST es 3."
+    }
+  ],
+  "answer": "ack"
+}

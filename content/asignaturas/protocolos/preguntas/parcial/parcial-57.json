@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-57",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es la dirección solicited-node correspondiente a 2001:db8:5::12:3456?",
+  "explanation": "Se toman los últimos 24 bits de la dirección, 12:3456, y se añaden al prefijo ff02::1:ff00:0/104. El resultado es ff02::1:ff12:3456.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-1-ff12-3456",
+      "text": "ff02::1:ff12:3456.",
+      "explanation": "Los últimos 24 bits (12:3456) se añaden a ff02::1:ff00:0/104: ff02::1:ff12:3456."
+    },
+    {
+      "id": "ff02-1-ff00-3456",
+      "text": "ff02::1:ff00:3456.",
+      "explanation": "Se pierde el octeto 12 de los 24 bits finales."
+    },
+    {
+      "id": "ff02-12-3456",
+      "text": "ff02::12:3456.",
+      "explanation": "Falta el prefijo 1:ff que define el grupo solicited-node."
+    },
+    {
+      "id": "ff02-2",
+      "text": "ff02::2.",
+      "explanation": "ff02::2 es el grupo all-routers."
+    }
+  ],
+  "answer": "ff02-1-ff12-3456"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa una entrada STALE en la caché de vecinos?",
+  "explanation": "Puede seguir utilizándose mientras se inicia la comprobación NUD.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        42
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "que-no-hay-confirmacion-reciente",
+      "text": "Que no hay confirmación reciente de alcanzabilidad.",
+      "explanation": "STALE indica que no hay confirmación reciente de alcanzabilidad; la entrada puede usarse mientras se comprueba."
+    },
+    {
+      "id": "que-se-ha-demostrado-que",
+      "text": "Que se ha demostrado que el vecino está apagado.",
+      "explanation": "STALE no prueba que el vecino esté apagado; solo falta confirmación."
+    },
+    {
+      "id": "que-el-vecino-no-tiene",
+      "text": "Que el vecino no tiene dirección IPv6.",
+      "explanation": "La entrada sigue asociando una IPv6 con una dirección de enlace."
+    },
+    {
+      "id": "que-la-direccion-es-necesariamente",
+      "text": "Que la dirección es necesariamente duplicada.",
+      "explanation": "La duplicidad se detecta con DAD, no con el estado STALE de NUD."
+    }
+  ],
+  "answer": "que-no-hay-confirmacion-reciente"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un conjunto de sensores se comunica por una LLN y envía sus medidas a una aplicación situada en Internet. ¿Qué función arquitectónica caracteriza a la pasarela o router de borde?",
+  "explanation": "La red de acceso conecta los nodos IoT con la pasarela o router de borde; la troncal permite la comunicación con la aplicación remota. Según la arquitectura, el borde puede enrutar IP o adaptar protocolos. La función común preguntada es unir acceso y troncal.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "interconectar-la-red-de-acceso",
+      "text": "Interconectar la red de acceso de los sensores con la red troncal.",
+      "explanation": "Es el punto de interconexión mostrado en la arquitectura del tema."
+    },
+    {
+      "id": "actuar-necesariamente-como-servidor-dns",
+      "text": "Actuar necesariamente como servidor DNS autoritativo de Internet.",
+      "explanation": "Ofrecer DNS no es una condición necesaria para ser pasarela IoT."
+    },
+    {
+      "id": "sustituir-la-red-troncal-reenviando",
+      "text": "Sustituir la red troncal reenviando únicamente tramas dentro de la LLN.",
+      "explanation": "El reenvío únicamente local no proporciona la interconexión con la troncal."
+    },
+    {
+      "id": "transportar-tramas-no-ip-sin",
+      "text": "Transportar tramas no IP sin adaptación por cualquier router de Internet.",
+      "explanation": "Los routers IP de Internet no transportan directamente cualquier trama no IP sin adaptación."
+    }
+  ],
+  "answer": "interconectar-la-red-de-acceso"
+}

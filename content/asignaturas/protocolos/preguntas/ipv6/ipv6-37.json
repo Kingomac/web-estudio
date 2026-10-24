@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué registro DNS-SD indica el host y el puerto de una instancia?",
+  "explanation": "PTR enumera instancias; SRV da host/puerto, TXT metadatos y AAAA la IPv6 del host.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "srv",
+      "text": "SRV.",
+      "explanation": "SRV indica el nombre del host y el puerto de la instancia."
+    },
+    {
+      "id": "ptr",
+      "text": "PTR.",
+      "explanation": "PTR devuelve los nombres de las instancias de un tipo de servicio."
+    },
+    {
+      "id": "txt",
+      "text": "TXT.",
+      "explanation": "TXT aporta metadatos de la instancia."
+    },
+    {
+      "id": "aaaa",
+      "text": "AAAA.",
+      "explanation": "AAAA da la dirección IPv6 del host, sin puerto."
+    }
+  ],
+  "answer": "srv"
+}

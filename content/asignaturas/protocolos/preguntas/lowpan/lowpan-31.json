@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Tras un RS del host, ¿cómo responde el router en el intercambio optimizado mostrado?",
+  "explanation": "El host solicita información; el RA le comunica datos del router, prefijos y posibles contextos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "con-un-ra-unicast",
+      "text": "Con un RA unicast.",
+      "explanation": "El router responde al RS con un RA unicast que incluye su dirección de enlace en la SLLAO."
+    },
+    {
+      "id": "con-un-ra-multicast-periodico",
+      "text": "Con un RA multicast periódico como única respuesta posible.",
+      "explanation": "Los RA periódicos multicast son los que RFC 6775 evita."
+    },
+    {
+      "id": "con-un-na-que-contiene",
+      "text": "Con un NA que contiene únicamente el valor ARO.",
+      "explanation": "NA con ARO responde al registro de dirección (NS con ARO), no al RS."
+    },
+    {
+      "id": "con-un-ns-multicast-al",
+      "text": "Con un NS multicast al solicited-node del host.",
+      "explanation": "Un NS multicast al solicited-node es la resolución NDP clásica que se pretende evitar."
+    }
+  ],
+  "answer": "con-un-ra-unicast"
+}

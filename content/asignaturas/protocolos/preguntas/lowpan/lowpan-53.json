@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-53",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Dónde se mantiene la información para reconstruir rutas descendentes en non-storing?",
+  "explanation": "Wi-SUN FAN utiliza non-storing; los routers siguen manteniendo vecinos y padres para tráfico ascendente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        78
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "en-la-raiz-que-incluye",
+      "text": "En la raíz, que incluye rutas de origen en los paquetes.",
+      "explanation": "En non-storing, la raíz guarda la topología e incluye rutas de origen en los paquetes."
+    },
+    {
+      "id": "en-cada-router-que-mantiene",
+      "text": "En cada router, que mantiene una tabla completa de sus descendientes.",
+      "explanation": "Que cada router guarde rutas hacia sus descendientes describe el modo storing."
+    },
+    {
+      "id": "solo-en-los-lfn-que",
+      "text": "Solo en los LFN, que anuncian directamente DAO.",
+      "explanation": "Los LFN no ejecutan RPL; sus routers padre anuncian sus direcciones."
+    },
+    {
+      "id": "no-se-conserva-porque-non",
+      "text": "No se conserva porque non-storing elimina cualquier ruta descendente.",
+      "explanation": "Las rutas descendentes existen: se construyen en la raíz a partir de los DAO."
+    }
+  ],
+  "answer": "en-la-raiz-que-incluye"
+}

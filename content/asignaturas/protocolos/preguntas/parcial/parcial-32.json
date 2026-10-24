@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servidor CoAP ya tiene disponible la respuesta al recibir una petición confirmable. ¿Qué caracteriza a una respuesta piggybacked?",
+  "explanation": "Piggybacked combina el asentimiento y la respuesta en un solo mensaje. Si la respuesta se envía por separado, un ACK vacío puede confirmar primero la recepción.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "transporta-la-respuesta-en-el",
+      "text": "Transporta la respuesta en el mismo mensaje que el ACK.",
+      "explanation": "Piggybacked envía la respuesta en el mismo mensaje que el ACK."
+    },
+    {
+      "id": "envia-primero-un-ack-vacio",
+      "text": "Envía primero un ACK vacío y siempre después un nuevo CON.",
+      "explanation": "ACK vacío y respuesta posterior describe una respuesta separada, que no es piggybacked."
+    },
+    {
+      "id": "sustituye-el-token-por-la",
+      "text": "Sustituye el Token por la dirección IPv6 del cliente.",
+      "explanation": "El Token relaciona petición y respuesta; no se sustituye por direcciones IP."
+    },
+    {
+      "id": "envia-la-respuesta-en-una",
+      "text": "Envía la respuesta en una conexión TCP independiente.",
+      "explanation": "CoAP va sobre UDP; la respuesta no viaja por una conexión TCP aparte."
+    }
+  ],
+  "answer": "transporta-la-respuesta-en-el"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué intercambio resuelve la dirección de enlace de un vecino IPv6 en el ejemplo NDP?",
+  "explanation": "El NS pregunta por la IPv6 objetivo y el NA proporciona la dirección de enlace correspondiente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ns-seguido-de-na",
+      "text": "NS seguido de NA.",
+      "explanation": "NDP resuelve la MAC de un vecino con un NS dirigido a su solicited-node y la respuesta NA."
+    },
+    {
+      "id": "rs-seguido-de-ra",
+      "text": "RS seguido de RA.",
+      "explanation": "RS/RA sirven para descubrir routers y prefijos."
+    },
+    {
+      "id": "solicit-seguido-de-advertise",
+      "text": "Solicit seguido de Advertise.",
+      "explanation": "Solicit y Advertise son mensajes de DHCPv6, no de NDP."
+    },
+    {
+      "id": "dar-seguido-de-dac",
+      "text": "DAR seguido de DAC.",
+      "explanation": "DAR y DAC pertenecen a la detección de duplicados multisalto de 6LoWPAN-ND (tema 4)."
+    }
+  ],
+  "answer": "ns-seguido-de-na"
+}

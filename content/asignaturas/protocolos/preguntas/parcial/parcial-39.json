@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una publicación MQTT usa QoS 0. Si se interrumpe la conexión en un momento desfavorable, ¿qué limitación debe tenerse en cuenta?",
+  "explanation": "QoS 0 es at most once: no incorpora confirmación de publicación MQTT. Aunque utiliza TCP, la caída de la conexión puede impedir la entrega.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        51
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-publicacion-puede-perderse-ya",
+      "text": "La publicación puede perderse, ya que no hay confirmación MQTT de esa entrega.",
+      "explanation": "QoS 0 es at most once: sin confirmación MQTT, la caída de la conexión puede perder la publicación."
+    },
+    {
+      "id": "el-broker-debe-completar-un",
+      "text": "El broker debe completar un intercambio de cuatro mensajes antes de aceptar datos.",
+      "explanation": "El intercambio de cuatro mensajes es QoS 2."
+    },
+    {
+      "id": "el-publicador-recibe-siempre-una",
+      "text": "El publicador recibe siempre una confirmación PUBACK antes de continuar.",
+      "explanation": "PUBACK pertenece a QoS 1."
+    },
+    {
+      "id": "el-mensaje-se-conserva-obligatoriamente",
+      "text": "El mensaje se conserva obligatoriamente como retenido.",
+      "explanation": "La retención depende del flag RETAIN, no del nivel QoS."
+    }
+  ],
+  "answer": "la-publicacion-puede-perderse-ya"
+}

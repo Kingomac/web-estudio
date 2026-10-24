@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Para qué se utiliza el modo deep sleep en un nodo IoT?",
+  "explanation": "Los modos de bajo consumo forman parte de la gestión de energía, junto con baterías y reguladores.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "para-reducir-el-consumo-energetico",
+      "text": "Para reducir el consumo energético durante periodos de reposo.",
+      "explanation": "Deep Sleep aparece en la gestión de energía como modo de bajo consumo para los periodos en reposo."
+    },
+    {
+      "id": "para-ampliar-el-alcance-de",
+      "text": "Para ampliar el alcance de la radio sin cambiar el consumo.",
+      "explanation": "Dormir no amplía el alcance radio; durante el reposo la radio no transmite."
+    },
+    {
+      "id": "para-transmitir-continuamente-con-menor",
+      "text": "Para transmitir continuamente con menor latencia.",
+      "explanation": "Transmitir continuamente es incompatible con un modo de reposo."
+    },
+    {
+      "id": "para-convertir-un-dispositivo-final",
+      "text": "Para convertir un dispositivo final en repetidor permanente.",
+      "explanation": "Un repetidor permanente necesita la radio activa para reenviar; dormir impide esa función."
+    }
+  ],
+  "answer": "para-reducir-el-consumo-energetico"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un kit Wio permite conectar sensores Grove sin soldar. ¿Qué característica física del ecosistema Grove se describe en el temario?",
+  "explanation": "Grove utiliza conectores de cuatro pines. Los conectores de veinticuatro pines corresponden al sistema WisBlock descrito en la diapositiva anterior.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "conectores-estandar-de-cuatro-pines",
+      "text": "Conectores estándar de cuatro pines.",
+      "explanation": "Grove usa conectores estándar de 4 pines sin soldadura."
+    },
+    {
+      "id": "conectores-apilables-de-veinticuatro-pin",
+      "text": "Conectores apilables de veinticuatro pines.",
+      "explanation": "Los conectores apilables de 24 pines son los de WisBlock."
+    },
+    {
+      "id": "conectores-ethernet-de-ocho-contactos",
+      "text": "Conectores Ethernet de ocho contactos.",
+      "explanation": "Grove no usa conectores Ethernet."
+    },
+    {
+      "id": "conexiones-exclusivamente-inalambricas-e",
+      "text": "Conexiones exclusivamente inalámbricas entre los módulos.",
+      "explanation": "Los módulos Grove se conectan físicamente por cable; Wio aporta la conectividad inalámbrica del conjunto."
+    }
+  ],
+  "answer": "conectores-estandar-de-cuatro-pines"
+}

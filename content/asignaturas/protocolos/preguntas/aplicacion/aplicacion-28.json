@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué valores Observe se usan para alta y baja en el ejemplo?",
+  "explanation": "El servidor mantiene observadores por cliente/token y envía actualizaciones del recurso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-0-para-observar-y-1",
+      "text": "0 para observar y 1 para cancelar.",
+      "explanation": "El cliente se registra con Observe: 0 y se da de baja con Observe: 1."
+    },
+    {
+      "id": "o-1-para-observar-y-0",
+      "text": "1 para observar y 0 para cancelar.",
+      "explanation": "Invierte los valores: 0 registra la observación y 1 la cancela."
+    },
+    {
+      "id": "o-0-para-ambas-operaciones-cambiando",
+      "text": "0 para ambas operaciones, cambiando solo el Message ID.",
+      "explanation": "El alta y la baja usan valores distintos de Observe; el Message ID no las distingue."
+    },
+    {
+      "id": "o-2-para-observar-y-3",
+      "text": "2 para observar y 3 para cancelar.",
+      "explanation": "El tema solo usa 0 y 1 para alta y baja."
+    }
+  ],
+  "answer": "o-0-para-observar-y-1"
+}

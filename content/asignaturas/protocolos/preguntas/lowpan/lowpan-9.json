@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el principio básico de compresión de 6LoWPAN?",
+  "explanation": "Se aprovechan valores conocidos, información del enlace y contextos compartidos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "no-transmitir-informacion-que-el",
+      "text": "No transmitir información que el receptor pueda reconstruir.",
+      "explanation": "El principio de RFC 6282 es no transmitir lo que el receptor puede reconstruir: valores conocidos, deducibles o de contexto."
+    },
+    {
+      "id": "omitir-campos-aunque-el-receptor",
+      "text": "Omitir campos aunque el receptor no pueda recuperarlos.",
+      "explanation": "Solo se omite lo recuperable; omitir campos irrecuperables corrompería el datagrama."
+    },
+    {
+      "id": "mantener-todos-los-campos-ipv6",
+      "text": "Mantener todos los campos IPv6 y reducir solo el payload.",
+      "explanation": "La compresión actúa sobre las cabeceras IPv6 y UDP, no sobre el payload."
+    },
+    {
+      "id": "sustituir-la-fragmentacion-por-una",
+      "text": "Sustituir la fragmentación por una trama de tamaño ilimitado.",
+      "explanation": "La trama sigue limitada a 127 bytes; la fragmentación sigue siendo necesaria si no cabe."
+    }
+  ],
+  "answer": "no-transmitir-informacion-que-el"
+}

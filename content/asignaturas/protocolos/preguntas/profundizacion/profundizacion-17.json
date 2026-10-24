@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Llega un Neighbor Solicitation con tipo ICMPv6=135, código=0, checksum correcto y Hop Limit IPv6=254. ¿Qué debe hacer el receptor según NDP convencional?",
+  "explanation": "La validación de NS exige Hop Limit=255. El checksum comprueba integridad, pero no sustituye esa condición. Un paquete con 254 no se acepta como NS válido, aunque los otros campos mencionados sean correctos.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 · Neighbor Discovery",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7"
+    }
+  ],
+  "options": [
+    {
+      "id": "descartarlo-en-la-validacion-ndp",
+      "text": "Descartarlo en la validación NDP porque Hop Limit no es 255.",
+      "explanation": "Aplica la condición de validación antes de procesar el NS."
+    },
+    {
+      "id": "aceptarlo-el-checksum-correcto-demuestra",
+      "text": "Aceptarlo: el checksum correcto demuestra que procede del mismo enlace.",
+      "explanation": "Un checksum válido no prueba que el mensaje no haya cruzado un router."
+    },
+    {
+      "id": "aceptarlo-y-devolver-un-na",
+      "text": "Aceptarlo y devolver un NA con Hop Limit=254.",
+      "explanation": "El NS ya debe descartarse y los mensajes NDP válidos usan 255."
+    },
+    {
+      "id": "reenviarlo-al-router-predeterminado-para",
+      "text": "Reenviarlo al router predeterminado para completar los 255 saltos.",
+      "explanation": "Hop Limit es un límite decreciente, no una cuenta que deba completarse."
+    }
+  ],
+  "answer": "descartarlo-en-la-validacion-ndp"
+}

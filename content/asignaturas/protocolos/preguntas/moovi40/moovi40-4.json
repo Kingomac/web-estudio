@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En una red en árbol, varios sensores pierden comunicación al apagarse su único repetidor hacia la pasarela. ¿Qué cambio puede aportar tolerancia a ese fallo?",
+  "explanation": "La redundancia de caminos de una malla puede permitir rodear el fallo. Se necesitan enlaces alternativos utilizables y capacidad de reenvío; cambiar direcciones, identificadores o memoria remota no crea un camino radio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "conservar-el-arbol-y-anadir",
+      "text": "Conservar el árbol y añadir más direcciones IPv6 a cada sensor.",
+      "explanation": "Más direcciones no crean enlaces ni rutas físicas alternativas."
+    },
+    {
+      "id": "conservar-el-arbol-y-aumentar",
+      "text": "Conservar el árbol y aumentar solo la memoria del servidor remoto.",
+      "explanation": "La memoria del servidor no restablece el enlace de acceso perdido."
+    },
+    {
+      "id": "cambiar-los-identificadores-de-los",
+      "text": "Cambiar los identificadores de los sensores sin cambiar los enlaces.",
+      "explanation": "Los identificadores distinguen nodos, pero no sustituyen conectividad."
+    },
+    {
+      "id": "una-malla-con-otro-camino",
+      "text": "Una malla con otro camino utilizable y nodos capaces de reenviar por él.",
+      "explanation": "Añade una alternativa real al repetidor averiado."
+    }
+  ],
+  "answer": "una-malla-con-otro-camino"
+}

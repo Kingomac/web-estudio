@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué aporta 6LoWPAN Fragment Forwarding?",
+  "explanation": "Evita reensamblar todo el datagrama antes de cada reenvío y reduce latencia.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "reenviar-fragmentos-posteriores-usando-l",
+      "text": "Reenviar fragmentos posteriores usando la decisión tomada a partir del primero.",
+      "explanation": "6LFF decide el siguiente salto con el primer fragmento y reenvía los posteriores con el mismo datagram_tag al mismo vecino."
+    },
+    {
+      "id": "obligar-a-cada-router-a",
+      "text": "Obligar a cada router a esperar y reensamblar todo el datagrama.",
+      "explanation": "Reensamblar todo en cada router es el problema que 6LFF evita."
+    },
+    {
+      "id": "eliminar-las-etiquetas-de-fragmentacion",
+      "text": "Eliminar las etiquetas de fragmentación en los nodos intermedios.",
+      "explanation": "6LFF se basa en las etiquetas para asociar los fragmentos."
+    },
+    {
+      "id": "cambiar-route-over-por-reenvio",
+      "text": "Cambiar route-over por reenvío exclusivamente basado en cabecera Mesh.",
+      "explanation": "6LFF mejora route-over; no lo sustituye por mesh-under."
+    }
+  ],
+  "answer": "reenviar-fragmentos-posteriores-usando-l"
+}

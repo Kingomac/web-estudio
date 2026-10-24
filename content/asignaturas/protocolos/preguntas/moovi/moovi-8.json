@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En una LoWPAN, un nodo intermedio consulta direcciones Originator y Final de la cabecera Mesh y reenvía sin actuar como router IPv6. ¿Qué mecanismo está usando?",
+  "explanation": "Mesh-under permite atravesar varios enlaces radio por debajo de IPv6. La capa 6LoWPAN utiliza direcciones IEEE 802.15.4; el nodo intermedio no decide el reenvío como router IPv6. Que las direcciones sean MAC no sitúa la decisión en el protocolo MAC: aquí se usa la capa de adaptación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "route-over-reenvio-en-ipv6",
+      "text": "Route-over: reenvío en IPv6 basado en el destino IPv6.",
+      "explanation": "En el caso descrito no hay una consulta de rutas IPv6 por el nodo intermedio."
+    },
+    {
+      "id": "mesh-under-seleccion-del-siguiente",
+      "text": "Mesh-under: selección del siguiente salto mediante puertos UDP.",
+      "explanation": "Los puertos UDP identifican aplicaciones, no los extremos de la cabecera Mesh."
+    },
+    {
+      "id": "route-over-todos-los-saltos",
+      "text": "Route-over: todos los saltos radio forman obligatoriamente un único salto IP.",
+      "explanation": "En route-over, cada router intermedio introduce un salto IPv6."
+    },
+    {
+      "id": "mesh-under-reenvio-en-la",
+      "text": "Mesh-under: reenvío en la capa de adaptación 6LoWPAN basado en direcciones de enlace.",
+      "explanation": "Identifica tanto la capa que reenvía como el tipo de dirección utilizado."
+    }
+  ],
+  "answer": "mesh-under-reenvio-en-la"
+}

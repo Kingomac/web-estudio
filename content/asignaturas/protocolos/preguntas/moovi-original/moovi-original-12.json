@@ -1,0 +1,58 @@
+{
+  "id": "protocolos.preguntas.moovi-original-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En una red Ethernet, un host H1 con dirección 2001:db8::3/64, cuya tabla de vecinos se halla vacía, desea enviar un paquete a H2, este último con dirección 2001:db8:8000::3/64. Suponiendo que el default gateway de H1 es fe80::1. ¿cuál es el valor de la dirección IP destino del paquete IPv6 que transporta el mensaje NS?",
+  "explanation": "H2 está fuera del /64 de H1, por lo que H1 necesita resolver la MAC del router fe80::1. Con la caché vacía, envía el NS al solicited-node de ese siguiente salto: ff02::1:ff00:1. El Target del NS es fe80::1; el paquete de datos sigue teniendo H2 como destino IPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 §7.2 · resolución de vecinos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7.2"
+    },
+    {
+      "title": "RFC 4291 §2.7.1 · solicited-node",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.7.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-1-ff00-3",
+      "text": "ff02::1:ff00:3",
+      "explanation": "Se necesita resolver el router local, no el destino H2 fuera del enlace."
+    },
+    {
+      "id": "ff02-1-ff00-1",
+      "text": "ff02::1:ff00:1",
+      "explanation": "Es el solicited-node del gateway fe80::1."
+    },
+    {
+      "id": "ff02-1",
+      "text": "ff02::1",
+      "explanation": "All-nodes no es el grupo de resolución del siguiente salto."
+    },
+    {
+      "id": "fe80-1",
+      "text": "fe80::1",
+      "explanation": "Es el Target; el destino del NS inicial con caché vacía es multicast."
+    }
+  ],
+  "answer": "ff02-1-ff00-1"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una empresa publica correctamente sus servicios CoAP en DNS unicast bajo edificio.example para clientes de varias subredes. Sin reflectores ni proxies mDNS, ¿cómo puede realizar el descubrimiento mediante DNS-SD?",
+  "explanation": "DNS-SD define el uso de nombres y registros para descubrir servicios; puede funcionar con DNS unicast. mDNS utiliza multicast de alcance local al enlace, y cambiar el sufijo consultado no amplía ese alcance. No es obligatorio cambiar a mDNS para resolver la instancia.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6763 · DNS-SD",
+      "url": "https://www.rfc-editor.org/rfc/rfc6763.html"
+    }
+  ],
+  "options": [
+    {
+      "id": "usar-dns-unicast-para-el",
+      "text": "Usar DNS unicast para el PTR, pero obligatoriamente mDNS para cada SRV y AAAA.",
+      "explanation": "DNS-SD también permite resolver SRV y AAAA mediante DNS unicast."
+    },
+    {
+      "id": "consultar-por-dns-unicast-coap",
+      "text": "Consultar por DNS unicast _coap._udp.edificio.example y resolver los registros de las instancias.",
+      "explanation": "Aprovecha los registros DNS unicast publicados para el dominio."
+    },
+    {
+      "id": "enviar-la-consulta-a-ff02",
+      "text": "Enviar la consulta a ff02::fb y confiar en que el sufijo edificio.example haga que cruce routers.",
+      "explanation": "ff02::fb tiene alcance de enlace; el nombre consultado no permite atravesar routers."
+    },
+    {
+      "id": "publicar-todo-bajo-local-pues",
+      "text": "Publicar todo bajo .local, pues mDNS une automáticamente las distintas subredes.",
+      "explanation": "El funcionamiento ordinario de mDNS no fusiona subredes independientes."
+    }
+  ],
+  "answer": "consultar-por-dns-unicast-coap"
+}

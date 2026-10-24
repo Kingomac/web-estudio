@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-70",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación guarda el UUID de un sensor y este cambia de red y dirección IP. ¿Qué aporta el UUID?",
+  "explanation": "Un identificador persistente permite reconocer al mismo dispositivo aunque cambien su IP o nombre. No indica por sí solo cómo alcanzarlo ni sustituye al direccionamiento.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        47
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "permite-reconocer-el-dispositivo-pero",
+      "text": "Permite reconocer el dispositivo, pero debe asociarse con datos actuales de acceso.",
+      "explanation": "El UUID reconoce al dispositivo, pero hay que asociarlo con su dirección o su forma de acceso actual."
+    },
+    {
+      "id": "permite-calcular-directamente-la-nueva",
+      "text": "Permite calcular directamente la nueva dirección IPv6.",
+      "explanation": "El UUID no permite calcular direcciones IPv6."
+    },
+    {
+      "id": "sustituye-a-la-direccion-ip",
+      "text": "Sustituye a la dirección IP en las tablas de reenvío de los routers.",
+      "explanation": "Los routers reenvían por prefijos IP; no usan UUID."
+    },
+    {
+      "id": "garantiza-que-el-sensor-mantenga",
+      "text": "Garantiza que el sensor mantenga su anterior puerto de transporte.",
+      "explanation": "El UUID no fija ni conserva puertos de transporte."
+    }
+  ],
+  "answer": "permite-reconocer-el-dispositivo-pero"
+}

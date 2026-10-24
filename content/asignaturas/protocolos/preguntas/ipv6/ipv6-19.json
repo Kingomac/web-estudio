@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué limita el uso de una dirección link-local?",
+  "explanation": "Las link-local identifican interfaces dentro de su enlace; el material utiliza fe80::/64 para construirlas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "su-ambito-se-restringe-al",
+      "text": "Su ámbito se restringe al enlace o subred local.",
+      "explanation": "Una link-local identifica la interfaz solo dentro de su enlace, por lo que su uso se limita a esa subred."
+    },
+    {
+      "id": "su-uso-esta-limitado-a",
+      "text": "Su uso está limitado a un único puerto de aplicación.",
+      "explanation": "Las direcciones no se limitan a un puerto de aplicación; el puerto es de la capa de transporte."
+    },
+    {
+      "id": "su-alcance-cubre-todas-las",
+      "text": "Su alcance cubre todas las subredes de cualquier organización.",
+      "explanation": "Atravesar subredes internas es lo que permiten las ULA, no las link-local."
+    },
+    {
+      "id": "su-validez-exige-asignacion-por",
+      "text": "Su validez exige asignación por un ISP.",
+      "explanation": "Las link-local se forman automáticamente con fe80::/64 e IID; no las asigna un ISP."
+    }
+  ],
+  "answer": "su-ambito-se-restringe-al"
+}

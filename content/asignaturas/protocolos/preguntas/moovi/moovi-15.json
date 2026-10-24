@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se quiere adaptar IPv6 a una LPWAN que admite solo unos pocos bytes por mensaje y cuyos nodos solo abren ventanas breves de recepción después de transmitir. ¿Qué pareja de restricciones motiva una adaptación específica como SCHC?",
+  "explanation": "Un presupuesto de pocos bytes hace costoso el overhead; además, las ventanas de recepción limitan los intercambios descendentes. SCHC se diseña para estas restricciones. La baja tasa de datos también es real, pero no se presenta como si fuera la única dificultad ni se afirma que todas las LPWAN tengan idéntico comportamiento.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 8724 §1 · restricciones LPWAN",
+      "url": "https://www.rfc-editor.org/rfc/rfc8724.html#section-1"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-imposibilidad-de-asignar-direcciones",
+      "text": "La imposibilidad de asignar direcciones IPv6 de 128 bits a un sensor.",
+      "explanation": "Un sensor puede usar IPv6; el problema es transportar la información de forma eficiente."
+    },
+    {
+      "id": "la-necesidad-de-usar-siempre",
+      "text": "La necesidad de usar siempre tramas Ethernet de gran tamaño.",
+      "explanation": "La tecnología LPWAN indicada no requiere tramas Ethernet."
+    },
+    {
+      "id": "el-presupuesto-minimo-de-bytes",
+      "text": "El presupuesto mínimo de bytes y las oportunidades limitadas de comunicación descendente.",
+      "explanation": "Recoge las dos restricciones concretas del escenario."
+    },
+    {
+      "id": "la-ausencia-total-de-perdidas",
+      "text": "La ausencia total de pérdidas y el exceso de capacidad de transmisión.",
+      "explanation": "El caso plantea recursos escasos, no capacidad abundante ni enlaces perfectos."
+    }
+  ],
+  "answer": "el-presupuesto-minimo-de-bytes"
+}

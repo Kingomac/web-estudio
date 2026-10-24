@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-84",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En LOWPAN_IPHC se selecciona TF=10. ¿Qué información se transmite en línea y qué se reconstruye?",
+  "explanation": "TF=10 conserva Traffic Class, formado por ECN y DSCP, en un byte y omite Flow Label. TF=11 suprime ambos y TF=00 conserva los dos en cuatro bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ecn-y-dscp-en-un",
+      "text": "ECN y DSCP en un byte; Flow Label se reconstruye como cero.",
+      "explanation": "TF=10 envía ECN y DSCP en un byte y reconstruye Flow Label como cero."
+    },
+    {
+      "id": "flow-label-en-tres-bytes",
+      "text": "Flow Label en tres bytes; Traffic Class se reconstruye como cero.",
+      "explanation": "Flow Label con ECN en 3 bytes es TF=01, y en ese modo se suprime DSCP, no todo Traffic Class."
+    },
+    {
+      "id": "traffic-class-y-flow-label",
+      "text": "Traffic Class y Flow Label completos en cuatro bytes.",
+      "explanation": "Los cuatro bytes completos son TF=00."
+    },
+    {
+      "id": "no-se-transmite-ninguno-de",
+      "text": "No se transmite ninguno de los dos campos y ambos se reconstruyen como cero.",
+      "explanation": "Suprimir ambos campos es TF=11."
+    }
+  ],
+  "answer": "ecn-y-dscp-en-un"
+}

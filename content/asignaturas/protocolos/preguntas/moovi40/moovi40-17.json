@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se transporta por Ethernet un paquete dirigido a ff05::abcd:5678. ¿Qué dirección MAC destino corresponde al mapeo multicast IPv6?",
+  "explanation": "El mapeo Ethernet usa 33:33 seguido de los últimos 32 bits de la dirección multicast: ab:cd:56:78. Los 24 bits pertenecen a la construcción del grupo solicited-node, no a este mapeo. Así se evita reproducir la errata del cuestionario de referencia.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-33-33-ab-cd-56",
+      "text": "33:33:ab:cd:56:78.",
+      "explanation": "Conserva los cuatro octetos finales del destino multicast."
+    },
+    {
+      "id": "o-33-33-00-cd-56",
+      "text": "33:33:00:cd:56:78.",
+      "explanation": "Solo conserva 24 bits y pierde el octeto ab."
+    },
+    {
+      "id": "o-33-33-ff-cd-56",
+      "text": "33:33:ff:cd:56:78.",
+      "explanation": "Introduce ff como si el destino fuera necesariamente un grupo solicited-node."
+    },
+    {
+      "id": "ff-ff-ff-ff-ff",
+      "text": "ff:ff:ff:ff:ff:ff.",
+      "explanation": "Es broadcast Ethernet, no la dirección multicast calculada."
+    }
+  ],
+  "answer": "o-33-33-ab-cd-56"
+}

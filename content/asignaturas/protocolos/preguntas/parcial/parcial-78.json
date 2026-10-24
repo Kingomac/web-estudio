@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-78",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas descripciones de Thread coincide con la introducción del tema?",
+  "explanation": "Thread se presenta como una solución de red mallada IPv6 sobre IEEE 802.15.4 y 6LoWPAN. Esa descripción introductoria está dentro del alcance; los detalles posteriores de Thread quedan fuera.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "malla-ipv6-de-bajo-consumo",
+      "text": "Malla IPv6 de bajo consumo basada en IEEE 802.15.4 y 6LoWPAN, independiente de la aplicación.",
+      "explanation": "El tema presenta Thread como malla IPv6 de bajo consumo sobre 802.15.4 y 6LoWPAN, independiente de la aplicación."
+    },
+    {
+      "id": "pila-no-ip-que-utiliza",
+      "text": "Pila no IP que utiliza exclusivamente Bluetooth Mesh.",
+      "explanation": "Thread es IPv6 y usa 802.15.4, no Bluetooth Mesh."
+    },
+    {
+      "id": "protocolo-de-aplicacion-que-sustituye",
+      "text": "Protocolo de aplicación que sustituye a CoAP y MQTT en cualquier red.",
+      "explanation": "Thread es una solución de red; es independiente de la aplicación y no sustituye a CoAP o MQTT."
+    },
+    {
+      "id": "red-en-estrella-que-exige",
+      "text": "Red en estrella que exige que cada sensor tenga acceso directo a Internet por Wi-Fi.",
+      "explanation": "Thread es una malla de bajo consumo, no una estrella con Wi-Fi."
+    }
+  ],
+  "answer": "malla-ipv6-de-bajo-consumo"
+}

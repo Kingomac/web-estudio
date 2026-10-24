@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué radio usan Zigbee y Thread en el escenario presentado?",
+  "explanation": "La diapositiva sitúa ambas tecnologías sobre IEEE 802.15.4 en 2,4 GHz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2-4-ghz-con-tasa",
+      "text": "2,4 GHz con tasa física de 250 kbit/s.",
+      "explanation": "Zigbee y Thread usan IEEE 802.15.4 en 2,4 GHz con una tasa física de 250 kbit/s."
+    },
+    {
+      "id": "o-5-ghz-con-tasa-fija",
+      "text": "5 GHz con tasa fija de 2 Gbit/s.",
+      "explanation": "5 GHz y gigabits son valores de WiFi, no de 802.15.4."
+    },
+    {
+      "id": "solo-fibra-a-100-mbit",
+      "text": "Solo fibra a 100 Mbit/s.",
+      "explanation": "Son tecnologías radio; no usan fibra."
+    },
+    {
+      "id": "sub-ghz-a-exactamente-50",
+      "text": "Sub-GHz a exactamente 50 bit/s en ambos casos.",
+      "explanation": "Las modalidades sub-GHz corresponden a IEEE 802.15.4g (Wi-SUN), y 50 bit/s no es su tasa."
+    }
+  ],
+  "answer": "o-2-4-ghz-con-tasa"
+}

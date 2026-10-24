@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.tests.tema-1-introduccion",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "tema-1-introduccion",
+  "title": "Test · Introducción a IoT",
+  "description": "20 preguntas sobre dispositivos, modularidad, recursos y redes LLN.",
+  "scope": "Tema 1 completo (14 páginas).",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "order": 150,
+  "groups": [
+    {
+      "id": "dispositivos",
+      "title": "Dispositivos",
+      "questionIds": [
+        "protocolos.preguntas.intro-1",
+        "protocolos.preguntas.intro-2",
+        "protocolos.preguntas.intro-3",
+        "protocolos.preguntas.intro-4",
+        "protocolos.preguntas.intro-5",
+        "protocolos.preguntas.intro-6"
+      ]
+    },
+    {
+      "id": "modularidad",
+      "title": "Modularidad",
+      "questionIds": [
+        "protocolos.preguntas.intro-7",
+        "protocolos.preguntas.intro-8",
+        "protocolos.preguntas.intro-9"
+      ]
+    },
+    {
+      "id": "recursos",
+      "title": "Recursos",
+      "questionIds": [
+        "protocolos.preguntas.intro-10",
+        "protocolos.preguntas.intro-11",
+        "protocolos.preguntas.intro-12",
+        "protocolos.preguntas.intro-13"
+      ]
+    },
+    {
+      "id": "redes",
+      "title": "Redes",
+      "questionIds": [
+        "protocolos.preguntas.intro-14",
+        "protocolos.preguntas.intro-15",
+        "protocolos.preguntas.intro-16",
+        "protocolos.preguntas.intro-17",
+        "protocolos.preguntas.intro-18",
+        "protocolos.preguntas.intro-19",
+        "protocolos.preguntas.intro-20"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "protocolos.preguntas.moovi-original-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Dos vecinos del mismo enlace tienen, respectivamente, 2001:db8:1::1234:5678 y 2001:db8:1::ab34:5678. Un tercer nodo envía un NS de resolución para la primera dirección. Ambos reciben el paquete multicast. Sin proxy NDP ni direcciones duplicadas, ¿qué comportamiento es correcto?",
+  "explanation": "Ambas direcciones terminan en los mismos 24 bits: 34:56:78. Por eso comparten ff02::1:ff34:5678. Cada receptor comprueba la dirección IPv6 objetivo completa del NS; solo el propietario de 2001:db8:1::1234:5678 debe responder. Compartir el grupo no significa tener la misma dirección.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 §2.7.1 · solicited-node",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.7.1"
+    },
+    {
+      "title": "RFC 4861 §7.2 · resolución de vecinos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "ambos-pertenecen-a-ff02-1",
+      "text": "Ambos pertenecen a ff02::1:ff34:5678 y deben responder; el solicitante diferencia después las respuestas por su MAC.",
+      "explanation": "Compartir el grupo no obliga a responder por un Target ajeno."
+    },
+    {
+      "id": "cada-direccion-corresponde-a-un",
+      "text": "Cada dirección corresponde a un grupo solicited-node distinto; la recepción por ambos implica un error de filtrado IPv6.",
+      "explanation": "El grupo usa solo los 24 bits finales, que aquí son iguales."
+    },
+    {
+      "id": "ambos-pertenecen-a-ff02-1-2",
+      "text": "Ambos pertenecen a ff02::1:ff34:5678, pero responde el vecino cuya MAC coincida con los 24 bits finales del objetivo.",
+      "explanation": "Se comprueba la IPv6 objetivo completa, no esos bits de la MAC propia."
+    },
+    {
+      "id": "ambos-pertenecen-a-ff02-1-3",
+      "text": "Ambos pertenecen a ff02::1:ff34:5678, pero solo el propietario de la dirección objetivo debe responder.",
+      "explanation": "Ambos reciben el multicast, pero solo el propietario del Target responde."
+    }
+  ],
+  "answer": "ambos-pertenecen-a-ff02-1-3"
+}

@@ -1,0 +1,79 @@
+{
+  "id": "protocolos.tests.tema-3-ip-en-iot",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "tema-3-ip-en-iot",
+  "title": "Test · IP en IoT",
+  "description": "40 preguntas sobre rutas, direcciones IPv6, configuración, NDP y descubrimiento.",
+  "scope": "Tema 3 completo (55 páginas).",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 170,
+  "groups": [
+    {
+      "id": "arquitectura-y-rutas",
+      "title": "Arquitectura y rutas",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-1",
+        "protocolos.preguntas.ipv6-2",
+        "protocolos.preguntas.ipv6-3",
+        "protocolos.preguntas.ipv6-4",
+        "protocolos.preguntas.ipv6-5",
+        "protocolos.preguntas.ipv6-6",
+        "protocolos.preguntas.ipv6-7",
+        "protocolos.preguntas.ipv6-8",
+        "protocolos.preguntas.ipv6-9"
+      ]
+    },
+    {
+      "id": "direcciones",
+      "title": "Direcciones",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-10",
+        "protocolos.preguntas.ipv6-11",
+        "protocolos.preguntas.ipv6-12",
+        "protocolos.preguntas.ipv6-13",
+        "protocolos.preguntas.ipv6-14",
+        "protocolos.preguntas.ipv6-15",
+        "protocolos.preguntas.ipv6-16",
+        "protocolos.preguntas.ipv6-17",
+        "protocolos.preguntas.ipv6-18",
+        "protocolos.preguntas.ipv6-19",
+        "protocolos.preguntas.ipv6-20",
+        "protocolos.preguntas.ipv6-21",
+        "protocolos.preguntas.ipv6-22"
+      ]
+    },
+    {
+      "id": "configuracion-y-ndp",
+      "title": "Configuración y NDP",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-23",
+        "protocolos.preguntas.ipv6-24",
+        "protocolos.preguntas.ipv6-25",
+        "protocolos.preguntas.ipv6-26",
+        "protocolos.preguntas.ipv6-27",
+        "protocolos.preguntas.ipv6-28",
+        "protocolos.preguntas.ipv6-29",
+        "protocolos.preguntas.ipv6-30",
+        "protocolos.preguntas.ipv6-31",
+        "protocolos.preguntas.ipv6-32",
+        "protocolos.preguntas.ipv6-33"
+      ]
+    },
+    {
+      "id": "descubrimiento",
+      "title": "Descubrimiento",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-34",
+        "protocolos.preguntas.ipv6-35",
+        "protocolos.preguntas.ipv6-36",
+        "protocolos.preguntas.ipv6-37",
+        "protocolos.preguntas.ipv6-38",
+        "protocolos.preguntas.ipv6-39",
+        "protocolos.preguntas.ipv6-40"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-72",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Ya se conoce el nombre de una instancia DNS-SD. ¿Qué información proporciona su registro SRV?",
+  "explanation": "SRV permite localizar el servicio mediante host y puerto. TXT aporta metadatos y A/AAAA permite resolver las direcciones IP del host.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-nombre-del-host-y",
+      "text": "El nombre del host y el puerto donde se ofrece el servicio.",
+      "explanation": "SRV indica el nombre del host y el puerto de la instancia."
+    },
+    {
+      "id": "la-mac-del-host-y",
+      "text": "La MAC del host y el prefijo link-local.",
+      "explanation": "DNS-SD no publica la MAC ni prefijos link-local."
+    },
+    {
+      "id": "la-ultima-medida-de-todos",
+      "text": "La última medida de todos los sensores del dominio.",
+      "explanation": "DNS-SD describe servicios; no devuelve medidas."
+    },
+    {
+      "id": "la-direccion-solicited-node-y",
+      "text": "La dirección solicited-node y el tamaño de la trama radio.",
+      "explanation": "Solicited-node y tamaño de trama no forman parte de DNS."
+    }
+  ],
+  "answer": "el-nombre-del-host-y"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Dónde se toma la decisión de reenvío en route-over?",
+  "explanation": "En route-over el nodo intermedio se comporta como router IP; mesh-under reenvía por debajo de IPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "en-la-capa-ipv6-de",
+      "text": "En la capa IPv6 de los routers intermedios.",
+      "explanation": "En route-over, cada nodo intermedio actúa como router y decide en la capa IPv6."
+    },
+    {
+      "id": "en-6lowpan-basandose-unicamente-en",
+      "text": "En 6LoWPAN basándose únicamente en direcciones MAC finales.",
+      "explanation": "Reenviar en 6LoWPAN con direcciones MAC es mesh-under."
+    },
+    {
+      "id": "en-la-capa-de-aplicacion",
+      "text": "En la capa de aplicación mediante un broker.",
+      "explanation": "Los brokers son de MQTT; el reenvío ocurre en la red."
+    },
+    {
+      "id": "en-el-border-router-como",
+      "text": "En el border router como único nodo que puede decidir cualquier salto.",
+      "explanation": "Cada 6LR decide su siguiente salto; no solo el border router."
+    }
+  ],
+  "answer": "en-la-capa-ipv6-de"
+}

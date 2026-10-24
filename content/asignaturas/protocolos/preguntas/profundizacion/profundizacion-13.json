@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera base IPv6 empieza por 6d e5 43 21 00 28 3c ff. ¿Qué valores contiene la primera palabra de 32 bits?",
+  "explanation": "Agrupa los ocho nibbles como 6 | de | 54321: 4 bits de versión, 8 de Traffic Class y 20 de Flow Label. Traffic Class cruza la frontera entre los dos primeros octetos.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · IPv6",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "options": [
+    {
+      "id": "version-6-traffic-class-0xde",
+      "text": "Versión=6, Traffic Class=0xde, Flow Label=0x54321.",
+      "explanation": "Respeta las anchuras 4+8+20."
+    },
+    {
+      "id": "version-6-traffic-class-0x6d",
+      "text": "Versión=6, Traffic Class=0x6d, Flow Label=0xe54321.",
+      "explanation": "Incluye la versión dentro de Traffic Class y atribuye 24 bits a Flow Label."
+    },
+    {
+      "id": "version-6-traffic-class-0xe5",
+      "text": "Versión=6, Traffic Class=0xe5, Flow Label=0x04321.",
+      "explanation": "Supone que Traffic Class es el segundo byte entero y pierde el nibble alto del Flow Label."
+    },
+    {
+      "id": "version-6-traffic-class-0xd5",
+      "text": "Versión=6, Traffic Class=0xd5, Flow Label=0xe4321.",
+      "explanation": "Combina nibbles no contiguos y cambia el orden de los bits."
+    }
+  ],
+  "answer": "version-6-traffic-class-0xde"
+}

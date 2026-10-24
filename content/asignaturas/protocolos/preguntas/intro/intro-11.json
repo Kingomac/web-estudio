@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué capacidad asigna el tema a los nodos de clase 1?",
+  "explanation": "La clase 1 mejora la capacidad de la clase 0 y admite una pila reducida, con funcionamiento intermitente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "una-pila-ip-reducida-y",
+      "text": "Una pila IP reducida y optimizada para bajo consumo.",
+      "explanation": "La clase 1 implementa una pila IP reducida y optimizada para bajo consumo, con funcionamiento intermitente."
+    },
+    {
+      "id": "ausencia-de-recursos-para-toda",
+      "text": "Ausencia de recursos para toda pila IP, como en clase 0.",
+      "explanation": "No poder implementar una pila IP es lo que caracteriza a la clase 0."
+    },
+    {
+      "id": "implementacion-completa-de-ip-y",
+      "text": "Implementación completa de IP y reenvío obligatorio para otros nodos.",
+      "explanation": "Pila completa y reenvío para otros nodos son capacidades de la clase 2."
+    },
+    {
+      "id": "capacidad-de-encaminamiento-superior-a",
+      "text": "Capacidad de encaminamiento superior a la clase 2.",
+      "explanation": "La clase 2 tiene más capacidad que la 1; la clase 1 no la supera."
+    }
+  ],
+  "answer": "una-pila-ip-reducida-y"
+}

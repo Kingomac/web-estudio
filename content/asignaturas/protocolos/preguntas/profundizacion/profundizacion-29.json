@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "A(0x1001)→B(0x1002)→C(0x1003). B recibe Mesh=b3 10 01 10 03 y un datagrama IPv6 con HL=64. B reenvía mediante mesh-under. ¿Qué cambia al salir hacia C?",
+  "explanation": "b3=10|1|1|0011: las dos direcciones Mesh son cortas y Hops Left=3. B reduce ese contador a 2; Originator y Final Destination permanecen. B cambia las direcciones de la trama del salto, pero no hace un reenvío IPv6.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · Mesh",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "mesh-comienza-por-b2-sus",
+      "text": "Mesh comienza por b2; sus extremos siguen siendo 1001/1003; HL IPv6 sigue en 64.",
+      "explanation": "Solo disminuye el contador de la capa que está realizando el reenvío."
+    },
+    {
+      "id": "mesh-comienza-por-b2-sus-2",
+      "text": "Mesh comienza por b2; sus extremos pasan a 1002/1003; HL sigue en 64.",
+      "explanation": "Confunde Originator Mesh con el emisor MAC del salto actual."
+    },
+    {
+      "id": "mesh-comienza-por-b3-sus",
+      "text": "Mesh comienza por b3; sus extremos siguen en 1001/1003; HL pasa a 63.",
+      "explanation": "Aplica el comportamiento de route-over a un reenvío mesh-under."
+    },
+    {
+      "id": "mesh-comienza-por-b2-sus-3",
+      "text": "Mesh comienza por b2; sus extremos siguen en 1001/1003; HL pasa a 63.",
+      "explanation": "Decrementa indebidamente también Hop Limit IPv6."
+    }
+  ],
+  "answer": "mesh-comienza-por-b2-sus"
+}

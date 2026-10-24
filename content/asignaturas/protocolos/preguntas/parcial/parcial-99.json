@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-99",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el route-over básico descrito hasta la página 37, ¿qué hace un 6LR con los fragmentos de un datagrama antes de reenviarlo a nivel IPv6?",
+  "explanation": "En este modo, cada nodo intermedio actúa como router IPv6. La adaptación reconstruye el datagrama para IPv6 y prepara después su transporte por el siguiente enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        36
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "los-reensambla-y-descomprime-despues",
+      "text": "Los reensambla y descomprime; después del reenvío, vuelve a comprimir y fragmenta si hace falta.",
+      "explanation": "En route-over básico, el 6LR reensambla y descomprime, reenvía a nivel IPv6 y vuelve a comprimir y fragmentar."
+    },
+    {
+      "id": "reenvia-cada-fragmento-usando-unicamente",
+      "text": "Reenvía cada fragmento usando únicamente la MAC Final de una cabecera Mesh.",
+      "explanation": "Reenviar por la MAC Final de la cabecera Mesh es mesh-under."
+    },
+    {
+      "id": "los-entrega-directamente-a-la",
+      "text": "Los entrega directamente a la aplicación sin consultar la dirección IPv6 destino.",
+      "explanation": "El 6LR reenvía consultando el destino IPv6; no entrega a la aplicación."
+    },
+    {
+      "id": "conserva-los-fragmentos-sin-reensamblar",
+      "text": "Conserva los fragmentos sin reensamblar hasta recibir un RA del destino final.",
+      "explanation": "El RA no interviene en el reenvío de un datagrama."
+    }
+  ],
+  "answer": "los-reensambla-y-descomprime-despues"
+}

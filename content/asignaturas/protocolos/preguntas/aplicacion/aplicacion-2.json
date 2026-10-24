@@ -1,0 +1,43 @@
+{
+  "id": "protocolos.preguntas.aplicacion-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas asociaciones de representación de datos es correcta?",
+  "explanation": "Los ejemplos de las páginas 7 y 8 representan la misma biblioteca mediante XML y JSON.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        7,
+        8
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "xml-usa-etiquetas-json-representa",
+      "text": "XML usa etiquetas; JSON representa objetos y listas.",
+      "explanation": "XML estructura los datos con etiquetas de apertura y cierre; JSON los representa como objetos y listas, como en el ejemplo de la biblioteca."
+    },
+    {
+      "id": "xml-usa-exclusivamente-listas-sin",
+      "text": "XML usa exclusivamente listas sin etiquetas; JSON utiliza etiquetas de apertura y cierre.",
+      "explanation": "Invierte los formatos: las etiquetas son de XML, y JSON usa objetos y listas."
+    },
+    {
+      "id": "xml-y-json-son-dos",
+      "text": "XML y JSON son dos transportes alternativos a TCP.",
+      "explanation": "XML y JSON son formatos de representación de datos, no protocolos de transporte."
+    },
+    {
+      "id": "xml-y-json-son-modelos",
+      "text": "XML y JSON son modelos de conexión al broker.",
+      "explanation": "La conexión al broker es un concepto del modelo publicación/suscripción; XML y JSON solo representan datos."
+    }
+  ],
+  "answer": "xml-usa-etiquetas-json-representa"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se forma una dirección con el prefijo 2001:db8:44::/64 y un IID EUI-64 modificado derivado de la MAC 00:25:96:12:34:56. ¿Qué dirección resulta?",
+  "explanation": "Se inserta ff:fe entre el tercer y cuarto octeto y se invierte el bit U/L del primero: 00 XOR 02 = 02. El IID queda 0225:96ff:fe12:3456. El prefijo ocupa cuatro hextetos, por lo que se conserva un 0 antes del IID.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-44-225-96ff",
+      "text": "2001:db8:44:225:96ff:fe12:3456:0.",
+      "explanation": "Desplaza el IID un hexteto hacia la izquierda y altera el prefijo /64."
+    },
+    {
+      "id": "o-2001-db8-44-0-225",
+      "text": "2001:db8:44:0:225:96ff:fe12:3456.",
+      "explanation": "Coloca ff:fe, invierte U/L y respeta la frontera /64."
+    },
+    {
+      "id": "o-2001-db8-44-0-25",
+      "text": "2001:db8:44:0:25:96ff:fe12:3456.",
+      "explanation": "Inserta ff:fe, pero no invierte el bit U/L del primer octeto."
+    },
+    {
+      "id": "o-2001-db8-44-0-225-2",
+      "text": "2001:db8:44:0:225:9612:fffe:3456.",
+      "explanation": "Inserta ff:fe en una posición incorrecta dentro de la MAC."
+    }
+  ],
+  "answer": "o-2001-db8-44-0-225"
+}

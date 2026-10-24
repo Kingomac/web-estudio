@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-83",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un paquete necesita direccionamiento Mesh, fragmentación y compresión. ¿En qué orden se apilan esas cabeceras 6LoWPAN?",
+  "explanation": "El orden de procesamiento indicado es M–F–C. Las cabeceras que no se necesitan pueden omitirse, como Fragmentation cuando el datagrama cabe en una única trama.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mesh-fragmentation-compression",
+      "text": "Mesh → Fragmentation → Compression.",
+      "explanation": "El orden de procesamiento es Mesh, Fragmentation y Compression."
+    },
+    {
+      "id": "compression-fragmentation-mesh",
+      "text": "Compression → Fragmentation → Mesh.",
+      "explanation": "Es el orden inverso."
+    },
+    {
+      "id": "fragmentation-mesh-compression",
+      "text": "Fragmentation → Mesh → Compression.",
+      "explanation": "Mesh va antes que Fragmentation."
+    },
+    {
+      "id": "mesh-compression-fragmentation",
+      "text": "Mesh → Compression → Fragmentation.",
+      "explanation": "Fragmentation va antes que Compression."
+    }
+  ],
+  "answer": "mesh-fragmentation-compression"
+}

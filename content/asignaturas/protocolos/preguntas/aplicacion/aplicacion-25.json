@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es la correspondencia de tipos de mensaje CoAP de 2 bits?",
+  "explanation": "Tipo de mensaje y método/código son campos diferentes; GET se expresa en el código de petición.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-0-con-1-non-2",
+      "text": "0=CON, 1=NON, 2=ACK, 3=RST.",
+      "explanation": "El campo de tipo de 2 bits codifica 0 CON, 1 NON, 2 ACK y 3 RST."
+    },
+    {
+      "id": "o-0-ack-1-con-2",
+      "text": "0=ACK, 1=CON, 2=RST, 3=NON.",
+      "explanation": "Desordena los valores: 0 es CON y 2 es ACK."
+    },
+    {
+      "id": "o-0-get-1-post-2",
+      "text": "0=GET, 1=POST, 2=PUT, 3=DELETE.",
+      "explanation": "GET, POST, PUT y DELETE se expresan en el código de mensaje (0.01–0.04), no en el tipo."
+    },
+    {
+      "id": "o-0-dio-1-dao-2",
+      "text": "0=DIO, 1=DAO, 2=DIS, 3=DAO-ACK.",
+      "explanation": "DIO, DAO, DIS y DAO-ACK son mensajes de RPL, no tipos CoAP."
+    }
+  ],
+  "answer": "o-0-con-1-non-2"
+}

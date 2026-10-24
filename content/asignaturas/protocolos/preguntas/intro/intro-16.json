@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué condición de alcance requiere una topología en estrella?",
+  "explanation": "La estrella es sencilla y eficiente cuando todos los nodos están en el radio de propagación del centro.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "que-los-nodos-puedan-comunicarse",
+      "text": "Que los nodos puedan comunicarse directamente con el equipo central.",
+      "explanation": "En estrella, los nodos están dentro del radio de propagación de la pasarela o router y se comunican directamente."
+    },
+    {
+      "id": "que-todos-los-nodos-atraviesen",
+      "text": "Que todos los nodos atraviesen al menos un repetidor.",
+      "explanation": "Atravesar repetidores es propio del árbol multisalto, no de la estrella."
+    },
+    {
+      "id": "que-cada-nodo-disponga-de",
+      "text": "Que cada nodo disponga de varios caminos redundantes.",
+      "explanation": "Los caminos redundantes caracterizan la malla."
+    },
+    {
+      "id": "que-la-pasarela-este-fuera",
+      "text": "Que la pasarela esté fuera del alcance de todos los nodos.",
+      "explanation": "Si la pasarela estuviera fuera de alcance, la estrella no funcionaría: es justo la condición opuesta."
+    }
+  ],
+  "answer": "que-los-nodos-puedan-comunicarse"
+}

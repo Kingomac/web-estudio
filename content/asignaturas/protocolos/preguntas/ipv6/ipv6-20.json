@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia las ULA de las link-local?",
+  "explanation": "Las ULA sirven para redes privadas interconectadas y no para encaminamiento en Internet público.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "las-ula-pueden-atravesar-routers",
+      "text": "Las ULA pueden atravesar routers entre subredes internas.",
+      "explanation": "A diferencia de las link-local, las ULA pueden atravesar routers y comunicar subredes distintas de una organización."
+    },
+    {
+      "id": "las-ula-tienen-ambito-exclusivo",
+      "text": "Las ULA tienen ámbito exclusivo de un enlace y nunca atraviesan routers.",
+      "explanation": "Limitarse al enlace es la característica de las link-local."
+    },
+    {
+      "id": "las-link-local-son-las",
+      "text": "Las link-local son las direcciones globales asignadas por el ISP.",
+      "explanation": "Las direcciones globales asignadas por el ISP no son link-local."
+    },
+    {
+      "id": "las-ula-solo-sirven-para",
+      "text": "Las ULA solo sirven para identificar grupos multicast.",
+      "explanation": "Las ULA son unicast (fd00::/8), no grupos multicast."
+    }
+  ],
+  "answer": "las-ula-pueden-atravesar-routers"
+}

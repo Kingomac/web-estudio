@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-95",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo intermedio mesh-under debe decidir por dónde reenviar un fragmento. ¿Qué información utiliza para el reenvío?",
+  "explanation": "En mesh-under, routing y forwarding se realizan en la capa 6LoWPAN sobre direcciones de enlace. La decisión de reenvío no requiere reconstruir la cabecera IPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "direcciones-de-enlace-sin-necesitar",
+      "text": "Direcciones de enlace, sin necesitar descomprimir la cabecera IPv6 para esa decisión.",
+      "explanation": "En mesh-under se reenvía en la capa 6LoWPAN con direcciones de enlace, sin descomprimir IPv6."
+    },
+    {
+      "id": "el-puerto-udp-de-la",
+      "text": "El puerto UDP de la aplicación como índice de su tabla de rutas.",
+      "explanation": "Los puertos UDP no se usan para reenviar."
+    },
+    {
+      "id": "el-prefijo-ipv6-del-destino",
+      "text": "El prefijo IPv6 del destino tras reensamblar siempre el paquete completo.",
+      "explanation": "Reensamblar y mirar el prefijo IPv6 es propio de route-over."
+    },
+    {
+      "id": "el-token-coap-del-primer",
+      "text": "El Token CoAP del primer fragmento recibido.",
+      "explanation": "El Token es de CoAP, ajeno al reenvío."
+    }
+  ],
+  "answer": "direcciones-de-enlace-sin-necesitar"
+}

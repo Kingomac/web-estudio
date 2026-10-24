@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿En qué contexto sitúa el tema a OPC UA?",
+  "explanation": "OPC UA se presenta como arquitectura orientada a servicios para industria e IIoT, independiente de plataforma.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "intercambio-seguro-de-datos-en",
+      "text": "Intercambio seguro de datos en entornos industriales.",
+      "explanation": "OPC UA es una arquitectura cliente/servidor para el intercambio seguro de datos en la industria (Industria 4.0, IIoT)."
+    },
+    {
+      "id": "autoconfiguracion-ipv6-sin-servidor-dhcp",
+      "text": "Autoconfiguración IPv6 sin servidor DHCP.",
+      "explanation": "La autoconfiguración IPv6 sin DHCP es SLAAC, del tema 3."
+    },
+    {
+      "id": "registro-de-direcciones-de-nodos",
+      "text": "Registro de direcciones de nodos dormidos en una LoWPAN.",
+      "explanation": "El registro de nodos dormidos en LoWPAN pertenece al NDP optimizado del tema 4."
+    },
+    {
+      "id": "descubrimiento-de-servicios-locales-medi",
+      "text": "Descubrimiento de servicios locales mediante multicast DNS.",
+      "explanation": "El descubrimiento con multicast DNS es mDNS/DNS-SD, no OPC UA."
+    }
+  ],
+  "answer": "intercambio-seguro-de-datos-en"
+}

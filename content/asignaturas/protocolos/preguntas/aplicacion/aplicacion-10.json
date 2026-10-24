@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué indica un código HTTP 4xx?",
+  "explanation": "El tema distingue 1xx información, 2xx éxito, 3xx redirección, 4xx cliente y 5xx servidor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-error-del-cliente",
+      "text": "Un error del cliente.",
+      "explanation": "Los códigos 4xx indican un error del cliente, como 400 Bad Request o 404 Not Found."
+    },
+    {
+      "id": "una-respuesta-informativa",
+      "text": "Una respuesta informativa.",
+      "explanation": "Las respuestas informativas son 1xx."
+    },
+    {
+      "id": "una-redireccion",
+      "text": "Una redirección.",
+      "explanation": "Las redirecciones son 3xx, por ejemplo 301 o 304."
+    },
+    {
+      "id": "un-error-del-servidor",
+      "text": "Un error del servidor.",
+      "explanation": "Los errores del servidor son 5xx, como 505."
+    }
+  ],
+  "answer": "un-error-del-cliente"
+}

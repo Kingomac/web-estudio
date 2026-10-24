@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica destaca el tema del ecosistema Grove?",
+  "explanation": "Wio integra MCU y conectividad, y su compatibilidad con Grove facilita conectar sensores y actuadores.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "conectores-estandar-de-4-pines",
+      "text": "Conectores estándar de 4 pines para sensores y actuadores.",
+      "explanation": "Grove usa conectores estándar de 4 pines para conectar sensores y actuadores sin soldar."
+    },
+    {
+      "id": "conectores-estandar-grove-de-24",
+      "text": "Conectores estándar Grove de 24 pines.",
+      "explanation": "Los conectores de 24 pines son los de WisBlock, no los de Grove."
+    },
+    {
+      "id": "sensores-que-deben-soldarse-siempre",
+      "text": "Sensores que deben soldarse siempre a la MCU.",
+      "explanation": "Grove permite precisamente la conexión sin soldaduras."
+    },
+    {
+      "id": "un-sistema-incompatible-con-la",
+      "text": "Un sistema incompatible con la conectividad inalámbrica Wio.",
+      "explanation": "Los productos Wio están diseñados para ser compatibles con Grove."
+    }
+  ],
+  "answer": "conectores-estandar-de-4-pines"
+}

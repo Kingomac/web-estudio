@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente consulta periódicamente varios recursos del mismo servidor HTTP. ¿Qué permite una conexión persistente?",
+  "explanation": "La persistencia mantiene abierta la conexión TCP para reutilizarla. Evita establecer una conexión nueva para cada intercambio, pero conserva los mensajes HTTP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "reutilizar-una-conexion-tcp-para",
+      "text": "Reutilizar una conexión TCP para varias peticiones y respuestas.",
+      "explanation": "La conexión persistente mantiene abierta la conexión TCP para varias peticiones y respuestas."
+    },
+    {
+      "id": "omitir-la-respuesta-del-servidor",
+      "text": "Omitir la respuesta del servidor a las peticiones GET.",
+      "explanation": "La persistencia no elimina las respuestas: cada petición sigue teniendo la suya."
+    },
+    {
+      "id": "enviar-las-siguientes-peticiones-sin",
+      "text": "Enviar las siguientes peticiones sin cabeceras HTTP.",
+      "explanation": "Los mensajes HTTP siguen llevando sus cabeceras; lo que se reutiliza es la conexión TCP."
+    },
+    {
+      "id": "convertir-automaticamente-cada-peticion",
+      "text": "Convertir automáticamente cada petición en una publicación MQTT.",
+      "explanation": "HTTP y MQTT son protocolos distintos; la persistencia no convierte uno en otro."
+    }
+  ],
+  "answer": "reutilizar-una-conexion-tcp-para"
+}

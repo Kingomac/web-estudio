@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una respuesta CoAP lleva el código 4.04. ¿A qué clase pertenece?",
+  "explanation": "En la notación a.bb, la clase 4 indica error del cliente; la clase 2, éxito; la clase 5, error del servidor. Las peticiones pertenecen a la clase 0.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "error-del-cliente",
+      "text": "Error del cliente.",
+      "explanation": "La clase 4 (4.xx) indica error del cliente; 4.04 equivale a Not Found."
+    },
+    {
+      "id": "exito",
+      "text": "Éxito.",
+      "explanation": "El éxito es la clase 2."
+    },
+    {
+      "id": "error-del-servidor",
+      "text": "Error del servidor.",
+      "explanation": "Los errores del servidor son la clase 5."
+    },
+    {
+      "id": "peticion-de-consulta",
+      "text": "Petición de consulta.",
+      "explanation": "Las peticiones usan la clase 0."
+    }
+  ],
+  "answer": "error-del-cliente"
+}

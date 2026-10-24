@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un proxy consulta con If-Modified-Since y recibe 304 Not Modified. ¿Qué indica la respuesta?",
+  "explanation": "La validación condicional evita reenviar el contenido cuando no ha cambiado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "que-puede-utilizar-el-contenido",
+      "text": "Que puede utilizar el contenido que ya tenía en caché.",
+      "explanation": "304 Not Modified indica que el recurso no ha cambiado desde la fecha indicada y puede usarse la copia en caché."
+    },
+    {
+      "id": "que-debe-borrar-todas-sus",
+      "text": "Que debe borrar todas sus conexiones TCP.",
+      "explanation": "304 no exige cerrar conexiones; en el ejemplo la conexión sigue con keep-alive."
+    },
+    {
+      "id": "que-se-ha-creado-un",
+      "text": "Que se ha creado un nuevo topic retenido.",
+      "explanation": "Los topics retenidos pertenecen a MQTT, no a las respuestas HTTP."
+    },
+    {
+      "id": "que-la-peticion-contiene-un",
+      "text": "Que la petición contiene un error 4xx.",
+      "explanation": "304 es un código 3xx de redirección/validación, no un error del cliente 4xx."
+    }
+  ],
+  "answer": "que-puede-utilizar-el-contenido"
+}

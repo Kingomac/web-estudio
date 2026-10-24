@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera Mesh comienza por 95 y tiene Originator extendido de 64 bits y Final Destination corto de 16 bits. No utiliza Deep Hops Left. ¿Dónde empieza la siguiente cabecera, contando desde el byte 0 de Mesh?",
+  "explanation": "0x95=10|0|1|0101. V=0 exige ocho bytes de Originator; F=1 exige dos de Final Destination. Se suma el byte inicial: 1+8+2=11. Solo el nibble Hops Left=f activa el contador ampliado.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · Mesh",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-el-offset-12-95",
+      "text": "En el offset 12: 95 siempre obliga a añadir Deep Hops Left.",
+      "explanation": "Hops Left vale 5; no hay octeto de contador ampliado."
+    },
+    {
+      "id": "en-el-offset-11-v",
+      "text": "En el offset 11: V=0, F=1 y Hops Left=5.",
+      "explanation": "Decodifica los bits de longitud y suma el tamaño exacto."
+    },
+    {
+      "id": "en-el-offset-5-v",
+      "text": "En el offset 5: V=1, F=1 y Hops Left=5.",
+      "explanation": "Trata ambas direcciones como cortas e invierte el significado de V."
+    },
+    {
+      "id": "en-el-offset-17-v",
+      "text": "En el offset 17: V=0, F=0 y Hops Left=5.",
+      "explanation": "Trata ambas como extendidas, aunque F=1 indica dieciséis bits."
+    }
+  ],
+  "answer": "en-el-offset-11-v"
+}

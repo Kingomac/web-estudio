@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-75",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un Resource Directory devuelve el enlace de un sensor que suele dormir. ¿Qué conclusión puede extraerse de la presencia del registro?",
+  "explanation": "El directorio almacena enlaces y descripciones que deben renovarse. Su presencia facilita el descubrimiento, pero no garantiza disponibilidad instantánea ni aporta necesariamente el valor del recurso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        55
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-recurso-fue-registrado-pero",
+      "text": "El recurso fue registrado, pero el sensor podría no estar accesible en ese instante.",
+      "explanation": "Que el registro exista no garantiza que el sensor dormido esté accesible en ese momento."
+    },
+    {
+      "id": "el-sensor-mantiene-necesariamente-la",
+      "text": "El sensor mantiene necesariamente la radio encendida mientras exista el registro.",
+      "explanation": "Un nodo puede dormir mientras su registro sigue vigente."
+    },
+    {
+      "id": "el-directorio-ha-obtenido-una",
+      "text": "El directorio ha obtenido una medida nueva del sensor al responder.",
+      "explanation": "El RD guarda enlaces y descripciones; no consulta medidas nuevas."
+    },
+    {
+      "id": "la-consulta-al-directorio-sustituye",
+      "text": "La consulta al directorio sustituye siempre al acceso posterior al recurso.",
+      "explanation": "Tras consultar el directorio, hay que acceder al recurso para obtener su valor."
+    }
+  ],
+  "answer": "el-recurso-fue-registrado-pero"
+}

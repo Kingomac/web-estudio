@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué obtiene el cliente al consultar /.well-known/core en un servidor CoAP que lo implementa?",
+  "explanation": "Después del descubrimiento, otra consulta al recurso seleccionado obtiene su valor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "enlaces-y-atributos-descriptivos-de",
+      "text": "Enlaces y atributos descriptivos de los recursos.",
+      "explanation": "/.well-known/core devuelve enlaces a los recursos con atributos descriptivos como rt."
+    },
+    {
+      "id": "el-valor-actual-de-todos",
+      "text": "El valor actual de todos los recursos sin consultas posteriores.",
+      "explanation": "Los valores se obtienen con una consulta posterior al recurso elegido."
+    },
+    {
+      "id": "los-nombres-de-instancias-del",
+      "text": "Los nombres de instancias del servicio mediante registros PTR.",
+      "explanation": "Los registros PTR pertenecen a DNS-SD, no a CoRE Link Format."
+    },
+    {
+      "id": "las-correspondencias-ipv6-mac-de",
+      "text": "Las correspondencias IPv6/MAC de todos los vecinos.",
+      "explanation": "Las correspondencias IPv6–MAC se obtienen con NDP."
+    }
+  ],
+  "answer": "enlaces-y-atributos-descriptivos-de"
+}

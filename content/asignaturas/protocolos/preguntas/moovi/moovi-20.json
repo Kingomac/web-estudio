@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sensor permite leer temperatura mediante una URI CoAP y publica la misma medida en el topic invernadero/temperatura de un broker MQTT. ¿Qué diferencia describe correctamente el acceso de las dos aplicaciones clientes?",
+  "explanation": "CoAP permite acceder a un recurso mediante su URI. En el acceso MQTT planteado, el cliente se suscribe a un topic y el broker distribuye las publicaciones correspondientes. El significado del topic se acuerda en la aplicación: no es por sí mismo una URI ni una consulta DNS o NDP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        48
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ambas-deben-resolver-el-topic",
+      "text": "Ambas deben resolver el topic mediante NDP antes de leer la temperatura.",
+      "explanation": "NDP resuelve vecinos IPv6 del enlace; no interpreta nombres de topics."
+    },
+    {
+      "id": "el-topic-mqtt-debe-ser",
+      "text": "El topic MQTT debe ser una URI con el mismo host, puerto y ruta que el recurso CoAP.",
+      "explanation": "MQTT no exige que el topic tenga la sintaxis ni el punto de acceso de una URI CoAP."
+    },
+    {
+      "id": "la-aplicacion-mqtt-consulta-al",
+      "text": "La aplicación MQTT consulta al broker para obtener la MAC del sensor y luego lo lee directamente.",
+      "explanation": "El broker distribuye mensajes; no actúa como servicio NDP del publicador."
+    },
+    {
+      "id": "una-accede-al-recurso-identificado",
+      "text": "Una accede al recurso identificado por su URI; la otra se suscribe al topic en el broker para recibir publicaciones.",
+      "explanation": "Distingue el acceso al recurso de la recepción de publicaciones mediante el broker."
+    }
+  ],
+  "answer": "una-accede-al-recurso-identificado"
+}

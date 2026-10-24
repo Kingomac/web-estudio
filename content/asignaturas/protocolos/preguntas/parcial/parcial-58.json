@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-58",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En Ethernet, ¿qué MAC multicast corresponde a la dirección IPv6 ff02::1:ff12:3456?",
+  "explanation": "El mapeo en Ethernet usa 33:33 seguido de los últimos 32 bits de la dirección IPv6 multicast. En este caso, esos cuatro octetos son ff:12:34:56.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-33-33-ff-12-34",
+      "text": "33:33:ff:12:34:56.",
+      "explanation": "33:33 seguido de los últimos 32 bits (ff:12:34:56) da 33:33:ff:12:34:56."
+    },
+    {
+      "id": "o-33-33-00-12-34",
+      "text": "33:33:00:12:34:56.",
+      "explanation": "Sustituye el octeto ff de los 32 bits finales por 00."
+    },
+    {
+      "id": "ff-ff-ff-ff-ff",
+      "text": "ff:ff:ff:ff:ff:ff.",
+      "explanation": "ff:ff:ff:ff:ff:ff es la broadcast Ethernet."
+    },
+    {
+      "id": "o-33-33-00-00-00",
+      "text": "33:33:00:00:00:02.",
+      "explanation": "33:33:00:00:00:02 corresponde a ff02::2."
+    }
+  ],
+  "answer": "o-33-33-ff-12-34"
+}

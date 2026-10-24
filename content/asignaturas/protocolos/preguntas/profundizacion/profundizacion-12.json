@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.profundizacion-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "A quiere enviar datos a 2001:db8:20::8 a través del router local fe80::aa:bbcc, cuya MAC aún desconoce. Según NDP convencional en Ethernet, ¿qué combinación es correcta?",
+  "explanation": "Se resuelve la dirección de enlace del siguiente salto, el router. Por ello el NS busca fe80::aa:bbcc y se dirige a su solicited-node. El paquete de datos mantiene como destino IPv6 al extremo remoto.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 · Neighbor Discovery",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7"
+    },
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "ns-target-2001-db8-20",
+      "text": "NS Target=2001:db8:20::8; NS destino=ff02::1:ff00:8; datos destino=fe80::aa:bbcc.",
+      "explanation": "Busca en el enlace la MAC de un destino remoto y además sustituye incorrectamente el destino de datos."
+    },
+    {
+      "id": "ns-target-fe80-aa-bbcc",
+      "text": "NS Target=fe80::aa:bbcc; NS destino=ff02::2; datos destino=fe80::aa:bbcc.",
+      "explanation": "ff02::2 no es el grupo solicited-node del router; los datos tampoco cambian de destino IPv6."
+    },
+    {
+      "id": "ns-target-ns-destino-ff02",
+      "text": "NS Target=::; NS destino=ff02::1; datos destino=2001:db8:20::8.",
+      "explanation": ":: no es el Target buscado. Usar origen :: en DAD no implica Target ::."
+    },
+    {
+      "id": "ns-target-fe80-aa-bbcc-2",
+      "text": "NS Target=fe80::aa:bbcc; NS destino=ff02::1:ffaa:bbcc; datos destino=2001:db8:20::8.",
+      "explanation": "Separa correctamente la resolución local del destino extremo a extremo."
+    }
+  ],
+  "answer": "ns-target-fe80-aa-bbcc-2"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.moovi-original-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente consulta PTR para _coap._udp.local y recibe únicamente un PTR hacia Aula._coap._udp.local y un TXT asociado con el dato zona=lab. Su caché está vacía. Quiere obtener el punto de acceso IPv6 de esa instancia. ¿Qué información debe obtener todavía?",
+  "explanation": "PTR proporciona el nombre de instancia Aula._coap._udp.local. El SRV de esa instancia indica el host y el puerto; el AAAA del host indicado por el SRV proporciona su dirección IPv6. El TXT zona=lab es información descriptiva y no permite deducir esos datos de acceso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6763 · DNS-SD",
+      "url": "https://www.rfc-editor.org/rfc/rfc6763.html"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-aaaa-de-zona-local",
+      "text": "El AAAA de zona.local y el SRV de lab._coap._udp.local; el TXT permite reconstruir el host y el nombre de instancia.",
+      "explanation": "El TXT es descriptivo; no permite construir esos nombres de host e instancia."
+    },
+    {
+      "id": "el-aaaa-de-aula-coap",
+      "text": "El AAAA de Aula._coap._udp.local y el SRV de _coap._udp.local; proporcionan la dirección IPv6 y el puerto de la instancia.",
+      "explanation": "SRV se consulta sobre la instancia; AAAA, sobre el host que devuelve SRV."
+    },
+    {
+      "id": "el-srv-de-aula-coap",
+      "text": "El SRV de Aula._coap._udp.local y el AAAA de _coap._udp.local; proporcionan el puerto y la dirección IPv6 del servicio.",
+      "explanation": "AAAA debe consultarse sobre el host del SRV, no sobre el tipo de servicio."
+    },
+    {
+      "id": "el-srv-de-aula-coap-2",
+      "text": "El SRV de Aula._coap._udp.local y el AAAA del host indicado por ese SRV; proporcionan el puerto y la dirección IPv6.",
+      "explanation": "SRV proporciona host y puerto; AAAA proporciona la IPv6 de ese host."
+    }
+  ],
+  "answer": "el-srv-de-aula-coap-2"
+}

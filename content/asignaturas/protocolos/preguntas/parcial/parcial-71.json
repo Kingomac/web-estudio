@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-71",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se quieren descubrir instancias del servicio _coap._udp en un dominio mediante DNS-SD. ¿Qué tipo de consulta enumera esas instancias?",
+  "explanation": "La consulta PTR al nombre del tipo de servicio y dominio proporciona los nombres de las instancias disponibles. Después pueden obtenerse sus registros SRV, TXT y A/AAAA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ptr",
+      "text": "PTR.",
+      "explanation": "Una consulta PTR a _coap._udp.<dominio> devuelve los nombres de las instancias."
+    },
+    {
+      "id": "aaaa",
+      "text": "AAAA.",
+      "explanation": "AAAA da la dirección IPv6 de un host ya conocido."
+    },
+    {
+      "id": "srv-exclusivamente",
+      "text": "SRV exclusivamente.",
+      "explanation": "SRV se consulta para una instancia concreta, ya enumerada."
+    },
+    {
+      "id": "txt-exclusivamente",
+      "text": "TXT exclusivamente.",
+      "explanation": "TXT aporta metadatos de una instancia; no enumera instancias."
+    }
+  ],
+  "answer": "ptr"
+}

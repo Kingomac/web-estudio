@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia de tamaño hay entre FRAG1 y FRAGN?",
+  "explanation": "FRAGN incorpora datagram_offset; en FRAG1 el desplazamiento cero es implícito.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "frag1-ocupa-4-bytes-y",
+      "text": "FRAG1 ocupa 4 bytes y FRAGN 5 bytes.",
+      "explanation": "FRAG1 ocupa 4 bytes; FRAGN ocupa 5 porque añade datagram_offset."
+    },
+    {
+      "id": "frag1-ocupa-5-bytes-y",
+      "text": "FRAG1 ocupa 5 bytes y FRAGN 4 bytes.",
+      "explanation": "Invierte los tamaños: el byte extra de offset va en FRAGN."
+    },
+    {
+      "id": "ambas-cabeceras-ocupan-4-bytes",
+      "text": "Ambas cabeceras ocupan 4 bytes porque el offset se omite siempre.",
+      "explanation": "Solo FRAG1 omite el offset, que es implícitamente 0."
+    },
+    {
+      "id": "ambas-cabeceras-ocupan-5-bytes",
+      "text": "Ambas cabeceras ocupan 5 bytes porque todas llevan offset explícito.",
+      "explanation": "FRAG1 no lleva offset explícito."
+    }
+  ],
+  "answer": "frag1-ocupa-4-bytes-y"
+}

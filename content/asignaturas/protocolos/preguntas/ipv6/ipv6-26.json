@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica tiene un IID opaco estable del mecanismo explicado?",
+  "explanation": "El mecanismo combina parámetros con una clave secreta y permanece estable mientras esos parámetros no cambian.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        34
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "no-revela-directamente-la-mac",
+      "text": "No revela directamente la MAC y puede ser diferente para cada red.",
+      "explanation": "El IID opaco del RFC 7217 se obtiene con una clave secreta: no revela la MAC y puede variar entre redes."
+    },
+    {
+      "id": "revela-directamente-la-mac-dentro",
+      "text": "Revela directamente la MAC dentro del IID.",
+      "explanation": "Aunque la MAC puede ser una entrada del cálculo, el resultado no la revela."
+    },
+    {
+      "id": "se-renueva-necesariamente-de-forma",
+      "text": "Se renueva necesariamente de forma periódica como una dirección temporal.",
+      "explanation": "El IID opaco es estable mientras no cambien sus parámetros; la renovación periódica es de las direcciones temporales (RFC 8981)."
+    },
+    {
+      "id": "mantiene-siempre-el-mismo-resultado",
+      "text": "Mantiene siempre el mismo resultado en todas las redes aunque cambie el prefijo.",
+      "explanation": "El prefijo es uno de los parámetros del cálculo, así que el IID puede cambiar al cambiar de red."
+    }
+  ],
+  "answer": "no-revela-directamente-la-mac"
+}

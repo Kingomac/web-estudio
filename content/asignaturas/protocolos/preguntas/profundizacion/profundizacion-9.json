@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.profundizacion-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Target: 2001:db8:9::1256:789a. En Ethernet, ¿cuáles son su solicited-node y la MAC multicast correspondiente?",
+  "explanation": "Los 24 bits bajos del Target son 56:78:9a. Se concatenan con ff02::1:ff00:0/104. Los últimos 32 bits de esa multicast son ff:56:78:9a, que siguen a 33:33 en la MAC Ethernet.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    },
+    {
+      "title": "RFC 2464 · multicast Ethernet",
+      "url": "https://www.rfc-editor.org/rfc/rfc2464.html#section-7"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-1-ff56-789a-y",
+      "text": "ff02::1:ff56:789a y 33:33:ff:56:78:9a.",
+      "explanation": "Usa 24 bits para solicited-node y 32 bits de esa multicast para la MAC."
+    },
+    {
+      "id": "ff02-1-ff12-5678-y",
+      "text": "ff02::1:ff12:5678 y 33:33:ff:12:56:78.",
+      "explanation": "Extrae un tramo incorrecto del Target: no son sus 24 bits menos significativos."
+    },
+    {
+      "id": "ff02-1256-789a-y-33",
+      "text": "ff02::1256:789a y 33:33:12:56:78:9a.",
+      "explanation": "Copia los 32 bits bajos del unicast sin construir primero el grupo solicited-node."
+    },
+    {
+      "id": "ff02-1-ff56-789a-y-2",
+      "text": "ff02::1:ff56:789a y 33:33:00:56:78:9a.",
+      "explanation": "El octeto anterior al sufijo de 24 bits es ff, no 00."
+    }
+  ],
+  "answer": "ff02-1-ff56-789a-y"
+}

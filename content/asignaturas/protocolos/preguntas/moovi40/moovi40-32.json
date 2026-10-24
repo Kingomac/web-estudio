@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En route-over, A tiene 2001:db8:10::10/64, una ruta on-link 2001:db8:10::/64 y una ruta host 2001:db8:10::20/128 vía R=2001:db8:10::1. Todas están operativas y las MAC se conocen. Al enviar a 2001:db8:10::20, ¿qué destinos lleva el primer envío?",
+  "explanation": "La ruta host /128 gana a la ruta on-link /64. A entrega la trama al router R, pero conserva la dirección IPv6 del destinatario ::20. Es el mismo principio del ejemplo final del tema: la FIB elige el siguiente salto y la tabla de vecinos aporta su dirección de enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "destino-ipv6-2001-db8-10",
+      "text": "Destino IPv6 2001:db8:10::1 y destino MAC de R.",
+      "explanation": "Sustituye indebidamente el destino del paquete por la dirección del router."
+    },
+    {
+      "id": "destino-ipv6-2001-db8-10-2",
+      "text": "Destino IPv6 2001:db8:10::20 y destino MAC del nodo ::20, ignorando la ruta /128.",
+      "explanation": "Ignora una ruta /128 operativa más específica que el /64."
+    },
+    {
+      "id": "destino-ipv6-ff02-1-y",
+      "text": "Destino IPv6 ff02::1 y destino MAC broadcast, porque los nodos comparten /64.",
+      "explanation": "Compartir un prefijo no convierte el tráfico unicast en difusión."
+    },
+    {
+      "id": "destino-ipv6-2001-db8-10-3",
+      "text": "Destino IPv6 2001:db8:10::20 y destino MAC de R.",
+      "explanation": "Aplica longest prefix match y distingue destino final de siguiente salto."
+    }
+  ],
+  "answer": "destino-ipv6-2001-db8-10-3"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué propiedad NO encaja con el perfil de LLN de bajo consumo descrito en el temario?",
+  "explanation": "El perfil estudiado combina ahorro energético, enlaces con pérdidas y tasas reducidas. Una capacidad elevada y abundante no es una característica de ese perfil. LLN describe restricciones de energía y fiabilidad; no significa que toda red inalámbrica imaginable tenga exactamente las mismas prestaciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "utilizar-tasas-reducidas-para-mensajes",
+      "text": "Utilizar tasas reducidas para mensajes pequeños y espaciados.",
+      "explanation": "Las tasas bajas y el tráfico espaciado encajan con el uso estudiado."
+    },
+    {
+      "id": "disponer-de-capacidad-de-canal",
+      "text": "Disponer de capacidad de canal elevada y abundante para tráfico continuo.",
+      "explanation": "Es la propiedad que no corresponde al perfil de LLN planteado."
+    },
+    {
+      "id": "trabajar-con-un-presupuesto-energetico",
+      "text": "Trabajar con un presupuesto energético limitado.",
+      "explanation": "La limitación energética es precisamente uno de los motivos para usar estas redes."
+    },
+    {
+      "id": "sufrir-perdidas-variables-por-interferen",
+      "text": "Sufrir pérdidas variables por interferencias del entorno radio.",
+      "explanation": "La variabilidad y las pérdidas corresponden al término Lossy."
+    }
+  ],
+  "answer": "disponer-de-capacidad-de-canal"
+}

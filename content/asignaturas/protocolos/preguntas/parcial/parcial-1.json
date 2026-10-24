@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un sensor envía unos pocos bytes cada cinco minutos y debe funcionar varios años con batería. ¿Qué decisión encaja mejor con estos requisitos?",
+  "explanation": "Los mensajes pequeños y espaciados permiten tasas bajas. La comunicación es una fuente importante de consumo, por lo que limitar su actividad favorece la autonomía.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "reducir-el-tiempo-de-actividad",
+      "text": "Reducir el tiempo de actividad de la radio y emplear una tasa de datos ajustada al tráfico.",
+      "explanation": "Mensajes pequeños y espaciados permiten una tasa baja, y como la radio es lo que más consume, limitar su actividad alarga la batería."
+    },
+    {
+      "id": "mantener-la-radio-activa-entre",
+      "text": "Mantener la radio activa entre medidas para evitar cualquier espera de transmisión.",
+      "explanation": "Mantener la radio activa entre medidas gasta energía justo en lo que más consume, sin necesidad para este tráfico."
+    },
+    {
+      "id": "elegir-la-mayor-tasa-fisica",
+      "text": "Elegir la mayor tasa física disponible aunque aumente el consumo en reposo.",
+      "explanation": "Una tasa mayor que la necesaria no aporta nada a mensajes de pocos bytes y empeora el consumo."
+    },
+    {
+      "id": "priorizar-el-tamano-de-la",
+      "text": "Priorizar el tamaño de la memoria sobre el consumo de las comunicaciones.",
+      "explanation": "El consumo de las comunicaciones es lo que determina la autonomía; la memoria no resuelve el requisito de batería."
+    }
+  ],
+  "answer": "reducir-el-tiempo-de-actividad"
+}

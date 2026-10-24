@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué MTU mínima IPv6 motiva una adaptación al pequeño tamaño de trama?",
+  "explanation": "El enlace debe ofrecer la MTU requerida por IPv6 o un mecanismo inferior de fragmentación y reensamblado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-1280-bytes",
+      "text": "1280 bytes.",
+      "explanation": "IPv6 exige una MTU mínima de 1280 bytes, muy superior a la trama de 127 bytes."
+    },
+    {
+      "id": "o-127-bytes",
+      "text": "127 bytes.",
+      "explanation": "127 bytes es el tamaño máximo de trama IEEE 802.15.4, no la MTU que exige IPv6."
+    },
+    {
+      "id": "o-40-bytes",
+      "text": "40 bytes.",
+      "explanation": "40 bytes es el tamaño de la cabecera IPv6."
+    },
+    {
+      "id": "o-8-bytes",
+      "text": "8 bytes.",
+      "explanation": "8 bytes es el tamaño de la cabecera UDP."
+    }
+  ],
+  "answer": "o-1280-bytes"
+}

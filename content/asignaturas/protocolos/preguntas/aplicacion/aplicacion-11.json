@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué función tienen las cookies en HTTP?",
+  "explanation": "El servidor define cadenas que el cliente devuelve; se usan en validación, personalización y seguimiento.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        19
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "permitir-mantener-informacion-de-estado",
+      "text": "Permitir mantener información de estado en la comunicación cliente/servidor.",
+      "explanation": "Las cookies son cadenas que define el servidor y el cliente devuelve sin modificar, para mantener estado."
+    },
+    {
+      "id": "guardar-automaticamente-todas-las-respue",
+      "text": "Guardar automáticamente todas las respuestas en un proxy.",
+      "explanation": "El almacenamiento en caché de un proxy es otro mecanismo de HTTP; las cookies no guardan respuestas."
+    },
+    {
+      "id": "habilitar-una-comunicacion-bidireccional",
+      "text": "Habilitar una comunicación bidireccional por WebSocket.",
+      "explanation": "La comunicación bidireccional la proporciona WebSocket tras su handshake, no las cookies."
+    },
+    {
+      "id": "evitar-el-handshake-tcp-al",
+      "text": "Evitar el handshake TCP al abrir la primera conexión.",
+      "explanation": "Las cookies viajan en mensajes HTTP sobre una conexión ya establecida; no afectan al handshake TCP."
+    }
+  ],
+  "answer": "permitir-mantener-informacion-de-estado"
+}

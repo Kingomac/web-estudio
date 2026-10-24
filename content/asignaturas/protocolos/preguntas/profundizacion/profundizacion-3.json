@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una interfaz IEEE 802.15.4 tiene dirección extendida 02:12:4b:00:11:22:33:44. Para el IID derivado del enlace que utiliza IPHC, ¿cuál es el resultado?",
+  "explanation": "La dirección ya tiene 64 bits: no se inserta ff:fe. Se invierte el bit U/L del primer octeto mediante XOR con 02; 02 XOR 02 = 00. Los otros siete octetos permanecen iguales.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IID",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.2.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-0412-4b00-1122-3344",
+      "text": "0412:4b00:1122:3344",
+      "explanation": "Suma 02 en lugar de invertir ese bit: la operación correcta es XOR."
+    },
+    {
+      "id": "o-0012-4bff-fe22-3344",
+      "text": "0012:4bff:fe22:3344",
+      "explanation": "Aplica indebidamente una transformación de MAC de 48 bits y cambia octetos originales."
+    },
+    {
+      "id": "o-0012-4b00-1122-3344",
+      "text": "0012:4b00:1122:3344",
+      "explanation": "Invierte únicamente U/L y conserva los ocho octetos."
+    },
+    {
+      "id": "o-0212-4b00-1122-3344",
+      "text": "0212:4b00:1122:3344",
+      "explanation": "No invierte el bit U/L."
+    }
+  ],
+  "answer": "o-0012-4b00-1122-3344"
+}

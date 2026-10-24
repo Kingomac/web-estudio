@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.moovi-original-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "6LoWPAN no es adecuado para su uso en tecnologías LPWAN debido a dos importantes limitaciones. ¿Cuál de las siguientes NO es una de estas dos limitaciones?",
+  "explanation": "La pregunta se refiere a dos limitaciones concretas de LPWAN: MTU de pocos bytes y oportunidades de recepción muy reducidas. La baja velocidad también puede ser una característica real de LPWAN, pero no es una de las dos limitaciones que pide identificar este enunciado. Por eso la respuesta prevista es la baja velocidad de transmisión.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 8724 §1 · restricciones LPWAN",
+      "url": "https://www.rfc-editor.org/rfc/rfc8724.html#section-1"
+    }
+  ],
+  "options": [
+    {
+      "id": "los-valores-de-la-mtu",
+      "text": "Los valores de la MTU son muy reducidos, en muchos casos de sólo unos pocos bytes",
+      "explanation": "La MTU de pocos bytes sí es una de las dos limitaciones citadas."
+    },
+    {
+      "id": "la-baja-velocidad-de-transmision",
+      "text": "La baja velocidad de transmisión de datos",
+      "explanation": "Puede ser cierta en LPWAN, pero no es una de las dos limitaciones señaladas."
+    },
+    {
+      "id": "los-dispositivos-duermen-gran-parte",
+      "text": "Los dispositivos duermen gran parte del tiempo y sólo pueden recibir datos durante cortos periodos de tiempo tras la transmisión, con el fin de preservar la batería",
+      "explanation": "Las ventanas breves de recepción sí son una de esas limitaciones."
+    }
+  ],
+  "answer": "la-baja-velocidad-de-transmision"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "El primer fragmento que llega de un datagrama 6LoWPAN es un FRAGN intermedio; FRAG1 se retrasa. ¿Qué afirmación sobre el reensamblado es correcta?",
+  "explanation": "El tamaño aparece en todos los fragmentos, lo que permite gestionar recepción desordenada. El temporizador se inicia al recibir el primer fragmento del datagrama, aunque no sea FRAG1. Si vence sin completarse el reensamblado, se descartan los fragmentos almacenados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 §5.3 · fragmentación",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
+    }
+  ],
+  "options": [
+    {
+      "id": "puede-reservarse-espacio-usando-datagram",
+      "text": "Puede reservarse espacio usando datagram_size y el temporizador empieza con ese primer fragmento recibido.",
+      "explanation": "Usa el tamaño disponible y no confunde primer recibido con primer fragmento lógico."
+    },
+    {
+      "id": "es-imposible-reservar-espacio-porque",
+      "text": "Es imposible reservar espacio porque datagram_size solo aparece en FRAG1.",
+      "explanation": "FRAGN también incluye el tamaño del datagrama."
+    },
+    {
+      "id": "el-temporizador-empieza-unicamente-al",
+      "text": "El temporizador empieza únicamente al llegar FRAG1, aunque ya haya fragmentos almacenados.",
+      "explanation": "Esperar a FRAG1 retrasaría indebidamente el inicio del temporizador."
+    },
+    {
+      "id": "fragn-contiene-siempre-otra-copia",
+      "text": "FRAGN contiene siempre otra copia completa de IPHC y puede entregarse como datagrama independiente.",
+      "explanation": "Un fragmento intermedio es una porción del datagrama, no un nuevo paquete IPv6 completo."
+    }
+  ],
+  "answer": "puede-reservarse-espacio-usando-datagram"
+}

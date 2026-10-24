@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué idea permite reducir consultas NS multicast para localizar hosts?",
+  "explanation": "El registro explícito reduce el tráfico de resolución y se adapta a nodos dormidos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "registrar-sus-direcciones-ipv6-y",
+      "text": "Registrar sus direcciones IPv6 y de enlace en los routers.",
+      "explanation": "Los hosts registran su dirección IPv6 y de enlace en los routers, que así no necesitan NS multicast para resolverlas."
+    },
+    {
+      "id": "enviar-ra-multicast-continuamente-a",
+      "text": "Enviar RA multicast continuamente a los hosts dormidos.",
+      "explanation": "RFC 6775 evita precisamente los RA periódicos no solicitados: los hosts piden la información con RS."
+    },
+    {
+      "id": "usar-dad-multicast-tradicional-para",
+      "text": "Usar DAD multicast tradicional para resolver cada paquete.",
+      "explanation": "El DAD tradicional no se realiza en RFC 6775."
+    },
+    {
+      "id": "eliminar-toda-cache-de-vecinos",
+      "text": "Eliminar toda caché de vecinos de los routers.",
+      "explanation": "El registro alimenta la caché de vecinos del router; no se elimina."
+    }
+  ],
+  "answer": "registrar-sus-direcciones-ipv6-y"
+}

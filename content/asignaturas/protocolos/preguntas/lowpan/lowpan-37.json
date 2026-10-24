@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo mesh-under 5→3→1 con contexto compartido y Mesh que conserva extremos, ¿qué SAM/DAM permite deducir ambos IID?",
+  "explanation": "La cabecera Mesh conserva origen 5 y destino final 1; no hay que transmitir los IID en línea.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "sam-11-y-dam-11",
+      "text": "SAM=11 y DAM=11.",
+      "explanation": "La cabecera Mesh conserva origen 5 y destino final 1, de modo que ambos IID se deducen: SAM=DAM=11."
+    },
+    {
+      "id": "sam-00-y-dam-00",
+      "text": "SAM=00 y DAM=00.",
+      "explanation": "SAM=DAM=00 enviaría las direcciones completas, aunque el contexto y la Mesh permiten omitirlas."
+    },
+    {
+      "id": "sam-01-y-dam-01",
+      "text": "SAM=01 y DAM=01 obligatoriamente.",
+      "explanation": "01 envía IID de 64 bits en línea, innecesario cuando se deducen de la Mesh."
+    },
+    {
+      "id": "sam-10-y-dam-00",
+      "text": "SAM=10 y DAM=00.",
+      "explanation": "SAM=10/DAM=00 es una mezcla que transmitiría información deducible; en route-over sí se usa 10, porque las MAC cambian por salto."
+    }
+  ],
+  "answer": "sam-11-y-dam-11"
+}

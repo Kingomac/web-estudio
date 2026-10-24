@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué dos criterios de clasificación de LoWPAN distingue el tema?",
+  "explanation": "Estrella/malla e IP/no IP son clasificaciones independientes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "topologia-y-disponibilidad-de-ipv6",
+      "text": "Topología y disponibilidad de IPv6 en los nodos.",
+      "explanation": "El tema clasifica las LoWPAN por topología (estrella o malla) y, de forma independiente, por si los nodos disponen de IPv6."
+    },
+    {
+      "id": "tasa-de-transmision-y-formato",
+      "text": "Tasa de transmisión y formato JSON/XML de la aplicación como único criterio.",
+      "explanation": "La tasa y el formato de datos de la aplicación no son los criterios de la taxonomía."
+    },
+    {
+      "id": "uso-de-coap-o-mqtt",
+      "text": "Uso de CoAP o MQTT, sin considerar topología ni IP.",
+      "explanation": "El protocolo de aplicación no clasifica la LoWPAN; se usan topología y disponibilidad de IPv6."
+    },
+    {
+      "id": "modelo-de-mcu-y-version",
+      "text": "Modelo de MCU y versión de HTTP exclusivamente.",
+      "explanation": "El modelo de MCU y la versión de HTTP no aparecen en la clasificación."
+    }
+  ],
+  "answer": "topologia-y-disponibilidad-de-ipv6"
+}

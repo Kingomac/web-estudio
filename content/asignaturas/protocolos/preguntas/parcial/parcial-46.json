@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-46",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pareja de datos permite identificar la aplicación de un nodo IP como extremo de comunicación, una vez elegido el protocolo de transporte?",
+  "explanation": "La dirección IP permite alcanzar la interfaz y el puerto identifica la aplicación de transporte. Un identificador persistente, por sí solo, no proporciona esos datos de acceso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "direccion-ip-y-puerto",
+      "text": "Dirección IP y puerto.",
+      "explanation": "La dirección IP y el puerto identifican la aplicación del nodo como extremo de comunicación."
+    },
+    {
+      "id": "direccion-mac-y-longitud-del",
+      "text": "Dirección MAC y longitud del prefijo.",
+      "explanation": "La MAC identifica la interfaz en el enlace, y la longitud de prefijo describe la subred."
+    },
+    {
+      "id": "pan-id-y-hop-limit",
+      "text": "PAN ID y Hop Limit.",
+      "explanation": "PAN ID identifica una red 802.15.4 y Hop Limit limita saltos; no identifican aplicaciones."
+    },
+    {
+      "id": "uuid-y-numero-de-serie",
+      "text": "UUID y número de serie de la batería.",
+      "explanation": "UUID y número de serie identifican el dispositivo, pero no permiten acceder a la aplicación."
+    }
+  ],
+  "answer": "direccion-ip-y-puerto"
+}

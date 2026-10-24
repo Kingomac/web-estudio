@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un emisor propone SAC=1,SAM=00 para el origen y M=0,DAC=1,DAM=00 para el destino. ¿Qué diagnóstico es correcto?",
+  "explanation": "La tabla cambia según SAC/DAC y M. SAC=1,SAM=00 es el caso especial de dirección origen no especificada. No existe una regla simétrica para el destino unicast: M=0,DAC=1,DAM=00 está reservado.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-origen-esta-reservado-y",
+      "text": "El origen está reservado y el destino representa ::.",
+      "explanation": "Invierte cuál de las dos combinaciones es especial y cuál está reservada."
+    },
+    {
+      "id": "el-origen-representa-la-combinacion",
+      "text": "El origen representa ::; la combinación de destino está reservada.",
+      "explanation": "Aplica cada tabla con sus condiciones y reconoce la asimetría."
+    },
+    {
+      "id": "ambas-combinaciones-representan-direccio",
+      "text": "Ambas combinaciones representan direcciones completas de 128 bits en línea.",
+      "explanation": "128 bits en línea corresponde a los modos 00 sin estado, no a estas combinaciones."
+    },
+    {
+      "id": "ambas-combinaciones-representan-y-son",
+      "text": "Ambas combinaciones representan :: y son válidas.",
+      "explanation": "Extiende indebidamente al destino el caso especial de origen."
+    }
+  ],
+  "answer": "el-origen-representa-la-combinacion"
+}

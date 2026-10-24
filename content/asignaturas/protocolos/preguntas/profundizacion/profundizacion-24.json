@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Contexto 2=2001:db8:2::/64 y contexto 4=2001:db8:4::/64. Descomprime 7c e6 24 3e 12 34 ab cd, que contiene IPHC y todos sus campos IPv6 en línea. ¿Qué resultado es correcto?",
+  "explanation": "7c: TF=11,NH=1,HLIM=00. e6: CID=1,SAC=1,SAM=10,M=0,DAC=1,DAM=10. El byte 24 selecciona SCI=2,DCI=4; 3e es Hop Limit=62. Después vienen los sufijos 1234 y abcd. Tamaño: 2+1+1+2+2=8.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "origen-2001-db8-4-ff",
+      "text": "Origen=2001:db8:4::ff:fe00:1234; destino=2001:db8:2::ff:fe00:abcd; HL=62; 8 bytes.",
+      "explanation": "Intercambia SCI y DCI."
+    },
+    {
+      "id": "origen-2001-db8-2-1234",
+      "text": "Origen=2001:db8:2::1234; destino=2001:db8:4::abcd; HL=62; 8 bytes.",
+      "explanation": "Omite la parte fija 0000:00ff:fe00 del IID reconstruido."
+    },
+    {
+      "id": "origen-2001-db8-2-ff",
+      "text": "Origen=2001:db8:2::ff:fe00:1234; destino=2001:db8:4::ff:fe00:abcd; HL=36; 7 bytes.",
+      "explanation": "Toma 0x24 como Hop Limit e ignora el byte adicional de contexto."
+    },
+    {
+      "id": "origen-2001-db8-2-ff-2",
+      "text": "Origen=2001:db8:2::ff:fe00:1234; destino=2001:db8:4::ff:fe00:abcd; HL=62; 8 bytes.",
+      "explanation": "Lee los contextos en orden origen/destino y aplica el patrón de IID de dieciséis bits."
+    }
+  ],
+  "answer": "origen-2001-db8-2-ff-2"
+}

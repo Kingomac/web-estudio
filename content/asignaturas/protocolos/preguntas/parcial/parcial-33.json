@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué asociación entre campos CoAP y funciones es correcta?",
+  "explanation": "El Message ID se utiliza en el nivel de mensajes para la fiabilidad y la detección de duplicados. El Token relaciona la respuesta con la petición correspondiente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "message-id-fiabilidad-y-duplicados",
+      "text": "Message ID: fiabilidad y duplicados; Token: asociación entre petición y respuesta.",
+      "explanation": "Message ID sirve para la fiabilidad y los duplicados; Token asocia la respuesta con su petición."
+    },
+    {
+      "id": "message-id-ruta-del-recurso",
+      "text": "Message ID: ruta del recurso; Token: longitud del datagrama IPv6.",
+      "explanation": "La ruta del recurso va en la opción Uri-Path, y la longitud del datagrama no es el Token."
+    },
+    {
+      "id": "message-id-asociacion-con-el",
+      "text": "Message ID: asociación con el broker; Token: número de retransmisiones TCP.",
+      "explanation": "CoAP no usa broker ni TCP en el escenario base."
+    },
+    {
+      "id": "message-id-formato-xml-token",
+      "text": "Message ID: formato XML; Token: prioridad del enlace radio.",
+      "explanation": "CoAP codifica en binario, no en XML, y el Token no indica prioridad radio."
+    }
+  ],
+  "answer": "message-id-fiabilidad-y-duplicados"
+}

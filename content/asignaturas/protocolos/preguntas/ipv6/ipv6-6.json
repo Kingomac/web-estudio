@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Si coinciden rutas /32, /48 y /64 con la dirección destino, ¿cuál gana por LPM?",
+  "explanation": "Longest Prefix Match elige la coincidencia de mayor longitud de prefijo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-64",
+      "text": "La /64.",
+      "explanation": "Longest prefix match elige la coincidencia de mayor longitud de prefijo: la /64."
+    },
+    {
+      "id": "la-32",
+      "text": "La /32.",
+      "explanation": "La /32 coincide, pero es la menos específica de las tres."
+    },
+    {
+      "id": "la-que-aparece-primero-siempre",
+      "text": "La que aparece primero, siempre.",
+      "explanation": "El orden de las entradas no influye; se elige por longitud de prefijo."
+    },
+    {
+      "id": "la-ruta-por-defecto-aunque",
+      "text": "La ruta por defecto aunque sea menos específica.",
+      "explanation": "La ruta por defecto ::/0 siempre coincide, pero solo se usa si no hay ninguna más específica."
+    }
+  ],
+  "answer": "la-64"
+}

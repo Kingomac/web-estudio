@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué une la red de acceso en la arquitectura IoT del tema?",
+  "explanation": "La troncal permite después comunicar el equipo de borde con la aplicación a través de Internet.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "los-dispositivos-iot-con-la",
+      "text": "Los dispositivos IoT con la pasarela o border router.",
+      "explanation": "La red de acceso comunica los dispositivos IoT con la pasarela o el border router."
+    },
+    {
+      "id": "la-pasarela-con-la-aplicacion",
+      "text": "La pasarela con la aplicación remota a través de Internet.",
+      "explanation": "Unir la pasarela con la aplicación en la nube a través de Internet es la función de la red troncal."
+    },
+    {
+      "id": "solo-los-routers-de-la",
+      "text": "Solo los routers de la red troncal entre sí.",
+      "explanation": "La red de acceso no se limita a la troncal ni a sus routers; empieza en los propios dispositivos."
+    },
+    {
+      "id": "solo-sensores-con-actuadores-dentro",
+      "text": "Solo sensores con actuadores dentro de una misma MCU.",
+      "explanation": "Sensores y actuadores se conectan a la MCU por E/S dentro del nodo; eso no es una red de acceso."
+    }
+  ],
+  "answer": "los-dispositivos-iot-con-la"
+}

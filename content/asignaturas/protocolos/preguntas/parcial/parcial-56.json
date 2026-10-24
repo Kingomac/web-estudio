@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-56",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una empresa quiere direcciones internas que comuniquen distintas subredes y no dependan de su ISP. ¿Qué tipo de dirección encaja mejor?",
+  "explanation": "Las ULA permiten comunicación interna entre subredes mediante routers y mantienen el direccionamiento independiente del proveedor. No se usan para encaminamiento en Internet.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ula",
+      "text": "ULA.",
+      "explanation": "Las ULA comunican subredes internas a través de routers sin depender del ISP."
+    },
+    {
+      "id": "link-local-exclusivamente",
+      "text": "Link-local exclusivamente.",
+      "explanation": "Las link-local no atraviesan routers."
+    },
+    {
+      "id": "loopback",
+      "text": "Loopback.",
+      "explanation": "Loopback solo identifica al propio nodo."
+    },
+    {
+      "id": "solicited-node",
+      "text": "Solicited-node.",
+      "explanation": "Solicited-node es un grupo multicast para NDP."
+    }
+  ],
+  "answer": "ula"
+}

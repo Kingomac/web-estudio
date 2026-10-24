@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En mesh-under, ¿qué relación existe entre saltos radio y salto IPv6 dentro de la malla?",
+  "explanation": "El reenvío inferior hace que los nodos del modelo estén a un salto IPv6 del border router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "puede-haber-varios-saltos-radio",
+      "text": "Puede haber varios saltos radio dentro de un único enlace IPv6.",
+      "explanation": "En mesh-under, todos los 6LN están a un salto IP del 6LBR aunque haya varios saltos radio."
+    },
+    {
+      "id": "cada-salto-radio-de-la",
+      "text": "Cada salto radio de la malla constituye siempre un salto IPv6 distinto.",
+      "explanation": "Que cada salto radio sea un salto IP es propio de route-over."
+    },
+    {
+      "id": "todos-los-nodos-deben-estar",
+      "text": "Todos los nodos deben estar a un salto radio del border router.",
+      "explanation": "Los nodos pueden estar a varios saltos radio; lo que mantienen es un único salto IP."
+    },
+    {
+      "id": "cada-nodo-intermedio-debe-descomprimir",
+      "text": "Cada nodo intermedio debe descomprimir IPv6 para consultar su dirección destino.",
+      "explanation": "El reenvío se hace en 6LoWPAN con direcciones MAC, sin descomprimir IPv6."
+    }
+  ],
+  "answer": "puede-haber-varios-saltos-radio"
+}

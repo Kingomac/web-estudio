@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un receptor reensambla varios datagramas 6LoWPAN simultáneos. Según RFC 4944, ¿qué conjunto identifica los fragmentos de un mismo datagrama?",
+  "explanation": "La clave de reensamblado combina ambos extremos de enlace, tamaño y etiqueta. Si hay Mesh, se usan Originator y Final Destination. La etiqueta sola puede coincidir entre emisores; el offset sitúa cada fragmento dentro del datagrama. La pregunta 11 del modelo resume origen y etiqueta, pero aquí se incluye la clave completa.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 §5.3 · reensamblado",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
+    }
+  ],
+  "options": [
+    {
+      "id": "solo-datagram-offset-porque-todos",
+      "text": "Solo datagram_offset, porque todos los fragmentos tienen el mismo desplazamiento.",
+      "explanation": "Los offsets distinguen posiciones y normalmente difieren entre fragmentos."
+    },
+    {
+      "id": "las-direcciones-ipv6-completas-repetidas",
+      "text": "Las direcciones IPv6 completas, repetidas en cada fragmento.",
+      "explanation": "Los fragmentos posteriores no repiten la cabecera IPv6 completa."
+    },
+    {
+      "id": "origen-y-destino-de-enlace",
+      "text": "Origen y destino de enlace (o extremos Mesh), datagram_size y datagram_tag.",
+      "explanation": "Incluye los cuatro elementos de identificación del estándar."
+    },
+    {
+      "id": "solo-datagram-tag-porque-es",
+      "text": "Solo datagram_tag, porque es único para todos los emisores de la red.",
+      "explanation": "La etiqueta no es un identificador global único en toda la red."
+    }
+  ],
+  "answer": "origen-y-destino-de-enlace"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué es un 6LBR?",
+  "explanation": "El Border Router proporciona conexión con redes externas y origina información de prefijos en el modelo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-router-de-frontera-entre",
+      "text": "El router de frontera entre la LoWPAN y otras redes IP.",
+      "explanation": "El 6LBR es el router situado en la frontera entre la LoWPAN y otras redes IP."
+    },
+    {
+      "id": "un-router-ipv6-intermedio-dentro",
+      "text": "Un router IPv6 intermedio dentro de la LoWPAN, exclusivamente.",
+      "explanation": "El router IPv6 intermedio de la LoWPAN es el 6LR."
+    },
+    {
+      "id": "un-host-que-nunca-puede",
+      "text": "Un host que nunca puede comunicar con redes externas.",
+      "explanation": "El 6LBR conecta precisamente con las redes externas."
+    },
+    {
+      "id": "un-dispositivo-final-que-solo",
+      "text": "Un dispositivo final que solo recibe anuncios MLE de su padre.",
+      "explanation": "Los dispositivos finales que reciben MLE de su padre pertenecen a Thread, no al rol 6LBR."
+    }
+  ],
+  "answer": "el-router-de-frontera-entre"
+}

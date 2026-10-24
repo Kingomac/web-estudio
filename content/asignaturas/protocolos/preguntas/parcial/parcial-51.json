@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-51",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una organización recibe un prefijo /48 y lo divide en subredes /64. ¿Cuántas subredes distintas puede identificar con esos 16 bits adicionales?",
+  "explanation": "La diferencia entre /64 y /48 es de 16 bits para el identificador de subred. Por tanto, existen 2 elevado a 16, es decir, 65 536 combinaciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-65-536",
+      "text": "65 536.",
+      "explanation": "De /48 a /64 hay 16 bits de subred: 2^16 = 65 536 subredes."
+    },
+    {
+      "id": "o-256",
+      "text": "256.",
+      "explanation": "256 = 2^8: solo usaría 8 bits."
+    },
+    {
+      "id": "o-16",
+      "text": "16.",
+      "explanation": "16 confunde el número de bits con el de subredes."
+    },
+    {
+      "id": "o-4-096",
+      "text": "4 096.",
+      "explanation": "4 096 = 2^12: solo usaría 12 bits."
+    }
+  ],
+  "answer": "o-65-536"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-90",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Los puertos UDP origen y destino son 0xF0B3 y 0xF0BE. ¿Qué compresión de puertos LOWPAN_NHC puede aplicarse?",
+  "explanation": "Ambos puertos están en 0xF0B0–0xF0BF. P=11 permite transmitir únicamente el nibble final de cada uno, de modo que los dos puertos ocupan un byte en total.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "p-11-cuatro-bits-por",
+      "text": "P=11: cuatro bits por puerto.",
+      "explanation": "Ambos puertos están en 0xF0B0–0xF0BF, así que P=11 envía 4 bits de cada uno."
+    },
+    {
+      "id": "p-00-cuatro-bits-por",
+      "text": "P=00: cuatro bits por puerto.",
+      "explanation": "P=00 envía los dos puertos completos (16 + 16 bits)."
+    },
+    {
+      "id": "p-01-cuatro-bits-por",
+      "text": "P=01: cuatro bits por puerto.",
+      "explanation": "P=01 envía 16 bits de origen y 8 de destino."
+    },
+    {
+      "id": "ninguna-los-dos-puertos-deben",
+      "text": "Ninguna: los dos puertos deben ocupar siempre 16 bits.",
+      "explanation": "Hay compresión posible porque los dos puertos están en el rango de P=11."
+    }
+  ],
+  "answer": "p-11-cuatro-bits-por"
+}

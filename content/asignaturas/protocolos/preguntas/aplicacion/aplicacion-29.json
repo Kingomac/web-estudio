@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué transporte y puertos corresponden a MQTT en el tema?",
+  "explanation": "MQTT es el protocolo de publicación/suscripción ligero sobre TCP o TLS/TCP presentado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        48
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "tcp-1883-y-tls-tcp",
+      "text": "TCP 1883 y TLS/TCP 8883.",
+      "explanation": "MQTT va sobre TCP en el puerto 1883 y sobre TLS/TCP en el 8883."
+    },
+    {
+      "id": "udp-5683-y-dtls-5684",
+      "text": "UDP 5683 y DTLS 5684.",
+      "explanation": "UDP 5683 y DTLS 5684 son los de CoAP."
+    },
+    {
+      "id": "udp-546-y-547",
+      "text": "UDP 546 y 547.",
+      "explanation": "546 y 547 son los puertos UDP de DHCPv6."
+    },
+    {
+      "id": "icmpv6-tipo-155",
+      "text": "ICMPv6 tipo 155.",
+      "explanation": "ICMPv6 tipo 155 es un mensaje de control de RPL, no transporte de MQTT."
+    }
+  ],
+  "answer": "tcp-1883-y-tls-tcp"
+}

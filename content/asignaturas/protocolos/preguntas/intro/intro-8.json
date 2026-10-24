@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué conjunto corresponde a las familias del sistema WisBlock?",
+  "explanation": "WisBlock separa placa base, MCU, entrada/salida y sensores; utiliza conectores de 24 pines.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "base-core-io-y-sensor",
+      "text": "Base, Core, IO y Sensor.",
+      "explanation": "WisBlock agrupa placas base (Base), MCU (Core), entrada/salida (IO) y sensores (Sensor)."
+    },
+    {
+      "id": "base-core-router-y-broker",
+      "text": "Base, Core, Router y Broker.",
+      "explanation": "Router y Broker no son familias de WisBlock; IO y Sensor sí lo son."
+    },
+    {
+      "id": "grove-base-grove-core-grove",
+      "text": "Grove Base, Grove Core, Grove IO y Grove Sensor.",
+      "explanation": "Grove pertenece al ecosistema de Seeed Studio (Wio), no a WisBlock de RAK."
+    },
+    {
+      "id": "mcu-mpu-lln-y-lpwan",
+      "text": "MCU, MPU, LLN y LPWAN.",
+      "explanation": "MCU, MPU, LLN y LPWAN son conceptos del tema, no familias de módulos WisBlock."
+    }
+  ],
+  "answer": "base-core-io-y-sensor"
+}

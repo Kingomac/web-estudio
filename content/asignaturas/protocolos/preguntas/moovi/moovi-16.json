@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.moovi-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "A=2001:db8:3::12ab:cdef y B=2001:db8:3::34ab:cdef son vecinos distintos del mismo enlace. Un tercero envía un NS de resolución cuyo Target es A. Sin proxy NDP ni duplicados, ¿qué comportamiento es correcto?",
+  "explanation": "Los 24 bits finales de ambas direcciones son ab:cd:ef, por lo que comparten solicited-node. El grupo multicast no identifica de forma única al propietario: el receptor comprueba los 128 bits del Target del NS. Solo A es propietario de la dirección solicitada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 §2.7.1 · solicited-node",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.7.1"
+    },
+    {
+      "title": "RFC 4861 §7.2 · resolución de vecinos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "pertenecen-a-grupos-diferentes-porque",
+      "text": "Pertenecen a grupos diferentes porque sus direcciones IPv6 completas son distintas.",
+      "explanation": "El grupo se obtiene de 24 bits, no de la totalidad de la dirección unicast."
+    },
+    {
+      "id": "ambos-deben-responder-porque-comparten",
+      "text": "Ambos deben responder porque comparten el grupo solicited-node.",
+      "explanation": "Recibir el NS no obliga a responder por una dirección que no pertenece al nodo."
+    },
+    {
+      "id": "responde-el-nodo-cuya-mac",
+      "text": "Responde el nodo cuya MAC termine en ab:cd:ef, sin examinar el Target.",
+      "explanation": "No se comparan esos 24 bits con la MAC propia: se comprueba la dirección IPv6 objetivo."
+    },
+    {
+      "id": "ambos-pertenecen-a-ff02-1",
+      "text": "Ambos pertenecen a ff02::1:ffab:cdef, pero solo A debe responder al NS dirigido a ese Target.",
+      "explanation": "Distingue la recepción multicast de la propiedad del Target."
+    }
+  ],
+  "answer": "ambos-pertenecen-a-ff02-1"
+}

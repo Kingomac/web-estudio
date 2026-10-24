@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-79",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un equipo incorpora una radio IEEE 802.15.4. ¿Qué funciones aporta por sí mismo ese estándar en la descripción del tema?",
+  "explanation": "IEEE 802.15.4 define PHY/MAC. Las soluciones que se construyen sobre él añaden mecanismos de red, encaminamiento y aplicaciones; la radio por sí sola no define toda la pila.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "las-capas-fisica-y-de",
+      "text": "Las capas física y de acceso al medio; las superiores aportan la malla y el encaminamiento.",
+      "explanation": "802.15.4 aporta las capas física y de acceso al medio; malla y encaminamiento vienen de capas superiores."
+    },
+    {
+      "id": "el-broker-mqtt-y-el",
+      "text": "El broker MQTT y el descubrimiento de todos los topics.",
+      "explanation": "El broker MQTT es software de aplicación."
+    },
+    {
+      "id": "el-direccionamiento-ipv6-global-y",
+      "text": "El direccionamiento IPv6 global y todas las rutas hacia Internet.",
+      "explanation": "IPv6 y las rutas vienen de 6LoWPAN y de las capas de red superiores."
+    },
+    {
+      "id": "la-traduccion-automatica-de-zigbee",
+      "text": "La traducción automática de Zigbee a HTTP y CoAP.",
+      "explanation": "802.15.4 no traduce protocolos de aplicación."
+    }
+  ],
+  "answer": "las-capas-fisica-y-de"
+}

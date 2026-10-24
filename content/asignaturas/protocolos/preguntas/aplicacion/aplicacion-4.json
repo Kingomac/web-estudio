@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa comunicación sin estado en los principios REST del tema?",
+  "explanation": "REST separa cliente y servidor y exige peticiones autosuficientes; también contempla cachés.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "cada-peticion-contiene-la-informacion",
+      "text": "Cada petición contiene la información necesaria para procesarla.",
+      "explanation": "Sin estado significa que cada petición lleva toda la información necesaria para que el servidor la procese."
+    },
+    {
+      "id": "el-servidor-nunca-tiene-recursos",
+      "text": "El servidor nunca tiene recursos ni datos.",
+      "explanation": "El servidor sí ofrece recursos y datos; «sin estado» se refiere a no guardar contexto de sesión entre peticiones."
+    },
+    {
+      "id": "el-cliente-no-puede-enviar",
+      "text": "El cliente no puede enviar más de una petición.",
+      "explanation": "El cliente puede enviar tantas peticiones como necesite; cada una es autosuficiente."
+    },
+    {
+      "id": "las-respuestas-no-pueden-almacenarse",
+      "text": "Las respuestas no pueden almacenarse en caché.",
+      "explanation": "REST permite expresamente cachés en clientes y proxies para ahorrar recursos de red."
+    }
+  ],
+  "answer": "cada-peticion-contiene-la-informacion"
+}

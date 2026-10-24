@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un nodo dispone de 8 KB de RAM y 64 KB de ROM. Según la clasificación simplificada del tema, ¿qué opción le corresponde?",
+  "explanation": "El tema sitúa la clase 0 por debajo de 10 KB de RAM y 100 KB de ROM. Le atribuye recursos demasiado reducidos para implementar la pila IP considerada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-0-recursos-insuficientes-para",
+      "text": "Clase 0: recursos insuficientes para la pila IP presentada.",
+      "explanation": "8 KB de RAM y 64 KB de ROM quedan por debajo de 10 KB y 100 KB: clase 0, sin recursos para la pila IP."
+    },
+    {
+      "id": "clase-1-pila-ip-completa",
+      "text": "Clase 1: pila IP completa y encaminamiento ligero.",
+      "explanation": "La clase 1 tiene más recursos que la clase 0 y su pila IP es reducida, no completa."
+    },
+    {
+      "id": "clase-2-funcionamiento-limitado-a",
+      "text": "Clase 2: funcionamiento limitado a sensor sin IP.",
+      "explanation": "La clase 2 supera 50 KB de RAM y 250 KB de ROM y sí puede ejecutar IP."
+    },
+    {
+      "id": "clase-2-capacidad-determinada-unicamente",
+      "text": "Clase 2: capacidad determinada únicamente por la potencia de radio.",
+      "explanation": "La clasificación de RFC 7228 se basa en memoria y CPU, no en la potencia de radio."
+    }
+  ],
+  "answer": "clase-0-recursos-insuficientes-para"
+}

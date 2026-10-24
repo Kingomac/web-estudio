@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-52",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un paquete IPv6 sin cabeceras de extensión transporta 20 bytes de aplicación y una cabecera UDP de 8 bytes. ¿Qué valor debe tener Payload Length?",
+  "explanation": "Payload Length cuenta lo que sigue a la cabecera IPv6: 8 bytes UDP y 20 de aplicación. Los 40 bytes de la cabecera IPv6 no se incluyen en ese campo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-28-bytes",
+      "text": "28 bytes.",
+      "explanation": "Payload Length cuenta lo que sigue a la cabecera IPv6: 8 de UDP + 20 de datos = 28 bytes."
+    },
+    {
+      "id": "o-68-bytes",
+      "text": "68 bytes.",
+      "explanation": "68 incluiría la cabecera IPv6 de 40 bytes, que no se cuenta."
+    },
+    {
+      "id": "o-20-bytes",
+      "text": "20 bytes.",
+      "explanation": "20 olvida la cabecera UDP de 8 bytes."
+    },
+    {
+      "id": "o-48-bytes",
+      "text": "48 bytes.",
+      "explanation": "48 es la suma de las cabeceras IPv6 y UDP sin los datos."
+    }
+  ],
+  "answer": "o-28-bytes"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué tamaño tiene la base de LOWPAN_IPHC?",
+  "explanation": "La base incluye dispatch y 13 bits de control; CID puede añadir un byte de identificadores.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        19
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2-bytes-mas-campos-opcionales",
+      "text": "2 bytes, más campos opcionales o en línea cuando sean necesarios.",
+      "explanation": "LOWPAN_IPHC ocupa 2 bytes fijos (dispatch 011 y 13 bits de control); luego pueden ir el byte de contexto y campos en línea."
+    },
+    {
+      "id": "siempre-40-bytes-sin-opciones",
+      "text": "Siempre 40 bytes, sin opciones.",
+      "explanation": "40 bytes es la cabecera IPv6 sin comprimir."
+    },
+    {
+      "id": "o-127-bytes-obligatorios",
+      "text": "127 bytes obligatorios.",
+      "explanation": "127 bytes es la trama completa de 802.15.4."
+    },
+    {
+      "id": "o-1-bit-para-toda-la",
+      "text": "1 bit para toda la cabecera IPv6.",
+      "explanation": "Un solo bit no puede codificar los modos de todos los campos."
+    }
+  ],
+  "answer": "o-2-bytes-mas-campos-opcionales"
+}

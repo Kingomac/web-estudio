@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirma el material sobre el sistema operativo de una MCU?",
+  "explanation": "La necesidad de un SO depende de la complejidad y los requisitos de la aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "puede-funcionar-sin-sistema-operativo",
+      "text": "Puede funcionar sin sistema operativo, según el proyecto.",
+      "explanation": "El tema indica que una MCU puede operar incluso sin SO, según la complejidad y los requisitos de la aplicación."
+    },
+    {
+      "id": "siempre-necesita-un-sistema-operativo",
+      "text": "Siempre necesita un sistema operativo de escritorio.",
+      "explanation": "Necesitar un SO es una característica de la MPU, no una obligación de la MCU."
+    },
+    {
+      "id": "solo-puede-funcionar-con-el",
+      "text": "Solo puede funcionar con el SO ejecutándose en el gateway.",
+      "explanation": "El tema no hace depender la MCU de un SO ejecutado en el gateway; la MCU realiza sus tareas de forma independiente."
+    },
+    {
+      "id": "necesita-el-mismo-so-que",
+      "text": "Necesita el mismo SO que una MPU independientemente del proyecto.",
+      "explanation": "La necesidad de SO depende del proyecto; no se exige el mismo que en una MPU."
+    }
+  ],
+  "answer": "puede-funcionar-sin-sistema-operativo"
+}

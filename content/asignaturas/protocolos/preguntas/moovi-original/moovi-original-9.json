@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.moovi-original-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el orden de las cabeceras en 6LoWPAN?",
+  "explanation": "Cuando se usan estas tres cabeceras, el orden de procesamiento es Mesh, Fragmentation, Compression (M–F–C). Las que no se necesitan pueden omitirse. La cabecera de compresión aparece al comienzo del datagrama, no se repite en cada fragmento posterior.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        17
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 §5 · cabeceras 6LoWPAN",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5"
+    }
+  ],
+  "options": [
+    {
+      "id": "compression-mesh-fragmentation",
+      "text": "Compression, Mesh, Fragmentation",
+      "explanation": "Compression no va antes de Mesh y Fragmentation."
+    },
+    {
+      "id": "mesh-fragmentation-compression",
+      "text": "Mesh, Fragmentation, Compression",
+      "explanation": "Respeta el orden M–F–C del temario."
+    },
+    {
+      "id": "fragmentation-compression-mesh",
+      "text": "Fragmentation, Compression, Mesh",
+      "explanation": "Mesh precede a Fragmentation, no la sigue."
+    },
+    {
+      "id": "mesh-compression-fragmentation",
+      "text": "Mesh, Compression, Fragmentation",
+      "explanation": "Fragmentation debe preceder a Compression."
+    }
+  ],
+  "answer": "mesh-fragmentation-compression"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Se elige CoAP sobre UDP para consultar un dispositivo limitado sin DTLS. ¿Qué puerto de destino es el indicado en el material?",
+  "explanation": "CoAP sobre UDP utiliza el puerto 5683; con DTLS se indica 5684. Los puertos 1883 y 8883 corresponden a MQTT sobre TCP y TLS/TCP, respectivamente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        36
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-5683",
+      "text": "5683.",
+      "explanation": "CoAP sobre UDP usa el puerto 5683."
+    },
+    {
+      "id": "o-5684",
+      "text": "5684.",
+      "explanation": "5684 es el puerto de CoAP con DTLS, que el enunciado descarta."
+    },
+    {
+      "id": "o-1883",
+      "text": "1883.",
+      "explanation": "1883 es MQTT sobre TCP."
+    },
+    {
+      "id": "o-8883",
+      "text": "8883.",
+      "explanation": "8883 es MQTT sobre TLS/TCP."
+    }
+  ],
+  "answer": "o-5683"
+}

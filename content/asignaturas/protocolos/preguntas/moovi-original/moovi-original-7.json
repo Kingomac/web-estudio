@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.moovi-original-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En la compresión stateless (DAC=0) en IPHC para la dirección unicast destino ¿qué sucede cuando el campo DAM tiene el valor \"11\"?",
+  "explanation": "DAC=0 indica compresión sin contexto. Para destino unicast, DAM=11 omite la dirección en línea: se reconstruye el prefijo fe80::/64 y el IID a partir de la dirección de enlace destino. Si existe cabecera Mesh, se toma la dirección del extremo final que proporciona esa cabecera.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        25
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 §3.1.1 · campos IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "se-toma-como-prefijo-fe80",
+      "text": "Se toma como prefijo fe80::/64 y el ID se obtiene a partir de la MAC destino",
+      "explanation": "Corresponde a la dirección unicast stateless completamente elidida."
+    },
+    {
+      "id": "se-toma-como-prefijo-fe80-2",
+      "text": "Se toma como prefijo fe80::/64 y el ID de 64 bits va en línea",
+      "explanation": "El IID de 64 bits en línea corresponde a DAM=01."
+    },
+    {
+      "id": "el-prefijo-de-64-bits",
+      "text": "El prefijo de 64 bits se infiere de DCI y los 64 bits del IID van en línea",
+      "explanation": "DCI se usa para compresión con contexto, no DAC=0."
+    },
+    {
+      "id": "el-prefijo-de-64-bits-2",
+      "text": "El prefijo de 64 bits se infiere de DCI y el IID se obtiene de la MAC destino",
+      "explanation": "La reconstrucción mediante contexto requiere DAC=1."
+    }
+  ],
+  "answer": "se-toma-como-prefijo-fe80"
+}

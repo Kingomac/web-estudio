@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-94",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "El primer fragmento que recibe un nodo para un datagrama es un FRAGN, porque la red ha alterado el orden de llegada. ¿Qué ocurre con el temporizador de reensamblado?",
+  "explanation": "El reensamblado admite recepción desordenada y su temporizador comienza con el primer fragmento recibido. Si no se completa antes de vencer, se descartan los fragmentos almacenados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "se-inicia-al-recibir-ese",
+      "text": "Se inicia al recibir ese fragmento, aunque todavía no haya llegado FRAG1.",
+      "explanation": "El temporizador arranca con el primer fragmento recibido, aunque no sea FRAG1."
+    },
+    {
+      "id": "solo-puede-iniciarse-cuando-llega",
+      "text": "Solo puede iniciarse cuando llega FRAG1.",
+      "explanation": "Los fragmentos pueden llegar desordenados; no hace falta esperar a FRAG1."
+    },
+    {
+      "id": "se-desactiva-porque-ya-no",
+      "text": "Se desactiva porque ya no es posible reensamblar el datagrama.",
+      "explanation": "El reensamblado admite llegada desordenada; no se cancela."
+    },
+    {
+      "id": "empieza-despues-de-recibir-el",
+      "text": "Empieza después de recibir el último fragmento.",
+      "explanation": "Si empezara al final, no podría limitar la espera."
+    }
+  ],
+  "answer": "se-inicia-al-recibir-ese"
+}

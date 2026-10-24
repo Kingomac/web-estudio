@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-63",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host obtiene su dirección mediante DHCPv6. ¿De dónde obtiene el router por defecto en el mecanismo presentado?",
+  "explanation": "DHCPv6 y los RA operan conjuntamente. El tema indica que el router por defecto se obtiene del origen del RA, también cuando la dirección se obtiene mediante DHCPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "de-la-direccion-ipv6-origen",
+      "text": "De la dirección IPv6 origen de un RA válido para ese propósito.",
+      "explanation": "El router por defecto se obtiene de la dirección origen del RA, también cuando se usa DHCPv6."
+    },
+    {
+      "id": "del-puerto-547-usado-por",
+      "text": "Del puerto 547 usado por el servidor DHCPv6.",
+      "explanation": "547 es el puerto del servidor DHCPv6, no un router."
+    },
+    {
+      "id": "del-identificador-de-transaccion-dhcpv6",
+      "text": "Del identificador de transacción DHCPv6.",
+      "explanation": "El identificador de transacción DHCPv6 no indica un router."
+    },
+    {
+      "id": "de-los-ultimos-64-bits",
+      "text": "De los últimos 64 bits de su propia dirección global.",
+      "explanation": "Los últimos 64 bits de la dirección propia son el IID del host."
+    }
+  ],
+  "answer": "de-la-direccion-ipv6-origen"
+}

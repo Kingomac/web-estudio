@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-original-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes rutas será instalada en la FIB y usada para reenviar un paquete con IP destino 2001:DB8:AB44::1122:1?",
+  "explanation": "El destino tiene cuarto hexteto 0, por lo que no pertenece a la ruta conectada cuyo cuarto hexteto es 1122. El tercer hexteto AB44 comienza por los bits 10 y entra en 2001:DB8:8000::/34 (8000–BFFF). Entre /34, /32 y /0 gana /34. La distancia administrativa 10 no hace perder a un prefijo más específico que coincide.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "una-ruta-conectada-creada-con",
+      "text": "Una ruta conectada creada con el comando ipv6 address 2001:DB8:AB44:1122::/64 eui-64",
+      "explanation": "El cuarto hexteto 1122 de ese /64 no coincide con el 0 del destino."
+    },
+    {
+      "id": "una-ruta-creada-con-el",
+      "text": "Una ruta creada con el comando ipv6 route 2001:DB8::/32 serial0",
+      "explanation": "El /32 coincide, pero el /34 también coincide y es más específico."
+    },
+    {
+      "id": "una-ruta-creada-con-el-2",
+      "text": "Una ruta creada con el comando ipv6 route ::/0 serial0",
+      "explanation": "Hay rutas /32 y /34 coincidentes que ganan a la ruta por defecto."
+    },
+    {
+      "id": "una-ruta-creada-con-el-3",
+      "text": "Una ruta creada con el comando ipv6 route 2001:DB8:8000::/34 serial0 10",
+      "explanation": "El /34 es el prefijo coincidente más largo."
+    }
+  ],
+  "answer": "una-ruta-creada-con-el-3"
+}

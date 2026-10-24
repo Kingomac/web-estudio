@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el orden de cabeceras 6LoWPAN cuando aparecen las tres?",
+  "explanation": "M-F-C respeta el orden de procesamiento; pueden omitirse las cabeceras innecesarias.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mesh-fragmentation-compression",
+      "text": "Mesh → Fragmentation → Compression.",
+      "explanation": "El orden de procesamiento es Mesh, Fragmentation y Compression (M–F–C)."
+    },
+    {
+      "id": "compression-mesh-fragmentation",
+      "text": "Compression → Mesh → Fragmentation.",
+      "explanation": "La compresión va la última, tras Mesh y Fragmentation."
+    },
+    {
+      "id": "fragmentation-mesh-compression",
+      "text": "Fragmentation → Mesh → Compression.",
+      "explanation": "Mesh va antes que Fragmentation."
+    },
+    {
+      "id": "mesh-compression-fragmentation",
+      "text": "Mesh → Compression → Fragmentation.",
+      "explanation": "La fragmentación va antes que la compresión."
+    }
+  ],
+  "answer": "mesh-fragmentation-compression"
+}

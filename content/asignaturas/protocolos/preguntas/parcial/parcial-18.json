@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una API exige que cada petición incluya toda la información necesaria para procesarla. ¿Qué principio REST está aplicando?",
+  "explanation": "Sin estado significa que cada petición es autosuficiente para su procesamiento. No obliga a cerrar la conexión de transporte después de cada operación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "comunicacion-sin-estado",
+      "text": "Comunicación sin estado.",
+      "explanation": "Que cada petición lleve toda la información necesaria es el principio REST de comunicación sin estado."
+    },
+    {
+      "id": "publicacion-retenida",
+      "text": "Publicación retenida.",
+      "explanation": "Los mensajes retenidos son de MQTT, no un principio REST."
+    },
+    {
+      "id": "conexion-de-transporte-no-persistente",
+      "text": "Conexión de transporte no persistente.",
+      "explanation": "Sin estado no obliga a cerrar la conexión de transporte; puede ser persistente."
+    },
+    {
+      "id": "suscripcion-a-eventos-mediante-un",
+      "text": "Suscripción a eventos mediante un broker.",
+      "explanation": "La suscripción mediante broker pertenece al modelo publicación/suscripción."
+    }
+  ],
+  "answer": "comunicacion-sin-estado"
+}

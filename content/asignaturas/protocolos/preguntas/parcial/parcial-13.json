@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Todos los sensores están dentro del alcance de la pasarela y no necesitan reenviar tráfico ajeno. ¿Qué topología resulta coherente con este escenario?",
+  "explanation": "En estrella, los nodos se comunican directamente con el equipo central. El tema destaca su simplicidad y que las radios pueden activarse solo cuando sea necesario.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "estrella",
+      "text": "Estrella.",
+      "explanation": "Si todos los sensores alcanzan la pasarela y nadie reenvía, la topología es en estrella."
+    },
+    {
+      "id": "arbol-con-varios-repetidores-obligatorio",
+      "text": "Árbol con varios repetidores obligatorios.",
+      "explanation": "El árbol introduce repetidores para llegar a nodos fuera de alcance, innecesarios aquí."
+    },
+    {
+      "id": "malla-con-rutas-redundantes-obligatorias",
+      "text": "Malla con rutas redundantes obligatorias.",
+      "explanation": "La malla añade caminos redundantes y reenvío, que el escenario no requiere."
+    },
+    {
+      "id": "cadena-en-la-que-cada",
+      "text": "Cadena en la que cada sensor depende del anterior.",
+      "explanation": "Una cadena exige que cada nodo reenvíe tráfico ajeno, justo lo que el enunciado descarta."
+    }
+  ],
+  "answer": "estrella"
+}

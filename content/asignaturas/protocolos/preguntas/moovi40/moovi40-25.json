@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Para un destino multicast, IPHC contiene M=1, DAC=0 y DAM=11. El único byte de dirección transmitido es 0x02. ¿Cuál es el destino reconstruido?",
+  "explanation": "El modo multicast stateless DAM=11 representa direcciones de la forma ff02::00GG con ocho bits en línea. Con GG=02 resulta ff02::2. No basta con que una dirección sea multicast para poder usar este modo: debe ajustarse a esa forma.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 §3.1.1 · modos IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-2",
+      "text": "ff02::2.",
+      "explanation": "Encaja en la plantilla multicast de ocho bits en línea."
+    },
+    {
+      "id": "fe80-2",
+      "text": "fe80::2.",
+      "explanation": "Es una dirección unicast link-local; el bit M indica multicast."
+    },
+    {
+      "id": "ff05-2",
+      "text": "ff05::2.",
+      "explanation": "Cambia el ámbito 2, que está implícito en este modo concreto."
+    },
+    {
+      "id": "ff02-1-ff00-2",
+      "text": "ff02::1:ff00:2.",
+      "explanation": "El grupo solicited-node tiene otros bits no nulos que este modo no reconstruye."
+    }
+  ],
+  "answer": "ff02-2"
+}

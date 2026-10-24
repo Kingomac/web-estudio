@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una primera trama de un datagrama 6LoWPAN necesita cabecera Mesh, fragmentación y compresión IPHC, sin otras cabeceras de adaptación. ¿En qué orden aparecen después de la cabecera MAC?",
+  "explanation": "El orden de estas cabeceras es Mesh, Fragmentation y Compression. Para el primer fragmento se usa FRAG1. Las cabeceras innecesarias pueden omitirse; los fragmentos posteriores no repiten una cabecera IPHC como si empezaran un datagrama nuevo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 §5 · cabeceras 6LoWPAN",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5"
+    }
+  ],
+  "options": [
+    {
+      "id": "mesh-frag1-iphc",
+      "text": "Mesh → FRAG1 → IPHC.",
+      "explanation": "Respeta el orden M–F–C del primer fragmento."
+    },
+    {
+      "id": "iphc-mesh-frag1",
+      "text": "IPHC → Mesh → FRAG1.",
+      "explanation": "La compresión no precede a las cabeceras Mesh y de fragmentación."
+    },
+    {
+      "id": "frag1-iphc-mesh",
+      "text": "FRAG1 → IPHC → Mesh.",
+      "explanation": "La cabecera Mesh debe ir antes de la fragmentación."
+    },
+    {
+      "id": "mesh-iphc-frag1",
+      "text": "Mesh → IPHC → FRAG1.",
+      "explanation": "La fragmentación precede a la cabecera comprimida IPHC."
+    }
+  ],
+  "answer": "mesh-frag1-iphc"
+}

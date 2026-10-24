@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En una trama de 127 bytes, la sobrecarga MAC, seguridad y FCS suma 46 bytes. Las cabeceras IPv6/UDP comprimidas ocupan en total 6 bytes, y no se necesita Mesh ni fragmentación. ¿Cuántos bytes de aplicación caben como máximo?",
+  "explanation": "Primero quedan 127−46=81 bytes de carga MAC. De ellos, 6 corresponden al conjunto de cabeceras comprimidas: 81−6=75 bytes de aplicación. Los 33 bytes serían el resultado con 40 bytes de IPv6 y 8 de UDP sin comprimir.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-121-bytes",
+      "text": "121 bytes.",
+      "explanation": "Resta las cabeceras comprimidas, pero olvida los 46 bytes del enlace."
+    },
+    {
+      "id": "o-75-bytes",
+      "text": "75 bytes.",
+      "explanation": "Resta tanto la sobrecarga del enlace como las cabeceras comprimidas."
+    },
+    {
+      "id": "o-81-bytes",
+      "text": "81 bytes.",
+      "explanation": "Olvida reservar los seis bytes de cabeceras comprimidas."
+    },
+    {
+      "id": "o-33-bytes",
+      "text": "33 bytes.",
+      "explanation": "Usa cabeceras IPv6/UDP sin comprimir en contra del supuesto."
+    }
+  ],
+  "answer": "o-75-bytes"
+}

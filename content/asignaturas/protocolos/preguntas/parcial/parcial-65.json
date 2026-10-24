@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-65",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host aplica DAD a una dirección tentativa. ¿Qué dirección IPv6 de origen utiliza en el NS de comprobación?",
+  "explanation": "El NS de Duplicate Address Detection se envía con origen :: porque la dirección tentativa todavía no está validada para su uso normal. La dirección comprobada va en Target.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-direccion-sin-especificar",
+      "text": "::, la dirección sin especificar.",
+      "explanation": "El NS de DAD usa :: como origen porque la dirección tentativa aún no está validada."
+    },
+    {
+      "id": "la-propia-direccion-tentativa-como",
+      "text": "La propia dirección tentativa como origen normal.",
+      "explanation": "La tentativa no puede usarse como origen hasta comprobar que no está duplicada."
+    },
+    {
+      "id": "ff02-1-el-grupo-de",
+      "text": "ff02::1, el grupo de todos los nodos.",
+      "explanation": "Un grupo multicast nunca es dirección origen."
+    },
+    {
+      "id": "o-1-la-direccion-loopback",
+      "text": "::1, la dirección loopback.",
+      "explanation": "::1 es la loopback y no se usa en el enlace."
+    }
+  ],
+  "answer": "la-direccion-sin-especificar"
+}

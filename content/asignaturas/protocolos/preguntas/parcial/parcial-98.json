@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-98",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia distingue al 6LR del 6LBR en las definiciones del tema?",
+  "explanation": "Los 6LR son routers internos del modo route-over. El 6LBR está en la frontera de la LoWPAN, y puede haber más de uno. En mesh-under no hay 6LR internos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-6lr-enruta-ipv6-dentro",
+      "text": "El 6LR enruta IPv6 dentro de la LoWPAN en route-over; el 6LBR conecta su frontera con otras redes.",
+      "explanation": "El 6LR enruta IPv6 dentro de la LoWPAN en route-over; el 6LBR está en la frontera con otras redes."
+    },
+    {
+      "id": "el-6lr-solo-actua-como",
+      "text": "El 6LR solo actúa como bridge mesh-under; el 6LBR nunca reenvía paquetes IP.",
+      "explanation": "El reenvío en mesh-under lo hace un 6LN FFD; el 6LBR sí reenvía IP."
+    },
+    {
+      "id": "el-6lr-traduce-mqtt-a",
+      "text": "El 6LR traduce MQTT a CoAP; el 6LBR asigna los topics.",
+      "explanation": "Ninguno traduce protocolos de aplicación ni asigna topics."
+    },
+    {
+      "id": "el-6lr-es-siempre-un",
+      "text": "El 6LR es siempre un nodo dormido y el 6LBR es cualquier sensor final.",
+      "explanation": "El 6LR es un FFD que reenvía, no un nodo dormido, y el 6LBR no es un sensor final."
+    }
+  ],
+  "answer": "el-6lr-enruta-ipv6-dentro"
+}

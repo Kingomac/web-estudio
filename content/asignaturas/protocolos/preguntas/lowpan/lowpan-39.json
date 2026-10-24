@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué dispositivo puede promocionar a router Thread?",
+  "explanation": "Router-Eligible End Device es el dispositivo final elegible para asumir funciones de router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-reed-de-la-familia",
+      "text": "Un REED de la familia FTD.",
+      "explanation": "Un REED (FTD) puede solicitar convertirse en router y el Leader le asigna un Router ID."
+    },
+    {
+      "id": "un-sed-de-la-familia",
+      "text": "Un SED de la familia MTD.",
+      "explanation": "Un SED es MTD: siempre será hijo."
+    },
+    {
+      "id": "un-med-de-la-familia",
+      "text": "Un MED de la familia MTD.",
+      "explanation": "Un MED es MTD y nunca será router."
+    },
+    {
+      "id": "un-fed-configurado-para-seguir",
+      "text": "Un FED configurado para seguir como dispositivo final.",
+      "explanation": "Un FED es FTD configurado para no ser router; permanece como dispositivo final."
+    }
+  ],
+  "answer": "un-reed-de-la-familia"
+}

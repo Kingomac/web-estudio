@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué define un dispositivo IoT modular?",
+  "explanation": "La modularidad permite componer una solución a medida con bloques conectables sin soldadura.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "bloques-funcionales-que-pueden-combinars",
+      "text": "Bloques funcionales que pueden combinarse, reemplazarse y reutilizarse.",
+      "explanation": "Es la definición del tema: módulos independientes que se combinan, reemplazan o reutilizan, como piezas LEGO, sin soldar."
+    },
+    {
+      "id": "un-dispositivo-que-incorpora-todos",
+      "text": "Un dispositivo que incorpora todos los bloques de forma inseparable.",
+      "explanation": "Bloques inseparables describen un diseño integrado, no modular."
+    },
+    {
+      "id": "una-arquitectura-que-impide-sustituir",
+      "text": "Una arquitectura que impide sustituir los módulos.",
+      "explanation": "La modularidad consiste justamente en poder sustituir los módulos."
+    },
+    {
+      "id": "un-sistema-que-admite-sensores",
+      "text": "Un sistema que admite sensores pero nunca módulos de comunicación.",
+      "explanation": "El módulo de comunicación (LoRa, NB-IoT, BLE…) es uno de los bloques que se pueden combinar."
+    }
+  ],
+  "answer": "bloques-funcionales-que-pueden-combinars"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.profundizacion-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "El volcado muestra toda una carga MAC 6LoWPAN: Mesh, IPHC, NHC UDP y 4 bytes de aplicación. ¿Qué pareja indica el tamaño IPv6 descomprimido y su Payload Length?",
+  "explanation": "Mesh ocupa 5 bytes, IPHC 2 y NHC UDP 4; quedan 4 bytes de aplicación. IPv6 descomprimido ocupa 40+8+4=52 y su Payload Length es 8+4=12. Los cinco bytes Mesh no forman parte del datagrama IPv6.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    },
+    {
+      "title": "RFC 6282 · NHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4"
+    },
+    {
+      "title": "RFC 4944 · Mesh",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-52-bytes-totales-y-payload",
+      "text": "52 bytes totales y Payload Length=12.",
+      "explanation": "Reconstruye las cabeceras originales y excluye Mesh del datagrama IPv6."
+    },
+    {
+      "id": "o-55-bytes-totales-y-payload",
+      "text": "55 bytes totales y Payload Length=15.",
+      "explanation": "Usa los quince bytes de toda la carga MAC como si fuesen Payload Length IPv6."
+    },
+    {
+      "id": "o-50-bytes-totales-y-payload",
+      "text": "50 bytes totales y Payload Length=10.",
+      "explanation": "Suma la cabecera comprimida IPHC+NHC a los datos sin restaurar los ocho bytes UDP."
+    },
+    {
+      "id": "o-57-bytes-totales-y-payload",
+      "text": "57 bytes totales y Payload Length=17.",
+      "explanation": "Incluye la cabecera Mesh dentro del IPv6 descomprimido."
+    }
+  ],
+  "answer": "o-52-bytes-totales-y-payload"
+}

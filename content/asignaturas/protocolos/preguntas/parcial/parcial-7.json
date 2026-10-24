@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En un diseño WisBlock, ¿qué pareja relaciona correctamente un módulo con su función?",
+  "explanation": "WisBlock distingue Base, Core, IO y Sensor. Core contiene la MCU y la placa Base permite integrar y alimentar los módulos del sistema.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "wisblock-core-microcontrolador-wisblock",
+      "text": "WisBlock Core: microcontrolador; WisBlock Base: conexión de los módulos.",
+      "explanation": "WisBlock Core contiene la MCU y WisBlock Base conecta y alimenta los demás módulos."
+    },
+    {
+      "id": "wisblock-core-sensor-wisblock-base",
+      "text": "WisBlock Core: sensor; WisBlock Base: servidor MQTT.",
+      "explanation": "Core es la MCU, no un sensor, y Base no es un servidor MQTT."
+    },
+    {
+      "id": "wisblock-io-carcasa-estanca-wisblock",
+      "text": "WisBlock IO: carcasa estanca; WisBlock Sensor: memoria principal.",
+      "explanation": "IO agrupa entrada/salida para comunicaciones y actuadores, y Sensor contiene sensores, no memoria."
+    },
+    {
+      "id": "wisblock-base-antena-wisblock-core",
+      "text": "WisBlock Base: antena; WisBlock Core: regulador externo.",
+      "explanation": "Base no es una antena y Core es la MCU, no un regulador."
+    }
+  ],
+  "answer": "wisblock-core-microcontrolador-wisblock"
+}

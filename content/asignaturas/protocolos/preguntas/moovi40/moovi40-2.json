@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un equipo recibe medidas de una red de sensores no IP y ofrece esos datos a una aplicación de Internet mediante una interfaz IP. ¿Qué papel desempeña en la arquitectura IoT?",
+  "explanation": "La pasarela conecta el acceso de los sensores con la red troncal. Cuando los nodos no usan IP, hace falta adaptación o intermediación para ofrecer sus datos a la aplicación IP; un router de Internet no interpreta directamente sus protocolos locales.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "repetidor-fisico-que-solo-amplifica",
+      "text": "Repetidor físico que solo amplifica la señal y no interviene en los protocolos.",
+      "explanation": "La exposición de datos mediante una interfaz IP implica más que repetir señales."
+    },
+    {
+      "id": "pasarela-entre-la-red-de",
+      "text": "Pasarela entre la red de acceso y la troncal, adaptando la comunicación de los sensores.",
+      "explanation": "Identifica la interconexión y la adaptación necesarias en el escenario."
+    },
+    {
+      "id": "bridge-transparente-que-hace-que",
+      "text": "Bridge transparente que hace que cualquier router de Internet entienda las tramas originales.",
+      "explanation": "Un bridge no convierte por sí mismo un protocolo no IP en un servicio accesible por Internet."
+    },
+    {
+      "id": "servidor-dns-cuya-funcion-principal",
+      "text": "Servidor DNS cuya función principal es asignar una dirección MAC a cada medida.",
+      "explanation": "DNS relaciona nombres y registros; no asigna direcciones MAC a medidas."
+    }
+  ],
+  "answer": "pasarela-entre-la-red-de"
+}

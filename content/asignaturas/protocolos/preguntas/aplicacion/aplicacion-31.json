@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué intercambio confirma una suscripción a un topic MQTT?",
+  "explanation": "CONNECT/CONNACK establece la conexión; SUBSCRIBE/SUBACK corresponde a la suscripción.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "subscribe-suback",
+      "text": "SUBSCRIBE → SUBACK.",
+      "explanation": "La suscripción a un topic se confirma con SUBSCRIBE y SUBACK."
+    },
+    {
+      "id": "connect-connack",
+      "text": "CONNECT → CONNACK.",
+      "explanation": "CONNECT y CONNACK establecen la conexión con el broker."
+    },
+    {
+      "id": "publish-puback",
+      "text": "PUBLISH → PUBACK.",
+      "explanation": "PUBLISH y PUBACK confirman una publicación con QoS 1."
+    },
+    {
+      "id": "unsubscribe-unsuback",
+      "text": "UNSUBSCRIBE → UNSUBACK.",
+      "explanation": "UNSUBSCRIBE y UNSUBACK sirven para darse de baja de un topic."
+    }
+  ],
+  "answer": "subscribe-suback"
+}

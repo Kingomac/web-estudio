@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un fabricante programa directamente el firmware de un microcontrolador sin instalar un sistema operativo. ¿Cuál es la valoración correcta?",
+  "explanation": "El material distingue la MCU de la MPU: el microcontrolador puede funcionar sin SO. La necesidad de incorporarlo depende de los requisitos de la aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "es-viable-si-la-complejidad",
+      "text": "Es viable si la complejidad y los requisitos del proyecto lo permiten.",
+      "explanation": "La MCU puede funcionar sin SO; incluirlo o no depende de la complejidad y los requisitos del proyecto."
+    },
+    {
+      "id": "solo-es-viable-si-el",
+      "text": "Solo es viable si el microcontrolador carece de memoria RAM.",
+      "explanation": "La RAM es parte normal de la MCU; su presencia no impide trabajar sin SO."
+    },
+    {
+      "id": "es-viable-unicamente-cuando-otro",
+      "text": "Es viable únicamente cuando otro nodo ejecuta el sistema operativo por él.",
+      "explanation": "La MCU realiza sus tareas de forma independiente, sin que otro nodo ejecute un SO por ella."
+    },
+    {
+      "id": "impide-que-el-microcontrolador-utilice",
+      "text": "Impide que el microcontrolador utilice sus puertos de entrada/salida.",
+      "explanation": "Los puertos de E/S son hardware de la MCU y se usan sin necesidad de SO."
+    }
+  ],
+  "answer": "es-viable-si-la-complejidad"
+}

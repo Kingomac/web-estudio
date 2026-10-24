@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿De dónde obtiene un cliente su default gateway aunque utilice DHCPv6?",
+  "explanation": "El tema recalca que el gateway se aprende mediante RA también cuando la dirección se obtiene por DHCPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "de-la-direccion-fuente-del",
+      "text": "De la dirección fuente del RA del router.",
+      "explanation": "Con DHCPv6, el default gateway se sigue obteniendo de la dirección IP fuente del RA."
+    },
+    {
+      "id": "del-servidor-dhcpv6-como-unico",
+      "text": "Del servidor DHCPv6 como único origen de esa información.",
+      "explanation": "El tema recalca que el gateway no lo da DHCPv6 sino el RA del router."
+    },
+    {
+      "id": "de-la-direccion-ipv6-del",
+      "text": "De la dirección IPv6 del primer host que responda a NS.",
+      "explanation": "Responder a un NS no convierte a un host en default gateway."
+    },
+    {
+      "id": "de-su-propio-grupo-solicited",
+      "text": "De su propio grupo solicited-node.",
+      "explanation": "El grupo solicited-node sirve para resolver direcciones, no para obtener el gateway."
+    }
+  ],
+  "answer": "de-la-direccion-fuente-del"
+}

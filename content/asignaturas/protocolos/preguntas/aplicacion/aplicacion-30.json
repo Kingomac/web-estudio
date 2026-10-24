@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué expresa Remaining Length en un mensaje MQTT?",
+  "explanation": "Ocupa de 1 a 4 bytes, con bit de continuación; la cabecera fija total ocupa de 2 a 5 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-tamano-de-la-cabecera",
+      "text": "El tamaño de la cabecera variable y los datos.",
+      "explanation": "Remaining Length indica el tamaño de la cabecera variable más los datos."
+    },
+    {
+      "id": "el-tamano-completo-del-paquete",
+      "text": "El tamaño completo del paquete, incluida la cabecera fija.",
+      "explanation": "No incluye la cabecera fija, que contiene al propio campo."
+    },
+    {
+      "id": "solo-el-tamano-del-payload",
+      "text": "Solo el tamaño del payload, sin la cabecera variable.",
+      "explanation": "También cuenta la cabecera variable, no solo el payload."
+    },
+    {
+      "id": "solo-el-tamano-de-la",
+      "text": "Solo el tamaño de la cabecera fija.",
+      "explanation": "La cabecera fija ocupa 2–5 bytes y no es lo que mide este campo."
+    }
+  ],
+  "answer": "el-tamano-de-la-cabecera"
+}

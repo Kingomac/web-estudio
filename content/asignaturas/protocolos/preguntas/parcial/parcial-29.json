@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué estructura de mensaje SOAP respeta los elementos obligatorios y opcionales descritos?",
+  "explanation": "Envelope es el elemento raíz y Body es obligatorio. Header y Fault son opcionales; Fault aporta información sobre errores, por lo que no debe aparecer en toda respuesta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "envelope-con-body-header-y",
+      "text": "Envelope con Body; Header y Fault pueden no aparecer.",
+      "explanation": "Envelope es la raíz y Body es obligatorio; Header y Fault son opcionales."
+    },
+    {
+      "id": "header-como-raiz-con-envelope",
+      "text": "Header como raíz, con Envelope opcional.",
+      "explanation": "La raíz es Envelope, no Header."
+    },
+    {
+      "id": "fault-obligatorio-en-todas-las",
+      "text": "Fault obligatorio en todas las respuestas correctas.",
+      "explanation": "Fault solo aparece cuando hay errores de procesado."
+    },
+    {
+      "id": "body-opcional-si-el-mensaje",
+      "text": "Body opcional si el mensaje contiene una cookie HTTP.",
+      "explanation": "Body es obligatorio en todo mensaje SOAP; las cookies no tienen relación."
+    }
+  ],
+  "answer": "envelope-con-body-header-y"
+}

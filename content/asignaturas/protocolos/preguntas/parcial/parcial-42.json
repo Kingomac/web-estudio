@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-42",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo publica con retención el valor 18 y después el valor 21 en el mismo topic. Un cliente se suscribe más tarde. ¿Qué valor retenido recibirá?",
+  "explanation": "El broker conserva el último mensaje retenido de cada topic. Lo entrega a los nuevos suscriptores sin que tengan que esperar una nueva actualización del publicador.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-21-porque-la-publicacion-retenida",
+      "text": "21, porque la publicación retenida más reciente sustituye a la anterior.",
+      "explanation": "El broker guarda solo el último retenido del topic: el nuevo suscriptor recibe 21."
+    },
+    {
+      "id": "o-18-porque-la-primera-publicacion",
+      "text": "18, porque la primera publicación de un topic no puede sobrescribirse.",
+      "explanation": "Cada retenido nuevo sobrescribe al anterior."
+    },
+    {
+      "id": "los-dos-valores-en-orden",
+      "text": "Los dos valores en orden, porque la retención almacena todo el histórico.",
+      "explanation": "Solo se guarda el último mensaje retenido, no el histórico."
+    },
+    {
+      "id": "ninguno-porque-los-retenidos-solo",
+      "text": "Ninguno, porque los retenidos solo se envían a suscriptores anteriores.",
+      "explanation": "Los retenidos se envían precisamente a los nuevos suscriptores."
+    }
+  ],
+  "answer": "o-21-porque-la-publicacion-retenida"
+}

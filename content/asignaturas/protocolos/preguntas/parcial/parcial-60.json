@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-60",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Las subredes 2001:db8:20:0::/64, 2001:db8:20:1::/64, 2001:db8:20:2::/64 y 2001:db8:20:3::/64 comparten siguiente salto. ¿Qué resumen exacto las agrupa?",
+  "explanation": "Las cuatro subredes forman un bloque contiguo y alineado. Al agrupar cuatro prefijos /64 se liberan dos bits, dando /62; un /63 solo incluiría dos y un /60 incluiría dieciséis.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-20-62",
+      "text": "2001:db8:20::/62.",
+      "explanation": "Cuatro /64 contiguas y alineadas (0 a 3) se resumen liberando 2 bits: /62."
+    },
+    {
+      "id": "o-2001-db8-20-63",
+      "text": "2001:db8:20::/63.",
+      "explanation": "Una /63 solo agrupa dos /64."
+    },
+    {
+      "id": "o-2001-db8-20-60",
+      "text": "2001:db8:20::/60.",
+      "explanation": "Una /60 incluiría dieciséis /64, más de las que hay."
+    },
+    {
+      "id": "o-2001-db8-20-64",
+      "text": "2001:db8:20::/64.",
+      "explanation": "/64 solo cubre la primera subred."
+    }
+  ],
+  "answer": "o-2001-db8-20-62"
+}

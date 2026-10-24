@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-96",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un fragmento mesh-under recorre S → B → D. ¿Qué sucede con las direcciones de enlace al reenviarse de B a D?",
+  "explanation": "Las direcciones MAC de la trama corresponden al salto de enlace actual. Las direcciones Original y Final de la cabecera Mesh conservan los extremos del trayecto mesh-under.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-trama-usa-b-y",
+      "text": "La trama usa B y D; las direcciones Original y Final de Mesh siguen siendo S y D.",
+      "explanation": "La trama del salto B→D usa B y D como origen y destino, y Mesh conserva Original S y Final D."
+    },
+    {
+      "id": "la-trama-y-las-direcciones",
+      "text": "La trama y las direcciones Original y Final de Mesh pasan todas a B y D.",
+      "explanation": "Las direcciones Original y Final de Mesh no cambian por salto."
+    },
+    {
+      "id": "la-trama-conserva-s-y",
+      "text": "La trama conserva S y B; la cabecera Mesh se elimina antes de llegar a D.",
+      "explanation": "La trama cambia en cada salto y la cabecera Mesh se mantiene hasta el final."
+    },
+    {
+      "id": "la-direccion-final-de-mesh",
+      "text": "La dirección Final de Mesh se sustituye por la IPv6 del router de borde.",
+      "explanation": "La cabecera Mesh lleva direcciones de enlace, no IPv6."
+    }
+  ],
+  "answer": "la-trama-usa-b-y"
+}

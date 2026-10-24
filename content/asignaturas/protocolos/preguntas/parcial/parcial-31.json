@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente CoAP envía una petición CON y no recibe ACK. ¿Qué comportamiento de retransmisión describe el tema?",
+  "explanation": "En el modo confirmable, la ausencia de ACK puede provocar hasta cuatro retransmisiones con exponential backoff. NON es el modo que no espera ese asentimiento.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "hasta-cuatro-reenvios-duplicando-el",
+      "text": "Hasta cuatro reenvíos, duplicando el intervalo entre reintentos.",
+      "explanation": "Sin ACK, el mensaje confirmable se retransmite hasta 4 veces, duplicando el intervalo (exponential backoff)."
+    },
+    {
+      "id": "reenvios-ilimitados-con-el-mismo",
+      "text": "Reenvíos ilimitados con el mismo intervalo.",
+      "explanation": "Los reintentos están limitados y su intervalo crece; no son ilimitados ni constantes."
+    },
+    {
+      "id": "una-unica-retransmision-y-conversion",
+      "text": "Una única retransmisión y conversión obligatoria a TCP.",
+      "explanation": "CoAP gestiona los reintentos en la propia aplicación sobre UDP; no cambia a TCP."
+    },
+    {
+      "id": "ninguna-retransmision-porque-con-signifi",
+      "text": "Ninguna retransmisión, porque CON significa no confirmable.",
+      "explanation": "CON es el modo confirmable; el que no espera ACK es NON."
+    }
+  ],
+  "answer": "hasta-cuatro-reenvios-duplicando-el"
+}

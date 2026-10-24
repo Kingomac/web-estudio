@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En LLN, ¿a qué se refiere el término lossy?",
+  "explanation": "El entorno radio puede ser adverso y dar lugar a valores bajos de SNR y comunicaciones variables.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "a-perdidas-y-variabilidad-del",
+      "text": "A pérdidas y variabilidad del enlace, por ejemplo por interferencias.",
+      "explanation": "Lossy indica que las comunicaciones sufren interferencias y variabilidad por entornos radio adversos (SNR baja)."
+    },
+    {
+      "id": "al-requisito-de-utilizar-poca",
+      "text": "Al requisito de utilizar poca energía.",
+      "explanation": "El requisito de poco consumo corresponde a Low-power, la otra mitad del término."
+    },
+    {
+      "id": "a-que-la-tasa-de",
+      "text": "A que la tasa de transmisión es baja, aunque nunca haya pérdidas.",
+      "explanation": "La tasa baja es una consecuencia de ambos rasgos, pero lossy se refiere precisamente a las pérdidas."
+    },
+    {
+      "id": "a-que-todos-los-nodos",
+      "text": "A que todos los nodos permanecen siempre dormidos.",
+      "explanation": "Lossy no habla del estado de reposo de los nodos sino de la calidad del enlace."
+    }
+  ],
+  "answer": "a-perdidas-y-variabilidad-del"
+}

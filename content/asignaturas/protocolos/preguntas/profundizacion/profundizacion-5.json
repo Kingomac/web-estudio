@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se divide 2001:db8:beef:5a80::/57 en subredes /64, numeradas desde cero. ¿Qué pareja da la cantidad de subredes y la de índice decimal 53?",
+  "explanation": "Quedan 64−57=7 bits de subred: 2^7=128. El índice 53 decimal es 0x35. Se añade a la base 0x5a80: 0x5a80+0x35=0x5ab5; los /64 disponibles van de 5a80 a 5aff.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-128-subredes-2001-db8-beef",
+      "text": "128 subredes; 2001:db8:beef:5ab5::/64.",
+      "explanation": "La cantidad y la suma hexadecimal respetan el /57."
+    },
+    {
+      "id": "o-256-subredes-2001-db8-beef",
+      "text": "256 subredes; 2001:db8:beef:5ab5::/64.",
+      "explanation": "256 correspondería a ocho bits libres, como en un /56."
+    },
+    {
+      "id": "o-128-subredes-2001-db8-beef-2",
+      "text": "128 subredes; 2001:db8:beef:5a53::/64.",
+      "explanation": "5a53 cae fuera del bloque, cuyo cuarto hexteto empieza en 5a80."
+    },
+    {
+      "id": "o-128-subredes-2001-db8-beef-3",
+      "text": "128 subredes; 2001:db8:beef:5ad3::/64.",
+      "explanation": "5ad3 resulta de tratar 53 como hexadecimal en lugar de decimal."
+    }
+  ],
+  "answer": "o-128-subredes-2001-db8-beef"
+}

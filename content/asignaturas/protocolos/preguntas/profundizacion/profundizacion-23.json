@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Para el destino ff02::1:ff9a:bcde, con M=1 y DAC=0, ¿cuál es el modo DAM válido más corto?",
+  "explanation": "La dirección encaja en ffXX::00XX:XXXX:XXXX. Se transmiten 02 01 ff 9a bc de. No encaja en el patrón de 32 bits ffXX::00XX:XXXX ni en ff02::00XX. La forma completa sería válida, pero no es la más corta.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "dam-11-con-1-byte",
+      "text": "DAM=11, con 1 byte en línea.",
+      "explanation": "El modo de ocho bits solo admite ff02::00XX."
+    },
+    {
+      "id": "dam-00-con-16-bytes",
+      "text": "DAM=00, con 16 bytes en línea, porque solicited-node no admite compresión.",
+      "explanation": "Confunde una codificación válida pero larga con la mínima; solicited-node sí admite el modo de 48 bits."
+    },
+    {
+      "id": "dam-01-con-6-bytes",
+      "text": "DAM=01, con 6 bytes en línea.",
+      "explanation": "El modo de 48 bits conserva flags/scope y los cinco bytes finales necesarios."
+    },
+    {
+      "id": "dam-10-con-4-bytes",
+      "text": "DAM=10, con 4 bytes en línea.",
+      "explanation": "El patrón de 32 bits no puede conservar el grupo 1:ff9a:bcde."
+    }
+  ],
+  "answer": "dam-01-con-6-bytes"
+}

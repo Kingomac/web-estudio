@@ -1,0 +1,107 @@
+{
+  "id": "protocolos.tests.tema-4-lowpan",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "tema-4-lowpan",
+  "title": "Test · Redes LoWPAN",
+  "description": "56 preguntas sobre tecnologías, compresión, fragmentación, reenvío, NDP optimizado, Thread y RPL.",
+  "scope": "Tema 4 completo (85 páginas), incluidas las partes posteriores a la página 37 que no entran en el primer parcial.",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 180,
+  "groups": [
+    {
+      "id": "tecnologias",
+      "title": "Tecnologías",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-1",
+        "protocolos.preguntas.lowpan-2",
+        "protocolos.preguntas.lowpan-3",
+        "protocolos.preguntas.lowpan-4",
+        "protocolos.preguntas.lowpan-5"
+      ]
+    },
+    {
+      "id": "compresion-y-fragmentacion",
+      "title": "Compresión y fragmentación",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-6",
+        "protocolos.preguntas.lowpan-7",
+        "protocolos.preguntas.lowpan-8",
+        "protocolos.preguntas.lowpan-9",
+        "protocolos.preguntas.lowpan-10",
+        "protocolos.preguntas.lowpan-11",
+        "protocolos.preguntas.lowpan-12",
+        "protocolos.preguntas.lowpan-13",
+        "protocolos.preguntas.lowpan-14",
+        "protocolos.preguntas.lowpan-15",
+        "protocolos.preguntas.lowpan-16",
+        "protocolos.preguntas.lowpan-17",
+        "protocolos.preguntas.lowpan-18",
+        "protocolos.preguntas.lowpan-19",
+        "protocolos.preguntas.lowpan-20",
+        "protocolos.preguntas.lowpan-21"
+      ]
+    },
+    {
+      "id": "reenvio",
+      "title": "Reenvío",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-22",
+        "protocolos.preguntas.lowpan-23",
+        "protocolos.preguntas.lowpan-24",
+        "protocolos.preguntas.lowpan-25",
+        "protocolos.preguntas.lowpan-26",
+        "protocolos.preguntas.lowpan-27",
+        "protocolos.preguntas.lowpan-28",
+        "protocolos.preguntas.lowpan-29"
+      ]
+    },
+    {
+      "id": "ndp-optimizado",
+      "title": "NDP optimizado",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-30",
+        "protocolos.preguntas.lowpan-31",
+        "protocolos.preguntas.lowpan-32",
+        "protocolos.preguntas.lowpan-33",
+        "protocolos.preguntas.lowpan-34",
+        "protocolos.preguntas.lowpan-35",
+        "protocolos.preguntas.lowpan-36",
+        "protocolos.preguntas.lowpan-37"
+      ]
+    },
+    {
+      "id": "thread",
+      "title": "Thread",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-38",
+        "protocolos.preguntas.lowpan-39",
+        "protocolos.preguntas.lowpan-40",
+        "protocolos.preguntas.lowpan-41",
+        "protocolos.preguntas.lowpan-42",
+        "protocolos.preguntas.lowpan-43",
+        "protocolos.preguntas.lowpan-44",
+        "protocolos.preguntas.lowpan-45"
+      ]
+    },
+    {
+      "id": "wi-sun-y-rpl",
+      "title": "Wi-SUN y RPL",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-46",
+        "protocolos.preguntas.lowpan-47",
+        "protocolos.preguntas.lowpan-48",
+        "protocolos.preguntas.lowpan-49",
+        "protocolos.preguntas.lowpan-50",
+        "protocolos.preguntas.lowpan-51",
+        "protocolos.preguntas.lowpan-52",
+        "protocolos.preguntas.lowpan-53",
+        "protocolos.preguntas.lowpan-54",
+        "protocolos.preguntas.lowpan-55",
+        "protocolos.preguntas.lowpan-56"
+      ]
+    }
+  ]
+}

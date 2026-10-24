@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el reenvío mesh-under, ¿qué direcciones se conservan en la cabecera Mesh?",
+  "explanation": "Las direcciones MAC de la trama cambian por salto; los extremos de Mesh se mantienen.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-origen-original-y-el",
+      "text": "El origen original y el destino final de la malla.",
+      "explanation": "La cabecera Mesh conserva la MAC original (O) y la final (F) en todo el recorrido."
+    },
+    {
+      "id": "la-mac-del-transmisor-y",
+      "text": "La MAC del transmisor y receptor del salto radio actual.",
+      "explanation": "Las direcciones del salto actual son las de la trama 802.15.4 (S y D), que cambian en cada salto."
+    },
+    {
+      "id": "el-origen-original-y-el-2",
+      "text": "El origen original y el vecino siguiente en cada salto.",
+      "explanation": "La siguiente MAC de cada salto cambia; la cabecera Mesh guarda la final."
+    },
+    {
+      "id": "la-direccion-del-ultimo-router",
+      "text": "La dirección del último router y la del primer fragmento recibido.",
+      "explanation": "La cabecera Mesh no contiene routers ni fragmentos."
+    }
+  ],
+  "answer": "el-origen-original-y-el"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué contiene conceptualmente una entrada de FIB IP?",
+  "explanation": "La consulta de la FIB determina por dónde reenviar el paquete según su dirección IP destino.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "prefijo-destino-y-enlace-de",
+      "text": "Prefijo destino y enlace de salida o siguiente salto.",
+      "explanation": "Una ruta de la FIB es esencialmente un par [prefijo, enlace de salida o siguiente salto]."
+    },
+    {
+      "id": "mac-destino-e-interfaz-como",
+      "text": "MAC destino e interfaz, como la tabla de un bridge.",
+      "explanation": "MAC destino e interfaz describen la tabla de un bridge."
+    },
+    {
+      "id": "nombre-de-servicio-y-puerto",
+      "text": "Nombre de servicio y puerto, como un registro SRV.",
+      "explanation": "Nombre de servicio y puerto son datos de un registro SRV de DNS-SD."
+    },
+    {
+      "id": "ipv6-de-un-vecino-y",
+      "text": "IPv6 de un vecino y su MAC, como la caché NDP.",
+      "explanation": "La pareja IPv6–MAC de un vecino se guarda en la caché NDP, no en la FIB."
+    }
+  ],
+  "answer": "prefijo-destino-y-enlace-de"
+}

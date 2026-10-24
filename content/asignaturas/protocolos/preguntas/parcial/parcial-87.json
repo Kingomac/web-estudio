@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-87",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Se comprime la fuente fe80::ff:fe00:1234 con SAC=0 y SAM=10. ¿Qué parte de la dirección se transmite en línea?",
+  "explanation": "Con SAC=0 y SAM=10 se reconstruyen fe80::/64 y la parte fija del IID 0:ff:fe00:XXXX. Solo se envían los 16 bits XXXX, que aquí valen 1234.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "los-16-bits-0x1234",
+      "text": "Los 16 bits 0x1234.",
+      "explanation": "Con SAC=0 y SAM=10 se reconstruye fe80::ff:fe00:XXXX y solo se envían los 16 bits 0x1234."
+    },
+    {
+      "id": "los-64-bits-completos-del",
+      "text": "Los 64 bits completos del IID.",
+      "explanation": "64 bits en línea corresponden a SAM=01."
+    },
+    {
+      "id": "los-128-bits-de-la",
+      "text": "Los 128 bits de la dirección.",
+      "explanation": "128 bits corresponden a SAM=00."
+    },
+    {
+      "id": "ningun-bit-porque-sam-10",
+      "text": "Ningún bit, porque SAM=10 siempre deriva todo el IID de la MAC.",
+      "explanation": "Derivar todo el IID de la MAC es SAM=11."
+    }
+  ],
+  "answer": "los-16-bits-0x1234"
+}

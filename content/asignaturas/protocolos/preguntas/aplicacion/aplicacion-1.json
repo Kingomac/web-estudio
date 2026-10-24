@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué define principalmente la capa de aplicación?",
+  "explanation": "Incluye identificación, representación de datos, formato y orden de mensajes, sesiones y modelo de comunicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "como-se-representa-solicita-e",
+      "text": "Cómo se representa, solicita e intercambia la información entre aplicaciones.",
+      "explanation": "La capa de aplicación define cómo se identifican los recursos, cómo se representan los datos y el formato, orden y modelo de los mensajes."
+    },
+    {
+      "id": "como-transmitir-bits-por-el",
+      "text": "Cómo transmitir bits por el medio físico.",
+      "explanation": "Transmitir bits por el medio es función de la capa física."
+    },
+    {
+      "id": "como-entregar-una-trama-al",
+      "text": "Cómo entregar una trama al siguiente nodo del enlace.",
+      "explanation": "Entregar una trama al siguiente nodo del enlace corresponde a la capa de enlace."
+    },
+    {
+      "id": "como-encaminar-datagramas-entre-redes",
+      "text": "Cómo encaminar datagramas entre redes.",
+      "explanation": "Encaminar datagramas entre redes es tarea de la capa de red (IP)."
+    }
+  ],
+  "answer": "como-se-representa-solicita-e"
+}

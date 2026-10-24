@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pareja de transporte y puerto corresponde a MQTT con TLS según el tema?",
+  "explanation": "MQTT se presenta sobre TCP en el puerto 1883 o sobre TLS/TCP en el 8883. MQTT-SN es la variante sobre UDP descrita al final del tema.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        48
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "tls-sobre-tcp-puerto-8883",
+      "text": "TLS sobre TCP, puerto 8883.",
+      "explanation": "MQTT con TLS va sobre TCP en el puerto 8883."
+    },
+    {
+      "id": "dtls-sobre-udp-puerto-5684",
+      "text": "DTLS sobre UDP, puerto 5684.",
+      "explanation": "DTLS sobre UDP 5684 es CoAP protegido."
+    },
+    {
+      "id": "tcp-sin-tls-puerto-5683",
+      "text": "TCP sin TLS, puerto 5683.",
+      "explanation": "5683 es CoAP sobre UDP, y MQTT sin TLS usa 1883."
+    },
+    {
+      "id": "quic-sobre-udp-puerto-1883",
+      "text": "QUIC sobre UDP, puerto 1883.",
+      "explanation": "MQTT no va sobre QUIC; 1883 es su puerto TCP sin TLS."
+    }
+  ],
+  "answer": "tls-sobre-tcp-puerto-8883"
+}

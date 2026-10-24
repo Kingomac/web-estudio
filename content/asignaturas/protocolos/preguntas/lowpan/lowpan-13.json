@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué valor de Hop Limit representa HLIM=10?",
+  "explanation": "HLIM codifica 00 explícito, 01 valor 1, 10 valor 64 y 11 valor 255.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-64",
+      "text": "64.",
+      "explanation": "HLIM=10 reconstruye Hop Limit=64."
+    },
+    {
+      "id": "o-1",
+      "text": "1.",
+      "explanation": "Hop Limit=1 corresponde a HLIM=01."
+    },
+    {
+      "id": "o-255",
+      "text": "255.",
+      "explanation": "Hop Limit=255 corresponde a HLIM=11."
+    },
+    {
+      "id": "o-10",
+      "text": "10.",
+      "explanation": "10 es el código binario de dos bits, no el valor decimal del Hop Limit."
+    }
+  ],
+  "answer": "o-64"
+}

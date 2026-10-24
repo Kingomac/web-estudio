@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Durante un handshake WebSocket sobre HTTP/1.1, el servidor acepta el cambio de protocolo. ¿Qué respuesta se muestra para ese caso?",
+  "explanation": "El handshake WebSocket mostrado utiliza Upgrade: websocket y una respuesta 101 Switching Protocols. Después, el intercambio continúa con tramas WebSocket.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-101-switching-protocols",
+      "text": "101 Switching Protocols.",
+      "explanation": "El servidor acepta el cambio con 101 Switching Protocols y las cabeceras Upgrade."
+    },
+    {
+      "id": "o-200-ok-con-una-nueva",
+      "text": "200 OK con una nueva cookie de sesión.",
+      "explanation": "200 OK no cambia de protocolo, y las cookies no intervienen en el handshake."
+    },
+    {
+      "id": "o-301-moved-permanently",
+      "text": "301 Moved Permanently.",
+      "explanation": "301 es una redirección permanente."
+    },
+    {
+      "id": "o-404-not-found",
+      "text": "404 Not Found.",
+      "explanation": "404 indicaría que el recurso no existe."
+    }
+  ],
+  "answer": "o-101-switching-protocols"
+}

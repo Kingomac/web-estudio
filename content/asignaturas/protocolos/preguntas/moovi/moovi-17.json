@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una consulta PTR de _coap._udp.local devuelve solo Invernadero._coap._udp.local y un TXT con zona=norte. Con la caché vacía, ¿qué registros faltan para conocer el host, el puerto y la dirección IPv6 del servicio?",
+  "explanation": "PTR proporciona el nombre de instancia. Su registro SRV indica el host destino y el puerto. El AAAA de ese host proporciona la dirección IPv6. El TXT zona=norte es un metadato de la aplicación y no permite reconstruir la dirección o el punto de acceso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6763 · DNS-SD",
+      "url": "https://www.rfc-editor.org/rfc/rfc6763.html"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-srv-de-invernadero-coap",
+      "text": "El SRV de Invernadero._coap._udp.local y el AAAA del host indicado por ese SRV.",
+      "explanation": "Sigue la cadena instancia → SRV → host → AAAA."
+    },
+    {
+      "id": "el-aaaa-de-zona-local",
+      "text": "El AAAA de zona.local y el SRV de norte._coap._udp.local.",
+      "explanation": "Interpreta los metadatos del TXT como nombres DNS que no se han anunciado."
+    },
+    {
+      "id": "el-aaaa-de-coap-udp",
+      "text": "El AAAA de _coap._udp.local; el puerto se deduce siempre del TXT.",
+      "explanation": "El tipo de servicio no es el host y TXT no sustituye al registro SRV."
+    },
+    {
+      "id": "el-srv-de-coap-udp",
+      "text": "El SRV de _coap._udp.local y el AAAA del nombre de la instancia, independientemente de lo que diga el SRV.",
+      "explanation": "El SRV se consulta para la instancia; AAAA debe corresponder al host que devuelve."
+    }
+  ],
+  "answer": "el-srv-de-invernadero-coap"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un GET a coap://sensor8.example:5683/.well-known/core devuelve </r/2>;rt=\"humidity\",</r/5>;rt=\"temperature\". La aplicación conoce esos valores de rt. ¿Qué petición obtiene la temperatura?",
+  "explanation": "rt permite seleccionar el enlace que describe la temperatura, /r/5. La barra inicial sitúa la ruta en la raíz del servidor, conservando esquema, host y puerto. El descubrimiento describe recursos; para leer la medida se realiza después el GET al enlace seleccionado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6690 §5 · descubrimiento CoRE",
+      "url": "https://www.rfc-editor.org/rfc/rfc6690.html#section-5"
+    }
+  ],
+  "options": [
+    {
+      "id": "get-coap-sensor8-example-5683",
+      "text": "GET coap://sensor8.example:5683/temperature",
+      "explanation": "Confunde el atributo descriptivo rt con la ruta real del recurso."
+    },
+    {
+      "id": "no-hace-falta-otra-peticion",
+      "text": "No hace falta otra petición: el valor de temperatura es 5.",
+      "explanation": "El 5 forma parte de la ruta y no representa una lectura del sensor."
+    },
+    {
+      "id": "get-coap-sensor8-example-5683-2",
+      "text": "GET coap://sensor8.example:5683/r/5",
+      "explanation": "Utiliza el enlace anunciado para el tipo de recurso solicitado."
+    },
+    {
+      "id": "get-coap-sensor8-example-5683-3",
+      "text": "GET coap://sensor8.example:5683/.well-known/core/r/5",
+      "explanation": "Añade indebidamente la ruta al recurso de descubrimiento."
+    }
+  ],
+  "answer": "get-coap-sensor8-example-5683-2"
+}

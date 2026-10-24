@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pareja ICMPv6 se utiliza para solicitar y recibir información de routers?",
+  "explanation": "RS/RA participa en descubrimiento de routers y autoconfiguración; NS/NA tiene funciones de vecindad.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "rs-tipo-133-y-ra",
+      "text": "RS tipo 133 y RA tipo 134.",
+      "explanation": "El nodo pide información a los routers con RS (tipo 133) y estos responden con RA (tipo 134)."
+    },
+    {
+      "id": "ns-tipo-135-y-na",
+      "text": "NS tipo 135 y NA tipo 136.",
+      "explanation": "NS (135) y NA (136) sirven para resolver la dirección de enlace de un vecino."
+    },
+    {
+      "id": "rs-tipo-134-y-ra",
+      "text": "RS tipo 134 y RA tipo 133.",
+      "explanation": "Invierte los tipos: RS es 133 y RA es 134."
+    },
+    {
+      "id": "ns-tipo-133-y-na",
+      "text": "NS tipo 133 y NA tipo 134.",
+      "explanation": "133 y 134 son RS y RA; NS y NA son 135 y 136."
+    }
+  ],
+  "answer": "rs-tipo-133-y-ra"
+}

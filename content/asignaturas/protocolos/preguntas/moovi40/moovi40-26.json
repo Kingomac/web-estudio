@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera IPHC usa TF=10 y HLIM=10. ¿Qué valores o campos debe reconstruir el receptor?",
+  "explanation": "TF=10 transmite un byte de Traffic Class y omite Flow Label, que se reconstruye a cero. HLIM=10 codifica directamente 64; 00 llevaría Hop Limit en línea y 11 representaría 255. Los dos campos se interpretan por separado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 §3.1.1 · modos IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "traffic-class-va-en-linea",
+      "text": "Traffic Class va en línea, Flow Label vale 0 y Hop Limit vale 255.",
+      "explanation": "El valor 255 corresponde a HLIM=11, no a 10."
+    },
+    {
+      "id": "traffic-class-va-en-linea-2",
+      "text": "Traffic Class va en línea, Flow Label vale 0 y Hop Limit vale 64.",
+      "explanation": "Combina correctamente las tablas TF y HLIM de las diapositivas 20 y 21."
+    },
+    {
+      "id": "traffic-class-y-flow-label",
+      "text": "Traffic Class y Flow Label valen 0, y Hop Limit vale 64.",
+      "explanation": "Omitir también Traffic Class correspondería a TF=11."
+    },
+    {
+      "id": "traffic-class-va-en-linea-3",
+      "text": "Traffic Class va en línea, Flow Label vale 0 y Hop Limit va en línea.",
+      "explanation": "Hop Limit se transmite en línea cuando HLIM=00."
+    }
+  ],
+  "answer": "traffic-class-va-en-linea-2"
+}

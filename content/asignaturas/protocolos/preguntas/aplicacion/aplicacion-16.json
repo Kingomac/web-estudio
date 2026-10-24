@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo notifica normalmente un webhook que ha ocurrido un evento?",
+  "explanation": "El payload de la petición describe el evento; es adecuado para notificaciones esporádicas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "envia-un-http-post-a",
+      "text": "Envía un HTTP POST a una URL configurada.",
+      "explanation": "Al ocurrir el evento, el webhook envía un HTTP POST con el payload a la URL configurada (endpoint)."
+    },
+    {
+      "id": "espera-un-get-periodico-de",
+      "text": "Espera un GET periódico de la aplicación receptora.",
+      "explanation": "Un GET periódico es el sondeo que los webhooks eliminan."
+    },
+    {
+      "id": "envia-una-trama-por-una",
+      "text": "Envía una trama por una conexión WebSocket previamente establecida.",
+      "explanation": "Los webhooks son más simples que WebSocket y no necesitan una conexión abierta."
+    },
+    {
+      "id": "publica-necesariamente-en-un-topic",
+      "text": "Publica necesariamente en un topic MQTT retenido.",
+      "explanation": "El webhook es una petición HTTP; no publica en MQTT."
+    }
+  ],
+  "answer": "envia-un-http-post-a"
+}

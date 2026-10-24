@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué comparación de cobertura y tasa corresponde al esquema introductorio?",
+  "explanation": "El tema compara LoWPAN de 10-100 m con LPWAN de kilómetros y tasas típicas inferiores.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "lpwan-mayor-cobertura-y-tasas",
+      "text": "LPWAN: mayor cobertura y tasas muy bajas; LoWPAN: alcance local y tasas mayores.",
+      "explanation": "LPWAN alcanza hasta ~5 km urbanos y ~15 km rurales con 0,25–1 kbps típicos; LoWPAN cubre 10–100 m con hasta ~2 Mbps."
+    },
+    {
+      "id": "lpwan-solo-centimetros-y-gigabits",
+      "text": "LPWAN: solo centímetros y gigabits por segundo.",
+      "explanation": "LPWAN destaca por largo alcance y tasas muy bajas, no por centímetros ni gigabits."
+    },
+    {
+      "id": "lowpan-siempre-mayor-cobertura-que",
+      "text": "LoWPAN: siempre mayor cobertura que una LPWAN.",
+      "explanation": "Es al revés: la LPWAN tiene mayor cobertura que la LoWPAN."
+    },
+    {
+      "id": "ambas-tienen-siempre-exactamente-50",
+      "text": "Ambas tienen siempre exactamente 50 kbit/s y 15 km.",
+      "explanation": "Los 50 kbps son el máximo de LPWAN y los 15 km su alcance rural; no son valores comunes ni fijos de ambas."
+    }
+  ],
+  "answer": "lpwan-mayor-cobertura-y-tasas"
+}

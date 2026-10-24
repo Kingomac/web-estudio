@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Entre dos mediciones separadas varios minutos, el dispositivo entra en deep sleep. ¿Qué efecto se busca principalmente?",
+  "explanation": "Deep sleep es un modo de bajo consumo. Se utiliza durante periodos de inactividad para reducir el gasto energético y prolongar la duración de la batería.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "disminuir-la-energia-consumida-durante",
+      "text": "Disminuir la energía consumida durante la espera.",
+      "explanation": "Deep sleep es un modo de bajo consumo para reducir el gasto durante los periodos de inactividad."
+    },
+    {
+      "id": "aumentar-la-potencia-radiada-durante",
+      "text": "Aumentar la potencia radiada durante toda la espera.",
+      "explanation": "Dormir no aumenta la potencia radiada; durante el reposo la radio está apagada."
+    },
+    {
+      "id": "mantener-un-canal-de-recepcion",
+      "text": "Mantener un canal de recepción permanentemente abierto.",
+      "explanation": "Mantener un canal de recepción abierto es lo contrario de dormir."
+    },
+    {
+      "id": "elevar-la-frecuencia-de-muestreo",
+      "text": "Elevar la frecuencia de muestreo sin modificar el firmware.",
+      "explanation": "El modo de reposo no cambia la frecuencia de muestreo; solo ahorra energía entre medidas."
+    }
+  ],
+  "answer": "disminuir-la-energia-consumida-durante"
+}

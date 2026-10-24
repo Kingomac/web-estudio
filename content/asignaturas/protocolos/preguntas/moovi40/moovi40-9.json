@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En Cisco IOS se configura ipv6 route ::/0 Serial0, sin indicar distancia, sobre una interfaz punto a punto habilitada. Según la convención G del tema, ¿qué pareja corresponde a esa ruta estática?",
+  "explanation": "La ruta especifica solo la interfaz de salida: G=0 en la convención didáctica del tema. Su origen sigue siendo estático y su distancia administrativa predeterminada es 1. La distancia 0 corresponde a rutas conectadas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Cisco · selección de rutas y distancia administrativa",
+      "url": "https://docs.manage.security.cisco.com/c-the-routing-table-and-route-selection.html"
+    }
+  ],
+  "options": [
+    {
+      "id": "g-0-y-distancia-administrativa",
+      "text": "G=0 y distancia administrativa 1.",
+      "explanation": "Distingue la salida directa por interfaz del origen estático de la ruta."
+    },
+    {
+      "id": "g-0-y-distancia-administrativa-2",
+      "text": "G=0 y distancia administrativa 0.",
+      "explanation": "Una ruta estática no pasa a ser conectada por indicar solo la interfaz."
+    },
+    {
+      "id": "g-1-y-distancia-administrativa",
+      "text": "G=1 y distancia administrativa 1.",
+      "explanation": "No se ha indicado la dirección de un router como gateway."
+    },
+    {
+      "id": "g-1-y-distancia-administrativa-2",
+      "text": "G=1 y distancia administrativa 0.",
+      "explanation": "Confunde la forma de indicar la salida y el origen de la ruta."
+    }
+  ],
+  "answer": "g-0-y-distancia-administrativa"
+}

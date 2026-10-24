@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "GET a coap://nodo17.example:61616/.well-known/core devuelve </s/2>;rt=\"temp-c\",</s/9>;rt=\"hum-pct\". La aplicación conoce esos tipos y quiere leer humedad. ¿Qué debe hacer?",
+  "explanation": "rt describe el tipo de recurso y el enlace /s/9 indica dónde consultarlo. Al empezar por /, la ruta se resuelve desde la raíz del servidor, manteniendo host y puerto. El descubrimiento no contiene por sí mismo el valor actual de humedad.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "tomar-9-como-el-porcentaje",
+      "text": "Tomar 9 como el porcentaje de humedad recibido.",
+      "explanation": "Confunde una parte del identificador del recurso con su valor medido."
+    },
+    {
+      "id": "enviar-get-a-coap-nodo17",
+      "text": "Enviar GET a coap://nodo17.example:61616/.well-known/core/s/9.",
+      "explanation": "Añade la ruta a /.well-known/core, aunque el enlace recibido es absoluto respecto a la raíz."
+    },
+    {
+      "id": "enviar-get-a-coap-nodo17-2",
+      "text": "Enviar GET a coap://nodo17.example:61616/s/9.",
+      "explanation": "Selecciona el enlace del tipo deseado y conserva la autoridad de la URI."
+    },
+    {
+      "id": "enviar-get-a-coap-nodo17-3",
+      "text": "Enviar GET a coap://nodo17.example:61616/hum-pct.",
+      "explanation": "Usa el tipo descriptivo como si fuera la ruta publicada."
+    }
+  ],
+  "answer": "enviar-get-a-coap-nodo17-2"
+}

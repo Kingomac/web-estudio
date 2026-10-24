@@ -1,0 +1,43 @@
+{
+  "id": "protocolos.preguntas.aplicacion-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué alternativa de codificación de OPC UA se destaca como eficiente?",
+  "explanation": "El tema contrapone XML legible pero ineficiente a la codificación binaria más eficiente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31,
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-codificacion-binaria",
+      "text": "La codificación binaria.",
+      "explanation": "OPC UA define codificación XML, legible pero ineficiente, y binaria, eficiente pero no legible."
+    },
+    {
+      "id": "la-codificacion-xml-legible",
+      "text": "La codificación XML legible.",
+      "explanation": "La codificación XML se describe como legible pero ineficiente."
+    },
+    {
+      "id": "la-codificacion-soap-como-unica",
+      "text": "La codificación SOAP como única representación posible.",
+      "explanation": "SOAP es una forma de enviar los mensajes XML, no la única representación; también hay codificación binaria."
+    },
+    {
+      "id": "el-uso-obligatorio-de-texto",
+      "text": "El uso obligatorio de texto HTTP/1.x para todos los datos.",
+      "explanation": "OPC UA puede ir sobre TCP nativo o HTTP(S), pero no obliga a texto HTTP/1.x; lo habitual es binario sobre UA nativo."
+    }
+  ],
+  "answer": "la-codificacion-binaria"
+}

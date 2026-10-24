@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué el multicast de NDP puede resultar costoso en IEEE 802.15.4?",
+  "explanation": "El tema añade dificultades por sueño de nodos, pérdidas, multisalto y recursos de memoria.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        44
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "porque-puede-transportarse-como-broadcas",
+      "text": "Porque puede transportarse como broadcast y hacer procesar mensajes a nodos que no los necesitan.",
+      "explanation": "Al no haber multicast MAC nativo, se transporta como broadcast y obliga a recibir y procesar a nodos que no lo necesitan."
+    },
+    {
+      "id": "porque-cada-mensaje-cambia-la",
+      "text": "Porque cada mensaje cambia la batería del sensor.",
+      "explanation": "El coste es de energía y procesamiento, no de que cada mensaje cambie la batería."
+    },
+    {
+      "id": "porque-ipv6-no-permite-ningun",
+      "text": "Porque IPv6 no permite ningún mensaje multicast.",
+      "explanation": "IPv6 usa multicast extensamente; el problema es su transporte en 802.15.4."
+    },
+    {
+      "id": "porque-solo-los-brokers-pueden",
+      "text": "Porque solo los brokers pueden recibirlo.",
+      "explanation": "NDP no tiene brokers; los brokers son de MQTT."
+    }
+  ],
+  "answer": "porque-puede-transportarse-como-broadcas"
+}

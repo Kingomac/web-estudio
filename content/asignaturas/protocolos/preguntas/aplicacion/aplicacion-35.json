@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué recibe un nuevo suscriptor si existe un mensaje retenido para el topic?",
+  "explanation": "Una nueva publicación retenida sustituye a la anterior y permite obtener un estado sin esperar otra medida.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-ultimo-mensaje-retenido-almacenado",
+      "text": "El último mensaje retenido almacenado por el broker.",
+      "explanation": "El broker envía inmediatamente al nuevo suscriptor el último mensaje retenido del topic."
+    },
+    {
+      "id": "siempre-todas-las-publicaciones-de",
+      "text": "Siempre todas las publicaciones de la historia.",
+      "explanation": "Solo se guarda el último mensaje retenido, no el historial."
+    },
+    {
+      "id": "solo-el-primer-mensaje-que",
+      "text": "Solo el primer mensaje que se publicó en ese topic.",
+      "explanation": "Cada retenido nuevo sobrescribe al anterior; no se conserva el primero."
+    },
+    {
+      "id": "ningun-mensaje-hasta-que-reinicie",
+      "text": "Ningún mensaje hasta que reinicie el broker.",
+      "explanation": "El retenido se envía al suscribirse, sin reiniciar el broker."
+    }
+  ],
+  "answer": "el-ultimo-mensaje-retenido-almacenado"
+}

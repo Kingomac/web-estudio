@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-43",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente MQTT registró un LWT al conectarse y después envía un DISCONNECT normal. ¿Qué hace el broker con ese testamento en el caso descrito por el tema?",
+  "explanation": "El LWT está destinado a avisar de una desconexión inesperada. En el cierre voluntario mediante DISCONNECT presentado en las diapositivas, se elimina sin publicarse.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        59
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "lo-elimina-sin-publicarlo",
+      "text": "Lo elimina sin publicarlo.",
+      "explanation": "Con un DISCONNECT voluntario, el broker elimina el LWT sin publicarlo."
+    },
+    {
+      "id": "lo-publica-siempre-igual-que",
+      "text": "Lo publica siempre, igual que ante una caída inesperada.",
+      "explanation": "El LWT solo se publica ante una desconexión inesperada."
+    },
+    {
+      "id": "lo-transforma-en-una-suscripcion",
+      "text": "Lo transforma en una suscripción al topic del cliente.",
+      "explanation": "El testamento es un mensaje que se publica o se descarta; no genera suscripciones."
+    },
+    {
+      "id": "lo-devuelve-como-respuesta-a",
+      "text": "Lo devuelve como respuesta a todos los mensajes PING.",
+      "explanation": "El LWT no tiene relación con PINGREQ ni sus respuestas."
+    }
+  ],
+  "answer": "lo-elimina-sin-publicarlo"
+}

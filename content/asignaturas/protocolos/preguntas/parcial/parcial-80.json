@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-80",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se concilia la MTU mínima de 1280 bytes de IPv6 con las pequeñas tramas IEEE 802.15.4?",
+  "explanation": "IPv6 requiere una MTU mínima de 1280 bytes o mecanismos de adaptación inferiores que permitan transportarla. 6LoWPAN aporta la fragmentación y el reensamblado sobre tramas pequeñas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "con-fragmentacion-y-reensamblado-en",
+      "text": "Con fragmentación y reensamblado en una capa inferior a IPv6.",
+      "explanation": "Una capa de adaptación inferior a IPv6 (6LoWPAN) fragmenta y reensambla para ofrecer los 1280 bytes."
+    },
+    {
+      "id": "reduciendo-la-mtu-minima-de",
+      "text": "Reduciendo la MTU mínima de IPv6 a 127 bytes para todos los destinos.",
+      "explanation": "La MTU mínima de IPv6 no se reduce; es el enlace el que debe adaptarse."
+    },
+    {
+      "id": "eliminando-la-direccion-ipv6-de",
+      "text": "Eliminando la dirección IPv6 de destino cuando el paquete es grande.",
+      "explanation": "No se pueden eliminar direcciones: solo se comprimen las reconstruibles."
+    },
+    {
+      "id": "exigiendo-que-los-routers-ipv6",
+      "text": "Exigiendo que los routers IPv6 fragmenten siempre en la capa de red.",
+      "explanation": "En IPv6 los routers no fragmentan."
+    }
+  ],
+  "answer": "con-fragmentacion-y-reensamblado-en"
+}

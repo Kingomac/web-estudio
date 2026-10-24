@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pareja consulta y confirma duplicados entre 6LR y 6LBR?",
+  "explanation": "DAR es ICMPv6 157 y DAC 158; el resultado se comunica después al host en NA con ARO.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "dar-y-dac",
+      "text": "DAR y DAC.",
+      "explanation": "El 6LR consulta al 6LBR con DAR (ICMPv6 157) y recibe la respuesta en DAC (158)."
+    },
+    {
+      "id": "rs-y-ra",
+      "text": "RS y RA.",
+      "explanation": "RS y RA sirven para descubrir el router por defecto."
+    },
+    {
+      "id": "ns-y-na-directamente-entre",
+      "text": "NS y NA directamente entre host y router.",
+      "explanation": "NS y NA con ARO se intercambian entre host y 6LR, no entre 6LR y 6LBR."
+    },
+    {
+      "id": "dis-y-dio",
+      "text": "DIS y DIO.",
+      "explanation": "DIS y DIO son mensajes de RPL."
+    }
+  ],
+  "answer": "dar-y-dac"
+}

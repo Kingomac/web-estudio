@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué elemento SOAP contiene obligatoriamente el mensaje?",
+  "explanation": "Envelope es la raíz, Header es opcional, Body contiene el mensaje y Fault describe errores cuando existe.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "body",
+      "text": "Body.",
+      "explanation": "El cuerpo (Body) es obligatorio y contiene el mensaje."
+    },
+    {
+      "id": "header",
+      "text": "Header.",
+      "explanation": "El encabezado (Header) es opcional."
+    },
+    {
+      "id": "fault",
+      "text": "Fault.",
+      "explanation": "Fault es opcional y solo informa de errores de procesado."
+    },
+    {
+      "id": "envelope-como-sustituto-del-cuerpo",
+      "text": "Envelope como sustituto del cuerpo.",
+      "explanation": "Envelope es el elemento raíz que identifica el mensaje; no sustituye al Body."
+    }
+  ],
+  "answer": "body"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué mensajes WebSocket no se fragmentan, según el material?",
+  "explanation": "Los datos pueden fragmentarse; la diapositiva excluye esa posibilidad para los mensajes de control.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "los-mensajes-de-control-ping",
+      "text": "Los mensajes de control Ping, Pong y Close.",
+      "explanation": "Los mensajes de control (Ping, Pong y Close) no se pueden fragmentar."
+    },
+    {
+      "id": "todos-los-mensajes-de-texto",
+      "text": "Todos los mensajes de texto UTF-8.",
+      "explanation": "Los mensajes de texto UTF-8 son de datos y pueden enviarse en varios frames."
+    },
+    {
+      "id": "todos-los-mensajes-de-datos",
+      "text": "Todos los mensajes de datos binarios.",
+      "explanation": "Los datos binarios también pueden fragmentarse, útil si no se conoce su longitud."
+    },
+    {
+      "id": "solo-los-mensajes-de-video",
+      "text": "Solo los mensajes de vídeo y audio.",
+      "explanation": "Vídeo y audio son datos binarios y admiten fragmentación."
+    }
+  ],
+  "answer": "los-mensajes-de-control-ping"
+}

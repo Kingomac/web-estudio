@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué ventaja de WebSocket destaca el temario?",
+  "explanation": "Ambos extremos pueden enviar datos; esto evita el sondeo continuo del servidor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "comunicacion-bidireccional-persistente-s",
+      "text": "Comunicación bidireccional persistente sin una petición previa para cada dato del servidor.",
+      "explanation": "WebSocket mantiene una conexión persistente por la que el servidor envía datos sin que el cliente los pida, sin sondeo."
+    },
+    {
+      "id": "la-obligacion-de-usar-una",
+      "text": "La obligación de usar una petición GET antes de cada mensaje del servidor.",
+      "explanation": "Tras el handshake no se necesita una petición GET por cada mensaje del servidor."
+    },
+    {
+      "id": "la-entrega-exclusivamente-unidireccional",
+      "text": "La entrega exclusivamente unidireccional mediante POST a una URL.",
+      "explanation": "WebSocket es bidireccional; el envío unidireccional por POST a una URL describe los webhooks."
+    },
+    {
+      "id": "la-sustitucion-del-servidor-web",
+      "text": "La sustitución del servidor web por un broker de topics.",
+      "explanation": "WebSocket comunica cliente y servidor web; los brokers y topics son de MQTT."
+    }
+  ],
+  "answer": "comunicacion-bidireccional-persistente-s"
+}

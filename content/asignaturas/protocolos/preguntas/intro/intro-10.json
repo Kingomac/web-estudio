@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Según la clasificación de las diapositivas, ¿qué caracteriza a la clase 0?",
+  "explanation": "El material sitúa la clase 0 por debajo de 10 KB de RAM y 100 KB de ROM.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "recursos-muy-limitados-sin-capacidad",
+      "text": "Recursos muy limitados, sin capacidad para implementar la pila IP presentada.",
+      "explanation": "La clase 0 tiene menos de 10 KB de RAM y 100 KB de ROM y no dispone de recursos para una pila IP."
+    },
+    {
+      "id": "pila-ip-completa-y-capacidad",
+      "text": "Pila IP completa y capacidad habitual de reenvío.",
+      "explanation": "Pila IP completa y reenvío corresponden a la clase 2."
+    },
+    {
+      "id": "mas-de-50-kb-de",
+      "text": "Más de 50 KB de RAM y más de 250 KB de ROM.",
+      "explanation": "Más de 50 KB de RAM y 250 KB de ROM es el umbral de la clase 2."
+    },
+    {
+      "id": "una-pila-ip-reducida-como",
+      "text": "Una pila IP reducida como la atribuida a la clase 1.",
+      "explanation": "La pila IP reducida es propia de la clase 1; la clase 0 no puede implementar pila IP."
+    }
+  ],
+  "answer": "recursos-muy-limitados-sin-capacidad"
+}

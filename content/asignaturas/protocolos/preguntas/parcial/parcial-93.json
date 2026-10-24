@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-93",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un FRAGN lleva datagram_offset=18. ¿En qué posición del datagrama IPv6 sin comprimir comienza el fragmento?",
+  "explanation": "datagram_offset se expresa en unidades de ocho bytes respecto al datagrama sin comprimir. El desplazamiento es 18 × 8 = 144 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "en-el-byte-144",
+      "text": "En el byte 144.",
+      "explanation": "El offset va en unidades de 8 bytes: 18 × 8 = 144."
+    },
+    {
+      "id": "en-el-byte-18",
+      "text": "En el byte 18.",
+      "explanation": "18 es el valor del campo, no la posición en bytes."
+    },
+    {
+      "id": "en-el-byte-36",
+      "text": "En el byte 36.",
+      "explanation": "36 multiplica por 2 en lugar de por 8."
+    },
+    {
+      "id": "en-el-byte-128",
+      "text": "En el byte 128.",
+      "explanation": "128 no corresponde a 18 unidades de 8 bytes."
+    }
+  ],
+  "answer": "en-el-byte-144"
+}

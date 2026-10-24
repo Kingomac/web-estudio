@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué secuencia corresponde a QoS 2 en el diagrama?",
+  "explanation": "QoS 2 usa dos fases de confirmación y tiene mayor sobrecarga y latencia.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        56
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "publish-pubrec-pubrel-pubcomp",
+      "text": "PUBLISH → PUBREC → PUBREL → PUBCOMP.",
+      "explanation": "QoS 2 confirma en dos pasos: PUBLISH, PUBREC, PUBREL y PUBCOMP."
+    },
+    {
+      "id": "publish-puback",
+      "text": "PUBLISH → PUBACK.",
+      "explanation": "PUBLISH seguido de PUBACK es el intercambio de QoS 1."
+    },
+    {
+      "id": "connect-connack-disconnect",
+      "text": "CONNECT → CONNACK → DISCONNECT.",
+      "explanation": "CONNECT, CONNACK y DISCONNECT gestionan la conexión, no la publicación."
+    },
+    {
+      "id": "get-ack-rst-dao",
+      "text": "GET → ACK → RST → DAO.",
+      "explanation": "GET, ACK y RST son de CoAP y DAO de RPL."
+    }
+  ],
+  "answer": "publish-pubrec-pubrel-pubcomp"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una API expone /valvula/estado y se desea actualizar el estado de ese recurso existente. ¿Qué método corresponde al uso presentado en las diapositivas?",
+  "explanation": "El tema asocia PUT con actualizar el estado, GET con obtener datos, POST con crear y DELETE con eliminar. Aquí se actualiza un recurso que ya existe.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "put",
+      "text": "PUT.",
+      "explanation": "PUT actualiza el estado de un recurso existente, como /valvula/estado."
+    },
+    {
+      "id": "get",
+      "text": "GET.",
+      "explanation": "GET solo obtiene la información."
+    },
+    {
+      "id": "delete",
+      "text": "DELETE.",
+      "explanation": "DELETE eliminaría el recurso."
+    },
+    {
+      "id": "connect",
+      "text": "CONNECT.",
+      "explanation": "CONNECT no figura entre los métodos de los ejemplos del tema."
+    }
+  ],
+  "answer": "put"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-original-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes es una característica del modo Route-Over en 6LoWPAN?",
+  "explanation": "En route-over, cada nodo que actúa como router decide el siguiente salto en la capa IPv6. En el funcionamiento clásico estudiado se reensambla y descomprime para entregar el paquete a IPv6, y se vuelve a comprimir y fragmentar si hace falta al reenviarlo. Cada router introduce un salto IP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        36
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-reenvio-de-paquetes-se",
+      "text": "El reenvío de paquetes se realiza a nivel de red (IPv6)",
+      "explanation": "Cada router toma la decisión de reenvío en IPv6."
+    },
+    {
+      "id": "el-reenvio-de-paquetes-se-2",
+      "text": "El reenvío de paquetes se realiza en la capa 6LoWPAN usando direcciones IPv6",
+      "explanation": "El reenvío route-over se decide en IPv6, no en la capa de adaptación."
+    },
+    {
+      "id": "todos-los-nodos-estan-a",
+      "text": "Todos los nodos están a un solo salto IP del Border Router",
+      "explanation": "Un único salto IP para toda la malla corresponde a mesh-under."
+    },
+    {
+      "id": "los-fragmentos-se-reensamblan-en",
+      "text": "Los fragmentos se reensamblan en los extremos de la LoWPAN",
+      "explanation": "El reensamblado solo en extremos corresponde a mesh-under."
+    }
+  ],
+  "answer": "el-reenvio-de-paquetes-se"
+}

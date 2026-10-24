@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un paquete IPv6 tiene como destino multicast ff05::1234:abcd. ¿Qué dirección MAC destino se utiliza al transportarlo por Ethernet?",
+  "explanation": "El mapeo Ethernet antepone 33:33 a los últimos 32 bits de la dirección multicast: 12:34:ab:cd. No se confunde con solicited-node, que se construye usando los últimos 24 bits de una dirección objetivo. La pregunta 1 del PDF de referencia dice 24 bits para Ethernet: es una errata y ninguna de sus alternativas expresa la regla correcta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 2464 §7 · multicast Ethernet",
+      "url": "https://www.rfc-editor.org/rfc/rfc2464.html#section-7"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-33-33-12-34-ab",
+      "text": "33:33:12:34:ab:cd",
+      "explanation": "Conserva los cuatro octetos finales y añade el prefijo Ethernet."
+    },
+    {
+      "id": "o-33-33-00-34-ab",
+      "text": "33:33:00:34:ab:cd",
+      "explanation": "Toma solo 24 bits y añade un cero; se pierde el octeto 12."
+    },
+    {
+      "id": "ff-ff-ff-ff-ff",
+      "text": "ff:ff:ff:ff:ff:ff",
+      "explanation": "Es la dirección broadcast Ethernet, no el mapeo multicast IPv6."
+    },
+    {
+      "id": "o-33-33-ff-05-00",
+      "text": "33:33:ff:05:00:00",
+      "explanation": "Toma la parte inicial de la dirección en lugar de sus 32 bits finales."
+    }
+  ],
+  "answer": "o-33-33-12-34-ab"
+}

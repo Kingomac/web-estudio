@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.profundizacion-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router reenvía un datagrama IPv6/UDP sin NAT, encapsulación ni cambios en direcciones o datos. Hop Limit pasa de 64 a 63. ¿Qué ocurre con los checksums?",
+  "explanation": "IPv6 no incorpora un checksum en su cabecera base. El checksum UDP cubre UDP, datos y una pseudocabecera IPv6 que no incluye Hop Limit. En este escenario, cambiar solo ese campo no altera la suma UDP.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · IPv6",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    },
+    {
+      "title": "RFC 8200 · checksum superior",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-8.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "debe-actualizar-tanto-el-checksum",
+      "text": "Debe actualizar tanto el checksum IPv6 como el UDP.",
+      "explanation": "Traslada a IPv6 un checksum de cabecera propio de IPv4 y añade un cambio UDP innecesario."
+    },
+    {
+      "id": "no-existe-checksum-ipv6-pero",
+      "text": "No existe checksum IPv6, pero cambia el UDP porque incluye Hop Limit.",
+      "explanation": "Hop Limit no forma parte de la pseudocabecera del checksum UDP."
+    },
+    {
+      "id": "el-router-debe-eliminar-el",
+      "text": "El router debe eliminar el checksum UDP al reenviar.",
+      "explanation": "El reenvío no autoriza a suprimir el checksum UDP."
+    },
+    {
+      "id": "no-existe-checksum-de-la",
+      "text": "No existe checksum de la cabecera IPv6 y el checksum UDP permanece válido.",
+      "explanation": "Distingue la cabecera base IPv6 de la pseudocabecera utilizada por UDP."
+    }
+  ],
+  "answer": "no-existe-checksum-de-la"
+}

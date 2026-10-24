@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Al construir EUI-64 modificado desde una MAC de 48 bits, ¿qué se hace?",
+  "explanation": "La inserción amplía a 64 bits y la inversión U/L produce el identificador modificado usado en el ejemplo IPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "insertar-ff-fe-en-medio",
+      "text": "Insertar FF:FE en medio e invertir el bit U/L del primer octeto.",
+      "explanation": "Se insertan FF:FE entre el tercer y el cuarto octeto y se invierte el bit U/L del primer octeto."
+    },
+    {
+      "id": "insertar-ff-fe-e-invertir",
+      "text": "Insertar FF:FE e invertir todos los bits del primer octeto.",
+      "explanation": "Solo se invierte el bit U/L, no todo el octeto."
+    },
+    {
+      "id": "insertar-ff-fe-sin-modificar",
+      "text": "Insertar FF:FE sin modificar el bit U/L.",
+      "explanation": "Sin invertir U/L se obtiene el EUI-64 original, no el modificado que usa IPv6."
+    },
+    {
+      "id": "invertir-u-l-y-conservar",
+      "text": "Invertir U/L y conservar el tamaño de 48 bits sin insertar nada.",
+      "explanation": "Sin insertar FF:FE el identificador seguiría teniendo 48 bits y no 64."
+    }
+  ],
+  "answer": "insertar-ff-fe-en-medio"
+}

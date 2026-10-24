@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué aporta un Resource Directory en una red con muchos nodos dormidos?",
+  "explanation": "El cliente consulta el directorio y después accede al recurso; los registros deben renovarse.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        55
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "permite-consultar-enlaces-y-descripcione",
+      "text": "Permite consultar enlaces y descripciones registrados sin descubrir directamente cada nodo.",
+      "explanation": "El Resource Directory almacena enlaces y descripciones registrados por los nodos, y evita descubrir cada nodo directamente."
+    },
+    {
+      "id": "garantiza-que-todo-nodo-registrado",
+      "text": "Garantiza que todo nodo registrado está despierto en ese instante.",
+      "explanation": "Estar registrado no garantiza que el nodo esté accesible en ese instante."
+    },
+    {
+      "id": "evita-renovar-cualquier-registro-para",
+      "text": "Evita renovar cualquier registro para siempre.",
+      "explanation": "Los registros deben renovarse."
+    },
+    {
+      "id": "sustituye-la-entrega-del-recurso",
+      "text": "Sustituye la entrega del recurso por una MAC multicast.",
+      "explanation": "El RD guarda descripciones; el recurso se obtiene después del propio nodo, no mediante una MAC multicast."
+    }
+  ],
+  "answer": "permite-consultar-enlaces-y-descripcione"
+}

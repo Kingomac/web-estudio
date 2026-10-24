@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.intro-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué aporta la malla respecto al árbol en la explicación del tema?",
+  "explanation": "La malla añade alternativas de recorrido respecto a un árbol.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "caminos-redundantes-que-pueden-mejorar",
+      "text": "Caminos redundantes que pueden mejorar la fiabilidad.",
+      "explanation": "La malla es una mejora del árbol con caminos redundantes para mejorar la fiabilidad."
+    },
+    {
+      "id": "la-obligacion-de-comunicar-siempre",
+      "text": "La obligación de comunicar siempre directamente con la pasarela.",
+      "explanation": "La comunicación directa con la pasarela es la estrella."
+    },
+    {
+      "id": "un-unico-camino-sin-redundancia",
+      "text": "Un único camino sin redundancia hacia la raíz.",
+      "explanation": "Un único camino hacia la raíz es el árbol, sin la redundancia que aporta la malla."
+    },
+    {
+      "id": "la-eliminacion-del-reenvio-multisalto",
+      "text": "La eliminación del reenvío multisalto.",
+      "explanation": "La malla mantiene el reenvío multisalto; lo que añade son caminos alternativos."
+    }
+  ],
+  "answer": "caminos-redundantes-que-pueden-mejorar"
+}

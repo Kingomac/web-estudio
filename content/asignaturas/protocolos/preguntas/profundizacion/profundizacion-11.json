@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.profundizacion-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "ff02::1234:5678 y ff05::1234:5678 se transportan sobre Ethernet. ¿Qué afirmación es correcta?",
+  "explanation": "Ethernet conserva únicamente los 32 bits bajos de la multicast IPv6, precedidos por 33:33. El scope está en la parte alta y no se conserva en la MAC, pero sigue presente y siendo relevante en IPv6.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 2464 · multicast Ethernet",
+      "url": "https://www.rfc-editor.org/rfc/rfc2464.html#section-7"
+    },
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-igualdad-de-mac-obliga",
+      "text": "La igualdad de MAC obliga a que IPv6 trate las dos direcciones como el mismo grupo.",
+      "explanation": "La capa IPv6 sigue examinando sus direcciones y el alcance correspondiente."
+    },
+    {
+      "id": "el-mismo-prefijo-mac-33",
+      "text": "El mismo prefijo MAC 33:33 debe usarse también como dirección IEEE 802.15.4 de 64 bits.",
+      "explanation": "Ese mapeo está definido para Ethernet y no se convierte en una MAC IEEE 802.15.4."
+    },
+    {
+      "id": "ambas-se-mapean-a-33",
+      "text": "Ambas se mapean a 33:33:12:34:56:78, aunque son grupos IPv6 con distinto alcance.",
+      "explanation": "El mapeo coincide sin borrar las diferencias en la cabecera IPv6."
+    },
+    {
+      "id": "sus-mac-difieren-en-el",
+      "text": "Sus MAC difieren en el segundo octeto: 02 para una y 05 para la otra.",
+      "explanation": "Los dos primeros octetos de la MAC son 33:33; no contienen el scope."
+    }
+  ],
+  "answer": "ambas-se-mapean-a-33"
+}

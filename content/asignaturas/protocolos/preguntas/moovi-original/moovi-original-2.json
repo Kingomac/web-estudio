@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-original-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Dadas las siguientes rutas:\n5001:abcd::/48\n5001:abcd:0:1::/64\n5001:abcd:0:2::/64\n\n¿Es posible realizar una agregación y cuál sería el prefijo resultante?",
+  "explanation": "Los prefijos 5001:abcd:0:1::/64 y 5001:abcd:0:2::/64 están contenidos en 5001:abcd::/48, que ya aparece entre las rutas. La unión de sus destinos es ese /48. Para sustituir las entradas sin cambiar el reenvío se presupone que tienen el mismo siguiente salto; el enunciado original no lo especifica.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        1
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "si-5001-abcd-46",
+      "text": "Sí, 5001:abcd::/46",
+      "explanation": "Un /46 añade destinos que no pertenecen al /48 indicado."
+    },
+    {
+      "id": "no-no-es-posible-la",
+      "text": "No, no es posible la agregación",
+      "explanation": "Los dos /64 ya están contenidos en el /48; sí existe un resumen de cobertura."
+    },
+    {
+      "id": "si-5001-abcd-48",
+      "text": "Sí, 5001:abcd::/48",
+      "explanation": "El /48 contiene todas las rutas dadas sin añadir destinos."
+    },
+    {
+      "id": "si-5001-abcd-47",
+      "text": "Sí, 5001:abcd::/47",
+      "explanation": "Un /47 añade otro bloque /48 que no figura en las rutas dadas."
+    }
+  ],
+  "answer": "si-5001-abcd-48"
+}

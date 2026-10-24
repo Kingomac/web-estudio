@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia a SSED de SED en la tabla del tema?",
+  "explanation": "Ambos son dispositivos MTD que pueden dormir; cambia el modo de recibir los mensajes guardados por el padre.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ssed-recibe-en-ventanas-sincronizadas",
+      "text": "SSED recibe en ventanas sincronizadas; SED sondea a su padre.",
+      "explanation": "SSED activa el receptor en ventanas sincronizadas con el padre; SED se despierta y sondea al padre."
+    },
+    {
+      "id": "sed-recibe-en-ventanas-sincronizadas",
+      "text": "SED recibe en ventanas sincronizadas y SSED sondea al padre.",
+      "explanation": "Invierte los modos de SED y SSED."
+    },
+    {
+      "id": "sed-es-ftd-y-ssed",
+      "text": "SED es FTD y SSED es MTD.",
+      "explanation": "Ambos son MTD."
+    },
+    {
+      "id": "ambos-son-routers-que-mantienen",
+      "text": "Ambos son routers que mantienen permanentemente activa la radio.",
+      "explanation": "Ninguno puede ser router y ambos duermen para ahorrar energía."
+    }
+  ],
+  "answer": "ssed-recibe-en-ventanas-sincronizadas"
+}

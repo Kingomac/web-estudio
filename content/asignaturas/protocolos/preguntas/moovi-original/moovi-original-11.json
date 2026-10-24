@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.moovi-original-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo reconoce el receptor en 6LoWPAN que los fragmentos recibidos pertenecen al mismo datagrama IPv6?",
+  "explanation": "La alternativa de etiqueta de datagrama y MAC de origen recoge la identificación resumida que busca el cuestionario: etiqueta de datagrama y origen de enlace. La clave completa de RFC 4944 también incluye el destino de enlace y datagram_size. Si hay cabecera Mesh, se utilizan sus extremos Originator y Final Destination. El offset indica la posición de un fragmento, no identifica por sí solo el datagrama.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        28
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 §5.3 · reensamblado",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
+    }
+  ],
+  "options": [
+    {
+      "id": "por-el-numero-de-secuencia",
+      "text": "Por el número de secuencia incluido en cada fragmento",
+      "explanation": "No se identifica el datagrama mediante un número de secuencia de cada fragmento."
+    },
+    {
+      "id": "por-la-etiqueta-de-datagrama",
+      "text": "Por la etiqueta de datagrama (datagram_tag) y la dirección MAC del origen",
+      "explanation": "Resume origen y etiqueta; la clave completa también incluye destino y tamaño."
+    },
+    {
+      "id": "por-un-identificador-unico-enviado",
+      "text": "Por un identificador único enviado en cada fragmento",
+      "explanation": "datagram_tag no es un identificador global único entre todos los emisores."
+    },
+    {
+      "id": "por-la-direccion-ipv6-completa",
+      "text": "Por la dirección IPv6 completa incluida en cada fragmento",
+      "explanation": "Los fragmentos posteriores no incluyen la dirección IPv6 completa."
+    }
+  ],
+  "answer": "por-la-etiqueta-de-datagrama"
+}

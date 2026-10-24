@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Tres rutas usan el mismo siguiente salto: 2001:db8:1200::/48, 2001:db8:1200:10::/64 y 2001:db8:1200:11::/64. Si solo interesa conservar la cobertura de destinos y ese siguiente salto, ¿qué única ruta resume exactamente las tres, sin añadir destinos?",
+  "explanation": "Los dos /64 ya están contenidos en el /48. La unión de los tres conjuntos de destinos es exactamente 2001:db8:1200::/48. El mismo siguiente salto permite simplificar sin cambiar el reenvío supuesto. Un /47 añadiría el bloque 2001:db8:1201::/48.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "no-existe-un-resumen-porque",
+      "text": "No existe un resumen porque las longitudes son diferentes.",
+      "explanation": "Las longitudes distintas no impiden que un prefijo contenga completamente a los otros."
+    },
+    {
+      "id": "o-2001-db8-1200-48",
+      "text": "2001:db8:1200::/48",
+      "explanation": "El /48 contiene íntegramente las otras dos rutas."
+    },
+    {
+      "id": "o-2001-db8-1200-47",
+      "text": "2001:db8:1200::/47",
+      "explanation": "Cubre dos bloques /48 e incorpora destinos que no figuraban en la unión original."
+    },
+    {
+      "id": "o-2001-db8-1200-10-63",
+      "text": "2001:db8:1200:10::/63",
+      "explanation": "Resume los dos /64, pero pierde el resto de destinos cubiertos por el /48."
+    }
+  ],
+  "answer": "o-2001-db8-1200-48"
+}

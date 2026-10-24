@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un sensor anuncia su servicio por mDNS en una VLAN y un cliente está en otra, con conectividad IPv6 enrutada. No hay reflectores ni proxies mDNS. ¿Qué permitiría descubrir el servicio entre ambas redes?",
+  "explanation": "mDNS utiliza multicast de ámbito de enlace. La conectividad IP entre VLAN no extiende ese ámbito. DNS-SD también funciona mediante DNS unicast, que permite publicar y consultar las instancias en un dominio adecuado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "usar-ndp-para-solicitar-al",
+      "text": "Usar NDP para solicitar al router el PTR y el SRV del sensor.",
+      "explanation": "NDP descubre vecinos y routers, no transporta la resolución DNS-SD."
+    },
+    {
+      "id": "publicar-registros-dns-sd-en",
+      "text": "Publicar registros DNS-SD en un dominio accesible por DNS unicast y consultarlos desde el cliente.",
+      "explanation": "Usa una modalidad de DNS-SD válida para clientes de distintas subredes."
+    },
+    {
+      "id": "aumentar-hop-limit-manteniendo-el",
+      "text": "Aumentar Hop Limit manteniendo el destino mDNS ff02::fb para que atraviese los routers.",
+      "explanation": "El ámbito link-local no se amplía incrementando Hop Limit."
+    },
+    {
+      "id": "anadir-local-al-nombre-para",
+      "text": "Añadir .local al nombre para convertir el multicast local en global.",
+      "explanation": "El sufijo .local no cambia el ámbito del multicast ni crea un reflector."
+    }
+  ],
+  "answer": "publicar-registros-dns-sd-en"
+}

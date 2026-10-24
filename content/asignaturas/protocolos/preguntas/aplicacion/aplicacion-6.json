@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué transporte utiliza HTTP/3 según el material?",
+  "explanation": "La diapositiva distingue HTTP/3 sobre QUIC/UDP de las versiones anteriores sobre TCP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "quic-sobre-udp",
+      "text": "QUIC sobre UDP.",
+      "explanation": "HTTP/3 sustituye TCP por QUIC sobre UDP (puerto 443)."
+    },
+    {
+      "id": "tcp-con-framing-textual-de",
+      "text": "TCP con framing textual de HTTP/1.0.",
+      "explanation": "El framing textual es de HTTP/1.x; HTTP/3 usa framing binario y no va sobre TCP."
+    },
+    {
+      "id": "udp-con-el-formato-de",
+      "text": "UDP con el formato de mensajes CoAP.",
+      "explanation": "HTTP/3 usa UDP a través de QUIC, pero no el formato de mensajes de CoAP."
+    },
+    {
+      "id": "tls-sobre-tcp-como-unica",
+      "text": "TLS sobre TCP como única alternativa.",
+      "explanation": "TLS sobre TCP es el transporte de HTTPS en versiones anteriores; HTTP/3 deja TCP."
+    }
+  ],
+  "answer": "quic-sobre-udp"
+}

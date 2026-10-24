@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "El prefijo es 2001:db8:1:2:cd80::/73. ¿Cuál de las siguientes direcciones queda fuera de él?",
+  "explanation": "Después de los primeros 64 bits, el /73 fija nueve bits del quinto hexteto. El intervalo de ese hexteto es cd80–cdff. El siguiente bloque /73 empieza en ce00, que ya cambia bits del prefijo.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-1-2-cd80",
+      "text": "2001:db8:1:2:cd80::1",
+      "explanation": "cd80 es el valor inicial del bloque y los bits posteriores pueden variar."
+    },
+    {
+      "id": "o-2001-db8-1-2-cdab",
+      "text": "2001:db8:1:2:cdab:1234::1",
+      "explanation": "cdab queda entre cd80 y cdff; los hextetos restantes no están fijados."
+    },
+    {
+      "id": "o-2001-db8-1-2-ce00",
+      "text": "2001:db8:1:2:ce00::1",
+      "explanation": "ce00 es el comienzo del siguiente bloque y no coincide con los nueve bits fijados."
+    },
+    {
+      "id": "o-2001-db8-1-2-cdff",
+      "text": "2001:db8:1:2:cdff:ffff:ffff:ffff",
+      "explanation": "cdff es el último valor del quinto hexteto dentro del bloque."
+    }
+  ],
+  "answer": "o-2001-db8-1-2-ce00"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router tiene dos enlaces distintos, y en cada uno hay un vecino cuya dirección es fe80::1. ¿Qué dato necesita acompañar a fe80::1 para usarlo como siguiente salto de una ruta estática?",
+  "explanation": "Las direcciones link-local solo son únicas dentro de su enlace. La interfaz de salida desambigua cuál de los dos vecinos fe80::1 debe utilizarse. Los puertos, recursos y tamaños de cabecera no identifican ese ámbito.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-nombre-del-recurso-coap",
+      "text": "El nombre del recurso CoAP al que se dirige el paquete.",
+      "explanation": "La ruta de un recurso pertenece a la aplicación, no a la selección del vecino IP."
+    },
+    {
+      "id": "el-tamano-de-la-cabecera",
+      "text": "El tamaño de la cabecera IPv6 del paquete reenviado.",
+      "explanation": "La cabecera base tiene tamaño fijo y no distingue las dos interfaces."
+    },
+    {
+      "id": "la-interfaz-de-salida-que",
+      "text": "La interfaz de salida que identifica el enlace del vecino elegido.",
+      "explanation": "Selecciona el enlace en el que tiene sentido esa dirección link-local."
+    },
+    {
+      "id": "el-puerto-udp-de-la",
+      "text": "El puerto UDP de la aplicación destino.",
+      "explanation": "El puerto identifica un extremo de transporte, no el enlace del gateway."
+    }
+  ],
+  "answer": "la-interfaz-de-salida-que"
+}

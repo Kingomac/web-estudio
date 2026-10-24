@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-54",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué permiten los mensajes DAO enviados a la raíz?",
+  "explanation": "Los routers anuncian sus destinos y los de los LFN dependientes, junto con la información de padres.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        79
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "aprender-destinos-alcanzables-y-relacion",
+      "text": "Aprender destinos alcanzables y relaciones necesarias para construir caminos descendentes.",
+      "explanation": "Los DAO permiten a la raíz aprender destinos alcanzables y sus padres para construir caminos descendentes."
+    },
+    {
+      "id": "anunciar-exclusivamente-el-rank-y",
+      "text": "Anunciar exclusivamente el Rank y la versión mediante multicast a vecinos.",
+      "explanation": "Rank y versión se anuncian en DIO multicast."
+    },
+    {
+      "id": "solicitar-informacion-del-dodag-al",
+      "text": "Solicitar información del DODAG al incorporarse a la red.",
+      "explanation": "Solicitar información del DODAG es DIS."
+    },
+    {
+      "id": "confirmar-la-recepcion-de-cada",
+      "text": "Confirmar la recepción de cada DIO de un padre.",
+      "explanation": "DAO-ACK confirma un DAO; no hay confirmación de cada DIO."
+    }
+  ],
+  "answer": "aprender-destinos-alcanzables-y-relacion"
+}

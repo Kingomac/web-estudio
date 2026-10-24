@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo cliente/servidor de IoT, ¿qué papel puede tener el dispositivo que ofrece una medida?",
+  "explanation": "Los roles corresponden a quién solicita y quién proporciona datos o acciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "servidor-que-responde-a-una",
+      "text": "Servidor que responde a una petición de la aplicación cliente.",
+      "explanation": "En cliente/servidor, la aplicación pide la medida y el dispositivo IoT, como servidor, responde con los datos."
+    },
+    {
+      "id": "publicador-que-debe-enviar-cada",
+      "text": "Publicador que debe enviar cada medida a un broker.",
+      "explanation": "Publicar en un broker es propio del modelo publicación/suscripción, no del cliente/servidor."
+    },
+    {
+      "id": "cliente-que-solicita-al-servidor",
+      "text": "Cliente que solicita al servidor el valor de su propio sensor.",
+      "explanation": "Invierte los papeles: quien pide es la aplicación cliente; el dispositivo que tiene la medida responde."
+    },
+    {
+      "id": "proxy-que-siempre-responde-con",
+      "text": "Proxy que siempre responde con una copia en caché.",
+      "explanation": "Las cachés son opcionales; un proxy no es el papel del dispositivo que ofrece la medida."
+    }
+  ],
+  "answer": "servidor-que-responde-a-una"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-85",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un paquete tiene Hop Limit=64. ¿Qué valor HLIM de IPHC permite representarlo sin enviar un byte adicional para ese campo?",
+  "explanation": "HLIM=10 representa 64, HLIM=01 representa 1 y HLIM=11 representa 255. HLIM=00 obliga a transmitir el Hop Limit en línea.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-10",
+      "text": "10.",
+      "explanation": "HLIM=10 representa Hop Limit 64 sin bytes adicionales."
+    },
+    {
+      "id": "o-00",
+      "text": "00.",
+      "explanation": "HLIM=00 envía el Hop Limit en línea."
+    },
+    {
+      "id": "o-01",
+      "text": "01.",
+      "explanation": "HLIM=01 representa 1."
+    },
+    {
+      "id": "o-11",
+      "text": "11.",
+      "explanation": "HLIM=11 representa 255."
+    }
+  ],
+  "answer": "o-10"
+}

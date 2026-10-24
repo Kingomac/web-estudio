@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿A qué grupo se envía RS para acelerar el descubrimiento de routers?",
+  "explanation": "El RS se envía a all-routers; un router puede responder con RA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-2",
+      "text": "ff02::2.",
+      "explanation": "El RS se envía al grupo all-routers ff02::2 para acelerar el RA."
+    },
+    {
+      "id": "ff02-1",
+      "text": "ff02::1.",
+      "explanation": "ff02::1 (all-nodes) es el destino de los RA periódicos, no del RS."
+    },
+    {
+      "id": "ff02-1-2",
+      "text": "ff02::1:2.",
+      "explanation": "ff02::1:2 es el grupo en el que escuchan los servidores DHCPv6."
+    },
+    {
+      "id": "ff02-fb",
+      "text": "ff02::fb.",
+      "explanation": "ff02::fb es el multicast de mDNS."
+    }
+  ],
+  "answer": "ff02-2"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB contiene estas rutas operativas: conectada 2001:db8:9c22:66::/64; estática 2001:db8::/32 con distancia 1; estática 2001:db8:8000::/34 con distancia 10; y ::/0. ¿Qué prefijo se usa para reenviar a 2001:db8:9c22::66:1?",
+  "explanation": "El destino tiene cuarto hexteto 0, de modo que no coincide con el /64 conectado, cuyo cuarto hexteto es 66. El tercer hexteto 9c22 comienza por los bits 10 y pertenece al /34 que abarca 8000–bfff. Entre /34, /32 y /0 gana /34. La distancia no sustituye a la coincidencia de prefijo más larga entre rutas instaladas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-8000-34",
+      "text": "2001:db8:8000::/34.",
+      "explanation": "El /34 coincide y es el más largo de los prefijos coincidentes."
+    },
+    {
+      "id": "o-2001-db8-9c22-66-64",
+      "text": "2001:db8:9c22:66::/64, por ser conectada.",
+      "explanation": "Ser conectada no sirve si el prefijo no contiene el destino."
+    },
+    {
+      "id": "o-2001-db8-32-por-tener",
+      "text": "2001:db8::/32, por tener menor distancia administrativa.",
+      "explanation": "La distancia administrativa no hace ganar a un /32 frente a un /34 coincidente ya instalado."
+    },
+    {
+      "id": "o-0-porque-ninguna-ruta-especifica",
+      "text": "::/0, porque ninguna ruta específica coincide.",
+      "explanation": "El destino sí está incluido en /32 y /34."
+    }
+  ],
+  "answer": "o-2001-db8-8000-34"
+}

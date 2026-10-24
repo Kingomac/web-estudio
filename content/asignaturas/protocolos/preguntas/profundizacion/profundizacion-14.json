@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "IPv6 base tiene Next Header=0. Sigue Hop-by-Hop con Hdr Ext Len=1 y Next Header=60; después Destination Options con Hdr Ext Len=0 y Next Header=17; luego UDP y 16 bytes de aplicación. ¿Qué pareja es correcta?",
+  "explanation": "Hop-by-Hop ocupa (1+1)×8=16 bytes y Destination Options (0+1)×8=8. UDP comienza en 40+16+8=64. Payload Length cuenta 16+8+8+16=48 bytes; el total IPv6 es 88. Los offsets se miden desde el primer byte IPv6.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · extensiones",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "udp-empieza-en-el-offset",
+      "text": "UDP empieza en el offset 48; Payload Length IPv6=88.",
+      "explanation": "Ignora parte de la cadena y confunde el tamaño total con Payload Length."
+    },
+    {
+      "id": "udp-empieza-en-el-offset-2",
+      "text": "UDP empieza en el offset 64; Payload Length IPv6=48.",
+      "explanation": "Incluye las dos extensiones tanto en el offset como en la carga IPv6."
+    },
+    {
+      "id": "udp-empieza-en-el-offset-3",
+      "text": "UDP empieza en el offset 56; Payload Length IPv6=40.",
+      "explanation": "Trata ambas extensiones como si midieran ocho bytes, ignorando Hdr Ext Len=1."
+    },
+    {
+      "id": "udp-empieza-en-el-offset-4",
+      "text": "UDP empieza en el offset 64; Payload Length IPv6=24.",
+      "explanation": "24 es solo UDP más aplicación; también deben contarse las extensiones."
+    }
+  ],
+  "answer": "udp-empieza-en-el-offset-2"
+}

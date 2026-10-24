@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.moovi-original-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se mapea una dirección IPv6 multicast a una dirección MAC multicast en redes Ethernet/WiFi?",
+  "explanation": "La alternativa que concatena los últimos 24 bits al prefijo `33:33` parece ser la prevista, pero contiene una errata: en Ethernet/WiFi se concatena 33:33 con los últimos 32 bits de la IPv6 multicast, no 24. Ninguna opción es completamente correcta tal como está escrita. Para poder repetir y puntuar este test se acepta esa alternativa; esto es un criterio de práctica, no una clave oficial del profesor. Los 24 bits sí se usan al construir el grupo solicited-node.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        37
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        1
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 2464 §7 · multicast Ethernet",
+      "url": "https://www.rfc-editor.org/rfc/rfc2464.html#section-7"
+    }
+  ],
+  "options": [
+    {
+      "id": "asociando-la-direccion-ipv6-multicast",
+      "text": "Asociando la dirección IPv6 multicast a una dirección unicast en la subred",
+      "explanation": "El mapeo conserva el carácter multicast; no elige una dirección unicast."
+    },
+    {
+      "id": "generando-un-identificador-eui-64",
+      "text": "Generando un identificador EUI-64 basado en la dirección IPv6 multicast",
+      "explanation": "EUI-64 sirve para construir identificadores de interfaz, no para este mapeo multicast."
+    },
+    {
+      "id": "concatenando-los-ultimos-24-bits",
+      "text": "Concatenando los últimos 24 bits de la dirección IPv6 multicast al prefijo MAC `33:33`",
+      "explanation": "Es la respuesta prevista, con la errata 24 en lugar de 32 bits."
+    },
+    {
+      "id": "concatenando-los-primeros-24-bits",
+      "text": "Concatenando los primeros 24 bits de la dirección IPv6 multicast al prefijo MAC `FF:FF`",
+      "explanation": "No se toman los bits iniciales ni se utiliza el prefijo FF:FF."
+    }
+  ],
+  "answer": "concatenando-los-ultimos-24-bits"
+}

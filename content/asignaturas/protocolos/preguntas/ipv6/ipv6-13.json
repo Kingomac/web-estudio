@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué describe una dirección anycast en el tema?",
+  "explanation": "Anycast usa direcciones unicast compartidas; multicast se dirige a los miembros de un grupo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "una-direccion-compartida-por-varios",
+      "text": "Una dirección compartida por varios nodos que se encamina al más cercano.",
+      "explanation": "Anycast es una dirección unicast compartida por varias máquinas; el paquete se encamina a la más cercana."
+    },
+    {
+      "id": "una-direccion-que-entrega-a",
+      "text": "Una dirección que entrega a todos los miembros de un grupo.",
+      "explanation": "Entregar a todos los miembros de un grupo es multicast."
+    },
+    {
+      "id": "una-direccion-cuyo-ambito-se",
+      "text": "Una dirección cuyo ámbito se limita necesariamente al mismo enlace.",
+      "explanation": "El ámbito de enlace caracteriza las link-local; anycast no está limitada al enlace."
+    },
+    {
+      "id": "la-direccion-sin-especificar-utilizada",
+      "text": "La dirección sin especificar utilizada como origen de DAD.",
+      "explanation": "La dirección sin especificar (::) es la que usa DAD como origen, no anycast."
+    }
+  ],
+  "answer": "una-direccion-compartida-por-varios"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "protocolos.preguntas.profundizacion-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un IPv6 original de 300 bytes tiene cabeceras IPv6+UDP de 48 bytes, comprimidas a 6. Cada carga MAC admite 90 bytes. Sin Mesh, FRAG1 ocupa 4 bytes. ¿Cuál es la máxima aplicación en FRAG1 y el offset codificado de FRAGN siguiente?",
+  "explanation": "Quedan 90−4−6=80 bytes para aplicación. Ese fragmento representa 48+80=128 bytes del datagrama original, un múltiplo de ocho. El siguiente offset es 128/8=16, aunque el contenido comprimido de FRAG1 solo mida 6+80=86 bytes.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · fragmentación",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
+    },
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "o-80-bytes-de-aplicacion-offset",
+      "text": "80 bytes de aplicación; offset=11.",
+      "explanation": "Redondea una longitud comprimida, que no es la referencia del offset."
+    },
+    {
+      "id": "o-84-bytes-de-aplicacion-offset",
+      "text": "84 bytes de aplicación; offset=16.",
+      "explanation": "Olvida reservar cuatro bytes para FRAG1 y excede la capacidad disponible."
+    },
+    {
+      "id": "o-80-bytes-de-aplicacion-offset-2",
+      "text": "80 bytes de aplicación; offset=16.",
+      "explanation": "Respeta tanto la capacidad de la trama como la referencia descomprimida de los offsets."
+    },
+    {
+      "id": "o-80-bytes-de-aplicacion-offset-3",
+      "text": "80 bytes de aplicación; offset=10.",
+      "explanation": "Cuenta solo los ochenta bytes de aplicación y olvida los cuarenta y ocho de cabeceras originales."
+    }
+  ],
+  "answer": "o-80-bytes-de-aplicacion-offset-2"
+}

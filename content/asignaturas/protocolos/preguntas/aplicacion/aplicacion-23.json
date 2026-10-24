@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia hay entre Message ID y Token en CoAP?",
+  "explanation": "La diapositiva separa explícitamente estas dos funciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "message-id-trata-fiabilidad-y",
+      "text": "Message ID trata fiabilidad y duplicados; Token relaciona petición y respuesta.",
+      "explanation": "Message ID sirve para la fiabilidad y detectar duplicados; Token relaciona cada respuesta con su petición."
+    },
+    {
+      "id": "message-id-relaciona-peticion-y",
+      "text": "Message ID relaciona petición y respuesta; Token gestiona los duplicados.",
+      "explanation": "Invierte las funciones de Message ID y Token."
+    },
+    {
+      "id": "message-id-y-token-son",
+      "text": "Message ID y Token son el mismo campo de 16 bits.",
+      "explanation": "Son campos distintos: Message ID ocupa 16 bits y Token es opcional de 0 a 8 bytes."
+    },
+    {
+      "id": "token-solo-indica-el-tipo",
+      "text": "Token solo indica el tipo CON o NON y Message ID contiene el método.",
+      "explanation": "El tipo CON o NON va en el campo de tipo de mensaje, y el método en el código."
+    }
+  ],
+  "answer": "message-id-trata-fiabilidad-y"
+}

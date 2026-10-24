@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué información incluye ARO en el registro estudiado?",
+  "explanation": "Address Registration Option acompaña a NS/NA; SLLAO transporta la dirección de enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        51
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "eui-64-del-dispositivo-y",
+      "text": "EUI-64 del dispositivo y Registration Lifetime.",
+      "explanation": "ARO incluye el EUI-64 del dispositivo y el Registration Lifetime solicitado."
+    },
+    {
+      "id": "los-identificadores-sci-y-dci",
+      "text": "Los identificadores SCI y DCI del contexto de compresión.",
+      "explanation": "SCI y DCI identifican contextos en IPHC; no forman parte de ARO."
+    },
+    {
+      "id": "solo-el-prefijo-ipv6-del",
+      "text": "Solo el prefijo IPv6 del border router y su versión.",
+      "explanation": "El prefijo y la versión del border router los aporta ABRO en el RA."
+    },
+    {
+      "id": "el-vector-de-costes-hacia",
+      "text": "El vector de costes hacia todos los routers de la partición.",
+      "explanation": "El vector de costes hacia routers es de Thread (MLE Advertisement)."
+    }
+  ],
+  "answer": "eui-64-del-dispositivo-y"
+}

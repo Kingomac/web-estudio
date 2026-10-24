@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-44",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente MQTT v5 envía dos peticiones y espera las respuestas en su response topic. ¿Qué dato permite asociar cada respuesta con su petición?",
+  "explanation": "La petición incluye un response topic y correlation data. El servidor publica la respuesta en ese topic y conserva el mismo dato de correlación de la petición original.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "correlation-data",
+      "text": "Correlation data.",
+      "explanation": "Correlation Data acompaña a la petición y el servidor lo copia en la respuesta para asociarlas."
+    },
+    {
+      "id": "el-flag-de-retencion",
+      "text": "El flag de retención.",
+      "explanation": "RETAIN decide si el broker guarda el mensaje; no correlaciona peticiones."
+    },
+    {
+      "id": "el-puerto-tcp-de-origen",
+      "text": "El puerto TCP de origen del broker.",
+      "explanation": "El puerto del broker es común a todas las peticiones y no las distingue."
+    },
+    {
+      "id": "el-tiempo-de-vida-de",
+      "text": "El tiempo de vida de una entrada DNS.",
+      "explanation": "El TTL de DNS no interviene en MQTT."
+    }
+  ],
+  "answer": "correlation-data"
+}

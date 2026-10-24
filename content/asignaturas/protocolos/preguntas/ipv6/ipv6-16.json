@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué combinación describe la cabecera básica IPv6?",
+  "explanation": "El tema destaca tamaño constante, ausencia de checksum de cabecera y ausencia de fragmentación en routers.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-40-bytes-fijos-y-sin",
+      "text": "40 bytes fijos y sin checksum propio de cabecera.",
+      "explanation": "La cabecera IPv6 tiene tamaño constante de 40 bytes y no lleva checksum de cabecera."
+    },
+    {
+      "id": "o-20-bytes-variables-y-checksum",
+      "text": "20 bytes variables y checksum obligatorio.",
+      "explanation": "20 bytes variables con checksum describen la cabecera IPv4."
+    },
+    {
+      "id": "o-4-bytes-y-sin-direcciones",
+      "text": "4 bytes y sin direcciones.",
+      "explanation": "Una cabecera de 4 bytes sin direcciones no corresponde a IPv6, que incluye origen y destino de 16 bytes cada uno."
+    },
+    {
+      "id": "o-127-bytes-siempre-incluidos-los",
+      "text": "127 bytes siempre, incluidos los campos MAC.",
+      "explanation": "127 bytes es el orden de la trama IEEE 802.15.4; la cabecera IPv6 no incluye campos MAC."
+    }
+  ],
+  "answer": "o-40-bytes-fijos-y-sin"
+}

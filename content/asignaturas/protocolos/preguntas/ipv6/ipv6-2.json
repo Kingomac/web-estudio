@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué ventaja de IPv6 frente a IPv4 destaca el tema para IoT?",
+  "explanation": "IPv6 permite direccionar muchos nodos y configurar direcciones sin asignación manual ni servidor DHCP mediante SLAAC.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mas-espacio-de-direcciones-y",
+      "text": "Más espacio de direcciones y autoconfiguración mediante SLAAC.",
+      "explanation": "El RFC 4919 destaca el mayor espacio de direcciones, que evita NAT, y la autoconfiguración con SLAAC."
+    },
+    {
+      "id": "una-cabecera-basica-de-solo",
+      "text": "Una cabecera básica de solo 4 bytes.",
+      "explanation": "La cabecera básica IPv6 ocupa 40 bytes fijos."
+    },
+    {
+      "id": "fragmentacion-obligatoria-por-todos-los",
+      "text": "Fragmentación obligatoria por todos los routers.",
+      "explanation": "En IPv6 los routers no fragmentan."
+    },
+    {
+      "id": "uso-de-broadcast-para-todos",
+      "text": "Uso de broadcast para todos los mensajes.",
+      "explanation": "IPv6 no tiene broadcast; usa multicast."
+    }
+  ],
+  "answer": "mas-espacio-de-direcciones-y"
+}

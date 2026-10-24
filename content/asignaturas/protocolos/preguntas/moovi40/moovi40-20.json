@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host envía RS y recibe un RA válido de fe80::9, con Router Lifetime positivo y un prefijo apto para SLAAC 2001:db8:70::/64. ¿Qué dirección identifica al router por defecto anunciado?",
+  "explanation": "El RA identifica al router por su dirección origen link-local. El prefijo anunciado sirve para configurar direcciones y no permite deducir un IID concreto del router. El Lifetime positivo permite considerarlo como router por defecto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2001-db8-70-1-porque",
+      "text": "2001:db8:70::1, porque el router siempre usa el primer IID del prefijo.",
+      "explanation": "No existe obligación de asignar al router el IID 1 del prefijo anunciado."
+    },
+    {
+      "id": "ff02-2-porque-es-el",
+      "text": "ff02::2, porque es el grupo al que se envió el RS.",
+      "explanation": "All-routers es un grupo de descubrimiento, no un siguiente salto unicast."
+    },
+    {
+      "id": "la-direccion-del-servidor-dhcpv6",
+      "text": "La dirección del servidor DHCPv6, aunque no haya respondido al host.",
+      "explanation": "DHCPv6 no proporciona por ese hecho la dirección del router por defecto."
+    },
+    {
+      "id": "fe80-9-la-direccion-origen",
+      "text": "fe80::9, la dirección origen del RA.",
+      "explanation": "Usa la identidad del router que emite el anuncio válido."
+    }
+  ],
+  "answer": "fe80-9-la-direccion-origen"
+}

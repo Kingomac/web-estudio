@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-45",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué mecanismo propio resuelve la correspondencia de un destino a RLOC16 según el tema?",
+  "explanation": "La correspondencia se guarda en caché; los MTD delegan esta función en su padre.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        68
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "address-query-address-notification-basad",
+      "text": "Address Query / Address Notification, basado en CoAP.",
+      "explanation": "Thread usa Address Query (multicast en la partición) y Address Notification, basados en CoAP."
+    },
+    {
+      "id": "ns-multicast-y-na-del",
+      "text": "NS multicast y NA del NDP tradicional como único mecanismo.",
+      "explanation": "Thread tiene su propio mecanismo y no depende del NS/NA multicast tradicional."
+    },
+    {
+      "id": "parent-request-parent-response-para",
+      "text": "Parent Request/Parent Response para cada datagrama.",
+      "explanation": "Parent Request/Response sirven para incorporarse a la red, no para resolver destinos."
+    },
+    {
+      "id": "dao-dao-ack-de-rpl",
+      "text": "DAO/DAO-ACK de RPL.",
+      "explanation": "DAO/DAO-ACK son de RPL, que Thread no usa."
+    }
+  ],
+  "answer": "address-query-address-notification-basad"
+}

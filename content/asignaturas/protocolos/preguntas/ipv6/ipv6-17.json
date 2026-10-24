@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué valor de Next Header identifica ICMPv6?",
+  "explanation": "6 identifica TCP, 17 UDP y 58 ICMPv6; 133 es un tipo de mensaje dentro de ICMPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-58",
+      "text": "58.",
+      "explanation": "Next Header 58 identifica ICMPv6."
+    },
+    {
+      "id": "o-6",
+      "text": "6.",
+      "explanation": "6 identifica TCP."
+    },
+    {
+      "id": "o-17",
+      "text": "17.",
+      "explanation": "17 identifica UDP."
+    },
+    {
+      "id": "o-133",
+      "text": "133.",
+      "explanation": "133 es el tipo ICMPv6 del Router Solicitation, no un valor de Next Header."
+    }
+  ],
+  "answer": "o-58"
+}

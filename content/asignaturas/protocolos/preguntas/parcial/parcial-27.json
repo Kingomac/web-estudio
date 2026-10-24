@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servicio debe avisar a otro únicamente cuando termina una operación, enviando los datos del evento a una URL configurada. ¿Qué mecanismo encaja mejor?",
+  "explanation": "El webhook se activa ante un evento y envía un POST al endpoint configurado. Es adecuado para notificaciones esporádicas sin tener que sondear continuamente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-webhook-que-realiza-un",
+      "text": "Un webhook que realiza un HTTP POST al endpoint.",
+      "explanation": "Un webhook envía un HTTP POST al endpoint configurado cuando ocurre el evento."
+    },
+    {
+      "id": "un-sondeo-get-continuo-desde",
+      "text": "Un sondeo GET continuo desde el emisor del evento.",
+      "explanation": "El sondeo continuo es lo que los webhooks evitan."
+    },
+    {
+      "id": "una-respuesta-dns-aaaa-enviada",
+      "text": "Una respuesta DNS AAAA enviada al navegador.",
+      "explanation": "Las respuestas DNS AAAA resuelven nombres; no notifican eventos."
+    },
+    {
+      "id": "un-mensaje-websocket-close-por",
+      "text": "Un mensaje WebSocket Close por cada dato del evento.",
+      "explanation": "Close sirve para cerrar una conexión WebSocket, no para enviar datos."
+    }
+  ],
+  "answer": "un-webhook-que-realiza-un"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-89",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Para comprimir el destino multicast ff02::ab se usan M=1, DAC=0 y DAM=11. ¿Cuántos bits de la dirección se envían en línea?",
+  "explanation": "DAM=11 en multicast sin estado representa direcciones de la forma ff02::00GG. Solo se transmite el octeto GG, que en este caso es ab.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-8-bits",
+      "text": "8 bits.",
+      "explanation": "M=1, DAC=0, DAM=11 transmite solo el octeto GG (ab): 8 bits."
+    },
+    {
+      "id": "o-16-bits",
+      "text": "16 bits.",
+      "explanation": "Ningún modo multicast envía 16 bits."
+    },
+    {
+      "id": "o-32-bits",
+      "text": "32 bits.",
+      "explanation": "32 bits es DAM=10."
+    },
+    {
+      "id": "o-128-bits",
+      "text": "128 bits.",
+      "explanation": "128 bits es DAM=00."
+    }
+  ],
+  "answer": "o-8-bits"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-original-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica de las siguientes es propia de un gateway (pasarela) en el ámbito de las redes LLN en IoT?",
+  "explanation": "La función arquitectónica de la pasarela es interconectar la red de acceso de los dispositivos y la red troncal. Puede adaptar protocolos o incluir funciones de encaminamiento, pero reenviar paquetes IP por sí solo no define el papel de pasarela. Se conserva la errata IEEE 802.16.4 de la alternativa «IEEE 802.16.4» del original.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        11
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "reenvia-tramas-ieee-802-16",
+      "text": "Reenvía tramas IEEE 802.16.4",
+      "explanation": "La designación IEEE 802.16.4 del original no corresponde al enlace 802.15.4 estudiado."
+    },
+    {
+      "id": "interconecta-la-red-de-acceso",
+      "text": "Interconecta la red de acceso y la red troncal",
+      "explanation": "Es la función arquitectónica que caracteriza a la pasarela."
+    },
+    {
+      "id": "reenvia-mensajes-no-ip-a",
+      "text": "Reenvía mensajes no IP a través de Internet",
+      "explanation": "Los mensajes no IP necesitan adaptación para circular por Internet."
+    },
+    {
+      "id": "reenvia-paquetes-ip",
+      "text": "Reenvía paquetes IP",
+      "explanation": "Puede hacerlo, pero esa función no define por sí sola una pasarela."
+    }
+  ],
+  "answer": "interconecta-la-red-de-acceso"
+}

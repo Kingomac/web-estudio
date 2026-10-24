@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un paquete IPHC tiene SAC=1, SAM=11 y CID=0. Ambos extremos conocen el contexto 0 con prefijo 2001:db8:80::/64, y el IID fuente es deducible del enlace. ¿Qué se infiere de la dirección fuente?",
+  "explanation": "SAC=1 selecciona compresión con contexto; CID=0 permite usar el contexto implícito 0. SAM=11 permite inferir el IID en las condiciones indicadas. La dirección no especificada se codifica con SAC=1 y SAM=00.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        24
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 §3.1.1 · modos IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1.1"
+    }
+  ],
+  "options": [
+    {
+      "id": "usa-fe80-64-porque-cid",
+      "text": "Usa fe80::/64, porque CID=0 impide emplear cualquier contexto.",
+      "explanation": "CID=0 no prohíbe los contextos: permite utilizar el identificador 0 implícito."
+    },
+    {
+      "id": "lleva-obligatoriamente-los-128-bits",
+      "text": "Lleva obligatoriamente los 128 bits de la dirección fuente en línea.",
+      "explanation": "El modo planteado permite omitir la dirección completa, no exige transmitirla."
+    },
+    {
+      "id": "es-porque-sac-1-siempre",
+      "text": "Es ::, porque SAC=1 siempre codifica la dirección no especificada.",
+      "explanation": "La codificación de :: requiere SAM=00, no SAM=11."
+    },
+    {
+      "id": "usa-el-prefijo-del-contexto",
+      "text": "Usa el prefijo del contexto 0 y el IID derivado del enlace, sin bits de dirección fuente en línea.",
+      "explanation": "Interpreta por separado el uso de contexto y la ausencia de extensión CID."
+    }
+  ],
+  "answer": "usa-el-prefijo-del-contexto"
+}

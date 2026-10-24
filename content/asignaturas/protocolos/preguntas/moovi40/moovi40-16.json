@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi40-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "H considera on-link el prefijo 2001:db8:12::/64. Quiere enviar a 2001:db8:12::fedc:ba98 y no conoce su MAC. También tiene gateway fe80::1. ¿Qué Target y destino IPv6 lleva el NS de resolución?",
+  "explanation": "La ruta on-link permite resolver directamente al destinatario. El campo Target contiene su dirección unicast completa, mientras que el destino IPv6 del NS es el grupo formado con sus últimos 24 bits: dc:ba:98.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 §7.2 · resolución de vecinos",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "target-fe80-1-destino-ff02",
+      "text": "Target fe80::1; destino ff02::1:ff00:1.",
+      "explanation": "Resolver al gateway sería necesario para un destino alcanzado a través de él."
+    },
+    {
+      "id": "target-ff02-1-ffdc-ba98",
+      "text": "Target ff02::1:ffdc:ba98; destino 2001:db8:12::fedc:ba98.",
+      "explanation": "Intercambia el objetivo unicast con el grupo multicast de recepción."
+    },
+    {
+      "id": "target-2001-db8-12-fedc",
+      "text": "Target 2001:db8:12::fedc:ba98; destino ff02::1.",
+      "explanation": "All-nodes no es el destino de este NS inicial de resolución."
+    },
+    {
+      "id": "target-2001-db8-12-fedc-2",
+      "text": "Target 2001:db8:12::fedc:ba98; destino ff02::1:ffdc:ba98.",
+      "explanation": "Separa correctamente la dirección que se resuelve y el grupo al que se consulta."
+    }
+  ],
+  "answer": "target-2001-db8-12-fedc-2"
+}

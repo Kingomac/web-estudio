@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-86",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una dirección se comprime utilizando el contexto por defecto 0. ¿Es obligatorio poner CID=1?",
+  "explanation": "CID=0 puede indicar ausencia de contexto o uso del contexto por defecto 0. CID=1 añade un byte con SCI y DCI, de cuatro bits cada uno.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "no-cid-0-tambien-permite",
+      "text": "No; CID=0 también permite usar el contexto 0 sin enviar el byte SCI/DCI.",
+      "explanation": "CID=0 permite usar el contexto 0 sin añadir el byte SCI/DCI."
+    },
+    {
+      "id": "si-cid-0-significa-que",
+      "text": "Sí; CID=0 significa que nunca puede usarse compresión con estado.",
+      "explanation": "CID=0 no prohíbe la compresión con estado: usa el contexto por defecto."
+    },
+    {
+      "id": "si-el-contexto-0-se",
+      "text": "Sí; el contexto 0 se transmite siempre mediante dos bytes adicionales.",
+      "explanation": "SCI/DCI ocupan un solo byte y solo se añaden si CID=1."
+    },
+    {
+      "id": "no-cid-0-hace-que",
+      "text": "No; CID=0 hace que el prefijo se obtenga del puerto UDP de destino.",
+      "explanation": "El prefijo sale del contexto, no del puerto UDP."
+    }
+  ],
+  "answer": "no-cid-0-tambien-permite"
+}

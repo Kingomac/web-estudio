@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué familia de códigos CoAP indica éxito?",
+  "explanation": "0.xx identifica peticiones; 2.xx éxito, 4.xx error del cliente y 5.xx error del servidor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-2-xx",
+      "text": "2.xx.",
+      "explanation": "Los códigos 2.xx indican éxito."
+    },
+    {
+      "id": "o-0-xx",
+      "text": "0.xx.",
+      "explanation": "0.xx corresponde a peticiones (GET, POST…), no a respuestas."
+    },
+    {
+      "id": "o-4-xx",
+      "text": "4.xx.",
+      "explanation": "4.xx indica un error del cliente."
+    },
+    {
+      "id": "o-5-xx",
+      "text": "5.xx.",
+      "explanation": "5.xx indica un error del servidor."
+    }
+  ],
+  "answer": "o-2-xx"
+}

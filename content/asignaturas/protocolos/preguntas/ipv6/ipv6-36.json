@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué identifica una URI como coap://sensor.example/temperatura?",
+  "explanation": "Una aplicación puede ofrecer varios recursos, identificados mediante distintas URI.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        48
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-recurso-y-su-forma",
+      "text": "Un recurso y su forma de acceso mediante esquema, host y ruta.",
+      "explanation": "La URI identifica el recurso e indica cómo acceder a él: esquema (coap), host y ruta (/temperatura)."
+    },
+    {
+      "id": "la-direccion-de-enlace-del",
+      "text": "La dirección de enlace del siguiente salto exclusivamente.",
+      "explanation": "El siguiente salto es información de encaminamiento IP, no de la URI."
+    },
+    {
+      "id": "solo-la-identidad-persistente-del",
+      "text": "Solo la identidad persistente del dispositivo, sin acceso al recurso.",
+      "explanation": "El identificador persistente del dispositivo no incluye el esquema ni la ruta del recurso."
+    },
+    {
+      "id": "unicamente-el-puerto-tcp-de",
+      "text": "Únicamente el puerto TCP de un servidor.",
+      "explanation": "Esta URI no indica puerto, y CoAP usa UDP, no TCP."
+    }
+  ],
+  "answer": "un-recurso-y-su-forma"
+}

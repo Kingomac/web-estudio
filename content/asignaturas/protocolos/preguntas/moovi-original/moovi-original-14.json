@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.preguntas.moovi-original-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una ruta creada mediante un comando ipv6 route ::/0 F1 dará lugar a una entrada en la RIB ...",
+  "explanation": "En la convención del tema, una ruta que especifica únicamente la interfaz de salida es directa: G=0. Sigue siendo una ruta estática añadida con ipv6 route, con distancia administrativa predeterminada 1. No debe confundirse con una ruta conectada de distancia 0.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.cuestionario-previo-moovi",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Cisco · distancia y selección de rutas",
+      "url": "https://docs.manage.security.cisco.com/c-the-routing-table-and-route-selection.html"
+    }
+  ],
+  "options": [
+    {
+      "id": "con-g-0-y-con",
+      "text": "Con G=0 y con distancia 1",
+      "explanation": "Solo hay interfaz explícita: G=0; el origen estático da distancia 1."
+    },
+    {
+      "id": "con-g-0-y-con-2",
+      "text": "Con G=0 y con distancia 0",
+      "explanation": "No es una ruta conectada de distancia 0."
+    },
+    {
+      "id": "con-g-1-y-con",
+      "text": "Con G=1 y con distancia 1",
+      "explanation": "No se indica un router siguiente salto: G=0 en el tema."
+    },
+    {
+      "id": "con-g-1-y-con-2",
+      "text": "Con G=1 y con distancia 0",
+      "explanation": "Ni tiene siguiente salto explícito ni es una ruta conectada."
+    },
+    {
+      "id": "con-g-1-y-con-3",
+      "text": "Con G=1 y con distancia desconocida",
+      "explanation": "La distancia estática predeterminada es 1 y aquí G=0."
+    }
+  ],
+  "answer": "con-g-0-y-con"
+}

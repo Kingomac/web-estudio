@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.moovi40-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un despliegue se describe como una LLN. ¿Qué conclusión NO está justificada por esa descripción?",
+  "explanation": "Low-power expresa la restricción energética y Lossy la presencia de enlaces con pérdidas y calidad variable. No se puede suponer un canal estable ni ignorar las pérdidas al diseñar el intercambio de mensajes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "los-enlaces-mantienen-una-calidad",
+      "text": "Los enlaces mantienen una calidad alta y estable, por lo que las pérdidas pueden despreciarse.",
+      "explanation": "Es la inferencia incorrecta: contradice la parte Lossy de LLN."
+    },
+    {
+      "id": "los-nodos-tienen-restricciones-energetic",
+      "text": "Los nodos tienen restricciones energéticas que condicionan sus comunicaciones.",
+      "explanation": "El presupuesto energético limitado es una característica del perfil estudiado."
+    },
+    {
+      "id": "las-interferencias-pueden-hacer-variar",
+      "text": "Las interferencias pueden hacer variar la probabilidad de entrega de los paquetes.",
+      "explanation": "La variabilidad de los enlaces radio es coherente con una LLN."
+    },
+    {
+      "id": "conviene-reducir-el-trafico-de",
+      "text": "Conviene reducir el tráfico de control para limitar el consumo de radio.",
+      "explanation": "Reducir transmisiones y recepciones ayuda a ahorrar energía."
+    }
+  ],
+  "answer": "los-enlaces-mantienen-una-calidad"
+}

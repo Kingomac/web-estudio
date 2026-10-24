@@ -1,0 +1,41 @@
+{
+  "id": "protocolos.preguntas.profundizacion-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una extensión Fragment IPv6 contiene 11 00 00 31 aa bb cc dd. ¿Cuál es la interpretación correcta de sus datos de fragmentación?",
+  "explanation": "El campo 0x0031 se separa en Offset de 13 bits, dos reservados y M. 0x0031>>3=6; 6×8=48 bytes y M=1. Next Header=0x11 identifica UDP, pero el offset no nulo sitúa estos datos más adelante en la parte fragmentable.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 8200 · extensiones",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-4"
+    }
+  ],
+  "options": [
+    {
+      "id": "offset-24-bytes-m-1",
+      "text": "Offset=24 bytes, M=1; es el primer fragmento.",
+      "explanation": "El offset es 48, no 24; solo un offset cero corresponde al primer fragmento."
+    },
+    {
+      "id": "offset-6-bytes-m-0",
+      "text": "Offset=6 bytes, M=0; es el último fragmento.",
+      "explanation": "6 es el valor codificado, no el número de bytes; el bit M está a uno."
+    },
+    {
+      "id": "offset-48-bytes-m-1",
+      "text": "Offset=48 bytes, M=1; la carga de este fragmento no comienza con la cabecera UDP.",
+      "explanation": "Aplica la unidad de ocho bytes y no confunde el protocolo con la ubicación de su cabecera."
+    },
+    {
+      "id": "offset-49-bytes-m-1",
+      "text": "Offset=49 bytes, M=1; la carga empieza con UDP porque Next Header=17.",
+      "explanation": "49 es el valor bruto 0x0031, sin separar banderas ni aplicar la unidad del offset."
+    }
+  ],
+  "answer": "offset-48-bytes-m-1"
+}

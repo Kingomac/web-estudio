@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Para multicast con M=1, DAC=0 y DAM=11, ¿cuántos bits de dirección van en línea?",
+  "explanation": "Ese modo representa direcciones con el patrón ff02::00GG.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-8-bits",
+      "text": "8 bits.",
+      "explanation": "M=1, DAC=0 y DAM=11 envían 8 bits con la forma ff02::00GG."
+    },
+    {
+      "id": "o-128-bits",
+      "text": "128 bits.",
+      "explanation": "128 bits en línea es DAM=00."
+    },
+    {
+      "id": "o-48-bits",
+      "text": "48 bits.",
+      "explanation": "48 bits es DAM=01 (ffFS::00GG:GGGG:GGGG)."
+    },
+    {
+      "id": "o-32-bits",
+      "text": "32 bits.",
+      "explanation": "32 bits es DAM=10 (ffFS::00GG:GGGG)."
+    }
+  ],
+  "answer": "o-8-bits"
+}

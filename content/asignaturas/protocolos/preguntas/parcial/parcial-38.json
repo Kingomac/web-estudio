@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En una cabecera MQTT, ¿qué tamaño representa el campo de longitud de uno a cuatro bytes?",
+  "explanation": "El campo de longitud de MQTT indica los bytes que siguen a la cabecera fija: cabecera variable y payload. Usa una codificación de longitud variable con bit de continuación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-suma-de-la-cabecera",
+      "text": "La suma de la cabecera variable y los datos.",
+      "explanation": "El campo de longitud indica la suma de la cabecera variable y los datos."
+    },
+    {
+      "id": "solo-el-tamano-de-la",
+      "text": "Solo el tamaño de la cabecera fija.",
+      "explanation": "No mide la cabecera fija, que lo contiene."
+    },
+    {
+      "id": "el-tamano-completo-de-la",
+      "text": "El tamaño completo de la trama IEEE 802.15.4.",
+      "explanation": "La trama 802.15.4 pertenece al enlace; MQTT no la conoce."
+    },
+    {
+      "id": "la-suma-de-las-cabeceras",
+      "text": "La suma de las cabeceras IP y TCP, sin los datos MQTT.",
+      "explanation": "Las cabeceras IP y TCP son de capas inferiores."
+    }
+  ],
+  "answer": "la-suma-de-la-cabecera"
+}

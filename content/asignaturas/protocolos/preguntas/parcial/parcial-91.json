@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-91",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera comprimida ocupa 2 bytes IPHC, sin CID ni campos IPv6 en línea. UDP usa 1 byte NHC, 1 byte para ambos puertos y 2 de checksum. Sin Mesh ni fragmentación, ¿cuántos bytes suman las cabeceras comprimidas?",
+  "explanation": "Se suman 2 de IPHC y 4 de UDP comprimido: 1 NHC + 1 de puertos + 2 de checksum. La longitud UDP se deduce de las capas inferiores, por lo que no añade bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-6-bytes",
+      "text": "6 bytes.",
+      "explanation": "2 (IPHC) + 1 (NHC) + 1 (puertos) + 2 (checksum) = 6 bytes."
+    },
+    {
+      "id": "o-4-bytes",
+      "text": "4 bytes.",
+      "explanation": "4 olvida el checksum o la cabecera IPHC."
+    },
+    {
+      "id": "o-7-bytes",
+      "text": "7 bytes.",
+      "explanation": "7 suma un byte que no existe; la longitud UDP se deduce de las capas inferiores."
+    },
+    {
+      "id": "o-8-bytes",
+      "text": "8 bytes.",
+      "explanation": "8 es el tamaño de la cabecera UDP sin comprimir."
+    }
+  ],
+  "answer": "o-6-bytes"
+}

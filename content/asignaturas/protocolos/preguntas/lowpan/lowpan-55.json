@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-55",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué valores identifican la cabecera de encaminamiento de fuente RPL del tema?",
+  "explanation": "43 identifica Routing Header en IPv6; el campo Type de esa extensión vale 3 para el formato RPL mostrado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        81
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "next-header-43-y-routing",
+      "text": "Next Header=43 y Routing Type=3.",
+      "explanation": "La cabecera de rutas de origen de RPL usa Next Header 43 (Routing Header) y Routing Type 3."
+    },
+    {
+      "id": "next-header-58-y-routing",
+      "text": "Next Header=58 y Routing Type=133.",
+      "explanation": "58 identifica ICMPv6 y 133 es el tipo RS."
+    },
+    {
+      "id": "next-header-17-y-routing",
+      "text": "Next Header=17 y Routing Type=5683.",
+      "explanation": "17 identifica UDP y 5683 es el puerto de CoAP."
+    },
+    {
+      "id": "next-header-6-y-routing",
+      "text": "Next Header=6 y Routing Type=1883.",
+      "explanation": "6 identifica TCP y 1883 es el puerto de MQTT."
+    }
+  ],
+  "answer": "next-header-43-y-routing"
+}

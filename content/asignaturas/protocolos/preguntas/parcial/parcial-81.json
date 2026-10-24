@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-81",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una trama admite 127 bytes y se reservan 23 para MAC, 21 para seguridad y 2 para FCS. Sin compresión, IPv6 y UDP añaden 40 y 8 bytes. ¿Cuántos bytes quedan para aplicación?",
+  "explanation": "El presupuesto del ejemplo es 127 − 23 − 21 − 2 = 81 bytes tras los campos de enlace. Al descontar los 48 bytes de IPv6 y UDP quedan 33 bytes para aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-33-bytes",
+      "text": "33 bytes.",
+      "explanation": "127 − 23 − 21 − 2 = 81 bytes; menos 48 de IPv6 y UDP quedan 33."
+    },
+    {
+      "id": "o-81-bytes",
+      "text": "81 bytes.",
+      "explanation": "81 es la carga MAC antes de descontar IPv6 y UDP."
+    },
+    {
+      "id": "o-41-bytes",
+      "text": "41 bytes.",
+      "explanation": "41 solo descuenta la cabecera IPv6."
+    },
+    {
+      "id": "o-79-bytes",
+      "text": "79 bytes.",
+      "explanation": "79 resultaría de restar solo 48 a 127, olvidando los campos de enlace."
+    }
+  ],
+  "answer": "o-33-bytes"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-47",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué es un DODAG?",
+  "explanation": "RPL organiza nodos hacia la raíz; puede haber varios padres candidatos y uno preferido.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        74
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "un-grafo-dirigido-sin-ciclos",
+      "text": "Un grafo dirigido sin ciclos orientado hacia una raíz.",
+      "explanation": "Un DODAG es un grafo dirigido acíclico orientado hacia la raíz."
+    },
+    {
+      "id": "un-arbol-que-prohibe-mantener",
+      "text": "Un árbol que prohíbe mantener más de un padre candidato.",
+      "explanation": "Un router puede mantener varios padres; el árbol surge al elegir un padre preferido."
+    },
+    {
+      "id": "una-malla-que-utiliza-necesariamente",
+      "text": "Una malla que utiliza necesariamente direcciones RLOC16.",
+      "explanation": "RLOC16 es de Thread; RPL usa direcciones IPv6."
+    },
+    {
+      "id": "un-conjunto-de-routers-sin",
+      "text": "Un conjunto de routers sin raíz ni orientación.",
+      "explanation": "El DODAG tiene raíz (el border router) y orientación hacia ella."
+    }
+  ],
+  "answer": "un-grafo-dirigido-sin-ciclos"
+}

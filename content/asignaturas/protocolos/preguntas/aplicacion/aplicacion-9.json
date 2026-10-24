@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué método HTTP se usa en los ejemplos para consultar una medida?",
+  "explanation": "GET obtiene información de un recurso; PUT modifica estado y DELETE elimina un recurso en los ejemplos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "get",
+      "text": "GET.",
+      "explanation": "En los ejemplos, GET obtiene una medida del dispositivo."
+    },
+    {
+      "id": "put",
+      "text": "PUT.",
+      "explanation": "PUT actualiza el estado del dispositivo; no consulta."
+    },
+    {
+      "id": "post",
+      "text": "POST.",
+      "explanation": "POST crea un nuevo dispositivo en los ejemplos."
+    },
+    {
+      "id": "delete",
+      "text": "DELETE.",
+      "explanation": "DELETE elimina un dispositivo."
+    }
+  ],
+  "answer": "get"
+}

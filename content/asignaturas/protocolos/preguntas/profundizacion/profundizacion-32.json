@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.profundizacion-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Route-over A(0x0011)→R(0x0022)→D(0x0033). Los extremos IPv6 usan el contexto 0 de prefijo /64 y los IID cortos de A y D. TC=FL=0,NH=1. A emite HL=64. Al salir de R, ¿cuál es la compresión unicast más corta válida, sin Mesh?",
+  "explanation": "En R→D, el emisor MAC es R pero el origen IPv6 sigue siendo A: se envía 0011 en línea con SAM=10. D sí coincide con el receptor MAC y permite DAM=11. HL=63 necesita un byte. Con SAC=DAC=1 y CID=0: 2 base+1 HL+2 origen=5 bytes.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 6282 · IPHC",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1"
+    },
+    {
+      "title": "RFC 6282 · IID",
+      "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.2.2"
+    },
+    {
+      "title": "RFC 8200 · IPv6",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.html#section-3"
+    }
+  ],
+  "options": [
+    {
+      "id": "sam-11-dam-11-hl",
+      "text": "SAM=11, DAM=11, HL=63; IPv6 comprimido ocupa 3 bytes.",
+      "explanation": "SAM=11 reconstruiría el IID de R y cambiaría el origen IPv6."
+    },
+    {
+      "id": "sam-10-dam-10-hl",
+      "text": "SAM=10, DAM=10, HL=63; IPv6 comprimido ocupa 7 bytes.",
+      "explanation": "Es una codificación posible, pero transmite dos bytes de destino que pueden omitirse: no es la más corta."
+    },
+    {
+      "id": "sam-10-dam-11-hl",
+      "text": "SAM=10, DAM=11, HL=64; IPv6 comprimido ocupa 4 bytes.",
+      "explanation": "R ya ha hecho un reenvío IPv6 y debe decrementar Hop Limit a 63."
+    },
+    {
+      "id": "sam-10-dam-11-hl-2",
+      "text": "SAM=10, DAM=11, HL=63; IPv6 comprimido ocupa 5 bytes.",
+      "explanation": "Conserva los extremos IPv6 y usa solo la información deducible en este salto."
+    }
+  ],
+  "answer": "sam-10-dam-11-hl-2"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-88",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué dirección de origen representa la combinación SAC=1 y SAM=00 de LOWPAN_IPHC?",
+  "explanation": "La tabla de compresión de origen con estado reserva SAC=1, SAM=00 para la dirección sin especificar. No debe interpretarse como el SAM=00 del caso SAC=0.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        24
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-direccion-sin-especificar",
+      "text": "La dirección sin especificar ::.",
+      "explanation": "Con SAC=1, SAM=00 representa la dirección sin especificar (::)."
+    },
+    {
+      "id": "una-direccion-global-completa-de",
+      "text": "Una dirección global completa de 128 bits en línea.",
+      "explanation": "La dirección completa en línea es SAC=0 con SAM=00."
+    },
+    {
+      "id": "la-direccion-link-local-fe80",
+      "text": "La dirección link-local fe80::1.",
+      "explanation": "fe80::1 no tiene un código reservado."
+    },
+    {
+      "id": "la-direccion-multicast-ff02-1",
+      "text": "La dirección multicast ff02::1.",
+      "explanation": "ff02::1 es multicast y se codifica con M=1 en el destino, no en el origen."
+    }
+  ],
+  "answer": "la-direccion-sin-especificar"
+}

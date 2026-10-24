@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.profundizacion-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "A=2001:db8:1::ab12:3456 y B=2001:db8:2::cd12:3456 están en un mismo enlace Ethernet. ¿Qué implica su pertenencia a solicited-node?",
+  "explanation": "Ambas direcciones terminan en los mismos 24 bits, 12:34:56, de modo que se mapean a ff02::1:ff12:3456 y 33:33:ff:12:34:56. El grupo no identifica unívocamente a una dirección; el NS lleva además el Target completo.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4291 · direccionamiento",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2"
+    },
+    {
+      "title": "RFC 4861 · Neighbor Discovery",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html#section-7"
+    },
+    {
+      "title": "RFC 2464 · multicast Ethernet",
+      "url": "https://www.rfc-editor.org/rfc/rfc2464.html#section-7"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-ns-omite-el-target",
+      "text": "El NS omite el Target porque la MAC multicast ya identifica un único vecino.",
+      "explanation": "El Target de 128 bits es un campo del NS y es necesario para reconocer la dirección buscada."
+    },
+    {
+      "id": "comparten-grupo-y-mac-multicast",
+      "text": "Comparten grupo y MAC multicast; el Target completo del NS permite distinguirlos.",
+      "explanation": "El mapeo de muchos unicast a un mismo grupo es una situación válida."
+    },
+    {
+      "id": "no-pueden-coexistir-porque-compartir",
+      "text": "No pueden coexistir porque compartir grupo equivale a duplicar la dirección IPv6.",
+      "explanation": "Las direcciones unicast completas son distintas; no hay una duplicación demostrada."
+    },
+    {
+      "id": "comparten-mac-multicast-pero-sus",
+      "text": "Comparten MAC multicast, pero sus grupos solicited-node son necesariamente diferentes.",
+      "explanation": "En este caso también coincide el grupo IPv6, porque coinciden los 24 bits utilizados."
+    }
+  ],
+  "answer": "comparten-grupo-y-mac-multicast"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-59",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se configura una ruta por defecto cuyo siguiente salto es fe80::1. ¿Por qué se debe indicar también la interfaz de salida?",
+  "explanation": "Una misma dirección link-local puede aparecer en enlaces distintos. La interfaz especifica en cuál de ellos se encuentra el siguiente salto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "porque-la-direccion-link-local",
+      "text": "Porque la dirección link-local solo identifica al vecino dentro de un enlace concreto.",
+      "explanation": "fe80::1 solo identifica al vecino dentro de un enlace; la interfaz indica cuál."
+    },
+    {
+      "id": "porque-todas-las-rutas-por",
+      "text": "Porque todas las rutas por defecto deben usar dos routers simultáneos.",
+      "explanation": "Una ruta por defecto puede tener un único siguiente salto."
+    },
+    {
+      "id": "porque-fe80-1-es-una",
+      "text": "Porque fe80::1 es una dirección de multicast global.",
+      "explanation": "fe80::1 es una dirección unicast link-local, no multicast."
+    },
+    {
+      "id": "porque-la-interfaz-sustituye-a",
+      "text": "Porque la interfaz sustituye a la dirección IP del destino final.",
+      "explanation": "La interfaz identifica el enlace del siguiente salto; no sustituye al destino."
+    }
+  ],
+  "answer": "porque-la-direccion-link-local"
+}

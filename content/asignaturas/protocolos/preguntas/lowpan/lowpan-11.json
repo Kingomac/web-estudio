@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa TF=11 en IPHC?",
+  "explanation": "Los dos campos se suprimen en esta combinación; TF=00 transmite ambos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "se-omiten-traffic-class-y",
+      "text": "Se omiten Traffic Class y Flow Label y se reconstruyen como cero.",
+      "explanation": "TF=11 suprime Traffic Class y Flow Label, que se reconstruyen como cero."
+    },
+    {
+      "id": "se-transmite-traffic-class-y",
+      "text": "Se transmite Traffic Class y se omite Flow Label.",
+      "explanation": "Transmitir Traffic Class y suprimir Flow Label es TF=10."
+    },
+    {
+      "id": "se-omite-dscp-pero-se",
+      "text": "Se omite DSCP pero se transmite ECN y Flow Label.",
+      "explanation": "Suprimir DSCP manteniendo ECN y Flow Label es TF=01."
+    },
+    {
+      "id": "ambos-campos-se-transmiten-completos",
+      "text": "Ambos campos se transmiten completos en 4 bytes.",
+      "explanation": "Enviar ambos campos en 4 bytes es TF=00."
+    }
+  ],
+  "answer": "se-omiten-traffic-class-y"
+}

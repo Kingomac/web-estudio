@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En una conexión WebSocket se recibe una trama de control Ping. ¿Qué acción corresponde al protocolo descrito?",
+  "explanation": "Ping/Pong permite verificar que el otro extremo sigue conectado. Las tramas de control, a diferencia de los mensajes de datos, no se pueden fragmentar.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "responder-con-pong",
+      "text": "Responder con Pong.",
+      "explanation": "Al recibir un Ping debe responderse con un Pong; sirve como keepalive."
+    },
+    {
+      "id": "abrir-una-conexion-tcp-nueva",
+      "text": "Abrir una conexión TCP nueva y reenviar el Ping.",
+      "explanation": "Ping y Pong se intercambian por la conexión WebSocket existente, sin abrir otra."
+    },
+    {
+      "id": "responder-con-una-peticion-http",
+      "text": "Responder con una petición HTTP GET.",
+      "explanation": "Tras el handshake, los mensajes son frames WebSocket, no peticiones HTTP."
+    },
+    {
+      "id": "fragmentar-el-ping-antes-de",
+      "text": "Fragmentar el Ping antes de poder responder.",
+      "explanation": "Los mensajes de control no se pueden fragmentar."
+    }
+  ],
+  "answer": "responder-con-pong"
+}

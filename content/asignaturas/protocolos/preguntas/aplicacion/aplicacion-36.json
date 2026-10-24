@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuándo publica el broker el Last Will del cliente en el funcionamiento descrito?",
+  "explanation": "El LWT se registra al conectar; el DISCONNECT voluntario normal hace que se elimine sin publicarlo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        59
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "cuando-el-cliente-se-desconecta",
+      "text": "Cuando el cliente se desconecta de forma inesperada.",
+      "explanation": "El broker publica el LWT si el cliente se desconecta de forma inesperada."
+    },
+    {
+      "id": "cada-vez-que-recibe-un",
+      "text": "Cada vez que recibe un PINGREQ correcto.",
+      "explanation": "PINGREQ mantiene la conexión viva; no provoca la publicación del LWT."
+    },
+    {
+      "id": "al-aceptar-cualquier-subscribe-de",
+      "text": "Al aceptar cualquier SUBSCRIBE de otro cliente.",
+      "explanation": "Las suscripciones de otros clientes no disparan el testamento."
+    },
+    {
+      "id": "siempre-despues-de-una-desconexion",
+      "text": "Siempre después de una desconexión voluntaria normal.",
+      "explanation": "Con un DISCONNECT voluntario, el broker elimina el LWT sin publicarlo."
+    }
+  ],
+  "answer": "cuando-el-cliente-se-desconecta"
+}

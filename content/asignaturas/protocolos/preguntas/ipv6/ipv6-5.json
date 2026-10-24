@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué indica el flag G=1 en la explicación de las rutas?",
+  "explanation": "G distingue ruta directa de ruta por gateway; el siguiente salto debe poder alcanzarse.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "una-ruta-indirecta-a-traves",
+      "text": "Una ruta indirecta a través de un router siguiente salto.",
+      "explanation": "G=1 indica una ruta indirecta: el campo Gateway contiene la IP del router de siguiente salto."
+    },
+    {
+      "id": "una-ruta-directa-hacia-una",
+      "text": "Una ruta directa hacia una subred conectada.",
+      "explanation": "Una ruta directa hacia una subred conectada lleva G=0."
+    },
+    {
+      "id": "una-entrada-local-que-identifica",
+      "text": "Una entrada local que identifica la propia interfaz.",
+      "explanation": "Las entradas locales (L) relacionan la interfaz con su propia dirección; no son rutas por gateway."
+    },
+    {
+      "id": "una-ruta-sumidero-que-descarta",
+      "text": "Una ruta sumidero que descarta todo el tráfico coincidente.",
+      "explanation": "Una ruta sumidero envía el tráfico a Null0 para descartarlo; no es lo que indica el flag G."
+    }
+  ],
+  "answer": "una-ruta-indirecta-a-traves"
+}

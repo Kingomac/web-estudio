@@ -1,0 +1,43 @@
+{
+  "id": "protocolos.preguntas.lowpan-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia de red señala el tema entre Zigbee y Thread?",
+  "explanation": "Zigbee tiene su propia pila de red; Thread se basa en IEEE 802.15.4 y 6LoWPAN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        8,
+        9
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "zigbee-usa-una-pila-no",
+      "text": "Zigbee usa una pila no IP; Thread proporciona una malla IPv6.",
+      "explanation": "Zigbee tiene su propia pila de red no IP; Thread es una malla IPv6 basada en 802.15.4 y 6LoWPAN."
+    },
+    {
+      "id": "zigbee-proporciona-ipv6-nativo-y",
+      "text": "Zigbee proporciona IPv6 nativo y Thread utiliza una pila no IP.",
+      "explanation": "Invierte las tecnologías: la no IP es Zigbee."
+    },
+    {
+      "id": "ambos-usan-rpl-obligatoriamente-para",
+      "text": "Ambos usan RPL obligatoriamente para todo reenvío.",
+      "explanation": "RPL es el encaminamiento de Wi-SUN FAN; Thread usa su propio esquema de vector de distancias."
+    },
+    {
+      "id": "thread-es-un-protocolo-de",
+      "text": "Thread es un protocolo de aplicación mientras Zigbee define solo PHY.",
+      "explanation": "Thread es independiente de la aplicación y Zigbee incluye su pila de red además de usar 802.15.4."
+    }
+  ],
+  "answer": "zigbee-usa-una-pila-no"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué rango permite comprimir ambos puertos UDP a 4 bits cada uno con P=11?",
+  "explanation": "El formato NHC UDP reserva ese rango para transmitir únicamente los cuatro bits bajos de cada puerto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "o-0xf0b0-a-0xf0bf",
+      "text": "0xf0b0 a 0xf0bf.",
+      "explanation": "Con P=11, ambos puertos deben estar en 0xF0B0–0xF0BF y se transmiten 4 bits de cada uno."
+    },
+    {
+      "id": "o-0xf000-a-0xf0ff-para-ambos",
+      "text": "0xf000 a 0xf0ff para ambos puertos con cualquier valor de los 8 bits bajos.",
+      "explanation": "El rango 0xF000–0xF0FF permite 8 bits, y solo en un puerto (P=01 o P=10)."
+    },
+    {
+      "id": "cualquier-puerto-entre-0x0000-y",
+      "text": "Cualquier puerto entre 0x0000 y 0xffff.",
+      "explanation": "Un puerto cualquiera exige enviar 16 bits (P=00)."
+    },
+    {
+      "id": "solo-el-puerto-que-coincide",
+      "text": "Solo el puerto que coincide con el identificador del contexto.",
+      "explanation": "Los contextos de IPHC se refieren a prefijos IPv6, no a puertos UDP."
+    }
+  ],
+  "answer": "o-0xf0b0-a-0xf0bf"
+}

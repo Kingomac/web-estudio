@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.ipv6-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué hay que añadir al configurar una ruta con next-hop link-local?",
+  "explanation": "La dirección link-local solo es única en su enlace; la interfaz identifica el enlace correcto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "la-interfaz-de-salida-ademas",
+      "text": "La interfaz de salida, además de la dirección del siguiente salto.",
+      "explanation": "fe80::/64 no identifica de forma unívoca la interfaz del router, por lo que hay que indicar también la interfaz de salida."
+    },
+    {
+      "id": "unicamente-el-prefijo-global-del",
+      "text": "Únicamente el prefijo global del destino.",
+      "explanation": "El prefijo destino ya forma parte de la ruta; el problema está en identificar el enlace del next-hop."
+    },
+    {
+      "id": "la-mac-del-destino-final",
+      "text": "La MAC del destino final, sin interfaz.",
+      "explanation": "La ruta usa direcciones IP; la MAC se resuelve después con NDP."
+    },
+    {
+      "id": "solo-la-longitud-128-de",
+      "text": "Solo la longitud /128 de la dirección link-local.",
+      "explanation": "Una longitud /128 no indica por qué interfaz se alcanza la link-local."
+    }
+  ],
+  "answer": "la-interfaz-de-salida-ademas"
+}

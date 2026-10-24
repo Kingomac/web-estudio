@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.moovi-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se configura ipv6 route ::/0 s0/0 en Cisco IOS; s0/0 es una interfaz punto a punto activa con IPv6 habilitado. Usando la convención G del tema, ¿qué pareja describe esta ruta estática sin dirección de siguiente salto explícita?",
+  "explanation": "En la convención didáctica, indicar únicamente la interfaz de salida crea una ruta directa, G=0. Sigue siendo una ruta estática con distancia predeterminada 1. No se debe confundir «directa» en esta notación con una ruta conectada creada al configurar la dirección de una interfaz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Cisco · distancia y selección de rutas",
+      "url": "https://docs.manage.security.cisco.com/c-the-routing-table-and-route-selection.html"
+    }
+  ],
+  "options": [
+    {
+      "id": "g-1-y-distancia-administrativa",
+      "text": "G=1 y distancia administrativa 0.",
+      "explanation": "Ni hay siguiente salto explícito ni se trata de una ruta conectada."
+    },
+    {
+      "id": "g-0-y-distancia-administrativa",
+      "text": "G=0 y distancia administrativa 1.",
+      "explanation": "Distingue la salida directa por interfaz del origen estático de la ruta."
+    },
+    {
+      "id": "g-0-y-distancia-administrativa-2",
+      "text": "G=0 y distancia administrativa 0.",
+      "explanation": "La ruta se añadió con ipv6 route; no es una ruta conectada de distancia 0."
+    },
+    {
+      "id": "g-1-y-distancia-administrativa-2",
+      "text": "G=1 y distancia administrativa 1.",
+      "explanation": "No se ha indicado un router siguiente salto, así que el tema la representa con G=0."
+    }
+  ],
+  "answer": "g-0-y-distancia-administrativa"
+}

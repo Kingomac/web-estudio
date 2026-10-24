@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.parcial-100",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "A (2001:10::10) envía a B (2001:10::20) mediante R (2001:10::1), como en el ejemplo route-over. ¿Qué destinos llevan el paquete IPv6 y la trama del primer salto A → R?",
+  "explanation": "La FIB de A selecciona R como siguiente salto para B. El paquete conserva como destino IPv6 a B, mientras que la trama se dirige a la MAC de R; en el siguiente salto cambian las MAC.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "ipv6-destino-2001-10-20",
+      "text": "IPv6 destino: 2001:10::20; MAC destino: la de R.",
+      "explanation": "El destino IPv6 sigue siendo B (2001:10::20) y la trama del primer salto va a la MAC de R, el siguiente salto."
+    },
+    {
+      "id": "ipv6-destino-2001-10-1",
+      "text": "IPv6 destino: 2001:10::1; MAC destino: la de B.",
+      "explanation": "El destino IPv6 no cambia a R, y la MAC de B no se usa en el primer salto."
+    },
+    {
+      "id": "ipv6-destino-2001-10-1-2",
+      "text": "IPv6 destino: 2001:10::1; MAC destino: la de R.",
+      "explanation": "Solo la MAC va a R; el destino IPv6 sigue siendo B."
+    },
+    {
+      "id": "ipv6-destino-2001-10-20-2",
+      "text": "IPv6 destino: 2001:10::20; MAC destino: la de B.",
+      "explanation": "B no es vecino de A en el enlace; la trama va a R."
+    }
+  ],
+  "answer": "ipv6-destino-2001-10-20"
+}

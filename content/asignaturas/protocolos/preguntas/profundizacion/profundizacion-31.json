@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.profundizacion-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un datagrama llega fragmentado a dos nodos intermedios antes del destino. En el modelo básico del taller, sin optimizaciones de reenvío de fragmentos, ¿qué diferencia hay entre mesh-under y route-over?",
+  "explanation": "El reenvío mesh-under utiliza información inferior a IPv6 y puede transportar los fragmentos hasta el extremo de la malla. En el route-over básico, cada router necesita procesar el datagrama IPv6 y vuelve a adaptarlo para su salida. El enunciado excluye optimizaciones de reenvío de fragmentos.",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "RFC 4944 · fragmentación",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
+    },
+    {
+      "title": "RFC 4944 · Mesh",
+      "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.2"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-mesh-under-cada-nodo",
+      "text": "En mesh-under cada nodo reensambla; en route-over ningún router necesita el datagrama IPv6.",
+      "explanation": "Invierte los dos modelos y priva al router IPv6 de la información que debe procesar."
+    },
+    {
+      "id": "fragn-lleva-una-cabecera-ipv6",
+      "text": "FRAGN lleva una cabecera IPv6 completa, así que no hace falta reensamblado en ningún caso.",
+      "explanation": "Los fragmentos posteriores no repiten una cabecera IPv6 completa."
+    },
+    {
+      "id": "en-mesh-under-reensambla-el",
+      "text": "En mesh-under reensambla el extremo de la malla; en route-over cada router intermedio reensambla antes de procesar IPv6.",
+      "explanation": "Distingue la capa de reenvío y la ubicación del reensamblado en los modelos indicados."
+    },
+    {
+      "id": "en-ambos-casos-todos-los",
+      "text": "En ambos casos todos los nodos intermedios deben reensamblar para leer el Hop Limit.",
+      "explanation": "Un nodo que solo reenvía por debajo de IPv6 no necesita leer ni decrementar su Hop Limit."
+    }
+  ],
+  "answer": "en-mesh-under-reensambla-el"
+}

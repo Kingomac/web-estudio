@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.aplicacion-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En publicación/suscripción, ¿quién distribuye a los suscriptores los datos de un topic?",
+  "explanation": "El publicador envía al broker y este notifica a las aplicaciones suscritas al tema correspondiente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "el-broker",
+      "text": "El broker.",
+      "explanation": "El broker recibe lo publicado en un topic y lo notifica a todas las aplicaciones suscritas."
+    },
+    {
+      "id": "el-publicador-que-debe-conocer",
+      "text": "El publicador, que debe conocer individualmente a cada suscriptor.",
+      "explanation": "El publicador solo envía al broker; no necesita conocer a los suscriptores."
+    },
+    {
+      "id": "el-suscriptor-que-redistribuye-siempre",
+      "text": "El suscriptor, que redistribuye siempre al resto de clientes.",
+      "explanation": "Los suscriptores reciben del broker; no redistribuyen los datos."
+    },
+    {
+      "id": "el-servidor-http-mediante-una",
+      "text": "El servidor HTTP mediante una cookie.",
+      "explanation": "Las cookies son un mecanismo de estado de HTTP, ajeno a la distribución de topics."
+    }
+  ],
+  "answer": "el-broker"
+}

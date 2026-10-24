@@ -1,0 +1,42 @@
+{
+  "id": "protocolos.preguntas.lowpan-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué asociación almacena una entrada VRB?",
+  "explanation": "Esta correspondencia evita colisiones de etiquetas de fragmentos procedentes de nodos diferentes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "pdfPages": [
+        40
+      ]
+    }
+  ],
+  "options": [
+    {
+      "id": "mac-anterior-y-tag-entrante",
+      "text": "MAC anterior y tag entrante con MAC siguiente y tag saliente.",
+      "explanation": "Cada entrada VRB asocia la MAC anterior y el tag entrante con la MAC siguiente y el tag saliente."
+    },
+    {
+      "id": "solo-datagram-tag-sin-distinguir",
+      "text": "Solo datagram_tag, sin distinguir el salto anterior.",
+      "explanation": "Sin el salto anterior, los tags de nodos distintos podrían colisionar."
+    },
+    {
+      "id": "solo-ipv6-origen-y-destino",
+      "text": "Solo IPv6 origen y destino, sin etiquetas de enlace.",
+      "explanation": "La VRB almacena direcciones de enlace y etiquetas, no direcciones IPv6."
+    },
+    {
+      "id": "mac-origen-final-y-destino",
+      "text": "MAC origen final y destino final, sin correspondencias de etiquetas.",
+      "explanation": "La VRB guarda los saltos anterior y siguiente con sus etiquetas, no los extremos finales."
+    }
+  ],
+  "answer": "mac-anterior-y-tag-entrante"
+}
