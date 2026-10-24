@@ -11,7 +11,7 @@ const catalog = await siteCatalog();
 const subject = catalog.byId.get(entry.subjectId);
 if (subject?.kind !== 'asignatura') throw new Error('Asignatura inexistente.');
 ---
-<Site title={entry.title} description={entry.description} subject={subject}>
+<Site title={entry.title} description={entry.description} subject={subject} reading={entry.kind === 'apuntes' || entry.kind === 'resumen'}>
   <PageHeader title={entry.title} back={{ href: url(`/asignaturas/${subject.slug}/${sections[entry.kind]}/`), label: labels[entry.kind] }}>
     <p class="scope meta"><strong>Alcance:</strong> {entry.scope}</p>
     <div class="no-print"><TagList tagIds={entry.tagIds} catalog={catalog} linkTo={subject} /></div>

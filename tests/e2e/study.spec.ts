@@ -158,6 +158,62 @@ test('el índice móvil es accesible durante la lectura y devuelve el foco al ce
   await expect(dialog).toBeHidden();
   await expect(page).toHaveURL(/#direcciones$/);
 });
+test('oculta el menú, centra la lectura y conserva la preferencia al navegar y cambiar de tamaño', async ({ page }) => {
+  await page.goto(`${subject}apuntes/tema-3-ip-en-iot/`);
+  const toggle = page.getByRole('button', { name: 'Ocultar menú', exact: true });
+  await toggle.focus();
+  await page.keyboard.press('Enter');
+  const show = page.getByRole('button', { name: 'Mostrar menú', exact: true });
+  await expect(show).toHaveAttribute('aria-expanded', 'false');
+  await expect(show).toBeFocused();
+  await expect(page.locator('.sidebar')).toBeHidden();
+  const article = await page.locator('.reading-grid > .prose').boundingBox();
+  const toc = await page.locator('.toc').boundingBox();
+  expect(article).not.toBeNull();
+  expect(toc).not.toBeNull();
+  expect(Math.abs(article!.x + article!.width / 2 - 720)).toBeLessThan(2);
+  expect(toc!.x + toc!.width).toBeLessThan(article!.x);
+  await page.goto(`${subject}apuntes/tema-4-lowpan/`);
+  await expect(page.locator('.sidebar')).toBeHidden();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('.sidebar')).toBeVisible();
+  await expect(page.locator('.site-navigation')).not.toHaveAttribute('open');
+  await page.locator('.site-navigation summary').click();
+  await expect(page.getByRole('navigation', { name: 'Catálogo', exact: true })).toBeVisible();
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await expect(page.locator('.sidebar')).toBeHidden();
+  await show.click();
+  await expect(page.locator('.sidebar')).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('button', { name: 'Ocultar menú', exact: true })).toHaveAttribute('aria-expanded', 'true');
+});
+
+for (const width of [320, 390]) {
+  test(`tests a ${width}px: ancho completo y sin desbordamiento con enunciados largos y correcciones`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto(`${subject}tests/`);
+    const routes = await page.locator('[data-resource] h2 a').evaluateAll(links => links.map(link => link.getAttribute('href')!));
+    expect(routes.length).toBeGreaterThan(0);
+    for (const route of routes) {
+      await page.goto(route);
+      await expect(page.locator('[data-reset]')).toBeEnabled();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+      const question = await page.locator('[data-question]').first().boundingBox();
+      expect(question?.x).toBe(0);
+      expect(question?.width).toBe(width);
+      // Reveal all explanations, including long addresses and source links.
+      await page.locator('[data-question]').evaluateAll(questions => {
+        for (const question of questions) {
+          question.querySelector<HTMLInputElement>('input')?.click();
+          question.querySelector<HTMLButtonElement>('[data-check]')?.click();
+        }
+      });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+      await page.locator('.site-navigation summary').click();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+    }
+  });
+}
 test('lecturas e índice funcionan sin JavaScript; alias conserva el destino', async ({ browser, page, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const staticPage = await context.newPage();

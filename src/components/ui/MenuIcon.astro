@@ -1,0 +1,16 @@
+---
+interface Props { close?: 'arrow' | 'cross' }
+const { close = 'arrow' } = Astro.props;
+---
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path class="when-closed" d="M4 6h16M4 12h16M4 18h16" />
+  <path class="when-open" d={close === 'arrow' ? 'M14 6l-6 6 6 6M8 12h12' : 'M6 6l12 12M6 18 18 6'} />
+</svg>
+<style>
+  svg { width: var(--space-5); height: var(--space-5); flex-shrink: 0; }
+  .when-open { display: none; }
+  :global(.sidebar-toggle[aria-expanded="true"]) .when-open,
+  :global(.site-navigation[open]) .when-open { display: initial; }
+  :global(.sidebar-toggle[aria-expanded="true"]) .when-closed,
+  :global(.site-navigation[open]) .when-closed { display: none; }
+</style>

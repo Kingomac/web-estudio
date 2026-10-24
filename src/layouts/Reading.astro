@@ -22,8 +22,9 @@ const { html, headings } = readingHtml(await Astro.slots.render('default'));
 </dialog>
 <style>
   .reading-toolbar { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; margin-bottom: var(--space-6); border-block: 1px solid var(--color-border); }
-  .reading-grid { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: var(--space-7); }
-  .toc { position: sticky; top: var(--space-5); align-self: start; max-height: calc(100vh - 2 * var(--space-5)); overflow: auto; }
+  .reading-grid { display: grid; grid-template-columns: var(--reading-columns); gap: var(--space-6); }
+  .reading-grid > .prose { width: 100%; max-width: none; }
+  .toc { position: sticky; top: var(--space-5); align-self: start; width: 100%; max-width: var(--toc-width); min-width: 0; max-height: calc(100vh - 2 * var(--space-5)); overflow: auto; overflow-wrap: anywhere; }
   .toc summary { list-style: none; margin-bottom: var(--space-3); }
   .toc summary::-webkit-details-marker { display: none; }
   .toc ol, .mobile-toc-dialog ol { margin: 0; padding: 0; list-style: none; }
@@ -40,10 +41,9 @@ const { html, headings } = readingHtml(await Astro.slots.render('default'));
   .mobile-toc-dialog li { margin: var(--space-3) 0; }
   .mobile-toc-dialog .subheading { padding-left: var(--space-4); }
   .mobile-toc-dialog a { color: var(--color-text); text-decoration: none; }
-  @media (max-width: 1150px) { .reading-grid { grid-template-columns: 11rem minmax(0, 1fr); gap: var(--space-6); } }
   @media (max-width: 900px) {
     .reading-grid { display: flex; flex-direction: column; gap: var(--space-5); }
-    .toc { position: static; max-height: none; border-block: 1px solid var(--color-border); }
+    .toc { position: static; max-width: none; max-height: none; border-block: var(--border-width) solid var(--color-border); }
     .toc summary { margin: 0; padding: var(--space-3) 0; list-style: revert; }
     .toc ol { margin-bottom: var(--space-3); }
     .mobile-toc-toggle:not([hidden]) { display: inline-flex; position: fixed; right: var(--space-4); bottom: var(--space-4); z-index: 10; box-shadow: var(--shadow-raised); }

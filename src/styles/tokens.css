@@ -72,8 +72,13 @@
     --sidebar-width: 264px;
     --content-width: 1080px;
     --measure: 70ch;
+    --reading-width: 46rem;
+    --toc-width: 13rem;
+    --page-gutter: var(--space-5);
+    --border-width: 1px;
+    --touch-target: 44px;
     --duration: 120ms;
   }
   @media (max-width: 1150px) { :root { --sidebar-width: 232px; } }
-  @media (max-width: 620px) { :root { --text-2xl: 1.75rem; --text-xl: 1.3125rem; } }
+  @media (max-width: 620px) { :root { --text-2xl: 1.75rem; --text-xl: 1.3125rem; --page-gutter: var(--space-4); } }
 }

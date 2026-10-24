@@ -1,10 +1,11 @@
 ---
 import '../styles/global.css';
+import MenuIcon from '../components/ui/MenuIcon.astro';
 import { siteCatalog, url, resourceUrl } from '../lib/sitio.ts';
 import { labels, sections } from '../lib/rutas.ts';
 import type { Subject } from '../schemas/content.ts';
-interface Props { title: string; description?: string; subject?: Subject }
-const { title, description = 'Materiales de estudio del máster en Internet de las Cosas.', subject } = Astro.props;
+interface Props { title: string; description?: string; subject?: Subject; reading?: boolean }
+const { title, description = 'Materiales de estudio del máster en Internet de las Cosas.', subject, reading = false } = Astro.props;
 const catalog = await siteCatalog();
 const bimesters = catalog.entries.filter(e => e.kind === 'bimestre');
 const subjects = catalog.entries.filter(e => e.kind === 'asignatura');
@@ -20,12 +21,12 @@ const current = Astro.url.pathname;
     <title>{title} · Cuaderno IoT</title>
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
   </head>
-  <body>
+  <body class:list={{ 'site--reading': reading }}>
     <a class="skip-link no-print" href="#contenido">Saltar al contenido</a>
-    <aside class="sidebar no-print" aria-label="Navegación principal">
+    <aside id="menu-principal" class="sidebar no-print" aria-label="Navegación principal">
       <a class="brand" href={url('/')} aria-label="Cuaderno IoT · Inicio">Cuaderno IoT<span class="brand-sub">MUIoT · Curso 2026/27</span></a>
       <details class="site-navigation" open>
-        <summary class="button button--secondary button--small">Menú</summary>
+        <summary class="button button--secondary button--small menu-toggle" aria-label="Menú principal" title="Menú principal"><MenuIcon close="cross" /></summary>
         <nav aria-label="Catálogo">
           <a class:list={['nav-link', { 'is-active': current === url('/') }]} href={url('/')} aria-current={current === url('/') ? 'page' : undefined}>Inicio</a>
           {bimesters.map(b => {
@@ -49,7 +50,10 @@ const current = Astro.url.pathname;
     </aside>
     <div class="site-main">
       <main id="contenido" tabindex="-1">
-        {subject && <div class="context-bar no-print"><nav class="breadcrumbs" aria-label="Ruta de navegación"><a href={url('/')}>Inicio</a><span aria-hidden="true">/</span><a href={url(`/bimestres/${subject.bimesterId}/`)}>{subject.bimesterId.toUpperCase()}</a><span aria-hidden="true">/</span><a href={resourceUrl(subject, catalog)}>{subject.id === 'protocolos' ? 'Protocolos' : subject.title}</a></nav><a href={subject.teachingGuide.url}>Guía docente <span aria-hidden="true">↗</span></a></div>}
+        <div class="context-bar no-print">
+          <button class="button button--secondary button--small sidebar-toggle menu-toggle" type="button" aria-label="Ocultar menú" title="Ocultar menú" aria-controls="menu-principal" aria-expanded="true" hidden><MenuIcon /></button>
+          {subject && <><nav class="breadcrumbs" aria-label="Ruta de navegación"><a href={url('/')}>Inicio</a><span aria-hidden="true">/</span><a href={url(`/bimestres/${subject.bimesterId}/`)}>{subject.bimesterId.toUpperCase()}</a><span aria-hidden="true">/</span><a href={resourceUrl(subject, catalog)}>{subject.id === 'protocolos' ? 'Protocolos' : subject.title}</a></nav><a href={subject.teachingGuide.url}>Guía docente <span aria-hidden="true">↗</span></a></>}
+        </div>
         <slot />
       </main>
       <footer class="site-footer no-print"><span>Cuaderno IoT · 2026/27</span><a href={url('/')}>Inicio</a></footer>
@@ -58,8 +62,27 @@ const current = Astro.url.pathname;
 </html>
 <script>
   const navigation = document.querySelector<HTMLDetailsElement>('.site-navigation');
+  const toggle = document.querySelector<HTMLButtonElement>('.sidebar-toggle');
+  const preferenceKey = `web-estudio:${import.meta.env.BASE_URL}:sidebar-collapsed`;
+  let collapsed = false;
+  try { collapsed = localStorage.getItem(preferenceKey) === 'true'; } catch { /* Navigation works without storage. */ }
   const mobile = matchMedia('(max-width: 900px)');
-  const update = () => { if (navigation) navigation.open = !mobile.matches; };
+  const update = () => {
+    if (navigation) navigation.open = !mobile.matches;
+    document.documentElement.toggleAttribute('data-sidebar-collapsed', !mobile.matches && collapsed);
+    if (toggle) {
+      toggle.hidden = mobile.matches;
+      toggle.setAttribute('aria-expanded', String(!collapsed));
+      const label = collapsed ? 'Mostrar menú' : 'Ocultar menú';
+      toggle.setAttribute('aria-label', label);
+      toggle.title = label;
+    }
+  };
+  toggle?.addEventListener('click', () => {
+    collapsed = !collapsed;
+    try { localStorage.setItem(preferenceKey, String(collapsed)); } catch { /* Keep the preference for this page. */ }
+    update();
+  });
   update();
   mobile.addEventListener('change', update);
 </script>
