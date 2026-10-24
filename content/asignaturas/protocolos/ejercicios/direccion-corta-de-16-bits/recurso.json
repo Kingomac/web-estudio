@@ -31,5 +31,10 @@
       "answer": "fe80::ff:fe00:1122",
       "explanation": "Con PAN_ID=0 el IID es 0000:00ff:fe00:1122; con fe80::/64 y los ceros abreviados queda fe80::ff:fe00:1122."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

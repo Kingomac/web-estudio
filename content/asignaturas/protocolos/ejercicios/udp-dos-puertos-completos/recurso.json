@@ -71,5 +71,10 @@
       "explanation": "8 + 12."
     }
   ],
-  "dump": "f0 16 33 f0 b0 9a bc"
+  "dump": "f0 16 33 f0 b0 9a bc",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

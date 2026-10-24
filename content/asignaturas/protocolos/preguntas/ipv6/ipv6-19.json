@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "direcciones-ipv6"
+    }
+  ],
   "options": [
     {
       "id": "su-ambito-se-restringe-al",

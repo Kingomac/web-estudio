@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tecnologias-y-clasificacion"
+    }
+  ],
   "options": [
     {
       "id": "topologia-y-disponibilidad-de-ipv6",

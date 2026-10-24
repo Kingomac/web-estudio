@@ -39,5 +39,10 @@
       "answer": "33:33:ff:44:55:66",
       "explanation": "33:33 seguido de los últimos 32 bits del grupo (ff:44:55:66)."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

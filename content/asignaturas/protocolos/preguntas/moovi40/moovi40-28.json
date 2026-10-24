@@ -22,6 +22,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5.3"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
   "options": [
     {
       "id": "si-la-igualdad-de-datagram",

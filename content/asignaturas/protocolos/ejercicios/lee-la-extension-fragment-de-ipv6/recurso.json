@@ -63,5 +63,10 @@
       "explanation": "Son los últimos cuatro octetos."
     }
   ],
-  "dump": "11 00 00 19 12 34 56 78"
+  "dump": "11 00 00 19 12 34 56 78",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ]
 }

@@ -122,5 +122,10 @@
       "answer": "r0",
       "explanation": "Ningún prefijo específico coincide."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

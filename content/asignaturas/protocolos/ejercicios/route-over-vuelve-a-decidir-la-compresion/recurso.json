@@ -79,5 +79,10 @@
     "A · 0001",
     "R · 0002",
     "D · 0003"
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

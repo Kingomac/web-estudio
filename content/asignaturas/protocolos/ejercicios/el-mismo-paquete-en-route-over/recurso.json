@@ -55,5 +55,10 @@
       "answer": "11",
       "explanation": "El receptor MAC es 1, el destino IPv6: DAM=11."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

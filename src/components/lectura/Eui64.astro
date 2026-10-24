@@ -1,0 +1,53 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { eui64View } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-eui64' } = Astro.props;
+const example = '10:22:33:44:55:66';
+const steps = ['1 · MAC', '2 · Insertar FF:FE', '3 · Invertir U/L', '4 · IPv6'];
+---
+<LabFrame id={id} component="protocolos.eui64" title="De una MAC al IID, sin saltarse pasos" intro="Cambia la MAC y recorre la inserción de FF:FE y la inversión del bit U/L. Ejemplo de construcción EUI-64 modificado a partir de 48 bits.">
+  <eui64-lab>
+    <div class="lab-controls no-print">
+      <label>MAC de 48 bits<input class="input mono" data-mac type="text" value={example} spellcheck="false" autocomplete="off" aria-describedby={`${id}-ayuda`} disabled /></label>
+      <button type="button" class="button button--ghost button--small" data-example="10:22:33:44:55:66" disabled>Ejemplo: U/L a 0</button>
+      <button type="button" class="button button--ghost button--small" data-example="12:22:33:44:55:66" disabled>Ejemplo: U/L a 1</button>
+    </div>
+    <p class="lab-note no-print" id={`${id}-ayuda`}>Seis octetos hexadecimales, separados por dos puntos o guiones.</p>
+    <div class="chip-group no-print" role="group" aria-label="Pasos de EUI-64">{steps.map((label, i) => <button type="button" class="chip" data-step={i} aria-pressed={i === 0 ? 'true' : 'false'} disabled>{label}</button>)}</div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={eui64View(example, 0)} />
+  </eui64-lab>
+  <details class="lab-all"><summary>Los cuatro pasos con {example}</summary><ol>{steps.map((_, i) => <li set:html={eui64View(example, i)} />)}</ol></details>
+</LabFrame>
+<style>
+  eui64-lab { display: block; }
+  .mono { font-family: var(--font-mono); }
+  :global(.octets) { display: flex; flex-wrap: wrap; gap: var(--space-1); margin: var(--space-2) 0; font-family: var(--font-mono); }
+  :global(.octets span) { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); }
+  :global(.octets .is-new) { border-color: var(--color-accent); background: var(--color-accent-soft); }
+  :global(.octets .is-changed) { border-color: var(--color-danger); background: var(--color-danger-soft); }
+</style>
+<script>
+  import { eui64View } from './vistas.ts';
+  class Eui64Lab extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const signal = controller.signal;
+      const input = this.querySelector<HTMLInputElement>('[data-mac]')!;
+      const stepButtons = [...this.querySelectorAll<HTMLButtonElement>('[data-step]')];
+      let step = 0;
+      const render = () => {
+        const html = eui64View(input.value, step);
+        input.setAttribute('aria-invalid', String(html.includes('lab-error')));
+        this.querySelector('[data-output]')!.innerHTML = html;
+      };
+      this.querySelectorAll<HTMLButtonElement | HTMLInputElement>('button, input').forEach(el => { el.disabled = false; });
+      input.addEventListener('input', render, { signal });
+      stepButtons.forEach(b => b.addEventListener('click', () => { step = Number(b.dataset.step); stepButtons.forEach(x => x.setAttribute('aria-pressed', String(x === b))); render(); }, { signal }));
+      this.querySelectorAll<HTMLButtonElement>('[data-example]').forEach(b => b.addEventListener('click', () => { input.value = b.dataset.example!; render(); }, { signal }));
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('eui64-lab', Eui64Lab);
+</script>

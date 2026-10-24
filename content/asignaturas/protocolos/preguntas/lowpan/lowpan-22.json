@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mesh-under-frente-a-route-over"
+    }
+  ],
   "options": [
     {
       "id": "en-la-capa-ipv6-de",

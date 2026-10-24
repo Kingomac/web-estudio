@@ -42,5 +42,10 @@
       "answer": "16",
       "explanation": "Cuatro cifras hexadecimales por cuatro bits."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

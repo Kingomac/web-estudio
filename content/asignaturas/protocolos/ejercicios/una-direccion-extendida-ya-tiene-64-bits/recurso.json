@@ -38,5 +38,10 @@
       "answer": "fe80::212:4b00:1ab:cdef",
       "explanation": "Los 64 bits altos son fe80::/64."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

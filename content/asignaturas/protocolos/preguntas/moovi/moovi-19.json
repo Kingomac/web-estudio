@@ -22,6 +22,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc6690.html#section-5"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "get-coap-sensor8-example-5683",

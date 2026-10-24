@@ -67,5 +67,10 @@
       "explanation": "Se reduce el contador extendido a 19=0x13."
     }
   ],
-  "dump": "bf 14 12 34 ab cd"
+  "dump": "bf 14 12 34 ab cd",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

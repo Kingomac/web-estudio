@@ -1,0 +1,53 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { iphcView, iphcPresets } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-iphc' } = Astro.props;
+const controls = [
+  ['tf', 'TF · Campos transmitidos', [['00', '00 · Traffic Class + Flow Label (4 B)'], ['01', '01 · ECN + Flow Label (3 B)'], ['10', '10 · Traffic Class (1 B)'], ['11', '11 · Ambos omitidos (0 B)']]],
+  ['nh', 'NH · Cabecera siguiente', [['1', '1 · UDP comprimido con NHC'], ['0', '0 · Next Header explícito + UDP completo']]],
+  ['hlim', 'HLIM · Límite de saltos', [['00', '00 · Valor explícito: 32 (1 B)'], ['01', '01 · Valor 1 (0 B)'], ['10', '10 · Valor 64 (0 B)'], ['11', '11 · Valor 255 (0 B)']]],
+  ['address', 'Origen y destino · Caso unicast', [['link', 'Link-local, ambos IID deducidos del enlace'], ['short', 'Link-local, 16 bits de cada IID en línea'], ['context', 'Contexto /64, ambos IID deducidos del enlace'], ['full', 'Dos direcciones completas de 128 bits']]],
+  ['cid', 'Contexto compartido · SCI y DCI', [['0', 'Contexto 0 · CID=0, sin byte adicional'], ['1', 'Contexto 1 · CID=1, SCI=DCI=1 (+1 B)']]],
+  ['ports', 'P · Ejemplo de puertos UDP (hex)', [['00', '00 · 1234 → 5678 (4 B)'], ['01', '01 · 1234 → f012 (3 B)'], ['10', '10 · f034 → 5678 (3 B)'], ['11', '11 · f0b3 → f0ba (1 B)']]],
+] as const;
+const presets = [['minimo', 'Caso mínimo · 6 B'], ['contexto', 'Con contexto 1 · 7 B'], ['completo', 'Direcciones completas · 48 B']] as const;
+const initial = iphcPresets.minimo;
+---
+<LabFrame id={id} component="protocolos.compresion-iphc" title="De 48 bytes a… depende de los campos" intro="Modifica las decisiones de compresión y sigue los bits de control y los bytes que viajan. Los campos omitidos se reconstruyen con información conocida.">
+  <iphc-lab>
+    <div class="chip-group no-print">{presets.map(([key, label]) => <button type="button" class="chip" data-preset={key} disabled>{label}</button>)}</div>
+    <div class="lab-controls no-print">{controls.map(([key, label, options]) => <label>{label}<select class="input" data-choice={key} disabled>{options.map(([value, text]) => <option value={value} selected={initial[key] === value}>{text}</option>)}</select></label>)}</div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={iphcView(initial)} />
+  </iphc-lab>
+  <details class="lab-all"><summary>Los tres casos de referencia</summary>{presets.map(([key, label]) => <><h4>{label}</h4><Fragment set:html={iphcView(iphcPresets[key])} /></>)}</details>
+  <p class="lab-note">Modelo didáctico unicast (M=0), sin extensiones, Mesh ni fragmentación. Se conserva siempre el checksum UDP (C=0). Los modos de dirección se aplican por igual a origen y destino; el laboratorio de saltos muestra SAM y DAM distintos.</p>
+</LabFrame>
+<style>iphc-lab { display: block; }</style>
+<script>
+  import { iphcView, iphcPresets } from './vistas.ts';
+  import type { IphcChoice } from '../../domain/laboratorios.ts';
+  class IphcLab extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const selects = [...this.querySelectorAll<HTMLSelectElement>('[data-choice]')];
+      const get = (key: string) => selects.find(s => s.dataset.choice === key)!;
+      const render = () => {
+        const choice = Object.fromEntries(selects.map(s => [s.dataset.choice, s.value])) as IphcChoice;
+        get('cid').disabled = choice.address !== 'context';
+        get('ports').disabled = choice.nh !== '1';
+        this.querySelector('[data-output]')!.innerHTML = iphcView(choice);
+      };
+      this.querySelectorAll<HTMLButtonElement | HTMLSelectElement>('button, select').forEach(el => { el.disabled = false; });
+      this.addEventListener('change', render, { signal: controller.signal });
+      this.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach(b => b.addEventListener('click', () => {
+        Object.entries(iphcPresets[b.dataset.preset as keyof typeof iphcPresets]).forEach(([k, v]) => { get(k).value = v; });
+        render();
+      }, { signal: controller.signal }));
+      render();
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('iphc-lab', IphcLab);
+</script>

@@ -63,5 +63,10 @@
       "answer": "no",
       "explanation": "La captura puede haber recortado un paquete válido."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

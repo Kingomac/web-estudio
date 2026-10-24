@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lln-bajo-consumo-y-perdidas"
+    }
+  ],
   "options": [
     {
       "id": "los-dispositivos-iot-con-la",

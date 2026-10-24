@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "identificar-dispositivos-servicios-y-recursos"
+    }
+  ],
   "options": [
     {
       "id": "las-aplicaciones-y-los-recursos",

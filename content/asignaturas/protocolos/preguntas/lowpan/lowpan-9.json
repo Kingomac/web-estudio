@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "compresion-ipv6-lowpan-iphc"
+    }
+  ],
   "options": [
     {
       "id": "no-transmitir-informacion-que-el",

@@ -31,5 +31,10 @@
       "answer": "fe80::1322:3344:5566:7788",
       "explanation": "La dirección ya tiene 64 bits: no se inserta ff:fe, solo se invierte U/L (11 → 13) y se antepone fe80::/64."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

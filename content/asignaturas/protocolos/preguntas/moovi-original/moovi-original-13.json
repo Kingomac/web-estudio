@@ -22,6 +22,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "una-ruta-conectada-creada-con",

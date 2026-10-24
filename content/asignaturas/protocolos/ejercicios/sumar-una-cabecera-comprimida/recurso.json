@@ -39,5 +39,10 @@
       "answer": "7",
       "explanation": "3 de IPHC + 4 de NHC UDP (1 + 1 + 2) = 7 bytes."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

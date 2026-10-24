@@ -1,0 +1,37 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { budgetView } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-presupuesto' } = Astro.props;
+---
+<LabFrame id={id} component="protocolos.presupuesto-trama" title="¿Cuánto queda para los datos?" intro="Mismo enlace, dos tamaños de cabecera. Mueve la carga de aplicación y observa cuándo deja de caber en una trama.">
+  <frame-budget>
+    <div class="lab-controls no-print">
+      <label>Cabeceras IPv6 + UDP<select class="input" data-headers disabled><option value="48">Sin comprimir · 40 + 8 = 48 bytes</option><option value="6">Ejemplo comprimido · 2 + 4 = 6 bytes</option></select></label>
+      <label>Carga de aplicación: <output data-payload-value>33</output> bytes<input type="range" data-payload min="0" max="120" value="33" step="1" aria-label="Bytes de aplicación" disabled /></label>
+    </div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={budgetView(48, 33)} />
+  </frame-budget>
+  <details class="lab-all"><summary>Los dos casos con 33 bytes de aplicación</summary><h4>Sin comprimir (48 B)</h4><Fragment set:html={budgetView(48, 33)} /><h4>Comprimido (6 B)</h4><Fragment set:html={budgetView(6, 33)} /></details>
+  <p class="lab-note">Modelo del material: MAC 23 B + seguridad 21 B + FCS 2 B. El caso de 6 B requiere IPHC mínimo y UDP NHC con ambos puertos de 4 bits y checksum presente. No se incluyen Mesh, dispatch de IPv6 sin comprimir ni cabeceras de fragmentación: es el presupuesto simplificado 81/33 del resumen, no un serializador de tramas.</p>
+</LabFrame>
+<style>frame-budget { display: block; }</style>
+<script>
+  import { budgetView } from './vistas.ts';
+  class FrameBudget extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const headers = this.querySelector<HTMLSelectElement>('[data-headers]')!, payload = this.querySelector<HTMLInputElement>('[data-payload]')!;
+      const render = () => {
+        this.querySelector('[data-payload-value]')!.textContent = payload.value;
+        this.querySelector('[data-output]')!.innerHTML = budgetView(Number(headers.value), Number(payload.value));
+      };
+      headers.disabled = payload.disabled = false;
+      this.addEventListener('input', render, { signal: controller.signal });
+      this.addEventListener('change', render, { signal: controller.signal });
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('frame-budget', FrameBudget);
+</script>

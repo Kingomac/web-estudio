@@ -55,5 +55,10 @@
       "answer": "8",
       "explanation": "Solo se envía el octeto GG (0x01): 8 bits."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

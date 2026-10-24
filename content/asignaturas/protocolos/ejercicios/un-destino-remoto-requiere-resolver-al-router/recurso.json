@@ -66,5 +66,11 @@
       "answer": "2001:db8:2::20",
       "explanation": "La cabecera IPv6 sigue dirigida al extremo remoto."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "ndp-slaac"
+    }
   ]
 }

@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "wi-sun-fan-y-rpl"
+    }
+  ],
   "options": [
     {
       "id": "icmpv6-tipo-155-con-code",

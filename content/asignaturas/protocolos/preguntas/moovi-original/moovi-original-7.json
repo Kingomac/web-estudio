@@ -28,6 +28,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-3.1.1"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
   "options": [
     {
       "id": "se-toma-como-prefijo-fe80",

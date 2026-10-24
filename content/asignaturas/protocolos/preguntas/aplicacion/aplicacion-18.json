@@ -17,6 +17,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
   "options": [
     {
       "id": "la-codificacion-binaria",

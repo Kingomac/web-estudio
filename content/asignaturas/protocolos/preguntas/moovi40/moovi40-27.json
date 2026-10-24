@@ -22,6 +22,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc6282.html#section-4.3.3"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
   "options": [
     {
       "id": "o-5-bytes-1-de-nhc",

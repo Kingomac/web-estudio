@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ndp-flujo-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "A hace DAD sobre una dirección candidata. ¿Qué origen IPv6 usa la NS?",
+  "explanation": "En DAD, el origen IPv6 es :: y Target es la dirección candidata. No se incluye SLLAO.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4862 · DAD",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.html#section-5.4"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "ndp-slaac"
+    }
+  ],
+  "options": [
+    {
+      "id": "sin-especificar",
+      "text": "::",
+      "explanation": "La candidata aún no está asignada, así que la NS de DAD usa la dirección sin especificar."
+    },
+    {
+      "id": "candidata",
+      "text": "La propia candidata",
+      "explanation": "Usarla como origen antes de comprobarla podría crear un conflicto; la candidata va en Target."
+    },
+    {
+      "id": "ff02-1",
+      "text": "ff02::1",
+      "explanation": "Un grupo multicast nunca puede ser dirección origen."
+    }
+  ],
+  "answer": "sin-especificar"
+}

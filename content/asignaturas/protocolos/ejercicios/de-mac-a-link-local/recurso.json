@@ -39,5 +39,10 @@
       "answer": "fe80::1222:33ff:fe44:5566",
       "explanation": "La link-local antepone fe80::/64 al IID: fe80::1222:33ff:fe44:5566."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

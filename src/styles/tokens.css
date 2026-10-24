@@ -21,6 +21,21 @@
     --color-danger-soft: #fbe9e5;
     --color-backdrop: rgb(20 39 30 / .4);
 
+    /* Diagram palette: NDP packet types, byte segments and network links. */
+    --color-packet-rs: #7c4eaa;
+    --color-packet-ra: #216a52;
+    --color-packet-ns: #235fa2;
+    --color-packet-na: #a65020;
+    --color-packet-datos: #475566;
+    --color-seg-1: #447767;
+    --color-seg-2: #986744;
+    --color-seg-3: #7984a5;
+    --color-seg-4: #aa7a98;
+    --color-seg-5: #879e55;
+    --color-seg-6: #b5c5b9;
+    --color-zone-1: #edf4e7;
+    --color-zone-2: #edf1f9;
+
     /* Typography. */
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
     --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Consolas, monospace;

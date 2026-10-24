@@ -1,0 +1,30 @@
+{
+  "id": "protocolos.tests.ndp-predice-flujo",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "ndp-predice-flujo",
+  "title": "NDP en movimiento · Predice el flujo",
+  "description": "Cinco decisiones de SLAAC, DAD y resolución de vecinos para comprobar tras los laboratorios NDP.",
+  "scope": "Laboratorios 8A–8D del apunte del tema 3: RS, siguiente salto, DAD e indicadores del RA. La pregunta sobre A, L y Router Lifetime se apoya en los RFC, fuera de las diapositivas.",
+  "tagIds": [
+    "protocolos.tags.ipv6",
+    "protocolos.tags.complementario"
+  ],
+  "order": 145,
+  "relatedResourceIds": [
+    "protocolos.apuntes.tema-3-ip-en-iot"
+  ],
+  "groups": [
+    {
+      "id": "ndp",
+      "title": "Predice el flujo",
+      "questionIds": [
+        "protocolos.preguntas.ndp-flujo-1",
+        "protocolos.preguntas.ndp-flujo-2",
+        "protocolos.preguntas.ndp-flujo-3",
+        "protocolos.preguntas.ndp-flujo-4",
+        "protocolos.preguntas.ndp-flujo-5"
+      ]
+    }
+  ]
+}

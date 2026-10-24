@@ -22,6 +22,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc8724.html#section-1"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion"
+    }
+  ],
   "options": [
     {
       "id": "la-imposibilidad-de-asignar-direcciones",

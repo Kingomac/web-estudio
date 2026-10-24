@@ -16,6 +16,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
   "options": [
     {
       "id": "destino-ipv6-2001-db8-10",

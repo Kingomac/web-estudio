@@ -17,6 +17,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "funcion-de-las-capas-y-modelos-de-comunicacion"
+    }
+  ],
   "options": [
     {
       "id": "xml-usa-etiquetas-json-representa",

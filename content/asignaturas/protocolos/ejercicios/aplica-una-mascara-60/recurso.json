@@ -46,5 +46,10 @@
       "answer": "2001:db8:1234:abcf::/64",
       "explanation": "El nibble de subred llega a f."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

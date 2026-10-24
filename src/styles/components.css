@@ -53,6 +53,37 @@
   .input { width: 100%; max-width: 22rem; min-height: 42px; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border-input); border-radius: var(--radius-sm); background: var(--color-surface); }
   .input:focus-visible { border-color: var(--color-focus); }
 
+  /* Reading labs (src/components/lectura/): controls, output, metrics and byte bars. */
+  .lab { display: block; margin: var(--space-6) 0; font-size: var(--text-md); line-height: var(--leading); }
+  .lab > h3 { margin: 0 0 var(--space-2); }
+  .lab-intro { color: var(--color-text-muted); }
+  .lab-controls { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); align-items: end; margin: var(--space-4) 0; }
+  .lab-controls label { display: grid; gap: var(--space-1); font-size: var(--text-sm); font-weight: var(--weight-medium); }
+  .lab-controls .input { max-width: 100%; }
+  .lab-output { margin-top: var(--space-4); padding: var(--space-4); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .lab-output > :last-child, .lab-detail > :last-child { margin-bottom: 0; }
+  .lab-detail { margin-top: var(--space-4); }
+  .lab-all { margin-top: var(--space-4); font-size: var(--text-sm); }
+  .lab-all summary { color: var(--color-accent); font-weight: var(--weight-medium); }
+  .lab-all ol { padding-left: var(--space-5); }
+  .lab-all dl { display: grid; gap: var(--space-2); margin: var(--space-2) 0 0; }
+  .lab-all dt { font-weight: var(--weight-semibold); }
+  .lab-all dd { margin: 0; }
+  .lab-note { margin: var(--space-4) 0 0; font-size: var(--text-xs); color: var(--color-text-muted); }
+  .lab-error { color: var(--color-danger); }
+  .formula { font-family: var(--font-mono); font-size: var(--text-sm); }
+  .metrics { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-4); }
+  .metric { display: grid; min-width: 9rem; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+  .metric strong { font-size: var(--text-lg); }
+  .metric span { font-size: var(--text-xs); color: var(--color-text-muted); }
+  .byte-bar { display: flex; height: 18px; margin: var(--space-2) 0; border-radius: 4px; overflow: hidden; background: var(--color-surface-muted); }
+  .byte-bar span { background: var(--seg); }
+  .byte-legend { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: var(--text-xs); }
+  .byte-legend span::before { content: ''; display: inline-block; width: .7em; height: .7em; margin-right: var(--space-1); border-radius: 2px; background: var(--seg); }
+  .bit-fields { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-bottom: var(--space-4); font-size: var(--text-xs); }
+  .bit-fields span { display: grid; padding: var(--space-1) var(--space-2); border: 1px solid var(--color-border); border-radius: 4px; text-align: center; }
+  .bit-fields b { font-family: var(--font-mono); font-size: var(--text-sm); }
+
   /* Result messages, set by client scripts with is-correct / is-incorrect. */
   .status { margin: 0; font-size: var(--text-sm); font-weight: var(--weight-medium); }
   .status.is-correct { color: var(--color-success); }

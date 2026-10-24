@@ -16,6 +16,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
   "options": [
     {
       "id": "evita-la-entrega-duplicada-mediante",

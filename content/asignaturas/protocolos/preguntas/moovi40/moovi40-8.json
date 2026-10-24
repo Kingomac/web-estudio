@@ -16,6 +16,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "si-2001-db8-55-20",

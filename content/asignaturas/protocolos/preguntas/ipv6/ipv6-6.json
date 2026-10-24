@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "subred-bridge-router-y-tablas-de-rutas"
+    }
+  ],
   "options": [
     {
       "id": "la-64",

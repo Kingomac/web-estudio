@@ -1,0 +1,46 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { ipv6Fields, ipv6FieldView, type Ipv6Field } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-cabecera-ipv6' } = Astro.props;
+const layout: [Ipv6Field, string, number][] = [['version', 'Versión', 4], ['tc', 'Traffic Class', 8], ['flow', 'Flow Label', 20], ['length', 'Payload Length', 16], ['next', 'Next Header', 8], ['hop', 'Hop Limit', 8], ['source', 'Source Address', 32], ['destination', 'Destination Address', 32]];
+---
+<LabFrame id={id} component="protocolos.cabecera-ipv6" title="40 bytes, campo a campo" intro="Selecciona un campo para entender su función y qué ocurre al comprimirlo. Cada fila representa 32 bits; cada dirección ocupa cuatro filas.">
+  <ipv6-header>
+    <div class="scroll" tabindex="0" role="region" aria-label="Diagrama de la cabecera IPv6">
+      <div class="ruler" aria-hidden="true"><span>Bit 0</span><span>8</span><span>16</span><span>24</span><span>31</span></div>
+      <div class="header-bits">{layout.map(([key, name, bits], i) => <button type="button" data-field={key} style={`--bits:${bits}`} class:list={{ address: bits === 32 }} aria-pressed={i === 0 ? 'true' : 'false'} disabled>{name}<small>{key === 'source' || key === 'destination' ? '128 bits' : `${bits} bits`}</small></button>)}</div>
+    </div>
+    <div class="lab-output" data-output aria-live="polite" set:html={ipv6FieldView('version')} />
+  </ipv6-header>
+  <details class="lab-all"><summary>Todos los campos</summary><dl>{Object.values(ipv6Fields).map(([t, d, c]) => <div><dt>{t}</dt><dd>{d} <b>Al comprimir:</b> {c}</dd></div>)}</dl></details>
+  <p class="lab-note">4 + 8 + 20 + 16 + 8 + 8 + 128 + 128 = 320 bits = 40 bytes. Las direcciones ocupan 32 de esos 40 bytes.</p>
+</LabFrame>
+<style>
+  ipv6-header { display: block; }
+  .scroll { overflow-x: auto; }
+  .ruler, .header-bits { min-width: 34rem; }
+  .ruler { display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono); }
+  .header-bits { display: grid; grid-template-columns: repeat(32, 1fr); gap: 2px; margin-top: var(--space-1); }
+  .header-bits button { grid-column: span var(--bits); display: grid; place-content: center; min-height: 3rem; padding: var(--space-1); border: 1px solid var(--color-border-strong); border-radius: 4px; background: var(--color-surface); font-size: var(--text-xs); font-weight: var(--weight-semibold); text-align: center; }
+  .header-bits button.address { min-height: 5rem; }
+  .header-bits button small { font-weight: var(--weight-regular); color: var(--color-text-muted); }
+  .header-bits button[aria-pressed="true"] { border-color: var(--color-accent); background: var(--color-accent-soft); color: var(--color-accent); }
+  @media print { .scroll, .lab-output { display: none; } }
+</style>
+<script>
+  import { ipv6FieldView, type Ipv6Field } from './vistas.ts';
+  class Ipv6Header extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const buttons = [...this.querySelectorAll<HTMLButtonElement>('[data-field]')];
+      buttons.forEach(button => { button.disabled = false; button.addEventListener('click', () => {
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+        this.querySelector('[data-output]')!.innerHTML = ipv6FieldView(button.dataset.field as Ipv6Field);
+      }, { signal: controller.signal }); });
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('ipv6-header', Ipv6Header);
+</script>

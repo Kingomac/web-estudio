@@ -22,6 +22,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
   "options": [
     {
       "id": "la-primera-necesita-conocer-la",

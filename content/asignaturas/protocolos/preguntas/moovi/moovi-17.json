@@ -22,6 +22,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc6763.html"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "el-srv-de-invernadero-coap",

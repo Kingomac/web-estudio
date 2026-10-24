@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    }
+  ],
   "options": [
     {
       "id": "ejecutar-encaminamiento-ligero-y-reenvia",

@@ -1,0 +1,45 @@
+{
+  "id": "protocolos.preguntas.ndp-flujo-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un RA llega con A=1, L=0 y Router Lifetime=0. Sin configuración previa, ¿qué aprende A?",
+  "explanation": "A=1 habilita SLAAC; L informa de que el prefijo está en enlace y Router Lifetime habilita el router por defecto.",
+  "externalReferences": [
+    {
+      "title": "RFC 4861 · Neighbor Discovery for IPv6",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html"
+    },
+    {
+      "title": "RFC 4862 · DAD",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.html#section-5.4"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "ndp-slaac"
+    }
+  ],
+  "options": [
+    {
+      "id": "slaac-sin-rutas",
+      "text": "Dirección SLAAC tras DAD; ni ruta en enlace de ese PIO ni router por defecto",
+      "explanation": "A=1 basta para formar la dirección, pero con L=0 no se aprende la ruta en enlace y con Router Lifetime=0 R no es router por defecto."
+    },
+    {
+      "id": "todo",
+      "text": "Dirección SLAAC, ruta en enlace y router por defecto",
+      "explanation": "La ruta en enlace exige L=1 y el router por defecto, un Router Lifetime mayor que cero."
+    },
+    {
+      "id": "solo-dhcpv6",
+      "text": "Solo una dirección por DHCPv6",
+      "explanation": "Ni M ni O están activos, y A=1 permite SLAAC sin DHCPv6."
+    }
+  ],
+  "answer": "slaac-sin-rutas"
+}

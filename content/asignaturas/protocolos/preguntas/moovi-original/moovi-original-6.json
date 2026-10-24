@@ -22,6 +22,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion"
+    }
+  ],
   "options": [
     {
       "id": "baja-tasa-de-transmision",

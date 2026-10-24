@@ -31,5 +31,10 @@
       "answer": "2000::/62",
       "explanation": "Las cuatro /64 varían en los dos últimos bits del ID de subred (00 a 11) y forman un bloque alineado: 64 − 2 = /62."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

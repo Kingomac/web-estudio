@@ -100,5 +100,10 @@
       "explanation": "Ocupa los bytes 3 a 8, contados desde 0."
     }
   ],
-  "dump": "7b 39 3a 02 01 ff ab cd ef"
+  "dump": "7b 39 3a 02 01 ff ab cd ef",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

@@ -39,5 +39,10 @@
       "answer": "5",
       "explanation": "FRAGN ocupa 5 bytes: los 4 de FRAG1 más el byte de offset."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

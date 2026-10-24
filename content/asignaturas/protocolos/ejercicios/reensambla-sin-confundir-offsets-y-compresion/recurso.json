@@ -83,5 +83,10 @@
       "answer": "3",
       "explanation": "Cubren [0,112), [112,184) y [184,200)."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

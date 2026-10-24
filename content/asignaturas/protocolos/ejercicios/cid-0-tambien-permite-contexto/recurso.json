@@ -80,5 +80,10 @@
       "explanation": "Los bytes por sí solos no contienen ese prefijo."
     }
   ],
-  "dump": "7e 77"
+  "dump": "7e 77",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

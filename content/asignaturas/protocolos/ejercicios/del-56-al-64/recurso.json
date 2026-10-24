@@ -46,5 +46,10 @@
       "answer": "2001:db8:1234:abff::/64",
       "explanation": "Solo el último byte del cuarto hexteto es variable."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

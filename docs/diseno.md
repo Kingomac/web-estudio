@@ -21,6 +21,7 @@ Interfaz sobria para estudiar: fondo neutro, un color de acento y dos estados de
 | Texto | `--color-text`, `--color-text-muted` | Principal y secundario. |
 | Acento | `--color-accent`, `-hover`, `-soft`, `--color-on-accent` | Enlaces, botones, elemento activo y fondos suaves de selección. |
 | Estados | `--color-success(-soft)`, `--color-danger(-soft)` | Solo corrección de respuestas. |
+| Diagramas | `--color-packet-*`, `--color-seg-1` … `-6`, `--color-zone-1/2` | Tipos de paquete NDP, segmentos de bytes y enlaces de red. |
 | Tipo | `--text-xs` … `--text-2xl`, `--weight-*`, `--leading-*` | 13, 14, 16, 17, 19, 24 y 34 px. |
 | Espacio | `--space-1` … `--space-8` | 4, 8, 12, 16, 24, 32, 48 y 64 px. |
 | Forma | `--radius-sm` (controles), `--radius` (tarjetas), `--radius-pill` (chips), `--shadow`, `--shadow-raised` | |
@@ -79,14 +80,15 @@ Los estilos propios de un componente van en su `<style>` (con ámbito de Astro) 
 | `ui/TagList.astro` | Etiquetas de un recurso; con `linkTo` enlazan al filtro. |
 | `ResourceList`, `ResourceRow`, `SubjectRow` | Listados de recursos y tarjetas de asignatura. |
 | `Sources`, `Relations` | Fuentes originales (normal o `prominent` dentro de una corrección) y recursos relacionados. |
-| `Practice`, `FormExercise`, `lectura/*` | Actividades y visuales interactivos. |
+| `ui/HexDump.astro` | Volcado hexadecimal con inspector de offset, hex, decimal y binario. |
+| `Practice`, `FormExercise`, `lectura/*` | Actividades y laboratorios interactivos. |
 
 ## Reglas para código nuevo
 
 - **Página nueva:** `Site` (o `Resource`) + `PageHeader` + primitivas. Si una pieza se repite en dos páginas, se convierte en componente en `src/components/ui/`.
 - **Nombres:** `bloque`, `bloque-parte`, `bloque--variante`; estados con `is-*` (`is-active`, `is-current`, `is-correct`, `is-incorrect`, `is-right`) o atributos ARIA (`aria-pressed`, `aria-current`). El JavaScript cambia estados, nunca estilos en línea.
 - **Selectores de pruebas:** los E2E usan roles, textos, `data-*` y algunas clases (`.sources`, `.toc`, `.prose`, `.sidebar`…). Al renombrar, ejecuta `bun run check`.
-- **Visuales de lectura** (`src/components/lectura/`): partir de `.panel--muted`, con controles `.button--small` en `.actions.no-print` y alternativa estática visible al imprimir.
+- **Laboratorios de lectura** (`src/components/lectura/`): envolver en `ui/LabFrame.astro` y usar las primitivas `.lab-controls`, `.lab-output`, `.metrics`, `.byte-bar`, `.bit-fields` y `.lab-note`. Lo interactivo lleva `.no-print`; la alternativa estática es un `details.lab-all` con los casos completos (se abre al imprimir). El HTML que genera el cliente no recibe el ámbito de Astro: sus estilos van en `:global()` o en primitivas. Los colores de diagramas salen de `--color-packet-*`, `--color-seg-*` y `--color-zone-*`; solo las anchuras proporcionales se escriben en línea.
 
 ## Contenido
 

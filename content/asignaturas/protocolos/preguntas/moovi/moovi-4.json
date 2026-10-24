@@ -22,6 +22,11 @@
       "url": "https://docs.manage.security.cisco.com/c-the-routing-table-and-route-selection.html"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "g-0-y-distancia-1",

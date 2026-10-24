@@ -113,5 +113,10 @@
     "A · 1234",
     "B · 5678",
     "C · abcd"
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

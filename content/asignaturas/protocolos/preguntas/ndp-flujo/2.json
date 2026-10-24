@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ndp-flujo-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "A envía datos a C, que está en otra red. ¿Qué MAC busca A?",
+  "explanation": "Para llegar a C, A necesita la MAC de R, su siguiente salto. El paquete conserva la IPv6 destino de C.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8,
+        39
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 · Neighbor Discovery for IPv6",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "ndp-slaac"
+    }
+  ],
+  "options": [
+    {
+      "id": "mac-c",
+      "text": "La MAC de C",
+      "explanation": "C no está en el enlace de A: su MAC no sirve para entregar la trama en el enlace 1."
+    },
+    {
+      "id": "mac-switch",
+      "text": "La MAC del switch",
+      "explanation": "El switch conmuta tramas sin ser destino; no es el siguiente salto IP."
+    },
+    {
+      "id": "mac-router",
+      "text": "La MAC del router siguiente salto",
+      "explanation": "La ruta elige R como siguiente salto, así que A resuelve con NS/NA la MAC de R y conserva C como destino IPv6."
+    }
+  ],
+  "answer": "mac-router"
+}

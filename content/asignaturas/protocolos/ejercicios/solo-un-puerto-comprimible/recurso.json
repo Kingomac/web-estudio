@@ -47,5 +47,10 @@
       "answer": "6",
       "explanation": "1 byte NHC + 3 de puertos + 2 de checksum = 6 bytes."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

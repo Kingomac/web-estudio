@@ -179,3 +179,31 @@ test('la impresión mantiene explicación estática y oculta controles', async (
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(page.locator('.mobile-toc-toggle')).toBeHidden();
 });
+
+test('laboratorios de los apuntes: NDP, EUI-64, IPHC y presupuesto responden y caben en móvil', async ({ page }) => {
+  await page.goto(`${subject}apuntes/tema-3-ip-en-iot/`);
+  const slaac = page.locator('#ndp-slaac');
+  await expect(slaac.locator('[data-count]')).toHaveText('Paso 1 de 7');
+  await slaac.getByRole('button', { name: 'Siguiente →' }).click();
+  await expect(slaac.locator('[data-count]')).toHaveText('Paso 2 de 7');
+  await expect(slaac.locator('.ndp-fields')).toContainText('ff02::1:ff00:a');
+  await slaac.getByLabel('Escenario').selectOption('sin-router');
+  await expect(slaac.locator('[data-count]')).toHaveText('Paso 1 de 5');
+  const eui = page.locator('#visual-eui64');
+  await eui.getByRole('button', { name: '4 · IPv6' }).click();
+  await expect(eui.locator('[data-output]')).toContainText('fe80::1222:33ff:fe44:5566');
+  await eui.getByLabel('MAC de 48 bits').fill('10:22:33');
+  await expect(eui.locator('.lab-error')).toBeVisible();
+  await page.goto(`${subject}apuntes/tema-4-lowpan/`);
+  const iphc = page.locator('#visual-iphc');
+  await iphc.getByRole('button', { name: /Direcciones completas/ }).click();
+  await expect(iphc.locator('.metric').nth(2)).toContainText('48 B');
+  const budget = page.locator('#visual-presupuesto');
+  await budget.getByLabel('Cabeceras IPv6 + UDP').selectOption('6');
+  await expect(budget.locator('[data-output]')).toContainText('75 B');
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const path of ['tema-3-ip-en-iot', 'tema-4-lowpan']) {
+    await page.goto(`${subject}apuntes/${path}/`);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});

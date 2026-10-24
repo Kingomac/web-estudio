@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mqtt"
+    }
+  ],
   "options": [
     {
       "id": "publish-pubrec-pubrel-pubcomp",

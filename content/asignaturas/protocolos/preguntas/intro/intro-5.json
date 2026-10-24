@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "como-es-un-nodo-iot"
+    }
+  ],
   "options": [
     {
       "id": "un-rele-que-enciende-o",

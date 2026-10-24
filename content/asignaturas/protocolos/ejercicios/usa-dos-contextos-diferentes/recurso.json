@@ -71,5 +71,10 @@
       "explanation": "2 base + 1 CID + 1 HLIM + 2 destino."
     }
   ],
-  "dump": "7c f6 35 3f ab cd"
+  "dump": "7c f6 35 3f ab cd",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

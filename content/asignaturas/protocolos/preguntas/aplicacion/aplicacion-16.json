@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "http"
+    }
+  ],
   "options": [
     {
       "id": "envia-un-http-post-a",

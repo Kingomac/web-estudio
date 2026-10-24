@@ -1,0 +1,39 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { hopsView } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-saltos' } = Astro.props;
+const cases = [['mesh', 0, 'Mesh-under · 5 → 3'], ['mesh', 1, 'Mesh-under · 3 → 1'], ['route', 0, 'Route-over · 5 → 3'], ['route', 1, 'Route-over · 3 → 1']] as const;
+---
+<LabFrame id={id} component="protocolos.saltos-compresion" title="Mismos extremos IPv6, distinta información de enlace" intro="Sigue el recorrido 5 → 3 → 1. El contexto 0 contiene 2001:11::/64; las direcciones IPv6 de origen y destino se mantienen.">
+  <hops-lab>
+    <div class="lab-controls no-print">
+      <label>Modo de entrega<select class="input" data-mode disabled><option value="mesh">Mesh-under</option><option value="route">Route-over</option></select></label>
+      <label>Trama observada<select class="input" data-hop disabled><option value="0">Primer salto · 5 → 3</option><option value="1">Segundo salto · 3 → 1</option></select></label>
+    </div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={hopsView('mesh', 0)} />
+  </hops-lab>
+  <details class="lab-all"><summary>Los cuatro casos</summary>{cases.map(([mode, hop, label]) => <><h4>{label}</h4><Fragment set:html={hopsView(mode, hop)} /></>)}</details>
+  <p class="lab-note">Se cuentan únicamente los bytes de dirección en línea dentro de IPHC. La cabecera Mesh tiene su propio coste. SAC=DAC=1 y CID=0 en ambos modos.</p>
+</LabFrame>
+<style>
+  hops-lab { display: block; }
+  :global(.route) { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 0 0 var(--space-3); padding: 0; list-style: none; font-size: var(--text-sm); }
+  :global(.route li) { padding: var(--space-1) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-pill); background: var(--color-surface); }
+  :global(.route li.link) { border-style: dashed; font-size: var(--text-xs); }
+  :global(.route li.is-active) { border-color: var(--color-accent); background: var(--color-accent-soft); color: var(--color-accent); font-weight: var(--weight-semibold); }
+</style>
+<script>
+  import { hopsView } from './vistas.ts';
+  class HopsLab extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const mode = this.querySelector<HTMLSelectElement>('[data-mode]')!, hop = this.querySelector<HTMLSelectElement>('[data-hop]')!;
+      mode.disabled = hop.disabled = false;
+      this.addEventListener('change', () => { this.querySelector('[data-output]')!.innerHTML = hopsView(mode.value as 'mesh' | 'route', Number(hop.value) as 0 | 1); }, { signal: controller.signal });
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('hops-lab', HopsLab);
+</script>

@@ -63,5 +63,10 @@
       "explanation": "Todo se infiere; NHC se contabiliza por separado."
     }
   ],
-  "dump": "7e 33"
+  "dump": "7e 33",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

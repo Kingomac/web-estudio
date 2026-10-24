@@ -32,7 +32,7 @@ content/ + PDF → catálogo validado (src/lib/catalogo.ts) → páginas estáti
 | Componentes | HTML accesible y presentación de resultados. | Reglas de corrección propias. |
 | Cliente | Leer controles, llamar al dominio, guardar estado. | El catálogo completo o todos los talleres. |
 
-No hay sistema de plugins ni lenguaje de ejercicios en JSON. Los comportamientos nuevos son módulos concretos registrados explícitamente (`registro.ts`, `talleres.ts`) y se extraen a compartidos solo cuando hay reutilización real.
+Los laboratorios de lectura siguen un patrón fijo: cálculo puro en `src/domain/`, vistas HTML compartidas por Astro (estado inicial, imprimible) y cliente (actualización), y un `details` con los casos completos como alternativa estática. No hay sistema de plugins ni lenguaje de ejercicios en JSON. Los comportamientos nuevos son módulos concretos registrados explícitamente (`registro.ts`, `talleres.ts`) y se extraen a compartidos solo cuando hay reutilización real.
 
 ## Modelo de contenido
 
@@ -69,10 +69,6 @@ No se escribe una prueba por pregunta: la validación cubre todo el banco. Los e
 ## Pendiente
 
 - **Despliegue privado** en Cloudflare Pages con Access (ver README). Sustituye a GitHub Pages porque los PDF originales no deben quedar públicos.
-- **Migración de Protocolos** desde `../../Protocolos/preparacion-examen/`. Ya hay una muestra vertical. Pendiente:
-  - Apuntes: partir de los HTML (no de los `.md`) y llevarlos a `body.astro`.
-  - Bancos de preguntas: pasarlos a IDs estables y completar las explicaciones de cada opción.
-  - Visuales NDP y taller de cabeceras: convertirlos en componentes registrados.
-  - Imprimibles existentes: guardarlos como descargas derivadas.
+- **Revisión manual de Protocolos** (migrada el 24/10/2026): impresión paginada de los apuntes con laboratorios y exactitud de las 256 explicaciones por alternativa redactadas en la migración.
 - **Guías docentes** marcadas como no verificadas en el [catálogo académico](catalogo-academico-2026-27.md).
 - **Ampliaciones previstas, sin implementar:** fórmulas e imágenes en enunciados, «Ver todos» en listas largas de relaciones, PDF derivados de las lecturas en `public/descargas/`.

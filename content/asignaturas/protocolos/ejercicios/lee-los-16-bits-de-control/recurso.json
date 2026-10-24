@@ -95,5 +95,10 @@
       "explanation": "Destino deducido del enlace."
     }
   ],
-  "dump": "7e 33"
+  "dump": "7e 33",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

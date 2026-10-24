@@ -16,6 +16,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
   "options": [
     {
       "id": "error-del-cliente",

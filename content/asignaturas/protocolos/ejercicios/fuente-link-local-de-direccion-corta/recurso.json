@@ -47,5 +47,10 @@
       "answer": "16",
       "explanation": "Se envían los 16 bits XXXX (0x0005)."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

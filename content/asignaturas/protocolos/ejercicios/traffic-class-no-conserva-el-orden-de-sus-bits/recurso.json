@@ -71,5 +71,10 @@
       "explanation": "Dos bytes base y un byte de TF."
     }
   ],
-  "dump": "76 33 ab"
+  "dump": "76 33 ab",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ]
 }

@@ -30,5 +30,10 @@
       "answer": "62 ea bc de 00 20 3a ff",
       "explanation": "6 | 2e | abcde ocupa cuatro bytes; los demás campos van alineados."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

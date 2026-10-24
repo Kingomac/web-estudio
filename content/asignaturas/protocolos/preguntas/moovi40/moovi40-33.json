@@ -22,6 +22,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc6763.html#section-5"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "consultar-el-aaaa-de-nodo17",

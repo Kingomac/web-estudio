@@ -46,5 +46,10 @@
       "answer": "2001:db8:5a00:ffff::/64",
       "explanation": "Todos los bits del identificador de subred valen uno."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

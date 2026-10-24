@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ndp-flujo-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host envía RS. ¿Quién debe recibirlo?",
+  "explanation": "El RS va a ff02::2: routers del enlace local. R lo procesa, pero no lo propaga a otras redes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 · Neighbor Discovery for IPv6",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "ndp-slaac"
+    }
+  ],
+  "options": [
+    {
+      "id": "hosts-internet",
+      "text": "Todos los hosts de Internet",
+      "explanation": "ff02::2 tiene ámbito de enlace: el RS no sale del enlace ni llega a hosts de otras redes."
+    },
+    {
+      "id": "routers-enlace",
+      "text": "Los routers del enlace local",
+      "explanation": "El grupo all-routers (ff02::2) solo incluye a los routers del enlace, que responden con un RA."
+    },
+    {
+      "id": "servidor-dhcpv6",
+      "text": "Solo un servidor DHCPv6",
+      "explanation": "Los servidores DHCPv6 escuchan en ff02::1:2; el RS es un mensaje NDP dirigido a los routers."
+    }
+  ],
+  "answer": "routers-enlace"
+}

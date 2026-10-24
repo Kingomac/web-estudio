@@ -1,0 +1,81 @@
+{
+  "id": "protocolos.apuntes.tema-3-ip-en-iot",
+  "kind": "apuntes",
+  "subjectId": "protocolos",
+  "slug": "tema-3-ip-en-iot",
+  "title": "Tema 3 · IP en IoT",
+  "description": "Rutas, direcciones y cabecera IPv6, EUI-64, SLAAC, DHCPv6, NDP y descubrimiento, con laboratorios interactivos.",
+  "scope": "Tema 3 completo. Los laboratorios NDP añaden aclaraciones de los RFC 4861, 4862 y 5942, identificadas como material complementario.",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "order": 30,
+  "body": "body.astro",
+  "printIntent": "screen",
+  "componentIds": [
+    "protocolos.cabecera-ipv6",
+    "protocolos.eui64",
+    "protocolos.ndp-laboratorio"
+  ],
+  "sources": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ]
+    }
+  ],
+  "relatedResourceIds": [
+    "protocolos.tests.tema-3-ip-en-iot",
+    "protocolos.tests.ndp-predice-flujo"
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4861 · Neighbor Discovery for IPv6",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.html"
+    },
+    {
+      "title": "RFC 4862 · IPv6 Stateless Address Autoconfiguration",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.html"
+    },
+    {
+      "title": "RFC 5942 · IPv6 Subnet Model",
+      "url": "https://www.rfc-editor.org/rfc/rfc5942.html"
+    }
+  ]
+}

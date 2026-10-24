@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "dispositivos-modulares"
+    }
+  ],
   "options": [
     {
       "id": "base-core-io-y-sensor",

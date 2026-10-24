@@ -75,5 +75,11 @@
       "answer": "si",
       "explanation": "El mapeo solo retiene 32 bits de la IPv6."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "ndp-slaac"
+    }
   ]
 }

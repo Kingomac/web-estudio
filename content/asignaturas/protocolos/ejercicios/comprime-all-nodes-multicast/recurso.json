@@ -62,5 +62,10 @@
       "answer": "4",
       "explanation": "2 base + 1 NH + 1 destino."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

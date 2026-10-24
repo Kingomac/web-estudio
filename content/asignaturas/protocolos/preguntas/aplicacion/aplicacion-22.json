@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "coap"
+    }
+  ],
   "options": [
     {
       "id": "hasta-cuatro-retransmisiones-duplicando",

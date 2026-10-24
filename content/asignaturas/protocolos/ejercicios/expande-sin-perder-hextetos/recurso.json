@@ -42,5 +42,10 @@
       "answer": "2",
       "explanation": "La dirección siempre ocupa ocho hextetos."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

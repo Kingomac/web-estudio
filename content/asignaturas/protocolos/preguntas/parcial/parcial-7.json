@@ -16,6 +16,11 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion"
+    }
+  ],
   "options": [
     {
       "id": "wisblock-core-microcontrolador-wisblock",

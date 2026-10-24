@@ -1,0 +1,172 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { flows, scenarios, messages, raOutcome, type FlowKind } from '../../domain/ndp.ts';
+import { ndpDiagram, stepView, stateView } from './vistas.ts';
+// NDP/SLAAC labs of tema 3: two animated flows, a message comparison and the RA flags.
+interface Props { kind: FlowKind | 'mensajes' | 'ra' }
+const { kind } = Astro.props;
+const id = `ndp-${kind}`;
+const meta = {
+  slaac: ['NDP en movimiento · Laboratorio complementario', '8A · De encender A a tener IPv6 con SLAAC', 'Recorre DAD de la link-local, RS, RA y DAD de la dirección global. Después cambia el escenario para ver qué sucede si hay un duplicado o no hay router.'],
+  envio: ['NDP en movimiento · Laboratorio complementario', '8B · ¿Vecino directo o siguiente salto?', 'Compara enviar a B y enviar a C. Fíjate en Target, IPv6 destino y MAC destino: representan cosas diferentes. Los casos empiezan con A configurado; la caché inicial se indica en cada uno.'],
+  mensajes: ['Comparar mensajes · Alcance y destinatarios', '8C · RS, RA, NS y NA, uno al lado del otro', 'Selecciona un mensaje para ver qué transporta y a quién llega. Multicast no equivale a «enviar a todos»: depende del grupo.'],
+  ra: ['Experimenta · Predice antes de cambiar', '8D · Un RA aporta varias decisiones independientes', 'Activa y desactiva sus indicadores. Supón que A acaba de arrancar, no tiene otras rutas ni configuración previa y recibe un prefijo 2001:db8:10::/64 con vidas preferida y válida positivas y coherentes.'],
+}[kind];
+const flow = kind === 'slaac' || kind === 'envio' ? kind : null;
+const options = flow ? scenarios[flow] : [];
+const steps = flow ? flows[flow](options[0][0]) : [];
+const raFlags = [['a', 'A · SLAAC', true], ['l', 'L · En enlace', true], ['router', 'Router Lifetime = 1800 s (desmarcado: 0)', true], ['m', 'M · Direcciones DHCPv6', false], ['o', 'O · Otros datos DHCPv6', false]] as const;
+const raView = (f: Parameters<typeof raOutcome>[0]) => { const r = raOutcome(f); return `${stateView(r.state)}<p><strong>DHCPv6:</strong> ${r.dhcp}</p><p><strong>Consecuencia:</strong> ${r.consequence}</p>`; };
+const legend = [['rs', 'RS · solicita router'], ['ra', 'RA · anuncia router'], ['ns', 'NS · pregunta por vecino'], ['na', 'NA · anuncia vecino'], ['datos', 'IPv6 · datos']];
+---
+<LabFrame id={id} component="protocolos.ndp-laboratorio" label={meta[0]} title={meta[1]} intro={meta[2]}>
+  <ndp-lab data-kind={kind}>
+    {flow && <div class="no-print">
+      <div class="lab-controls">
+        <label>Escenario<select class="input" data-scenario disabled>{options.map(([value, label]) => <option value={value}>{label}</option>)}</select></label>
+        <label>Ritmo de lectura<select class="input" data-speed disabled><option value="1">Normal · 5,6 s/paso</option><option value="2">Lento · 11,2 s/paso</option></select></label>
+        <span class="meta" data-count>Paso 1 de {steps.length}</span>
+      </div>
+      <div class="network" data-network tabindex="0" role="region" aria-label="Mapa de paquetes entre dos enlaces" set:html={ndpDiagram(steps[0].packet, options[0][0], id)} />
+      <ul class="legend">{legend.map(([type, label]) => <li style={`--packet:var(--color-packet-${type})`}>{label}</li>)}</ul>
+      <div class="actions playbar">
+        <button type="button" class="button button--secondary button--small" data-prev disabled>← Anterior</button>
+        <button type="button" class="button button--small" data-play aria-pressed="false" disabled>▶ Reproducir</button>
+        <button type="button" class="button button--secondary button--small" data-next disabled>Siguiente →</button>
+        <button type="button" class="button button--ghost button--small" data-reset disabled>↺ Reiniciar</button>
+      </div>
+      <ol class="step-list" data-steps aria-label="Saltar a un paso">{steps.map((s, i) => <li><button type="button" data-step={i} aria-current={i === 0 ? 'step' : undefined} disabled><small>Paso {i + 1}</small>{s.title}</button></li>)}</ol>
+      <div class="lab-output" data-detail set:html={stepView(steps[0])} />
+      <div data-state set:html={stateView(steps[0].state)} />
+      <p class="visually-hidden" data-status role="status" aria-live="polite" aria-atomic="true"></p>
+    </div>}
+    {kind === 'mensajes' && <div class="no-print">
+      <div class="chip-group" aria-label="Tipo de mensaje">{Object.entries(messages).map(([key, m], i) => <button type="button" class="chip" data-message={key} aria-pressed={i === 0 ? 'true' : 'false'} disabled>{m.label}</button>)}</div>
+      <div class="network" data-network tabindex="0" role="region" aria-label="Mapa de paquetes entre dos enlaces" set:html={ndpDiagram(messages.rs.packet, 'normal', id)} />
+      <div class="lab-output" data-detail aria-live="polite" set:html={stepView(messages.rs)} />
+    </div>}
+    {kind === 'ra' && <div class="no-print">
+      <div class="lab-controls">{raFlags.map(([key, label, on]) => <label class="check"><input type="checkbox" data-flag={key} checked={on} disabled />{label}</label>)}</div>
+      <div class="lab-output" data-result aria-live="polite" set:html={raView({ a: true, l: true, router: true, m: false, o: false })} />
+    </div>}
+  </ndp-lab>
+
+  {flow && <details class="lab-all"><summary>Todos los pasos de cada escenario</summary>{options.map(([value, label]) => <><h4>{label}</h4><ol>{flows[flow](value).map(s => <li><strong>{s.title}.</strong> {s.text} <span class="meta">{s.scope}</span></li>)}</ol></>)}</details>}
+  {kind === 'mensajes' && <details class="lab-all"><summary>Los cinco mensajes</summary>{Object.values(messages).map(m => <Fragment set:html={stepView(m)} />)}</details>}
+  {kind === 'ra' && <details class="lab-all"><summary>Qué controla cada indicador</summary><p>A habilita la formación de dirección; L anuncia un prefijo en enlace; Router Lifetime positivo permite elegir el router por defecto. M y O informan de DHCPv6.</p><h4>A=1, L=1, Router Lifetime=1800 s</h4><Fragment set:html={raView({ a: true, l: true, router: true, m: false, o: false })} /><h4>A=1, L=0, Router Lifetime=0</h4><Fragment set:html={raView({ a: true, l: false, router: false, m: false, o: false })} /></details>}
+
+  {flow && <p class="lab-note">Cada paso muestra el estado posterior al evento. Los pasos de espera resumen los temporizadores y reintentos reales. La reproducción es didáctica; no se envían paquetes por tu red.</p>}
+  {flow && <details class="lab-assumptions"><summary>Direcciones completas y supuestos del ejemplo</summary><ul><li>A: <code>fe80::a</code>, <code>2001:db8:10::a</code>; MAC <code>02:00:00:00:00:0a</code>.</li><li>B: <code>fe80::b</code>, <code>2001:db8:10::b</code>; MAC <code>02:00:00:00:00:0b</code>. En la variante con duplicado, B ya posee <code>2001:db8:10::a</code>.</li><li>R, interfaz 1: <code>fe80::1</code>, <code>2001:db8:10::1</code>; MAC <code>02:00:00:00:01:01</code>.</li><li>R, interfaz 2: <code>fe80::2</code>, <code>2001:db8:20::1</code>; MAC <code>02:00:00:00:02:01</code>.</li><li>C: <code>2001:db8:20::c</code>; MAC <code>02:00:00:00:00:0c</code>.</li></ul><p>Prefijos de documentación; IID cortos para facilitar la lectura. El router tiene rutas a ambos enlaces. Cada enlace puede incluir switches: «enlace» no significa necesariamente un único cable. Se representa la entrega IPv6 lógica, no todas las copias de tramas que pueda hacer un switch.</p></details>}
+  {kind === 'mensajes' && <>
+    <div class="table-scroll"><table><caption>Una misma pareja NS/NA participa en tres procesos distintos</caption><thead><tr><th scope="col">Proceso</th><th scope="col">NS</th><th scope="col">Resultado</th></tr></thead><tbody><tr><td>Resolución de direcciones</td><td>Al solicited-node del objetivo; origen asignado.</td><td>NA unicast con la dirección de enlace del objetivo.</td></tr><tr><td>DAD</td><td>Origen <code>::</code>; Target = candidata; sin SLLAO.</td><td>Sin conflicto al completar DAD: asignar. NA de otro propietario o NS conflictiva: no asignar.</td></tr><tr><td>NUD</td><td>Unicast al vecino conocido.</td><td>NA solicitado confirma alcanzabilidad; los intentos agotados indican fallo.</td></tr></tbody></table></div>
+    <p class="lab-note">SLLAO = opción de dirección de enlace del origen. TLLAO = opción de dirección de enlace del objetivo. En NA, <strong>S</strong> significa Solicited, <strong>O</strong> Override y <strong>R</strong> Router: este O no es el flag O de DHCPv6 en un RA.</p>
+    <p class="lab-note">NDP también incluye <strong>Redirect (137)</strong>: un router informa a un host del enlace de un siguiente salto mejor para un destino. No interviene en el arranque SLAAC mostrado aquí.</p>
+  </>}
+  {kind === 'ra' && <p class="lab-note">A y L pertenecen a la opción de información de prefijo (PIO); M, O y Router Lifetime están en la cabecera del RA. M=1 no desactiva SLAAC si A=1. Estas variantes complementan el esquema simplificado de las diapositivas. Aquí se evalúa un anuncio inicial; cambiar L a 0 en un RA posterior no borra por sí solo una ruta en enlace aprendida previamente.</p>}
+</LabFrame>
+<style>
+  ndp-lab { display: block; }
+  .network { overflow-x: auto; margin: var(--space-3) 0; border-radius: var(--radius-sm); background: var(--color-surface); }
+  .network :global(svg) { display: block; min-width: 38rem; width: 100%; height: auto; font-family: var(--font-sans); font-size: 15px; }
+  .network :global(text) { fill: var(--color-text-muted); }
+  .network :global(.ndp-zone) { fill: var(--color-text); font-weight: var(--weight-semibold); font-size: 13px; letter-spacing: .04em; }
+  .network :global(.ndp-zone-1) { fill: var(--color-zone-1); }
+  .network :global(.ndp-zone-2) { fill: var(--color-zone-2); }
+  .network :global(.ndp-wire) { fill: none; stroke: var(--color-border-strong); stroke-width: 3; }
+  .network :global(.ndp-divider) { stroke: var(--color-border-strong); stroke-dasharray: 4 5; }
+  .network :global(.ndp-node) { fill: var(--color-surface); stroke: var(--color-border-strong); stroke-width: 1.5; }
+  .network :global(.is-active .ndp-node) { stroke: var(--packet); stroke-width: 3; }
+  .network :global(.ndp-node-title) { fill: var(--color-text); font-weight: var(--weight-semibold); }
+  .network :global(.ndp-route) { fill: none; stroke: var(--packet); stroke-width: 3; }
+  .network :global(.ndp-arrow), .network :global(.ndp-dot) { fill: var(--packet); }
+  .network :global(.ndp-packet-name) { fill: var(--color-on-accent); font-weight: var(--weight-semibold); font-size: 13px; text-anchor: middle; }
+  .network :global(.ndp-group) { fill: var(--color-surface); stroke: var(--color-border-strong); stroke-dasharray: 4 3; }
+  .legend { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin: 0 0 var(--space-3); padding: 0; list-style: none; font-size: var(--text-xs); }
+  .legend li::before { content: ''; display: inline-block; width: .8em; height: .8em; margin-right: var(--space-1); border-radius: 50%; background: var(--packet); vertical-align: -1px; }
+  .playbar { margin: var(--space-3) 0; }
+  .step-list { display: flex; gap: var(--space-2); margin: 0; padding: 0 0 var(--space-2); overflow-x: auto; list-style: none; }
+  .step-list :global(button) { display: grid; min-width: 8.5rem; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); font-size: var(--text-xs); text-align: left; }
+  .step-list :global(small) { color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .05em; }
+  .step-list :global(button[aria-current]) { border-color: var(--color-accent); background: var(--color-accent-soft); color: var(--color-accent); font-weight: var(--weight-semibold); }
+  .check { display: flex; align-items: center; gap: var(--space-2); font-weight: var(--weight-regular); }
+  .check input { width: 18px; height: 18px; accent-color: var(--color-accent); }
+  :global(.ndp-fields) { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--space-2) var(--space-4); margin: var(--space-3) 0 0; font-size: var(--text-sm); }
+  :global(.ndp-fields dt) { font-size: var(--text-xs); color: var(--color-text-muted); }
+  :global(.ndp-fields dd) { margin: 0; font-family: var(--font-mono); overflow-wrap: anywhere; }
+  :global(.ndp-state) { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--space-3); margin-top: var(--space-3); padding: var(--space-3); border: 1px dashed var(--color-border-strong); border-radius: var(--radius-sm); font-size: var(--text-sm); }
+  :global(.ndp-state strong) { display: block; font-size: var(--text-xs); color: var(--color-text-muted); }
+  .lab-assumptions { margin-top: var(--space-3); font-size: var(--text-sm); }
+</style>
+<script>
+  import { flows, messages, raOutcome, type FlowKind } from '../../domain/ndp.ts';
+  import { ndpDiagram, stepView, stateView } from './vistas.ts';
+  class NdpLab extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(), signal = controller.signal;
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      this.cleanup = () => { controller.abort(); clearTimeout(timer); };
+      const q = <T extends Element = HTMLElement>(s: string) => this.querySelector<T>(s)!;
+      const id = this.closest('section')!.id, kind = this.dataset.kind!;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this.querySelectorAll<HTMLButtonElement | HTMLSelectElement | HTMLInputElement>('button, select, input').forEach(el => { el.disabled = false; });
+
+      if (kind === 'slaac' || kind === 'envio') {
+        const build = flows[kind as FlowKind];
+        let mode = q<HTMLSelectElement>('[data-scenario]').value, steps = build(mode), index = 0, playing = false;
+        const play = q<HTMLButtonElement>('[data-play]');
+        const speed = () => Number(q<HTMLSelectElement>('[data-speed]').value);
+        const stop = () => { playing = false; clearTimeout(timer); play.textContent = '▶ Reproducir'; play.setAttribute('aria-pressed', 'false'); };
+        const render = () => {
+          const current = steps[index];
+          q('[data-count]').textContent = `Paso ${index + 1} de ${steps.length}`;
+          q('[data-network]').innerHTML = ndpDiagram(current.packet, mode, id, !reduced);
+          q('[data-detail]').innerHTML = stepView(current);
+          q('[data-state]').innerHTML = stateView(current.state);
+          q('[data-status]').textContent = `Paso ${index + 1} de ${steps.length}. ${current.title}. ${current.scope}`;
+          q<HTMLButtonElement>('[data-prev]').disabled = index === 0;
+          q<HTMLButtonElement>('[data-next]').disabled = index === steps.length - 1;
+          q('[data-steps]').innerHTML = steps.map((s, i) => `<li><button type="button" data-step="${i}" ${i === index ? 'aria-current="step"' : ''}><small>Paso ${i + 1}</small>${s.title}</button></li>`).join('');
+          q('[aria-current=step]').scrollIntoView({ block: 'nearest', inline: 'center' });
+          if (index === steps.length - 1) stop();
+          else if (playing) { clearTimeout(timer); timer = setTimeout(() => { index++; render(); }, 5600 * speed()); }
+        };
+        q('[data-scenario]').addEventListener('change', () => { stop(); mode = q<HTMLSelectElement>('[data-scenario]').value; steps = build(mode); index = 0; render(); }, { signal });
+        q('[data-speed]').addEventListener('change', () => { stop(); render(); }, { signal });
+        q('[data-prev]').addEventListener('click', () => { stop(); index = Math.max(0, index - 1); render(); }, { signal });
+        q('[data-next]').addEventListener('click', () => { stop(); index = Math.min(steps.length - 1, index + 1); render(); }, { signal });
+        q('[data-reset]').addEventListener('click', () => { stop(); index = 0; render(); }, { signal });
+        play.addEventListener('click', () => {
+          if (playing) { stop(); return; }
+          if (index === steps.length - 1) index = 0;
+          playing = true; play.textContent = 'Ⅱ Pausar'; play.setAttribute('aria-pressed', 'true'); render();
+        }, { signal });
+        q('[data-steps]').addEventListener('click', event => {
+          const button = (event.target as HTMLElement).closest<HTMLElement>('[data-step]');
+          if (!button) return;
+          stop(); index = Number(button.dataset.step); render();
+          q('[aria-current=step]').focus({ preventScroll: true });
+        }, { signal });
+        document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); }, { signal });
+      }
+
+      if (kind === 'mensajes') {
+        const buttons = [...this.querySelectorAll<HTMLButtonElement>('[data-message]')];
+        buttons.forEach(b => b.addEventListener('click', () => {
+          const m = messages[b.dataset.message as keyof typeof messages];
+          buttons.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+          q('[data-network]').innerHTML = ndpDiagram(m.packet, 'normal', id, !reduced);
+          q('[data-detail]').innerHTML = stepView(m);
+        }, { signal }));
+      }
+
+      if (kind === 'ra') this.addEventListener('change', () => {
+        const flag = (k: string) => q<HTMLInputElement>(`[data-flag="${k}"]`).checked;
+        const r = raOutcome({ a: flag('a'), l: flag('l'), router: flag('router'), m: flag('m'), o: flag('o') });
+        q('[data-result]').innerHTML = `${stateView(r.state)}<p><strong>DHCPv6:</strong> ${r.dhcp}</p><p><strong>Consecuencia:</strong> ${r.consequence}</p>`;
+      }, { signal });
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('ndp-lab', NdpLab);
+</script>

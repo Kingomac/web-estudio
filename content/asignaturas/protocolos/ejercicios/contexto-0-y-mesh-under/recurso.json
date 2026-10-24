@@ -63,5 +63,10 @@
       "answer": "11",
       "explanation": "DAM=11: el IID de destino se deduce del Final Destination de Mesh (1)."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

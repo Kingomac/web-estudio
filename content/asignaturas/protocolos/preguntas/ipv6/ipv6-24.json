@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "icmpv6-slaac-y-dhcpv6"
+    }
+  ],
   "options": [
     {
       "id": "rs-tipo-133-y-ra",

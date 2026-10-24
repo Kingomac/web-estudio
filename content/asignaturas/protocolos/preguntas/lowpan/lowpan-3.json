@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tecnologias-y-clasificacion"
+    }
+  ],
   "options": [
     {
       "id": "o-2-4-ghz-con-tasa",

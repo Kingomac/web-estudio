@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "funcion-de-las-capas-y-modelos-de-comunicacion"
+    }
+  ],
   "options": [
     {
       "id": "servidor-que-responde-a-una",

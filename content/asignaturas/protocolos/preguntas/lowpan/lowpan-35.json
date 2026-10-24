@@ -16,6 +16,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "ndp-optimizado-para-6lowpan"
+    }
+  ],
   "options": [
     {
       "id": "la-eliminacion-anticipada-del-registro",

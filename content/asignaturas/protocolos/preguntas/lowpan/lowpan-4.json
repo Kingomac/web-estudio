@@ -17,6 +17,12 @@
       ]
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tecnologias-y-clasificacion"
+    }
+  ],
   "options": [
     {
       "id": "zigbee-usa-una-pila-no",

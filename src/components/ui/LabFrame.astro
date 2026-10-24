@@ -1,0 +1,11 @@
+---
+// Shell of a reading lab: eyebrow, h3 with a stable id for anchors, intro and the interactive body in the slot.
+interface Props { id: string; title: string; intro: string; label?: string; component: string }
+const { id, title, intro, label = 'Laboratorio · Prueba y observa', component } = Astro.props;
+---
+<section class="lab panel panel--muted" id={id} data-component={component} aria-labelledby={`${id}-titulo`}>
+  <p class="eyebrow">{label}</p>
+  <h3 id={`${id}-titulo`}>{title}</h3>
+  <p class="lab-intro">{intro}</p>
+  <slot />
+</section>

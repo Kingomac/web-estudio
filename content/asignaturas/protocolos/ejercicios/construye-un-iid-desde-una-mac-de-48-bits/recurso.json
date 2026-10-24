@@ -50,5 +50,10 @@
       "answer": "fe80::21a:2bff:fe3c:4d5e",
       "explanation": "Usa fe80:0000:0000:0000 como mitad superior."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

@@ -32,6 +32,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.7.1"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "ff02-1-ff00-3",

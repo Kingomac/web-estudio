@@ -1,0 +1,38 @@
+{
+  "id": "protocolos.apuntes.tema-1-introduccion",
+  "kind": "apuntes",
+  "subjectId": "protocolos",
+  "slug": "tema-1-introduccion",
+  "title": "Tema 1 · Introducción a IoT",
+  "description": "Nodos limitados, modularidad, clases RFC 7228, LLN, topologías y LoWPAN frente a LPWAN.",
+  "scope": "Tema 1 completo (diapositivas 2–13): dispositivos, modularidad, recursos, LLN, topologías y LoWPAN/LPWAN.",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "order": 10,
+  "body": "body.astro",
+  "printIntent": "screen",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    }
+  ],
+  "relatedResourceIds": [
+    "protocolos.tests.tema-1-introduccion"
+  ]
+}

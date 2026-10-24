@@ -46,5 +46,10 @@
       "answer": "55",
       "explanation": "128 − 73 = 55."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

@@ -28,6 +28,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc4944.html#section-5"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
   "options": [
     {
       "id": "compression-mesh-fragmentation",

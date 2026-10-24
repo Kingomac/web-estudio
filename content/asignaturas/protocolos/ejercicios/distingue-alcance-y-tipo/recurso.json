@@ -171,5 +171,10 @@
       "answer": "no-especificada",
       "explanation": "Es la dirección sin especificar."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
   ]
 }

@@ -1,0 +1,166 @@
+---
+import CabeceraIpv6 from '../../../../../src/components/lectura/CabeceraIpv6.astro';
+import Eui64 from '../../../../../src/components/lectura/Eui64.astro';
+import NdpLab from '../../../../../src/components/lectura/NdpLab.astro';
+---
+<aside class="callout"><strong>Laboratorios de este tema:</strong> <a href="#visual-cabecera-ipv6">Cabecera IPv6</a> · <a href="#visual-eui64">MAC → IID</a> · <a href="#ndp-slaac">SLAAC y DAD</a> · <a href="#ndp-envio">Paquetes y routers</a> · <a href="#ndp-mensajes">RS / RA / NS / NA</a> · <a href="#ndp-ra">Experimentar con RA</a>.</aside>
+<h2 id="por-que-usar-ip-en-los-nodos-iot">1. Por qué usar IP en los nodos IoT</h2>
+<p>Fuente: pp. 2-4.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Arquitectura</th><th scope="col">Acceso al nodo</th><th scope="col">Equipo de borde</th></tr></thead><tbody><tr><td><strong>Nodo IP</strong></td><td>Dirección IP, transporte y puerto permiten alcanzar su aplicación.</td><td>Router o border router que conecta redes IP.</td></tr><tr><td><strong>Nodo no IP</strong></td><td>El nodo usa un identificador y protocolos propios.</td><td>Gateway que relaciona ese identificador con datos o servicios y hace de intermediario.</td></tr></tbody></table></div>
+<p>IP permite aprovechar infraestructura y protocolos existentes y facilita la comunicación extremo a extremo, siempre que las aplicaciones sean compatibles. <strong>IPv6</strong> añade un espacio de direcciones enorme y autoconfiguración; evita necesitar NAT por escasez de direcciones. Con NAT, iniciar comunicación desde fuera puede requerir redirección de puertos.</p>
+<p>El problema es el coste de una pila convencional en nodos con poca CPU, memoria, batería y capacidad de enlace. Las alternativas del tema son usar nodos no IP con gateways o <strong>adaptar IPv6</strong>, como hace 6LoWPAN.</p>
+<h2 id="subred-bridge-router-y-tablas-de-rutas">2. Subred, bridge, router y tablas de rutas</h2>
+<p>Fuente: pp. 6-8 y 22-27.</p>
+<p>Una <strong>subred IP</strong> agrupa interfaces que pueden comunicarse a través de un enlace lógico. Un bridge extiende la comunicación de nivel 2 dentro de ese enlace; un router permite comunicar diferentes enlaces/subredes a nivel IP.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Equipo</th><th scope="col">Información de reenvío</th><th scope="col">Entrada conceptual</th></tr></thead><tbody><tr><td>Bridge, switch o AP actuando en puente</td><td>MAC destino.</td><td>MAC destino → interfaz.</td></tr><tr><td>Router</td><td>Prefijo de la IPv6 destino.</td><td>Prefijo → siguiente salto/interfaz.</td></tr></tbody></table></div>
+<p>La <strong>RIB</strong> contiene información de rutas y la <strong>FIB</strong> sirve para reenviar paquetes con las rutas seleccionadas. El tema usa <code>show ipv6 route</code> para examinar la tabla de rutas y razonar sobre el reenvío.</p>
+<ul><li><strong>Ruta directa, G=0:</strong> el siguiente destino se alcanza por el enlace indicado.</li><li><strong>Ruta indirecta, G=1:</strong> se indica un router siguiente salto; debe ser alcanzable por una interfaz apropiada.</li><li><strong>Ruta por defecto, <code>::/0</code>:</strong> coincide con cualquier dirección, pero solo se usa si no gana otra más específica.</li><li>Si no existe ruta aplicable, el paquete no puede reenviarse; el caso del tema genera ICMPv6 <em>Destination Unreachable</em>.</li></ul>
+<h3 id="longest-prefix-match-lpm">Longest Prefix Match, LPM</h3>
+<p>Se elige <strong>el prefijo coincidente más largo</strong>. Primero importa la especificidad, no el orden en que se escribió la tabla.</p>
+<p>Ejemplo propio para practicar el mecanismo:</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Ruta</th><th scope="col">Siguiente salto</th></tr></thead><tbody><tr><td><code>::/0</code></td><td>R1</td></tr><tr><td><code>2001:db8::/32</code></td><td>R2</td></tr><tr><td><code>2001:db8:10::/48</code></td><td>R3</td></tr></tbody></table></div>
+<p>Para <code>2001:db8:10::25</code>, coinciden las tres y gana <strong>/48</strong>. Para <code>2001:db8:20::25</code>, gana <strong>/32</strong>. El tema presenta el reparto de tráfico entre varias rutas coincidentes de igual longitud como multipath.</p>
+<h3 id="agregacion-de-rutas">Agregación de rutas</h3>
+<p>Agrupa varios prefijos en otro más corto para reducir memoria, procesamiento y anuncios. Para una agregación exacta como la del tema, los prefijos deben formar un bloque <strong>contiguo y alineado</strong>, con el mismo siguiente salto.</p>
+<pre><code>2000:0:0:0::/64
+2000:0:0:1::/64
+2000:0:0:2::/64
+2000:0:0:3::/64
+          ↓
+       2000::/62</code></pre>
+<p>Cuatro subredes requieren dos bits variables: <code>64 - 2 = 62</code>. No basta con que los números parezcan próximos; deben compartir los primeros 62 bits.</p>
+<h2 id="direcciones-ipv6">3. Direcciones IPv6</h2>
+<p>Fuente: pp. 9-13 y 17-21.</p>
+<p>Una dirección tiene <strong>128 bits = 16 bytes = 8 grupos de 16 bits</strong>, escritos en hexadecimal.</p>
+<ul><li>Se omiten ceros iniciales de un grupo: <code>0010 → 10</code>.</li><li><code>::</code> sustituye una secuencia de grupos nulos y solo puede aparecer una vez.</li><li><code>/n</code> indica la longitud del prefijo CIDR.</li><li><code>2001:0db8:0010:0000:0000:0000:0000:0025 → 2001:db8:10::25</code>.</li></ul>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tipo o dirección</th><th scope="col">Significado y ámbito</th></tr></thead><tbody><tr><td><strong>Unicast</strong></td><td>Identifica una interfaz dentro de su ámbito.</td></tr><tr><td><strong>Multicast</strong></td><td>Entrega a los miembros de un grupo; comienza por <code>ff</code>.</td></tr><tr><td><strong>Anycast</strong></td><td>Dirección unicast asignada a varios nodos; se alcanza uno según el encaminamiento.</td></tr><tr><td><code>::/128</code></td><td>Dirección sin especificar.</td></tr><tr><td><code>::1/128</code></td><td>Loopback.</td></tr><tr><td><code>2000::/3</code></td><td>Bloque de direcciones globales ilustrado en el tema.</td></tr><tr><td><code>fe80::/10</code></td><td>Bloque reservado para link-local; formato habitual <code>fe80::/64 + IID</code>.</td></tr><tr><td><code>fc00::/7</code>, uso local <code>fd00::/8</code></td><td>Unique Local Addresses, ULA.</td></tr><tr><td><code>ff02::1</code></td><td>Todos los nodos del enlace.</td></tr><tr><td><code>ff02::2</code></td><td>Todos los routers del enlace.</td></tr></tbody></table></div>
+<p><strong>En IPv6 no hay broadcast.</strong> Las direcciones multicast incluyen flags y un ámbito (<em>scope</em>); el ámbito <code>2</code> corresponde al enlace local. El tema destaca los flags P, dirección basada en prefijo, y T, asignación temporal frente a permanente.</p>
+<h3 id="globales-link-local-y-ula">Globales, link-local y ULA</h3>
+<p>El ejemplo jerárquico del material es:</p>
+<pre><code>IANA → RIR → LIR/ISP → red del cliente → subred → interfaz
+                  /32       /48          /64</code></pre>
+<p>Con un prefijo de cliente /48, la dirección se divide en <strong>48 bits de red + 16 de subred + 64 de IID</strong>. Las longitudes de delegación mostradas son ejemplos; no todos los proveedores asignan siempre esos tamaños.</p>
+<ul><li><strong>Global:</strong> direccionamiento para comunicación global, sujeto a conectividad y rutas.</li><li><strong>Link-local:</strong> solo vale en el enlace; los routers no la reenvían a otros enlaces. Es esencial para NDP y siguientes saltos.</li><li><strong>ULA:</strong> direccionamiento interno que <strong>sí puede atravesar routers</strong>, pero no se usa para encaminamiento en Internet público. Formato estudiado: <code>FD (8) + Global ID (40) + subred (16) + IID (64)</code>. El Global ID pseudoaleatorio forma un /48 con muy baja probabilidad de colisión.</li></ul>
+<p>Una interfaz puede tener simultáneamente <strong>varias direcciones IPv6</strong>, incluso link-local, ULA y globales. Una subred puede anunciar varios prefijos.</p>
+<h2 id="cabecera-ipv6">4. Cabecera IPv6</h2>
+<p>Fuente: p. 14.</p>
+<p>La cabecera básica ocupa <strong>40 bytes</strong>. Tiene tamaño fijo, no incluye checksum propio y los routers <strong>no fragmentan datagramas IPv6</strong>. Las funciones adicionales usan cabeceras de extensión.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Campo</th><th scope="col">Qué debes recordar</th></tr></thead><tbody><tr><td>Version</td><td>IPv6.</td></tr><tr><td>Traffic Class</td><td>8 bits: DSCP 6 y ECN 2.</td></tr><tr><td>Flow Label</td><td>20 bits, identifica flujos.</td></tr><tr><td>Payload Length</td><td>Longitud posterior a la cabecera básica, en bytes.</td></tr><tr><td>Next Header</td><td>Protocolo siguiente o cabecera de extensión: TCP=6, UDP=17, ICMPv6=58.</td></tr><tr><td>Hop Limit</td><td>Se reduce en cada reenvío por un router; evita recorridos indefinidos.</td></tr><tr><td>Source / Destination</td><td>128 bits cada dirección.</td></tr></tbody></table></div>
+<p>La fragmentación de <strong>6LoWPAN debajo de IPv6</strong> no contradice la prohibición de fragmentar IPv6 en los routers.</p>
+
+<CabeceraIpv6 />
+
+<h2 id="construccion-de-iid-eui-64-y-alternativas">5. Construcción de IID: EUI-64 y alternativas</h2>
+<p>Fuente: pp. 15-17 y 34.</p>
+
+<Eui64 />
+
+<h3 id="desde-una-mac-de-48-bits">Desde una MAC de 48 bits</h3>
+<ol><li>Inserta <code>ff:fe</code> entre el tercer y el cuarto octeto.</li><li>Invierte el bit U/L: segundo bit menos significativo del primer octeto, equivalente a <strong>XOR con <code>0x02</code></strong>.</li><li>Une el IID resultante al prefijo IPv6.</li></ol>
+<pre><code>MAC:                    10:22:33:44:55:66
+Insertar FF:FE:         10:22:33:ff:fe:44:55:66
+Invertir U/L (10 xor 02):12:22:33:ff:fe:44:55:66
+IID:                    1222:33ff:fe44:5566
+Link-local:             fe80::1222:33ff:fe44:5566</code></pre>
+<p><strong>No es sumar 2 siempre:</strong> si ese bit ya era 1, invertirlo lo pone a 0.</p>
+<p>Desde un EUI-64 de 64 bits no se inserta <code>ff:fe</code>: ya tiene la longitud correcta y solo se aplica la modificación correspondiente. Para direcciones cortas IEEE 802.15.4, el tema muestra <code>PAN_ID:00ff:fe00:dirección_corta</code>, con U/L a cero; con PAN_ID=0 y corta <code>1122</code>, se obtiene <code>0000:00ff:fe00:1122</code>. Una dirección corta no garantiza unicidad global.</p>
+<h3 id="iid-opacos-y-temporales">IID opacos y temporales</h3>
+<p>SLAAC <strong>no exige</strong> derivar el IID de la MAC:</p>
+<ul><li>Un <strong>IID opaco estable</strong>, como el del RFC 7217, combina parámetros de red/interfaz y una clave secreta. No revela directamente la MAC y puede cambiar entre redes, manteniéndose estable dentro de la misma configuración.</li><li>Las <strong>direcciones temporales</strong> se renuevan para dificultar correlacionar comunicaciones. No son lo mismo que un IID opaco estable.</li></ul>
+<p>En 6LoWPAN, derivar el IID de una dirección de enlace puede ahorrar bytes, porque permite reconstruirlo sin transmitirlo.</p>
+<h2 id="configuracion-y-rutas-estaticas-en-cisco-ios">6. Configuración y rutas estáticas en Cisco IOS</h2>
+<p>Fuente: pp. 19 y 23-27. Son ejemplos de sintaxis para estudiar, no una configuración de un equipo concreto.</p>
+<pre><code>ipv6 unicast-routing
+
+interface f0/1
+ ipv6 enable
+ ipv6 address 2001:db8:1::2/64
+ ipv6 address fe80::2 link-local
+
+ipv6 route 2001:db8:2::/64 2001:db8:1::1
+ipv6 route ::/0 f0/1 fe80::1
+show ipv6 route</code></pre>
+<ul><li><code>ipv6 enable</code>: habilita IPv6 en la interfaz y genera link-local.</li><li><code>ipv6 unicast-routing</code>: habilita reenvío IPv6 entre interfaces.</li><li><code>ipv6 address prefijo/longitud eui-64</code>: genera el sufijo mediante EUI-64 modificado.</li><li><code>ipv6 route prefijo/longitud ...</code>: ruta estática; <code>no ipv6 route ...</code> la elimina.</li><li>Con un <strong>next-hop link-local hay que indicar también la interfaz</strong>, porque la misma dirección puede existir en distintos enlaces.</li><li>En un enlace punto a punto se puede especificar solo la interfaz; en multipunto debe identificarse el router siguiente salto para llegar a su MAC.</li><li><code>Null0</code> es una salida sumidero: descarta los paquetes que seleccionen esa ruta.</li></ul>
+<p>En <code>show ipv6 route</code>: <strong>L</strong> es dirección local, <strong>C</strong> red conectada, <strong>S</strong> estática y, por ejemplo, <strong>O</strong> ruta aprendida por OSPF. Configurar una dirección crea normalmente una ruta local /128 y una conectada para el prefijo.</p>
+<h2 id="icmpv6-slaac-y-dhcpv6">7. ICMPv6, SLAAC y DHCPv6</h2>
+<p>Fuente: pp. 29-36 y 43.</p>
+<p>ICMPv6 se identifica por <strong>Next Header=58</strong>. Además de errores y ping, transporta funciones de descubrimiento y configuración.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tipo</th><th scope="col">Mensaje</th><th scope="col">Uso</th></tr></thead><tbody><tr><td>1</td><td>Destination Unreachable</td><td>Destino inalcanzable.</td></tr><tr><td>2</td><td>Packet Too Big</td><td>Paquete demasiado grande para el enlace.</td></tr><tr><td>3</td><td>Time Exceeded</td><td>Tiempo o límite de saltos excedido.</td></tr><tr><td>128 / 129</td><td>Echo Request / Reply</td><td>Ping.</td></tr><tr><td><strong>133 / 134</strong></td><td><strong>RS / RA</strong></td><td>Solicitar / anunciar información de routers.</td></tr><tr><td><strong>135 / 136</strong></td><td><strong>NS / NA</strong></td><td>Descubrimiento de vecinos y funciones asociadas.</td></tr></tbody></table></div>
+<h3 id="slaac-configuracion-sin-servidor-dhcp">SLAAC: configuración sin servidor DHCP</h3>
+<ol><li>El nodo configura una dirección link-local y comprueba duplicados.</li><li>Espera un <strong>RA</strong> o acelera el descubrimiento enviando <strong>RS a <code>ff02::2</code></strong>.</li><li>Recibe información del router: prefijos, parámetros y, según opciones, MTU, dirección de enlace y otros datos.</li><li>Para un prefijo apto para SLAAC, construye <strong>prefijo + IID</strong>.</li><li>Comprueba duplicados antes de utilizar normalmente la dirección.</li><li>Aprende el router por defecto a partir del anuncio: se usa la dirección fuente link-local del router, con una vida válida como router por defecto.</li></ol>
+<p>En IPv6 convencional los RA pueden enviarse periódicamente a <code>ff02::1</code> o responder a RS.</p>
+<h3 id="flags-que-no-debes-confundir">Flags que no debes confundir</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Indicador</th><th scope="col">Significado</th></tr></thead><tbody><tr><td><strong>M</strong>, Managed</td><td>Anuncia disponibilidad de asignación de direcciones mediante DHCPv6.</td></tr><tr><td><strong>O</strong>, Other</td><td>Anuncia otros parámetros disponibles por DHCPv6.</td></tr><tr><td><strong>A</strong>, Autonomous, en la opción de prefijo</td><td>Permite usar ese prefijo para SLAAC.</td></tr></tbody></table></div>
+<p>En el esquema simplificado de la p. 32, M=0 se asocia a la construcción de la dirección con el prefijo del RA y el IID; M=1, a obtener la dirección mediante DHCPv6. O indica la obtención de otros parámetros mediante DHCPv6. El flag A de los prefijos aparece también en el ejemplo del tema 4.</p>
+<h3 id="dhcpv6">DHCPv6</h3>
+<p>Un servidor mantiene estado de las direcciones asignadas. El intercambio habitual mostrado es:</p>
+<pre><code>Cliente → Solicit → Servidor
+Cliente ← Advertise ← Servidor
+Cliente → Request → Servidor
+Cliente ← Reply ← Servidor</code></pre>
+<p>Usa <strong>UDP 546 en cliente</strong>, <strong>547 en servidor</strong> y el grupo <strong><code>ff02::1:2</code></strong> para localizar servidores/relays en el enlace. <strong>El router por defecto se obtiene mediante RA, también cuando se usa DHCPv6.</strong></p>
+<h2 id="resolucion-de-direcciones-y-ndp">8. Resolución de direcciones y NDP</h2>
+<p>Fuente: pp. 20-21 y 37-42.</p>
+<p><strong>NDP = Neighbor Discovery Protocol.</strong> Relaciona direcciones IPv6 con direcciones de enlace y permite descubrir routers y comprobar vecinos. No descubre aplicaciones ni los recursos que ofrecen.</p>
+<p><strong>Antes de animar:</strong> NDP usa ICMPv6 entre vecinos de un mismo enlace. «Enviar a un router» puede significar que el router es el destinatario local del mensaje; no implica que lo reenvíe. Los datos IPv6 destinados a otra red sí pueden atravesarlo.</p><p>Los mensajes NDP llevan <strong>Hop Limit 255</strong>, y el receptor comprueba ese valor. No se utiliza Hop Limit=1 para limitar NDP al enlace. Los grupos <code>ff02::…</code> son multicast de ámbito de enlace; un router no los propaga a otro enlace. Tener un destino unicast global en un NS/NA tampoco convierte NDP en un mecanismo de descubrimiento remoto.</p>
+
+<NdpLab kind="slaac" />
+
+<NdpLab kind="envio" />
+
+<NdpLab kind="mensajes" />
+
+<NdpLab kind="ra" />
+
+<h3 id="multicast-solicited-node-y-direccion-mac-multicast">Multicast solicited-node y dirección MAC multicast</h3>
+<p>Para una IPv6 unicast, su grupo solicited-node se obtiene con:</p>
+<pre><code>ff02::1:ff00:0/104 + últimos 24 bits de la dirección</code></pre>
+<p>En Ethernet/Wi-Fi, una IPv6 multicast se transforma directamente en MAC:</p>
+<pre><code>33:33 + últimos 32 bits de la IPv6 multicast</code></pre>
+<p>Ejemplo:</p>
+<pre><code>IPv6 objetivo:          fe80::1222:33ff:fe44:5566
+Últimos 24 bits:        44:55:66
+Grupo solicited-node:  ff02::1:ff44:5566
+MAC multicast:         33:33:ff:44:55:66</code></pre>
+<p>No confundas los <strong>24 bits</strong> usados para construir solicited-node con los <strong>32 bits</strong> usados para mapear una IPv6 multicast a Ethernet.</p>
+<p>IEEE 802.15.4 no tiene multicast MAC nativo: puede transportar el multicast IPv6 como broadcast, con PAN ID y dirección corta destino <strong><code>0xffff</code></strong>, dentro del alcance radio.</p>
+<h3 id="resolucion-de-un-vecino">Resolución de un vecino</h3>
+<ol><li>El emisor necesita la MAC de una IPv6 vecina.</li><li>Envía <strong>NS</strong> al solicited-node de la dirección objetivo, incluyendo su dirección de enlace cuando corresponde.</li><li>El propietario responde con <strong>NA</strong> e informa de su dirección de enlace.</li><li>Se guarda la asociación IPv6 ↔ MAC en la caché de vecinos.</li></ol>
+<p>NS y NA usan tipo, código 0, checksum, dirección objetivo y opciones. <strong>SLLAO</strong>, tipo 1, informa de la dirección de enlace del origen; <strong>TLLAO</strong>, tipo 2, de la del objetivo. Las opciones utilizan campos de tipo, longitud y valor para transportar esa información.</p>
+<p>Si el destino está fuera del enlace, se resuelve la MAC del <strong>router siguiente salto</strong>, no la del destino remoto. Las direcciones IPv6 y de enlace desempeñan funciones diferentes.</p>
+<h3 id="dad-detectar-direcciones-duplicadas">DAD: detectar direcciones duplicadas</h3>
+<p>Antes de usar una dirección tentativa, el nodo envía NS con <strong>origen <code>::</code></strong> y esa dirección como objetivo. Si detecta otro propietario o un conflicto durante la comprobación, no puede usarla normalmente. Si el procedimiento termina sin detectar conflicto, puede asignarla.</p>
+<h3 id="nud-comprobar-alcanzabilidad">NUD: comprobar alcanzabilidad</h3>
+<p>Tener una entrada IPv6/MAC no prueba que el vecino siga accesible. <strong>NUD</strong>, Neighbor Unreachability Detection, usa confirmaciones de capas superiores o comprobaciones activas <strong>NS unicast → NA solicitado</strong>.</p>
+<p>Una entrada <strong>STALE</strong> significa que falta confirmación reciente; no que el vecino esté necesariamente caído. Puede usarse mientras se comprueba. Si falla la comprobación, el nodo deja de considerar válida esa alcanzabilidad y puede buscar otra ruta/router.</p>
+<h3 id="por-que-ndp-convencional-cuesta-en-una-lln">Por qué NDP convencional cuesta en una LLN</h3>
+<ul><li>Multicast traducido a broadcast despierta o hace procesar mensajes a muchos nodos.</li><li>Un nodo dormido puede no contestar aunque siga perteneciendo a la red.</li><li>Pérdidas y multisalto dificultan descubrir y verificar vecinos.</li><li>Cachés y mensajes de control consumen RAM, radio y energía.</li></ul>
+<p>El tema 4 sustituye muchos intercambios multicast por <strong>registro de direcciones en routers</strong> y tiempos de validez compatibles con el sueño.</p>
+<h2 id="identificar-dispositivos-servicios-y-recursos">9. Identificar dispositivos, servicios y recursos</h2>
+<p>Fuente: pp. 46-55.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Elemento</th><th scope="col">Qué identifica</th><th scope="col">Ejemplo</th></tr></thead><tbody><tr><td>IPv6</td><td>Interfaz alcanzable por IP.</td><td><code>2001:db8:10::25</code>.</td></tr><tr><td>Nombre de host</td><td>Nombre resoluble a direcciones.</td><td><code>sensor25.edificio.example</code>.</td></tr><tr><td>Identificador persistente</td><td>El mismo dispositivo aunque cambie su IP.</td><td><code>sensor-025</code>, número de serie o UUID.</td></tr><tr><td>UUID</td><td>Identificador de 128 bits, generable de forma distribuida con colisiones extremadamente improbables.</td><td>Identidad lógica persistente.</td></tr><tr><td>URI</td><td>Recurso y, en una URI de acceso, cómo localizarlo.</td><td><code>coap://sensor25.edificio.example:5683/sensors/temperature</code>.</td></tr></tbody></table></div>
+<p>Un identificador persistente no proporciona por sí solo una dirección para enviar paquetes.</p>
+<h3 id="dns-sd-descubrir-servicios">DNS-SD: descubrir servicios</h3>
+<p>Se consulta el tipo de servicio con nombre <strong><code>_servicio._tcp.dominio</code></strong> o <strong><code>_servicio._udp.dominio</code></strong>.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Registro</th><th scope="col">Información aportada</th></tr></thead><tbody><tr><td><strong>PTR</strong></td><td>Instancias disponibles de ese tipo de servicio.</td></tr><tr><td><strong>SRV</strong></td><td>Host y puerto de una instancia.</td></tr><tr><td><strong>TXT</strong></td><td>Metadatos de la instancia.</td></tr><tr><td><strong>AAAA / A</strong></td><td>Dirección IPv6 / IPv4 del host.</td></tr></tbody></table></div>
+<p>Ejemplo del material: consultar <code>_ipp._tcp.local</code> permite descubrir una impresora; SRV proporciona host y puerto, TXT sus atributos y AAAA su IPv6. Los registros pueden llegar juntos o consultarse por separado.</p>
+<h3 id="mdns-y-zeroconf">mDNS y Zeroconf</h3>
+<p><strong>DNS-SD</strong> describe cómo descubrir servicios; <strong>mDNS</strong> permite intercambiar consultas y respuestas DNS mediante multicast local sin servidor DNS central. DNS-SD también puede utilizar DNS unicast convencional.</p>
+<ul><li>mDNS: <strong>UDP 5353</strong>.</li><li>Grupos: <strong>224.0.0.251</strong> y <strong><code>ff02::fb</code></strong>.</li><li>Dominio local: <strong><code>.local</code></strong>.</li><li>Puede haber anuncios no solicitados con PTR, SRV, TXT y AAAA.</li></ul>
+<p>El ejemplo de incorporación de una bombilla Matter anuncia <code>_matterc._udp.local</code> para que el <em>commissioner</em> localice el dispositivo. Descubrirlo permite iniciar la incorporación, pero no representa por sí solo todo ese proceso.</p>
+<p><strong>Zeroconf</strong> reúne mecanismos para configurar y descubrir automáticamente: en el enfoque IPv6 del tema, SLAAC, mDNS y DNS-SD. Avahi y Bonjour son implementaciones.</p>
+<h3 id="descubrimiento-de-recursos-coap-y-directorio">Descubrimiento de recursos CoAP y directorio</h3>
+<p>Una vez localizado un servidor CoAP que soporte descubrimiento:</p>
+<pre><code>GET /.well-known/core
+    ↓
+Enlaces a recursos y atributos, por ejemplo rt=&quot;temperature-c&quot;
+    ↓
+GET /sensors/temperature
+    ↓
+Valor, por ejemplo 23.5</code></pre>
+<p><strong>Descubrir un recurso no es leer su valor.</strong> CoRE Link Format describe enlaces; <code>rt</code> indica un tipo de recurso cuyo significado deben compartir las aplicaciones.</p>
+<p>Con muchos nodos o nodos dormidos se puede usar un <strong>Resource Directory, RD</strong>:</p>
+<ol><li>El nodo registra enlaces y descripciones.</li><li>El cliente consulta el directorio.</li><li>El cliente accede al recurso del nodo.</li></ol>
+<p>Los registros deben renovarse. Estar en el directorio no garantiza estar despierto o accesible en ese instante.</p>
+<h2 id="repaso-sin-mirar">10. Repaso sin mirar</h2>
+<ul><li>☐ Distingo gateway, bridge, router, RIB y FIB.</li><li>☐ Resuelvo LPM y una agregación de cuatro /64 en un /62.</li><li>☐ Abrevio IPv6 y distingo global, link-local, ULA, multicast y anycast.</li><li>☐ Recuerdo los 40 bytes de cabecera y los valores de Next Header principales.</li><li>☐ Derivo un IID desde una MAC y explico por qué invertir U/L no es siempre sumar 2.</li><li>☐ Construyo solicited-node y su MAC multicast sin confundir 24 y 32 bits.</li><li>☐ Explico SLAAC, flags A/M/O, DHCPv6 y el origen del router por defecto.</li><li>☐ Distingo RS/RA, NS/NA, DAD y NUD, incluidos sus tipos ICMPv6.</li><li>☐ Configuro sobre papel una ruta estática con next-hop link-local e interfaz.</li><li>☐ Separo identidad persistente, nombre, dirección, servicio y URI.</li><li>☐ Explico PTR/SRV/TXT/AAAA, DNS-SD frente a mDNS y <code>/.well-known/core</code> frente a RD.</li></ul>

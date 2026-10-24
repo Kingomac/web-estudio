@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ndp-flujo-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "DAD termina sin detectar conflicto. ¿Qué NA confirma que la dirección está libre?",
+  "explanation": "No existe un NA de «dirección libre»: se completa DAD sin detectar conflicto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4862 · DAD",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.html#section-5.4"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "ndp-slaac"
+    }
+  ],
+  "options": [
+    {
+      "id": "na-router",
+      "text": "Un NA del router",
+      "explanation": "El router no certifica direcciones libres; solo respondería el propietario de una dirección duplicada."
+    },
+    {
+      "id": "ninguno",
+      "text": "Ninguno",
+      "explanation": "La ausencia de respuesta durante DAD indica que no hay duplicado; después el nodo anuncia su dirección con un NA no solicitado."
+    },
+    {
+      "id": "na-dhcpv6",
+      "text": "Un NA del servidor DHCPv6",
+      "explanation": "DHCPv6 no participa en DAD ni envía mensajes NDP."
+    }
+  ],
+  "answer": "ninguno"
+}

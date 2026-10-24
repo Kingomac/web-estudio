@@ -28,6 +28,11 @@
       "url": "https://www.rfc-editor.org/rfc/rfc2464.html#section-7"
     }
   ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
   "options": [
     {
       "id": "asociando-la-direccion-ipv6-multicast",

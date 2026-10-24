@@ -47,5 +47,10 @@
       "answer": "10",
       "explanation": "Hop Limit 64 se codifica con HLIM=10, sin byte en línea."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

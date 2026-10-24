@@ -39,5 +39,10 @@
       "answer": "33",
       "explanation": "81 − 40 (IPv6) − 8 (UDP) = 33 bytes para la aplicación."
     }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
   ]
 }

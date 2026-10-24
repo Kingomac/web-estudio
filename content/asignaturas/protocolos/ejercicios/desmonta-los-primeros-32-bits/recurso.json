@@ -87,5 +87,10 @@
       "explanation": "Ocupa los bytes 4 a 5, contados desde 0."
     }
   ],
-  "dump": "6a b1 23 45 00 14 11 40 20 01 0d b8 00 01 00 00 00 00 00 00 00 00 00 10 20 01 0d b8 00 02 00 00 00 00 00 00 00 00 00 20"
+  "dump": "6a b1 23 45 00 14 11 40 20 01 0d b8 00 01 00 00 00 00 00 00 00 00 00 10 20 01 0d b8 00 02 00 00 00 00 00 00 00 00 00 20",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ]
 }
