@@ -1,4 +1,4 @@
-/* Reading bodies (body.mdx and body.astro). Content may only use these classes: lead, callout, table-scroll. */
+/* Reading bodies (body.mdx and body.astro). Content may only use these classes: lead, callout, table-scroll, no-print. */
 @layer prose {
   .prose { max-width: var(--measure); min-width: 0; font-size: var(--text-prose); line-height: var(--leading-prose); }
   .prose > :first-child { margin-top: 0; }

@@ -12,7 +12,7 @@ const steps = [
   <div class="ndp-diagram" aria-hidden="true"><div class="node"><span>01</span><strong>Solicitante</strong><small>Conoce la IPv6</small></div><div class="connection"><span data-message>NS →</span><div></div></div><div class="node"><span>02</span><strong>Vecino</strong><small>Devuelve su MAC</small></div></div>
   <ol class="ndp-steps">{steps.map((step, i) => <li data-step={i}><span class="step-number">0{i + 1}</span><div><strong>{step.title} <code>{step.code}</code></strong><p>{step.text}</p></div></li>)}</ol>
   <div class="visual-controls actions no-print" hidden><button type="button" class="button button--secondary button--small" data-previous aria-label="Paso anterior">← Anterior</button><button type="button" class="button button--small" data-next aria-label="Paso siguiente">Siguiente →</button><button type="button" class="button button--ghost button--small" data-reset>Reiniciar</button><p class="meta" id={`${id}-status`} role="status" data-status>Paso 1 de 3</p></div>
-  <p class="visual-caption meta">Escenario: el vecino responde y la caché no contiene una entrada previa. Fuente: Tema 3, página 39.</p>
+  <p class="visual-caption meta">Escenario: el vecino responde y la caché no contiene una entrada previa.<span class="no-print"> Fuente: Tema 3, página 39.</span></p>
 </ndp-explorer>
 <style>
   .ndp-visual { display: block; margin: var(--space-6) 0; font-size: var(--text-md); line-height: var(--leading); }

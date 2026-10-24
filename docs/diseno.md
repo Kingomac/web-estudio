@@ -30,6 +30,7 @@ La fuente es Inter, servida desde el paquete `@fontsource-variable/inter` (sin p
 
 ## Estructura del CSS
 
+- **Entrada a una asignatura:** abre la sección Apuntes. La navegación ofrece secciones por tipo de recurso, sin un listado combinado de todos los materiales.
 - **Lectura en escritorio:** menú principal plegable, índice pegado al margen izquierdo y columna de texto de ancho legible. Con el menú oculto y espacio suficiente, el texto se centra en la pantalla; título, herramientas y fuentes se alinean con él. La preferencia del menú se conserva entre páginas y no cambia el menú móvil.
 - **Tests en móvil:** preguntas como secciones a todo el ancho, separadas por líneas, sin marco ni sombra de tarjeta. Enunciados, opciones y correcciones pueden partir palabras largas; los controles de respuesta aprovechan el ancho disponible.
 
@@ -95,4 +96,4 @@ Los estilos propios de un componente van en su `<style>` (con ámbito de Astro) 
 
 ## Contenido
 
-Los cuerpos `body.mdx` y `body.astro` usan HTML semántico (`h2`, `h3`, listas, `pre`, `table`, `details`) y solo estas clases: `lead` (párrafo inicial), `callout` (nota), `table-scroll` (envoltorio de tabla). Nada de `style` ni colores. Lo que necesite más diseño se convierte en componente registrado.
+Los cuerpos `body.mdx` y `body.astro` usan HTML semántico (`h2`, `h3`, listas, `pre`, `table`, `details`) y solo estas clases: `lead` (párrafo inicial), `callout` (nota), `table-scroll` (envoltorio de tabla), `no-print` (referencias que solo se muestran en pantalla). Las citas independientes llevan `no-print` en el párrafo; si comparten párrafo con una explicación, se marca solo la cita con un `span` para conservar la explicación al imprimir. El listado final de fuentes de los apuntes también se oculta en papel. Nada de `style` ni colores. Lo que necesite más diseño se convierte en componente registrado.

@@ -12,10 +12,10 @@ import Ndp from '../../../../../src/components/lectura/Ndp.astro';
 <aside class="callout"><strong>La longitud no cambia.</strong> La abreviatura ahorra caracteres al escribir. La dirección sigue teniendo 128 bits.</aside>
 <h2 id="tipos">Tres formas de identificar un destino</h2>
 <div class="table-scroll"><table><thead><tr><th>Tipo</th><th>Destino</th></tr></thead><tbody><tr><td>Unicast</td><td>Una interfaz dentro de su ámbito.</td></tr><tr><td>Multicast</td><td>Un grupo de interfaces.</td></tr><tr><td>Anycast</td><td>Una de las interfaces que comparten dirección, seleccionada por el encaminamiento.</td></tr></tbody></table></div>
-<p>IPv6 no define direcciones broadcast. La comunicación con grupos se realiza mediante multicast. Estos conceptos y la notación se recogen en la página 9 del documento original.</p>
+<p>IPv6 no define direcciones broadcast. La comunicación con grupos se realiza mediante multicast.<span class="no-print"> Estos conceptos y la notación se recogen en la página 9 del documento original.</span></p>
 <h2 id="vecinos">Del destino IPv6 a la dirección de enlace</h2>
 <p>En una resolución básica NDP, el solicitante envía un <strong>Neighbor Solicitation (NS)</strong>. El vecino responde con un <strong>Neighbor Advertisement (NA)</strong>, que permite conocer su dirección de enlace. La correspondencia se conserva en la caché de vecinos.</p>
 <Ndp id="lectura-ndp" />
-<p>El esquema resume el intercambio de la página 39. Supone que el vecino responde y no representa pérdidas, reintentos ni detección de vecinos inalcanzables.</p>
+<p><span class="no-print">El esquema resume el intercambio de la página 39. </span>Supone que el vecino responde y no representa pérdidas, reintentos ni detección de vecinos inalcanzables.</p>
 <h2 id="comprueba">Antes de seguir</h2>
 <ul><li>¿Puedes explicar por qué 16 bytes y 128 bits describen la misma longitud?</li><li>¿Qué cambia entre una dirección completa y su forma abreviada?</li><li>¿Qué información aporta una respuesta NA a quien envió la solicitud?</li></ul>

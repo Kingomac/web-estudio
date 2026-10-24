@@ -5,14 +5,14 @@ import SaltosCompresion from '../../../../../src/components/lectura/SaltosCompre
 ---
 <aside class="callout"><strong>Laboratorios de este tema:</strong> <a href="#visual-presupuesto">Presupuesto de bytes</a> · <a href="#visual-iphc">Compresión IPHC + UDP</a> · <a href="#visual-saltos">Recorrido 5 → 3 → 1</a>.</aside>
 <h2 id="tecnologias-y-clasificacion">1. Tecnologías y clasificación</h2>
-<p>Fuente: pp. 3-10.</p>
+<p class="no-print">Fuente: pp. 3-10.</p>
 <p>Una <strong>LoWPAN</strong> es una red inalámbrica de bajo consumo y alcance local. Hay dos clasificaciones independientes: <strong>estrella o malla</strong>, y <strong>dispositivos IP o no IP</strong>. Una malla no implica automáticamente IPv6.</p>
 <div class="table-scroll"><table><thead><tr><th scope="col">Tecnología</th><th scope="col">Base y organización</th><th scope="col">Relación con IPv6</th><th scope="col">Usos del tema</th></tr></thead><tbody><tr><td>BLE habitual</td><td>Radio Bluetooth LE; conexión a un dispositivo central.</td><td>Normalmente no usa IPv6 en el nodo.</td><td>Wearables, sensores, beacons.</td></tr><tr><td>Bluetooth Mesh</td><td>Usa BLE y añade red, seguridad y modelos de aplicación; inundación controlada y opciones de reenvío dirigido.</td><td>No utiliza IPv6 nativamente.</td><td>Mallas de dispositivos.</td></tr><tr><td>Zigbee</td><td>IEEE 802.15.4 más pila de red y aplicación propia.</td><td>No es IP nativo.</td><td>Domótica y control.</td></tr><tr><td>Thread</td><td>IEEE 802.15.4 y 6LoWPAN, independiente de la aplicación.</td><td>Malla IPv6.</td><td>Hogares y edificios.</td></tr><tr><td>Wi-SUN FAN</td><td>IEEE 802.15.4g/SUN, 6LoWPAN y RPL.</td><td>Malla IPv6 multisalto.</td><td>Suministros, contadores, ciudades.</td></tr></tbody></table></div>
 <p><strong>IEEE 802.15.4 define PHY/MAC</strong>, no resuelve por sí sola todas las tareas de formación y encaminamiento de una malla. Zigbee y Thread usan en el escenario del tema <strong>2,4 GHz y 250 kbit/s</strong>, con CSMA/CA, confirmaciones y retransmisiones entre vecinos.</p>
 <p>BLE admite modos de 1 y 2 Mbit/s y modos de mayor alcance de 125 y 500 kbit/s. Wi-SUN incluye modalidades sub-GHz con más alcance por salto. Las distancias dependen de radio, potencia, antenas y entorno; no existe una cifra de alcance garantizada para todas las instalaciones.</p>
 <p>Wi-SUN FAN también se clasifica como LPWAN, pero se estudia aquí por compartir <strong>6LoWPAN, IPv6 y malla</strong>. No debe aplicársele sin matices el esquema «LPWAN = estrella no IP» del tema introductorio.</p>
 <h2 id="para-que-sirve-6lowpan">2. Para qué sirve 6LoWPAN</h2>
-<p>Fuente: pp. 12-18.</p>
+<p class="no-print">Fuente: pp. 12-18.</p>
 <p><strong>6LoWPAN adapta IPv6 a enlaces limitados</strong>, inicialmente IEEE 802.15.4. Sus mecanismos permiten transportar datagramas con poca capacidad de trama, bajo consumo, pérdidas y nodos dormidos.</p>
 <pre><code>Aplicación
 UDP / otros transportes
@@ -31,12 +31,12 @@ IEEE 802.15.4 MAC/PHY</code></pre>
 <p>Se admiten direcciones cortas de <strong>16 bits</strong> y extendidas de <strong>64 bits</strong>, con PAN ID de <strong>16 bits</strong>. La cabecera incluye control de trama, secuencia, campos de dirección/PAN y seguridad opcional; el <strong>FCS de 2 bytes va al final</strong>.</p>
 <p>Modos de dirección del formato mostrado: <code>00</code> ausente, <code>01</code> reservado, <code>10</code> 16 bits, <code>11</code> 64 bits. Cuando se aplica la compresión PAN ID del ejemplo, se omite el PAN ID origen y se usa el de destino.</p>
 <h2 id="apilamiento-y-dispatch">3. Apilamiento y dispatch</h2>
-<p>Fuente: p. 17.</p>
+<p class="no-print">Fuente: p. 17.</p>
 <p>El orden es <strong>M → F → C</strong>: Mesh, Fragmentation y Compression. Se omite lo que no haga falta. La cabecera Mesh no es necesaria para route-over; la de fragmentación no se usa si el datagrama cabe en una trama.</p>
 <div class="table-scroll"><table><thead><tr><th scope="col">Bits iniciales</th><th scope="col">Identificación</th></tr></thead><tbody><tr><td><code>00xxxxxx</code></td><td>NALP: no es paquete 6LoWPAN.</td></tr><tr><td><code>01000001</code></td><td>IPv6 sin comprimir.</td></tr><tr><td><code>011...</code></td><td>LOWPAN_IPHC.</td></tr><tr><td><code>10...</code></td><td>Mesh.</td></tr><tr><td><code>11000...</code></td><td>FRAG1, primer fragmento.</td></tr><tr><td><code>11100...</code></td><td>FRAGN, fragmento posterior.</td></tr></tbody></table></div>
 <p>Los bits de <strong>dispatch</strong> permiten interpretar qué cabecera sigue; pueden compartir el primer byte con otros campos. En un datagrama fragmentado, la cabecera IP comprimida está al principio del datagrama, no se repite íntegra en cada fragmento posterior.</p>
 <h2 id="compresion-ipv6-lowpan-iphc">4. Compresión IPv6: LOWPAN_IPHC</h2>
-<p>Fuente: pp. 18-26.</p>
+<p class="no-print">Fuente: pp. 18-26.</p>
 <p>El receptor reconstruye información a partir de valores conocidos, campos del enlace o un <strong>contexto previamente compartido</strong>. Se omite la versión 6, puede deducirse Payload Length y se comprimen campos frecuentes y direcciones.</p>
 <p><strong>IPHC tiene 2 bytes de base</strong>, que incluyen dispatch y 13 bits de control. Si <code>CID=1</code>, añade <strong>1 byte de SCI/DCI</strong>. Después van los campos que deban transmitirse «en línea» y la cabecera siguiente.</p>
 <pre><code>011 | TF(2) | NH(1) | HLIM(2) | CID(1) | SAC(1) | SAM(2) | M(1) | DAC(1) | DAM(2)</code></pre>
@@ -58,7 +58,7 @@ IEEE 802.15.4 MAC/PHY</code></pre>
 <h3 id="metodo-para-resolver-ejercicios-iphc">Método para resolver ejercicios IPHC</h3>
 <ol><li>Anota los valores originales IPv6.</li><li>Decide TF, NH y HLIM según los campos omitibles.</li><li>Identifica si el destino es unicast o multicast.</li><li>Comprueba qué prefijos conocen ambos extremos y elige SAC/DAC y CID.</li><li>Para cada dirección, decide si hacen falta 128, 64, 16 o 0 bits; la MAC del salto actual no siempre identifica al extremo IPv6.</li><li>Suma <strong>2 bytes base + contexto opcional + campos en línea + NHC y sus campos</strong>.</li></ol>
 <h2 id="compresion-de-cabeceras-siguientes-lowpan-nhc">5. Compresión de cabeceras siguientes: LOWPAN_NHC</h2>
-<p>Fuente: p. 27, incluida su tabla gráfica.</p>
+<p class="no-print">Fuente: p. 27, incluida su tabla gráfica.</p>
 <p>IPHC comprime IPv6; <strong>NHC comprime la cabecera que sigue</strong>, como UDP o una extensión IPv6. Se utiliza cuando NH en IPHC vale 1.</p>
 <p>Para extensiones, NHC usa el identificador <code>1110</code>, <strong>EID de 3 bits</strong> y NH de 1 bit. EID identifica el tipo; el tema destaca <strong>1 = Routing Header</strong> y <strong>7 = IPv6 encapsulado</strong>. NH=0 deja explícito el Next Header; NH=1 continúa con otra codificación NHC.</p>
 <p>Para UDP: <strong><code>11110 | C | P(2)</code></strong>.</p>
@@ -70,13 +70,13 @@ IEEE 802.15.4 MAC/PHY</code></pre>
 <CompresionIphc />
 
 <h2 id="fragmentacion-y-reensamblado">6. Fragmentación y reensamblado</h2>
-<p>Fuente: pp. 28-29.</p>
+<p class="no-print">Fuente: pp. 28-29.</p>
 <p>Solo se fragmenta si el datagrama, con sus cabeceras de adaptación, no cabe en una trama.</p>
 <div class="table-scroll"><table><thead><tr><th scope="col">Campo</th><th scope="col">Tamaño</th><th scope="col">Función</th></tr></thead><tbody><tr><td>datagram_size</td><td>11 bits</td><td>Tamaño del datagrama IPv6 <strong>sin comprimir</strong>, en bytes.</td></tr><tr><td>datagram_tag</td><td>16 bits</td><td>Etiqueta común a los fragmentos de un datagrama.</td></tr><tr><td>datagram_offset</td><td>8 bits, solo FRAGN</td><td>Posición en unidades de <strong>8 bytes</strong> respecto al datagrama sin comprimir.</td></tr></tbody></table></div>
 <ul><li><strong>FRAG1: 4 bytes</strong> de cabecera; desplazamiento inicial 0 implícito.</li><li><strong>FRAGN: 5 bytes</strong>, al incluir offset.</li><li>Para distinguir reensamblados se usa tamaño, etiqueta y direcciones de enlace; si hay Mesh, se usan sus extremos.</li><li>Los fragmentos pueden llegar desordenados. El tamaño en todos permite reservar memoria aunque no llegue FRAG1 primero.</li><li>El temporizador comienza con el primer fragmento recibido de ese datagrama, no necesariamente FRAG1. Máximo indicado: <strong>60 segundos</strong>; si vence, se descarta el reensamblado incompleto.</li></ul>
 <p>Ejemplo: offset=12 significa <strong>96 bytes</strong>, no 12. La compresión no cambia la referencia de los offsets al datagrama original sin comprimir.</p>
 <h2 id="mesh-under-frente-a-route-over">7. Mesh-under frente a route-over</h2>
-<p>Fuente: pp. 16 y 30-43.</p>
+<p class="no-print">Fuente: pp. 16 y 30-43.</p>
 <div class="table-scroll"><table><thead><tr><th scope="col">Aspecto</th><th scope="col">Mesh-under</th><th scope="col">Route-over básico</th></tr></thead><tbody><tr><td>Nivel que reenvía</td><td>Debajo de IPv6, en 6LoWPAN.</td><td>IPv6.</td></tr><tr><td>Clave para reenviar</td><td>Dirección de enlace del destino final.</td><td>Dirección IPv6 destino.</td></tr><tr><td>Nodos intermedios</td><td>Función de bridge en el modelo del tema.</td><td>Routers IPv6, 6LR.</td></tr><tr><td>Saltos radio frente a IP</td><td>Varios saltos radio forman un enlace IPv6.</td><td>Cada reenvío por router es un salto IPv6.</td></tr><tr><td>Cabecera Mesh</td><td>Transporta extremos de enlace.</td><td>No se usa para este reenvío.</td></tr><tr><td>Reensamblado básico</td><td>En el extremo de entrega de la malla.</td><td>En cada router, antes de procesar IPv6.</td></tr><tr><td>Compresión básica</td><td>No hace falta descomprimir IPv6 para cada reenvío intermedio.</td><td>Descompresión y nueva compresión en cada salto.</td></tr><tr><td>Contador relevante</td><td>Hops Left de Mesh.</td><td>Hop Limit de IPv6.</td></tr><tr><td>Ejemplo del temario</td><td>Thread, con las particularidades indicadas más adelante.</td><td>Wi-SUN FAN con RPL.</td></tr></tbody></table></div>
 <p><strong>6LoWPAN no impone un protocolo único de routing.</strong> Route-over no significa necesariamente RPL y mesh-under no significa necesariamente Thread. Compartir un prefijo en los ejemplos de una LoWPAN no elimina la necesidad de encaminar y registrar nodos en un despliegue route-over.</p>
 <h3 id="nombres-de-nodos">Nombres de nodos</h3>
@@ -98,13 +98,13 @@ Trama del segundo salto: MAC B → C | Mesh A → C</code></pre>
 <p>Con direcciones de 64 bits y tags de 16: <code>8 + 2 + 8 + 2 = 20 bytes</code> por entrada conceptual, sin contar sobrecarga de implementación. La entrada se elimina al completar el reenvío o vencer el temporizador.</p>
 <p>La ganancia clave es <strong>menor espera, memoria de reensamblado y latencia</strong>. 6LFF no convierte route-over en mesh-under: la decisión inicial sigue siendo IPv6.</p>
 <h2 id="de-6lowpan-a-6lo-y-el-caso-ble">8. De 6LoWPAN a 6lo y el caso BLE</h2>
-<p>Fuente: pp. 45-47.</p>
+<p class="no-print">Fuente: pp. 45-47.</p>
 <p>El grupo <strong>6lo</strong> extiende las adaptaciones IPv6 a otras tecnologías limitadas: Z-Wave, BLE, DECT-ULE, PLC y NFC. Reutiliza solo los mecanismos necesarios para cada enlace; no obliga a copiar todo el formato 802.15.4.</p>
 <p><strong>IPv6 sobre BLE, RFC 7668</strong>, según el modelo del tema:</p>
 <ul><li>Estrella; el central suele actuar como 6LBR.</li><li>Compresión IPHC/NHC adaptada a la información de la conexión.</li><li><strong>No usa FRAG1/FRAGN de 6LoWPAN:</strong> segmentación/reensamblado en <strong>L2CAP</strong>.</li><li>IID link-local derivado de la dirección BLE de 48 bits utilizada al establecer la conexión, con inserción <code>fffe</code> según esa adaptación.</li><li>Descubrimiento RS/RA y registro NS/NA con ARO; los hosts registran direcciones no link-local en el 6LBR.</li></ul>
 <p>No confundir esta adaptación IPv6 sobre BLE con <strong>Bluetooth Mesh</strong>, que no es IPv6 nativo.</p>
 <h2 id="ndp-optimizado-para-6lowpan">9. NDP optimizado para 6LoWPAN</h2>
-<p>Fuente: pp. 49-57. El esquema es el del RFC 6775 estudiado, no una descripción obligatoria de todas las tecnologías IoT.</p>
+<p><span class="no-print">Fuente: pp. 49-57. </span>El esquema es el del RFC 6775 estudiado, no una descripción obligatoria de todas las tecnologías IoT.</p>
 <p>La idea es <strong>registrar explícitamente las direcciones</strong> para reducir multicast y permitir que los hosts duerman.</p>
 <h3 id="paso-1-descubrir-router-prefijos-y-contextos">Paso 1: descubrir router, prefijos y contextos</h3>
 <pre><code>Host → RS a ff02::2, con SLLAO → Router
@@ -133,7 +133,7 @@ Host ← NA/ARO ← 6LR ← DAC ← 6LBR</code></pre>
 <SaltosCompresion />
 
 <h2 id="thread-organizacion-mle-y-reenvio">10. Thread: organización, MLE y reenvío</h2>
-<p>Fuente: pp. 59-71.</p>
+<p class="no-print">Fuente: pp. 59-71.</p>
 <p>Thread proporciona una malla IPv6 para hogares y edificios. El tema destaca su <strong>reenvío mesh-under con cabecera Mesh</strong>, combinado con mecanismos propios de encaminamiento y resolución. Sus equipos de reenvío se llaman «routers Thread»; no debe deducirse de ese nombre que cada reenvío interno sea el route-over convencional explicado antes.</p>
 <h3 id="roles-y-dispositivos">Roles y dispositivos</h3>
 <ul><li><strong>Router Thread:</strong> sostiene la malla y reenvía tráfico.</li><li><strong>Dispositivo final:</strong> hijo de un router; no reenvía tráfico ajeno.</li><li><strong>Leader:</strong> coordina una partición y gestiona identificadores de router; se elige automáticamente. <strong>No calcula centralizadamente todas las rutas.</strong></li><li><strong>Border router:</strong> comunica con otras redes IPv6. Puede haber varios.</li><li><strong>Partición:</strong> conjunto de nodos conectados entre sí y coordinados por un Leader.</li></ul>
@@ -156,7 +156,7 @@ RLOC16 = (Router ID &lt;&lt; 10) + Child ID</code></pre>
 <ol><li>Resolver destino IPv6/ML-EID a RLOC16 mediante <strong>Address Query / Address Notification</strong>, mecanismo propio basado en CoAP, y guardar en caché. Los MTD delegan en su padre.</li><li>Extraer Router ID del RLOC16 destino y buscar siguiente salto en la tabla mantenida mediante MLE.</li><li>Transportar origen y destino final en Mesh; cambiar las direcciones MAC de la trama en cada salto y decrementar Hops Left.</li><li>El padre del destino realiza la última entrega o guarda temporalmente el mensaje si el hijo duerme.</li></ol>
 <p>Para ir fuera de la malla se elige un border router con ruta adecuada. <strong>El tráfico interno no tiene que atravesar el border router ni el Leader.</strong></p>
 <h2 id="wi-sun-fan-y-rpl">11. Wi-SUN FAN y RPL</h2>
-<p>Fuente: pp. 73-85.</p>
+<p class="no-print">Fuente: pp. 73-85.</p>
 <p>Wi-SUN FAN construye mallas IPv6 multisalto para áreas extensas. Usa <strong>route-over y RPL</strong>, con el border router como raíz.</p>
 <ul><li><strong>FFN, Full Function Node:</strong> ejecuta RPL y reenvía tráfico; puede tener varios padres candidatos.</li><li><strong>LFN, Limited Function Node, FAN 1.1:</strong> hoja que puede dormir; no ejecuta RPL ni reenvía tráfico ajeno. Su padre anuncia su alcanzabilidad.</li></ul>
 <h3 id="dodag-rank-y-padre-preferido">DODAG, Rank y padre preferido</h3>

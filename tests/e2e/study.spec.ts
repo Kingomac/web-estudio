@@ -6,6 +6,9 @@ test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', 
   await page.goto('./');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Materiales del máster');
   await page.getByRole('main').getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();
+  await expect(page).toHaveURL(/\/protocolos\/apuntes\/$/);
+  await expect(page.getByRole('link', { name: 'Todos los recursos', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'Tipos de recurso' }).getByRole('link', { name: 'Apuntes', exact: true })).toHaveAttribute('aria-current', 'page');
   const rows = page.locator('[data-resource]');
   const total = await rows.count();
   const filtered = async (slug: string) => {
@@ -23,6 +26,10 @@ test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', 
   await filtered('lowpan');
   await page.goBack();
   await expect(page.getByRole('button', { name: 'IP en IoT', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.goto(`${subject}apuntes/ipv6-y-vecinos/`);
+  await page.getByRole('list', { name: 'Etiquetas' }).getByRole('link', { name: 'IP en IoT', exact: true }).click();
+  await expect(page).toHaveURL(/\/protocolos\/apuntes\/\?tag=ipv6$/);
+  await filtered('ipv6');
 });
 test('el menú móvil permite navegar por asignatura y sección sin desplazar el contenido inicial', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -34,7 +41,7 @@ test('el menú móvil permite navegar por asignatura y sección sin desplazar el
   await page.keyboard.press('Enter');
   await navigation.getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();
   await expect(navigation).not.toHaveAttribute('open');
-  await expect(page.locator('[data-resource]').first()).toBeInViewport();
+  await expect(page.getByRole('heading', { level: 1, name: 'Apuntes' })).toBeInViewport();
   await navigation.locator('summary').click();
   await navigation.getByRole('link', { name: 'Apuntes', exact: true }).click();
   await expect(page).toHaveURL(/\/protocolos\/apuntes\/$/);
@@ -136,6 +143,7 @@ test('móvil: sin desbordamiento, fuentes accesibles y taller funcional', async 
   await page.setViewportSize({ width: 390, height: 844 });
   for (const route of ['./', subject, `${subject}apuntes/ipv6-y-vecinos/`, quizPath, `${subject}ejercicios/explorar-ndp/`, `${subject}materiales/tema-3-ip-en-iot/`]) {
     await page.goto(route);
+    if (route === subject) await page.waitForURL(`**/${subject}apuntes/`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
   await expect(page.getByRole('link', { name: /Descargar original/ })).toBeVisible();
@@ -227,11 +235,15 @@ test('lecturas e índice funcionan sin JavaScript; alias conserva el destino', a
 });
 test('la impresión mantiene explicación estática y oculta controles', async ({ page }) => {
   await page.goto(`${subject}apuntes/ipv6-y-vecinos/`);
+  await expect(page.locator('.sources')).toBeVisible();
   await page.emulateMedia({ media: 'print' });
   await expect(page.locator('.sidebar')).toBeHidden();
   await expect(page.locator('.visual-controls')).toBeHidden();
   for (const step of await page.locator('.ndp-steps li').all()) await expect(step).toBeVisible();
-  await expect(page.locator('.sources')).toBeVisible();
+  await expect(page.locator('.sources')).toBeHidden();
+  await expect(page.getByText('Estos conceptos y la notación se recogen en la página 9 del documento original.')).toBeHidden();
+  await expect(page.getByText('Supone que el vecino responde', { exact: false })).toBeVisible();
+  await expect(page.getByText('Fuente: Tema 3, página 39.', { exact: true })).toBeHidden();
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(page.locator('.mobile-toc-toggle')).toBeHidden();
 });

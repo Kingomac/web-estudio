@@ -1,22 +1,8 @@
 ---
-import Site from '../../../layouts/Site.astro';
-import PageHeader from '../../../components/ui/PageHeader.astro';
-import SectionTabs from '../../../components/ui/SectionTabs.astro';
-import ResourceList from '../../../components/ResourceList.astro';
-import { siteCatalog } from '../../../lib/sitio.ts';
-import { isResource } from '../../../lib/catalogo.ts';
-import type { Subject, Tag } from '../../../schemas/content.ts';
+import { siteCatalog, url } from '../../../lib/sitio.ts';
+import type { Subject } from '../../../schemas/content.ts';
 export async function getStaticPaths() { const catalog = await siteCatalog(); return catalog.entries.filter(e => e.kind === 'asignatura').map(entry => ({ params: { subject: entry.slug }, props: { entry } })); }
 interface Props { entry: Subject }
 const { entry } = Astro.props;
-const catalog = await siteCatalog();
-const resources = catalog.entries.filter(isResource).filter(e => e.subjectId === entry.id);
-const tags = catalog.entries.filter((e): e is Tag => e.kind === 'tag' && e.subjectId === entry.id);
-const bimester = catalog.byId.get(entry.bimesterId);
-const bimesterTitle = bimester?.kind === 'bimestre' ? bimester.title : entry.bimesterId.toUpperCase();
+return Astro.redirect(url(`/asignaturas/${entry.slug}/apuntes/`), 301);
 ---
-<Site title={entry.title} subject={entry}>
-  <PageHeader eyebrow={`${bimesterTitle} · Asignatura`} title={entry.title} description={entry.description} />
-  <SectionTabs subject={entry} />
-  <ResourceList entries={resources} tags={tags} catalog={catalog} />
-</Site>
