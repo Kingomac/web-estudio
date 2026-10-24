@@ -1,0 +1,66 @@
+{
+  "kind": "apuntes",
+  "id": "cloud.apuntes.autoevaluaciones-practicas",
+  "subjectId": "cloud",
+  "slug": "autoevaluaciones-practicas",
+  "title": "Prácticas · Autoevaluaciones originales resueltas",
+  "description": "25 actividades con sus soluciones publicadas y una pregunta adicional sin solucionario explícito. Incluye opciones y contexto; no es un test.",
+  "scope": "Recopilación de todos los bloques de autoevaluación y comprobación localizados en los tutoriales de P1 y P2, más una pregunta de P1 actividad 2. Sin inventar cuestionarios de P3/P4. Soluciones transcritas del HTML y notas editoriales separadas.",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "order": 30,
+  "body": "body.astro",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 6",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/07-knowledge-check/"
+    },
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 11",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/12-knowledge-check/"
+    },
+    {
+      "title": "Práctica 1 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/"
+    },
+    {
+      "title": "Práctica 2 · Actividades de temas MQTT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    },
+    {
+      "title": "Práctica 2 · Comprobación del broker",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/04_message_broker/"
+    },
+    {
+      "title": "Práctica 2 · Actividad de las notificaciones",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/06_rules_overview/"
+    },
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    },
+    {
+      "title": "P1 · Actividad adicional 2",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_2/"
+    },
+    {
+      "title": "P1 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_3/"
+    },
+    {
+      "title": "OASIS MQTT 3.1.1 · Semántica de temas",
+      "url": "https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html"
+    }
+  ],
+  "relatedResourceIds": [
+    "cloud.apuntes.examen-teoria",
+    "cloud.apuntes.examen-practicas"
+  ]
+}

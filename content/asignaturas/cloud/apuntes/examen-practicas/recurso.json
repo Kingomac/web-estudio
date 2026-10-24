@@ -1,0 +1,284 @@
+{
+  "kind": "apuntes",
+  "id": "cloud.apuntes.examen-practicas",
+  "subjectId": "cloud",
+  "slug": "examen-practicas",
+  "title": "Examen · Apuntes de prácticas",
+  "description": "Prácticas 1-4 y sus 13 actividades adicionales: conceptos, MQTT, políticas, sombras, trabajos y Greengrass.",
+  "scope": "Prácticas 1-4 y actividades adicionales 3+3+4+3. Formatos y conceptos; sin estudiar código de scripts ni crear tests. Tutoriales locales de la asignatura y enunciados PDF.",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "order": 20,
+  "body": "body.astro",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "cloud.materiales.practica-1",
+      "pdfPages": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "label": "Enunciado y alcance; desarrollo en los tutoriales enlazados"
+    },
+    {
+      "materialId": "cloud.materiales.practica-2",
+      "pdfPages": [
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "label": "Enunciado y alcance; desarrollo en los tutoriales enlazados"
+    },
+    {
+      "materialId": "cloud.materiales.practica-3",
+      "pdfPages": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "label": "Enunciado y alcance; desarrollo en los tutoriales enlazados"
+    },
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "label": "Enunciado y alcance; desarrollo en los tutoriales enlazados"
+    },
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        82,
+        83,
+        84,
+        85
+      ],
+      "label": "Respaldo conceptual y formatos de AWS IoT"
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "tutorial P1, organización",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/05-organizing-devices-and-things/"
+    },
+    {
+      "title": "autenticación/autorización",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/08-authorization-and-authentication/"
+    },
+    {
+      "title": "AWS, políticas pub/sub",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html"
+    },
+    {
+      "title": "P1, políticas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    },
+    {
+      "title": "P1, aplicación de certificados",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/10-applying-security-certificates/"
+    },
+    {
+      "title": "actividad 1",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_1/"
+    },
+    {
+      "title": "actividad 2",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_2/"
+    },
+    {
+      "title": "actividad 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_3/"
+    },
+    {
+      "title": "AWS: temas MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/topics.html"
+    },
+    {
+      "title": "P2, uso de temas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    },
+    {
+      "title": "broker",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/04_message_broker/"
+    },
+    {
+      "title": "AWS: MQTT y QoS",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html"
+    },
+    {
+      "title": "P2, conexiones",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/08_device_connections/"
+    },
+    {
+      "title": "introducción a reglas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/06_rules_overview/"
+    },
+    {
+      "title": "uso de reglas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/07_applying_rules/"
+    },
+    {
+      "title": "P2, actividad DynamoDB",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_1/"
+    },
+    {
+      "title": "P2, actividad SNS",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_2/"
+    },
+    {
+      "title": "AWS: flujo de sombras",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-data-flow.html"
+    },
+    {
+      "title": "P2, anatomía de sombras",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/10_device_shadows/"
+    },
+    {
+      "title": "sombras en acción",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/11_device_shadows/"
+    },
+    {
+      "title": "actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_3/"
+    },
+    {
+      "title": "P3, configuración",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/03-setup-your-iot-device/"
+    },
+    {
+      "title": "mensajería",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/04-transmit-mqtt-messages/"
+    },
+    {
+      "title": "actividad 1",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_1/"
+    },
+    {
+      "title": "actividad 2",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_2/"
+    },
+    {
+      "title": "P3, Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    },
+    {
+      "title": "P3, actividad 4: manejador y plantillas",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    },
+    {
+      "title": "P3, preparación",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/02-lets-begin/"
+    },
+    {
+      "title": "P3, actividad de túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    },
+    {
+      "title": "P3, auditoría",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    },
+    {
+      "title": "actividad ML personalizada",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    },
+    {
+      "title": "P4, actividad 1",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_1/"
+    },
+    {
+      "title": "P4, actividad 2",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/"
+    }
+  ],
+  "relatedResourceIds": [
+    "cloud.apuntes.examen-teoria",
+    "cloud.apuntes.autoevaluaciones-practicas"
+  ]
+}

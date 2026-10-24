@@ -1,0 +1,22 @@
+{
+  "id": "cloud.materiales.practica-2",
+  "kind": "material",
+  "subjectId": "cloud",
+  "slug": "practica-2",
+  "title": "Práctica 2 · Enunciado y actividades",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo. El alcance de examen está delimitado en los apuntes; importar el PDF no implica que todo su contenido entre.",
+  "tagIds": [
+    "cloud.tags.practicas"
+  ],
+  "order": 0,
+  "file": "materiales/cloud/practica-2.pdf",
+  "format": "pdf",
+  "providedName": "cniot2627-practica02-es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 8,
+  "sha256": "6002dbd9cd2ec4dffc5996ad572aafc0ee16aff50ffb0da240ba6be70ed3d617"
+}

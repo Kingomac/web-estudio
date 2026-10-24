@@ -1,0 +1,22 @@
+{
+  "id": "cloud.materiales.tema-2",
+  "kind": "material",
+  "subjectId": "cloud",
+  "slug": "tema-2",
+  "title": "Tema 2 · Amazon Web Services",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo. El alcance de examen está delimitado en los apuntes; importar el PDF no implica que todo su contenido entre.",
+  "tagIds": [
+    "cloud.tags.aws-introduccion"
+  ],
+  "order": 0,
+  "file": "materiales/cloud/tema-2.pdf",
+  "format": "pdf",
+  "providedName": "cniot2627-tema02-es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 188,
+  "sha256": "0d0277b0df3e87fa42873dd100bf7f3d22ccc29245f0a28c8e233cca49996371"
+}

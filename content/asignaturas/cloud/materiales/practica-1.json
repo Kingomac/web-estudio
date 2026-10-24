@@ -1,0 +1,22 @@
+{
+  "id": "cloud.materiales.practica-1",
+  "kind": "material",
+  "subjectId": "cloud",
+  "slug": "practica-1",
+  "title": "Práctica 1 · Enunciado y actividades",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo. El alcance de examen está delimitado en los apuntes; importar el PDF no implica que todo su contenido entre.",
+  "tagIds": [
+    "cloud.tags.practicas"
+  ],
+  "order": 0,
+  "file": "materiales/cloud/practica-1.pdf",
+  "format": "pdf",
+  "providedName": "cniot2627-practica01-es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 10,
+  "sha256": "7e516f9e53049054b3f7abc1a986f7f697d5e93d0c60942f6c8f2dbf96a89414"
+}

@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "cloud.tags.aws-iot",
+  "subjectId": "cloud",
+  "slug": "aws-iot",
+  "title": "AWS IoT",
+  "type": "topic",
+  "order": 30
+}

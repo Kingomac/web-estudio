@@ -1,0 +1,22 @@
+{
+  "id": "cloud.materiales.tema-1",
+  "kind": "material",
+  "subjectId": "cloud",
+  "slug": "tema-1",
+  "title": "Tema 1 · Computación en la nube",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo. El alcance de examen está delimitado en los apuntes; importar el PDF no implica que todo su contenido entre.",
+  "tagIds": [
+    "cloud.tags.cloud"
+  ],
+  "order": 0,
+  "file": "materiales/cloud/tema-1.pdf",
+  "format": "pdf",
+  "providedName": "cniot2627-tema01-es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 78,
+  "sha256": "3073161e64ceac433309712bf25eac8f3ef1879d9a2d7aab1ed438af9e5a3324"
+}

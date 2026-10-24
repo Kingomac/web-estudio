@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "cloud.tags.examen",
+  "subjectId": "cloud",
+  "slug": "examen",
+  "title": "Preparación del examen",
+  "type": "study",
+  "order": 50
+}

@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "cloud.tags.autoevaluaciones",
+  "subjectId": "cloud",
+  "slug": "autoevaluaciones",
+  "title": "Autoevaluaciones originales resueltas",
+  "type": "study",
+  "order": 60
+}

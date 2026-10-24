@@ -1,0 +1,22 @@
+{
+  "id": "cloud.materiales.tema-3",
+  "kind": "material",
+  "subjectId": "cloud",
+  "slug": "tema-3",
+  "title": "Tema 3 · Virtualización",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo. El alcance de examen está delimitado en los apuntes; importar el PDF no implica que todo su contenido entre.",
+  "tagIds": [
+    "cloud.tags.virtualizacion"
+  ],
+  "order": 0,
+  "file": "materiales/cloud/tema-3.pdf",
+  "format": "pdf",
+  "providedName": "cniot2627-tema03-es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 40,
+  "sha256": "69050ba4628f7192ef06acfd45557135b0a126337a29ce82f90f5751e761be74"
+}

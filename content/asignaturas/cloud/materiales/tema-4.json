@@ -1,0 +1,22 @@
+{
+  "id": "cloud.materiales.tema-4",
+  "kind": "material",
+  "subjectId": "cloud",
+  "slug": "tema-4",
+  "title": "Tema 4 · AWS IoT",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo. El alcance de examen está delimitado en los apuntes; importar el PDF no implica que todo su contenido entre.",
+  "tagIds": [
+    "cloud.tags.aws-iot"
+  ],
+  "order": 0,
+  "file": "materiales/cloud/tema-4.pdf",
+  "format": "pdf",
+  "providedName": "cniot2627-tema04-es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 98,
+  "sha256": "2b0c1903a92b11c84660ab62b6d002fccae343828580bb51d419517efd4a2105"
+}

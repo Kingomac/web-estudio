@@ -18,7 +18,7 @@
     pre code, code { overflow-wrap: anywhere; }
     .table-scroll { overflow: visible; }
     thead { display: table-header-group; }
-    tr, .callout, .panel { break-inside: avoid; }
+    tr, pre, .callout, .panel { break-inside: avoid; }
     th, td { font-size: 9pt; padding: 5pt 7pt; }
     .callout { border: 1px solid var(--color-border); border-left-width: 3px; }
     a { color: var(--color-text); text-decoration: none; }

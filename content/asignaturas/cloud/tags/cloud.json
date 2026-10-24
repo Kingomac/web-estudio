@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "cloud.tags.cloud",
+  "subjectId": "cloud",
+  "slug": "cloud",
+  "title": "Computación en la nube",
+  "type": "topic",
+  "order": 0
+}

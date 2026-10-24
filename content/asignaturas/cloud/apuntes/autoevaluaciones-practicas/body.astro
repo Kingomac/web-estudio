@@ -1,0 +1,555 @@
+<h2 id="introduccion">Cómo usar esta recopilación</h2>
+<p>Aquí están <strong>las preguntas, opciones y respuestas que ya aparecen en las prácticas</strong>, junto con sus comprobaciones intermedias. Son apuntes resueltos: las soluciones están visibles y no se registra ni puntúa ninguna respuesta.</p>
+<p>Se han reunido <strong>25 actividades con solución publicada: 9 de la práctica 1 y 16 de la práctica 2</strong>. Al final se incluye otra pregunta de una actividad adicional que no trae solución explícita, separada y con su respuesta derivada del material. No se han creado tests nuevos.</p>
+<p>El examen anunciado tendrá <strong>respuesta única</strong>, pero los materiales originales contienen selección múltiple, verdadero/falso y actividades abiertas. Se conserva lo que pide cada enunciado. En las actividades de comodines, «capturar todos» no significa necesariamente «capturar únicamente esos».</p>
+<p>Las respuestas marcadas como <strong>«Respuesta publicada»</strong> proceden del solucionario local. Las <strong>«Claves de repaso»</strong> son explicaciones añadidas para estudiar. La pregunta sobre nombres de tema incluye una aclaración porque su formulación confunde sintaxis válida y convención de nombres.</p>
+<p>Consulta también <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/">Apuntes de prácticas</a> y <a href="/web-estudio/asignaturas/cloud/apuntes/examen-teoria/">Apuntes de teoría</a>. No se asignan páginas ficticias a las preguntas HTML: cada bloque enlaza su sección original.</p>
+<h2 id="p1-comprobacion-6">Práctica 1 · Comprobación de conocimientos, sección 6</h2><p>Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_1/07-knowledge-check/">sección original del tutorial</a>, copia local revisada.</p>
+<h3 id="p1-comprobacion-6-q1">1. Pregunta 1 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál de los siguientes componentes de AWS IoT Core sirve como punto de entrada seguro para que los dispositivos IoT se conecten a la nube de AWS?</p>
+<ul>
+<li>
+<p>Seguridad e identidad</p>
+</li>
+<li>
+<p>El registro de dispositivos (<em>Device registry</em>)</p>
+</li>
+<li>
+<p>La pasarela de dispositivos (<em>Device gateway</em>)</p>
+</li>
+<li>
+<p>El agente de mensajería (<em>Message broker</em>)</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>La pasarela de dispositivos</p>
+<p><strong>Clave de repaso (añadida):</strong> La pasarela es el punto de entrada seguro; el broker distribuye mensajes y el registro conserva información de las cosas.</p>
+<h3 id="p1-comprobacion-6-q2">2. Pregunta 2 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuáles son las áreas clave en las que se aplica la seguridad a los sistemas IoT? (Selecciona DOS)</p>
+<ul>
+<li>
+<p>Certificados y políticas de AWS IoT </p>
+</li>
+<li>
+<p>Políticas de autenticación</p>
+</li>
+<li>
+<p>Roles y políticas de IAM</p>
+</li>
+<li>
+<p>Certificados de dispositivos</p>
+</li>
+<li>
+<p>Políticas y permisos de seguridad</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><ul>
+<li>Certificados y políticas de AWS IoT </li>
+<li>Roles y políticas de IAM</li>
+</ul>
+<p><strong>Clave de repaso (añadida):</strong> El ejercicio separa la seguridad del dispositivo (certificado/política IoT) de los permisos IAM de usuarios y servicios.</p>
+<h2 id="p1-comprobacion-11">Práctica 1 · Comprobación de conocimientos, sección 11</h2><p>Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_1/12-knowledge-check/">sección original del tutorial</a>, copia local revisada.</p>
+<h3 id="p1-comprobacion-11-q1">3. Pregunta 1 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál de las siguientes opciones completa esta afirmación?</p>
+<p>Las políticas de AWS IoT son documentos JSON que contienen un conjunto de:</p>
+<ul>
+<li>
+<p>Permisos</p>
+</li>
+<li>
+<p>Atributos</p>
+</li>
+<li>
+<p>Certificados</p>
+</li>
+<li>
+<p>Metadatos</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>Permisos</p>
+<p><strong>Clave de repaso (añadida):</strong> Una política expresa permisos; el certificado identifica y los atributos describen la cosa.</p>
+<h3 id="p1-comprobacion-11-q2">4. Pregunta 2 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál de las siguientes son acciones de política MQTT? (Selecciona TRES)</p>
+<ul>
+<li>
+<p>Subscribe</p>
+</li>
+<li>
+<p>Connect</p>
+</li>
+<li>
+<p>Shadow</p>
+</li>
+<li>
+<p>Publish</p>
+</li>
+<li>
+<p>Message</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><ul>
+<li>Subscribe</li>
+<li>Connect</li>
+<li>Publish</li>
+</ul>
+<p><strong>Clave de repaso (añadida):</strong> Son los nombres que aparecen en las opciones. En la política se escriben con el prefijo iot:. Receive también es una acción válida, pero no figura entre estas opciones.</p>
+<h2 id="p1-autoevaluacion">Práctica 1 · Cuestionario final</h2><p>Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/">sección original del tutorial</a>, copia local revisada.</p>
+<h3 id="p1-autoevaluacion-q1">5. Pregunta 1 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál es el método utilizado para almacenar información descriptiva sobre un dispositivo IoT, como su número de serie o fabricante?</p>
+<ul>
+<li>
+<p>Nombres de objetos</p>
+</li>
+<li>
+<p>Atributos de objetos</p>
+</li>
+<li>
+<p>Tipos de objetos</p>
+</li>
+<li>
+<p>Grupos de objetos</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>Atributos de objetos</p>
+<p><strong>Clave de repaso (añadida):</strong> Nombre identifica; atributos describen; tipo clasifica; grupo permite gestionar conjuntos.</p>
+<h3 id="p1-autoevaluacion-q2">6. Pregunta 2 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />En el proceso de aprovisionamiento de un dispositivo, ¿qué credencial de seguridad crea AWS IoT Core para la autenticación del dispositivo?</p>
+<ul>
+<li>
+<p>SDK</p>
+</li>
+<li>
+<p>Política de AWS IoT</p>
+</li>
+<li>
+<p>Certificado X.509</p>
+</li>
+<li>
+<p>Rol de IAM</p>
+</li>
+<li>
+<p>Política de IAM</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>Certificado X.509</p>
+<p><strong>Clave de repaso (añadida):</strong> El certificado permite autenticar la identidad del dispositivo; una política define autorización.</p>
+<h3 id="p1-autoevaluacion-q3">7. Pregunta 3 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />Además de mantener un listado de dispositivos y sus atributos, el registro de dispositivos también puede publicar mensajes de eventos cuando los objetos cambian.</p>
+<p>¿Cuáles son algunos de los eventos que se comunican? (Elige TRES)</p>
+<ul>
+<li>
+<p>autorización</p>
+</li>
+<li>
+<p>creación</p>
+</li>
+<li>
+<p>migración</p>
+</li>
+<li>
+<p>actualización</p>
+</li>
+<li>
+<p>eliminación</p>
+</li>
+<li>
+<p>modificación</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><ul>
+<li>creación</li>
+<li>actualización</li>
+<li>eliminación</li>
+</ul>
+<p><strong>Clave de repaso (añadida):</strong> Son los tres eventos que enumera la solución. Se conserva su terminología exacta.</p>
+<h3 id="p1-autoevaluacion-q4">8. Pregunta 4 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuáles de las siguientes son claves que se encuentran en una declaración de política de AWS IoT? (Elige TRES)</p>
+<ul>
+<li>
+<p>Acción (Action)</p>
+</li>
+<li>
+<p>Permitir (Allow)</p>
+</li>
+<li>
+<p>Crear (Create)</p>
+</li>
+<li>
+<p>Efecto (Effect)</p>
+</li>
+<li>
+<p>Recurso (Resource)</p>
+</li>
+<li>
+<p>Denegar (Deny)</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><ul>
+<li>Acción (Action)</li>
+<li>Efecto (Effect)</li>
+<li>Recurso (Resource)</li>
+</ul>
+<p><strong>Clave de repaso (añadida):</strong> Action, Effect y Resource son claves. Allow y Deny son valores de Effect.</p>
+<h3 id="p1-autoevaluacion-q5">9. Pregunta 5 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />Los dispositivos y clientes de IoT necesitan comunicarse entre sí y con los servicios de AWS IoT.</p>
+<p>¿Cuál es el protocolo de comunicación ligero, de publicación-suscripción, comúnmente utilizado para este propósito?</p>
+<ul>
+<li>
+<p>iot:Publish</p>
+</li>
+<li>
+<p>MQTT</p>
+</li>
+<li>
+<p>iot:Receive</p>
+</li>
+<li>
+<p>X.509</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>MQTT</p>
+<p><strong>Clave de repaso (añadida):</strong> MQTT es el protocolo; Publish/Receive son acciones de autorización y X.509 un formato de certificado.</p>
+<h2 id="p2-temas">Práctica 2 · Actividades de temas MQTT</h2><p>Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/">sección original del tutorial</a>, copia local revisada.</p>
+<h3 id="p2-temas-termostato">10. Datos de un termostato inteligente</h3>
+<p><strong>Enunciado original:</strong> Sin mirar antes la solución, anota todos los tipos de datos que se te ocurran que podría proporcionar un termostato inteligente.</p>
+<p><strong>Solución del material:</strong> la lista de puntos de datos es la siguiente; el original la presenta como abierta («Y más...»).</p><ul>
+<li>Ubicación
+       (nombre de la habitación en la que se encuentra)</li>
+<li>Batería
+       (nivel en porcentaje)</li>
+<li>Duración
+       de la batería (eficiencia porcentual)</li>
+<li>Temperatura
+       (lectura actual)</li>
+<li>Temperatura
+       solicitada</li>
+<li>Hora
+       (reloj interno, utilizado para programar el cambio de temperatura)</li>
+<li>Modo
+       (Calor, AC, Ventilador, Calor o AC, Programa)</li>
+<li>Nivel
+       de brillo de la pantalla (0-5)</li>
+<li>Proximidad
+       (S/N, utilizado para mostrar información básica, de lo contrario, la pantalla está en blanco)</li>
+<li>Humedad
+       (lectura actual)</li>
+<li>Versión
+       de firmware (número)</li>
+<li>Estado
+       del micrófono (encendido o apagado)</li>
+<li>Red
+       inalámbrica (conexión actual)</li>
+<li>Lista
+       de redes inalámbricas (último escaneo)</li>
+<li>Estado
+       del botón 1 (presionado o suelto)</li>
+<li>Estado
+       del botón 2 (presionado o suelto)</li>
+<li>Actualización
+       disponible (última fecha y hora de verificación)</li>
+<li>Actualización
+       disponible (número de versión)</li>
+<li>Usuario
+       conectado (administrador o usuario simple)</li>
+<li>Estado
+       de los filtros (última lectura, matriz de filtros registrados)</li>
+<li>Fecha
+       de cambio de filtro (matriz de filtros)</li>
+<li>Nombre
+       del filtro (matriz de filtro)</li>
+<li>Modo
+       de asistente inteligente (nombre del asistente)</li>
+<li>Comando
+       del asistente inteligente (último recibido)</li>
+</ul><p>El original recuerda que un sensor sencillo puede ofrecer menos datos y una cámara más. La imagen del termostato es ilustrativa y no contiene datos necesarios para resolver la actividad abierta.</p>
+<h3 id="p2-temas-q1">11. Nombre jerárquico</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál sería un nombre de tema útil y práctico para un <em>hub</em> inteligente (de nombre <strong>smarthub</strong>) de una red inalámbrica (de nombre <strong>wifi7ZH0</strong>) localizado en una cocina del 3er piso de una casa?</p>
+<p>El nombre tiene que comenzar por <strong>sensor</strong>.</p>
+<pre><code>sensor/...
+</code></pre>
+<p><strong>Respuesta publicada:</strong></p><pre><code>sensor/wifi7ZH0/piso3/cocina/smarthub
+</code></pre>
+<p>El nombre comienza por sensor, seguido del nombre de la red, el piso, la cocina y, finalmente, el dispositivo <em>smarthub</em>.</p>
+<p><strong>Clave de repaso (añadida):</strong> Es una propuesta útil para la jerarquía del ejercicio, no el único nombre posible para representar ese dispositivo.</p>
+<h3 id="p2-temas-q2">12. Pregunta 1 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong></p><pre><code>sensor/temperature/truck_1/main_freezer
+sensor/temperature/truck_1/secondary_freezer
+sensor/temperature/truck_1/cabin</code></pre>
+<p>¿Qué nombre de suscripción los captura a todos? (Selecciona TRES)</p>
+<ol>
+<li>sensor/temperature/truck_1/#</li>
+<li>sensor/temperature/truck_1/+</li>
+<li>sensor/#</li>
+<li>sensor/#/truck_1</li>
+<li>sensor/temperature/truck_2/#</li>
+<li>sensor-temperature-truck_1-#</li>
+<li>sensor/?</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>sensor/temperature/truck_1/#</li>
+<li>sensor/temperature/truck_1/+</li>
+<li>sensor/#</li>
+</ol>
+<p>En este caso, usando + ou # en la parte final de la subscrición se obtendría el mismo resultado.</p>
+<p><strong>Clave de repaso (añadida):</strong> Los tres filtros contienen todos los temas enumerados; sensor/# admite además muchos otros. + y # no son equivalentes en general.</p>
+<h3 id="p2-temas-q3">13. Pregunta 2 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong></p><pre><code>sensor/temperature/truck_1/main_freezer
+sensor/temperature/truck_2/main_freezer
+sensor/temperature/truck_5/main_freezer</code></pre>
+<p>¿Qué nombre de suscripción los captura a todos? (Selecciona DOS)</p>
+<ol>
+<li>sensor/#/#/main_freezer</li>
+<li>sensor/temperature/+/main_freezer</li>
+<li>sensor/#</li>
+<li>sensor/+/main_freezer</li>
+<li>sensor/?</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>sensor/temperature/+/main_freezer</li>
+<li>sensor/#</li>
+</ol>
+<p>+ es un comodín para un nivel del tema y # para cualquier cosa en el mismo nivel e inferiores.</p>
+<p><strong>Clave de repaso (añadida):</strong> El + sustituye el nivel del camión. sensor/# también los contiene, aunque es más amplio.</p>
+<h3 id="p2-temas-q4">14. Pregunta 3 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong></p><pre><code>sensor/temperature/truck_1/main_freezer
+sensor/door/truck_1/door_latch
+sensor/temperature/truck_1/cabin
+sensor/door/truck_1/side_latch</code></pre>
+<p>¿Qué nombre de suscripción los captura a todos? (Seleccione DOS)</p>
+<ol>
+<li>sensor/+/truck_1/+</li>
+<li>sensor/#/truck*</li>
+<li>sensor/+/truck_1/#</li>
+<li>sensor/+/truck_1/*</li>
+<li>#/truck_1/#</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>sensor/+/truck_1/+</li>
+<li>sensor/+/truck_1/#</li>
+</ol>
+<p>En este caso, usando + ou # en la parte final de la subscrición se obtendría el mismo resultado.</p>
+<p><strong>Clave de repaso (añadida):</strong> El + intermedio selecciona temperature o door. Al final, + cubre un nivel y # admite descendientes; ambos sirven para la lista dada.</p>
+<h2 id="p2-broker">Práctica 2 · Comprobación del broker</h2><p>Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_2/04_message_broker/">sección original del tutorial</a>, copia local revisada.</p>
+<h3 id="p2-broker-q1">15. Pregunta 1 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />En el ejemplo, el <em>Message Broker</em> se compara con la seguridad.</p>
+<ol>
+<li>
+<p>Verdadero</p>
+</li>
+<li>
+<p>Falso</p>
+</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>Falso</li>
+</ol>
+<p>El <em>Message Broker</em> se compara con el mostrador de información en el que se hace el triaje de los aspirantes.</p>
+<p><strong>Clave de repaso (añadida):</strong> En la analogía, el mostrador distribuye; la seguridad controla el acceso.</p>
+<h3 id="p2-broker-q2">16. Pregunta 2 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />La distribución del mensaje se hace aplicando una política de <strong>el primer suscrito es el primer servido</strong>. Los demás no reciben el mensaje.</p>
+<ol>
+<li>
+<p>Verdadero</p>
+</li>
+<li>
+<p>Falso</p>
+</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>Falso</li>
+</ol>
+<p>El <em>Message Broker</em> envía una copia del mensaje a todos los subscriptores del tema.</p>
+<p><strong>Clave de repaso (añadida):</strong> La publicación se distribuye entre las suscripciones coincidentes, no se consume únicamente por el primer suscriptor.</p>
+<h2 id="p2-alertas">Práctica 2 · Actividad de las notificaciones</h2><p>Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_2/06_rules_overview/">sección original del tutorial</a>, copia local revisada.</p>
+<p><strong>Contexto original:</strong> revisar en 20 segundos los avisos del camión 101. Se transcriben las lecturas para que las preguntas sean comprensibles por sí solas. Cada par es temperatura / humedad; el asterisco conserva la marca de alerta del original.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Hora</th><th scope="col">Lecturas, en orden</th></tr></thead><tbody>
+<tr><td>11:50</td><td>36 / 12%; 36 / 12%; 37 / 12%; 36 / 13%</td></tr>
+<tr><td>11:51</td><td>36 / 13%; 35 / 12%; 36 / 12%; 36 / 12%</td></tr>
+<tr><td>11:52</td><td>36 / 12%; 31* / 12%; 36 / 11%; 36 / 11%</td></tr>
+<tr><td>11:53</td><td>36 / 11%; 37 / 10%*; 36 / 11%; 36 / 12%</td></tr>
+<tr><td>11:54</td><td>36 / 13%; 39* / 12%; 37 / 14%; 36 / 13%</td></tr>
+<tr><td>11:55</td><td>35 / 12%; 36 / 12%; 36 / 12%; 36 / 11%</td></tr>
+<tr><td>11:56</td><td>36 / 12%; 35 / 14%; 36 / 12%; 29* / 12%</td></tr>
+<tr><td>11:57</td><td>34 / 12%; 36 / 11%; 36 / 12%; 36 / 12%</td></tr>
+<tr><td>11:58</td><td>36 / 12%</td></tr>
+</tbody></table></div>
+<h3 id="p2-alertas-q1">17. Pregunta 1 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuántas notificaciones eran alertas (estaban en rojo o tenían un asterisco <code>*</code> en ellas)?</p>
+<ul>
+<li>
+<p>2</p>
+</li>
+<li>
+<p>3</p>
+</li>
+<li>
+<p>4</p>
+</li>
+<li>
+<p>¿Había alertas? ¿En serio?</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>4</p>
+<p><strong>Clave de repaso (añadida):</strong> Los cuatro asteriscos aparecen en temperatura 31, humedad 10%, temperatura 39 y temperatura 29.</p>
+<h3 id="p2-alertas-q2">18. Pregunta 2 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál es la temperatura más baja medida?</p>
+<ul>
+<li>
+<p>28 grados</p>
+</li>
+<li>
+<p>29 grados</p>
+</li>
+<li>
+<p>31 grados</p>
+</li>
+<li>
+<p>35 grados</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>29 grados</p>
+<p><strong>Clave de repaso (añadida):</strong> La lectura de 29 aparece en el bloque de las 11:56. La actividad ilustra por qué filtrar ayuda a detectar excepciones.</p>
+<h2 id="p2-autoevaluacion">Práctica 2 · Cuestionario final</h2><p>Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/">sección original del tutorial</a>, copia local revisada.</p>
+<h3 id="p2-autoevaluacion-q1">19. Pregunta 1 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Qué formato se usa con más frecuencia dentro del protocolo MQTT para transportar mensajes?</p>
+<ul>
+<li>
+<p>XML</p>
+</li>
+<li>
+<p>YAML</p>
+</li>
+<li>
+<p>HTML</p>
+</li>
+<li>
+<p>JSON</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>JSON</p>
+<p><strong>Clave de repaso (añadida):</strong> Es el formato usado habitualmente en este curso. MQTT transporta payloads y no exige que sean JSON.</p>
+<h3 id="p2-autoevaluacion-q2">20. Pregunta 2 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál es una buena analogía para describir la estructura de un nombre de tema?</p>
+<ul>
+<li>
+<p>Un conjunto de cajas colocadas unas al lado de otras.</p>
+</li>
+<li>
+<p>Un rastro de indicaciones para los mensajes.</p>
+</li>
+<li>
+<p>Una dirección en el IoT Core para los mensajes.</p>
+</li>
+<li>
+<p>Una jerarquía de espacios de nombres.</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>Una jerarquía de espacios de nombres.</p>
+<p><strong>Clave de repaso (añadida):</strong> Los niveles de la jerarquía se separan con /. Su significado lo define la aplicación.</p>
+<h3 id="p2-autoevaluacion-q3">21. Pregunta 3 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál de los siguientes temas es un tema válido?</p>
+<ol>
+<li>
+<p>sensor/temperature/truck 1/main_freezer</p>
+</li>
+<li>
+<p>sensor\temperature\truck_1\main_freezer</p>
+</li>
+<li>
+<p>sensor/temperature/truck_1/main_freezer</p>
+</li>
+<li>
+<p>sensor-temperature-truck_1-main_freezer</p>
+</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>sensor/temperature/truck_1/main_freezer</li>
+</ol>
+<p><strong>Aclaración técnica (añadida):</strong> conserva esa respuesta si reconoces el ejercicio original, pero no deduzcas que sea el único nombre permitido por MQTT. El protocolo permite espacios y no exige barras: un nombre con guiones también puede ser válido. La pregunta mezcla validez del protocolo con la convención jerárquica recomendada. <a href="https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107">OASIS MQTT 3.1.1, apartado 4.7.3</a>.</p>
+<h3 id="p2-autoevaluacion-q4">22. Pregunta 4 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Qué comodín coincide con cualquier cadena en el nivel que contiene el carácter?</p>
+<ul>
+<li>
+<p>*</p>
+</li>
+<li>
+<p>+</p>
+</li>
+<li>
+<p>&amp;</p>
+</li>
+<li>
+<p>#</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>+</p>
+<p><strong>Clave de repaso (añadida):</strong> + ocupa exactamente un nivel completo del filtro; # puede abarcar niveles descendientes y debe ir al final.</p>
+<h3 id="p2-autoevaluacion-q5">23. Pregunta 5 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />Una regla tiene como mínimo:</p>
+<ol>
+<li>
+<p>Un nombre, una descripción y al menos una etiqueta.</p>
+</li>
+<li>
+<p>Un nombre, una declaración de consulta y al menos una etiqueta.</p>
+</li>
+<li>
+<p>Un nombre, una descripción y al menos una acción a realizar.</p>
+</li>
+<li>
+<p>Un nombre, una declaración de consulta y al menos una acción a realizar.</p>
+</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>Un nombre, una declaración de consulta y al menos una acción a realizar.</li>
+</ol>
+<p><strong>Clave de repaso (añadida):</strong> Descripción, etiquetas y acción de error no forman el mínimo exigido por el ejercicio.</p>
+<h3 id="p2-autoevaluacion-q6">24. Pregunta 6 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />Para recibir los mensajes de los siguientes tema:</p>
+<ul>
+<li>sensor/temperature/truck_1</li>
+<li>sensor/humidity/truck_1</li>
+</ul>
+<p>¿Qué filtro de tema debes usar?</p>
+<ol>
+<li>
+<p>sensor/#/truck_1</p>
+</li>
+<li>
+<p>sensor//truck_1</p>
+</li>
+<li>
+<p>sensor/truck_1/*</p>
+</li>
+<li>
+<p>sensor/+/truck_1</p>
+</li>
+</ol>
+<p><strong>Respuesta publicada:</strong></p><ol>
+<li>sensor/+/truck_1</li>
+</ol>
+<p><strong>Clave de repaso (añadida):</strong> El nivel variable es temperature/humidity. # no puede ir entre sensor y truck_1.</p>
+<h3 id="p2-autoevaluacion-q7">25. Pregunta 7 del original</h3>
+<p><strong>Enunciado y opciones originales:</strong><br />¿Cuál es una buena comparación para ilustrar el papel del <em>Message Broker</em>?</p>
+<ul>
+<li>
+<p>Un mostrador de información.</p>
+</li>
+<li>
+<p>Una copia sin conexión de un dispositivo en un documento JSON.</p>
+</li>
+<li>
+<p>Un conjunto de políticas de IAM.</p>
+</li>
+<li>
+<p>Un almacén para mensajes.</p>
+</li>
+</ul>
+<p><strong>Respuesta publicada:</strong></p><p>Un mostrador de información.</p>
+<p><strong>Clave de repaso (añadida):</strong> El mostrador dirige la información a quienes corresponde; la copia de estado en JSON describe una sombra.</p>
+<h2 id="pregunta-adicional-sin-solucion">Pregunta adicional sin solucionario explícito</h2>
+<p>En <a href="https://miot-cniot.github.io/es/actividades/practica_1/actividade_2/">P1, actividad adicional 2</a> aparece: «¿Recuerdas en qué script de la actividad 1 se usó el comando describe_endpoint y para qué?».</p>
+<p><strong>No trae respuesta desplegable.</strong> La respuesta se obtiene del material de la actividad 1 y del ejemplo mostrado en la actividad 3: <code>start.sh</code> obtiene el endpoint de AWS IoT para pasárselo al cliente del dispositivo. El comando CLI se escribe <code>aws iot describe-endpoint</code>, con guion. Esto es una respuesta deducida del material, no una solución publicada junto a la pregunta. No se pide estudiar el código del script para el examen.</p>
+<h2 id="cobertura">Comprobación de cobertura y procedencia</h2>
+<p>Se han revisado los enunciados de las cuatro prácticas y los artículos de cursos y actividades de la copia local, incluidas las comprobaciones intermedias. Se usa la versión española; la versión gallega duplica las mismas preguntas. No se duplican archivos antiguos con sufijos <code>.old</code>, <code>.bak</code> o <code>.deprecated</code>.</p>
+<p>La práctica 1 aporta 9 preguntas resueltas. La práctica 2 aporta 16 actividades resueltas: 1 abierta sobre el termostato, 1 sobre el nombre del tema, 3 sobre comodines, 2 sobre el broker, 2 sobre alertas y 7 del cuestionario final. Total: <strong>25 con solución publicada, más 1 pregunta adicional sin solucionario explícito</strong>. En la copia revisada no aparecen cuestionarios equivalentes de las prácticas 3 y 4; sus contenidos se estudian en los apuntes de prácticas.</p>
+<p>Se mantienen opciones y soluciones originales aunque alguna pregunta sea de selección múltiple, abierta o verdadero/falso. Eso no cambia el formato anunciado para el examen: respuesta única. Las «claves de repaso» y aclaraciones técnicas son añadidos editoriales identificados; no se presentan como palabras del profesor. Ninguna entrada se ha convertido en pregunta del banco ni en test.</p>

@@ -1,0 +1,486 @@
+<h2 id="alcance">Alcance del examen</h2>
+<p><strong>Teoría: lunes 2 de noviembre, a las 19:00, después de la prueba de prácticas de las 18:00.</strong> Según el correo del profesor facilitado por Mario: cada prueba tiene <strong>10 preguntas tipo test de respuesta única</strong>, se realiza en <strong>Moovi</strong>, hay que llevar ordenador y <strong>no se permite consultar materiales</strong>. El correo no indica penalización por error: no se presupone ninguna.</p>
+<p>Estos apuntes se centran en reconocer conceptos, comparar alternativas e interpretar situaciones. El alcance procede del correo; las explicaciones, de los materiales del curso 2026/27. Los ejemplos didácticos añadidos se identifican como tales. Todas las páginas citadas son <strong>páginas físicas del PDF, contando la portada como 1</strong>, no el número global de diapositiva impreso.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Qué estudiar</th>
+<th>Qué queda fuera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tema 1</td>
+<td>Introducción, NIST, beneficios y retos, responsabilidad compartida, edge, cloudlets, MEC y fog: pp. 6-63. Se conserva la comparación general de hiperescaladores de p. 77.</td>
+<td>Iniciativa europea Cloud-Edge-IoT continuum: pp. 64-76. La p. 78 contiene referencias para ampliar.</td>
+</tr>
+<tr>
+<td>Tema 2</td>
+<td><strong>Solo Introducción: pp. 4-15</strong> (diapositivas impresas 82-93).</td>
+<td>Desde el índice de p. 16: seguridad y catálogo detallado de servicios. Los servicios usados en prácticas sí se explican en los apuntes de prácticas.</td>
+</tr>
+<tr>
+<td>Tema 3</td>
+<td>Virtualización: pp. 2-40, incluidos los conceptos que aparecen en figuras.</td>
+<td>El correo no excluye ningún apartado de este tema.</td>
+</tr>
+<tr>
+<td>Tema 4</td>
+<td>Introducción, software de dispositivo y servicios de control: pp. 4-93.</td>
+<td>Servicios de análisis de datos: pp. 95-98; p. 94 es su índice.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Dos distinciones de alcance:</strong> excluir la iniciativa europea no excluye el concepto de continuo, edge o fog; excluir los servicios de análisis de datos del tema 4 no excluye las reglas IoT, Greengrass ni sus componentes de inferencia ML. Tampoco excluye las actividades adicionales de prácticas.</p>
+<p>La fecha y el formato anteriores reproducen el correo recibido; esta lectura no es una planificación de estudio ni una verificación del calendario. Continúa con <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/">Prácticas</a> y <a href="/web-estudio/asignaturas/cloud/apuntes/autoevaluaciones-practicas/">Autoevaluaciones resueltas</a>.</p>
+<h2 id="tema-1">Tema 1 · Qué hace que un servicio sea cloud</h2>
+<p>La nube ofrece acceso por red y bajo demanda a capacidades TIC. El usuario consume recursos como servicios y delega parte de su gestión en un proveedor. La idea no es simplemente «un servidor en Internet»: importan el aprovisionamiento, la compartición, la elasticidad y la medición.</p>
+<p>En el ejemplo de Forbes del material, dimensionar para el máximo deja servidores ociosos fuera del horario de actividad; dimensionar para el promedio no cubre los picos. <strong>Aprovisionar cuando sube la demanda y liberar cuando baja</strong> aproxima la capacidad al consumo. Escalabilidad es poder aumentar capacidad; elasticidad implica ajustarla a la demanda, también reduciéndola.</p>
+<p>La evolución del centro de datos se apoya en hardware estandarizado, virtualización, automatización y orquestación. Un <strong>SDDC</strong> expone cómputo, red, almacenamiento y seguridad mediante software. <strong>IaC</strong> describe infraestructura en archivos versionables; <strong>GitOps</strong> utiliza el repositorio como referencia del estado deseado y los cambios pasan por procesos reproducibles y auditables.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=6">T1, pp. 6-18</a>.</p>
+<h3 id="nist">NIST: recordar el modelo 5-3-4</h3>
+<p><strong>5 características esenciales, 3 modelos de servicio, 4 modelos de despliegue.</strong> La definición del NIST habla de recursos configurables compartidos, disponibles por red, que se aprovisionan y liberan rápidamente con mínimo esfuerzo de administración o interacción con el proveedor.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Significado</th>
+<th>Pista en una pregunta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autoservicio bajo demanda</td>
+<td>El consumidor aprovisiona automáticamente sin intervención humana del proveedor en cada solicitud.</td>
+<td>«Crear recursos por su cuenta».</td>
+</tr>
+<tr>
+<td>Acceso amplio por red</td>
+<td>Mecanismos estándar accesibles desde clientes heterogéneos.</td>
+<td>«Móvil, portátil, estación de trabajo».</td>
+</tr>
+<tr>
+<td>Agrupación de recursos</td>
+<td>Recursos físicos o virtuales reasignados entre consumidores, modelo multitenant.</td>
+<td>«Recursos compartidos, ubicación física abstraída».</td>
+</tr>
+<tr>
+<td>Elasticidad rápida</td>
+<td>Aprovisionar y liberar según demanda; capacidad aparentemente ilimitada para el usuario.</td>
+<td>«Sube y baja con la carga».</td>
+</tr>
+<tr>
+<td>Servicio medido</td>
+<td>Medir, controlar y comunicar el consumo al nivel apropiado.</td>
+<td>«CPU, almacenamiento o ancho de banda consumidos».</td>
+</tr>
+</tbody>
+</table></div>
+<p>«Aparentemente ilimitado» describe la percepción del consumidor, no ausencia real de límites. La agrupación abstrae la ubicación exacta, aunque el consumidor pueda elegir una región u otra localización de mayor nivel. Servicio medido permite transparencia y modelos de pago por uso; no significa que todos los servicios tengan idéntica unidad de facturación.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=20">T1, pp. 20-28</a>.</p>
+<h3 id="modelos-servicio">IaaS, PaaS y SaaS: decidir por lo que administra el cliente</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Qué recibe el cliente</th>
+<th>Qué controla el cliente</th>
+<th>Perfil típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IaaS</td>
+<td>Cómputo, almacenamiento y red.</td>
+<td>SO invitado, aplicaciones, datos y configuración de los recursos virtuales que se le exponen.</td>
+<td>Administración y arquitectura de sistemas.</td>
+</tr>
+<tr>
+<td>PaaS</td>
+<td>Entorno para desarrollar y desplegar aplicaciones.</td>
+<td>Aplicación y su configuración; no administra la infraestructura ni el SO de la plataforma.</td>
+<td>Desarrollo de aplicaciones.</td>
+</tr>
+<tr>
+<td>SaaS</td>
+<td>Una aplicación del proveedor ya ejecutándose.</td>
+<td>Uso y configuración personal permitida.</td>
+<td>Usuario final.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Regla para comparar:</strong> al pasar de IaaS a SaaS se delega más gestión en el proveedor. El proveedor conserva responsabilidades sobre lo que ofrece y el cliente sobre el uso que hace. Una PaaS puede incorporar lenguajes, bases de datos, CI/CD, monitorización y gestión automatizada del ciclo de vida.</p>
+<p>Ejemplos didácticos: instalar tu SO y aplicación sobre una VM encaja en IaaS; subir tu aplicación a un entorno administrado, en PaaS; utilizar una aplicación web terminada, en SaaS.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=29">T1, pp. 29-33</a>.</p>
+<h3 id="modelos-despliegue">Pública, privada, comunitaria e híbrida</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Despliegue</th>
+<th>Idea decisiva</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pública</td>
+<td>Oferta al público general; infraestructura del proveedor compartida por distintos clientes. No significa que los datos de cada cliente sean públicos.</td>
+</tr>
+<tr>
+<td>Privada</td>
+<td>Uso exclusivo de una organización. Puede gestionarla la organización o un tercero y estar dentro o fuera de sus instalaciones.</td>
+</tr>
+<tr>
+<td>Comunitaria</td>
+<td>Compartida por organizaciones con misión, requisitos de seguridad o normativa comunes.</td>
+</tr>
+<tr>
+<td>Híbrida</td>
+<td>Integra entornos de nube distintos; el ejemplo del tema combina privada y pública.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cloud bursting</strong>: delegar picos de carga en la nube pública. «Privada» no equivale necesariamente a «en mi edificio», y «pública» no equivale a «gratuita». El modelo de servicio y el de despliegue responden a preguntas distintas: qué se ofrece y para quién/cómo se organiza la infraestructura.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=34">T1, pp. 34-38</a>, incluidas las figuras.</p>
+<h3 id="beneficios-riesgos">Beneficios, riesgos y responsabilidad compartida</h3>
+<p>Los beneficios del tema son reducir inversión inicial, ajustar consumo, acceder a recursos y tecnologías avanzadas, acelerar experimentación y disponer de redundancia, soporte y capacidades de seguridad del proveedor. <strong>Son posibilidades que dependen del diseño y uso</strong>, no garantías automáticas de menor coste o disponibilidad perfecta.</p>
+<p>Los retos son dependencia de la red, costes difíciles de prever, complejidad de múltiples proveedores, dependencia del proveedor (<em>vendor lock-in</em>), privacidad/soberanía de los datos, regulación y seguridad. <strong>FinOps</strong> se relaciona aquí con controlar y optimizar costes. Para reducir el lock-in: formatos abiertos, interoperabilidad, API portables y capacidad de migración.</p>
+<p>Antes de contratar se analizan catálogo, SLA (nivel de servicio acordado), compensaciones, soporte, protección de datos y continuidad. El material recomienda replicación, planes de recuperación, alternativas de proveedor y copias <strong>3-2-1: tres copias, dos formatos/medios, una en ubicación diferente</strong>.</p>
+<p>En el marco regulatorio presentado en clase, distingue <strong>protección de datos personales (GDPR)</strong>, <strong>portabilidad/cambio de proveedor (Data Act)</strong>, <strong>ciberseguridad (NIS2)</strong> y <strong>transferencias UE-EE. UU. (DPF)</strong>. Distingue también obligaciones legales de certificaciones o códigos de conducta: ISO/IEC 27001 trata la gestión de seguridad; 27017/27018 añaden aspectos cloud y protección de información personal; SOC 2 y CSA STAR son otras referencias. El European Cloud CoC abarca IaaS/PaaS/SaaS; CISPE CoC se centra en IaaS. Adherirse a un código no sustituye el cumplimiento ni el acuerdo de tratamiento. Se resume el material docente, sin convertir sus fechas o valoraciones jurídicas en asesoramiento actualizado.</p>
+<p><strong>Responsabilidad compartida:</strong> el proveedor protege los servicios que ofrece; el cliente configura, administra y utiliza correctamente los suyos. En una VM IaaS el cliente sigue siendo responsable de credenciales, parches del SO invitado, aplicaciones, reglas del firewall y protección de datos. Delegar el hardware no delega esas tareas.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=40">T1, pp. 40-47</a>.</p>
+<h3 id="edge-fog">Edge, cloudlets, MEC, fog y continuo</h3>
+<p>El <strong>continuo de computación</strong> integra recursos desde la nube hasta los dispositivos IoT. Las cargas se distribuyen según latencia, energía, ancho de banda y requisitos de aplicación. No obliga a ejecutar todo en la nube ni a eliminarla.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Ubicación/organización</th>
+<th>Para qué sirve</th>
+<th>Limitación que recordar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edge computing</td>
+<td>Procesamiento próximo a donde se generan o consumen los datos.</td>
+<td>Respuesta rápida, filtrado local, menos tráfico y más autonomía.</td>
+<td>Menos recursos por nodo y gestión física/distribuida compleja.</td>
+</tr>
+<tr>
+<td>Cloudlet</td>
+<td>Pequeño centro de datos próximo y de confianza, a pocos saltos inalámbricos del móvil.</td>
+<td>Descargar computaciones exigentes mediante VM; en el modelo clásico conserva estado temporal y la nube el persistente.</td>
+<td>Cobertura local, movilidad y confianza en su operador.</td>
+</tr>
+<tr>
+<td>MEC</td>
+<td>Recursos en el borde de redes de acceso: estaciones base, RAN y otras localizaciones.</td>
+<td>Aplicaciones móviles sensibles a latencia, contexto de red y descarga de cómputo.</td>
+<td>Continuidad en movilidad, interoperabilidad y recursos limitados.</td>
+</tr>
+<tr>
+<td>Fog computing</td>
+<td>Nodos físicos o virtuales en varias capas entre cosas y nube.</td>
+<td>Distribuir cómputo, almacenamiento, control y red a lo largo del recorrido.</td>
+<td>Orquestación heterogénea y distribuida.</td>
+</tr>
+</tbody>
+</table></div>
+<p>MEC pasó de <em>Mobile</em> a <em>Multi-access Edge Computing</em>: no se limita conceptualmente a una sola tecnología móvil. El tema lo vincula a ETSI, aplicaciones en VM/contenedores y migración para mantener continuidad. Los cloudlets son una propuesta de proximidad; fog abarca una organización por capas más amplia. Pueden complementarse.</p>
+<p>Fog añade conocimiento del contexto y localización, distribución geográfica, heterogeneidad, interoperabilidad/federación, interacción en tiempo real y escalabilidad. Mantiene los modelos de servicio y despliegue de la nube. En una arquitectura por capas, el control inmediato suele quedar cerca del dispositivo y el procesamiento estratégico menos sensible a latencia puede ir a la nube. Existen casos sin nube y casos sin niebla.</p>
+<p>Las cifras de latencia de las figuras son orientativas del escenario, no una definición universal. En los ejemplos de hiperescaladores: regiones = nube central; Local Zones = proximidad metropolitana; Wavelength = borde de red móvil; Outposts = instalaciones del cliente; Greengrass = ejecución local IoT. Estas ideas reaparecen en la introducción de AWS.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=49">T1, pp. 49-63</a> y <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=77">p. 77</a>. No se desarrolla la iniciativa europea de pp. 64-76.</p>
+<h2 id="tema-2">Tema 2 · Introducción a AWS</h2>
+<p>AWS ofrece servicios cloud agrupados por funciones. Para este examen se estudia la <strong>organización de su infraestructura y su extensión al borde</strong>, sin memorizar el catálogo detallado que empieza después de la introducción.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Qué es</th>
+<th>Diferencia examinable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Región</td>
+<td>Área independiente de infraestructura AWS.</td>
+<td>Disponibilidad de servicios y precios pueden variar entre regiones.</td>
+</tr>
+<tr>
+<td>Zona de disponibilidad (AZ)</td>
+<td>Una o más instalaciones de centros de datos dentro de una región, aisladas de otras AZ.</td>
+<td>Separación de energía/refrigeración y conexión privada de baja latencia entre AZ.</td>
+</tr>
+<tr>
+<td>CloudFront</td>
+<td>CDN para contenido estático y dinámico.</td>
+<td>Acerca contenido al usuario mediante cachés; no es una AZ.</td>
+</tr>
+<tr>
+<td>PoP</td>
+<td>Punto de presencia de entrega de contenido.</td>
+<td>Las solicitudes se dirigen al punto de menor latencia.</td>
+</tr>
+<tr>
+<td>REC</td>
+<td>Caché regional intermedia entre origen y PoP, con mayor capacidad.</td>
+<td>Reduce accesos repetidos al origen para varios PoP.</td>
+</tr>
+<tr>
+<td>Local Zone</td>
+<td>Infraestructura AWS próxima a ciudades y centros industriales.</td>
+<td>Acerca cómputo; conectada a la región mediante red privada de alta capacidad.</td>
+</tr>
+<tr>
+<td>Wavelength Zone</td>
+<td>Infraestructura AWS dentro de redes 5G de proveedores de comunicaciones (CSP).</td>
+<td>Acerca aplicaciones a usuarios de la red móvil.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Región, AZ y PoP no son sinónimos.</strong> Distribuir una aplicación entre AZ puede mejorar disponibilidad, pero debe diseñarse para aprovechar esa distribución. Una CDN acerca contenido; una Local Zone o Wavelength acerca capacidad de ejecución.</p>
+<p>El <strong>Carrier Gateway</strong> conecta recursos de Wavelength con la red del operador. En el esquema docente esos recursos tienen direcciones de la red del CSP y pueden acceder a Internet a través de ella. Wavelength permite soluciones MEC; la demostración musical de la p. 15 ilustra interoperabilidad entre operadores y necesidad de baja latencia.</p>
+<p>El continuo AWS busca mantener servicios, API y herramientas coherentes entre región y borde. Las razones para salir de la nube central incluyen latencia, IA local y residencia/privacidad de datos. Las cantidades de servicios, PoP o cachés que aparecen en las diapositivas describen esa edición del material; la distinción funcional es el concepto a comprender.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-2.pdf#page=4">T2, pp. 4-15</a>. <strong>Fin de la materia de teoría del tema 2.</strong> IAM, EC2, S3, DynamoDB, SNS y CloudWatch se repasan por su papel en las prácticas.</p>
+<h2 id="tema-3">Tema 3 · Virtualización</h2>
+<p>Virtualizar es <strong>abstraer lógicamente infraestructura física</strong>. La vista virtual puede diferir de la real. En servidores permite compartir recursos mediante entornos aislados. Una VM incluye dispositivos virtuales, SO invitado y aplicaciones; no tiene que ver exactamente el mismo hardware que otra VM o que el anfitrión.</p>
+<h3 id="tecnicas-virtualizacion">Técnicas y diferencias</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Qué hace</th>
+<th>Ventaja</th>
+<th>Coste o límite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hipervisor tipo 1</td>
+<td>Se ejecuta directamente sobre hardware. Ejemplos del tema: Xen, ESXi, Hyper-V.</td>
+<td>Control del hardware y aislamiento entre VM.</td>
+<td>Hay SO invitado y recursos por VM.</td>
+</tr>
+<tr>
+<td>Hipervisor tipo 2</td>
+<td>Se apoya en un SO anfitrión. Ejemplo: VirtualBox.</td>
+<td>Permite ejecutar VM sobre un sistema de propósito general.</td>
+<td>Añade dependencia del anfitrión.</td>
+</tr>
+<tr>
+<td>Virtualización en el kernel, KVM</td>
+<td>Un módulo Linux implementa funcionalidad de hipervisor; QEMU emula hardware virtual con aceleración.</td>
+<td>VM con distintos SO usando soporte hardware.</td>
+<td>Requiere las extensiones de virtualización en el caso descrito.</td>
+</tr>
+<tr>
+<td>Contenedores</td>
+<td>Procesos aislados que comparten el kernel anfitrión.</td>
+<td>Menor consumo y arranque más ligero que una VM completa.</td>
+<td>Deben ser compatibles con ese kernel; compartirlo condiciona el aislamiento.</td>
+</tr>
+<tr>
+<td>Unikernel</td>
+<td>Aplicación enlazada en compilación solo con las bibliotecas de SO que necesita.</td>
+<td>Imagen especializada, pequeña e inmutable, poca superficie de ataque.</td>
+<td>Portabilidad y ecosistema más limitados; recompilación según plataforma.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El material coloca KVM entre los ejemplos de tipo 2 y después lo desarrolla como virtualización en el kernel. Para reconocer su funcionamiento, conserva el dato inequívoco de p. 13: <strong>módulo Linux + QEMU + extensiones hardware</strong>. La frase anterior «sin hipervisor» no debe interpretarse como ausencia de funcionalidad de hipervisor: esa misma página dice que el módulo la implementa.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=2">T3, pp. 2-8 y 12-20</a>.</p>
+<h3 id="x86">Virtualización x86: completa, para y asistida por hardware</h3>
+<p>El problema presentado es que ciertas instrucciones del SO invitado podrían acceder al hardware sin el control adecuado del hipervisor.</p>
+<ul>
+<li><strong>Completa</strong>, en la explicación histórica del tema: traducción binaria de instrucciones problemáticas; no requiere modificar el SO invitado, pero tiene sobrecarga.</li>
+<li><strong>Paravirtualización:</strong> sustituirlas por llamadas a la API del hipervisor; requiere modificar y recompilar el invitado, a cambio de mejorar rendimiento respecto a la solución anterior.</li>
+<li><strong>Asistida por hardware (HVM):</strong> extensiones como Intel VT-x y AMD-V; las operaciones problemáticas generan excepciones interceptables y se aceleran tareas de virtualización.</li>
+</ul>
+<p>No confundas esta comparación de <strong>modos x86</strong> con los <strong>tipos 1/2</strong> de hipervisor: clasifican aspectos distintos.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=9">T3, pp. 9-11</a>.</p>
+<h3 id="docker">Docker: imagen, contenedor y runtime</h3>
+<p>Una <strong>imagen</strong> empaqueta aplicación, bibliotecas, entorno de ejecución y configuración. Un <strong>Dockerfile</strong> contiene instrucciones para construirla. El <strong>registry</strong> almacena y distribuye imágenes. El <strong>motor/runtime</strong> crea y gestiona contenedores; un contenedor es la ejecución aislada de procesos, no el archivo de imagen.</p>
+<p>El tema explica la evolución desde LXC hacia containerd y estándares OCI. Que una herramienta funcione en Linux, Windows y macOS no elimina la compatibilidad exigida por kernel y arquitectura; el principio básico sigue siendo que el contenedor comparte un kernel compatible. Frente a VM, el contenedor no necesita su propio SO invitado completo.</p>
+<p>Un unikernel tampoco es simplemente un contenedor más pequeño: integra una aplicación con las partes mínimas del SO en una imagen especializada. Puede ejecutarse sobre hipervisor o directamente sobre hardware. La tabla de p. 20 ilustra tendencias de tamaño y arranque; sus milisegundos y megabytes no son límites universales.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=14">T3, pp. 14-20</a>.</p>
+<h3 id="virtualizacion-continuo">Virtualización en el continuo</h3>
+<p>En el borde importan recursos escasos, movilidad, rapidez de instanciación/migración y gestión global de nodos distribuidos. <strong>No hay una técnica óptima para todos los dispositivos y aplicaciones.</strong></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Tecnología</th>
+<th>Idea que reconocer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes</td>
+<td>Orquesta contenedores: despliegue, escalado horizontal y recuperación. En edge hay distribuciones ligeras y soluciones de gestión de flotas.</td>
+</tr>
+<tr>
+<td>FaaS/serverless</td>
+<td>Funciones activadas por eventos; el proveedor gestiona aprovisionamiento y escalado. Estado persistente normalmente externo. Puede haber arranque en frío y límites de ejecución.</td>
+</tr>
+<tr>
+<td>WebAssembly (WASM)</td>
+<td>Formato binario portable ejecutado en un entorno aislado; útil ante heterogeneidad y restricciones de recursos. WASI aporta interfaces de sistema.</td>
+</tr>
+<tr>
+<td>MicroVM</td>
+<td>VM muy ligera que busca combinar aislamiento hardware con rapidez y densidad.</td>
+</tr>
+<tr>
+<td>ApeiroRA</td>
+<td>Ejemplo de pila declarativa: Kubernetes, Gardener, IronCore/CobaltCore y automatización bare metal.</td>
+</tr>
+<tr>
+<td>Ocre</td>
+<td>Usa WASM para acercar aplicaciones encapsuladas a dispositivos limitados, con variantes para Zephyr y Linux.</td>
+</tr>
+<tr>
+<td>EVE-OS</td>
+<td>Plataforma abierta para nodos edge distribuidos; soporta contenedores, Kubernetes, funciones de red y VM, con gestión remota.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Estos ejemplos aparecen en el <strong>tema 3</strong> y no se eliminan por la exclusión de un apartado concreto del tema 1. La idea de FaaS es ejecutar funciones cuando sucede un evento, no «que no existan servidores».</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=22">T3, pp. 22-29</a> y <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=40">p. 40</a>, con revisión de figuras.</p>
+<h3 id="sdn-nfv">SDN y NFV</h3>
+<p><strong>SDN separa plano de control y plano de datos.</strong> El control decide/configura; los dispositivos del plano de datos reenvían conforme a esas reglas. El controlador ofrece API hacia aplicaciones (<em>northbound</em>) y comunica con los dispositivos (<em>southbound</em>). OpenFlow es un ejemplo de programación de flujos. La visión global facilita automatización, pero hay que resolver escalabilidad, disponibilidad del controlador e integración.</p>
+<p><strong>NFV convierte funciones de red en software sobre hardware estándar.</strong> Un firewall, NAT o balanceador puede desplegarse como función virtual en vez de depender de un equipo dedicado. Las funciones se encadenan en grafos de servicio (<em>service function chaining</em>).</p>
+<p>En el esquema ETSI: <strong>NFVI</strong> es la infraestructura; <strong>VIM</strong> gestiona sus recursos; <strong>VNFM</strong> gestiona el ciclo de vida de funciones; <strong>NFVO</strong> orquesta servicios y recursos. Estas piezas forman la gestión y orquestación <strong>MANO</strong>. La tabla del tema distingue funciones sobre VM (VNF), contenedores (CNF) y unikernels (UNF), con sus respectivos compromisos de recursos, aislamiento y portabilidad.</p>
+<p><strong>SDN y NFV se complementan:</strong> una programa cómo circula el tráfico; la otra desacopla funciones de red del hardware dedicado. No son sinónimos. El ejemplo IoT combina una capa de aplicaciones/microservicios, una pasarela de recursos virtualizados y la capa física. La pasarela aporta escalabilidad, conversión entre protocolos, aislamiento y compartición.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=30">T3, pp. 30-39</a>.</p>
+<h2 id="tema-4">Tema 4 · AWS IoT</h2>
+<p>AWS IoT combina software en los dispositivos y servicios en la nube. Entra el software de dispositivo y los servicios de control. El siguiente mapa ayuda a identificar el servicio por su función.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Componente/servicio</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FreeRTOS</td>
+<td>SO de tiempo real para microcontroladores y pequeños dispositivos.</td>
+</tr>
+<tr>
+<td>Device SDK</td>
+<td>Bibliotecas para desarrollar aplicaciones que se conectan de forma segura.</td>
+</tr>
+<tr>
+<td>Device Client</td>
+<td>Cliente Linux de referencia con funciones ya implementadas: MQTT, sombras, trabajos, túneles, etc.</td>
+</tr>
+<tr>
+<td>Greengrass</td>
+<td>Ejecución y gestión de componentes en dispositivos de borde.</td>
+</tr>
+<tr>
+<td>Device Tester</td>
+<td>Automatización de pruebas para dispositivos que usan FreeRTOS o Greengrass.</td>
+</tr>
+<tr>
+<td>IoT Core</td>
+<td>Conexión segura, registro, mensajes, reglas y sombras.</td>
+</tr>
+<tr>
+<td>Device Management</td>
+<td>Aprovisionamiento, organización, indexación y operaciones remotas de flotas.</td>
+</tr>
+<tr>
+<td>Device Defender</td>
+<td>Auditoría de configuraciones y, en la descripción teórica, detección de anomalías.</td>
+</tr>
+<tr>
+<td>Device Advisor</td>
+<td>Pruebas de conexión e interoperabilidad con IoT Core antes de comercializar.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=4">T4, pp. 4-20</a>.</p>
+<h3 id="greengrass">Greengrass: ejecución local y gestión en la nube</h3>
+<p>Tiene dos partes: <strong>core device</strong>, que ejecuta el software y aplicaciones en el borde, y <strong>servicio cloud</strong>, que gestiona dispositivos y despliegues. Acerca análisis y reacción al origen, filtra/agrega datos y permite inferencia ML local.</p>
+<p>El <strong>nucleus</strong> proporciona la funcionalidad mínima y gestiona ciclo de vida, despliegue y comunicación de componentes. Los componentes opcionales amplían funciones. No se debe asumir que instalar solo el núcleo activa automáticamente todas las funciones posibles.</p>
+<p>Un componente contiene <strong>receta + artefactos + dependencias</strong>. La receta es JSON/YAML: metadatos, configuración, compatibilidad de plataforma y ciclo de vida. Los artefactos son el código/binarios/scripts que se ejecutan. Las dependencias relacionan componentes y versiones. Los manifiestos permiten especificar plataformas diferentes; el ciclo de vida indica cómo instalar, arrancar o detener.</p>
+<p>Los despliegues especifican componentes y configuraciones para dispositivos o grupos; se comprueba compatibilidad de plataforma y dependencias. Son continuos: un destino que se conecta después recibe la versión vigente. El tema dice «un despliegue a la vez»; entiéndelo en el contexto de procesamiento de despliegues, no como que una flota solo pueda tener un grupo o un componente.</p>
+<p><strong>TokenExchangeService</strong> permite a componentes obtener credenciales temporales para servicios AWS. No es el modelo ML ni un broker. En ML separa <strong>modelo</strong> (artefacto entrenado), <strong>runtime</strong> (entorno como DLR o TensorFlow Lite) e <strong>inferencia</strong> (código que aplica el modelo). Entrenar y ejecutar una predicción son tareas distintas.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=11">T4, pp. 11-18</a>.</p>
+<h3 id="iot-core">IoT Core: registro, seguridad, mensajes y reglas</h3>
+<ul>
+<li><strong>Device Gateway:</strong> entrada segura.</li>
+<li><strong>Registry:</strong> metadatos/atributos de cosas y tipos.</li>
+<li><strong>Message Broker:</strong> distribuye mensajes publicados a suscripciones coincidentes.</li>
+<li><strong>Rules Engine:</strong> filtra, transforma y encamina datos mediante SQL y acciones.</li>
+<li><strong>Device Shadow:</strong> conserva estado consultable y modificable con independencia de la conexión del dispositivo.</li>
+</ul>
+<p><strong>Autenticación</strong> responde quién es una entidad; <strong>autorización</strong>, qué puede hacer; <strong>TLS</strong>, cómo proteger el canal. En los dispositivos se usan certificados X.509 y políticas IoT. Para usuarios/aplicaciones, identidades, roles y políticas IAM; las aplicaciones móviles pueden emplear Cognito.</p>
+<p>En TLS mutuo, AWS valida el certificado del dispositivo y el dispositivo valida el servidor mediante su cadena de confianza. La política IoT se asocia al certificado y concede acciones sobre recursos concretos. Un certificado válido no concede por sí solo permiso para cualquier tema. El proveedor de credenciales IoT permite obtener credenciales temporales mediante el certificado para acceder a servicios que usan SigV4, evitando credenciales permanentes incrustadas.</p>
+<p><strong>Cosa</strong> = representación en el registro; <strong>tipo</strong> = categoría lógica; <strong>grupo</strong> = agrupación para gestionar conjuntos y jerarquías; <strong>sombra</strong> = estado dinámico persistente. El registro no es el histórico de telemetría. En el curso se crea la cosa al aprovisionar; la conexión MQTT básica puede existir sin registrar una cosa, como señala p. 39. Los límites de atributos y grupos del PDF son los valores presentados por el curso.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=22">T4, pp. 22-39</a>.</p>
+<h3 id="reglas">Motor de reglas</h3>
+<p>Una regla tiene nombre, consulta SQL y una o más acciones. Descripción y acción de error son opcionales. <strong>FROM selecciona temas; WHERE filtra el mensaje; SELECT selecciona/transforma campos.</strong> La salida se envía por una acción: republicar, escribir en DynamoDB/S3, notificar por SNS o invocar Lambda, entre otras. La regla necesita permisos para ejecutar la acción.</p>
+<p>Ejemplo del tema: <code>SELECT color AS rgb FROM 'location01/sensor01' WHERE temperature &gt; 50</code>. Para <code>&#123;"color":"red","temperature":100&#125;</code> produce <code>&#123;"rgb":"red"&#125;</code>; con temperatura 50 no se cumple el filtro. Los operadores y funciones permiten acceder a JSON anidado, convertir datos y calcular valores.</p>
+<p>Las <strong>plantillas de sustitución</strong> usan <code>$&#123;expresión&#125;</code> para campos dinámicos de acciones, por ejemplo <code>$&#123;topic()&#125;/republish</code>. No son comodines MQTT ni políticas de permisos.</p>
+<p><strong>Basic Ingest</strong> entra directamente al motor de reglas, evitando el broker en esa ruta. Se publica con el prefijo <code>$aws/rules/NOMBRE_REGLA/...</code>. Permite reducir el coste de esa ruta de mensajería; no significa que todos los servicios de destino sean gratuitos.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=41">T4, pp. 41-51</a>.</p>
+<h3 id="sombras">Sombras: separar deseo, estado comunicado y ejecución física</h3>
+<p>Una sombra es un documento JSON de estado. <strong>reported</strong> contiene lo comunicado por el dispositivo; <strong>desired</strong>, lo solicitado por la aplicación; <strong>delta</strong>, los valores deseados que difieren de lo informado. Actualizar desired no ejecuta físicamente una acción ni confirma que el dispositivo la realizó.</p>
+<p>Secuencia: el dispositivo informa → la aplicación pide un cambio → la sombra conserva el deseo y notifica diferencias → el dispositivo aplica el cambio cuando puede → informa el resultado → la diferencia desaparece. Si está desconectado, la sombra sigue disponible; al reconectar debe recuperar/sincronizar el estado.</p>
+<p>Hay una sombra clásica sin nombre por cosa y pueden existir varias con nombre para separar grupos de propiedades y permisos. Se accede mediante MQTT o API HTTPS. Las operaciones son obtener, actualizar y borrar; tienen respuestas accepted/rejected. <strong>update/delta</strong> comunica diferencias y <strong>update/documents</strong> incluye estados anterior y actual.</p>
+<p><code>metadata</code> contiene tiempos por propiedad; <code>timestamp</code>, el del mensaje; <code>version</code> permite identificar revisiones; <code>clientToken</code> correlaciona solicitud y respuesta. Si se envía una versión obsoleta al actualizar puede haber conflicto; si no se incluye version se omite esa comprobación optimista. No confundas correlación con autenticación: clientToken no sustituye un certificado.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=53">T4, pp. 53-60</a>. Los mensajes completos se practican en <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/#sombras">Prácticas, sombras</a>.</p>
+<h3 id="aprovisionamiento">Aprovisionamiento y gestión de flotas</h3>
+<p>Aprovisionar prepara identidad y permisos: cosa, certificado/clave y política asociada. Las plantillas JSON describen recursos y parámetros; <code>&#123;"Ref":"nombre"&#125;</code> referencia un parámetro.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Situación</th>
+<th>Funcionamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Individual</td>
+<td>Dispositivos con credenciales disponibles.</td>
+<td>Parámetros al registrar cada uno.</td>
+</tr>
+<tr>
+<td>Bulk</td>
+<td>Muchos dispositivos con credenciales.</td>
+<td>Lista de parámetros en S3.</td>
+</tr>
+<tr>
+<td>JITP</td>
+<td>Certificado y clave de fábrica, CA registrada.</td>
+<td>Primera conexión activa una plantilla de aprovisionamiento.</td>
+</tr>
+<tr>
+<td>JITR</td>
+<td>Registro inicial con lógica personalizada.</td>
+<td>Evento de registro → regla → Lambda que crea/configura recursos.</td>
+</tr>
+<tr>
+<td>Fleet provisioning</td>
+<td>Sin identidad única inicial.</td>
+<td>Obtiene identidad propia en el primer aprovisionamiento.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Fleet provisioning puede usar <strong>usuario de confianza</strong>, que obtiene credenciales temporales para el proceso, o <strong>claim</strong>, certificado inicial compartido de permisos limitados. Comprometer ese certificado compartido implica más riesgo. La identidad definitiva debe distinguir cada dispositivo. En JITP, el fabricante registra la CA y la plantilla y debe conocer la cuenta destino; el tema excluye los certificados generados por AWS IoT para ese mecanismo.</p>
+<p><strong>Indexación de flotas</strong> combina información del registro, sombras, conectividad y otras fuentes para buscar dispositivos y calcular agregados. No es el motor SQL de reglas. Ejemplos del tema: <code>thingName:Sensor*</code>, <code>connectivity.connected:true</code>, <code>attributes.temp:[25 TO 30]</code>. Los corchetes incluyen extremos; llaves los excluyen. El catálogo de paquetes mantiene paquetes/versiones y permite asociarlos a cosas y desplegarlos con trabajos.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=62">T4, pp. 62-69</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=78">pp. 78-80</a>.</p>
+<h3 id="gestion-remota">Trabajos, túneles, Defender y Advisor</h3>
+<p>Un <strong>job</strong> define operaciones remotas, un <strong>documento de trabajo</strong> JSON dice qué ejecutar y una <strong>ejecución</strong> es su instancia en un dispositivo destino. Puede descargar archivos, actualizar software, reiniciar o rotar certificados. Documento y artefactos pueden estar en S3; no hay que confundirlos.</p>
+<p>Un trabajo <strong>snapshot</strong> se dirige al conjunto de destinos fijado al crear; uno <strong>continuous</strong> sigue activo para nuevos miembros del grupo. Las plantillas preconfiguran parámetros, reintentos, tiempos y despliegue. En <code>Download-File</code>: <code>downloadUrl</code> es el origen, <code>filePath</code> el destino local, <code>pathToHandler</code> dónde está el manejador y <code>runAsUser</code> el usuario de ejecución.</p>
+<p>Los dispositivos reciben notificaciones y respuestas por temas <code>$aws/things/.../jobs/...</code> y publican solicitudes para consultar/actualizar. Una respuesta accepted confirma una solicitud, no necesariamente el éxito final de la operación física.</p>
+<p>La <strong>tunelización segura</strong> permite acceso remoto a dispositivos tras un firewall mediante conexiones salientes, proxies y TLS, sin abrir una nueva regla de entrada. El agente recibe notificación en <code>$aws/things/thing-name/tunnels/notify</code> con el token correspondiente. Puede multiplexar flujos y conexiones. El token de túnel y las credenciales de SSH cumplen funciones distintas.</p>
+<p><strong>Defender</strong> audita certificados, políticas y configuraciones. El tema también explica monitorización de métricas con reglas o ML, alertas y mitigación. <strong>Nota de versión del propio curso:</strong> la página local de la práctica 3 avisa de la retirada de la función de detección en septiembre de 2026; conserva la distinción conceptual de teoría y no confundas ese aviso con la desaparición de auditorías. La nota procede de la copia docente y no es una comprobación independiente del estado comercial.</p>
+<p><strong>Advisor</strong> valida dispositivos contra un endpoint de pruebas. Categorías: TLS, MQTT, sombras, ejecución de trabajos, permisos/políticas y larga duración. Produce informes de calificación; no es el servicio que despliega trabajos ni el que audita continuamente una flota en operación.</p>
+<p>Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=71">T4, pp. 71-76</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=82">pp. 82-93</a> y <a href="https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/">tutorial P3, auditoría</a>, copia local revisada.</p>
+<h2 id="repaso">Repaso final de distinciones</h2>
+<p>Antes de dar la teoría por estudiada, comprueba que puedes explicar sin mirar: las cinco características NIST; IaaS/PaaS/SaaS; los cuatro despliegues; responsabilidad compartida; región/AZ/PoP; edge/fog/MEC; VM/contenedor/unikernel; imagen/runtime; SDN/NFV; SDK/Client/Greengrass; certificado/política/rol; registro/sombra; broker/regla; desired/reported/delta; JITP/JITR/claim; snapshot/continuous; Defender/Advisor.</p>
+<p>Estas comparaciones condensan el material; <strong>no predicen qué diez preguntas escogerá el profesor</strong>. No se han creado tests ni preguntas nuevas en el banco.</p>

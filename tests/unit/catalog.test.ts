@@ -53,7 +53,8 @@ test('calcula impacto indirecto sobre tests y componentes sin bucles', () => {
 });
 test('las rutas dependen del slug y conservan el ID; rechaza aliases en conflicto', () => {
   const entries = structuredClone(catalog.entries);
-  const reading = entries.find(e => e.kind === 'apuntes')!;
+  const reading = entries.find(e => e.kind === 'apuntes' && e.subjectId === 'protocolos')!;
+  assert.ok(reading.kind === 'apuntes');
   const id = reading.id;
   reading.slug = 'nuevo-titulo';
   assert.equal(resourcePath(reading, catalog.byId), '/asignaturas/protocolos/apuntes/nuevo-titulo/');

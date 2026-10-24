@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "cloud.tags.aws-introduccion",
+  "subjectId": "cloud",
+  "slug": "aws-introduccion",
+  "title": "Introducción a AWS",
+  "type": "topic",
+  "order": 10
+}

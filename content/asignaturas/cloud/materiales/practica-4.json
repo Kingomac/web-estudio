@@ -1,0 +1,22 @@
+{
+  "id": "cloud.materiales.practica-4",
+  "kind": "material",
+  "subjectId": "cloud",
+  "slug": "practica-4",
+  "title": "Práctica 4 · Enunciado y actividades",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo. El alcance de examen está delimitado en los apuntes; importar el PDF no implica que todo su contenido entre.",
+  "tagIds": [
+    "cloud.tags.practicas"
+  ],
+  "order": 0,
+  "file": "materiales/cloud/practica-4.pdf",
+  "format": "pdf",
+  "providedName": "cniot2627-practica04-es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 19,
+  "sha256": "7adbadd163ce294cac3fb163aad14c287715f7743c64bd3649adf487a2f1e1a2"
+}

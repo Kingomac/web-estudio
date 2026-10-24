@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "cloud.tags.virtualizacion",
+  "subjectId": "cloud",
+  "slug": "virtualizacion",
+  "title": "Virtualización",
+  "type": "topic",
+  "order": 20
+}

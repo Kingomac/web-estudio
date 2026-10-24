@@ -1,0 +1,14 @@
+{
+  "kind": "asignatura",
+  "id": "cloud",
+  "slug": "cloud",
+  "title": "Cloud Computing para IoT",
+  "bimesterId": "b1",
+  "order": 30,
+  "description": "Computación en la nube para IoT: teoría y prácticas AWS orientadas al examen.",
+  "teachingGuide": {
+    "url": "https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103624&_anoAcademico=2026&idiomaPais=gl.ES",
+    "title": "Guía docente de Cloud Computing para IoT · UDC · 2026/27",
+    "academicYear": "2026/27"
+  }
+}

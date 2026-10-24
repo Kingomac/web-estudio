@@ -29,7 +29,7 @@ test('el menú móvil permite navegar por asignatura y sección sin desplazar el
   await page.goto('./');
   const navigation = page.locator('.site-navigation');
   await expect(navigation).not.toHaveAttribute('open');
-  await expect(page.locator('.subject-row h3')).toBeInViewport();
+  await expect(page.locator('.subject-row h3').first()).toBeInViewport();
   await navigation.locator('summary').focus();
   await page.keyboard.press('Enter');
   await navigation.getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();

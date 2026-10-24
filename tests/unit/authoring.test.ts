@@ -9,8 +9,17 @@ const project = process.cwd();
 const cli = path.join(project, 'scripts/content/cli.ts');
 async function repository() {
   const root = await mkdtemp(path.join(tmpdir(), 'web-estudio-test-'));
-  await cp(path.join(project, 'content'), path.join(root, 'content'), { recursive: true });
-  await cp(path.join(project, 'public'), path.join(root, 'public'), { recursive: true });
+  // Copy the fixture and its dependencies, not every subject's growing PDF archive.
+  for (const file of [
+    'content/bimestres/b1.json',
+    'content/asignaturas/protocolos/asignatura.json',
+    'content/asignaturas/protocolos/tags/ipv6.json',
+    'content/asignaturas/protocolos/tags/repaso.json',
+    'content/asignaturas/protocolos/materiales/tema-3-ip-en-iot.json',
+    'content/asignaturas/protocolos/apuntes/ipv6-y-vecinos',
+    'content/asignaturas/protocolos/resumenes/ipv6-esencial',
+    'public/materiales/protocolos/tema-3-ip-en-iot.pdf',
+  ]) await cp(path.join(project, file), path.join(root, file), { recursive: true });
   return root;
 }
 function run(root: string, ...args: string[]) {
