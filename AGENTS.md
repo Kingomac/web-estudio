@@ -16,6 +16,5 @@ El usuario proporciona en su prompt una ruta de su PC y el objetivo de estudio. 
 - `bunfig.toml` fuerza Bun también para Astro y Playwright. En herramientas locales, aprovecha Bun Shell, `Bun.file` y `Bun.spawn` cuando simplifiquen el trabajo. Conserva las escrituras exclusivas (`wx` y `COPYFILE_EXCL`) para no sobrescribir contenido.
 - Ejecuta `bun run check` antes de dar por válido un cambio. Incluye tipos estrictos, unitarias, validación, compilación y E2E con Firefox bajo `/web-estudio/`. `bun test` ejecuta solo las unitarias; `bun run check` es la comprobación completa del proyecto.
 - La revisión académica y la impresión paginada requieren inspección adicional; las pruebas automáticas no las sustituyen.
-- El repositorio actual utiliza `bash scripts/git.sh` como acceso a Git mientras su historial esté en `.git-history/`.
 
 - Usa TypeScript estricto; deriva los tipos desde Zod. No uses `any` ni desactives el comprobador para resolver errores.
