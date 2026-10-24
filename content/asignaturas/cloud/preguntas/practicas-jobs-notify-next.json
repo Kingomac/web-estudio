@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-notify-next",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué notifica el tema reservado `$aws/things/THING/jobs/notify-next`?",
+  "explanation": "`notify` avisa cuando se añade o elimina un trabajo de la lista de pendientes; `notify-next`, cuando cambia la primera ejecución pendiente de esa lista.",
+  "options": [
+    {
+      "id": "primera",
+      "text": "Que ha cambiado la primera ejecución pendiente de la lista",
+      "explanation": "Es la definición de notify-next."
+    },
+    {
+      "id": "lista",
+      "text": "Que se ha añadido o eliminado un trabajo de la lista de pendientes",
+      "explanation": "Eso lo notifica `jobs/notify`."
+    },
+    {
+      "id": "completed",
+      "text": "Que el trabajo ha terminado en todos los destinos",
+      "explanation": "Eso es un evento `$aws/events/job/JOB/completed`."
+    },
+    {
+      "id": "tunel",
+      "text": "Que hay un túnel seguro abierto para el dispositivo",
+      "explanation": "Eso se notifica en `.../tunnels/notify`."
+    }
+  ],
+  "answer": "primera",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        75
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-jobs"
+    }
+  ]
+}

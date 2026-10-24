@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-fog-modelos",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Según la definición del OpenFog Consortium recogida en el tema, ¿qué ocurre con los modelos de servicio y despliegue en la computación en la niebla?",
+  "explanation": "La niebla distribuye cómputo, almacenamiento, control y red en el continuo Cloud-to-Thing, y sus modelos de servicio (IaaS, PaaS, SaaS) y despliegue (público, privado, comunitario e híbrido) son los mismos que en la nube.",
+  "options": [
+    {
+      "id": "mismos",
+      "text": "Son los mismos que en la nube",
+      "explanation": "La diapositiva lo afirma expresamente."
+    },
+    {
+      "id": "solo-iaas",
+      "text": "Solo admite IaaS, porque trabaja con nodos físicos",
+      "explanation": "La niebla admite los tres modelos de servicio, y además puede usar nodos virtuales."
+    },
+    {
+      "id": "privado",
+      "text": "Solo admite despliegue privado",
+      "explanation": "Admite los cuatro modelos de despliegue."
+    },
+    {
+      "id": "nuevos",
+      "text": "Define modelos propios que sustituyen a IaaS, PaaS y SaaS",
+      "explanation": "No define modelos nuevos: conserva los de la nube."
+    }
+  ],
+  "answer": "mismos",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

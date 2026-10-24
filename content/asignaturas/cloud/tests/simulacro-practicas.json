@@ -1,0 +1,63 @@
+{
+  "kind": "test",
+  "id": "cloud.tests.simulacro-practicas",
+  "subjectId": "cloud",
+  "slug": "simulacro-practicas",
+  "title": "Cloud Computing · Simulacro de prácticas",
+  "description": "18 preguntas de respuesta única sobre los formatos que anunció el profesor: temas MQTT, políticas, temas reservados, sombras y documentos de trabajos.",
+  "scope": "Prácticas 1-4 y sus actividades adicionales, sin código de scripts. Formatos según T4 pp. 14-15, 35, 44, 51, 57-60, 72-76 y 83, y los tutoriales enlazados.",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "order": 6,
+  "groups": [
+    {
+      "id": "mqtt-politicas",
+      "title": "Temas MQTT y políticas IoT",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.practicas-filtro-mqtt-valido",
+        "cloud.preguntas.practicas-filtro-mas-un-nivel",
+        "cloud.preguntas.practicas-politica-subscribe-recurso",
+        "cloud.preguntas.practicas-politica-effect",
+        "cloud.preguntas.practicas-lwt-quien-publica"
+      ]
+    },
+    {
+      "id": "reglas-sombras",
+      "title": "Reglas, Basic Ingest y sombras",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.practicas-basic-ingest",
+        "cloud.preguntas.practicas-regla-where-estricto",
+        "cloud.preguntas.practicas-sombra-tema-update",
+        "cloud.preguntas.practicas-sombra-con-nombre",
+        "cloud.preguntas.practicas-sombra-delta"
+      ]
+    },
+    {
+      "id": "device-client-jobs",
+      "title": "Device Client, trabajos y túneles",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.practicas-device-client-publish-on-change",
+        "cloud.preguntas.practicas-jobs-notify-next",
+        "cloud.preguntas.practicas-jobs-get-accepted",
+        "cloud.preguntas.practicas-jobs-runhandler",
+        "cloud.preguntas.practicas-jobs-plantilla-comun",
+        "cloud.preguntas.practicas-tunel-notify"
+      ]
+    },
+    {
+      "id": "greengrass",
+      "title": "Greengrass",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.practicas-greengrass-lifecycle",
+        "cloud.preguntas.practicas-ipc-ml-imagen"
+      ]
+    }
+  ]
+}

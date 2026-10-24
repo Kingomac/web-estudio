@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-comprobacion-11-q1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes opciones completa esta afirmación?\nLas políticas de AWS IoT son documentos JSON que contienen un conjunto de:",
+  "explanation": "Las políticas expresan permisos sobre acciones y recursos.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Permisos",
+      "explanation": "Las políticas expresan permisos sobre acciones y recursos."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Atributos",
+      "explanation": "Los atributos describen objetos del registro; no son el conjunto que define una política."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Certificados",
+      "explanation": "Los certificados acreditan identidad; una política no es una colección de certificados."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Metadatos",
+      "explanation": "Los metadatos describen información; la función de la política es definir permisos."
+    }
+  ],
+  "answer": "opcion-1",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 11",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/12-knowledge-check/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-comprobacion-11-q1"
+    }
+  ]
+}

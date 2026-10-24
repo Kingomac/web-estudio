@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-sombra-con-nombre",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La cosa `sensor01` tiene una sombra con nombre `door`. ¿Cuál es el tema para pedir su estado?",
+  "explanation": "Las sombras con nombre solo cambian el prefijo: `$aws/things/THING/shadow/name/SHADOW`. A ese prefijo se añade `/get`.",
+  "options": [
+    {
+      "id": "named",
+      "text": "`$aws/things/sensor01/shadow/name/door/get`",
+      "explanation": "Usa el prefijo de las sombras con nombre y la acción get."
+    },
+    {
+      "id": "classic",
+      "text": "`$aws/things/sensor01/shadow/get`",
+      "explanation": "Es la sombra clásica (sin nombre), no la sombra `door`."
+    },
+    {
+      "id": "orden",
+      "text": "`$aws/things/sensor01/door/shadow/get`",
+      "explanation": "El nombre va después de `shadow/name/`."
+    },
+    {
+      "id": "sin-aws",
+      "text": "`things/sensor01/shadow/name/door/get`",
+      "explanation": "Los temas de sombras son reservados y empiezan por `$aws/`."
+    }
+  ],
+  "answer": "named",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        57,
+        58
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Sombras en acción",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/11_device_shadows/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-sombra"
+    }
+  ]
+}

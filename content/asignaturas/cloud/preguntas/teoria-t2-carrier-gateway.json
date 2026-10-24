@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t2-carrier-gateway",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué función cumple el Carrier Gateway en una zona Wavelength?",
+  "explanation": "El Carrier Gateway conecta los recursos AWS de la zona (instancias EC2, contenedores ECS…) con la red del proveedor; los recursos tienen IP de la red del CSP y pueden salir a Internet a través de ella.",
+  "options": [
+    {
+      "id": "conecta",
+      "text": "Conecta los recursos AWS de la zona con la red del proveedor de comunicaciones",
+      "explanation": "Es la función descrita en la diapositiva."
+    },
+    {
+      "id": "cache",
+      "text": "Guarda en caché el contenido que se entrega a los usuarios móviles",
+      "explanation": "Eso lo hace la CDN (PoP y REC)."
+    },
+    {
+      "id": "az",
+      "text": "Replica los recursos entre zonas de disponibilidad",
+      "explanation": "La replicación entre AZ no es la función del Carrier Gateway."
+    },
+    {
+      "id": "iam",
+      "text": "Autentica a los usuarios del operador mediante IAM",
+      "explanation": "No es un servicio de identidad."
+    }
+  ],
+  "answer": "conecta",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

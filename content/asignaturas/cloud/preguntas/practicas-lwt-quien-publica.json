@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-lwt-quien-publica",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Quién publica el mensaje Last Will and Testament (LWT) de un cliente MQTT?",
+  "explanation": "El cliente configura el LWT (tema, contenido y QoS) al conectarse; si se desconecta de forma anómala, es el broker quien lo publica.",
+  "options": [
+    {
+      "id": "broker",
+      "text": "El broker, cuando detecta la desconexión anómala del cliente",
+      "explanation": "El cliente ya no puede publicar: lo hace el broker por él."
+    },
+    {
+      "id": "cliente",
+      "text": "El propio cliente, justo antes de perder la conexión",
+      "explanation": "En una desconexión anómala, el cliente no puede publicar."
+    },
+    {
+      "id": "sombra",
+      "text": "El servicio de sombras, en `/update/delta`",
+      "explanation": "El LWT es un mecanismo MQTT, no de sombras."
+    },
+    {
+      "id": "keepalive",
+      "text": "Nadie; es el nombre del PINGREQ de Keep Alive",
+      "explanation": "PINGREQ/PINGRESP comprueban la conexión; LWT es un mensaje distinto."
+    }
+  ],
+  "answer": "broker",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Conexiones de dispositivos",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/08_device_connections/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "conexiones"
+    }
+  ]
+}

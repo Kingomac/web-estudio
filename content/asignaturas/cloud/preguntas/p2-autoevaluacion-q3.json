@@ -1,0 +1,54 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-autoevaluacion-q3",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Aclaración del enunciado original sobre un «tema válido»: ¿qué nombre sigue la convención del ejercicio, con cuatro niveles jerárquicos separados por barras / y sin espacios?",
+  "explanation": "Usa / entre niveles y truck_1 sin espacios, conforme a la convención solicitada. El original mezcla validez MQTT y convención de nombres. Se ha precisado el enunciado para no enseñar que MQTT prohíbe espacios o exige barras.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "sensor/temperature/truck 1/main_freezer",
+      "explanation": "Contiene un espacio en truck 1 y no cumple la convención pedida. Esto no significa que MQTT prohíba los espacios."
+    },
+    {
+      "id": "opcion-2",
+      "text": "sensor\\temperature\\truck_1\\main_freezer",
+      "explanation": "Las barras inversas no separan niveles MQTT; el separador jerárquico es /."
+    },
+    {
+      "id": "opcion-3",
+      "text": "sensor/temperature/truck_1/main_freezer",
+      "explanation": "Usa / entre niveles y truck_1 sin espacios, conforme a la convención solicitada."
+    },
+    {
+      "id": "opcion-4",
+      "text": "sensor-temperature-truck_1-main_freezer",
+      "explanation": "Los guiones no crean niveles separados por /. El nombre puede ser válido en MQTT, pero no sigue la jerarquía pedida."
+    }
+  ],
+  "answer": "opcion-3",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    },
+    {
+      "title": "OASIS MQTT 3.1.1 · Semántica de nombres y filtros de temas",
+      "url": "https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-autoevaluacion-q3"
+    }
+  ]
+}

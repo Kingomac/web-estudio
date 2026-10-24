@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-autoevaluacion-q1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el método utilizado para almacenar información descriptiva sobre un dispositivo IoT, como su número de serie o fabricante?",
+  "explanation": "Los atributos almacenan datos como fabricante o número de serie.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Nombres de objetos",
+      "explanation": "El nombre identifica el objeto; los datos descriptivos se guardan como atributos."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Atributos de objetos",
+      "explanation": "Los atributos almacenan datos como fabricante o número de serie."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Tipos de objetos",
+      "explanation": "El tipo clasifica objetos; los valores descriptivos de un objeto se almacenan en atributos."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Grupos de objetos",
+      "explanation": "Los grupos permiten gestionar conjuntos de objetos; no sustituyen sus atributos."
+    }
+  ],
+  "answer": "opcion-2",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-autoevaluacion-q1"
+    }
+  ]
+}

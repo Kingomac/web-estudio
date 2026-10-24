@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-autoevaluacion-q7",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es una buena comparación para ilustrar el papel del Message Broker?",
+  "explanation": "El mostrador dirige la información a sus destinatarios, como el broker distribuye publicaciones.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Un mostrador de información.",
+      "explanation": "El mostrador dirige la información a sus destinatarios, como el broker distribuye publicaciones."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Una copia sin conexión de un dispositivo en un documento JSON.",
+      "explanation": "La copia del estado en JSON describe una sombra del dispositivo, no la función principal del broker."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Un conjunto de políticas de IAM.",
+      "explanation": "Las políticas IAM regulan permisos; no representan la distribución de mensajes por temas."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Un almacén para mensajes.",
+      "explanation": "Un almacén enfatiza guardar datos; la analogía solicitada destaca dirigirlos a los suscriptores."
+    }
+  ],
+  "answer": "opcion-1",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-autoevaluacion-q7"
+    }
+  ]
+}

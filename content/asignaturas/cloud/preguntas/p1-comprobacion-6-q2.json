@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-comprobacion-6-q2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "¿Cuáles son las áreas clave en las que se aplica la seguridad a los sistemas IoT? (Selecciona DOS)",
+  "explanation": "Agrupa la identidad del dispositivo mediante certificados y sus permisos mediante políticas IoT. IAM define roles y políticas para controlar el acceso de usuarios y servicios a recursos AWS.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Certificados y políticas de AWS IoT",
+      "explanation": "Agrupa la identidad del dispositivo mediante certificados y sus permisos mediante políticas IoT."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Políticas de autenticación",
+      "explanation": "Esta expresión no es una de las dos áreas que distingue el solucionario: certificados/políticas IoT y roles/políticas IAM."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Roles y políticas de IAM",
+      "explanation": "IAM define roles y políticas para controlar el acceso de usuarios y servicios a recursos AWS."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Certificados de dispositivos",
+      "explanation": "El certificado es parte del área de seguridad del dispositivo; esta opción aislada omite las políticas IoT."
+    },
+    {
+      "id": "opcion-5",
+      "text": "Políticas y permisos de seguridad",
+      "explanation": "Es una formulación genérica; no identifica una de las dos áreas concretas pedidas por el ejercicio."
+    }
+  ],
+  "answer": [
+    "opcion-1",
+    "opcion-3"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 6",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/07-knowledge-check/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-comprobacion-6-q2"
+    }
+  ]
+}

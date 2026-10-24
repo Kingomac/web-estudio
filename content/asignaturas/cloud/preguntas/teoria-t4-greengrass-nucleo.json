@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-greengrass-nucleo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el software Greengrass Core, ¿qué hace el núcleo (nucleus)?",
+  "explanation": "El núcleo implementa la funcionalidad mínima de Greengrass, gestiona el despliegue, la orquestación y el ciclo de vida de los demás componentes y facilita la comunicación entre ellos. Las funciones como inferencia ML o sombras las añaden componentes opcionales.",
+  "options": [
+    {
+      "id": "minimo",
+      "text": "Implementa la funcionalidad mínima y gestiona despliegue, orquestación y ciclo de vida de los demás componentes",
+      "explanation": "Es la descripción del tema."
+    },
+    {
+      "id": "ml",
+      "text": "Incluye de serie la inferencia ML y el streaming de vídeo",
+      "explanation": "Esas funciones se añaden con componentes opcionales."
+    },
+    {
+      "id": "nube",
+      "text": "Es el servicio en la nube que guarda las recetas",
+      "explanation": "El núcleo se ejecuta en el dispositivo core."
+    },
+    {
+      "id": "rtos",
+      "text": "Es un SO de tiempo real para microcontroladores",
+      "explanation": "Eso es FreeRTOS."
+    }
+  ],
+  "answer": "minimo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "greengrass"
+    }
+  ]
+}

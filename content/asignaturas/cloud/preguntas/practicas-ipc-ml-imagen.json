@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-ipc-ml-imagen",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la actividad 3 de la práctica 4, el componente de ML personalizado recibe por IPC en `ml/image` el mensaje `{\"image\": \"cat.jpeg\"}`. ¿Qué contiene ese mensaje?",
+  "explanation": "El mensaje IPC solo indica el nombre del archivo. El componente lee la imagen del directorio local, hace la inferencia y publica el resultado por MQTT en `ml/custom/image-classification`.",
+  "options": [
+    {
+      "id": "nombre",
+      "text": "El nombre del archivo de imagen que hay que clasificar",
+      "explanation": "La imagen se lee del directorio local configurado."
+    },
+    {
+      "id": "imagen",
+      "text": "La imagen codificada que hay que clasificar",
+      "explanation": "No se envía la imagen, solo su nombre."
+    },
+    {
+      "id": "resultado",
+      "text": "El resultado de la clasificación",
+      "explanation": "El resultado se publica después por MQTT."
+    },
+    {
+      "id": "modelo",
+      "text": "El modelo ResNet-50 que se va a usar",
+      "explanation": "El modelo y el runtime llegan como dependencias del componente."
+    }
+  ],
+  "answer": "nombre",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 4 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml-personalizado"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-broker-q2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La distribución del mensaje se hace aplicando una política de el primer suscrito es el primer servido. Los demás no reciben el mensaje.",
+  "explanation": "El broker entrega copias a los suscriptores correspondientes, según el modelo descrito en el tutorial.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Verdadero",
+      "explanation": "La publicación no se consume solo por el primer suscriptor; se distribuye a las suscripciones coincidentes."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Falso",
+      "explanation": "El broker entrega copias a los suscriptores correspondientes, según el modelo descrito en el tutorial."
+    }
+  ],
+  "answer": "opcion-2",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Comprobación del broker",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/04_message_broker/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-broker-q2"
+    }
+  ]
+}

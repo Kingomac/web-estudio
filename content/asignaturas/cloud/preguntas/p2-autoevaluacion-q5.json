@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-autoevaluacion-q5",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una regla tiene como mínimo:",
+  "explanation": "El mínimo descrito es nombre, declaración de consulta y una o más acciones.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Un nombre, una descripción y al menos una etiqueta.",
+      "explanation": "Descripción y etiquetas son opcionales; esta opción omite la consulta y las acciones."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Un nombre, una declaración de consulta y al menos una etiqueta.",
+      "explanation": "Las etiquetas no sustituyen a las acciones; debe haber al menos una acción."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Un nombre, una descripción y al menos una acción a realizar.",
+      "explanation": "La descripción no sustituye a la declaración de consulta necesaria para seleccionar mensajes."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Un nombre, una declaración de consulta y al menos una acción a realizar.",
+      "explanation": "El mínimo descrito es nombre, declaración de consulta y una o más acciones."
+    }
+  ],
+  "answer": "opcion-4",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-autoevaluacion-q5"
+    }
+  ]
+}

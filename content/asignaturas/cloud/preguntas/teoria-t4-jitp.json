@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-jitp",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué requisito tiene el aprovisionamiento Just-In-Time (JITP)?",
+  "explanation": "En JITP los dispositivos ya traen certificado y clave. El fabricante registra en la cuenta AWS la CA que los firmó y proporciona una plantilla; en la primera conexión se aprovisiona el dispositivo. No sirven certificados generados por AWS IoT.",
+  "options": [
+    {
+      "id": "ca",
+      "text": "Registrar la CA que firmó los certificados de fábrica y aportar una plantilla de aprovisionamiento",
+      "explanation": "Son los requisitos de JITP."
+    },
+    {
+      "id": "aws-cert",
+      "text": "Usar certificados generados por AWS IoT",
+      "explanation": "El tema dice expresamente que no se pueden usar para JITP."
+    },
+    {
+      "id": "lambda",
+      "text": "Escribir una Lambda que cree la cosa al recibir el evento de registro",
+      "explanation": "Eso añade JITR sobre JITP."
+    },
+    {
+      "id": "claim",
+      "text": "Instalar el mismo certificado de reclamación en toda la flota",
+      "explanation": "Eso es el aprovisionamiento de flota por reclamación (claim)."
+    }
+  ],
+  "answer": "ca",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        66,
+        67
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "aprovisionamiento"
+    }
+  ]
+}

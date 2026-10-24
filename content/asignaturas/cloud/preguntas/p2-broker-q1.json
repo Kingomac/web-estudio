@@ -1,0 +1,40 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-broker-q1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la analogía del tutorial, unos aspirantes a cineastas pasan por seguridad y un mostrador de información para llegar a los productores. ¿Es verdadero o falso que el Message Broker se compara con la seguridad?",
+  "explanation": "En la analogía, el mostrador de información dirige a los aspirantes al productor adecuado, como el broker distribuye mensajes.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Verdadero",
+      "explanation": "La seguridad representa el control de acceso; el broker se compara con el mostrador que dirige a cada aspirante."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Falso",
+      "explanation": "En la analogía, el mostrador de información dirige a los aspirantes al productor adecuado, como el broker distribuye mensajes."
+    }
+  ],
+  "answer": "opcion-2",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Comprobación del broker",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/04_message_broker/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-broker-q1"
+    }
+  ]
+}

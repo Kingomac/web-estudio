@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-mec-movilidad",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En MEC (Mobile/Multi-access Edge Computing), ¿cómo se mantiene la continuidad del servicio cuando el usuario se desplaza?",
+  "explanation": "Las computaciones exigentes se descargan en servidores MEC (VM o contenedores) y la continuidad en movilidad se mantiene migrando las VM entre servidores MEC.",
+  "options": [
+    {
+      "id": "migrar",
+      "text": "Migrando las VM entre servidores MEC",
+      "explanation": "Es lo que indica el tema."
+    },
+    {
+      "id": "region",
+      "text": "Moviendo todo el procesamiento a la región central de la nube",
+      "explanation": "MEC busca justo lo contrario: procesar cerca, en el borde de la red de acceso."
+    },
+    {
+      "id": "cdn",
+      "text": "Almacenando las respuestas en una CDN",
+      "explanation": "Una CDN acerca contenido en caché, no ejecuta la aplicación móvil del usuario."
+    },
+    {
+      "id": "estado-dispositivo",
+      "text": "Ejecutando toda la aplicación en el propio móvil",
+      "explanation": "MEC descarga las computaciones exigentes del móvil a los servidores MEC."
+    }
+  ],
+  "answer": "migrar",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

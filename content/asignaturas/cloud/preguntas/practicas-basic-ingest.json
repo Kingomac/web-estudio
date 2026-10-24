@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-basic-ingest",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Con Basic Ingest, ¿en qué tema publica un dispositivo para invocar directamente la regla `truck2ddb` con datos de `truck/freezer`?",
+  "explanation": "Los mensajes se publican en temas reservados que empiezan por `$aws/rules/NOMBRE_REGLA`, seguidos del tema original; entran al motor de reglas sin pasar por el broker.",
+  "options": [
+    {
+      "id": "rules",
+      "text": "`$aws/rules/truck2ddb/truck/freezer`",
+      "explanation": "Usa el prefijo de Basic Ingest con el nombre de la regla."
+    },
+    {
+      "id": "normal",
+      "text": "`truck/freezer`",
+      "explanation": "Así pasa por el broker; es la ruta normal, no Basic Ingest."
+    },
+    {
+      "id": "things",
+      "text": "`$aws/things/truck2ddb/truck/freezer`",
+      "explanation": "`$aws/things/` es el prefijo de sombras, trabajos y túneles."
+    },
+    {
+      "id": "orden",
+      "text": "`truck/freezer/$aws/rules/truck2ddb`",
+      "explanation": "El prefijo reservado va al principio del tema."
+    }
+  ],
+  "answer": "rules",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        51
+      ]
+    }
+  ],
+  "externalReferences": [],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "reglas"
+    }
+  ]
+}

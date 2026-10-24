@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-autoevaluacion-q4",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué comodín coincide con cualquier cadena en el nivel que contiene el carácter?",
+  "explanation": "+ sustituye exactamente un nivel completo del filtro.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "*",
+      "explanation": "* no es un comodín MQTT."
+    },
+    {
+      "id": "opcion-2",
+      "text": "+",
+      "explanation": "+ sustituye exactamente un nivel completo del filtro."
+    },
+    {
+      "id": "opcion-3",
+      "text": "&",
+      "explanation": "& no es un comodín MQTT."
+    },
+    {
+      "id": "opcion-4",
+      "text": "#",
+      "explanation": "# abarca varios niveles y debe aparecer al final; no es el comodín limitado a un solo nivel."
+    }
+  ],
+  "answer": "opcion-2",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-autoevaluacion-q4"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-token-exchange",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Para qué se declara el componente TokenExchangeService como dependencia en una receta de Greengrass?",
+  "explanation": "TokenExchangeService permite a un componente obtener, a través de un servidor local y del proveedor de credenciales de AWS IoT, credenciales temporales para acceder a servicios AWS.",
+  "options": [
+    {
+      "id": "credenciales",
+      "text": "Para que el componente obtenga credenciales temporales de acceso a servicios AWS",
+      "explanation": "Es su función."
+    },
+    {
+      "id": "broker",
+      "text": "Para instalar un broker MQTT local",
+      "explanation": "Un broker se instala con otros componentes; este solo gestiona credenciales."
+    },
+    {
+      "id": "modelo",
+      "text": "Para descargar el modelo ML del componente",
+      "explanation": "Los modelos son artefactos o dependencias propias del componente."
+    },
+    {
+      "id": "certificado",
+      "text": "Para sustituir el certificado X.509 del dispositivo",
+      "explanation": "No sustituye la identidad del dispositivo: usa el proveedor de credenciales a partir de ella."
+    }
+  ],
+  "answer": "credenciales",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "greengrass"
+    }
+  ]
+}

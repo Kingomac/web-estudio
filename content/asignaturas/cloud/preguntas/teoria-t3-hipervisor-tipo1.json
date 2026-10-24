@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-hipervisor-tipo1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estos es un ejemplo de hipervisor de tipo 1 (nativo o bare metal) según el tema?",
+  "explanation": "Los hipervisores de tipo 1 se ejecutan directamente sobre el hardware; los ejemplos del tema son Xen, VMware ESXi y Microsoft Hyper-V. VirtualBox es de tipo 2.",
+  "options": [
+    {
+      "id": "esxi",
+      "text": "VMware ESXi",
+      "explanation": "Aparece entre los ejemplos de tipo 1."
+    },
+    {
+      "id": "virtualbox",
+      "text": "VirtualBox",
+      "explanation": "Necesita un SO anfitrión: es de tipo 2."
+    },
+    {
+      "id": "docker",
+      "text": "Docker",
+      "explanation": "Docker usa contenedores que comparten el kernel; no es un hipervisor."
+    },
+    {
+      "id": "containerd",
+      "text": "containerd",
+      "explanation": "Es un runtime de contenedores, no un hipervisor."
+    }
+  ],
+  "answer": "esxi",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tecnicas-virtualizacion"
+    }
+  ]
+}

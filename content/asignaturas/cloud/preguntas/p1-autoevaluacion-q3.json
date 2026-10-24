@@ -1,0 +1,64 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-autoevaluacion-q3",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "Además de mantener un listado de dispositivos y sus atributos, el registro de dispositivos también puede publicar mensajes de eventos cuando los objetos cambian.\n¿Cuáles son algunos de los eventos que se comunican? (Elige TRES)\nSelecciona los tres nombres de eventos tal como los enumera el tutorial; no añadas sinónimos como un evento distinto.",
+  "explanation": "La creación de un objeto es uno de los eventos que enumera el solucionario. La actualización de un objeto es uno de los eventos enumerados. La eliminación de un objeto es uno de los eventos enumerados.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "autorización",
+      "explanation": "La autorización decide si se permite una operación; no es uno de los tres eventos de cambio del registro enumerados."
+    },
+    {
+      "id": "opcion-2",
+      "text": "creación",
+      "explanation": "La creación de un objeto es uno de los eventos que enumera el solucionario."
+    },
+    {
+      "id": "opcion-3",
+      "text": "migración",
+      "explanation": "La migración no aparece entre los tres eventos enumerados en esta comprobación."
+    },
+    {
+      "id": "opcion-4",
+      "text": "actualización",
+      "explanation": "La actualización de un objeto es uno de los eventos enumerados."
+    },
+    {
+      "id": "opcion-5",
+      "text": "eliminación",
+      "explanation": "La eliminación de un objeto es uno de los eventos enumerados."
+    },
+    {
+      "id": "opcion-6",
+      "text": "modificación",
+      "explanation": "El solucionario denomina este evento actualización. Aquí se piden los nombres enumerados, no un sinónimo adicional del mismo evento."
+    }
+  ],
+  "answer": [
+    "opcion-2",
+    "opcion-4",
+    "opcion-5"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-autoevaluacion-q3"
+    }
+  ]
+}

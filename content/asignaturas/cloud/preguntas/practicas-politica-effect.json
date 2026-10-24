@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-effect",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En una declaración (`Statement`) de una política de AWS IoT, ¿dónde se indica si se permite o se deniega?",
+  "explanation": "Las políticas de AWS IoT son JSON con las mismas convenciones que IAM. Cada declaración tiene `Effect` (con valor `Allow` o `Deny`), `Action` y `Resource`.",
+  "options": [
+    {
+      "id": "effect",
+      "text": "En la clave `Effect`, con valor `Allow` o `Deny`",
+      "explanation": "Allow y Deny son valores de Effect."
+    },
+    {
+      "id": "clave-allow",
+      "text": "En una clave `Allow` situada junto a `Action`",
+      "explanation": "No existe una clave Allow: es un valor de Effect."
+    },
+    {
+      "id": "version",
+      "text": "En el campo `Version` de la política",
+      "explanation": "`Version` indica la versión del lenguaje de políticas, por ejemplo `2012-10-17`."
+    },
+    {
+      "id": "resource",
+      "text": "En `Resource`, añadiendo `:allow` al ARN",
+      "explanation": "Resource solo identifica el recurso."
+    }
+  ],
+  "answer": "effect",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

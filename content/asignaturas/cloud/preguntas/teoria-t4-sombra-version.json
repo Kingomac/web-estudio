@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-sombra-version",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En las sombras de dispositivo, ¿qué ocurre si una solicitud de actualización no incluye la propiedad version?",
+  "explanation": "Cada actualización incrementa la versión. Si un cliente envía una versión antigua, recibe un error; pero si no incluye version, se ignora el control de versiones.",
+  "options": [
+    {
+      "id": "ignora",
+      "text": "Se ignora el control de versiones",
+      "explanation": "Lo dice expresamente la p. 59."
+    },
+    {
+      "id": "rechaza",
+      "text": "La solicitud se rechaza siempre",
+      "explanation": "Solo se rechaza si se envía una versión antigua."
+    },
+    {
+      "id": "reinicia",
+      "text": "La versión vuelve a 0",
+      "explanation": "La versión se incrementa en cada actualización."
+    },
+    {
+      "id": "delta",
+      "text": "Se borra el delta de la sombra",
+      "explanation": "La versión no tiene relación con borrar el delta."
+    }
+  ],
+  "answer": "ignora",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        59,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sombras"
+    }
+  ]
+}

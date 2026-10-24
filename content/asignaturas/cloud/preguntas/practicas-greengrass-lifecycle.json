@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-greengrass-lifecycle",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la receta de un componente de Greengrass, ¿qué describe `Lifecycle`?",
+  "explanation": "La receta (JSON o YAML) define detalles, dependencias, artefactos y ciclo de vida. El ciclo de vida indica los comandos para instalar, iniciar o apagar el componente; los artefactos son el código o los binarios que se obtienen.",
+  "options": [
+    {
+      "id": "comandos",
+      "text": "Los comandos para instalar, iniciar o detener el componente",
+      "explanation": "Es la función del ciclo de vida."
+    },
+    {
+      "id": "artefactos",
+      "text": "Los binarios y scripts que hay que descargar",
+      "explanation": "Eso lo describe `Artifacts`."
+    },
+    {
+      "id": "plataforma",
+      "text": "Solo la plataforma (SO y arquitectura) compatible",
+      "explanation": "La plataforma se indica en los manifiestos."
+    },
+    {
+      "id": "despliegue",
+      "text": "A qué grupo de cosas se despliega",
+      "explanation": "El destino lo fija el despliegue, no la receta."
+    }
+  ],
+  "answer": "comandos",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        14,
+        15
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "externalReferences": [],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

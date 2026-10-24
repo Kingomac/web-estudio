@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-autoevaluacion-q1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En los ejemplos de MQTT de este curso, ¿qué formato se usa habitualmente para representar el contenido de los mensajes?",
+  "explanation": "El curso utiliza JSON para representar los datos; MQTT no obliga a emplear ese formato.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "XML",
+      "explanation": "XML puede codificar un payload, pero no es el formato que destaca este curso."
+    },
+    {
+      "id": "opcion-2",
+      "text": "YAML",
+      "explanation": "YAML puede representar datos, pero la respuesta del curso es JSON."
+    },
+    {
+      "id": "opcion-3",
+      "text": "HTML",
+      "explanation": "HTML describe documentos web; no es el formato que se usa habitualmente en los ejemplos del curso."
+    },
+    {
+      "id": "opcion-4",
+      "text": "JSON",
+      "explanation": "El curso utiliza JSON para representar los datos; MQTT no obliga a emplear ese formato."
+    }
+  ],
+  "answer": "opcion-4",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-autoevaluacion-q1"
+    }
+  ]
+}

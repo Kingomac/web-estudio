@@ -1,0 +1,69 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-temas-q2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "`sensor/temperature/truck_1/main_freezer`\n`sensor/temperature/truck_1/secondary_freezer`\n`sensor/temperature/truck_1/cabin`\n¿Qué nombre de suscripción los captura a todos? (Selecciona TRES)",
+  "explanation": "El # final incluye todos los niveles que siguen a truck_1, incluidos los tres sensores indicados. El + final coincide con cada uno de los tres nombres de sensor, todos en un único nivel. sensor/# incluye los tres temas y también otros bajo sensor; no se exige exclusividad. Capturar todos los temas indicados no exige capturar únicamente esos temas.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "sensor/temperature/truck_1/#",
+      "explanation": "El # final incluye todos los niveles que siguen a truck_1, incluidos los tres sensores indicados."
+    },
+    {
+      "id": "opcion-2",
+      "text": "sensor/temperature/truck_1/+",
+      "explanation": "El + final coincide con cada uno de los tres nombres de sensor, todos en un único nivel."
+    },
+    {
+      "id": "opcion-3",
+      "text": "sensor/#",
+      "explanation": "sensor/# incluye los tres temas y también otros bajo sensor; no se exige exclusividad."
+    },
+    {
+      "id": "opcion-4",
+      "text": "sensor/#/truck_1",
+      "explanation": "# debe ocupar el último nivel del filtro; no puede aparecer antes de truck_1."
+    },
+    {
+      "id": "opcion-5",
+      "text": "sensor/temperature/truck_2/#",
+      "explanation": "Este filtro fija truck_2, pero los temas de la pregunta pertenecen a truck_1."
+    },
+    {
+      "id": "opcion-6",
+      "text": "sensor-temperature-truck_1-#",
+      "explanation": "Los guiones no separan niveles y # no ocupa un nivel completo: no es un filtro válido para esos temas."
+    },
+    {
+      "id": "opcion-7",
+      "text": "sensor/?",
+      "explanation": "? no es un comodín MQTT; no sustituye los niveles de los temas indicados."
+    }
+  ],
+  "answer": [
+    "opcion-1",
+    "opcion-2",
+    "opcion-3"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividades de temas MQTT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-temas-q2"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-temas-q3",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "`sensor/temperature/truck_1/main_freezer`\n`sensor/temperature/truck_2/main_freezer`\n`sensor/temperature/truck_5/main_freezer`\n¿Qué nombre de suscripción los captura a todos? (Selecciona DOS)",
+  "explanation": "El + sustituye exactamente el nivel del camión y admite truck_1, truck_2 y truck_5. sensor/# captura todos los temas indicados, aunque también puede recibir otros. Capturar todos los temas indicados no exige capturar únicamente esos temas.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "sensor/#/#/main_freezer",
+      "explanation": "# debe ser el último nivel: no puede repetirse en posiciones intermedias."
+    },
+    {
+      "id": "opcion-2",
+      "text": "sensor/temperature/+/main_freezer",
+      "explanation": "El + sustituye exactamente el nivel del camión y admite truck_1, truck_2 y truck_5."
+    },
+    {
+      "id": "opcion-3",
+      "text": "sensor/#",
+      "explanation": "sensor/# captura todos los temas indicados, aunque también puede recibir otros."
+    },
+    {
+      "id": "opcion-4",
+      "text": "sensor/+/main_freezer",
+      "explanation": "Tiene tres niveles y los temas indicados tienen cuatro; + no absorbe dos niveles."
+    },
+    {
+      "id": "opcion-5",
+      "text": "sensor/?",
+      "explanation": "? es un carácter literal, no un comodín MQTT para los camiones."
+    }
+  ],
+  "answer": [
+    "opcion-2",
+    "opcion-3"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividades de temas MQTT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-temas-q3"
+    }
+  ]
+}

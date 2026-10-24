@@ -1,0 +1,64 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-autoevaluacion-q4",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "¿Cuáles de las siguientes son claves que se encuentran en una declaración de política de AWS IoT? (Elige TRES)",
+  "explanation": "Action indica las acciones a las que se aplica la declaración. Effect indica si la declaración permite o deniega. Resource identifica los recursos a los que se aplica la declaración.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Acción (Action)",
+      "explanation": "Action indica las acciones a las que se aplica la declaración."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Permitir (Allow)",
+      "explanation": "Allow es un valor de Effect, no una clave distinta."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Crear (Create)",
+      "explanation": "Create no es una de las tres claves de declaración solicitadas."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Efecto (Effect)",
+      "explanation": "Effect indica si la declaración permite o deniega."
+    },
+    {
+      "id": "opcion-5",
+      "text": "Recurso (Resource)",
+      "explanation": "Resource identifica los recursos a los que se aplica la declaración."
+    },
+    {
+      "id": "opcion-6",
+      "text": "Denegar (Deny)",
+      "explanation": "Deny es un valor de Effect, no una clave distinta."
+    }
+  ],
+  "answer": [
+    "opcion-1",
+    "opcion-4",
+    "opcion-5"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-autoevaluacion-q4"
+    }
+  ]
+}

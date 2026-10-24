@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-comprobacion-6-q1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de los siguientes componentes de AWS IoT Core sirve como punto de entrada seguro para que los dispositivos IoT se conecten a la nube de AWS?",
+  "explanation": "La pasarela de dispositivos proporciona el punto de entrada seguro a AWS IoT Core.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Seguridad e identidad",
+      "explanation": "La seguridad e identidad autentica y autoriza; la entrada de conexiones corresponde a la pasarela."
+    },
+    {
+      "id": "opcion-2",
+      "text": "El registro de dispositivos (Device registry)",
+      "explanation": "El registro guarda información descriptiva de los dispositivos; no es la pasarela de conexión."
+    },
+    {
+      "id": "opcion-3",
+      "text": "La pasarela de dispositivos (Device gateway)",
+      "explanation": "La pasarela de dispositivos proporciona el punto de entrada seguro a AWS IoT Core."
+    },
+    {
+      "id": "opcion-4",
+      "text": "El agente de mensajería (Message broker)",
+      "explanation": "El broker distribuye las publicaciones a las suscripciones coincidentes; la pasarela recibe las conexiones."
+    }
+  ],
+  "answer": "opcion-3",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 6",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/07-knowledge-check/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-comprobacion-6-q1"
+    }
+  ]
+}

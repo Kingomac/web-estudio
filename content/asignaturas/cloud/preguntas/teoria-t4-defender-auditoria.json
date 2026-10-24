@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-defender-auditoria",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estos hallazgos detectaría una auditoría de AWS IoT Device Defender?",
+  "explanation": "La auditoría comprueba que los recursos cumplen buenas prácticas: dispositivos que comparten certificado, certificados caducados o políticas demasiado permisivas. Puede ser bajo demanda o programada.",
+  "options": [
+    {
+      "id": "mismo-cert",
+      "text": "Varios dispositivos que usan el mismo certificado",
+      "explanation": "Es uno de los ejemplos de la auditoría."
+    },
+    {
+      "id": "tls",
+      "text": "Que un dispositivo supera las pruebas TLS antes de salir al mercado",
+      "explanation": "Eso es una validación de Device Advisor."
+    },
+    {
+      "id": "job",
+      "text": "Que un trabajo remoto terminó con SUCCEEDED",
+      "explanation": "Eso es el estado de una ejecución de trabajo."
+    },
+    {
+      "id": "delta",
+      "text": "Que hay diferencias entre desired y reported en una sombra",
+      "explanation": "Eso es el delta de la sombra, no un riesgo de seguridad."
+    }
+  ],
+  "answer": "mismo-cert",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        88
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "gestion-remota"
+    }
+  ]
+}

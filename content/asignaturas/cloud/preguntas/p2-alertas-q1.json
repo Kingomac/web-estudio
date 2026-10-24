@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-alertas-q1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Lecturas del camión 101. Cada par indica temperatura / humedad; * marca una alerta.\n11:50 — 36 / 12%; 36 / 12%; 37 / 12%; 36 / 13%\n11:51 — 36 / 13%; 35 / 12%; 36 / 12%; 36 / 12%\n11:52 — 36 / 12%; 31* / 12%; 36 / 11%; 36 / 11%\n11:53 — 36 / 11%; 37 / 10%*; 36 / 11%; 36 / 12%\n11:54 — 36 / 13%; 39* / 12%; 37 / 14%; 36 / 13%\n11:55 — 35 / 12%; 36 / 12%; 36 / 12%; 36 / 11%\n11:56 — 36 / 12%; 35 / 14%; 36 / 12%; 29* / 12%\n11:57 — 34 / 12%; 36 / 11%; 36 / 12%; 36 / 12%\n11:58 — 36 / 12%\n\n¿Cuántas notificaciones eran alertas (estaban en rojo o tenían un asterisco `*` en ellas)?",
+  "explanation": "Las alertas son 31, 10 % de humedad, 39 y 29: cuatro notificaciones marcadas.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "2",
+      "explanation": "Hay cuatro marcas de alerta; contar solo dos deja otras dos sin contabilizar."
+    },
+    {
+      "id": "opcion-2",
+      "text": "3",
+      "explanation": "Además de las tres alertas de temperatura, hay una alerta de humedad del 10 %."
+    },
+    {
+      "id": "opcion-3",
+      "text": "4",
+      "explanation": "Las alertas son 31, 10 % de humedad, 39 y 29: cuatro notificaciones marcadas."
+    },
+    {
+      "id": "opcion-4",
+      "text": "¿Había alertas? ¿En serio?",
+      "explanation": "Sí aparecen alertas: el asterisco identifica cuatro notificaciones en las lecturas."
+    }
+  ],
+  "answer": "opcion-3",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad de las notificaciones",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/06_rules_overview/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-alertas-q1"
+    }
+  ]
+}

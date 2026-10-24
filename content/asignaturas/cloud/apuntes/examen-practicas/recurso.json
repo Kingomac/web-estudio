@@ -5,7 +5,7 @@
   "slug": "examen-practicas",
   "title": "Examen · Apuntes de prácticas",
   "description": "Prácticas 1-4 y sus 13 actividades adicionales: conceptos, MQTT, políticas, sombras, trabajos y Greengrass.",
-  "scope": "Prácticas 1-4 y actividades adicionales 3+3+4+3. Formatos y conceptos; sin estudiar código de scripts ni crear tests. Tutoriales locales de la asignatura y enunciados PDF.",
+  "scope": "Prácticas 1-4 y actividades adicionales 3+3+4+3. Conceptos y formatos (temas MQTT, políticas IoT, temas reservados, sombras, documentos de trabajos); sin código de scripts. Tutoriales de la asignatura y enunciados PDF.",
   "tagIds": [
     "cloud.tags.aws-iot",
     "cloud.tags.practicas",
@@ -279,6 +279,8 @@
   ],
   "relatedResourceIds": [
     "cloud.apuntes.examen-teoria",
-    "cloud.apuntes.autoevaluaciones-practicas"
+    "cloud.apuntes.autoevaluaciones-practicas",
+    "cloud.tests.simulacro-practicas",
+    "cloud.tests.autoevaluaciones-completas"
   ]
 }

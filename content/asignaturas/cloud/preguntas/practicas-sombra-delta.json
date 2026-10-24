@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-sombra-delta",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La sombra tiene `\"reported\": {\"door\": \"on\", \"temp\": 4}` y una aplicación publica `{\"state\": {\"desired\": {\"door\": \"off\", \"temp\": 4}}}`. ¿Qué diferencia notifica el servicio?",
+  "explanation": "`delta` contiene solo las propiedades deseadas que difieren de reported. `temp` ya coincide; `door` no, así que el delta es `{\"door\": \"off\"}`.",
+  "options": [
+    {
+      "id": "door-off",
+      "text": "`{\"door\": \"off\"}`",
+      "explanation": "Es la única propiedad deseada que difiere de reported."
+    },
+    {
+      "id": "todo",
+      "text": "`{\"door\": \"off\", \"temp\": 4}`",
+      "explanation": "`temp` coincide con reported, así que no forma parte del delta."
+    },
+    {
+      "id": "reported",
+      "text": "`{\"door\": \"on\"}`",
+      "explanation": "Es el valor comunicado, no el deseado."
+    },
+    {
+      "id": "nada",
+      "text": "Ninguna, porque el dispositivo aún no ha cerrado la puerta",
+      "explanation": "La diferencia existe precisamente porque el dispositivo aún no ha aplicado el cambio."
+    }
+  ],
+  "answer": "door-off",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Sombras en acción",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/11_device_shadows/"
+    },
+    {
+      "title": "Práctica 2 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "secuencia-sombra"
+    }
+  ]
+}

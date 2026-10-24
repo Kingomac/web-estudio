@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-registro-opcional",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Hay que dar de alta un dispositivo en el registro de AWS IoT para conectarlo?",
+  "explanation": "El uso del registro es opcional para conectar, pero es necesario para usar otras características como sombras, eventos o trabajos.",
+  "options": [
+    {
+      "id": "no-pero",
+      "text": "No para conectarlo, pero sí para usar sombras, eventos o trabajos",
+      "explanation": "Es lo que dice el tema."
+    },
+    {
+      "id": "siempre",
+      "text": "Sí; sin cosa registrada IoT Core rechaza la conexión TLS",
+      "explanation": "La conexión no exige registrar una cosa."
+    },
+    {
+      "id": "nunca",
+      "text": "No, y el registro tampoco hace falta para sombras ni trabajos",
+      "explanation": "Sombras, eventos y trabajos sí lo requieren."
+    },
+    {
+      "id": "solo-http",
+      "text": "Solo si el dispositivo se conecta por HTTP",
+      "explanation": "El tema no hace depender el registro del protocolo."
+    }
+  ],
+  "answer": "no-pero",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "iot-core"
+    }
+  ]
+}

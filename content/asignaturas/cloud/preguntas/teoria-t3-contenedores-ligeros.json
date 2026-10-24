@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-contenedores-ligeros",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué son más ligeros los contenedores que las VM?",
+  "explanation": "Los contenedores comparten el kernel del anfitrión, que proporciona el aislamiento: no virtualizan el hardware ni necesitan un SO invitado propio.",
+  "options": [
+    {
+      "id": "kernel",
+      "text": "No virtualizan el hardware ni necesitan SO invitado propio: comparten el kernel del anfitrión",
+      "explanation": "Es la ventaja que explica el tema."
+    },
+    {
+      "id": "hipervisor",
+      "text": "Usan un hipervisor de tipo 1 más pequeño",
+      "explanation": "Los contenedores no usan hipervisor."
+    },
+    {
+      "id": "unikernel",
+      "text": "Se compilan con las librerías del SO que necesita la aplicación",
+      "explanation": "Eso describe un unikernel."
+    },
+    {
+      "id": "sin-aislamiento",
+      "text": "Ejecutan las aplicaciones sin ningún aislamiento",
+      "explanation": "Sí hay aislamiento: lo proporciona el kernel."
+    }
+  ],
+  "answer": "kernel",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        14,
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tecnicas-virtualizacion"
+    }
+  ]
+}

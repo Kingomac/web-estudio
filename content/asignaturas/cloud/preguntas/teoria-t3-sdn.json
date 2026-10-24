@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-sdn",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué separa SDN (Software-defined Networking)?",
+  "explanation": "SDN divide la funcionalidad de red en plano de datos (el hardware que reenvía el tráfico) y plano de control (que define la configuración). El control se centraliza y se expone mediante interfaces abiertas.",
+  "options": [
+    {
+      "id": "planos",
+      "text": "El plano de control del plano de datos",
+      "explanation": "Es la idea central de SDN."
+    },
+    {
+      "id": "funciones-hw",
+      "text": "Las funciones de red del hardware dedicado, para ejecutarlas como software",
+      "explanation": "Eso describe NFV."
+    },
+    {
+      "id": "kernel",
+      "text": "El kernel del anfitrión de los contenedores",
+      "explanation": "No tiene relación con la virtualización de red."
+    },
+    {
+      "id": "az",
+      "text": "Las zonas de disponibilidad de una región",
+      "explanation": "Es infraestructura de AWS, no un concepto de SDN."
+    }
+  ],
+  "answer": "planos",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sdn-nfv"
+    }
+  ]
+}

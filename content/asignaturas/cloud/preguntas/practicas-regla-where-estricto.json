@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-regla-where-estricto",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La regla `SELECT i AS device, temp AS temperature, 20 AS temperature_max FROM 'truck/freezer' WHERE temp > 20` recibe `{\"i\": 1, \"temp\": 20}`. ¿Qué ocurre?",
+  "explanation": "WHERE decide si se ejecutan las acciones. `20 > 20` es falso, así que la regla no envía notificación. Solo se dispara con temperaturas estrictamente mayores que 20.",
+  "options": [
+    {
+      "id": "nada",
+      "text": "No se ejecuta la acción, porque 20 no es mayor que 20",
+      "explanation": "WHERE exige una temperatura estrictamente mayor."
+    },
+    {
+      "id": "notifica",
+      "text": "Se envía `{\"device\": 1, \"temperature\": 20, \"temperature_max\": 20}`",
+      "explanation": "Ese sería el resultado del SELECT, pero WHERE no se cumple."
+    },
+    {
+      "id": "error",
+      "text": "Se ejecuta la acción de error",
+      "explanation": "La acción de error se usa cuando falla una acción, no cuando no se cumple WHERE."
+    },
+    {
+      "id": "original",
+      "text": "Se reenvía el mensaje original sin transformar",
+      "explanation": "Una regla no reenvía el mensaje cuando WHERE es falso."
+    }
+  ],
+  "answer": "nada",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        44
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 2 (SNS)",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_2/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "sns"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-filtro-mas-un-nivel",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué tema NO coincide con el filtro `sensor/temperature/+`?",
+  "explanation": "`+` sustituye exactamente un nivel. `sensor/temperature/truck_1/cabin` tiene un nivel más, así que haría falta `#` o un segundo `+`.",
+  "options": [
+    {
+      "id": "dos-niveles",
+      "text": "`sensor/temperature/truck_1/cabin`",
+      "explanation": "Tiene dos niveles después de `temperature`; `+` solo cubre uno."
+    },
+    {
+      "id": "truck1",
+      "text": "`sensor/temperature/truck_1`",
+      "explanation": "Coincide: `+` toma el valor `truck_1`."
+    },
+    {
+      "id": "truck2",
+      "text": "`sensor/temperature/truck_2`",
+      "explanation": "Coincide: `+` toma el valor `truck_2`."
+    },
+    {
+      "id": "freezer",
+      "text": "`sensor/temperature/main_freezer`",
+      "explanation": "Coincide: `+` sustituye cualquier valor de un único nivel."
+    }
+  ],
+  "answer": "dos-niveles",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Uso de temas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-runhandler",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En un documento de trabajo con `\"type\": \"runHandler\"` y `\"input\": {\"handler\": \"device-client-config.sh\", \"path\": \"default\"}`, ¿qué indica `handler`?",
+  "explanation": "El documento indica qué hacer; el handler es el programa local del dispositivo que lo ejecuta. `handler` es su nombre y `path` su ubicación; `default` usa la ruta prevista por el Device Client.",
+  "options": [
+    {
+      "id": "nombre",
+      "text": "El nombre del manejador instalado en el dispositivo que ejecutará la acción",
+      "explanation": "Es lo que interpreta el Device Client."
+    },
+    {
+      "id": "url",
+      "text": "La URL de S3 desde la que se descarga el documento del trabajo",
+      "explanation": "El documento ya es este JSON; las URL de descarga son otros parámetros, como `downloadUrl`."
+    },
+    {
+      "id": "usuario",
+      "text": "El usuario local con el que se ejecuta",
+      "explanation": "Eso lo indica `runAsUser`."
+    },
+    {
+      "id": "tema",
+      "text": "El tema MQTT en el que se publica el resultado",
+      "explanation": "El documento no define el tema de respuesta; los temas de Jobs son reservados."
+    }
+  ],
+  "answer": "nombre",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        72
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Actividad adicional 4",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-autoevaluacion-q2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el proceso de aprovisionamiento de un dispositivo, ¿qué credencial de seguridad crea AWS IoT Core para la autenticación del dispositivo?",
+  "explanation": "El certificado X.509 se usa para autenticar al dispositivo.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "SDK",
+      "explanation": "Un SDK es un conjunto de herramientas y bibliotecas, no una credencial de identidad."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Política de AWS IoT",
+      "explanation": "Una política IoT define permisos; no acredita la identidad del dispositivo."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Certificado X.509",
+      "explanation": "El certificado X.509 se usa para autenticar al dispositivo."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Rol de IAM",
+      "explanation": "Un rol IAM permite asumir permisos; no es el certificado que se crea para el dispositivo en este proceso."
+    },
+    {
+      "id": "opcion-5",
+      "text": "Política de IAM",
+      "explanation": "Una política IAM expresa permisos de acceso; no es la credencial de autenticación solicitada."
+    }
+  ],
+  "answer": "opcion-3",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-autoevaluacion-q2"
+    }
+  ]
+}

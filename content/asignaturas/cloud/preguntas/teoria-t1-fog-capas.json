@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-fog-capas",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En una arquitectura IoT por capas que combina nube y niebla, ¿dónde se ejecutan los procesos con requisitos temporales estrictos?",
+  "explanation": "En el ejemplo del tema, los procesos estratégicos que no son sensibles a la latencia van a la nube y los que tienen requisitos temporales estrictos se ejecutan en la niebla.",
+  "options": [
+    {
+      "id": "niebla",
+      "text": "En la niebla",
+      "explanation": "La niebla está cerca de los dispositivos y ofrece menos latencia."
+    },
+    {
+      "id": "nube",
+      "text": "En la nube",
+      "explanation": "En el ejemplo, la nube recibe los procesos estratégicos que no son sensibles a la latencia."
+    },
+    {
+      "id": "cdn",
+      "text": "En los PoP de una CDN",
+      "explanation": "Una CDN distribuye contenido; no es la capa de proceso del ejemplo."
+    },
+    {
+      "id": "nunca",
+      "text": "En ninguna: la arquitectura por capas no admite requisitos temporales",
+      "explanation": "El ejemplo distingue precisamente los procesos según sus requisitos temporales."
+    }
+  ],
+  "answer": "niebla",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        62
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

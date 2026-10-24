@@ -1,6 +1,6 @@
 <h2 id="alcance">Alcance del examen</h2>
-<p><strong>Teoría: lunes 2 de noviembre, a las 19:00, después de la prueba de prácticas de las 18:00.</strong> Según el correo del profesor facilitado por Mario: cada prueba tiene <strong>10 preguntas tipo test de respuesta única</strong>, se realiza en <strong>Moovi</strong>, hay que llevar ordenador y <strong>no se permite consultar materiales</strong>. El correo no indica penalización por error: no se presupone ninguna.</p>
-<p>Estos apuntes se centran en reconocer conceptos, comparar alternativas e interpretar situaciones. El alcance procede del correo; las explicaciones, de los materiales del curso 2026/27. Los ejemplos didácticos añadidos se identifican como tales.<span class="no-print"> Todas las páginas citadas son <strong>páginas físicas del PDF, contando la portada como 1</strong>, no el número global de diapositiva impreso.</span></p>
+<p><strong>Teoría: lunes 2 de noviembre, a las 19:00, después de la prueba de prácticas de las 18:00.</strong> Según el correo del profesor, cada prueba tiene <strong>10 preguntas tipo test de respuesta única</strong>, se realiza en <strong>Moovi</strong>, hay que llevar ordenador y <strong>no se permite consultar materiales</strong>. El correo no indica penalización por error: no se presupone ninguna.</p>
+<p>El profesor indicó que <strong>una lectura atenta del material de teoría debería bastar</strong> para la mayoría de preguntas. Estos apuntes recogen solo lo que entra y se centran en reconocer conceptos y distinguir alternativas parecidas.<span class="no-print"> Las páginas citadas son <strong>páginas físicas del PDF, contando la portada como 1</strong>, no el número de diapositiva impreso.</span></p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -18,7 +18,7 @@
 <tr>
 <td>Tema 2</td>
 <td><strong>Solo Introducción: pp. 4-15</strong> (diapositivas impresas 82-93).</td>
-<td>Desde el índice de p. 16: seguridad y catálogo detallado de servicios. Los servicios usados en prácticas sí se explican en los apuntes de prácticas.</td>
+<td>Desde el índice de p. 16: IAM y el catálogo de servicios. Si cae alguna pregunta sobre servicios AWS, el profesor espera que se responda con lo aprendido en las prácticas.</td>
 </tr>
 <tr>
 <td>Tema 3</td>
@@ -33,7 +33,7 @@
 </tbody>
 </table></div>
 <p><strong>Dos distinciones de alcance:</strong> excluir la iniciativa europea no excluye el concepto de continuo, edge o fog; excluir los servicios de análisis de datos del tema 4 no excluye las reglas IoT, Greengrass ni sus componentes de inferencia ML. Tampoco excluye las actividades adicionales de prácticas.</p>
-<p>La fecha y el formato anteriores reproducen el correo recibido; esta lectura no es una planificación de estudio ni una verificación del calendario. Continúa con <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/">Prácticas</a> y <a href="/web-estudio/asignaturas/cloud/apuntes/autoevaluaciones-practicas/">Autoevaluaciones resueltas</a>.</p>
+<p>Para practicar: <a href="/web-estudio/asignaturas/cloud/tests/simulacro-teoria/">simulacro de teoría</a>. Continúa con <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/">Prácticas</a> y <a href="/web-estudio/asignaturas/cloud/apuntes/autoevaluaciones-practicas/">Autoevaluaciones resueltas</a>.</p>
 <h2 id="tema-1">Tema 1 · Qué hace que un servicio sea cloud</h2>
 <p>La nube ofrece acceso por red y bajo demanda a capacidades TIC. El usuario consume recursos como servicios y delega parte de su gestión en un proveedor. La idea no es simplemente «un servidor en Internet»: importan el aprovisionamiento, la compartición, la elasticidad y la medición.</p>
 <p>En el ejemplo de Forbes del material, dimensionar para el máximo deja servidores ociosos fuera del horario de actividad; dimensionar para el promedio no cubre los picos. <strong>Aprovisionar cuando sube la demanda y liberar cuando baja</strong> aproxima la capacidad al consumo. Escalabilidad es poder aumentar capacidad; elasticidad implica ajustarla a la demanda, también reduciéndola.</p>
@@ -192,7 +192,7 @@
 <p>Las cifras de latencia de las figuras son orientativas del escenario, no una definición universal. En los ejemplos de hiperescaladores: regiones = nube central; Local Zones = proximidad metropolitana; Wavelength = borde de red móvil; Outposts = instalaciones del cliente; Greengrass = ejecución local IoT. Estas ideas reaparecen en la introducción de AWS.</p>
 <p><span class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=49">T1, pp. 49-63</a> y <a href="/web-estudio/materiales/cloud/tema-1.pdf#page=77">p. 77</a>. </span>No se desarrolla la iniciativa europea de pp. 64-76.</p>
 <h2 id="tema-2">Tema 2 · Introducción a AWS</h2>
-<p>AWS ofrece servicios cloud agrupados por funciones. Para este examen se estudia la <strong>organización de su infraestructura y su extensión al borde</strong>, sin memorizar el catálogo detallado que empieza después de la introducción.</p>
+<p>AWS empezó a ofrecer servicios cloud a empresas en 2006 y el material habla de unos 200 servicios agrupados por categorías. Para este examen se estudia la <strong>organización de su infraestructura y su extensión al borde</strong>, sin memorizar el catálogo detallado que empieza después de la introducción.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -230,12 +230,12 @@
 <tr>
 <td>Local Zone</td>
 <td>Infraestructura AWS próxima a ciudades y centros industriales.</td>
-<td>Acerca cómputo; conectada a la región mediante red privada de alta capacidad.</td>
+<td>Para latencias &lt;10 ms (juegos, VR, IoT); conectada a la región mediante red privada dedicada de alta capacidad. Precios distintos de los de la región.</td>
 </tr>
 <tr>
 <td>Wavelength Zone</td>
 <td>Infraestructura AWS dentro de redes 5G de proveedores de comunicaciones (CSP).</td>
-<td>Acerca aplicaciones a usuarios de la red móvil.</td>
+<td>Acerca aplicaciones sensibles a la latencia al borde de la red 5G. AWS tiene acuerdos con los principales CSP (p. ej. BT, Vodafone); precios distintos de los de la región.</td>
 </tr>
 </tbody>
 </table></div>
@@ -244,7 +244,7 @@
 <p>El continuo AWS busca mantener servicios, API y herramientas coherentes entre región y borde. Las razones para salir de la nube central incluyen latencia, IA local y residencia/privacidad de datos. Las cantidades de servicios, PoP o cachés que aparecen en las diapositivas describen esa edición del material; la distinción funcional es el concepto a comprender.</p>
 <p><span class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-2.pdf#page=4">T2, pp. 4-15</a>. </span><strong>Fin de la materia de teoría del tema 2.</strong> IAM, EC2, S3, DynamoDB, SNS y CloudWatch se repasan por su papel en las prácticas.</p>
 <h2 id="tema-3">Tema 3 · Virtualización</h2>
-<p>Virtualizar es <strong>abstraer lógicamente infraestructura física</strong>. La vista virtual puede diferir de la real. En servidores permite compartir recursos mediante entornos aislados. Una VM incluye dispositivos virtuales, SO invitado y aplicaciones; no tiene que ver exactamente el mismo hardware que otra VM o que el anfitrión.</p>
+<p>Virtualizar es <strong>abstraer lógicamente infraestructura física</strong>. El tema distingue cuatro técnicas de virtualización de servidores: <strong>con hipervisor, en el kernel, compartiendo el kernel (contenedores) y con unikernels</strong>. La vista virtual puede diferir de la real. En servidores permite compartir recursos mediante entornos aislados. Una VM incluye dispositivos virtuales, SO invitado y aplicaciones; no tiene que ver exactamente el mismo hardware que otra VM o que el anfitrión.</p>
 <h3 id="tecnicas-virtualizacion">Técnicas y diferencias</h3>
 <div class="table-scroll"><table>
 <thead>
@@ -284,7 +284,7 @@
 <td>Unikernel</td>
 <td>Aplicación enlazada en compilación solo con las bibliotecas de SO que necesita.</td>
 <td>Imagen especializada, pequeña e inmutable, poca superficie de ataque.</td>
-<td>Portabilidad y ecosistema más limitados; recompilación según plataforma.</td>
+<td>Depende de library OS; hay que compilar una imagen por arquitectura+plataforma; ecosistema aún escaso y adopción marginal. Ejemplos: Unikraft, Nanos, OSv.</td>
 </tr>
 </tbody>
 </table></div>
@@ -293,8 +293,8 @@
 <h3 id="x86">Virtualización x86: completa, para y asistida por hardware</h3>
 <p>El problema presentado es que ciertas instrucciones del SO invitado podrían acceder al hardware sin el control adecuado del hipervisor.</p>
 <ul>
-<li><strong>Completa</strong>, en la explicación histórica del tema: traducción binaria de instrucciones problemáticas; no requiere modificar el SO invitado, pero tiene sobrecarga.</li>
-<li><strong>Paravirtualización:</strong> sustituirlas por llamadas a la API del hipervisor; requiere modificar y recompilar el invitado, a cambio de mejorar rendimiento respecto a la solución anterior.</li>
+<li><strong>Completa:</strong> traducción binaria de las instrucciones problemáticas, que se emulan en el hipervisor. No requiere modificar el SO invitado y da mejor aislamiento y seguridad, pero tiene peor rendimiento. Ejemplo del tema: VMware ESX.</li>
+<li><strong>Paravirtualización:</strong> el hipervisor ofrece una API y las instrucciones problemáticas se sustituyen por llamadas a ella. Requiere modificar y recompilar el SO invitado, con menor portabilidad (p. ej. Windows), a cambio de mejor rendimiento que la completa. Ejemplo del tema: Xen.</li>
 <li><strong>Asistida por hardware (HVM):</strong> extensiones como Intel VT-x y AMD-V; las operaciones problemáticas generan excepciones interceptables y se aceleran tareas de virtualización.</li>
 </ul>
 <p>No confundas esta comparación de <strong>modos x86</strong> con los <strong>tipos 1/2</strong> de hipervisor: clasifican aspectos distintos.</p>
@@ -302,8 +302,8 @@
 <h3 id="docker">Docker: imagen, contenedor y runtime</h3>
 <p>Una <strong>imagen</strong> empaqueta aplicación, bibliotecas, entorno de ejecución y configuración. Un <strong>Dockerfile</strong> contiene instrucciones para construirla. El <strong>registry</strong> almacena y distribuye imágenes. El <strong>motor/runtime</strong> crea y gestiona contenedores; un contenedor es la ejecución aislada de procesos, no el archivo de imagen.</p>
 <p>El tema explica la evolución desde LXC hacia containerd y estándares OCI. Que una herramienta funcione en Linux, Windows y macOS no elimina la compatibilidad exigida por kernel y arquitectura; el principio básico sigue siendo que el contenedor comparte un kernel compatible. Frente a VM, el contenedor no necesita su propio SO invitado completo.</p>
-<p>Un unikernel tampoco es simplemente un contenedor más pequeño: integra una aplicación con las partes mínimas del SO en una imagen especializada. Puede ejecutarse sobre hipervisor o directamente sobre hardware. La tabla de p. 20 ilustra tendencias de tamaño y arranque; sus milisegundos y megabytes no son límites universales.</p>
-<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=14">T3, pp. 14-20</a>.</p>
+<p>El tema lo resume como <strong>unikernel = seguridad de las VM + ligereza y rendimiento de los contenedores</strong>, con menor tamaño y tiempo de arranque que un contenedor. Un unikernel tampoco es simplemente un contenedor más pequeño: integra una aplicación con las partes mínimas del SO en una imagen especializada. Puede ejecutarse sobre hipervisor o directamente sobre hardware. La tabla de p. 20 ilustra tendencias de tamaño y arranque; sus milisegundos y megabytes no son límites universales.</p>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=14">T3, pp. 14-20</a>; resumen del unikernel en p. 19.</p>
 <h3 id="virtualizacion-continuo">Virtualización en el continuo</h3>
 <p>En el borde importan recursos escasos, movilidad, rapidez de instanciación/migración y gestión global de nodos distribuidos. <strong>No hay una técnica óptima para todos los dispositivos y aplicaciones.</strong></p>
 <div class="table-scroll"><table>
@@ -353,7 +353,7 @@
 <p><strong>SDN y NFV se complementan:</strong> una programa cómo circula el tráfico; la otra desacopla funciones de red del hardware dedicado. No son sinónimos. El ejemplo IoT combina una capa de aplicaciones/microservicios, una pasarela de recursos virtualizados y la capa física. La pasarela aporta escalabilidad, conversión entre protocolos, aislamiento y compartición.</p>
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-3.pdf#page=30">T3, pp. 30-39</a>.</p>
 <h2 id="tema-4">Tema 4 · AWS IoT</h2>
-<p>AWS IoT combina software en los dispositivos y servicios en la nube. Entra el software de dispositivo y los servicios de control. El siguiente mapa ayuda a identificar el servicio por su función.</p>
+<p>AWS IoT combina software en los dispositivos y servicios en la nube. Entra el software de dispositivo y los servicios de control (IoT Core, Device Management, Device Defender y Device Advisor). FreeRTOS soporta más de 40 arquitecturas e incluye librerías para MQTT, sombras, aprovisionamiento, trabajos y OTA. El siguiente mapa ayuda a identificar el servicio por su función.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -416,15 +416,22 @@
 <li><strong>Rules Engine:</strong> filtra, transforma y encamina datos mediante SQL y acciones.</li>
 <li><strong>Device Shadow:</strong> conserva estado consultable y modificable con independencia de la conexión del dispositivo.</li>
 </ul>
+<p>IoT Core agrupa sus servicios en tres categorías: <strong>control</strong> (seguridad, gestión y registro), <strong>mensajes</strong> (comunicación segura entre dispositivos e IoT Core) y <strong>datos</strong> (persistencia del estado aun sin conexión, es decir, sombras).</p>
 <p><strong>Autenticación</strong> responde quién es una entidad; <strong>autorización</strong>, qué puede hacer; <strong>TLS</strong>, cómo proteger el canal. En los dispositivos se usan certificados X.509 y políticas IoT. Para usuarios/aplicaciones, identidades, roles y políticas IAM; las aplicaciones móviles pueden emplear Cognito.</p>
 <p>En TLS mutuo, AWS valida el certificado del dispositivo y el dispositivo valida el servidor mediante su cadena de confianza. La política IoT se asocia al certificado y concede acciones sobre recursos concretos. Un certificado válido no concede por sí solo permiso para cualquier tema. El proveedor de credenciales IoT permite obtener credenciales temporales mediante el certificado para acceder a servicios que usan SigV4, evitando credenciales permanentes incrustadas.</p>
-<p><strong>Cosa</strong> = representación en el registro; <strong>tipo</strong> = categoría lógica; <strong>grupo</strong> = agrupación para gestionar conjuntos y jerarquías; <strong>sombra</strong> = estado dinámico persistente. El registro no es el histórico de telemetría. En el curso se crea la cosa al aprovisionar; la conexión MQTT básica puede existir sin registrar una cosa, como señala p. 39. Los límites de atributos y grupos del PDF son los valores presentados por el curso.</p>
-<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=22">T4, pp. 22-39</a>.</p>
+<p><strong>Cosa</strong> = representación en el registro; <strong>tipo</strong> = categoría lógica; <strong>grupo</strong> = agrupación para gestionar conjuntos y jerarquías; <strong>sombra</strong> = estado dinámico persistente. El registro no es el histórico de telemetría.</p>
+<ul>
+<li>El nombre de una cosa es <strong>único dentro de una región</strong>; los nombres de tipo, únicos en la cuenta.</li>
+<li>Una cosa admite <strong>3 atributos</strong>; con un <strong>tipo</strong>, hasta <strong>50</strong>. Cada cosa tiene como máximo un tipo.</li>
+<li>Una cosa puede pertenecer a <strong>hasta 10 grupos</strong>; los grupos forman jerarquías y la configuración se hereda hacia los descendientes.</li>
+<li>El registro es <strong>opcional para conectar</strong>, pero necesario para usar <strong>sombras, eventos o trabajos</strong>. Permite buscar por atributos y notifica la creación, actualización o borrado de cosas, tipos y grupos.</li>
+</ul>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=22">T4, pp. 22-39</a>; límites del registro en pp. 37-39.</p>
 <h3 id="reglas">Motor de reglas</h3>
 <p>Una regla tiene nombre, consulta SQL y una o más acciones. Descripción y acción de error son opcionales. <strong>FROM selecciona temas; WHERE filtra el mensaje; SELECT selecciona/transforma campos.</strong> La salida se envía por una acción: republicar, escribir en DynamoDB/S3, notificar por SNS o invocar Lambda, entre otras. La regla necesita permisos para ejecutar la acción.</p>
 <p>Ejemplo del tema: <code>SELECT color AS rgb FROM 'location01/sensor01' WHERE temperature &gt; 50</code>. Para <code>&#123;"color":"red","temperature":100&#125;</code> produce <code>&#123;"rgb":"red"&#125;</code>; con temperatura 50 no se cumple el filtro. Los operadores y funciones permiten acceder a JSON anidado, convertir datos y calcular valores.</p>
 <p>Las <strong>plantillas de sustitución</strong> usan <code>$&#123;expresión&#125;</code> para campos dinámicos de acciones, por ejemplo <code>$&#123;topic()&#125;/republish</code>. No son comodines MQTT ni políticas de permisos.</p>
-<p><strong>Basic Ingest</strong> entra directamente al motor de reglas, evitando el broker en esa ruta. Se publica con el prefijo <code>$aws/rules/NOMBRE_REGLA/...</code>. Permite reducir el coste de esa ruta de mensajería; no significa que todos los servicios de destino sean gratuitos.</p>
+<p><strong>Basic Ingest</strong> entra directamente al motor de reglas, evitando el broker en esa ruta. Se publica con el prefijo <code>$aws/rules/NOMBRE_REGLA/...</code>; por eso <code>FROM</code> es opcional en reglas que solo se activan así. Permite reducir el coste de esa ruta de mensajería; no significa que todos los servicios de destino sean gratuitos.</p>
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=41">T4, pp. 41-51</a>.</p>
 <h3 id="sombras">Sombras: separar deseo, estado comunicado y ejecución física</h3>
 <p>Una sombra es un documento JSON de estado. <strong>reported</strong> contiene lo comunicado por el dispositivo; <strong>desired</strong>, lo solicitado por la aplicación; <strong>delta</strong>, los valores deseados que difieren de lo informado. Actualizar desired no ejecuta físicamente una acción ni confirma que el dispositivo la realizó.</p>
@@ -470,17 +477,17 @@
 </tr>
 </tbody>
 </table></div>
-<p>Fleet provisioning puede usar <strong>usuario de confianza</strong>, que obtiene credenciales temporales para el proceso, o <strong>claim</strong>, certificado inicial compartido de permisos limitados. Comprometer ese certificado compartido implica más riesgo. La identidad definitiva debe distinguir cada dispositivo. En JITP, el fabricante registra la CA y la plantilla y debe conocer la cuenta destino; el tema excluye los certificados generados por AWS IoT para ese mecanismo.</p>
-<p><strong>Indexación de flotas</strong> combina información del registro, sombras, conectividad y otras fuentes para buscar dispositivos y calcular agregados. No es el motor SQL de reglas. Ejemplos del tema: <code>thingName:Sensor*</code>, <code>connectivity.connected:true</code>, <code>attributes.temp:[25 TO 30]</code>. Los corchetes incluyen extremos; llaves los excluyen. El catálogo de paquetes mantiene paquetes/versiones y permite asociarlos a cosas y desplegarlos con trabajos.</p>
+<p>Fleet provisioning puede usar <strong>usuario de confianza</strong>, que obtiene credenciales temporales para el proceso, o <strong>claim</strong>, certificado inicial compartido de permisos limitados. Comprometer ese certificado compartido implica más riesgo. En la primera conexión, fleet provisioning genera la clave privada y un certificado firmado por la CA de AWS, de modo que cada dispositivo obtiene identidad única. En JITR, la regla escucha el tema reservado <code>$aws/events/certificates/registered/&lt;caCertificateID&gt;</code>. En JITP, el fabricante registra la CA y la plantilla y debe conocer la cuenta destino; el tema excluye los certificados generados por AWS IoT para ese mecanismo.</p>
+<p><strong>Indexación de flotas</strong> combina información del registro, sombras, conectividad y otras fuentes para buscar dispositivos y calcular agregados. No es el motor SQL de reglas. Ejemplos del tema: <code>thingName:Sensor*</code>, <code>connectivity.connected:true</code>, <code>thingName:Sensor0?</code>, <code>attributes.temp:[25 TO 30]</code>. La sintaxis se basa en Lucene: <code>*</code> = cualquier secuencia, <code>?</code> = un carácter; los corchetes incluyen extremos y las llaves los excluyen. El catálogo de paquetes mantiene paquetes/versiones y permite asociarlos a cosas y desplegarlos con trabajos.</p>
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=62">T4, pp. 62-69</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=78">pp. 78-80</a>.</p>
 <h3 id="gestion-remota">Trabajos, túneles, Defender y Advisor</h3>
-<p>Un <strong>job</strong> define operaciones remotas, un <strong>documento de trabajo</strong> JSON dice qué ejecutar y una <strong>ejecución</strong> es su instancia en un dispositivo destino. Puede descargar archivos, actualizar software, reiniciar o rotar certificados. Documento y artefactos pueden estar en S3; no hay que confundirlos.</p>
-<p>Un trabajo <strong>snapshot</strong> se dirige al conjunto de destinos fijado al crear; uno <strong>continuous</strong> sigue activo para nuevos miembros del grupo. Las plantillas preconfiguran parámetros, reintentos, tiempos y despliegue. En <code>Download-File</code>: <code>downloadUrl</code> es el origen, <code>filePath</code> el destino local, <code>pathToHandler</code> dónde está el manejador y <code>runAsUser</code> el usuario de ejecución.</p>
+<p>Un <strong>job</strong> define operaciones remotas, un <strong>documento de trabajo</strong> JSON dice qué ejecutar y una <strong>ejecución</strong> es su instancia en un dispositivo destino. Puede descargar archivos, actualizar software, reiniciar o rotar certificados. El documento puede estar en un bucket S3 o pasarse como argumento al crear el trabajo; el archivo que descarga es otra cosa. Los dispositivos hablan con el servicio de trabajos por <strong>MQTT, HTTP Signature Version 4 o HTTP TLS</strong>.</p>
+<p>Un trabajo <strong>snapshot</strong> se dirige al conjunto de destinos fijado al crear; uno <strong>continuous</strong> sigue activo para nuevos miembros del grupo. Las plantillas preconfiguran documento, destinos, despliegue, programación, cancelación, tiempos de espera y reintentos. Pueden ser <strong>personalizadas</strong> o <strong>gestionadas por AWS</strong>; estas cubren Download-File, Install/Remove/Start/Restart/Stop-Application, Run-Command y Reboot, y comparten los parámetros <code>runAsUser</code> y <code>pathToHandler</code>. En <code>Download-File</code>: <code>downloadUrl</code> es el origen, <code>filePath</code> el destino local, <code>pathToHandler</code> dónde está el manejador y <code>runAsUser</code> el usuario de ejecución.</p>
 <p>Los dispositivos reciben notificaciones y respuestas por temas <code>$aws/things/.../jobs/...</code> y publican solicitudes para consultar/actualizar. Una respuesta accepted confirma una solicitud, no necesariamente el éxito final de la operación física.</p>
 <p>La <strong>tunelización segura</strong> permite acceso remoto a dispositivos tras un firewall mediante conexiones salientes, proxies y TLS, sin abrir una nueva regla de entrada. El agente recibe notificación en <code>$aws/things/thing-name/tunnels/notify</code> con el token correspondiente. Puede multiplexar flujos y conexiones. El token de túnel y las credenciales de SSH cumplen funciones distintas.</p>
-<p><strong>Defender</strong> audita certificados, políticas y configuraciones. El tema también explica monitorización de métricas con reglas o ML, alertas y mitigación. <strong>Nota de versión del propio curso:</strong> la página local de la práctica 3 avisa de la retirada de la función de detección en septiembre de 2026; conserva la distinción conceptual de teoría y no confundas ese aviso con la desaparición de auditorías. La nota procede de la copia docente y no es una comprobación independiente del estado comercial.</p>
+<p><strong>Defender</strong> audita, bajo demanda o de forma programada, que los recursos cumplan buenas prácticas: dispositivos que comparten certificado, certificados caducados o políticas demasiado permisivas. El tema explica también la detección de anomalías con reglas del usuario o modelos ML (entrenados inicialmente 14 días), alertas y mitigación. El tutorial de la práctica 3 avisa de que la <strong>detección</strong> dejó de estar disponible en septiembre de 2026; la <strong>auditoría</strong> sigue.</p>
 <p><strong>Advisor</strong> valida dispositivos contra un endpoint de pruebas. Categorías: TLS, MQTT, sombras, ejecución de trabajos, permisos/políticas y larga duración. Produce informes de calificación; no es el servicio que despliega trabajos ni el que audita continuamente una flota en operación.</p>
-<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=71">T4, pp. 71-76</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=82">pp. 82-93</a> y <a href="https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/">tutorial P3, auditoría</a>, copia local revisada.</p>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=71">T4, pp. 71-76</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=82">pp. 82-93</a> y <a href="https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/">tutorial P3, auditoría</a>.</p>
 <h2 id="repaso">Repaso final de distinciones</h2>
 <p>Antes de dar la teoría por estudiada, comprueba que puedes explicar sin mirar: las cinco características NIST; IaaS/PaaS/SaaS; los cuatro despliegues; responsabilidad compartida; región/AZ/PoP; edge/fog/MEC; VM/contenedor/unikernel; imagen/runtime; SDN/NFV; SDK/Client/Greengrass; certificado/política/rol; registro/sombra; broker/regla; desired/reported/delta; JITP/JITR/claim; snapshot/continuous; Defender/Advisor.</p>
-<p>Estas comparaciones condensan el material; <strong>no predicen qué diez preguntas escogerá el profesor</strong>. No se han creado tests ni preguntas nuevas en el banco.</p>
+<p>Comprueba lo aprendido con el <a href="/web-estudio/asignaturas/cloud/tests/simulacro-teoria/">simulacro de teoría</a>.</p>

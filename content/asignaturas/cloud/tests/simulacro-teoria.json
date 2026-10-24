@@ -1,0 +1,76 @@
+{
+  "kind": "test",
+  "id": "cloud.tests.simulacro-teoria",
+  "subjectId": "cloud",
+  "slug": "simulacro-teoria",
+  "title": "Cloud Computing · Simulacro de teoría",
+  "description": "29 preguntas de respuesta única sobre la materia que entra en la prueba de teoría.",
+  "scope": "T1 pp. 22-62 (sin la iniciativa europea, pp. 64-76); T2 solo Introducción, pp. 8-14; T3 pp. 6-35; T4 pp. 13-93 (sin servicios de análisis de datos, pp. 95-98). Alcance según el correo del profesor.",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.virtualizacion",
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "order": 5,
+  "groups": [
+    {
+      "id": "tema-1",
+      "title": "Tema 1 · Computación en la nube",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.teoria-t1-modelo-534",
+        "cloud.preguntas.teoria-t1-elasticidad",
+        "cloud.preguntas.teoria-t1-agrupacion-ubicacion",
+        "cloud.preguntas.teoria-t1-paas-control",
+        "cloud.preguntas.teoria-t1-cloud-bursting",
+        "cloud.preguntas.teoria-t1-responsabilidad-iaas",
+        "cloud.preguntas.teoria-t1-mec-movilidad",
+        "cloud.preguntas.teoria-t1-fog-modelos",
+        "cloud.preguntas.teoria-t1-fog-capas"
+      ]
+    },
+    {
+      "id": "tema-2",
+      "title": "Tema 2 · Introducción a AWS",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.teoria-t2-az",
+        "cloud.preguntas.teoria-t2-rec",
+        "cloud.preguntas.teoria-t2-wavelength",
+        "cloud.preguntas.teoria-t2-carrier-gateway"
+      ]
+    },
+    {
+      "id": "tema-3",
+      "title": "Tema 3 · Virtualización",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.teoria-t3-hipervisor-tipo1",
+        "cloud.preguntas.teoria-t3-paravirtualizacion",
+        "cloud.preguntas.teoria-t3-contenedores-ligeros",
+        "cloud.preguntas.teoria-t3-unikernel",
+        "cloud.preguntas.teoria-t3-sdn",
+        "cloud.preguntas.teoria-t3-nfv"
+      ]
+    },
+    {
+      "id": "tema-4",
+      "title": "Tema 4 · AWS IoT",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.teoria-t4-registro-opcional",
+        "cloud.preguntas.teoria-t4-limites-cosa",
+        "cloud.preguntas.teoria-t4-jitp",
+        "cloud.preguntas.teoria-t4-fleet-claim",
+        "cloud.preguntas.teoria-t4-job-snapshot-continuo",
+        "cloud.preguntas.teoria-t4-greengrass-nucleo",
+        "cloud.preguntas.teoria-t4-token-exchange",
+        "cloud.preguntas.teoria-t4-defender-auditoria",
+        "cloud.preguntas.teoria-t4-device-advisor",
+        "cloud.preguntas.teoria-t4-sombra-version"
+      ]
+    }
+  ]
+}

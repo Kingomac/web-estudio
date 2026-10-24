@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-temas-q1",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Adaptación de la actividad abierta. Para el hub smarthub, en la red wifi7ZH0 y la cocina del tercer piso, ¿qué nombre sigue el orden sensor / red / piso / habitación / dispositivo propuesto en la solución?",
+  "explanation": "Actividad abierta adaptada a selección para permitir la corrección automática. Respeta los cinco niveles solicitados, de general a específico; es la propuesta de la solución original.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "sensor/wifi7ZH0/piso3/cocina/smarthub",
+      "explanation": "Respeta los cinco niveles solicitados, de general a específico; es la propuesta de la solución original."
+    },
+    {
+      "id": "opcion-2",
+      "text": "sensor/smarthub/cocina/piso3/wifi7ZH0",
+      "explanation": "Coloca el dispositivo antes de la red y no respeta el orden solicitado."
+    },
+    {
+      "id": "opcion-3",
+      "text": "sensor/wifi7ZH0/cocina/piso3/smarthub",
+      "explanation": "Intercambia habitación y piso respecto de la jerarquía solicitada."
+    },
+    {
+      "id": "opcion-4",
+      "text": "wifi7ZH0/piso3/cocina/smarthub",
+      "explanation": "Omite el nivel inicial sensor exigido por el ejercicio."
+    }
+  ],
+  "answer": "opcion-1",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividades de temas MQTT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-temas-q1"
+    }
+  ]
+}

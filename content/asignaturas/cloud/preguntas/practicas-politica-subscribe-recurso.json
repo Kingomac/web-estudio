@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-subscribe-recurso",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En una política de AWS IoT, ¿qué tipo de recurso aparece en el ARN de la acción `iot:Subscribe`?",
+  "explanation": "`iot:Subscribe` autoriza filtros de suscripción, así que su recurso es `topicfilter/...`. `iot:Publish` e `iot:Receive` usan `topic/...` e `iot:Connect` usa `client/...`.",
+  "options": [
+    {
+      "id": "topicfilter",
+      "text": "`arn:aws:iot:REGION:CUENTA:topicfilter/truck/pubsub`",
+      "explanation": "Subscribe se autoriza sobre filtros de tema."
+    },
+    {
+      "id": "topic",
+      "text": "`arn:aws:iot:REGION:CUENTA:topic/truck/pubsub`",
+      "explanation": "`topic/` es el recurso de Publish y Receive, no de Subscribe."
+    },
+    {
+      "id": "client",
+      "text": "`arn:aws:iot:REGION:CUENTA:client/truck/pubsub`",
+      "explanation": "`client/` identifica el ID de cliente que se autoriza a conectar."
+    },
+    {
+      "id": "thing",
+      "text": "`arn:aws:iot:REGION:CUENTA:thing/truck/pubsub`",
+      "explanation": "El ARN de una cosa no es el recurso de una suscripción MQTT."
+    }
+  ],
+  "answer": "topicfilter",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    },
+    {
+      "title": "AWS IoT · Políticas de publicación y suscripción",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

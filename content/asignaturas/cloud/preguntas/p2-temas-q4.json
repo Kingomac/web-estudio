@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-temas-q4",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "`sensor/temperature/truck_1/main_freezer`\n`sensor/door/truck_1/door_latch`\n`sensor/temperature/truck_1/cabin`\n`sensor/door/truck_1/side_latch`\n¿Qué nombre de suscripción los captura a todos? (Seleccione DOS)",
+  "explanation": "El primer + admite temperature o door y el último + admite cualquiera de los sensores enumerados. El + admite el tipo de sensor y el # final incluye todos los descendientes de truck_1. Capturar todos los temas indicados no exige capturar únicamente esos temas.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "sensor/+/truck_1/+",
+      "explanation": "El primer + admite temperature o door y el último + admite cualquiera de los sensores enumerados."
+    },
+    {
+      "id": "opcion-2",
+      "text": "sensor/#/truck*",
+      "explanation": "# no puede ir en un nivel intermedio y * no es un comodín MQTT."
+    },
+    {
+      "id": "opcion-3",
+      "text": "sensor/+/truck_1/#",
+      "explanation": "El + admite el tipo de sensor y el # final incluye todos los descendientes de truck_1."
+    },
+    {
+      "id": "opcion-4",
+      "text": "sensor/+/truck_1/*",
+      "explanation": "* es literal en MQTT y no coincide con main_freezer, door_latch, cabin ni side_latch."
+    },
+    {
+      "id": "opcion-5",
+      "text": "#/truck_1/#",
+      "explanation": "El primer # no está al final: el filtro no cumple las reglas de MQTT."
+    }
+  ],
+  "answer": [
+    "opcion-1",
+    "opcion-3"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividades de temas MQTT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-temas-q4"
+    }
+  ]
+}

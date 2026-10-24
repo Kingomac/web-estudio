@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-device-advisor",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Antes de comercializar un dispositivo, se quiere validar que conecta de forma segura y fiable con IoT Core usando pruebas predefinidas. ¿Qué servicio se usa?",
+  "explanation": "Device Advisor valida la conexión con IoT Core antes de comercializar: el dispositivo se conecta a un endpoint de pruebas y se ejecutan pruebas de seis categorías (TLS, MQTT, sombra, trabajos, permisos y políticas, larga duración).",
+  "options": [
+    {
+      "id": "advisor",
+      "text": "AWS IoT Device Advisor",
+      "explanation": "Es el servicio de validación previa."
+    },
+    {
+      "id": "defender",
+      "text": "AWS IoT Device Defender",
+      "explanation": "Defender audita y monitoriza flotas en operación, no certifica antes de comercializar."
+    },
+    {
+      "id": "tester",
+      "text": "Fleet indexing",
+      "explanation": "La indexación busca y agrega datos de la flota; no ejecuta pruebas."
+    },
+    {
+      "id": "jobs",
+      "text": "AWS IoT Jobs",
+      "explanation": "Jobs ejecuta operaciones remotas en dispositivos."
+    }
+  ],
+  "answer": "advisor",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        92,
+        93
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "gestion-remota"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-autoevaluacion-q2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es una buena analogía para describir la estructura de un nombre de tema?",
+  "explanation": "Cada nivel forma parte de una jerarquía de espacios de nombres, separada mediante /.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Un conjunto de cajas colocadas unas al lado de otras.",
+      "explanation": "Las cajas en paralelo no expresan la relación entre niveles de general a específico."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Un rastro de indicaciones para los mensajes.",
+      "explanation": "Un rastro de indicaciones no representa con precisión la jerarquía de niveles del nombre."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Una dirección en el IoT Core para los mensajes.",
+      "explanation": "El nombre del tema no es la dirección del endpoint de IoT Core; clasifica mensajes."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Una jerarquía de espacios de nombres.",
+      "explanation": "Cada nivel forma parte de una jerarquía de espacios de nombres, separada mediante /."
+    }
+  ],
+  "answer": "opcion-4",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-autoevaluacion-q2"
+    }
+  ]
+}

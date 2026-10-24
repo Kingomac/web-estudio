@@ -1,0 +1,59 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-comprobacion-11-q2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "¿Cuál de las siguientes son acciones de política MQTT? (Selecciona TRES)",
+  "explanation": "iot:Subscribe autoriza la suscripción a filtros de tema. iot:Connect autoriza establecer la conexión. iot:Publish autoriza publicar en temas.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Subscribe",
+      "explanation": "iot:Subscribe autoriza la suscripción a filtros de tema."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Connect",
+      "explanation": "iot:Connect autoriza establecer la conexión."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Shadow",
+      "explanation": "Shadow designa la sombra del dispositivo, no una acción de política con ese nombre."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Publish",
+      "explanation": "iot:Publish autoriza publicar en temas."
+    },
+    {
+      "id": "opcion-5",
+      "text": "Message",
+      "explanation": "Message es un término genérico para mensaje, no una acción de política con ese nombre."
+    }
+  ],
+  "answer": [
+    "opcion-1",
+    "opcion-2",
+    "opcion-4"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 11",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/12-knowledge-check/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-comprobacion-11-q2"
+    }
+  ]
+}

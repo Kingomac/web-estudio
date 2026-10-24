@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-nfv",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el objetivo de NFV (Network Function Virtualization)?",
+  "explanation": "NFV despliega los servicios de red como funciones de red virtuales (VNF) sobre hardware estándar, de modo que se pueden desplegar y migrar como una VM o un contenedor; los servicios se componen encadenando VNF en grafos de encaminamiento.",
+  "options": [
+    {
+      "id": "vnf",
+      "text": "Ejecutar funciones de red como VNF sobre hardware estándar",
+      "explanation": "Es la definición del tema."
+    },
+    {
+      "id": "planos",
+      "text": "Separar el plano de control del plano de datos",
+      "explanation": "Eso es SDN; las dos se complementan, pero no son lo mismo."
+    },
+    {
+      "id": "cdn",
+      "text": "Acercar contenido al usuario mediante cachés",
+      "explanation": "Eso es una CDN."
+    },
+    {
+      "id": "hipervisor",
+      "text": "Sustituir el hipervisor por un módulo del kernel Linux",
+      "explanation": "Eso recuerda a KVM, no a NFV."
+    }
+  ],
+  "answer": "vnf",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        33,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sdn-nfv"
+    }
+  ]
+}

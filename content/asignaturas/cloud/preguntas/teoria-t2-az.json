@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t2-az",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas descripciones corresponde a una zona de disponibilidad (AZ) de AWS?",
+  "explanation": "Cada región tiene una o más AZ, formadas por uno o más centros de datos en ubicaciones distintas y aisladas: no comparten instalación eléctrica ni refrigeración y se conectan entre sí con enlaces privados de baja latencia.",
+  "options": [
+    {
+      "id": "az",
+      "text": "Uno o más centros de datos de una región, aislados de las demás AZ, sin compartir instalación eléctrica ni refrigeración",
+      "explanation": "Es la definición de AZ del tema."
+    },
+    {
+      "id": "region",
+      "text": "Un área geográfica independiente cuyos servicios y precios pueden variar",
+      "explanation": "Eso describe una región, que contiene varias AZ."
+    },
+    {
+      "id": "pop",
+      "text": "Un punto de presencia de CloudFront que entrega contenido en caché",
+      "explanation": "Un PoP forma parte de la CDN, no es una AZ."
+    },
+    {
+      "id": "wavelength",
+      "text": "Infraestructura AWS dentro de la red 5G de un operador",
+      "explanation": "Eso es una zona Wavelength."
+    }
+  ],
+  "answer": "az",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

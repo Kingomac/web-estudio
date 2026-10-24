@@ -1,0 +1,77 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-temas-termostato",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "Adaptación de la actividad abierta del termostato inteligente. ¿Qué SEIS conjuntos de datos aparecen en la lista de ejemplo del tutorial? La lista original es orientativa y admite más posibilidades.",
+  "explanation": "Actividad abierta adaptada a selección para permitir la corrección automática. El tutorial incluye ubicación, nivel y duración de la batería y lectura actual de temperatura. La solución enumera la consigna de temperatura, el reloj para programación, el modo y el brillo de 0 a 5. La lista incluye proximidad para la pantalla, humedad, versión de firmware y micrófono encendido o apagado. El tutorial contempla tanto la conexión y el escaneo de redes como los estados pulsado/suelto de ambos botones. La lista incluye la comprobación y versión de actualizaciones, el tipo de usuario y el estado de los filtros. Estos cuatro datos también aparecen en la solución original: mantenimiento de filtros e interacción con el asistente.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "Ubicación, nivel de batería, duración de batería y temperatura actual.",
+      "explanation": "El tutorial incluye ubicación, nivel y duración de la batería y lectura actual de temperatura."
+    },
+    {
+      "id": "opcion-2",
+      "text": "Temperatura solicitada, hora del reloj, modo de funcionamiento y brillo de pantalla.",
+      "explanation": "La solución enumera la consigna de temperatura, el reloj para programación, el modo y el brillo de 0 a 5."
+    },
+    {
+      "id": "opcion-3",
+      "text": "Proximidad, humedad, versión de firmware y estado del micrófono.",
+      "explanation": "La lista incluye proximidad para la pantalla, humedad, versión de firmware y micrófono encendido o apagado."
+    },
+    {
+      "id": "opcion-4",
+      "text": "Red inalámbrica actual, lista de redes detectadas y estados de los botones 1 y 2.",
+      "explanation": "El tutorial contempla tanto la conexión y el escaneo de redes como los estados pulsado/suelto de ambos botones."
+    },
+    {
+      "id": "opcion-5",
+      "text": "Fecha de comprobación de actualizaciones, versión disponible, usuario conectado y estado de los filtros.",
+      "explanation": "La lista incluye la comprobación y versión de actualizaciones, el tipo de usuario y el estado de los filtros."
+    },
+    {
+      "id": "opcion-6",
+      "text": "Fechas de cambio y nombres de los filtros, modo del asistente inteligente y último comando recibido.",
+      "explanation": "Estos cuatro datos también aparecen en la solución original: mantenimiento de filtros e interacción con el asistente."
+    },
+    {
+      "id": "opcion-7",
+      "text": "Cotización bursátil, índice de inflación, cambio de divisas y precio del petróleo.",
+      "explanation": "Son datos económicos que no aparecen en la lista de ejemplo del termostato; se pregunta por esa lista concreta."
+    },
+    {
+      "id": "opcion-8",
+      "text": "Órbitas planetarias, fase lunar, actividad solar y trayectorias de cometas.",
+      "explanation": "Son datos astronómicos ausentes de la lista del tutorial; no se pide imaginar información de servicios externos."
+    }
+  ],
+  "answer": [
+    "opcion-1",
+    "opcion-2",
+    "opcion-3",
+    "opcion-4",
+    "opcion-5",
+    "opcion-6"
+  ],
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividades de temas MQTT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-temas-termostato"
+    }
+  ]
+}

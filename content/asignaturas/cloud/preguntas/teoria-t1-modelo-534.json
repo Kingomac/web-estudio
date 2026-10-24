@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-modelo-534",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el modelo cloud del NIST, conocido como «5-3-4», ¿qué representan esos números?",
+  "explanation": "El NIST define 5 características esenciales, 3 modelos de servicio (IaaS, PaaS, SaaS) y 4 modelos de despliegue (pública, privada, comunitaria, híbrida).",
+  "options": [
+    {
+      "id": "caract-servicio-despliegue",
+      "text": "5 características esenciales, 3 modelos de servicio y 4 modelos de despliegue",
+      "explanation": "Es el orden exacto del modelo NIST: características, servicio y despliegue."
+    },
+    {
+      "id": "despliegue-servicio-caract",
+      "text": "5 modelos de despliegue, 3 modelos de servicio y 4 características esenciales",
+      "explanation": "Intercambia características y despliegues: los despliegues son cuatro y las características cinco."
+    },
+    {
+      "id": "servicio-despliegue-caract",
+      "text": "5 modelos de servicio, 3 modelos de despliegue y 4 características esenciales",
+      "explanation": "Los modelos de servicio son tres (IaaS, PaaS, SaaS), no cinco."
+    },
+    {
+      "id": "capas",
+      "text": "5 capas de red, 3 planos de control y 4 niveles de seguridad",
+      "explanation": "Mezcla conceptos de redes que no forman parte del modelo cloud del NIST."
+    }
+  ],
+  "answer": "caract-servicio-despliegue",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "nist"
+    }
+  ]
+}

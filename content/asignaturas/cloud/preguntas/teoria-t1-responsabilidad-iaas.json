@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-responsabilidad-iaas",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Con una VM IaaS en AWS y el modelo de responsabilidad compartida, ¿cuál de estas tareas corresponde al cliente?",
+  "explanation": "El proveedor protege los servicios que ofrece; el cliente configura y usa los suyos. En una VM IaaS, el cliente se encarga de IAM y credenciales, parches del SO, aplicaciones, grupo de seguridad y cifrado de datos.",
+  "options": [
+    {
+      "id": "parches",
+      "text": "Aplicar los parches de seguridad al SO de la VM",
+      "explanation": "El ejemplo IaaS del tema lo incluye entre las tareas del cliente."
+    },
+    {
+      "id": "fisica",
+      "text": "La seguridad física del centro de datos",
+      "explanation": "Forma parte de proteger la infraestructura que el proveedor ofrece."
+    },
+    {
+      "id": "hipervisor",
+      "text": "Mantener el hipervisor que ejecuta la VM",
+      "explanation": "El hipervisor forma parte de la infraestructura del proveedor, que el cliente IaaS no controla."
+    },
+    {
+      "id": "nada",
+      "text": "Ninguna: en IaaS toda la seguridad la asume el proveedor",
+      "explanation": "La seguridad es compartida, y en IaaS el cliente conserva bastantes responsabilidades."
+    }
+  ],
+  "answer": "parches",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        46,
+        47
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "beneficios-riesgos"
+    }
+  ]
+}

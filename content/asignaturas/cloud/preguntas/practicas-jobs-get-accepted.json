@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-get-accepted",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Tras recibir la notificación de un trabajo nuevo, el dispositivo llama a DescribeJobExecution por MQTT y la solicitud tiene éxito. ¿En qué tema recibe el documento del trabajo?",
+  "explanation": "AWS IoT publica la respuesta de éxito en `$aws/things/THING/jobs/JOBID/get/accepted`; con ella el dispositivo tiene el documento del trabajo.",
+  "options": [
+    {
+      "id": "get-accepted",
+      "text": "`$aws/things/THING/jobs/JOBID/get/accepted`",
+      "explanation": "Es la respuesta de éxito a la solicitud get de esa ejecución."
+    },
+    {
+      "id": "notify",
+      "text": "`$aws/things/THING/jobs/notify`",
+      "explanation": "Notifica cambios en la lista de pendientes; no responde a DescribeJobExecution."
+    },
+    {
+      "id": "update",
+      "text": "`$aws/things/THING/jobs/JOBID/update`",
+      "explanation": "En ese tema publica el dispositivo para actualizar el estado de la ejecución."
+    },
+    {
+      "id": "events",
+      "text": "`$aws/events/jobExecution/JOBID/succeeded`",
+      "explanation": "Es un evento de ejecución terminada con éxito, no la respuesta a get."
+    }
+  ],
+  "answer": "get-accepted",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        76
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-jobs"
+    }
+  ]
+}

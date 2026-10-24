@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-sombra-tema-update",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo `sensor01` quiere informar de su estado en su sombra clásica. ¿En qué tema publica la solicitud?",
+  "explanation": "La solicitud se publica en el tema de la acción, `.../shadow/update`. El servicio contesta en `/update/accepted` o `/update/rejected` y notifica diferencias en `/update/delta`.",
+  "options": [
+    {
+      "id": "update",
+      "text": "`$aws/things/sensor01/shadow/update`",
+      "explanation": "Es el tema de solicitud de actualización."
+    },
+    {
+      "id": "accepted",
+      "text": "`$aws/things/sensor01/shadow/update/accepted`",
+      "explanation": "Es el tema de respuesta, en el que publica el servicio."
+    },
+    {
+      "id": "delta",
+      "text": "`$aws/things/sensor01/shadow/update/delta`",
+      "explanation": "Ahí el servicio notifica diferencias entre desired y reported."
+    },
+    {
+      "id": "rules",
+      "text": "`$aws/rules/sensor01/shadow/update`",
+      "explanation": "`$aws/rules/` es el prefijo de Basic Ingest, no de las sombras."
+    }
+  ],
+  "answer": "update",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Sombras en acción",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/11_device_shadows/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-sombra"
+    }
+  ]
+}

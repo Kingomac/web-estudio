@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-tunel-notify",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la tunelización segura, ¿en qué tema escucha el agente del dispositivo para recibir su token de acceso (CAT)?",
+  "explanation": "El agente de IoT se conecta a AWS IoT y escucha en `$aws/things/thing-name/tunnels/notify`; el mensaje incluye el CAT del dispositivo y los parámetros para iniciar el proxy local.",
+  "options": [
+    {
+      "id": "tunnels",
+      "text": "`$aws/things/thing-name/tunnels/notify`",
+      "explanation": "Es el tema de notificación de túneles."
+    },
+    {
+      "id": "jobs",
+      "text": "`$aws/things/thing-name/jobs/notify`",
+      "explanation": "Es para trabajos pendientes."
+    },
+    {
+      "id": "shadow",
+      "text": "`$aws/things/thing-name/shadow/update/delta`",
+      "explanation": "Es para diferencias de la sombra."
+    },
+    {
+      "id": "ssh",
+      "text": "Ninguno: el CAT llega por la propia conexión SSH",
+      "explanation": "El CAT da acceso al túnel antes de que exista la sesión SSH."
+    }
+  ],
+  "answer": "tunnels",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        83
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

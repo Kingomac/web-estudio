@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-elasticidad",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica esencial del NIST describe que las capacidades se aprovisionan y liberan según la demanda y, para el consumidor, parecen ilimitadas?",
+  "explanation": "La elasticidad rápida es aprovisionar y liberar capacidades rápida y elásticamente según la demanda; desde el punto de vista del consumidor parecen ilimitadas.",
+  "options": [
+    {
+      "id": "elasticidad",
+      "text": "Elasticidad rápida",
+      "explanation": "Corresponde a la definición: aprovisionar y liberar según la demanda, con capacidad aparentemente ilimitada."
+    },
+    {
+      "id": "agrupacion",
+      "text": "Agrupación de recursos",
+      "explanation": "La agrupación trata de compartir recursos entre clientes con un modelo multi-tenant, no de ajustar la capacidad a la carga."
+    },
+    {
+      "id": "medido",
+      "text": "Servicio medido",
+      "explanation": "El servicio medido monitoriza y factura el consumo; no describe cómo crece o decrece la capacidad."
+    },
+    {
+      "id": "autoservicio",
+      "text": "Autoservicio bajo demanda",
+      "explanation": "El autoservicio describe que el consumidor aprovisiona sin intervención humana del proveedor, no la sensación de capacidad ilimitada."
+    }
+  ],
+  "answer": "elasticidad",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "nist"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "kind": "test",
+  "id": "cloud.tests.autoevaluaciones-completas",
+  "subjectId": "cloud",
+  "slug": "autoevaluaciones-completas",
+  "title": "Cloud Computing · Todas las autoevaluaciones",
+  "description": "24 preguntas con corrección y explicaciones: 23 actividades de autoevaluación de P1 y P2 y la pregunta adicional de P1.",
+  "scope": "Autoevaluaciones: 9 actividades de P1, 14 de P2 y 1 adicional de P1 sin solución publicada. Se excluyen las dos preguntas de recuento de alertas y temperatura mínima de las lecturas del camión 101. Incluye comprobaciones intermedias y cuestionarios finales. Las actividades abiertas se adaptan a selección y se precisan enunciados ambiguos. Las fuentes originales son HTML, citadas mediante sus enlaces y la lectura local, sin atribuirles páginas PDF. No se han localizado autoevaluaciones equivalentes de P3/P4 en la copia revisada.",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "order": 10,
+  "groups": [
+    {
+      "id": "p1-comprobacion-6",
+      "title": "P1 · Componentes y seguridad",
+      "context": "Conserva el formato de cada pregunta: respuesta única, múltiple o verdadero/falso. Las adaptaciones se indican en el enunciado.",
+      "questionIds": [
+        "cloud.preguntas.p1-comprobacion-6-q1",
+        "cloud.preguntas.p1-comprobacion-6-q2"
+      ]
+    },
+    {
+      "id": "p1-comprobacion-11",
+      "title": "P1 · Políticas y permisos",
+      "context": "Conserva el formato de cada pregunta: respuesta única, múltiple o verdadero/falso. Las adaptaciones se indican en el enunciado.",
+      "questionIds": [
+        "cloud.preguntas.p1-comprobacion-11-q1",
+        "cloud.preguntas.p1-comprobacion-11-q2"
+      ]
+    },
+    {
+      "id": "p1-autoevaluacion",
+      "title": "P1 · Autoevaluación final",
+      "context": "Conserva el formato de cada pregunta: respuesta única, múltiple o verdadero/falso. Las adaptaciones se indican en el enunciado.",
+      "questionIds": [
+        "cloud.preguntas.p1-autoevaluacion-q1",
+        "cloud.preguntas.p1-autoevaluacion-q2",
+        "cloud.preguntas.p1-autoevaluacion-q3",
+        "cloud.preguntas.p1-autoevaluacion-q4",
+        "cloud.preguntas.p1-autoevaluacion-q5"
+      ]
+    },
+    {
+      "id": "p2-temas",
+      "title": "P2 · Datos, temas y comodines",
+      "context": "Conserva el formato de cada pregunta: respuesta única, múltiple o verdadero/falso. Las adaptaciones se indican en el enunciado.",
+      "questionIds": [
+        "cloud.preguntas.p2-temas-termostato",
+        "cloud.preguntas.p2-temas-q1",
+        "cloud.preguntas.p2-temas-q2",
+        "cloud.preguntas.p2-temas-q3",
+        "cloud.preguntas.p2-temas-q4"
+      ]
+    },
+    {
+      "id": "p2-broker",
+      "title": "P2 · Broker de mensajes",
+      "context": "Conserva el formato de cada pregunta: respuesta única, múltiple o verdadero/falso. Las adaptaciones se indican en el enunciado.",
+      "questionIds": [
+        "cloud.preguntas.p2-broker-q1",
+        "cloud.preguntas.p2-broker-q2"
+      ]
+    },
+    {
+      "id": "p2-autoevaluacion",
+      "title": "P2 · Autoevaluación final",
+      "context": "Conserva el formato de cada pregunta: respuesta única, múltiple o verdadero/falso. Las adaptaciones se indican en el enunciado.",
+      "questionIds": [
+        "cloud.preguntas.p2-autoevaluacion-q1",
+        "cloud.preguntas.p2-autoevaluacion-q2",
+        "cloud.preguntas.p2-autoevaluacion-q3",
+        "cloud.preguntas.p2-autoevaluacion-q4",
+        "cloud.preguntas.p2-autoevaluacion-q5",
+        "cloud.preguntas.p2-autoevaluacion-q6",
+        "cloud.preguntas.p2-autoevaluacion-q7"
+      ]
+    },
+    {
+      "id": "p1-adicional",
+      "title": "P1 · Pregunta adicional",
+      "context": "Respuesta derivada del material; el original no publica una solución. Esta pregunta adicional no implica estudiar el código del script para el examen.",
+      "questionIds": [
+        "cloud.preguntas.p1-actividad-2-endpoint"
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "introduccion"
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 6",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/07-knowledge-check/"
+    },
+    {
+      "title": "Práctica 1 · Comprobación de conocimientos, sección 11",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/12-knowledge-check/"
+    },
+    {
+      "title": "Práctica 1 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/"
+    },
+    {
+      "title": "Práctica 2 · Actividades de temas MQTT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    },
+    {
+      "title": "Práctica 2 · Comprobación del broker",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/04_message_broker/"
+    },
+    {
+      "title": "Práctica 2 · Actividad de las notificaciones",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/06_rules_overview/"
+    },
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    },
+    {
+      "title": "P1 · Actividad adicional 2",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_2/"
+    },
+    {
+      "title": "P1 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_3/"
+    }
+  ],
+  "relatedResourceIds": [
+    "cloud.apuntes.examen-practicas"
+  ]
+}

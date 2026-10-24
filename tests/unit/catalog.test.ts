@@ -19,7 +19,7 @@ test('cada taller registrado tiene módulo y componente declarados', () => {
 });
 test('detecta citas fuera del PDF y referencias inexistentes', () => {
   const entries = structuredClone(catalog.entries);
-  const question = entries.find(e => e.kind === 'pregunta')!;
+  const question = entries.filter(e => e.kind === 'pregunta').find(e => e.originalReferences.length > 0)!;
   question.originalReferences[0].pdfPages = [999];
   question.tagIds.push('protocolos.tags.no-existe');
   const errors = buildCatalog(entries).errors;

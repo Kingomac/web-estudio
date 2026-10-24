@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-device-client-publish-on-change",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el Device Client de la práctica 3, ¿qué hace la opción `\"publish-on-change\": true` de pub-sub?",
+  "explanation": "Por defecto el contenido del archivo de publicación se publica al iniciar o reiniciar el servicio. Con publish-on-change, cada cambio del archivo provoca una nueva publicación.",
+  "options": [
+    {
+      "id": "cambio",
+      "text": "Publica el contenido del archivo de publicación cada vez que este cambia",
+      "explanation": "Evita reiniciar el servicio por cada mensaje."
+    },
+    {
+      "id": "sub",
+      "text": "Reenvía automáticamente lo recibido en el archivo de suscripción",
+      "explanation": "Recibir no implica republicar."
+    },
+    {
+      "id": "sombra",
+      "text": "Actualiza la sombra cuando cambia el estado reported",
+      "explanation": "pub-sub no gestiona sombras."
+    },
+    {
+      "id": "qos",
+      "text": "Cambia la QoS de los mensajes a 1",
+      "explanation": "No tiene relación con la QoS."
+    }
+  ],
+  "answer": "cambio",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Actividad adicional 1",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

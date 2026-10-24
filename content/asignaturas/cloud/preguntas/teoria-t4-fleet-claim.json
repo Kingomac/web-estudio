@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-fleet-claim",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el aprovisionamiento de flota por reclamación (provisioning by claim), ¿por qué presenta un riesgo?",
+  "explanation": "El fabricante instala el mismo certificado de reclamación, con permisos limitados, en todos los dispositivos de la flota; si se compromete, afecta a todos. En la primera conexión cada dispositivo lo usa para obtener una identidad única.",
+  "options": [
+    {
+      "id": "compartido",
+      "text": "Porque todos los dispositivos comparten el mismo certificado de reclamación",
+      "explanation": "Ese certificado compartido es el origen del riesgo."
+    },
+    {
+      "id": "sin-tls",
+      "text": "Porque la primera conexión se hace sin TLS",
+      "explanation": "La conexión sigue usando TLS con el certificado de reclamación."
+    },
+    {
+      "id": "permanente",
+      "text": "Porque el dispositivo conserva para siempre el certificado de reclamación como identidad",
+      "explanation": "El certificado de reclamación sirve para obtener una identidad única, que es la definitiva."
+    },
+    {
+      "id": "usuario",
+      "text": "Porque un instalador usa una app móvil para obtener credenciales temporales",
+      "explanation": "Eso describe el método por usuario de confianza."
+    }
+  ],
+  "answer": "compartido",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        69
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "aprovisionamiento"
+    }
+  ]
+}

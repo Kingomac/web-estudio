@@ -251,6 +251,7 @@
   ],
   "relatedResourceIds": [
     "cloud.apuntes.examen-practicas",
-    "cloud.apuntes.autoevaluaciones-practicas"
+    "cloud.apuntes.autoevaluaciones-practicas",
+    "cloud.tests.simulacro-teoria"
   ]
 }

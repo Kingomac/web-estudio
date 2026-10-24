@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p2-autoevaluacion-q6",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Para recibir los mensajes de sensor/temperature/truck_1 y sensor/humidity/truck_1, ¿qué filtro de tema debes usar?",
+  "explanation": "+ coincide con temperature o humidity en el segundo nivel, conservando sensor y truck_1.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "sensor/#/truck_1",
+      "explanation": "# solo puede ocupar el último nivel; no puede ir antes de truck_1."
+    },
+    {
+      "id": "opcion-2",
+      "text": "sensor//truck_1",
+      "explanation": "El nivel vacío entre las barras no coincide con temperature ni humidity."
+    },
+    {
+      "id": "opcion-3",
+      "text": "sensor/truck_1/*",
+      "explanation": "No respeta el orden de niveles de los temas y * no es un comodín MQTT."
+    },
+    {
+      "id": "opcion-4",
+      "text": "sensor/+/truck_1",
+      "explanation": "+ coincide con temperature o humidity en el segundo nivel, conservando sensor y truck_1."
+    }
+  ],
+  "answer": "opcion-4",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/13_course_assesment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p2-autoevaluacion-q6"
+    }
+  ]
+}

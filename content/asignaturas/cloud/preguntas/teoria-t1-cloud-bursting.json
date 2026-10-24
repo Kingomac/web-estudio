@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-cloud-bursting",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué es el «cloud bursting» que aparece entre los modelos de despliegue?",
+  "explanation": "Cloud bursting consiste en delegar los picos de carga en recursos de la nube pública, típicamente desde una nube privada (escenario híbrido).",
+  "options": [
+    {
+      "id": "picos",
+      "text": "Delegar los picos de carga en recursos de la nube pública",
+      "explanation": "Es la definición de la diapositiva."
+    },
+    {
+      "id": "copias",
+      "text": "Mantener tres copias de los datos, en dos medios, una fuera",
+      "explanation": "Es la regla de copias 3-2-1, una recomendación de continuidad."
+    },
+    {
+      "id": "migrar-mec",
+      "text": "Migrar VM entre servidores MEC para mantener el servicio en movilidad",
+      "explanation": "Es cómo MEC mantiene la continuidad del servicio, no un modelo de despliegue."
+    },
+    {
+      "id": "comunitaria",
+      "text": "Compartir una nube entre organizaciones con requisitos normativos comunes",
+      "explanation": "Eso define la nube comunitaria."
+    }
+  ],
+  "answer": "picos",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "modelos-despliegue"
+    }
+  ]
+}

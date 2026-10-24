@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-unikernel",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre los unikernels es correcta según el tema?",
+  "explanation": "Un unikernel enlaza en compilación la aplicación con las librerías del SO que necesita, y produce una imagen ligera e inmutable. El tema lo resume como «seguridad de las VM + ligereza y rendimiento de los contenedores». Su desventaja es la portabilidad: hay que compilar una imagen por arquitectura+plataforma.",
+  "options": [
+    {
+      "id": "imagen",
+      "text": "Generan una imagen inmutable con solo las partes del SO que necesita la aplicación, más pequeña y rápida de arrancar que un contenedor",
+      "explanation": "Recoge la definición y las ventajas de las pp. 18-19."
+    },
+    {
+      "id": "portables",
+      "text": "Son más portables que los contenedores, porque una imagen sirve para cualquier plataforma",
+      "explanation": "Es al revés: hay que compilar una imagen por arquitectura y plataforma."
+    },
+    {
+      "id": "kernel-compartido",
+      "text": "Comparten el kernel del anfitrión como los contenedores",
+      "explanation": "Un unikernel incluye su propio kernel especializado y puede ejecutarse en un hipervisor o en bare metal."
+    },
+    {
+      "id": "ecosistema",
+      "text": "Tienen un ecosistema más amplio que el de las VM",
+      "explanation": "El tema dice que aún no hay ecosistema comparable y que su adopción es marginal."
+    }
+  ],
+  "answer": "imagen",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        18,
+        19
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tecnicas-virtualizacion"
+    }
+  ]
+}

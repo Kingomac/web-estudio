@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-plantilla-comun",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué parámetros son comunes a todas las plantillas de trabajo gestionadas por AWS (Download-File, Reboot, Run-Command…)?",
+  "explanation": "Los parámetros dependen de la operación, excepto `runAsUser` y `pathToHandler`, que son comunes a todas.",
+  "options": [
+    {
+      "id": "comunes",
+      "text": "`runAsUser` y `pathToHandler`",
+      "explanation": "Son los dos que menciona el tema."
+    },
+    {
+      "id": "download",
+      "text": "`downloadUrl` y `filePath`",
+      "explanation": "Son propios de Download-File."
+    },
+    {
+      "id": "sombra",
+      "text": "`desired` y `reported`",
+      "explanation": "Son propiedades de una sombra."
+    },
+    {
+      "id": "policy",
+      "text": "`Effect` y `Resource`",
+      "explanation": "Son claves de una política."
+    }
+  ],
+  "answer": "comunes",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        74
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

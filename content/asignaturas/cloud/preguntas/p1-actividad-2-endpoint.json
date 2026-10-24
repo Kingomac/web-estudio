@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-actividad-2-endpoint",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Pregunta adicional de P1, actividad 2, adaptada a selección. ¿En qué script de la actividad 1 se usa aws iot describe-endpoint y para qué?",
+  "explanation": "Respuesta deducida del material, sin solucionario publicado junto a la pregunta. start.sh obtiene endpointAddress y lo pasa como parámetro -e al cliente trucksensor.py para conectarse a AWS IoT. La CLI escribe describe-endpoint con guion, aunque el enunciado original diga describe_endpoint.",
+  "options": [
+    {
+      "id": "inicio",
+      "text": "En start.sh, para obtener el endpoint de AWS IoT y pasarlo al cliente del dispositivo.",
+      "explanation": "El script consulta el endpoint, extrae endpointAddress y lo entrega al cliente al arrancarlo."
+    },
+    {
+      "id": "certificado",
+      "text": "En start.sh, para crear el certificado X.509 del dispositivo.",
+      "explanation": "describe-endpoint consulta la dirección del servicio; no crea certificados."
+    },
+    {
+      "id": "politica",
+      "text": "En start.sh, para conceder permisos de publicación mediante una política.",
+      "explanation": "Consultar el endpoint no modifica políticas ni concede permisos."
+    },
+    {
+      "id": "v2",
+      "text": "En start_v2.sh de la actividad 1, para borrar los mensajes del broker.",
+      "explanation": "start_v2.sh pertenece a la actividad 3; describe-endpoint no borra mensajes."
+    }
+  ],
+  "answer": "inicio",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "P1 · Actividad adicional 2",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_2/"
+    },
+    {
+      "title": "P1 · Actividad 1, análisis de start.sh",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_1/"
+    },
+    {
+      "title": "P1 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "pregunta-adicional-sin-solucion"
+    }
+  ]
+}

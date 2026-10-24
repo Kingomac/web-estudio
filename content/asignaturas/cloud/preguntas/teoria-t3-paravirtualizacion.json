@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-paravirtualizacion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En los modos de virtualización x86, ¿qué caracteriza a la paravirtualización?",
+  "explanation": "En la paravirtualización el hipervisor ofrece una API y las instrucciones problemáticas se cambian por llamadas a ella. Hay que modificar y recompilar el SO invitado (menos portabilidad), pero rinde mejor que la virtualización completa. Ejemplo: Xen.",
+  "options": [
+    {
+      "id": "api",
+      "text": "Sustituye las instrucciones problemáticas por llamadas a una API del hipervisor, por lo que hay que modificar el SO invitado",
+      "explanation": "Es la definición del tema."
+    },
+    {
+      "id": "traduccion",
+      "text": "Usa traducción binaria y no necesita modificar el SO invitado",
+      "explanation": "Eso es la virtualización completa."
+    },
+    {
+      "id": "vtx",
+      "text": "Se basa en extensiones del procesador como Intel VT-x o AMD-V",
+      "explanation": "Eso es la virtualización asistida por hardware (HVM)."
+    },
+    {
+      "id": "kernel",
+      "text": "Comparte el kernel del anfitrión entre procesos aislados",
+      "explanation": "Eso describe los contenedores, no un modo x86 de hipervisor."
+    }
+  ],
+  "answer": "api",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "x86"
+    }
+  ]
+}

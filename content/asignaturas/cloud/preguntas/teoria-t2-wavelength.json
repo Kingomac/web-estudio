@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t2-wavelength",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación móvil sensible a la latencia debe ejecutarse dentro de la red 5G de un operador de telecomunicaciones. ¿Qué infraestructura de AWS encaja?",
+  "explanation": "Las zonas Wavelength llevan infraestructura y servicios de AWS a las redes 5G de los CSP y permiten soluciones MEC. Las Local Zones están cerca de ciudades, pero no dentro de la red del operador.",
+  "options": [
+    {
+      "id": "wavelength",
+      "text": "Una zona Wavelength",
+      "explanation": "Está desplegada en la red 5G del CSP."
+    },
+    {
+      "id": "local",
+      "text": "Una Local Zone",
+      "explanation": "Está cerca de ciudades y centros industriales, pero no dentro de la red del operador móvil."
+    },
+    {
+      "id": "az",
+      "text": "Una zona de disponibilidad de la región",
+      "explanation": "Las AZ forman parte de la región central, más lejos del usuario móvil."
+    },
+    {
+      "id": "cloudfront",
+      "text": "Un PoP de CloudFront",
+      "explanation": "Un PoP entrega contenido en caché; no ejecuta la aplicación."
+    }
+  ],
+  "answer": "wavelength",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        11,
+        12,
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

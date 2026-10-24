@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-paas-control",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el modelo PaaS, ¿qué controla el consumidor?",
+  "explanation": "En PaaS el consumidor no controla la infraestructura ni el entorno de despliegue, pero sí las aplicaciones desplegadas y, posiblemente, la configuración del entorno.",
+  "options": [
+    {
+      "id": "apps",
+      "text": "Las aplicaciones desplegadas y, posiblemente, la configuración del entorno de despliegue",
+      "explanation": "Es la definición de PaaS del tema."
+    },
+    {
+      "id": "so",
+      "text": "Los SO, el almacenamiento, la red y las aplicaciones, pero no el hardware",
+      "explanation": "Es lo que controla el consumidor en IaaS."
+    },
+    {
+      "id": "config-personal",
+      "text": "Solo su configuración personal dentro de una aplicación del proveedor",
+      "explanation": "Eso es SaaS: el consumidor usa una aplicación ya hecha."
+    },
+    {
+      "id": "hardware",
+      "text": "El hardware físico del proveedor y su virtualización",
+      "explanation": "En ningún modelo de servicio controla el consumidor la infraestructura física subyacente."
+    }
+  ],
+  "answer": "apps",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        30,
+        31,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "modelos-servicio"
+    }
+  ]
+}

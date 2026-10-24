@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t2-rec",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la infraestructura de CloudFront, ¿qué son las REC (memorias caché de periferia regionales)?",
+  "explanation": "Las REC están entre el servidor web de origen y los PoP; tienen más capacidad para guardar contenido pedido por usuarios de varios PoP, de modo que los accesos siguientes sean más rápidos.",
+  "options": [
+    {
+      "id": "rec",
+      "text": "Cachés entre el servidor de origen y los PoP, con más capacidad, que sirven a varios PoP",
+      "explanation": "Coincide con la descripción del tema."
+    },
+    {
+      "id": "az",
+      "text": "Centros de datos aislados dentro de una región",
+      "explanation": "Eso es una AZ, que no forma parte de la red de entrega de CloudFront."
+    },
+    {
+      "id": "local-zone",
+      "text": "Infraestructura de cómputo cerca de grandes ciudades para latencias inferiores a 10 ms",
+      "explanation": "Eso es una Local Zone."
+    },
+    {
+      "id": "carrier",
+      "text": "Pasarelas entre recursos AWS y la red de un operador móvil",
+      "explanation": "Eso es el Carrier Gateway de Wavelength."
+    }
+  ],
+  "answer": "rec",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

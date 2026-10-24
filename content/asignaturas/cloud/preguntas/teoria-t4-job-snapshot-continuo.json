@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-job-snapshot-continuo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un trabajo de AWS IoT debe enviarse también a los dispositivos que se añadan más tarde al grupo de destino. ¿Qué tipo de trabajo se usa?",
+  "explanation": "Un trabajo instantáneo (snapshot) se envía a los destinos indicados al crearlo y termina cuando completan o informan de que no pueden. Uno continuo sigue activo y se envía a los dispositivos que se añaden al grupo.",
+  "options": [
+    {
+      "id": "continuo",
+      "text": "Un trabajo continuo (continuous job)",
+      "explanation": "Sigue activo para los nuevos miembros del grupo."
+    },
+    {
+      "id": "snapshot",
+      "text": "Un trabajo instantáneo (snapshot job)",
+      "explanation": "Termina cuando sus destinos iniciales completan: no alcanza a los dispositivos que llegan después."
+    },
+    {
+      "id": "plantilla",
+      "text": "Una plantilla de trabajo gestionada",
+      "explanation": "Una plantilla preconfigura trabajos, pero no define si son continuos."
+    },
+    {
+      "id": "tunel",
+      "text": "Un túnel seguro",
+      "explanation": "Un túnel da acceso remoto; no distribuye trabajos."
+    }
+  ],
+  "answer": "continuo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        72
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "gestion-remota"
+    }
+  ]
+}

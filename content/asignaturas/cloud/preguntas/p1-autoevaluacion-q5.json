@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.p1-autoevaluacion-q5",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.autoevaluaciones",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Los dispositivos y clientes de IoT necesitan comunicarse entre sí y con los servicios de AWS IoT.\n¿Cuál es el protocolo de comunicación ligero, de publicación-suscripción, comúnmente utilizado para este propósito?",
+  "explanation": "MQTT es el protocolo ligero de publicación y suscripción empleado.",
+  "options": [
+    {
+      "id": "opcion-1",
+      "text": "iot:Publish",
+      "explanation": "iot:Publish es una acción de autorización, no el nombre del protocolo."
+    },
+    {
+      "id": "opcion-2",
+      "text": "MQTT",
+      "explanation": "MQTT es el protocolo ligero de publicación y suscripción empleado."
+    },
+    {
+      "id": "opcion-3",
+      "text": "iot:Receive",
+      "explanation": "iot:Receive es una acción de autorización, no un protocolo."
+    },
+    {
+      "id": "opcion-4",
+      "text": "X.509",
+      "explanation": "X.509 es un formato de certificado, no el protocolo de mensajería."
+    }
+  ],
+  "answer": "opcion-2",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Cuestionario final",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/14-course-assessment/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.autoevaluaciones-practicas",
+      "anchor": "p1-autoevaluacion-q5"
+    }
+  ]
+}

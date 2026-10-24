@@ -1,7 +1,6 @@
 <h2 id="alcance">Cómo preparar la prueba de prácticas</h2>
-<p><strong>Lunes 2 de noviembre, 18:00: 10 preguntas de respuesta única en Moovi, con ordenador y sin consultar materiales</strong>, según el correo del profesor aportado por Mario. Entran <strong>prácticas y actividades adicionales</strong>. No se pregunta el código de scripts, pero sí conceptos y formatos: temas MQTT, políticas IoT, temas reservados, sombras y documentos de trabajos.</p>
+<p><strong>Lunes 2 de noviembre, 18:00: 10 preguntas de respuesta única en Moovi, con ordenador y sin consultar materiales</strong>, según el correo del profesor. Entran <strong>prácticas y actividades adicionales</strong>. No se pregunta el código de scripts, pero sí conceptos y formatos: temas MQTT, políticas IoT, temas reservados, sombras y documentos de trabajos.</p>
 <p>El objetivo de esta lectura es que puedas <strong>reconocer qué hace cada pieza e interpretar un mensaje o configuración</strong>. Los JSON, SQL y temas se incluyen por ese motivo; no hay que memorizar scripts de instalación ni recorridos de botones. Los ejemplos con cuenta <code>123456789012</code> y dispositivo <code>sensor01</code> son didácticos, no credenciales ni recursos reales.</p>
-<p>Los enunciados PDF se conservan en el repositorio. Los tutoriales HTML y actividades se han leído de la copia local del curso; sus enlaces identifican la procedencia, pero estos apuntes se pueden estudiar sin acceder a esa carpeta externa. Las memorias del alumno no se usan como plantilla de respuestas correctas ni se modifican.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -355,6 +354,7 @@ WHERE temp &gt; 20
 <p><strong>Job</strong> = operación remota distribuida; <strong>documento JSON</strong> = instrucciones y parámetros; <strong>destinos</strong> = cosas/grupos; <strong>ejecución</strong> = instancia concreta en cada destino; <strong>handler</strong> = software local que interpreta/realiza la operación. El archivo a descargar y el documento que ordena descargarlo son objetos distintos.</p>
 <p>Un trabajo <strong>snapshot</strong> actúa sobre los destinos definidos al crearlo y termina cuando completan o informan que no pueden hacerlo. <strong>Continuous</strong> permanece disponible para nuevos dispositivos que se incorporan al grupo. Un lanzamiento por etapas controla el ritmo; timeout limita ejecuciones atascadas; condiciones de cancelación pueden detener un lanzamiento.</p>
 <p>El dispositivo recibe notificaciones, obtiene el documento, ejecuta el manejador e informa del progreso. <code>IN_PROGRESS</code> es ejecución en curso; <code>SUCCEEDED</code> es éxito de una ejecución; <code>TIMED_OUT</code> significa que venció el tiempo configurado. No confundas el estado global del job con el de una ejecución individual.</p>
+<p>Plantillas gestionadas por AWS disponibles: Download-File, Install-Application, Remove-Application, Start-Application, Restart-Application, Stop-Application, Run-Command y Reboot. <strong><code>runAsUser</code> y <code>pathToHandler</code> son comunes a todas</strong>; el resto de parámetros depende de la operación.</p>
 <p>Las URL prefirmadas permiten acceso temporal a objetos de S3. Un enlace provisional en el documento puede sustituirse por una URL prefirmada al solicitarlo; no convierte el bucket en público.</p>
 <p class="no-print">Fuentes: <a href="https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/">P3, Jobs</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=71">T4, pp. 71-76</a>.</p>
 <h3 id="documentos-jobs">Formatos de documentos de trabajo</h3>
@@ -426,7 +426,7 @@ WHERE temp &gt; 20
 </table></div>
 <p>En la plantilla administrada <strong>Download-File</strong>, el manejador es <code>download-file.sh</code>; los parámetros son <code>downloadUrl</code>, <code>filePath</code>, <code>pathToHandler</code> y <code>runAsUser</code>. En su JSON aparecen sustituciones como <code>$&#123;aws:iot:parameter:downloadUrl&#125;</code>. Reconoce <strong>nombre del parámetro y finalidad</strong>, sin estudiar el script del manejador.</p>
 <p>La actividad personalizada publica la configuración del Device Client dentro de un objeto <code>conf</code>, usando el archivo de publicación y la mensajería configurada. Guardar el JSON en S3, crear una plantilla y crear un trabajo son operaciones diferentes; disponer de una plantilla no significa que se haya ejecutado nada.</p>
-<p class="no-print">Fuente: <a href="https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/">P3, actividad 4: manejador y plantillas</a>. La copia HTML no contiene una página independiente de la sección 6 citada por el PDF; el esquema antiguo está reproducido expresamente en esta actividad, por lo que no se reconstruye su contenido por conjetura.</p>
+<p class="no-print">Fuente: <a href="https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/">P3, actividad 4: manejador y plantillas</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=74">T4, p. 74</a>.</p>
 <h3 id="temas-jobs">Temas reservados de trabajos</h3>
 <div class="table-scroll"><table>
 <thead>
@@ -479,8 +479,8 @@ WHERE temp &gt; 20
 <p>No requiere abrir nuevos puertos de entrada en el firewall remoto; sí necesita conectividad saliente hacia AWS. El puerto local 5555 del ejemplo pertenece al proxy de origen, no al puerto habitual del demonio SSH de destino.</p>
 <p class="no-print">Fuente: <a href="https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/">P3, actividad de túnel seguro</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=82">T4, pp. 82-85</a>.</p>
 <h3 id="auditoria">Auditoría de seguridad del tutorial</h3>
-<p>La copia local del tutorial también incluye Device Defender: <strong>auditar configuración</strong>, detectar políticas demasiado permisivas o identidades compartidas, activar registros y repetir la auditoría después de corregir. Una política con todas las acciones y todos los recursos no sigue privilegio mínimo. Ver el resultado de una auditoría anterior no comprueba la corrección posterior.</p>
-<p>El enunciado PDF de P3 centra sus evidencias en configuración, MQTT y Jobs; se conserva esta sección conceptual del tutorial porque forma parte del material y de teoría. El propio tutorial distingue el aviso de retirada de «detección» de la auditoría que desarrolla. No se da ese aviso como actualización comercial verificada fuera del curso.</p>
+<p>El tutorial de P3 incluye Device Defender: <strong>auditar configuración</strong>, detectar políticas demasiado permisivas o identidades compartidas, activar registros y repetir la auditoría después de corregir. Una política con todas las acciones y todos los recursos no sigue privilegio mínimo. Ver el resultado de una auditoría anterior no comprueba la corrección posterior.</p>
+<p>El tutorial avisa de que la función de <strong>detección</strong> de Device Defender dejó de estar disponible en septiembre de 2026; la <strong>auditoría</strong>, que es lo que se practica, sigue disponible.</p>
 <p class="no-print">Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/">P3, auditoría</a>.</p>
 <h2 id="practica-4">Práctica 4 · Greengrass</h2>
 <p>Greengrass ejecuta componentes en el <strong>core device</strong> y permite gestionarlos desde la nube. En el laboratorio el dispositivo es la instancia <code>edgeDevice</code>. El nucleus coordina despliegues, dependencias y comunicación; los componentes implementan aplicaciones y funciones opcionales.</p>
@@ -616,4 +616,4 @@ WHERE temp &gt; 20
 </tr>
 </tbody>
 </table></div>
-<p>La diferencia entre estos formatos importa más que recordar comandos de instalación. Tras esta lectura, utiliza la recopilación de preguntas originales para comprobar reconocimiento y comprensión; <strong>no se ha creado ningún test interactivo ni se han añadido preguntas al banco</strong>.</p>
+<p>La diferencia entre estos formatos importa más que recordar comandos de instalación. Para comprobarlo, usa el <a href="/web-estudio/asignaturas/cloud/tests/simulacro-practicas/">simulacro de prácticas</a> (formatos y prácticas 3-4) y el <a href="/web-estudio/asignaturas/cloud/tests/autoevaluaciones-completas/">test de autoevaluaciones</a> de las prácticas 1-2.</p>

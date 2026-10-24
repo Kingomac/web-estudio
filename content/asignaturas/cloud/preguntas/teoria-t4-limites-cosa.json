@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-limites-cosa",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué límites del registro presenta el tema 4 para una cosa?",
+  "explanation": "Una cosa puede tener 3 atributos; si tiene tipo, hasta 50. Solo puede tener un tipo y puede pertenecer a un máximo de 10 grupos. Su nombre es único dentro de la región.",
+  "options": [
+    {
+      "id": "3-50-10",
+      "text": "3 atributos (50 con tipo), un solo tipo y hasta 10 grupos",
+      "explanation": "Coincide con las pp. 37-38."
+    },
+    {
+      "id": "50-3-1",
+      "text": "50 atributos sin tipo, hasta 3 tipos y un solo grupo",
+      "explanation": "Invierte los límites: sin tipo son 3 atributos, cada cosa tiene un único tipo y puede estar en hasta 10 grupos."
+    },
+    {
+      "id": "sin-limite",
+      "text": "Atributos ilimitados, porque el registro guarda JSON",
+      "explanation": "El registro guarda JSON, pero el tema da límites concretos."
+    },
+    {
+      "id": "10-10-10",
+      "text": "10 atributos, 10 tipos y 10 grupos",
+      "explanation": "Solo los grupos tienen ese límite de 10."
+    }
+  ],
+  "answer": "3-50-10",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        37,
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "iot-core"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-filtro-mqtt-valido",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estos filtros de suscripción MQTT es válido?",
+  "explanation": "`+` ocupa un nivel completo y `#` solo puede ir en el último nivel. `sensor/+/truck_1/#` cumple ambas reglas.",
+  "options": [
+    {
+      "id": "valido",
+      "text": "`sensor/+/truck_1/#`",
+      "explanation": "Cada comodín ocupa un nivel completo y `#` está al final."
+    },
+    {
+      "id": "almohadilla-medio",
+      "text": "`sensor/#/truck_1`",
+      "explanation": "`#` debe ser el último nivel del filtro."
+    },
+    {
+      "id": "mas-parcial",
+      "text": "`sensor/temp+/truck_1`",
+      "explanation": "`+` debe ocupar un nivel completo; no se combina con otros caracteres."
+    },
+    {
+      "id": "doble",
+      "text": "`sensor/#/#`",
+      "explanation": "`#` solo puede aparecer una vez y al final."
+    }
+  ],
+  "answer": "valido",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Uso de temas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas"
+    }
+  ]
+}

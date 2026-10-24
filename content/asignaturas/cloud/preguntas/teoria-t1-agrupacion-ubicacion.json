@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-agrupacion-ubicacion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "El cliente no controla la ubicación exacta de los recursos, pero sí puede indicar preferencias como el país o el centro de datos. ¿Qué característica NIST incluye esta idea?",
+  "explanation": "En la agrupación de recursos, el proveedor reasigna recursos entre clientes (multi-tenant) y el cliente solo indica preferencias de ubicación a un nivel más alto de abstracción.",
+  "options": [
+    {
+      "id": "agrupacion",
+      "text": "Agrupación de recursos",
+      "explanation": "La diapositiva de agrupación de recursos incluye esa abstracción de la ubicación."
+    },
+    {
+      "id": "acceso-red",
+      "text": "Acceso amplio por red",
+      "explanation": "El acceso por red trata de mecanismos estándar desde clientes heterogéneos, no de la ubicación de los recursos."
+    },
+    {
+      "id": "elasticidad",
+      "text": "Elasticidad rápida",
+      "explanation": "La elasticidad trata de ajustar la capacidad a la demanda, no de dónde están los recursos."
+    },
+    {
+      "id": "medido",
+      "text": "Servicio medido",
+      "explanation": "El servicio medido trata de medir y controlar el consumo."
+    }
+  ],
+  "answer": "agrupacion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "nist"
+    }
+  ]
+}
