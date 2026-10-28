@@ -16,7 +16,7 @@
   "hint": "Primero calcula carga MAC; después resta las dos cabeceras IP y UDP.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         15
       ]

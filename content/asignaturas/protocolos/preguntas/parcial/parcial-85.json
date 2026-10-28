@@ -10,7 +10,7 @@
   "explanation": "HLIM=10 representa 64, HLIM=01 representa 1 y HLIM=11 representa 255. HLIM=00 obliga a transmitir el Hop Limit en línea.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         21
       ]

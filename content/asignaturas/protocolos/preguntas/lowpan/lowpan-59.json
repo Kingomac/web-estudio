@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-59",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es la principal ventaja de 6LFF con VRB frente al reensamblado en cada salto route-over?",
+  "explanation": "Los intermedios reenvían cada fragmento al llegar, sin reensamblar ni volver a fragmentar el paquete IPv6, y la latencia extremo a extremo baja mucho.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        38,
+        42
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragment-forwarding-6lff-y-vrb"
+    }
+  ],
+  "options": [
+    {
+      "id": "reduce-mucho-la-latencia-extremo",
+      "text": "Reduce mucho la latencia extremo a extremo, porque los intermedios no reensamblan ni refragmentan.",
+      "explanation": "Es la ventaja que destaca la p. 42; la p. 38 añade que mejora la fiabilidad."
+    },
+    {
+      "id": "convierte-el-reenvio-route-over",
+      "text": "Convierte el reenvío route-over en mesh-under.",
+      "explanation": "La decisión del primer fragmento sigue tomándola IPv6; sigue siendo route-over."
+    },
+    {
+      "id": "elimina-el-campo-datagram-tag",
+      "text": "Elimina el campo datagram_tag de los fragmentos.",
+      "explanation": "6LFF se basa precisamente en el datagram_tag para asociar los fragmentos posteriores."
+    },
+    {
+      "id": "hace-que-cada-fragmento-lleve",
+      "text": "Hace que cada fragmento lleve la cabecera IPv6 completa.",
+      "explanation": "Solo el primer fragmento lleva la cabecera IPv6; por eso hace falta recordar la etiqueta."
+    }
+  ],
+  "answer": "reduce-mucho-la-latencia-extremo"
+}

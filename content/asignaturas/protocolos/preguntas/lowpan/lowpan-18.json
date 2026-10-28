@@ -10,7 +10,7 @@
   "explanation": "El formato NHC UDP reserva ese rango para transmitir únicamente los cuatro bits bajos de cada puerto.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         27
       ]

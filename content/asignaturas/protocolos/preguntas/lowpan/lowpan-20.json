@@ -10,7 +10,7 @@
   "explanation": "El offset sitúa el fragmento dentro del datagrama IPv6 original, no dentro del flujo comprimido.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

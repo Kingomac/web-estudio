@@ -10,7 +10,7 @@
   "explanation": "El modo multicast stateless DAM=11 representa direcciones de la forma ff02::00GG con ocho bits en línea. Con GG=02 resulta ff02::2. No basta con que una dirección sea multicast para poder usar este modo: debe ajustarse a esa forma.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         26
       ]

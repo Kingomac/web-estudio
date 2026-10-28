@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-71",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En una 6LoWPAN mesh-under, ¿dónde registra un host su dirección?",
+  "explanation": "En mesh-under no hay 6LR: el host se registra directamente en el 6LBR a nivel IP, aunque los mensajes crucen varios saltos radio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "paso-3-detectar-duplicados-cuando-corresponda"
+    }
+  ],
+  "options": [
+    {
+      "id": "directamente-en-el-6lbr-aunque",
+      "text": "Directamente en el 6LBR, aunque haya varios saltos radio.",
+      "explanation": "Último punto de la p. 53."
+    },
+    {
+      "id": "en-el-6lr-mas-cercano",
+      "text": "En el 6LR más cercano, que consulta al 6LBR con DAR.",
+      "explanation": "Ese es el caso route-over con DAD multisalto; en mesh-under no hay 6LR."
+    },
+    {
+      "id": "en-el-leader-de-la",
+      "text": "En el Leader de la partición.",
+      "explanation": "Leader es un rol Thread, no el registro de 6LoWPAN ND."
+    },
+    {
+      "id": "en-ningun-sitio-mesh-under",
+      "text": "En ningún sitio: mesh-under no usa registro.",
+      "explanation": "El registro sigue existiendo; cambia con quién se hace."
+    }
+  ],
+  "answer": "directamente-en-el-6lbr-aunque"
+}

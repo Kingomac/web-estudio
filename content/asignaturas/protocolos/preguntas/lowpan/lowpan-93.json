@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-93",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo responden los vecinos a un DIS?",
+  "explanation": "Con DIO unicast. Los RAL anuncian Rank infinito, porque no se ofrecen como routers.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        79
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mensajes-de-control"
+    }
+  ],
+  "options": [
+    {
+      "id": "con-dio-unicast-los-ral",
+      "text": "Con DIO unicast; los RAL anuncian Rank infinito.",
+      "explanation": "Fila DIS de la p. 79."
+    },
+    {
+      "id": "con-dao-ack",
+      "text": "Con DAO-ACK.",
+      "explanation": "DAO-ACK confirma un DAO."
+    },
+    {
+      "id": "con-otro-dis",
+      "text": "Con otro DIS.",
+      "explanation": "DIS solicita información; la respuesta la da un DIO."
+    },
+    {
+      "id": "con-un-ra-con-abro",
+      "text": "Con un RA con ABRO.",
+      "explanation": "RA y ABRO son de 6LoWPAN ND, no de RPL."
+    }
+  ],
+  "answer": "con-dio-unicast-los-ral"
+}

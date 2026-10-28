@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.lowpan-76",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Cuáles de estos dispositivos Thread son hijos y no reenvían tráfico de otros nodos? Marca todos los correctos.",
+  "explanation": "REED, FED, MED, SED y SSED son hijos; solo los routers (incluido el Leader) reenvían.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "roles-y-dispositivos"
+    }
+  ],
+  "options": [
+    {
+      "id": "reed",
+      "text": "REED.",
+      "explanation": "Es un hijo FTD, aunque pueda promocionar a router."
+    },
+    {
+      "id": "fed",
+      "text": "FED.",
+      "explanation": "Hijo FTD configurado para no ser router."
+    },
+    {
+      "id": "sed",
+      "text": "SED.",
+      "explanation": "Hijo MTD que duerme y sondea a su padre."
+    },
+    {
+      "id": "router",
+      "text": "Router.",
+      "explanation": "Los routers reenvían tráfico y pueden tener hijos."
+    },
+    {
+      "id": "leader",
+      "text": "Leader.",
+      "explanation": "El Leader es uno de los routers de la partición: reenvía tráfico."
+    }
+  ],
+  "answer": [
+    "reed",
+    "fed",
+    "sed"
+  ]
+}

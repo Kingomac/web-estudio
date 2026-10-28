@@ -10,7 +10,7 @@
   "explanation": "En este modo, cada nodo intermedio actúa como router IPv6. La adaptación reconstruye el datagrama para IPv6 y prepara después su transporte por el siguiente enlace.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         36
       ]

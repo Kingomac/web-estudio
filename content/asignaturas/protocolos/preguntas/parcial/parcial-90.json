@@ -10,7 +10,7 @@
   "explanation": "Ambos puertos están en 0xF0B0–0xF0BF. P=11 permite transmitir únicamente el nibble final de cada uno, de modo que los dos puertos ocupan un byte en total.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         27
       ]

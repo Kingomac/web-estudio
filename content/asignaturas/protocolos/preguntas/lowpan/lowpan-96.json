@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-96",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo non-storing del tema, L es un LFN hijo de C, y C tiene como padres A (preferido) y B (alternativo). ¿Qué ruta descendente reconstruye la raíz R hacia L?",
+  "explanation": "Con C→A preferido y L→C, la raíz construye R → A → C → L; R → B → C → L queda como alternativa.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        82
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "rutas-descendentes-storing-y-non-storing"
+    }
+  ],
+  "options": [
+    {
+      "id": "r-a-c-l",
+      "text": "R → A → C → L.",
+      "explanation": "Ruta de la p. 82."
+    },
+    {
+      "id": "r-b-c-l-como",
+      "text": "R → B → C → L como única ruta.",
+      "explanation": "Es la alternativa; la preferida pasa por A."
+    },
+    {
+      "id": "r-c-l",
+      "text": "R → C → L.",
+      "explanation": "C no es hijo directo de R."
+    },
+    {
+      "id": "ninguna-l-no-envia-dao",
+      "text": "Ninguna: L no envía DAO.",
+      "explanation": "L no genera DAO, pero C lo anuncia como Target con Transit fd00::c."
+    }
+  ],
+  "answer": "r-a-c-l"
+}

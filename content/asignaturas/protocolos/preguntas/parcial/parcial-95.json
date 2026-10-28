@@ -10,7 +10,7 @@
   "explanation": "En mesh-under, routing y forwarding se realizan en la capa 6LoWPAN sobre direcciones de enlace. La decisión de reenvío no requiere reconstruir la cabecera IPv6.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         32
       ]

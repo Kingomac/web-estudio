@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-75",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo pasa un REED a ser router Thread?",
+  "explanation": "Solicita la promoción según las necesidades de la red; el Leader acepta la solicitud y le asigna un Router ID.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "roles-y-dispositivos"
+    }
+  ],
+  "options": [
+    {
+      "id": "solicita-la-promocion-y-el",
+      "text": "Solicita la promoción y el Leader la acepta y le asigna un Router ID.",
+      "explanation": "Recuadro «REED → Router» de la p. 60."
+    },
+    {
+      "id": "se-asigna-el-mismo-un",
+      "text": "Se asigna él mismo un Router ID libre.",
+      "explanation": "Los Router ID los gestiona el Leader."
+    },
+    {
+      "id": "su-padre-le-asigna-child",
+      "text": "Su padre le asigna Child ID 0.",
+      "explanation": "El padre gestiona los Child ID de sus hijos; un router recibe Router ID del Leader."
+    },
+    {
+      "id": "el-border-router-lo-promociona",
+      "text": "El border router lo promociona al conectar con Internet.",
+      "explanation": "Border router y Leader son funciones distintas; la promoción la acepta el Leader."
+    }
+  ],
+  "answer": "solicita-la-promocion-y-el"
+}

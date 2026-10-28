@@ -10,7 +10,7 @@
   "explanation": "FRAG1 ocupa cuatro bytes y FRAGN cinco. Ambos incluyen tamaño y etiqueta, pero FRAGN añade el offset de ocho bits; en el primer fragmento el desplazamiento cero no se transmite.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

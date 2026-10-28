@@ -10,9 +10,10 @@
   "explanation": "Los routers anuncian sus destinos y los de los LFN dependientes, junto con la información de padres.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        79
+        81,
+        82
       ]
     }
   ],

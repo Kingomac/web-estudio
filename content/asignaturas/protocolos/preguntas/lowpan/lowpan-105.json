@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-105",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿A qué padre puede conectarse un LFN en Wi-SUN FAN 1.1?",
+  "explanation": "Un LFN se conecta a un padre con soporte para LFN: un router FFN o el propio border router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        87
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "organizacion-de-una-fan"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-un-router-ffn-con",
+      "text": "A un router FFN con soporte LFN o al propio border router.",
+      "explanation": "Es lo que indica la p. 87."
+    },
+    {
+      "id": "solo-a-otro-lfn",
+      "text": "Solo a otro LFN.",
+      "explanation": "Un LFN no reenvía tráfico ajeno; no puede ser padre."
+    },
+    {
+      "id": "a-un-sed-de-thread",
+      "text": "A un SED de Thread.",
+      "explanation": "Mezcla tecnologías; además un SED tampoco reenvía."
+    },
+    {
+      "id": "a-ninguno-se-comunica-directamente",
+      "text": "A ninguno: se comunica directamente con la red IP.",
+      "explanation": "Necesita un padre, que anuncia su alcanzabilidad."
+    }
+  ],
+  "answer": "a-un-router-ffn-con"
+}

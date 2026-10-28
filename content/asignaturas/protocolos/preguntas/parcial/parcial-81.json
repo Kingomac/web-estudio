@@ -10,7 +10,7 @@
   "explanation": "El presupuesto del ejemplo es 127 − 23 − 21 − 2 = 81 bytes tras los campos de enlace. Al descontar los 48 bytes de IPv6 y UDP quedan 33 bytes para aplicación.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         15
       ]

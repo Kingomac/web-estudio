@@ -5,7 +5,7 @@
   "slug": "contexto-0-y-mesh-under",
   "title": "Contexto 0 y mesh-under",
   "description": "Ejemplo del profesor: contexto 0 = 2001:11::/64; origen 2001:11::ff:fe00:5, destino 2001:11::ff:fe00:1.",
-  "scope": "Procedimiento de la página 57 del Tema 4.",
+  "scope": "Procedimiento de la página 56 del Tema 4.",
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
@@ -16,9 +16,9 @@
   "hint": "Usa contexto para ambos prefijos. Mesh permite reconstruir ambos IID.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        57
+        56
       ]
     }
   ],

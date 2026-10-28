@@ -10,9 +10,10 @@
   "explanation": "Cada router mantiene su información y escoge el siguiente salto de menor coste acumulado.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        62
+        66,
+        67
       ]
     }
   ],

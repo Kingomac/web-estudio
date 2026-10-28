@@ -10,7 +10,7 @@
   "explanation": "Con SAC=0 y SAM=10 se reconstruyen fe80::/64 y la parte fija del IID 0:ff:fe00:XXXX. Solo se envían los 16 bits XXXX, que aquí valen 1234.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         23
       ]

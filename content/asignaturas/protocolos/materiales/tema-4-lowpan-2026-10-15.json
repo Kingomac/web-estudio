@@ -4,8 +4,8 @@
   "subjectId": "protocolos",
   "slug": "tema-4-lowpan-2026-10-15",
   "title": "Tema 4 · Redes LoWPAN (edición del 15/10)",
-  "description": "Edición revisada del documento original del tema 4.",
-  "scope": "Edición revisada del 15/10/2026. Cambian las páginas 31, 50–53 y 55–85 respecto a la del 7/10; las citas de la web usan la edición anterior.",
+  "description": "Segunda edición del documento original del tema 4; sustituida por la del 22/10.",
+  "scope": "Edición del 15/10/2026, conservada como histórico. Coincide con la del 22/10 hasta la página 73; la parte de RPL y Wi-SUN FAN (74–85) se reorganizó en la edición vigente. La web ya no la cita.",
   "tagIds": [
     "protocolos.tags.lowpan"
   ],

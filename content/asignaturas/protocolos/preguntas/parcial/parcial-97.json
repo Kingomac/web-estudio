@@ -10,7 +10,7 @@
   "explanation": "Mesh-under oculta los saltos internos de enlace a IPv6. Aunque existan varios reenvíos radio, los nodos de la LoWPAN están a un salto IPv6 del border router.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         32
       ]

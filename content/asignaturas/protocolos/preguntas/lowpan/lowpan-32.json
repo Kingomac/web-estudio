@@ -10,9 +10,10 @@
   "explanation": "ABRO permite reconocer actualizaciones de prefijos/contextos y evitar información antigua.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        50
+        50,
+        54
       ]
     }
   ],
@@ -35,8 +36,8 @@
     },
     {
       "id": "el-tiempo-de-registro-del",
-      "text": "El tiempo de registro del host expresado en minutos.",
-      "explanation": "El tiempo de registro en minutos es el Registration Lifetime de ARO."
+      "text": "El tiempo de validez del registro de un host.",
+      "explanation": "El tiempo de validez del registro es el Registration Lifetime, que viaja en ARO dentro del NS del host, no en ABRO."
     },
     {
       "id": "los-dos-identificadores-sci-dci",

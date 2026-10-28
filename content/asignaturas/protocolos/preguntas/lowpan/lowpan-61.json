@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-61",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Según el resumen de modos de reenvío del tema, ¿qué relación tiene Zigbee con la cabecera Mesh de 6LoWPAN?",
+  "explanation": "Zigbee usa su propia capa de red y no la cabecera Mesh; Thread sí la usa, con su propio protocolo de vector de distancias.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mesh-under-frente-a-route-over"
+    }
+  ],
+  "options": [
+    {
+      "id": "zigbee-usa-su-propia-capa",
+      "text": "Zigbee usa su propia capa de red, no la cabecera Mesh de 6LoWPAN.",
+      "explanation": "Es lo que indica la p. 43 para distinguirlo de Thread."
+    },
+    {
+      "id": "zigbee-usa-la-cabecera-mesh",
+      "text": "Zigbee usa la cabecera Mesh igual que Thread.",
+      "explanation": "Quien usa la cabecera Mesh es Thread; Zigbee tiene su propia pila de red."
+    },
+    {
+      "id": "zigbee-usa-route-over-con",
+      "text": "Zigbee usa route-over con RPL.",
+      "explanation": "Route-over con RPL es el caso de Wi-SUN FAN."
+    },
+    {
+      "id": "zigbee-define-la-cabecera-mesh",
+      "text": "Zigbee define la cabecera Mesh.",
+      "explanation": "La cabecera Mesh la define 6LoWPAN, RFC 4944."
+    }
+  ],
+  "answer": "zigbee-usa-su-propia-capa"
+}

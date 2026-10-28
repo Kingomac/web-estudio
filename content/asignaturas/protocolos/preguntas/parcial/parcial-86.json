@@ -10,7 +10,7 @@
   "explanation": "CID=0 puede indicar ausencia de contexto o uso del contexto por defecto 0. CID=1 añade un byte con SCI y DCI, de cuatro bits cada uno.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         22
       ]

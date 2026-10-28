@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-72",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En route-over, ¿cómo llegan los prefijos y contextos del 6LBR a hosts que están a varios saltos?",
+  "explanation": "El 6LBR origina PIO y 6CO; los 6LR guardan esa información y la anuncian en sus propios RA, también con RA periódicos entre routers.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "distribucion-de-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "los-6lr-guardan-la-informacion",
+      "text": "Los 6LR guardan la información del RA del 6LBR y la anuncian en sus propios RA.",
+      "explanation": "Es la distribución multisalto de la p. 54."
+    },
+    {
+      "id": "cada-host-la-consulta-al",
+      "text": "Cada host la consulta al 6LBR con DAR.",
+      "explanation": "DAR es para DAD multisalto, entre 6LR y 6LBR."
+    },
+    {
+      "id": "se-reenvia-el-ra-del",
+      "text": "Se reenvía el RA del 6LBR sin cambios por toda la LoWPAN.",
+      "explanation": "Cada 6LR anuncia la información en su propio RA."
+    },
+    {
+      "id": "los-hosts-la-deducen-de",
+      "text": "Los hosts la deducen de la cabecera Mesh.",
+      "explanation": "La cabecera Mesh es de mesh-under y no lleva prefijos."
+    }
+  ],
+  "answer": "los-6lr-guardan-la-informacion"
+}

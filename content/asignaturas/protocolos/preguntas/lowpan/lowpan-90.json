@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-90",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿A qué dirección y desde qué origen se envían los DIO de RPL?",
+  "explanation": "A ff02::1a (all-RPL-nodes), de ámbito de enlace, con la link-local del emisor como origen. También pueden ir unicast, por ejemplo como respuesta a un DIS.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        75
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "dio-y-formacion-del-dodag"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-ff02-1a-all-rpl",
+      "text": "A ff02::1a, all-RPL-nodes, desde la link-local del emisor.",
+      "explanation": "Paso 2 de la p. 75."
+    },
+    {
+      "id": "a-ff02-2-desde-la",
+      "text": "A ff02::2, desde la global del router.",
+      "explanation": "ff02::2 es all-routers, usado por RS; los DIO van a all-RPL-nodes."
+    },
+    {
+      "id": "unicast-a-la-raiz-desde",
+      "text": "Unicast a la raíz, desde la ML-EID.",
+      "explanation": "Unicast a la raíz van los DAO en non-storing; ML-EID es de Thread."
+    },
+    {
+      "id": "a-ff03-2-desde-la",
+      "text": "A ff03::2, desde la anycast del Leader.",
+      "explanation": "Son destinos y direcciones de Thread."
+    }
+  ],
+  "answer": "a-ff02-1a-all-rpl"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-89",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia a un nodo RUL de un RAL en RPL?",
+  "explanation": "Ambos son hojas que no reenvían. RUL no ejecuta RPL; RAL participa en RPL pero no se ofrece como router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        74
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "rpl-y-tipos-de-nodo"
+    }
+  ],
+  "options": [
+    {
+      "id": "rul-no-ejecuta-rpl-ral",
+      "text": "RUL no ejecuta RPL; RAL participa en RPL sin ofrecerse como router.",
+      "explanation": "Definiciones de la p. 74."
+    },
+    {
+      "id": "rul-reenvia-trafico-ajeno-y",
+      "text": "RUL reenvía tráfico ajeno y RAL no.",
+      "explanation": "Ninguno de los dos reenvía tráfico de otros nodos: ambos son hojas."
+    },
+    {
+      "id": "ral-no-ejecuta-rpl-y",
+      "text": "RAL no ejecuta RPL y RUL sí.",
+      "explanation": "Es al revés: Unaware = no ejecuta RPL; Aware = participa."
+    },
+    {
+      "id": "ral-es-la-raiz-del",
+      "text": "RAL es la raíz del DODAG.",
+      "explanation": "La raíz suele ser el border router."
+    }
+  ],
+  "answer": "rul-no-ejecuta-rpl-ral"
+}

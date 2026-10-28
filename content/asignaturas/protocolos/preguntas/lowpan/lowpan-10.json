@@ -10,7 +10,7 @@
   "explanation": "La base incluye dispatch y 13 bits de control; CID puede añadir un byte de identificadores.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         19
       ]

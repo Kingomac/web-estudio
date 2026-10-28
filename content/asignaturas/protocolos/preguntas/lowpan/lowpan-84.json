@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-84",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En Thread, ¿qué coste tiene un enlace de calidad razonable según su RSSI?",
+  "explanation": "Costes del tema: 1 buena, 2 razonable, 4 pobre e ∞ para un RSSI desconocido o casi nulo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        66
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "calculo-y-actualizacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "2",
+      "text": "2.",
+      "explanation": "Valor de la p. 66 para calidad razonable."
+    },
+    {
+      "id": "1",
+      "text": "1.",
+      "explanation": "1 corresponde a calidad buena."
+    },
+    {
+      "id": "4",
+      "text": "4.",
+      "explanation": "4 corresponde a calidad pobre."
+    },
+    {
+      "id": "3",
+      "text": "3.",
+      "explanation": "La escala del tema es 1, 2, 4 e ∞; 3 no existe como coste de un enlace."
+    }
+  ],
+  "answer": "2"
+}

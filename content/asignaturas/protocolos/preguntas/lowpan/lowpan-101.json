@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-101",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el octeto LOWPAN_NHC de extensión de cabecera, ¿qué EID corresponden a la Hop-by-Hop con RPI y a la SRH?",
+  "explanation": "EID 0 = Hop-by-Hop (RPI) y EID 1 = Routing Header (SRH).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        86
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "0-para-hop-by-hop",
+      "text": "0 para Hop-by-Hop y 1 para SRH.",
+      "explanation": "Valores de la p. 86."
+    },
+    {
+      "id": "1-para-hop-by-hop",
+      "text": "1 para Hop-by-Hop y 0 para SRH.",
+      "explanation": "Los invierte."
+    },
+    {
+      "id": "43-para-srh-y-0",
+      "text": "43 para SRH y 0 para Hop-by-Hop.",
+      "explanation": "43 es el Next Header IPv6 del Routing Header; EID solo tiene 3 bits."
+    },
+    {
+      "id": "7-para-ambas",
+      "text": "7 para ambas.",
+      "explanation": "EID 7 es IPv6 encapsulado."
+    }
+  ],
+  "answer": "0-para-hop-by-hop"
+}

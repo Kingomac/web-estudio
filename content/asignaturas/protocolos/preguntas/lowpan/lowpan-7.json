@@ -10,7 +10,7 @@
   "explanation": "IPv6 y UDP suman 40+8=48 bytes; 81-48=33.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         15
       ]

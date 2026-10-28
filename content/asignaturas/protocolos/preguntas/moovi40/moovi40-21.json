@@ -10,7 +10,7 @@
   "explanation": "El orden general es Mesh, Fragmentation, Compression, pero se omiten las cabeceras innecesarias. Si no hay fragmentación, quedan Mesh e IPHC en ese orden. FRAG1 no es un campo obligatorio de cualquier paquete 6LoWPAN.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         17
       ]

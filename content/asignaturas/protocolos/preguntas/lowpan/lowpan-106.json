@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-106",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué combinación de encaminamiento y modo de reenvío corresponde a cada tecnología en la comparación del tema?",
+  "explanation": "Thread usa MLE con mesh-under; Wi-SUN FAN usa RPL con route-over.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        89
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "comparacion-thread-wi-sun-fan"
+    }
+  ],
+  "options": [
+    {
+      "id": "thread-mle-mesh-under-wi",
+      "text": "Thread: MLE, mesh-under. Wi-SUN FAN: RPL, route-over.",
+      "explanation": "Fila «Encaminamiento» de la p. 89."
+    },
+    {
+      "id": "thread-rpl-route-over-wi",
+      "text": "Thread: RPL, route-over. Wi-SUN FAN: MLE, mesh-under.",
+      "explanation": "Invierte las dos tecnologías."
+    },
+    {
+      "id": "ambas-rpl-route-over",
+      "text": "Ambas: RPL, route-over.",
+      "explanation": "Thread no usa RPL."
+    },
+    {
+      "id": "ambas-mle-mesh-under",
+      "text": "Ambas: MLE, mesh-under.",
+      "explanation": "Wi-SUN FAN usa RPL en route-over."
+    }
+  ],
+  "answer": "thread-mle-mesh-under-wi"
+}

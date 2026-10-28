@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-85",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "El router A tiene dos vecinos: B, con enlace de coste 1, y C, con enlace de coste 2. B anuncia coste 1 hacia D y C anuncia coste 2 hacia D. ¿Qué ruta elige A hacia D?",
+  "explanation": "Vía B: 1 + 1 = 2. Vía C: 2 + 2 = 4. A elige B con coste total 2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        67
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "calculo-y-actualizacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "siguiente-salto-b-coste-2",
+      "text": "Siguiente salto B, coste 2.",
+      "explanation": "Se suma el coste del enlace al coste anunciado y se elige el menor."
+    },
+    {
+      "id": "siguiente-salto-b-coste-1",
+      "text": "Siguiente salto B, coste 1.",
+      "explanation": "Olvida sumar el coste del enlace A–B."
+    },
+    {
+      "id": "siguiente-salto-c-coste-2",
+      "text": "Siguiente salto C, coste 2.",
+      "explanation": "Usa solo el coste anunciado por C; vía C el total es 4."
+    },
+    {
+      "id": "siguiente-salto-c-coste-4",
+      "text": "Siguiente salto C, coste 4.",
+      "explanation": "Ese es el coste vía C, pero no es el menor."
+    }
+  ],
+  "answer": "siguiente-salto-b-coste-2"
+}

@@ -10,7 +10,7 @@
   "explanation": "El host solicita información; el RA le comunica datos del router, prefijos y posibles contextos.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         50
       ]

@@ -10,7 +10,7 @@
   "explanation": "Las direcciones MAC de la trama corresponden al salto de enlace actual. Las direcciones Original y Final de la cabecera Mesh conservan los extremos del trayecto mesh-under.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         35
       ]

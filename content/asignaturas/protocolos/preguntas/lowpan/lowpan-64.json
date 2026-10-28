@@ -1,0 +1,63 @@
+{
+  "id": "protocolos.preguntas.lowpan-64",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Cuáles son cambios del RFC 6775 respecto al NDP convencional? Marca todos los correctos.",
+  "explanation": "Los hosts piden la información con RS, no hay DAD tradicional, se registran las direcciones en los routers y el RA puede llevar contextos de compresión.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "ndp-optimizado-para-6lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "los-hosts-solicitan-con-rs",
+      "text": "Los hosts solicitan con RS la información en lugar de esperar RA periódicos no solicitados.",
+      "explanation": "Primer cambio de la p. 49."
+    },
+    {
+      "id": "no-se-realiza-el-dad",
+      "text": "No se realiza el DAD tradicional.",
+      "explanation": "Segundo cambio de la p. 49."
+    },
+    {
+      "id": "los-hosts-registran-sus-direcciones",
+      "text": "Los hosts registran sus direcciones IPv6 en los routers.",
+      "explanation": "El registro da la correspondencia IPv6–enlace y evita NS multicast."
+    },
+    {
+      "id": "el-ra-puede-llevar-informacion",
+      "text": "El RA puede llevar información de contexto para la compresión.",
+      "explanation": "Es la opción de contexto, 6CO."
+    },
+    {
+      "id": "los-routers-envian-ra-multicast",
+      "text": "Los routers envían RA multicast más frecuentes a los hosts dormidos.",
+      "explanation": "Precisamente se evitan los RA no solicitados hacia hosts que pueden estar dormidos."
+    },
+    {
+      "id": "cada-resolucion-se-hace-con",
+      "text": "Cada resolución se hace con NS multicast al grupo solicited-node.",
+      "explanation": "El registro sustituye esas resoluciones multicast."
+    }
+  ],
+  "answer": [
+    "los-hosts-solicitan-con-rs",
+    "no-se-realiza-el-dad",
+    "los-hosts-registran-sus-direcciones",
+    "el-ra-puede-llevar-informacion"
+  ]
+}

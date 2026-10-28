@@ -10,7 +10,7 @@
   "explanation": "IPv6 requiere una MTU mínima de 1280 bytes o mecanismos de adaptación inferiores que permitan transportarla. 6LoWPAN aporta la fragmentación y el reensamblado sobre tramas pequeñas.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         12
       ]

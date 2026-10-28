@@ -10,7 +10,7 @@
   "explanation": "La adaptación reutiliza compresión y NDP, pero utiliza el mecanismo del enlace BLE para segmentar.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         47
       ]

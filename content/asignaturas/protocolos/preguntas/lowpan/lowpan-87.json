@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-87",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿A qué dirección se envía un Address Query de Thread?",
+  "explanation": "Address Query es multicast a los FTD de la partición, ff03::2; responde Address Notification. El mecanismo se basa en CoAP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        69
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "entrega-de-un-paquete"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff03-2-a-los-ftd",
+      "text": "ff03::2, a los FTD de la partición.",
+      "explanation": "Es lo que indica la p. 69."
+    },
+    {
+      "id": "ff02-2-all-routers-del",
+      "text": "ff02::2, all-routers del enlace.",
+      "explanation": "ff02::2 es el destino de Parent Request; Address Query debe alcanzar toda la partición."
+    },
+    {
+      "id": "unicast-al-border-router",
+      "text": "Unicast al border router.",
+      "explanation": "La resolución es interna a la malla; no la centraliza el border router."
+    },
+    {
+      "id": "ff02-1a",
+      "text": "ff02::1a.",
+      "explanation": "ff02::1a es all-RPL-nodes, de RPL."
+    }
+  ],
+  "answer": "ff03-2-a-los-ftd"
+}

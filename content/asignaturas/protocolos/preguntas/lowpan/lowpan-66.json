@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-66",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En IEEE 802.15.4, ¿cómo se envía el RS que un nodo dirige a ff02::2 al incorporarse?",
+  "explanation": "Como no hay multicast MAC, el RS a all-routers viaja en broadcast MAC 0xffff y lleva SLLAO.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "paso-1-descubrir-router-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-broadcast-mac-0xffff-con",
+      "text": "En broadcast MAC 0xffff, con SLLAO.",
+      "explanation": "Es lo que indica la p. 50."
+    },
+    {
+      "id": "a-la-mac-multicast-33",
+      "text": "A la MAC multicast 33:33:00:00:00:02.",
+      "explanation": "33:33 es el mapeo de Ethernet/Wi-Fi; 802.15.4 no tiene multicast MAC."
+    },
+    {
+      "id": "unicast-al-rloc16-del-leader",
+      "text": "Unicast al RLOC16 del Leader.",
+      "explanation": "RLOC16 y Leader son conceptos de Thread, no del RS de 6LoWPAN ND."
+    },
+    {
+      "id": "a-ff02-1a-all-rpl",
+      "text": "A ff02::1a, all-RPL-nodes.",
+      "explanation": "ff02::1a es el destino de los DIO de RPL."
+    }
+  ],
+  "answer": "en-broadcast-mac-0xffff-con"
+}

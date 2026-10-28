@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-95",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En modo storing, ¿qué hace un padre al recibir un DAO de un hijo?",
+  "explanation": "Lo procesa, instala las rutas anunciadas hacia sus descendientes y genera nuevos DAO hacia sus propios padres.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        81
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "rutas-descendentes-storing-y-non-storing"
+    }
+  ],
+  "options": [
+    {
+      "id": "lo-procesa-instala-las-rutas",
+      "text": "Lo procesa, instala las rutas y genera nuevos DAO hacia sus padres.",
+      "explanation": "Proceso storing de la p. 81."
+    },
+    {
+      "id": "lo-reenvia-sin-procesarlo-hacia",
+      "text": "Lo reenvía sin procesarlo hacia la raíz.",
+      "explanation": "Eso ocurre en non-storing."
+    },
+    {
+      "id": "lo-descarta-en-storing-no",
+      "text": "Lo descarta: en storing no se usan DAO.",
+      "explanation": "Storing también usa DAO, pero cada padre los procesa."
+    },
+    {
+      "id": "responde-con-dis",
+      "text": "Responde con DIS.",
+      "explanation": "DIS sirve para descubrir DODAG."
+    }
+  ],
+  "answer": "lo-procesa-instala-las-rutas"
+}

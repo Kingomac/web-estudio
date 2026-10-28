@@ -10,7 +10,7 @@
   "explanation": "La alternativa de etiqueta de datagrama y MAC de origen recoge la identificación resumida que busca el cuestionario: etiqueta de datagrama y origen de enlace. La clave completa de RFC 4944 también incluye el destino de enlace y datagram_size. Si hay cabecera Mesh, se utilizan sus extremos Originator y Final Destination. El offset indica la posición de un fragmento, no identifica por sí solo el datagrama.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

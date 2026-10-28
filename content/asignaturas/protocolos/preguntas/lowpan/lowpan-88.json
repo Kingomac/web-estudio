@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-88",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un paquete va de A (0x0400) por B (0x0800) y C (0x0C00) al hijo 0x0C05. ¿Qué direcciones lleva la trama del salto B → C?",
+  "explanation": "La cabecera IEEE 802.15.4 lleva los RLOC16 del emisor y del receptor del salto; la cabecera Mesh conserva origen y destino final.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        70
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "entrega-de-un-paquete"
+    }
+  ],
+  "options": [
+    {
+      "id": "802-15-4-0x0800-0x0c00",
+      "text": "802.15.4: 0x0800 → 0x0C00; Mesh: 0x0400 → 0x0C05.",
+      "explanation": "Es el salto 2 de la p. 70."
+    },
+    {
+      "id": "802-15-4-0x0400-0x0c05",
+      "text": "802.15.4: 0x0400 → 0x0C05; Mesh: 0x0800 → 0x0C00.",
+      "explanation": "Intercambia los papeles: los extremos van en Mesh y el salto en 802.15.4."
+    },
+    {
+      "id": "802-15-4-y-mesh",
+      "text": "802.15.4 y Mesh: 0x0800 → 0x0C00.",
+      "explanation": "Mesh no cambia en cada salto: conserva origen y destino final."
+    },
+    {
+      "id": "802-15-4-0x0400-0x0800",
+      "text": "802.15.4: 0x0400 → 0x0800; Mesh: 0x0400 → 0x0C00.",
+      "explanation": "Esa MAC es del salto 1, y el destino final es el hijo 0x0C05, no su padre."
+    }
+  ],
+  "answer": "802-15-4-0x0800-0x0c00"
+}

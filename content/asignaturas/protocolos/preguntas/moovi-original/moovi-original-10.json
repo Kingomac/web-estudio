@@ -10,7 +10,7 @@
   "explanation": "En route-over, cada nodo que actúa como router decide el siguiente salto en la capa IPv6. En el funcionamiento clásico estudiado se reensambla y descomprime para entregar el paquete a IPv6, y se vuelve a comprimir y fragmentar si hace falta al reenviarlo. Cada router introduce un salto IP.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         36
       ]

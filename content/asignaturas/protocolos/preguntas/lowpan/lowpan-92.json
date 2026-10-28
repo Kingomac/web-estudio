@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-92",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué hace un router RPL con un DIO recibido de su padre?",
+  "explanation": "No lo reenvía sin cambios: calcula su Rank y genera su propio DIO, temporizado por Trickle, con el mismo DODAGID, instancia y versión.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        76
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "dio-y-formacion-del-dodag"
+    }
+  ],
+  "options": [
+    {
+      "id": "genera-su-propio-dio-con",
+      "text": "Genera su propio DIO con su Rank; no reenvía el recibido sin cambios.",
+      "explanation": "Nota de la p. 76."
+    },
+    {
+      "id": "lo-reenvia-sin-cambios-a",
+      "text": "Lo reenvía sin cambios a todos sus vecinos.",
+      "explanation": "El DIO recibido no se reenvía tal cual: cada router anuncia su propio Rank."
+    },
+    {
+      "id": "lo-convierte-en-dao-hacia",
+      "text": "Lo convierte en DAO hacia la raíz.",
+      "explanation": "DAO es otro mensaje, para anunciar destinos."
+    },
+    {
+      "id": "lo-responde-con-dao-ack",
+      "text": "Lo responde con DAO-ACK.",
+      "explanation": "DAO-ACK confirma DAO, no DIO."
+    }
+  ],
+  "answer": "genera-su-propio-dio-con"
+}

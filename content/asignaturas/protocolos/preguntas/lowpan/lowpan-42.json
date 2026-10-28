@@ -10,9 +10,9 @@
   "explanation": "Child ID=0 corresponde al propio router; los hijos tienen identificadores gestionados por su padre.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        64
+        61
       ]
     }
   ],

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-79",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se forma el ML-EID de un nodo Thread?",
+  "explanation": "El Leader fija un Mesh-Local Prefix /64 ULA; cada nodo le añade un IID aleatorio de 64 bits. El ML-EID no depende de la topología.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        63
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccionamiento-ipv6-en-thread"
+    }
+  ],
+  "options": [
+    {
+      "id": "mesh-local-prefix-64-ula",
+      "text": "Mesh-Local Prefix /64 ULA, fijado por el Leader, + IID aleatorio de 64 bits.",
+      "explanation": "Es lo que indica la p. 63."
+    },
+    {
+      "id": "prefijo-link-local-fe80-64",
+      "text": "Prefijo link-local fe80::/64 + RLOC16.",
+      "explanation": "El ML-EID no depende del RLOC16, que cambia con la topología."
+    },
+    {
+      "id": "prefijo-gua-del-border-router",
+      "text": "Prefijo GUA del border router + EUI-64.",
+      "explanation": "Las GUA son direcciones adicionales para otras redes; el ML-EID usa el prefijo Mesh-Local."
+    },
+    {
+      "id": "mesh-local-prefix-0000-00ff",
+      "text": "Mesh-Local Prefix + 0000:00ff:fe00:fc00.",
+      "explanation": "Esa es la dirección anycast del Leader."
+    }
+  ],
+  "answer": "mesh-local-prefix-64-ula"
+}

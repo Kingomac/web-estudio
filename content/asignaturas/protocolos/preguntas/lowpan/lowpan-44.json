@@ -10,9 +10,10 @@
   "explanation": "MLE utiliza estos intercambios para incorporar el dispositivo y asignarle su RLOC16.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        66
+        64,
+        65
       ]
     }
   ],

@@ -10,7 +10,7 @@
   "explanation": "En este modelo cada 6LR actúa como router: la adaptación reconstruye el paquete y lo entrega a IPv6 para decidir el siguiente salto. La salida vuelve a aplicar compresión y, si hace falta, fragmentación. El destino IPv6 sigue siendo el extremo final.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         36
       ]

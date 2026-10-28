@@ -10,7 +10,7 @@
   "explanation": "DAC=0 indica compresión sin contexto. Para destino unicast, DAM=11 omite la dirección en línea: se reconstruye el prefijo fe80::/64 y el IID a partir de la dirección de enlace destino. Si existe cabecera Mesh, se toma la dirección del extremo final que proporciona esa cabecera.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         25
       ]

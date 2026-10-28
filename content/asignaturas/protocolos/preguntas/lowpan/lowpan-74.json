@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-74",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo del tema, los routers anuncian 2001:11::/64 con A=1 y el IID se forma como 0000:00ff:fe00:XXXX a partir de la dirección corta. ¿Qué dirección configura el host con dirección corta 0x0005?",
+  "explanation": "Prefijo 2001:11::/64 + IID 0000:00ff:fe00:0005 = 2001:11::ff:fe00:5.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "ejemplo-de-compresion-segun-el-modo-de-entrega"
+    }
+  ],
+  "options": [
+    {
+      "id": "2001-11-ff-fe00-5",
+      "text": "2001:11::ff:fe00:5",
+      "explanation": "Al abreviar 2001:11:0:0:0:ff:fe00:5 se obtiene 2001:11::ff:fe00:5."
+    },
+    {
+      "id": "2001-11-5",
+      "text": "2001:11::5",
+      "explanation": "Falta el patrón 00ff:fe00 del IID derivado de la dirección corta."
+    },
+    {
+      "id": "fe80-ff-fe00-5",
+      "text": "fe80::ff:fe00:5",
+      "explanation": "Es la link-local; con PIO A=1 se configura también la global con 2001:11::/64."
+    },
+    {
+      "id": "2001-11-5-ff-fe00",
+      "text": "2001:11::5:ff:fe00",
+      "explanation": "Coloca la dirección corta en el lugar equivocado: va en los últimos 16 bits."
+    }
+  ],
+  "answer": "2001-11-ff-fe00-5"
+}

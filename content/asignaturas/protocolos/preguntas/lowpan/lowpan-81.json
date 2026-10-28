@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-81",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se transportan los mensajes MLE según el tema?",
+  "explanation": "MLE va en UDP, con puerto 19788 en origen y destino y Hop Limit 255, entre vecinos con direcciones de ámbito de enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        65
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "encaminamiento-y-mle"
+    }
+  ],
+  "options": [
+    {
+      "id": "udp-con-puerto-19788-en",
+      "text": "UDP con puerto 19788 en origen y destino y Hop Limit 255.",
+      "explanation": "Cabecera de la p. 65; la p. 64 indica UDP sobre IPv6 de ámbito de enlace."
+    },
+    {
+      "id": "icmpv6-tipo-155",
+      "text": "ICMPv6 tipo 155.",
+      "explanation": "ICMPv6 155 es el de los mensajes de control de RPL."
+    },
+    {
+      "id": "coap-en-el-puerto-5683",
+      "text": "CoAP en el puerto 5683.",
+      "explanation": "CoAP se usa en Address Query/Notification, no en MLE."
+    },
+    {
+      "id": "tcp-con-hop-limit-1",
+      "text": "TCP con Hop Limit 1.",
+      "explanation": "MLE no usa TCP, y el Hop Limit indicado es 255."
+    }
+  ],
+  "answer": "udp-con-puerto-19788-en"
+}

@@ -1,0 +1,123 @@
+{
+  "id": "protocolos.tests.simulacro-examen-final",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "simulacro-examen-final",
+  "title": "Simulacro del examen final",
+  "description": "74 preguntas de los cuatro temas, con más peso en la parte del tema 4 que no entraba en el parcial.",
+  "scope": "Temas 1, 2 y 3 completos y tema 4 completo (edición del 22/10). 8 preguntas de introducción, 14 de aplicación, 14 de IPv6, 10 del tema 4 hasta la página 37 y 28 desde la 38. Selección de los bancos por tema; no repite las del simulacro del parcial.",
+  "tagIds": [
+    "protocolos.tags.intro",
+    "protocolos.tags.aplicacion",
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.examen-final"
+  ],
+  "order": 95,
+  "groups": [
+    {
+      "id": "tema-1-introduccion",
+      "title": "Tema 1 · Introducción",
+      "questionIds": [
+        "protocolos.preguntas.intro-1",
+        "protocolos.preguntas.intro-3",
+        "protocolos.preguntas.intro-5",
+        "protocolos.preguntas.intro-8",
+        "protocolos.preguntas.intro-10",
+        "protocolos.preguntas.intro-12",
+        "protocolos.preguntas.intro-15",
+        "protocolos.preguntas.intro-18"
+      ]
+    },
+    {
+      "id": "tema-2-aplicacion",
+      "title": "Tema 2 · Nivel de aplicación",
+      "questionIds": [
+        "protocolos.preguntas.aplicacion-2",
+        "protocolos.preguntas.aplicacion-4",
+        "protocolos.preguntas.aplicacion-7",
+        "protocolos.preguntas.aplicacion-9",
+        "protocolos.preguntas.aplicacion-12",
+        "protocolos.preguntas.aplicacion-15",
+        "protocolos.preguntas.aplicacion-18",
+        "protocolos.preguntas.aplicacion-21",
+        "protocolos.preguntas.aplicacion-24",
+        "protocolos.preguntas.aplicacion-27",
+        "protocolos.preguntas.aplicacion-30",
+        "protocolos.preguntas.aplicacion-33",
+        "protocolos.preguntas.aplicacion-36",
+        "protocolos.preguntas.aplicacion-39"
+      ]
+    },
+    {
+      "id": "tema-3-ipv6",
+      "title": "Tema 3 · IP en IoT",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-2",
+        "protocolos.preguntas.ipv6-5",
+        "protocolos.preguntas.ipv6-8",
+        "protocolos.preguntas.ipv6-11",
+        "protocolos.preguntas.ipv6-14",
+        "protocolos.preguntas.ipv6-17",
+        "protocolos.preguntas.ipv6-20",
+        "protocolos.preguntas.ipv6-23",
+        "protocolos.preguntas.ipv6-26",
+        "protocolos.preguntas.ipv6-29",
+        "protocolos.preguntas.ipv6-32",
+        "protocolos.preguntas.ipv6-35",
+        "protocolos.preguntas.ipv6-38",
+        "protocolos.preguntas.ipv6-40"
+      ]
+    },
+    {
+      "id": "tema-4-hasta-37",
+      "title": "Tema 4 · Hasta la página 37",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-2",
+        "protocolos.preguntas.lowpan-4",
+        "protocolos.preguntas.lowpan-7",
+        "protocolos.preguntas.lowpan-9",
+        "protocolos.preguntas.lowpan-11",
+        "protocolos.preguntas.lowpan-14",
+        "protocolos.preguntas.lowpan-17",
+        "protocolos.preguntas.lowpan-20",
+        "protocolos.preguntas.lowpan-24",
+        "protocolos.preguntas.lowpan-26"
+      ]
+    },
+    {
+      "id": "tema-4-desde-38",
+      "title": "Tema 4 · Desde la página 38",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-27",
+        "protocolos.preguntas.lowpan-28",
+        "protocolos.preguntas.lowpan-29",
+        "protocolos.preguntas.lowpan-59",
+        "protocolos.preguntas.lowpan-61",
+        "protocolos.preguntas.lowpan-64",
+        "protocolos.preguntas.lowpan-36",
+        "protocolos.preguntas.lowpan-69",
+        "protocolos.preguntas.lowpan-73",
+        "protocolos.preguntas.lowpan-74",
+        "protocolos.preguntas.lowpan-38",
+        "protocolos.preguntas.lowpan-75",
+        "protocolos.preguntas.lowpan-78",
+        "protocolos.preguntas.lowpan-79",
+        "protocolos.preguntas.lowpan-81",
+        "protocolos.preguntas.lowpan-84",
+        "protocolos.preguntas.lowpan-86",
+        "protocolos.preguntas.lowpan-88",
+        "protocolos.preguntas.lowpan-53",
+        "protocolos.preguntas.lowpan-89",
+        "protocolos.preguntas.lowpan-90",
+        "protocolos.preguntas.lowpan-91",
+        "protocolos.preguntas.lowpan-93",
+        "protocolos.preguntas.lowpan-97",
+        "protocolos.preguntas.lowpan-99",
+        "protocolos.preguntas.lowpan-101",
+        "protocolos.preguntas.lowpan-104",
+        "protocolos.preguntas.lowpan-106"
+      ]
+    }
+  ]
+}

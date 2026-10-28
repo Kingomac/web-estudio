@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-86",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Enlaces A–B coste 1 y A–C coste 2. Tras caer el enlace B–D, B anuncia coste 3 hacia D y C sigue anunciando coste 1. ¿Qué ruta usa ahora A hacia D?",
+  "explanation": "Vía B: 1 + 3 = 4. Vía C: 2 + 1 = 3. A cambia a C con coste 3.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        68
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "calculo-y-actualizacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "siguiente-salto-c-coste-3",
+      "text": "Siguiente salto C, coste 3.",
+      "explanation": "Es el resultado de la p. 68 tras el fallo."
+    },
+    {
+      "id": "siguiente-salto-b-coste-2",
+      "text": "Siguiente salto B, coste 2.",
+      "explanation": "Era la ruta antes del fallo; el nuevo anuncio de B obliga a recalcular."
+    },
+    {
+      "id": "siguiente-salto-b-coste-4",
+      "text": "Siguiente salto B, coste 4.",
+      "explanation": "Es el coste vía B, pero ya no es el menor."
+    },
+    {
+      "id": "no-hay-ruta-hasta-que",
+      "text": "No hay ruta hasta que el Leader recalcule.",
+      "explanation": "El Leader no calcula rutas: A recalcula con los anuncios MLE de sus vecinos."
+    }
+  ],
+  "answer": "siguiente-salto-c-coste-3"
+}

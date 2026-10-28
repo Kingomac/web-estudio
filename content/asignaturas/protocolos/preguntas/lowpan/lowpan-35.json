@@ -3,23 +3,17 @@
   "kind": "pregunta",
   "subjectId": "protocolos",
   "tagIds": [
-    "protocolos.tags.lowpan"
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
   ],
   "type": "single",
   "prompt": "¿Qué solicita un NS con ARO y Registration Lifetime=0?",
-  "explanation": "La validez cero se utiliza para dar de baja el registro antes de su expiración.",
-  "originalReferences": [
-    {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
-      "pdfPages": [
-        52
-      ]
-    }
-  ],
+  "explanation": "Complemento del RFC 6775, ya no detallado en la edición del 22/10: cuando un host deja de usar un router, envía un NS con ARO y Registration Lifetime=0; el router borra la entrada de su caché de vecinos y responde con NA.",
+  "originalReferences": [],
   "readingReferences": [
     {
       "resourceId": "protocolos.apuntes.tema-4-lowpan",
-      "anchor": "ndp-optimizado-para-6lowpan"
+      "anchor": "registro-ns-na-con-aro"
     }
   ],
   "options": [
@@ -41,8 +35,18 @@
     {
       "id": "una-renovacion-por-el-maximo",
       "text": "Una renovación por el máximo de 60 segundos.",
-      "explanation": "El Registration Lifetime se expresa en minutos y 0 da de baja; 60 s es el máximo del reensamblado de fragmentos."
+      "explanation": "Lifetime 0 da de baja el registro, no lo renueva. Los 60 s son el máximo del temporizador de reensamblado de fragmentos, otro mecanismo."
     }
   ],
-  "answer": "la-eliminacion-anticipada-del-registro"
+  "answer": "la-eliminacion-anticipada-del-registro",
+  "externalReferences": [
+    {
+      "title": "RFC 6775 · 5.5 Registration and NUD",
+      "url": "https://www.rfc-editor.org/rfc/rfc6775.html#section-5.5"
+    },
+    {
+      "title": "RFC 6775 · 6.5.3 Updating the Neighbor Cache",
+      "url": "https://www.rfc-editor.org/rfc/rfc6775.html#section-6.5.3"
+    }
+  ]
 }

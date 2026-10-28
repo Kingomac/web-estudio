@@ -10,7 +10,7 @@
   "explanation": "En este modo stateless de 16 bits se usa fe80::/64 y el IID 0000:00ff:fe00:XXXX. Sustituyendo XXXX por 5a20 resulta fe80::ff:fe00:5a20. No se transmite el IID completo ni se usa un prefijo de contexto.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         25
       ]

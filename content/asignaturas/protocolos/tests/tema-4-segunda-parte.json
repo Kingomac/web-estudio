@@ -1,0 +1,118 @@
+{
+  "id": "protocolos.tests.tema-4-segunda-parte",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "tema-4-segunda-parte",
+  "title": "Test · Tema 4 desde la página 38",
+  "description": "78 preguntas de lo que no entraba en el parcial: 6LFF, 6lo, NDP optimizado, Thread y RPL/Wi-SUN FAN.",
+  "scope": "Tema 4, edición del 22/10, páginas 38 a 89. Excluye las dos preguntas complementarias basadas solo en RFC.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.examen-final"
+  ],
+  "order": 185,
+  "groups": [
+    {
+      "id": "6lff-y-6lo",
+      "title": "6LFF, VRB y 6lo",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-27",
+        "protocolos.preguntas.lowpan-28",
+        "protocolos.preguntas.lowpan-29",
+        "protocolos.preguntas.lowpan-57",
+        "protocolos.preguntas.lowpan-58",
+        "protocolos.preguntas.lowpan-59",
+        "protocolos.preguntas.lowpan-60",
+        "protocolos.preguntas.lowpan-61",
+        "protocolos.preguntas.lowpan-62",
+        "protocolos.preguntas.lowpan-63"
+      ]
+    },
+    {
+      "id": "ndp-optimizado",
+      "title": "NDP optimizado (RFC 6775)",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-30",
+        "protocolos.preguntas.lowpan-31",
+        "protocolos.preguntas.lowpan-32",
+        "protocolos.preguntas.lowpan-33",
+        "protocolos.preguntas.lowpan-34",
+        "protocolos.preguntas.lowpan-36",
+        "protocolos.preguntas.lowpan-37",
+        "protocolos.preguntas.lowpan-64",
+        "protocolos.preguntas.lowpan-65",
+        "protocolos.preguntas.lowpan-66",
+        "protocolos.preguntas.lowpan-67",
+        "protocolos.preguntas.lowpan-68",
+        "protocolos.preguntas.lowpan-69",
+        "protocolos.preguntas.lowpan-70",
+        "protocolos.preguntas.lowpan-71",
+        "protocolos.preguntas.lowpan-72",
+        "protocolos.preguntas.lowpan-73",
+        "protocolos.preguntas.lowpan-74"
+      ]
+    },
+    {
+      "id": "thread",
+      "title": "Thread: organización, MLE y reenvío",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-38",
+        "protocolos.preguntas.lowpan-39",
+        "protocolos.preguntas.lowpan-40",
+        "protocolos.preguntas.lowpan-41",
+        "protocolos.preguntas.lowpan-42",
+        "protocolos.preguntas.lowpan-43",
+        "protocolos.preguntas.lowpan-44",
+        "protocolos.preguntas.lowpan-45",
+        "protocolos.preguntas.lowpan-75",
+        "protocolos.preguntas.lowpan-76",
+        "protocolos.preguntas.lowpan-77",
+        "protocolos.preguntas.lowpan-78",
+        "protocolos.preguntas.lowpan-79",
+        "protocolos.preguntas.lowpan-80",
+        "protocolos.preguntas.lowpan-81",
+        "protocolos.preguntas.lowpan-82",
+        "protocolos.preguntas.lowpan-83",
+        "protocolos.preguntas.lowpan-84",
+        "protocolos.preguntas.lowpan-85",
+        "protocolos.preguntas.lowpan-86",
+        "protocolos.preguntas.lowpan-87",
+        "protocolos.preguntas.lowpan-88"
+      ]
+    },
+    {
+      "id": "rpl-y-wi-sun",
+      "title": "RPL y Wi-SUN FAN",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-46",
+        "protocolos.preguntas.lowpan-47",
+        "protocolos.preguntas.lowpan-48",
+        "protocolos.preguntas.lowpan-49",
+        "protocolos.preguntas.lowpan-50",
+        "protocolos.preguntas.lowpan-51",
+        "protocolos.preguntas.lowpan-52",
+        "protocolos.preguntas.lowpan-53",
+        "protocolos.preguntas.lowpan-54",
+        "protocolos.preguntas.lowpan-55",
+        "protocolos.preguntas.lowpan-89",
+        "protocolos.preguntas.lowpan-90",
+        "protocolos.preguntas.lowpan-91",
+        "protocolos.preguntas.lowpan-92",
+        "protocolos.preguntas.lowpan-93",
+        "protocolos.preguntas.lowpan-94",
+        "protocolos.preguntas.lowpan-95",
+        "protocolos.preguntas.lowpan-96",
+        "protocolos.preguntas.lowpan-97",
+        "protocolos.preguntas.lowpan-98",
+        "protocolos.preguntas.lowpan-99",
+        "protocolos.preguntas.lowpan-100",
+        "protocolos.preguntas.lowpan-101",
+        "protocolos.preguntas.lowpan-102",
+        "protocolos.preguntas.lowpan-103",
+        "protocolos.preguntas.lowpan-104",
+        "protocolos.preguntas.lowpan-105",
+        "protocolos.preguntas.lowpan-106"
+      ]
+    }
+  ]
+}

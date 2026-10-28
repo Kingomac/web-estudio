@@ -5,7 +5,7 @@
   "slug": "tema-4-lowpan",
   "title": "Test · Redes LoWPAN",
   "description": "56 preguntas sobre tecnologías, compresión, fragmentación, reenvío, NDP optimizado, Thread y RPL.",
-  "scope": "Tema 4 completo (85 páginas), incluidas las partes posteriores a la página 37 que no entran en el primer parcial.",
+  "scope": "Tema 4 completo (edición del 22/10, 89 páginas), incluidas las partes posteriores a la página 37 que no entraban en el primer parcial. Las preguntas lowpan-35 y lowpan-56 son complementarias (RFC 6775 y 6206). Para la segunda parte completa, usa el test «Tema 4 desde la página 38».",
   "tagIds": [
     "protocolos.tags.lowpan"
   ],

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-62",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué es un 6LN según las definiciones del tema?",
+  "explanation": "6LN es cualquier nodo que actúe como host o, si es FFD, como bridge en mesh-under.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "nombres-de-nodos"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-nodo-que-actua-como",
+      "text": "Un nodo que actúa como host o, si es FFD, como bridge en mesh-under.",
+      "explanation": "Es la definición de la p. 31."
+    },
+    {
+      "id": "un-router-ipv6-que-enruta",
+      "text": "Un router IPv6 que enruta dentro de la LoWPAN en route-over.",
+      "explanation": "Eso es un 6LR."
+    },
+    {
+      "id": "el-router-frontera-que-propaga",
+      "text": "El router frontera que propaga los prefijos por RA.",
+      "explanation": "Eso es un 6LBR."
+    },
+    {
+      "id": "el-leader-de-una-particion",
+      "text": "El Leader de una partición Thread.",
+      "explanation": "Leader es un rol de Thread, no una de las definiciones IETF de nodos LoWPAN."
+    }
+  ],
+  "answer": "un-nodo-que-actua-como"
+}

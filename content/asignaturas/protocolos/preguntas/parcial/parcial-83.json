@@ -10,7 +10,7 @@
   "explanation": "El orden de procesamiento indicado es M–F–C. Las cabeceras que no se necesitan pueden omitirse, como Fragmentation cuando el datagrama cabe en una única trama.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         17
       ]

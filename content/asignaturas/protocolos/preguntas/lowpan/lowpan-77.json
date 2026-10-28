@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-77",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué RLOC16 tiene el router con Router ID 2?",
+  "explanation": "RLOC16 = Router ID × 0x400 + Child ID. Con Router ID 2 y Child ID 0: 0x0800.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        61,
+        62
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direcciones-y-localizadores"
+    }
+  ],
+  "options": [
+    {
+      "id": "0x0800",
+      "text": "0x0800",
+      "explanation": "2 desplazado 10 bits es 2048 = 0x0800; el router lleva Child ID 0."
+    },
+    {
+      "id": "0x0002",
+      "text": "0x0002",
+      "explanation": "Coloca el Router ID en los bits bajos, que corresponden al Child ID."
+    },
+    {
+      "id": "0x0200",
+      "text": "0x0200",
+      "explanation": "Desplaza solo 8 bits; el Child ID ocupa 10 bits."
+    },
+    {
+      "id": "0x2000",
+      "text": "0x2000",
+      "explanation": "Desplaza 12 bits en lugar de 10."
+    }
+  ],
+  "answer": "0x0800"
+}

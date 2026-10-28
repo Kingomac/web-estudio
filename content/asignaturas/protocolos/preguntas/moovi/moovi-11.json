@@ -10,7 +10,7 @@
   "explanation": "La clave de reensamblado combina ambos extremos de enlace, tamaño y etiqueta. Si hay Mesh, se usan Originator y Final Destination. La etiqueta sola puede coincidir entre emisores; el offset sitúa cada fragmento dentro del datagrama. La pregunta 11 del modelo resume origen y etiqueta, pero aquí se incluye la clave completa.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

@@ -10,7 +10,7 @@
   "explanation": "El orden de estas cabeceras es Mesh, Fragmentation y Compression. Para el primer fragmento se usa FRAG1. Las cabeceras innecesarias pueden omitirse; los fragmentos posteriores no repiten una cabecera IPHC como si empezaran un datagrama nuevo.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         17
       ]

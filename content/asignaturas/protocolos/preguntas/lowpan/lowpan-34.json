@@ -7,10 +7,10 @@
   ],
   "type": "single",
   "prompt": "¿Qué debe hacer un host para conservar su registro durante periodos de sueño?",
-  "explanation": "El Registration Lifetime se expresa en minutos y puede mantenerse aunque no haya datos nuevos.",
+  "explanation": "El registro tiene un tiempo de validez (Registration Lifetime) y el host debe renovarlo con un nuevo intercambio NS–NA antes de que expire, aunque no tenga datos nuevos que enviar.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         52
       ]
@@ -25,8 +25,8 @@
   "options": [
     {
       "id": "renovarlo-antes-de-caducar-con",
-      "text": "Renovarlo antes de caducar con una validez que cubra el reposo previsto.",
-      "explanation": "El host renueva el registro antes de que expire, con un Registration Lifetime que cubra el sueño previsto."
+      "text": "Renovarlo con un nuevo intercambio NS–NA antes de que expire.",
+      "explanation": "El tema indica que el host debe renovar el registro antes de que expire mediante un nuevo NS–NA; si caduca durante el reposo, el router deja de tener la correspondencia."
     },
     {
       "id": "esperar-indefinidamente-sin-volver-a",

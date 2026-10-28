@@ -10,7 +10,7 @@
   "explanation": "Se suman 2 de IPHC y 4 de UDP comprimido: 1 NHC + 1 de puertos + 2 de checksum. La longitud UDP se deduce de las capas inferiores, por lo que no añade bytes.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         27
       ]

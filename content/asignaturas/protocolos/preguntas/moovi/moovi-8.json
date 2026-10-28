@@ -10,7 +10,7 @@
   "explanation": "Mesh-under permite atravesar varios enlaces radio por debajo de IPv6. La capa 6LoWPAN utiliza direcciones IEEE 802.15.4; el nodo intermedio no decide el reenvío como router IPv6. Que las direcciones sean MAC no sitúa la decisión en el protocolo MAC: aquí se usa la capa de adaptación.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         32
       ]

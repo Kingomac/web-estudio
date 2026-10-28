@@ -10,7 +10,7 @@
   "explanation": "TF=10 transmite un byte de Traffic Class y omite Flow Label, que se reconstruye a cero. HLIM=10 codifica directamente 64; 00 llevaría Hop Limit en línea y 11 representaría 255. Los dos campos se interpretan por separado.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         20
       ]

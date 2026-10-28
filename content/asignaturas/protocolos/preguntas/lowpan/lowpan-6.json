@@ -10,7 +10,7 @@
   "explanation": "El enlace debe ofrecer la MTU requerida por IPv6 o un mecanismo inferior de fragmentación y reensamblado.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         12
       ]

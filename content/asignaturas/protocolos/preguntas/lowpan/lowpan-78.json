@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-78",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo del tema, el hijo con RLOC16 0x0401 pierde a su padre (router 1) y pasa a ser el hijo 3 del router 3. ¿Cuál es su nuevo RLOC16?",
+  "explanation": "Router ID 3 → 3 × 0x400 = 0x0C00; Child ID 3 → 0x0C03. Su ML-EID no cambia.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        62
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direcciones-y-localizadores"
+    }
+  ],
+  "options": [
+    {
+      "id": "0x0c03",
+      "text": "0x0C03",
+      "explanation": "Router ID 3 en los 6 bits altos y Child ID 3 en los 10 bajos."
+    },
+    {
+      "id": "0x0401",
+      "text": "0x0401",
+      "explanation": "El RLOC16 refleja la topología: cambia al cambiar de padre."
+    },
+    {
+      "id": "0x0403",
+      "text": "0x0403",
+      "explanation": "Mantiene el Router ID del padre antiguo; debe usar el del padre nuevo."
+    },
+    {
+      "id": "0x0303",
+      "text": "0x0303",
+      "explanation": "No desplaza el Router ID 10 bits."
+    }
+  ],
+  "answer": "0x0c03"
+}

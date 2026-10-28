@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-69",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se comprueba en 6LoWPAN ND la alcanzabilidad de los routers vecinos?",
+  "explanation": "Se usa NUD con NS–NA unicast, sin multicast.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "registro-ns-na-con-aro"
+    }
+  ],
+  "options": [
+    {
+      "id": "con-nud-mediante-nsna-unicast",
+      "text": "Con NUD, mediante NS–NA unicast.",
+      "explanation": "Último punto de la p. 52."
+    },
+    {
+      "id": "con-dar-y-dac-hacia",
+      "text": "Con DAR y DAC hacia el 6LBR.",
+      "explanation": "DAR/DAC sirven para el DAD multisalto, no para comprobar vecinos."
+    },
+    {
+      "id": "con-rs-multicast-periodicos",
+      "text": "Con RS multicast periódicos.",
+      "explanation": "RS sirve para descubrir routers; los hosts no envían RS periódicos para comprobar alcanzabilidad."
+    },
+    {
+      "id": "con-mle-advertisement",
+      "text": "Con MLE Advertisement.",
+      "explanation": "MLE es de Thread."
+    }
+  ],
+  "answer": "con-nud-mediante-nsna-unicast"
+}

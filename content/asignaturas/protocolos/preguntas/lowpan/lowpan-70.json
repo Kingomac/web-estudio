@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-70",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué guarda el router en su caché de vecinos al aceptar el registro de un host?",
+  "explanation": "Guarda la correspondencia IPv6–dirección de enlace del host, junto con su EUI-64 y el tiempo de validez.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "registro-ns-na-con-aro"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-correspondencia-ipv6enlace-del-host",
+      "text": "La correspondencia IPv6–enlace del host, con su EUI-64 y el tiempo de validez.",
+      "explanation": "Es lo que indica la p. 52."
+    },
+    {
+      "id": "solo-el-prefijo-anunciado-y",
+      "text": "Solo el prefijo anunciado y la versión ABRO.",
+      "explanation": "Esa es información del RA, no del registro del host."
+    },
+    {
+      "id": "el-rloc16-del-host-y",
+      "text": "El RLOC16 del host y su Router ID.",
+      "explanation": "RLOC16 y Router ID son de Thread."
+    },
+    {
+      "id": "el-rank-rpl-del-host",
+      "text": "El Rank RPL del host.",
+      "explanation": "El registro NDP no transporta Rank."
+    }
+  ],
+  "answer": "la-correspondencia-ipv6enlace-del-host"
+}

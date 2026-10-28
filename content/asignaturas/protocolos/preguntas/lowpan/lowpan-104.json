@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.lowpan-104",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "multiple",
+  "prompt": "En Wi-SUN FAN 1.1, ¿qué papeles puede desempeñar un FFN? Marca todos los correctos.",
+  "explanation": "Un FFN participa en RPL y puede ser router u hoja RAL. Las hojas RUL que pueden dormir son los LFN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        87
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "organizacion-de-una-fan"
+    }
+  ],
+  "options": [
+    {
+      "id": "router-rpl",
+      "text": "Router RPL.",
+      "explanation": "Los FFN pueden ser routers."
+    },
+    {
+      "id": "hoja-ral",
+      "text": "Hoja RAL.",
+      "explanation": "Un FFN puede ser una hoja que participa en RPL sin ofrecerse como router."
+    },
+    {
+      "id": "hoja-rul-que-no-ejecuta",
+      "text": "Hoja RUL que no ejecuta RPL.",
+      "explanation": "Ese papel corresponde a los LFN."
+    },
+    {
+      "id": "leader-de-la-particion",
+      "text": "Leader de la partición.",
+      "explanation": "Leader es un rol de Thread."
+    }
+  ],
+  "answer": [
+    "router-rpl",
+    "hoja-ral"
+  ]
+}

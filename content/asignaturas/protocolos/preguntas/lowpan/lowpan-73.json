@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-73",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué hace el 6LBR cuando actualiza prefijos o contextos?",
+  "explanation": "Envía un nuevo RA con la versión de ABRO incrementada; así los nodos reconocen la actualización y descartan información antigua.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "distribucion-de-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "envia-un-nuevo-ra-con",
+      "text": "Envía un nuevo RA con la versión de ABRO incrementada.",
+      "explanation": "La versión permite reconocer actualizaciones y descartar información antigua."
+    },
+    {
+      "id": "envia-dac-a-todos-los",
+      "text": "Envía DAC a todos los hosts.",
+      "explanation": "DAC confirma el resultado de un DAD multisalto al 6LR."
+    },
+    {
+      "id": "incrementa-la-version-del-dodag",
+      "text": "Incrementa la versión del DODAG RPL.",
+      "explanation": "La versión del DODAG es de RPL; la información de NDP se versiona con ABRO."
+    },
+    {
+      "id": "obliga-a-los-hosts-a",
+      "text": "Obliga a los hosts a repetir el DAD tradicional.",
+      "explanation": "El DAD tradicional no se realiza en RFC 6775."
+    }
+  ],
+  "answer": "envia-un-nuevo-ra-con"
+}

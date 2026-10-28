@@ -10,7 +10,7 @@
   "explanation": "En route-over el nodo intermedio se comporta como router IP; mesh-under reenvía por debajo de IPv6.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         30
       ]

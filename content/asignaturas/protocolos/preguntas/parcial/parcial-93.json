@@ -10,7 +10,7 @@
   "explanation": "datagram_offset se expresa en unidades de ocho bytes respecto al datagrama sin comprimir. El desplazamiento es 18 × 8 = 144 bytes.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

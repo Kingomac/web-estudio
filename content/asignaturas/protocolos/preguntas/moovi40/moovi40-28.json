@@ -10,7 +10,7 @@
   "explanation": "La identificación usa datagram_size, datagram_tag y los extremos de enlace; con cabecera Mesh se usan sus extremos originales/finales. Dos emisores distintos pueden reutilizar el mismo tag. La coincidencia de tamaño no los convierte en un único datagrama.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

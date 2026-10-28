@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-91",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué Rank anuncia la raíz de un DODAG en Wi-SUN FAN?",
+  "explanation": "El Rank inicial de la raíz es MinHopRankIncrease, 256 en Wi-SUN FAN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        75
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "dio-y-formacion-del-dodag"
+    }
+  ],
+  "options": [
+    {
+      "id": "256-igual-a-minhoprankincrease",
+      "text": "256, igual a MinHopRankIncrease.",
+      "explanation": "Paso 1 de la p. 75."
+    },
+    {
+      "id": "0",
+      "text": "0.",
+      "explanation": "El tema fija el Rank inicial en MinHopRankIncrease, no en cero."
+    },
+    {
+      "id": "1",
+      "text": "1.",
+      "explanation": "Rank no cuenta saltos."
+    },
+    {
+      "id": "512",
+      "text": "512.",
+      "explanation": "512 es el Rank de un hijo directo con ETX 1 en el ejemplo."
+    }
+  ],
+  "answer": "256-igual-a-minhoprankincrease"
+}

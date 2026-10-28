@@ -1,0 +1,63 @@
+{
+  "id": "protocolos.preguntas.lowpan-63",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Para qué tecnologías cita el tema normas del grupo 6lo? Marca todas las correctas.",
+  "explanation": "La p. 46 cita Z-Wave, BLE, DECT-ULE, PLC y NFC.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "de-6lowpan-a-6lo-y-el-caso-ble"
+    }
+  ],
+  "options": [
+    {
+      "id": "z-wave",
+      "text": "Z-Wave.",
+      "explanation": "RFC 7428."
+    },
+    {
+      "id": "dect-ule",
+      "text": "DECT-ULE.",
+      "explanation": "RFC 8105."
+    },
+    {
+      "id": "nfc",
+      "text": "NFC.",
+      "explanation": "RFC 9428."
+    },
+    {
+      "id": "plc",
+      "text": "PLC.",
+      "explanation": "RFC 9354, para IEEE 1901.1, 1901.2 e ITU-T G.9903."
+    },
+    {
+      "id": "zigbee",
+      "text": "Zigbee.",
+      "explanation": "Zigbee usa su propia capa de red sobre 802.15.4; no aparece entre las normas 6lo."
+    },
+    {
+      "id": "lorawan",
+      "text": "LoRaWAN.",
+      "explanation": "No figura en la lista de adaptaciones 6lo del tema."
+    }
+  ],
+  "answer": [
+    "z-wave",
+    "dect-ule",
+    "nfc",
+    "plc"
+  ]
+}

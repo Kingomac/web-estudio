@@ -10,9 +10,9 @@
   "explanation": "DIO anuncia el grafo; DIS solicita información y DAO anuncia destinos para rutas descendentes.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        77
+        79
       ]
     }
   ],

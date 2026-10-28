@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-98",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En la cabecera de encaminamiento de fuente de RPL (RFC 6554), ¿qué indica CmprI?",
+  "explanation": "CmprI indica cuántos bytes de prefijo se suprimen en las direcciones intermedias; CmprE, en la final. La figura dice «bits», pero el texto de la diapositiva y el RFC hablan de bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        84
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "cuantos-bytes-se-suprimen-de",
+      "text": "Cuántos bytes se suprimen de las direcciones intermedias.",
+      "explanation": "Texto de la p. 84."
+    },
+    {
+      "id": "cuantos-bytes-se-suprimen-de-2",
+      "text": "Cuántos bytes se suprimen de la dirección final.",
+      "explanation": "Eso es CmprE."
+    },
+    {
+      "id": "cuantos-saltos-quedan",
+      "text": "Cuántos saltos quedan.",
+      "explanation": "Eso es Segments Left."
+    },
+    {
+      "id": "el-tipo-de-encaminamiento",
+      "text": "El tipo de encaminamiento.",
+      "explanation": "Eso es Routing Type, que vale 3."
+    }
+  ],
+  "answer": "cuantos-bytes-se-suprimen-de"
+}

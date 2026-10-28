@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-103",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué se definió después el dispatch 6LoRH (RFC 8138)?",
+  "explanation": "Usar LOWPAN_NHC para RPI y SRH no supone una compresión real; 6LoRH sí las comprime.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        86
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "porque-codificar-rpi-y-srh",
+      "text": "Porque codificar RPI y SRH con LOWPAN_NHC no las comprime realmente.",
+      "explanation": "Último punto de la p. 86."
+    },
+    {
+      "id": "para-sustituir-la-fragmentacion-frag1",
+      "text": "Para sustituir la fragmentación FRAG1/FRAGN.",
+      "explanation": "6LoRH comprime las cabeceras de RPL, no fragmenta."
+    },
+    {
+      "id": "para-transportar-mensajes-mle",
+      "text": "Para transportar mensajes MLE.",
+      "explanation": "MLE va en UDP."
+    },
+    {
+      "id": "para-eliminar-la-cabecera-iphc",
+      "text": "Para eliminar la cabecera IPHC.",
+      "explanation": "IPHC sigue comprimiendo la cabecera IPv6."
+    }
+  ],
+  "answer": "porque-codificar-rpi-y-srh"
+}

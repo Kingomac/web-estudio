@@ -10,7 +10,7 @@
   "explanation": "DAM=11 en multicast sin estado representa direcciones de la forma ff02::00GG. Solo se transmite el octeto GG, que en este caso es ab.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         26
       ]

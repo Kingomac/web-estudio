@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-65",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Además de que los nodos pueden estar inactivos, ¿qué característica de IEEE 802.15.4 motiva el RFC 6775?",
+  "explanation": "IEEE 802.15.4 no soporta multicast, y NDP convencional depende mucho de él.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "ndp-optimizado-para-6lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-soporta-multicast",
+      "text": "No soporta multicast.",
+      "explanation": "La p. 49 lo da como una de las dos razones esenciales."
+    },
+    {
+      "id": "sus-tramas-tienen-1280-bytes",
+      "text": "Sus tramas tienen 1280 bytes.",
+      "explanation": "1280 bytes es la MTU mínima de IPv6; la trama 802.15.4 del tema es de 127 bytes."
+    },
+    {
+      "id": "solo-usa-direcciones-mac-de",
+      "text": "Solo usa direcciones MAC de 48 bits.",
+      "explanation": "802.15.4 usa direcciones de 16 o de 64 bits."
+    },
+    {
+      "id": "garantiza-la-entrega-sin-perdidas",
+      "text": "Garantiza la entrega sin pérdidas.",
+      "explanation": "Es una LLN con pérdidas; no garantiza la entrega."
+    }
+  ],
+  "answer": "no-soporta-multicast"
+}

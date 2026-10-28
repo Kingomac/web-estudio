@@ -6,13 +6,13 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué diferencia a SSED de SED en la tabla del tema?",
+  "prompt": "¿Qué diferencia a SSED de SED según el tema?",
   "explanation": "Ambos son dispositivos MTD que pueden dormir; cambia el modo de recibir los mensajes guardados por el padre.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        61
+        60
       ]
     }
   ],

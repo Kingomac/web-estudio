@@ -10,7 +10,7 @@
   "explanation": "HLIM codifica 00 explícito, 01 valor 1, 10 valor 64 y 11 valor 255.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         21
       ]

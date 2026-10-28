@@ -10,7 +10,7 @@
   "explanation": "El tema separa la clasificación por topología de la disponibilidad de IPv6. Con nodos no IP se necesita una pasarela; con nodos IPv6, la conexión a otras redes IP se realiza mediante un border router.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         3
       ]

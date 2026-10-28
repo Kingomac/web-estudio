@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-57",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Con direcciones de enlace de 64 bits y etiquetas datagram_tag de 16 bits, ¿cuánta memoria requiere cada entrada VRB según el tema?",
+  "explanation": "Una entrada tiene dos direcciones de enlace y dos etiquetas: 8 + 2 + 8 + 2 = 20 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragment-forwarding-6lff-y-vrb"
+    }
+  ],
+  "options": [
+    {
+      "id": "20-bytes",
+      "text": "20 bytes.",
+      "explanation": "Dos direcciones de 8 bytes (anterior y siguiente) y dos etiquetas de 2 bytes (entrante y saliente) suman 20."
+    },
+    {
+      "id": "10-bytes",
+      "text": "10 bytes.",
+      "explanation": "Corresponde a contar una sola dirección y una sola etiqueta; la entrada guarda la pareja entrante y la saliente."
+    },
+    {
+      "id": "16-bytes",
+      "text": "16 bytes.",
+      "explanation": "Solo cuenta las dos direcciones de enlace y olvida las dos etiquetas de 2 bytes."
+    },
+    {
+      "id": "36-bytes",
+      "text": "36 bytes.",
+      "explanation": "Sale de usar direcciones de 16 bytes, como las IPv6; la VRB guarda direcciones de enlace de 64 bits."
+    }
+  ],
+  "answer": "20-bytes"
+}

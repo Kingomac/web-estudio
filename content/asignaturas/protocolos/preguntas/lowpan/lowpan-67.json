@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-67",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Tras recibir los RA, ¿qué ocurre con el registro de la dirección de un router 6LR?",
+  "explanation": "Para un 6LR el registro es opcional: solo se hace si hace falta DAD. El host sí registra su dirección.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        51
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "paso-1-descubrir-router-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "es-opcional-solo-si-hace",
+      "text": "Es opcional: solo si hace falta realizar DAD.",
+      "explanation": "La tabla de la p. 51 lo indica así."
+    },
+    {
+      "id": "es-obligatorio-y-se-hace",
+      "text": "Es obligatorio y se hace en cada 6LR vecino.",
+      "explanation": "Eso se parece más al host, que registra en uno o varios routers."
+    },
+    {
+      "id": "se-hace-con-dis-a",
+      "text": "Se hace con DIS a la raíz RPL.",
+      "explanation": "DIS solicita información de un DODAG; no registra direcciones."
+    },
+    {
+      "id": "lo-sustituye-el-campo-abro",
+      "text": "Lo sustituye el campo ABRO del RA.",
+      "explanation": "ABRO identifica al 6LBR y su versión; no registra direcciones."
+    }
+  ],
+  "answer": "es-opcional-solo-si-hace"
+}

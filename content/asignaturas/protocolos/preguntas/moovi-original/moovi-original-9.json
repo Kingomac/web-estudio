@@ -10,7 +10,7 @@
   "explanation": "Cuando se usan estas tres cabeceras, el orden de procesamiento es Mesh, Fragmentation, Compression (M–F–C). Las que no se necesitan pueden omitirse. La cabecera de compresión aparece al comienzo del datagrama, no se repite en cada fragmento posterior.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         17
       ]

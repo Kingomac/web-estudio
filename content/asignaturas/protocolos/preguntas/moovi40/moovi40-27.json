@@ -10,7 +10,7 @@
   "explanation": "Ambos puertos pertenecen a 0xF0B0–0xF0BF, de modo que P=11 deja cuatro bits por puerto: 2 y e, reunidos en un byte. Con el byte NHC y los dos bytes de checksum son 4 bytes. La longitud UDP se deduce y no se transmite.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         27
       ]

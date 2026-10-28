@@ -10,7 +10,7 @@
   "explanation": "DAR es ICMPv6 157 y DAC 158; el resultado se comunica después al host en NA con ARO.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         53
       ]

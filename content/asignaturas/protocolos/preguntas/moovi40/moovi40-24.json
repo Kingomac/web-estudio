@@ -10,7 +10,7 @@
   "explanation": "SAC=1 selecciona compresión con contexto; CID=0 permite usar el contexto implícito 0. SAM=11 permite inferir el IID en las condiciones indicadas. La dirección no especificada se codifica con SAC=1 y SAM=00.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         24
       ]

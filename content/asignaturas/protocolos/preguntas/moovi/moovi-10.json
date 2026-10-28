@@ -10,7 +10,7 @@
   "explanation": "En el modelo route-over estudiado, cada nodo que enruta reconstruye el datagrama para entregarlo a IPv6. Después aplica de nuevo la adaptación al enlace de salida. Se excluyen expresamente las optimizaciones de reenvío de fragmentos para no confundirlas con este funcionamiento clásico.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         36
       ]

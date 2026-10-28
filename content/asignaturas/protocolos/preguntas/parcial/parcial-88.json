@@ -10,7 +10,7 @@
   "explanation": "La tabla de compresión de origen con estado reserva SAC=1, SAM=00 para la dirección sin especificar. No debe interpretarse como el SAM=00 del caso SAC=0.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         24
       ]

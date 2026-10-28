@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-94",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En un DAO, ¿qué indican los campos Target y Transit?",
+  "explanation": "Target lleva la dirección IPv6 o el prefijo alcanzable; Transit, la dirección del padre o padres para alcanzarlo, con su preferencia.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        81
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "rutas-descendentes-storing-y-non-storing"
+    }
+  ],
+  "options": [
+    {
+      "id": "target-destino-alcanzable-transit-padre",
+      "text": "Target: destino alcanzable; Transit: padre para alcanzarlo.",
+      "explanation": "Definición de la p. 81, ilustrada en la p. 82."
+    },
+    {
+      "id": "target-padre-preferido-transit-destino",
+      "text": "Target: padre preferido; Transit: destino alcanzable.",
+      "explanation": "Invierte los papeles."
+    },
+    {
+      "id": "target-rank-del-nodo-transit",
+      "text": "Target: Rank del nodo; Transit: versión del DODAG.",
+      "explanation": "Rank y versión van en los DIO."
+    },
+    {
+      "id": "target-siguiente-salto-del-srh",
+      "text": "Target: siguiente salto del SRH; Transit: Segments Left.",
+      "explanation": "Son campos de la cabecera de encaminamiento, no del DAO."
+    }
+  ],
+  "answer": "target-destino-alcanzable-transit-padre"
+}

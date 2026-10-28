@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-99",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué información lleva la opción RPI (RFC 6553)?",
+  "explanation": "RPI va en la cabecera Hop-by-Hop con la instancia RPL, el Rank del emisor del salto y el sentido. Cada router comprueba que el Rank baje al subir y suba al bajar.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        85
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "instancia-rpl-rank-del-emisor",
+      "text": "Instancia RPL, Rank del emisor y sentido, en la cabecera Hop-by-Hop.",
+      "explanation": "Es lo que indica la p. 85."
+    },
+    {
+      "id": "la-lista-de-direcciones-intermedias",
+      "text": "La lista de direcciones intermedias, en un Routing Header tipo 3.",
+      "explanation": "Eso es la SRH del RFC 6554."
+    },
+    {
+      "id": "target-y-transit-de-cada",
+      "text": "Target y Transit de cada destino.",
+      "explanation": "Son campos del DAO."
+    },
+    {
+      "id": "el-router-id-y-el",
+      "text": "El Router ID y el Child ID del destino.",
+      "explanation": "Es la estructura del RLOC16 de Thread."
+    }
+  ],
+  "answer": "instancia-rpl-rank-del-emisor"
+}

@@ -3,9 +3,9 @@
   "kind": "material",
   "subjectId": "protocolos",
   "slug": "tema-4-lowpan",
-  "title": "Tema 4 · Redes LoWPAN",
-  "description": "Documento original de la asignatura.",
-  "scope": "Edición del 7/10/2026, la citada por las preguntas y los apuntes: tecnologías, 6LoWPAN, reenvío, NDP optimizado, Thread, Wi-SUN y RPL.",
+  "title": "Tema 4 · Redes LoWPAN (edición del 7/10)",
+  "description": "Primera edición del documento original del tema 4; sustituida por la del 22/10.",
+  "scope": "Edición del 7/10/2026, conservada como histórico. Las páginas 1–30 y 32–47 coinciden con la edición vigente del 22/10; a partir de la 48 el contenido se reorganizó. La web ya no la cita.",
   "tagIds": [
     "protocolos.tags.lowpan"
   ],

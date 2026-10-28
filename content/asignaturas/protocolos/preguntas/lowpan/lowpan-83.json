@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-83",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué obtiene un dispositivo en el Child ID Response?",
+  "explanation": "El padre le comunica en Address16 el RLOC16 que le asigna como hijo; con ello queda establecida la relación padre–hijo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        65
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "encaminamiento-y-mle"
+    }
+  ],
+  "options": [
+    {
+      "id": "su-rloc16-de-hijo-en",
+      "text": "Su RLOC16 de hijo, en Address16.",
+      "explanation": "La p. 65 muestra Address16 con el RLOC16 del hijo; la p. 64 dice que así lo obtiene."
+    },
+    {
+      "id": "su-ml-eid",
+      "text": "Su ML-EID.",
+      "explanation": "El ML-EID lo forma el propio nodo con un IID aleatorio."
+    },
+    {
+      "id": "un-router-id-nuevo",
+      "text": "Un Router ID nuevo.",
+      "explanation": "Los Router ID los asigna el Leader a routers, no un padre a un hijo."
+    },
+    {
+      "id": "la-tabla-de-rutas-completa",
+      "text": "La tabla de rutas completa de la partición.",
+      "explanation": "Las rutas entre routers se intercambian con MLE Advertisement."
+    }
+  ],
+  "answer": "su-rloc16-de-hijo-en"
+}

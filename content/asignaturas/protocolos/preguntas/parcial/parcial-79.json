@@ -10,7 +10,7 @@
   "explanation": "IEEE 802.15.4 define PHY/MAC. Las soluciones que se construyen sobre él añaden mecanismos de red, encaminamiento y aplicaciones; la radio por sí sola no define toda la pila.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         5
       ]

@@ -10,9 +10,9 @@
   "explanation": "La correspondencia se guarda en caché; los MTD delegan esta función en su padre.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        68
+        69
       ]
     }
   ],

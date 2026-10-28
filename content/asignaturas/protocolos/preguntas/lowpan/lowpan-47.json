@@ -10,9 +10,9 @@
   "explanation": "RPL organiza nodos hacia la raíz; puede haber varios padres candidatos y uno preferido.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        74
+        75
       ]
     }
   ],

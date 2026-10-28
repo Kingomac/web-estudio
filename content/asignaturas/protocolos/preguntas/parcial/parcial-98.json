@@ -10,7 +10,7 @@
   "explanation": "Los 6LR son routers internos del modo route-over. El 6LBR está en la frontera de la LoWPAN, y puede haber más de uno. En mesh-under no hay 6LR internos.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         31
       ]

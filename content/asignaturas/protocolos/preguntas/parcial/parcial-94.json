@@ -10,7 +10,7 @@
   "explanation": "El reensamblado admite recepción desordenada y su temporizador comienza con el primer fragmento recibido. Si no se completa antes de vencer, se descartan los fragmentos almacenados.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

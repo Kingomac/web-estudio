@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "tema-4-lowpan-2026-10-22",
+  "title": "Tema 4 · Redes LoWPAN (edición del 22/10)",
+  "description": "Edición vigente del documento original del tema 4.",
+  "scope": "Edición vigente del 22/10/2026 (89 páginas), la citada por apuntes, preguntas y ejercicios: tecnologías, 6LoWPAN, reenvío y 6LFF, 6lo, NDP optimizado, Thread (MLE) y Wi-SUN FAN (RPL).",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "order": 42,
+  "file": "materiales/protocolos/tema-4-lowpan-2026-10-22.pdf",
+  "format": "pdf",
+  "providedName": "Tema 4 - LoWPAN.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 89,
+  "sha256": "11d775cd276ba3c66691bd57d534855a7e3dfefe5b43d2258caf36e68320d34b"
+}

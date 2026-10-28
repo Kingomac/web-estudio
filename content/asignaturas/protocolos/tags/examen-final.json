@@ -1,0 +1,9 @@
+{
+  "id": "protocolos.tags.examen-final",
+  "kind": "tag",
+  "subjectId": "protocolos",
+  "slug": "examen-final",
+  "title": "Examen final",
+  "type": "study",
+  "order": 55
+}

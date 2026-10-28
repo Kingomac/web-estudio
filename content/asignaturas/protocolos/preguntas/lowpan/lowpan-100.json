@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-100",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿En qué caso puede omitirse la opción RPI?",
+  "explanation": "Debe ir en los datagramas entre routers RPL, pero puede omitirse en los descendentes de non-storing, que ya llevan SRH.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        85
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-los-datagramas-descendentes-de",
+      "text": "En los datagramas descendentes de non-storing, que ya llevan SRH.",
+      "explanation": "Último punto de la p. 85."
+    },
+    {
+      "id": "en-todos-los-datagramas-entre",
+      "text": "En todos los datagramas entre routers RPL.",
+      "explanation": "Es al revés: entre routers RPL debe incluirse."
+    },
+    {
+      "id": "en-los-datagramas-ascendentes-hacia",
+      "text": "En los datagramas ascendentes hacia la raíz.",
+      "explanation": "Al ascender no hay SRH que la sustituya."
+    },
+    {
+      "id": "nunca-puede-omitirse",
+      "text": "Nunca puede omitirse.",
+      "explanation": "El tema da la excepción de non-storing descendente."
+    }
+  ],
+  "answer": "en-los-datagramas-descendentes-de"
+}

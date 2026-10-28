@@ -3,23 +3,17 @@
   "kind": "pregunta",
   "subjectId": "protocolos",
   "tagIds": [
-    "protocolos.tags.lowpan"
+    "protocolos.tags.lowpan",
+    "protocolos.tags.complementario"
   ],
   "type": "single",
   "prompt": "¿Cómo actúa Trickle cuando la red está estable?",
-  "explanation": "Ante inconsistencias reduce el intervalo para propagar antes la información actualizada.",
-  "originalReferences": [
-    {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
-      "pdfPages": [
-        82
-      ]
-    }
-  ],
+  "explanation": "El tema solo indica que cada router temporiza sus DIO con Trickle (p. 76). El RFC 6206 detalla el algoritmo: al vencer cada intervalo sin inconsistencias lo duplica hasta un máximo, y suprime su transmisión si ya ha oído suficientes anuncios coherentes; ante una inconsistencia vuelve al intervalo mínimo.",
+  "originalReferences": [],
   "readingReferences": [
     {
       "resourceId": "protocolos.apuntes.tema-4-lowpan",
-      "anchor": "wi-sun-fan-y-rpl"
+      "anchor": "dio-y-formacion-del-dodag"
     }
   ],
   "options": [
@@ -44,5 +38,11 @@
       "explanation": "Trickle regula los DIO; no elimina los DAO ni las rutas descendentes."
     }
   ],
-  "answer": "aumenta-intervalos-de-dio-y"
+  "answer": "aumenta-intervalos-de-dio-y",
+  "externalReferences": [
+    {
+      "title": "RFC 6206 · 4.2 Trickle, descripción del algoritmo",
+      "url": "https://www.rfc-editor.org/rfc/rfc6206.html#section-4.2"
+    }
+  ]
 }

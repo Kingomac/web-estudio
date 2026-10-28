@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-82",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿A qué destino IPv6 envía un dispositivo su Parent Request?",
+  "explanation": "Parent Request va de la link-local del dispositivo a ff02::2 (all-routers); los candidatos responden unicast con Parent Response.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        65
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "encaminamiento-y-mle"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-2-all-routers",
+      "text": "ff02::2, all-routers.",
+      "explanation": "Es lo que muestra la p. 65."
+    },
+    {
+      "id": "ff02-1a-all-rpl-nodes",
+      "text": "ff02::1a, all-RPL-nodes.",
+      "explanation": "ff02::1a es el destino de los DIO de RPL."
+    },
+    {
+      "id": "ff03-2",
+      "text": "ff03::2.",
+      "explanation": "ff03::2 se usa en Address Query hacia los FTD de la partición."
+    },
+    {
+      "id": "la-anycast-del-leader",
+      "text": "La anycast del Leader.",
+      "explanation": "El dispositivo busca un padre entre sus vecinos, no al Leader."
+    }
+  ],
+  "answer": "ff02-2-all-routers"
+}

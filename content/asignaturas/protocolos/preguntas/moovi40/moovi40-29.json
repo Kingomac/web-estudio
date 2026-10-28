@@ -10,7 +10,7 @@
   "explanation": "El tamaño aparece en todos los fragmentos, lo que permite gestionar recepción desordenada. El temporizador se inicia al recibir el primer fragmento del datagrama, aunque no sea FRAG1. Si vence sin completarse el reensamblado, se descartan los fragmentos almacenados.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         28
       ]

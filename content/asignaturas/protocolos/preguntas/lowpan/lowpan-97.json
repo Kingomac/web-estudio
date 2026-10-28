@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-97",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En RPL non-storing, A quiere enviar un paquete a L, hoja conectada al router B, que es hijo de A. ¿Qué camino sigue?",
+  "explanation": "Sin ruta de fuente, A usa la ruta ascendente hacia la raíz, y la raíz lo baja con encaminamiento de fuente: A → R → A → B → L. En storing sería A → B → L.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        83
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "reenvio-en-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-r-a-b-l",
+      "text": "A → R → A → B → L.",
+      "explanation": "Ejemplo de la p. 83."
+    },
+    {
+      "id": "a-b-l",
+      "text": "A → B → L.",
+      "explanation": "Ese es el camino en storing, donde A tiene rutas a sus descendientes."
+    },
+    {
+      "id": "a-r-b-l",
+      "text": "A → R → B → L.",
+      "explanation": "B no es hijo de R: la ruta de fuente baja por A."
+    },
+    {
+      "id": "a-l-directamente",
+      "text": "A → L directamente.",
+      "explanation": "L no es vecino de A."
+    }
+  ],
+  "answer": "a-r-a-b-l"
+}

@@ -5,7 +5,7 @@
   "slug": "el-mismo-paquete-en-route-over",
   "title": "El mismo paquete en route-over",
   "description": "Mismo paquete IPv6 del nodo 5 al nodo 1, con contexto 0, pero recorrido route-over 5 → 3 → 1.",
-  "scope": "Procedimiento de la página 57 del Tema 4.",
+  "scope": "Procedimiento de la página 56 del Tema 4.",
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
@@ -16,9 +16,9 @@
   "hint": "En 5→3 se conoce el origen final 5; en 3→1 se conoce el destino final 1. El otro extremo necesita 16 bits.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        57
+        56
       ]
     }
   ],

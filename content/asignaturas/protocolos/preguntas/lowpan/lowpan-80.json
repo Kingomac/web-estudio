@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-80",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Para qué sirve la dirección Mesh-Local /64 + 0000:00ff:fe00:fc00 en Thread?",
+  "explanation": "Es la dirección anycast del Leader dentro de la partición: permite dirigirse al Leader actual sin conocer su RLOC.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        63
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccionamiento-ipv6-en-thread"
+    }
+  ],
+  "options": [
+    {
+      "id": "llegar-al-leader-actual-sin",
+      "text": "Llegar al Leader actual sin conocer su RLOC.",
+      "explanation": "Es la anycast del Leader de la p. 63."
+    },
+    {
+      "id": "enviar-address-query-a-todos",
+      "text": "Enviar Address Query a todos los FTD.",
+      "explanation": "Address Query va a ff03::2."
+    },
+    {
+      "id": "buscar-padre-con-parent-request",
+      "text": "Buscar padre con Parent Request.",
+      "explanation": "Parent Request va a ff02::2."
+    },
+    {
+      "id": "identificar-de-forma-estable-a",
+      "text": "Identificar de forma estable a cualquier nodo.",
+      "explanation": "Eso es el ML-EID, con IID aleatorio."
+    }
+  ],
+  "answer": "llegar-al-leader-actual-sin"
+}

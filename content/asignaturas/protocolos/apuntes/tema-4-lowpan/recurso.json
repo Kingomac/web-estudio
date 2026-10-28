@@ -4,8 +4,8 @@
   "subjectId": "protocolos",
   "slug": "tema-4-lowpan",
   "title": "Tema 4 · Redes LoWPAN",
-  "description": "Tecnologías, 6LoWPAN (IPHC, NHC, fragmentación, mesh-under y route-over), NDP optimizado, Thread y Wi-SUN FAN con RPL.",
-  "scope": "Tema 4 completo (edición del 7/10/2026). Para el primer parcial solo entra hasta la página 37 incluida.",
+  "description": "Tecnologías, 6LoWPAN (IPHC, NHC, fragmentación, mesh-under, route-over y 6LFF), 6lo, NDP optimizado, Thread con MLE y Wi-SUN FAN con RPL.",
+  "scope": "Tema 4 completo según la edición vigente del 22/10/2026 (89 páginas). Para el primer parcial solo entraba hasta la página 37; el examen final incluye todo. Dos recuadros marcados como complementarios añaden detalles de los RFC 6775 y 6206.",
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
@@ -19,7 +19,7 @@
   ],
   "sources": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         3,
         4,
@@ -47,6 +47,20 @@
         27,
         28,
         29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
         45,
         46,
         47,
@@ -58,7 +72,7 @@
         54,
         55,
         56,
-        57,
+        58,
         59,
         60,
         61,
@@ -72,7 +86,7 @@
         69,
         70,
         71,
-        73,
+        72,
         74,
         75,
         76,
@@ -84,11 +98,25 @@
         82,
         83,
         84,
-        85
+        85,
+        86,
+        87,
+        88,
+        89
       ]
     }
   ],
   "relatedResourceIds": [
     "protocolos.tests.tema-4-lowpan"
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 6775 · Neighbor Discovery Optimization for 6LoWPAN",
+      "url": "https://www.rfc-editor.org/rfc/rfc6775.html"
+    },
+    {
+      "title": "RFC 6206 · The Trickle Algorithm",
+      "url": "https://www.rfc-editor.org/rfc/rfc6206.html"
+    }
   ]
 }

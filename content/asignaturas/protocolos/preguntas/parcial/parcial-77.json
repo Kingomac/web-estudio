@@ -10,7 +10,7 @@
   "explanation": "Las diapositivas indican 250 kbit/s y tramas de hasta 127 bytes, incluidos los campos MAC. Los 1280 bytes corresponden a la MTU mínima que IPv6 requiere del enlace.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         7
       ]

@@ -3,142 +3,142 @@
   "timezone": "Europe/Madrid",
   "from": "2026-09-01",
   "until": "2027-09-01",
-  "updatedAt": "2026-10-23T16:48:31.321Z",
+  "updatedAt": "2026-10-28T15:08:55.977Z",
   "sources": [
     {
       "id": "google",
       "label": "MUIoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-02",
       "label": "MUIoT - Aprendizaxe Automática",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-03",
       "label": "MUIoT - Big Data",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-04",
       "label": "MUIoT - Ciberseguridade en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-05",
       "label": "MUIoT - Computación na Nube para IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-06",
       "label": "MUIoT - Dispositivos IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-07",
       "label": "MUIoT - Enxeñería de Datos para IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-08",
       "label": "MUIoT - Green IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-09",
       "label": "MUIoT - Innovación e Emprendemento en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-10",
       "label": "MUIoT - Integración de Sistemas en IIoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-11",
       "label": "MUIoT - Novas Arquitecturas e Paradigmas IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-12",
       "label": "MUIoT - Protocolos de Comunicacións en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-13",
       "label": "MUIoT - Redes de Comunicacións en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-14",
       "label": "MUIoT - Sistemas Encaixados",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-15",
       "label": "MUIoT - Xemelgos Dixitais en plantas industriais",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "google-16",
       "label": "MUIoT - Análise de Vídeo",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     },
     {
       "id": "moovi",
       "label": "Moovi · Entregas",
       "status": "ok",
-      "checkedAt": "2026-10-23T16:48:31.321Z",
-      "lastSuccessAt": "2026-10-23T16:48:31.321Z",
+      "checkedAt": "2026-10-28T15:08:55.977Z",
+      "lastSuccessAt": "2026-10-28T15:08:55.977Z",
       "limitedDetails": false
     }
   ],
@@ -509,14 +509,6 @@
       "end": "2026-10-16T18:00:00.000Z"
     },
     {
-      "id": "fb9051564f2d3e6b4123f475",
-      "sourceId": "moovi",
-      "title": "Vencimiento de Tarea 2: Lab IPv6",
-      "allDay": false,
-      "start": "2026-10-19T07:00:00.000Z",
-      "end": "2026-10-19T07:00:00.000Z"
-    },
-    {
       "id": "1f51fc5bd1893e19dc1dcc60",
       "sourceId": "google-14",
       "title": "Sistemas Encaixados",
@@ -533,22 +525,6 @@
       "allDay": false,
       "start": "2026-10-19T16:00:00.000Z",
       "end": "2026-10-19T18:00:00.000Z"
-    },
-    {
-      "id": "207363cedcb28c31409e80ed",
-      "sourceId": "moovi",
-      "title": "Se cierra Tarea 3: Cuestionario previo al Examen Parcial",
-      "allDay": false,
-      "start": "2026-10-19T16:30:00.000Z",
-      "end": "2026-10-19T16:30:00.000Z"
-    },
-    {
-      "id": "81c1386d9b20b96f2ee52448",
-      "sourceId": "moovi",
-      "title": "Entrega práctica 3 pendente de entrega",
-      "allDay": false,
-      "start": "2026-10-20T13:00:00.000Z",
-      "end": "2026-10-20T13:00:00.000Z"
     },
     {
       "id": "a965056b8bbff9dd926bd5a6",
@@ -709,14 +685,6 @@
       "end": "2026-10-29T17:30:00.000Z"
     },
     {
-      "id": "27fd1a8a8221d3dd62283948",
-      "sourceId": "moovi",
-      "title": "Entrega Proyecto (I) pendente de entrega",
-      "allDay": false,
-      "start": "2026-10-29T22:59:00.000Z",
-      "end": "2026-10-29T22:59:00.000Z"
-    },
-    {
       "id": "621140f53aac9b91b93ca670",
       "sourceId": "google-06",
       "title": "Dispositivos IoT",
@@ -742,6 +710,14 @@
       "allDay": false,
       "start": "2026-11-02T17:00:00.000Z",
       "end": "2026-11-02T19:00:00.000Z"
+    },
+    {
+      "id": "d95169de52a4fcf0ffd23210",
+      "sourceId": "moovi",
+      "title": "Entrega Proyecto (I) pendente de entrega",
+      "allDay": false,
+      "start": "2026-11-02T22:59:00.000Z",
+      "end": "2026-11-02T22:59:00.000Z"
     },
     {
       "id": "2edb519104c0085c1ff07dbd",
@@ -784,6 +760,22 @@
       "allDay": false,
       "start": "2026-11-07T22:59:00.000Z",
       "end": "2026-11-07T22:59:00.000Z"
+    },
+    {
+      "id": "9c9508c2689f20332f424909",
+      "sourceId": "moovi",
+      "title": "Vencimiento de Tarea 4: Contiki-NG y Cooja",
+      "allDay": false,
+      "start": "2026-11-09T09:00:00.000Z",
+      "end": "2026-11-09T09:00:00.000Z"
+    },
+    {
+      "id": "3dca8d639d11fb5915006fe9",
+      "sourceId": "moovi",
+      "title": "Entrega Proyecto (II) pendente de entrega",
+      "allDay": false,
+      "start": "2026-11-09T22:59:00.000Z",
+      "end": "2026-11-09T22:59:00.000Z"
     },
     {
       "id": "b0374877a03bf22d740e2bae",

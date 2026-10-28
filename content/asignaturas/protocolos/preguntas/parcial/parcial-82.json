@@ -10,7 +10,7 @@
   "explanation": "IPHC y NHC evitan transmitir información reconstruible. La descompresión recupera los campos necesarios mediante valores conocidos, información del enlace o contextos compartidos.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         18
       ]

@@ -10,7 +10,7 @@
   "explanation": "Primero quedan 127−46=81 bytes de carga MAC. De ellos, 6 corresponden al conjunto de cabeceras comprimidas: 81−6=75 bytes de aplicación. Los 33 bytes serían el resultado con 40 bytes de IPv6 y 8 de UDP sin comprimir.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         15
       ]

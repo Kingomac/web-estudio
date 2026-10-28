@@ -10,7 +10,7 @@
   "explanation": "La ruta host /128 gana a la ruta on-link /64. A entrega la trama al router R, pero conserva la dirección IPv6 del destinatario ::20. Es el mismo principio del ejemplo final del tema: la FIB elige el siguiente salto y la tabla de vecinos aporta su dirección de enlace.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         37
       ]

@@ -10,7 +10,7 @@
   "explanation": "Zigbee tiene su propia pila de red; Thread se basa en IEEE 802.15.4 y 6LoWPAN.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         8,
         9

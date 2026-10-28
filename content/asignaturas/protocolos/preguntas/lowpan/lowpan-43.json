@@ -10,9 +10,10 @@
   "explanation": "ML-EID identifica al nodo independientemente de la topología; RLOC16 refleja su posición.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        65
+        62,
+        63
       ]
     }
   ],

@@ -10,7 +10,7 @@
   "explanation": "M=0 indica unicast y DAC=0 compresión sin contexto. DAM=11 omite por completo la dirección: el prefijo es link-local y el IID se deriva de la cabecera de enlace en el supuesto indicado. DAM=01 llevaría 64 bits y DAM=00 llevaría 128 bits.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         25
       ]

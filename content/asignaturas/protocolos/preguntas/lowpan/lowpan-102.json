@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.lowpan-102",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "ordering",
+  "prompt": "Hay una extensión RPI entre la cabecera IPv6 y UDP, y se quiere comprimir UDP con NHC. Ordena la cadena de cabeceras comprimidas.",
+  "explanation": "La cadena LOWPAN_NHC debe ser continua: IPHC con NH=1, NHC de la extensión con NH=1, NHC de UDP y después los datos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        86
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "items": [
+    {
+      "id": "lowpan-iphc-con-nh-1",
+      "text": "LOWPAN_IPHC con NH=1.",
+      "placementExplanation": "La cadena empieza con la cabecera IPv6 comprimida, que avisa con NH=1 de que sigue un NHC."
+    },
+    {
+      "id": "nhc-de-la-extension-hop",
+      "text": "NHC de la extensión Hop-by-Hop (RPI), con NH=1.",
+      "placementExplanation": "La extensión va entre IPv6 y UDP; para comprimir UDP también debe ir con NHC."
+    },
+    {
+      "id": "nhc-de-udp",
+      "text": "NHC de UDP.",
+      "placementExplanation": "UDP es la última cabecera de la cadena."
+    },
+    {
+      "id": "datos-de-la-aplicacion",
+      "text": "Datos de la aplicación.",
+      "placementExplanation": "Los datos siguen a todas las cabeceras."
+    }
+  ],
+  "answer": [
+    "lowpan-iphc-con-nh-1",
+    "nhc-de-la-extension-hop",
+    "nhc-de-udp",
+    "datos-de-la-aplicacion"
+  ]
+}

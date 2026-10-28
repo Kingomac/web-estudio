@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-68",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Quién determina las rutas y el siguiente salto de un 6LR en route-over?",
+  "explanation": "En un 6LR las rutas las determina el protocolo de encaminamiento, por ejemplo RPL; es el host quien elige router por defecto con NDP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        51
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "paso-1-descubrir-router-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-protocolo-de-encaminamiento-por",
+      "text": "El protocolo de encaminamiento, por ejemplo RPL.",
+      "explanation": "Es la fila «Rutas» de la p. 51."
+    },
+    {
+      "id": "ndp-eligiendo-un-router-por",
+      "text": "NDP, eligiendo un router por defecto por alcanzabilidad.",
+      "explanation": "Así lo hace el host; un 6LR usa el protocolo de encaminamiento."
+    },
+    {
+      "id": "el-status-de-aro-del",
+      "text": "El Status de ARO del NA recibido.",
+      "explanation": "Status informa del resultado del registro, no de rutas."
+    },
+    {
+      "id": "el-leader-de-la-particion",
+      "text": "El Leader de la partición.",
+      "explanation": "El Leader es de Thread y no calcula rutas centralizadamente."
+    }
+  ],
+  "answer": "el-protocolo-de-encaminamiento-por"
+}

@@ -10,9 +10,9 @@
   "explanation": "El tema calcula costes a partir de Rank del padre y ETX del enlace, con histéresis.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        75
+        77
       ]
     }
   ],

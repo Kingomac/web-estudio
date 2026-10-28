@@ -10,7 +10,7 @@
   "explanation": "TF=10 conserva Traffic Class, formado por ECN y DSCP, en un byte y omite Flow Label. TF=11 suprime ambos y TF=00 conserva los dos en cuatro bytes.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
         20
       ]

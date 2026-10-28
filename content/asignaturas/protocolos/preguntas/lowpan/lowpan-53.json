@@ -10,9 +10,10 @@
   "explanation": "Wi-SUN FAN utiliza non-storing; los routers siguen manteniendo vecinos y padres para tráfico ascendente.",
   "originalReferences": [
     {
-      "materialId": "protocolos.materiales.tema-4-lowpan",
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
       "pdfPages": [
-        78
+        80,
+        82
       ]
     }
   ],

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-58",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuándo borra un nodo intermedio una entrada de su tabla VRB?",
+  "explanation": "La entrada solo hace falta mientras se reenvían los fragmentos del datagrama: se borra al reenviar el último o al vencer el temporizador de reensamblado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragment-forwarding-6lff-y-vrb"
+    }
+  ],
+  "options": [
+    {
+      "id": "al-reenviar-el-ultimo-fragmento",
+      "text": "Al reenviar el último fragmento o al vencer el temporizador de reensamblado.",
+      "explanation": "Son los dos casos que indica la p. 41: termina el datagrama o caduca su espera."
+    },
+    {
+      "id": "al-recibir-el-primer-fragmento",
+      "text": "Al recibir el primer fragmento del datagrama.",
+      "explanation": "El primer fragmento es el que crea la entrada; borrarla entonces impediría reenviar los siguientes."
+    },
+    {
+      "id": "nunca-se-conserva-para-reutilizarla",
+      "text": "Nunca: se conserva para reutilizarla con la misma etiqueta.",
+      "explanation": "Reutilizar entradas viejas provocaría justo las colisiones de etiquetas que VRB quiere evitar."
+    },
+    {
+      "id": "cuando-el-6lbr-anuncia-una",
+      "text": "Cuando el 6LBR anuncia una nueva versión en ABRO.",
+      "explanation": "ABRO versiona prefijos y contextos de NDP; no gestiona el reenvío de fragmentos."
+    }
+  ],
+  "answer": "al-reenviar-el-ultimo-fragmento"
+}

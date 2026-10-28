@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-60",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué problema de etiquetado resuelve VRB en 6LFF?",
+  "explanation": "Los fragmentos posteriores se reenvían por su etiqueta, pero nodos diferentes pueden asignar la misma etiqueta a datagramas distintos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragment-forwarding-6lff-y-vrb"
+    }
+  ],
+  "options": [
+    {
+      "id": "datagramas-distintos-pueden-llegar-con",
+      "text": "Datagramas distintos pueden llegar con la misma datagram_tag desde nodos diferentes.",
+      "explanation": "Solo el primer fragmento lleva direcciones IPv6; los demás se identifican por etiqueta, que puede colisionar."
+    },
+    {
+      "id": "el-primer-fragmento-no-lleva",
+      "text": "El primer fragmento no lleva la cabecera IPv6.",
+      "explanation": "Es al revés: solo el primer fragmento lleva las direcciones IPv6 de origen y destino."
+    },
+    {
+      "id": "la-cabecera-mesh-pierde-el",
+      "text": "La cabecera Mesh pierde el destino final en cada salto.",
+      "explanation": "La cabecera Mesh conserva origen y destino final; además 6LFF trabaja en route-over."
+    },
+    {
+      "id": "datagram-offset-se-mide-en",
+      "text": "datagram_offset se mide en bytes y no cabe en 8 bits.",
+      "explanation": "El offset se mide en unidades de 8 bytes y no tiene relación con la colisión de etiquetas."
+    }
+  ],
+  "answer": "datagramas-distintos-pueden-llegar-con"
+}

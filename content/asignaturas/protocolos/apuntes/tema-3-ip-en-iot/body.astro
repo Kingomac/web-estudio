@@ -100,7 +100,7 @@ Cliente → Request → Servidor
 Cliente ← Reply ← Servidor</code></pre>
 <p>Usa <strong>UDP 546 en cliente</strong>, <strong>547 en servidor</strong> y el grupo <strong><code>ff02::1:2</code></strong> para localizar servidores/relays en el enlace. <strong>El router por defecto se obtiene mediante RA, también cuando se usa DHCPv6.</strong></p>
 <h2 id="resolucion-de-direcciones-y-ndp">8. Resolución de direcciones y NDP</h2>
-<p class="no-print">Fuente: pp. 20-21 y 37-42.</p>
+<p class="no-print">Fuente: pp. 20-21 y 37-44.</p>
 <p><strong>NDP = Neighbor Discovery Protocol.</strong> Relaciona direcciones IPv6 con direcciones de enlace y permite descubrir routers y comprobar vecinos. No descubre aplicaciones ni los recursos que ofrecen.</p>
 <p><strong>Antes de animar:</strong> NDP usa ICMPv6 entre vecinos de un mismo enlace. «Enviar a un router» puede significar que el router es el destinatario local del mensaje; no implica que lo reenvíe. Los datos IPv6 destinados a otra red sí pueden atravesarlo.</p><p>Los mensajes NDP llevan <strong>Hop Limit 255</strong>, y el receptor comprueba ese valor. No se utiliza Hop Limit=1 para limitar NDP al enlace. Los grupos <code>ff02::…</code> son multicast de ámbito de enlace; un router no los propaga a otro enlace. Tener un destino unicast global en un NS/NA tampoco convierte NDP en un mecanismo de descubrimiento remoto.</p>
 
