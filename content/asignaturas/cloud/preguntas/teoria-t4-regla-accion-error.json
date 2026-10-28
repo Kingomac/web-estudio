@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-regla-accion-error",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una regla de AWS IoT debe insertar los datos en una tabla DynamoDB, pero la escritura falla. ¿Qué elemento de la regla permite tratar ese fallo?",
+  "explanation": "Una regla se compone de nombre, descripción opcional, expresión SQL, una o más acciones y una acción de error opcional. La acción de error se ejecuta cuando no se consigue realizar la acción de la regla.",
+  "options": [
+    {
+      "id": "error",
+      "text": "La acción de error, opcional, que se ejecuta cuando no se consigue realizar la acción de la regla",
+      "explanation": "Es el elemento de la regla previsto para los fallos de sus acciones."
+    },
+    {
+      "id": "segunda",
+      "text": "Una segunda acción de la regla, que solo se ejecuta si falla la primera",
+      "explanation": "Las acciones de la regla se ejecutan al aplicarla; no forman una cadena de respaldo. Para el fallo existe la acción de error."
+    },
+    {
+      "id": "where",
+      "text": "La cláusula `WHERE`, que vuelve a evaluar el mensaje hasta que la acción tenga éxito",
+      "explanation": "`WHERE` solo decide si se ejecutan las acciones; no reintenta ni trata fallos."
+    },
+    {
+      "id": "descripcion",
+      "text": "La descripción de la regla, donde se indica qué hacer si la acción falla",
+      "explanation": "La descripción es un texto opcional informativo; no ejecuta nada."
+    }
+  ],
+  "answer": "error",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        42
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-json-completa",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un certificado está asociado a la cosa `camion-01` y tiene esta política. ¿Qué permite al cliente que usa ese certificado?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Connect\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:client/${iot:Connection.Thing.ThingName}\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Publish\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topic/trucks/${iot:Connection.Thing.ThingName}/telemetry\"\n    }\n  ]\n}\n```",
+  "explanation": "La variable de conexión se sustituye por el nombre de la cosa asociada al certificado. La política permite conectar con ID de cliente `camion-01` y publicar en `trucks/camion-01/telemetry`; no concede Subscribe ni Receive.",
+  "options": [
+    {
+      "id": "propia",
+      "text": "Conectar como `camion-01` y publicar únicamente en `trucks/camion-01/telemetry`",
+      "explanation": "Es exactamente el alcance de los dos permisos Allow después de sustituir la variable."
+    },
+    {
+      "id": "cualquier-cliente",
+      "text": "Conectar con cualquier ID de cliente y publicar únicamente en su propio tema",
+      "explanation": "El recurso de Connect restringe el ID al nombre de la cosa asociada."
+    },
+    {
+      "id": "recibir",
+      "text": "Conectar como `camion-01` y recibir mensajes de `trucks/camion-01/telemetry`",
+      "explanation": "La política concede Publish, no Receive; publicar no implica recibir."
+    },
+    {
+      "id": "toda-flota",
+      "text": "Publicar en el tema de telemetría de cualquier camión de la flota",
+      "explanation": "El ARN contiene el nombre de la cosa, no un comodín que abarque otros camiones."
+    }
+  ],
+  "answer": "propia",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

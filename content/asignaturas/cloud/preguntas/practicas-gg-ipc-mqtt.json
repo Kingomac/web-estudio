@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-ipc-mqtt",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Con el componente personalizado desplegado, se publica `{\"image\": \"cat2.jpeg\"}` en `ml/image` con la CLI de Greengrass del dispositivo. ¿Dónde se comprueba el resultado y por qué?",
+  "explanation": "`ml/image` es un tema IPC: la mensajería es local entre componentes del núcleo y no llega a IoT Core. El componente lee la imagen del directorio local, infiere y publica el resultado por MQTT en `ml/custom/image-classification`, que sí se ve en el cliente de prueba de AWS IoT.",
+  "options": [
+    {
+      "id": "mqtt-resultado",
+      "text": "En el cliente MQTT de AWS IoT, tema `ml/custom/image-classification`, porque `ml/image` es IPC local y el resultado sale por MQTT",
+      "explanation": "Distingue el canal local IPC del MQTT hacia IoT Core."
+    },
+    {
+      "id": "ml-image",
+      "text": "En el cliente MQTT de AWS IoT, suscrito a `ml/image`, donde aparece la petición y luego el resultado",
+      "explanation": "Los mensajes IPC no llegan a IoT Core aunque el tema se llame igual."
+    },
+    {
+      "id": "dlr-original",
+      "text": "En `ml/dlr/image-classification`, el tema del componente original de AWS",
+      "explanation": "Un resultado allí no prueba el componente personalizado."
+    },
+    {
+      "id": "ipc-resultado",
+      "text": "Solo en el terminal suscrito por IPC a `ml/image`, porque el resultado vuelve al mismo tema",
+      "explanation": "En `ml/image` solo se ve la petición; el resultado se publica en otro tema por MQTT."
+    }
+  ],
+  "answer": "mqtt-resultado",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 3 · Componentes ML personalizados",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml-personalizado"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-tunel-proxy",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la tunelización segura de AWS IoT, ¿cómo se comunican el portátil del técnico y el dispositivo remoto situado tras un firewall?",
+  "explanation": "En cada extremo se ejecuta un proxy local de código abierto. Los proxies se comunican con AWS IoT por un puerto abierto en el firewall, por ejemplo el 443, y los datos viajan cifrados con TLS. No hay que modificar las reglas del firewall.",
+  "options": [
+    {
+      "id": "proxies",
+      "text": "Cada extremo ejecuta un proxy local que se comunica con AWS IoT por un puerto abierto, p. ej. 443, usando TLS",
+      "explanation": "Describe la arquitectura del túnel del tema."
+    },
+    {
+      "id": "abre-22",
+      "text": "El portátil se conecta directamente al puerto SSH del dispositivo, que se abre temporalmente en el firewall",
+      "explanation": "La tunelización segura no requiere modificar las reglas del firewall."
+    },
+    {
+      "id": "mqtt",
+      "text": "El tráfico viaja como mensajes MQTT publicados en `$aws/things/thing-name/tunnels/notify`",
+      "explanation": "Ese tema solo sirve para notificar al agente; el tráfico va por los proxies."
+    },
+    {
+      "id": "un-proxy",
+      "text": "Solo el portátil ejecuta un proxy, que abre una conexión entrante hacia el dispositivo",
+      "explanation": "Hay un proxy en cada extremo y ninguno necesita conexiones entrantes."
+    }
+  ],
+  "answer": "proxies",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        82
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tunel"
+    }
+  ]
+}

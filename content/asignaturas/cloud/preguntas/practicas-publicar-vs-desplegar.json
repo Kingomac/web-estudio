@@ -1,0 +1,62 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-publicar-vs-desplegar",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Después de subir los artefactos de un componente Greengrass a S3 y publicar su versión, ¿qué hace falta para instalarlo y ejecutarlo en un núcleo?",
+  "explanation": "Publicar crea una versión del componente en AWS IoT Greengrass, pero no instala nada. Un despliegue con ese núcleo como destino hace que se descarguen los artefactos, se incluyan las dependencias compatibles y se ejecute el ciclo de vida.",
+  "options": [
+    {
+      "id": "despliegue",
+      "text": "Crear o revisar un despliegue dirigido al núcleo que incluya esa versión del componente",
+      "explanation": "El despliegue es la operación que lleva componentes y configuración al dispositivo."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: publicar la versión ya la instala en todos los núcleos de la cuenta",
+      "explanation": "La publicación solo registra la versión; no selecciona dispositivos destino."
+    },
+    {
+      "id": "s3",
+      "text": "Basta con volver a subir el mismo artefacto a S3, sin crear un despliegue",
+      "explanation": "S3 almacena artefactos, pero no decide qué componentes se instalan en un núcleo."
+    },
+    {
+      "id": "sombra",
+      "text": "Publicar manualmente la receta completa en la sección `reported` de la sombra",
+      "explanation": "La sombra no sustituye al mecanismo de despliegue de Greengrass."
+    }
+  ],
+  "answer": "despliegue",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        14,
+        15,
+        17
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 4 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    },
+    {
+      "title": "AWS IoT Greengrass · Publicar componentes",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/publish-components.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

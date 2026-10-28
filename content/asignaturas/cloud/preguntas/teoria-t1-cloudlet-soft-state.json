@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-cloudlet-soft-state",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa que una cloudlet mantenga estado temporal o «soft state»?",
+  "explanation": "La cloudlet conserva estado de ejecución temporal para ofrecer cómputo próximo y de baja latencia, mientras el estado persistente reside en la nube. Por tanto, no es el repositorio definitivo de los datos del usuario.",
+  "options": [
+    {
+      "id": "temporal",
+      "text": "Guarda estado de ejecución temporal; el estado persistente permanece en la nube",
+      "explanation": "Es la separación que describe el modelo de cloudlets."
+    },
+    {
+      "id": "sin-estado",
+      "text": "No puede mantener ningún estado durante la ejecución de una aplicación",
+      "explanation": "Sí mantiene estado local, pero es temporal, no persistente."
+    },
+    {
+      "id": "unico",
+      "text": "Es el único lugar donde se almacenan permanentemente los datos del usuario",
+      "explanation": "El estado persistente se encuentra en la nube remota."
+    },
+    {
+      "id": "cifrado",
+      "text": "Todo su estado está necesariamente cifrado y no puede modificarse",
+      "explanation": "Soft state se refiere a la persistencia temporal, no al cifrado ni a la inmutabilidad."
+    }
+  ],
+  "answer": "temporal",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

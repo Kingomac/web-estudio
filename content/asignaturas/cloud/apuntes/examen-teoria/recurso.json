@@ -247,6 +247,10 @@
     {
       "title": "tutorial P3, auditoría",
       "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    },
+    {
+      "title": "AWS, políticas pub/sub",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html"
     }
   ],
   "relatedResourceIds": [

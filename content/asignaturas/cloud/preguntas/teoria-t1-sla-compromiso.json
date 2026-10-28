@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-sla-compromiso",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Al comparar ofertas cloud, ¿dónde se concretan el compromiso de disponibilidad y los créditos aplicables si el proveedor no lo cumple?",
+  "explanation": "El acuerdo de nivel de servicio (SLA) especifica el compromiso medible, sus condiciones y las compensaciones por incumplimiento. La disponibilidad anunciada no debe separarse de los requisitos necesarios para acogerse a ella.",
+  "options": [
+    {
+      "id": "sla",
+      "text": "En el acuerdo de nivel de servicio (SLA)",
+      "explanation": "El SLA recoge tanto el compromiso como sus condiciones y los créditos de servicio."
+    },
+    {
+      "id": "factura",
+      "text": "En la factura mensual, donde los créditos se aplican automáticamente al detectar la caída",
+      "explanation": "La factura no fija el compromiso, y los créditos del SLA exigen una reclamación del cliente."
+    },
+    {
+      "id": "responsabilidad",
+      "text": "En el modelo de responsabilidad compartida",
+      "explanation": "Ese modelo reparte las tareas de seguridad entre proveedor y cliente; no fija disponibilidad ni créditos."
+    },
+    {
+      "id": "regiones",
+      "text": "En la lista de servicios y precios de cada región",
+      "explanation": "Indica qué servicios y precios hay en cada región, pero no el compromiso de disponibilidad ni sus compensaciones."
+    }
+  ],
+  "answer": "sla",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "beneficios-riesgos"
+    }
+  ]
+}

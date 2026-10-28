@@ -1,0 +1,64 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-token-exchange-role",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Greengrass se instala en la práctica 4 indicando el rol `LabRole` y el alias `LabRoleAlias`. ¿Para qué sirve ese rol de intercambio de tokens?",
+  "explanation": "El núcleo usa el proveedor de credenciales de AWS IoT con ese rol para obtener credenciales temporales de servicios AWS, por ejemplo para descargar artefactos de S3 o enviar logs a CloudWatch. Es distinto del rol de servicio de Greengrass, que `LabRole` no puede asumir en el laboratorio, y de la política IoT del certificado.",
+  "options": [
+    {
+      "id": "credenciales",
+      "text": "Para que el núcleo obtenga credenciales temporales de servicios AWS, como S3 o CloudWatch",
+      "explanation": "Es la función del rol que usa el servicio de intercambio de tokens."
+    },
+    {
+      "id": "politica",
+      "text": "Para autorizar las publicaciones MQTT del núcleo en IoT Core, en lugar de la política IoT",
+      "explanation": "Las operaciones MQTT se autorizan con la política IoT del certificado."
+    },
+    {
+      "id": "servicio",
+      "text": "Es el rol de servicio de Greengrass que necesitan los brokers MQTT predefinidos",
+      "explanation": "Ese rol de servicio es otro; `LabRole` no puede asumirlo en el laboratorio."
+    },
+    {
+      "id": "ssh",
+      "text": "Para autenticar al operador en la consola de depuración local",
+      "explanation": "La consola local se usa mediante reenvío SSH, no con este rol."
+    }
+  ],
+  "answer": "credenciales",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        16,
+        34
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        8,
+        9
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 1 · Bridge MQTT",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-4"
+    }
+  ]
+}

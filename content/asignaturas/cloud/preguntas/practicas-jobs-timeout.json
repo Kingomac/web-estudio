@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-timeout",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una ejecución de trabajo se queda en `IN_PROGRESS` más tiempo del límite configurado. Según el tutorial, ¿qué ocurre?",
+  "explanation": "Los tiempos límite permiten detectar ejecuciones atascadas: superado el límite, la ejecución falla, pasa al estado final `TIMED_OUT` y se envía una notificación por los temas MQTT.",
+  "options": [
+    {
+      "id": "timed-out",
+      "text": "La ejecución falla, pasa al estado final `TIMED_OUT` y se notifica por MQTT",
+      "explanation": "Es el comportamiento de los tiempos límite descrito en el tutorial."
+    },
+    {
+      "id": "reintento",
+      "text": "AWS IoT reintenta indefinidamente la ejecución hasta que termine",
+      "explanation": "El tiempo límite marca la ejecución como fallida; no reintenta sin fin."
+    },
+    {
+      "id": "cancelacion",
+      "text": "Se cancela el lanzamiento en todos los dispositivos del grupo",
+      "explanation": "Eso corresponde a las condiciones de cancelación (abort), que se configuran aparte."
+    },
+    {
+      "id": "continuo",
+      "text": "El trabajo pasa a ser continuo para reenviarlo cuando el dispositivo responda",
+      "explanation": "El tipo de trabajo no cambia por superar un tiempo límite."
+    }
+  ],
+  "answer": "timed-out",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Operación OTA con AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "jobs"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-manifiesto-plataforma",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En las actividades de ML se deja en la receta un único manifiesto con `\"Platform\": {\"os\": \"linux\", \"architecture\": \"amd64\"}`. ¿Qué ocurre si se despliega ese componente en un núcleo Linux ARM (`aarch64`)?",
+  "explanation": "Greengrass usa la receta para comprobar si el componente es compatible con la plataforma del dispositivo. Cada manifiesto define artefactos y ciclo de vida para una plataforma. Si ninguno coincide, el componente no puede desplegarse en ese núcleo.",
+  "options": [
+    {
+      "id": "incompatible",
+      "text": "No se puede desplegar: no hay ningún manifiesto compatible con esa plataforma",
+      "explanation": "La comprobación de compatibilidad usa los manifiestos de la receta."
+    },
+    {
+      "id": "emula",
+      "text": "Se despliega y Greengrass emula la arquitectura amd64",
+      "explanation": "Greengrass no emula arquitecturas; selecciona un manifiesto compatible."
+    },
+    {
+      "id": "ignora",
+      "text": "Se despliega igualmente, porque `Platform` solo es informativo",
+      "explanation": "`Platform` decide qué manifiesto se aplica en cada dispositivo."
+    },
+    {
+      "id": "s3",
+      "text": "Se despliega si los artefactos están en S3, porque la plataforma solo afecta a los despliegues locales",
+      "explanation": "La compatibilidad se comprueba en cualquier despliegue."
+    }
+  ],
+  "answer": "incompatible",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        15,
+        17
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 2 · Componentes ML",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/"
+    },
+    {
+      "title": "P4 · Actividad adicional 3 · Componentes ML personalizados",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-subscribe-sin-receive",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un cliente con esta política se conecta, se suscribe a `trucks/#` y otros dispositivos publican en `trucks/camion-01/telemetry`. ¿Qué ocurre?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Connect\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:client/*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Subscribe\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topicfilter/trucks/*\"\n    }\n  ]\n}\n```",
+  "explanation": "`iot:Subscribe` autoriza la suscripción al filtro, pero cada mensaje entregado se autoriza con `iot:Receive` sobre el recurso `topic/...`. Sin esa acción, la suscripción se acepta y el cliente no recibe los mensajes.",
+  "options": [
+    {
+      "id": "sin-mensajes",
+      "text": "La suscripción se acepta, pero no recibe mensajes porque falta `iot:Receive` sobre `topic/trucks/*`",
+      "explanation": "Suscribirse y recibir son permisos distintos."
+    },
+    {
+      "id": "recibe",
+      "text": "Recibe todos los mensajes, porque `iot:Subscribe` incluye la recepción",
+      "explanation": "La recepción se comprueba aparte con `iot:Receive` en cada entrega."
+    },
+    {
+      "id": "conexion",
+      "text": "La conexión se rechaza, porque toda política necesita `iot:Publish`",
+      "explanation": "`iot:Connect` está permitido; no hace falta poder publicar para conectarse."
+    },
+    {
+      "id": "filtro",
+      "text": "La suscripción se rechaza, porque el recurso de `iot:Subscribe` debe ser `topic/trucks/#`",
+      "explanation": "`iot:Subscribe` se evalúa sobre recursos `topicfilter`, y `*` cubre `trucks/#`."
+    }
+  ],
+  "answer": "sin-mensajes",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    },
+    {
+      "title": "AWS IoT · Acciones de las políticas",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-policy-actions.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

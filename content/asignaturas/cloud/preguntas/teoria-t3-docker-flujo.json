@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-docker-flujo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué secuencia describe correctamente el flujo de trabajo con Docker?",
+  "explanation": "El Dockerfile contiene instrucciones para crear una imagen. La imagen empaqueta la aplicación y sus dependencias, puede distribuirse mediante un registro y el runtime la ejecuta como contenedor.",
+  "options": [
+    {
+      "id": "flujo",
+      "text": "Dockerfile → imagen → registro para distribuirla → runtime que ejecuta un contenedor",
+      "explanation": "Respeta la función de cada elemento sin confundir imagen y contenedor."
+    },
+    {
+      "id": "imagen-dockerfile",
+      "text": "Imagen → Dockerfile ejecutado como contenedor → registro que virtualiza el hardware",
+      "explanation": "El Dockerfile se usa para construir la imagen y el registro no virtualiza hardware."
+    },
+    {
+      "id": "registro-fuente",
+      "text": "Contenedor → Dockerfile almacenado en el runtime → imagen que compila el kernel del invitado",
+      "explanation": "Invierte el flujo y atribuye a la imagen una función que no le corresponde."
+    },
+    {
+      "id": "runtime-registro",
+      "text": "Runtime → registro ejecutado como SO invitado → Dockerfile que almacena los contenedores",
+      "explanation": "El registro almacena imágenes y el runtime ejecuta contenedores, no al revés."
+    }
+  ],
+  "answer": "flujo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "docker"
+    }
+  ]
+}

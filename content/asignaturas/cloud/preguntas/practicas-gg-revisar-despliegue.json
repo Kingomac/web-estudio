@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-revisar-despliegue",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Para añadir `aws.greengrass.DLRImageClassification` al núcleo de la práctica 4, se elige agregarlo al despliegue existente del grupo `GreengrassQuickStartGroup`. ¿Por qué no se crea para ese grupo otro despliegue que solo contenga ese componente?",
+  "explanation": "Un despliegue define los componentes y la configuración que recibe su destino. Cada destino tiene un único despliegue vigente, así que un despliegue nuevo para el mismo grupo sustituiría al anterior y retiraría los componentes que no incluyera. Revisar el existente añade el componente y conserva el resto.",
+  "options": [
+    {
+      "id": "sustituye",
+      "text": "Porque un nuevo despliegue para el mismo grupo sustituiría al anterior y se retirarían los componentes que no incluyera",
+      "explanation": "Revisar el despliegue mantiene el resto de componentes."
+    },
+    {
+      "id": "acumula",
+      "text": "Da igual: los despliegues del mismo grupo se acumulan y el núcleo ejecuta la unión de todos",
+      "explanation": "El nuevo despliegue sustituye al vigente para ese destino."
+    },
+    {
+      "id": "publicos",
+      "text": "Porque los componentes públicos de AWS solo pueden desplegarse en un despliegue existente",
+      "explanation": "Un componente público puede incluirse en un despliegue nuevo; el problema es la sustitución."
+    },
+    {
+      "id": "instantaneo",
+      "text": "Porque los despliegues de Greengrass son instantáneos y no llegarían a dispositivos que se añadan después",
+      "explanation": "Los despliegues de Greengrass son continuos."
+    }
+  ],
+  "answer": "sustituye",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 2 · Componentes ML",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/"
+    },
+    {
+      "title": "AWS IoT Greengrass · Revisar despliegues",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/revise-deployments.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-basic-ingest-suscriptor",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo publica en `$aws/rules/BuildingManager/Buildings/Building5/Floor2/Room201/Lights`. Una aplicación está suscrita a `Buildings/#`. ¿Qué ocurre?",
+  "explanation": "Con la ingestión básica, los mensajes publicados en `$aws/rules/rule_name/...` se ingieren directamente en el motor de reglas, sin pasar por el agente de mensajes, y solo invocan la regla nombrada. Por eso la aplicación suscrita no recibe el mensaje.",
+  "options": [
+    {
+      "id": "solo-regla",
+      "text": "Solo la regla `BuildingManager` recibe el mensaje; la aplicación no, porque el mensaje no pasa por el agente de mensajes",
+      "explanation": "La ingestión básica entrega el mensaje directamente a la regla indicada en el tema."
+    },
+    {
+      "id": "ambos",
+      "text": "Lo reciben la regla y la aplicación, porque el tema sin el prefijo coincide con `Buildings/#`",
+      "explanation": "El mensaje no se distribuye a suscriptores: evita el agente de mensajes."
+    },
+    {
+      "id": "todas",
+      "text": "Se evalúan todas las reglas de la cuenta cuyo `FROM` coincida con `Buildings/#`",
+      "explanation": "El nombre de la regla forma parte del tema reservado y solo se invoca esa regla."
+    },
+    {
+      "id": "rechazo",
+      "text": "IoT Core rechaza la publicación, porque un dispositivo no puede publicar en temas que empiezan por `$aws`",
+      "explanation": "Los temas `$aws/rules/...` están reservados precisamente para que los dispositivos publiquen con ingestión básica."
+    }
+  ],
+  "answer": "solo-regla",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        51
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Reducir costes con Basic Ingest",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-basic-ingest.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

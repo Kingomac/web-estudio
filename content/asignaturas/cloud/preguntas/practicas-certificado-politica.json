@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-certificado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En AWS IoT Core, ¿a qué objeto se asocia directamente la política que autoriza las operaciones MQTT de un dispositivo que se autentica con X.509?",
+  "explanation": "La política IoT se asocia al certificado X.509 que presenta el dispositivo. La cosa representa la identidad en el registro, pero los permisos de conexión y mensajería se evalúan sobre el certificado de la conexión.",
+  "options": [
+    {
+      "id": "certificado",
+      "text": "Al certificado X.509 usado para autenticar la conexión",
+      "explanation": "La política asociada al certificado determina los permisos del dispositivo."
+    },
+    {
+      "id": "cosa",
+      "text": "Únicamente al nombre de la cosa, aunque se use otro certificado",
+      "explanation": "La asociación cosa-certificado ayuda con variables de política, pero la política se adjunta al certificado."
+    },
+    {
+      "id": "tema",
+      "text": "Directamente a cada tema MQTT, sin certificado",
+      "explanation": "Los temas aparecen como recursos dentro de la política; no almacenan la asociación de permisos."
+    },
+    {
+      "id": "sombra",
+      "text": "A la sombra clásica del dispositivo",
+      "explanation": "La sombra guarda estado; no sustituye a la política asociada al certificado."
+    }
+  ],
+  "answer": "certificado",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        62
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-1"
+    }
+  ]
+}

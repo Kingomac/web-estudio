@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t2-local-zone-wavelength",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación necesita baja latencia para usuarios de una gran ciudad; otra debe ejecutarse dentro de la red 5G de un operador móvil. ¿Qué servicios encajan, respectivamente?",
+  "explanation": "Local Zones acercan cómputo, almacenamiento y otros servicios AWS a grandes núcleos de población. Wavelength integra infraestructura AWS en las redes de los operadores para aplicaciones móviles de muy baja latencia.",
+  "options": [
+    {
+      "id": "local-wavelength",
+      "text": "Local Zone para la ciudad y Wavelength para la red del operador",
+      "explanation": "Es la correspondencia entre proximidad urbana general y ejecución en la red móvil."
+    },
+    {
+      "id": "wavelength-local",
+      "text": "Wavelength para la ciudad y Local Zone para la red del operador",
+      "explanation": "Intercambia los servicios: Wavelength está vinculado a operadores móviles."
+    },
+    {
+      "id": "rec-local",
+      "text": "Una caché de periferia regional para la ciudad y Local Zone para la red del operador",
+      "explanation": "Las REC sirven contenido en caché; no sustituyen a Wavelength dentro de la red móvil."
+    },
+    {
+      "id": "az-rec",
+      "text": "Una AZ adicional para la ciudad y una REC para la red del operador",
+      "explanation": "Ninguna opción describe la infraestructura de Wavelength en la red del operador."
+    }
+  ],
+  "answer": "local-wavelength",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        11,
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

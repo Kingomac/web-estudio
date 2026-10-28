@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-access-control-ipc",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un componente Greengrass usa `PublishToIoTCore` mediante el proxy MQTT de IPC. ¿Qué diferencia hay entre su `accessControl` y la política IoT del certificado del núcleo?",
+  "explanation": "El `accessControl` autoriza al componente a realizar una operación IPC sobre determinados recursos. La política IoT del certificado autoriza al núcleo en AWS IoT Core. Para publicar en IoT Core mediante el proxy deben estar contemplados ambos niveles.",
+  "options": [
+    {
+      "id": "ambos",
+      "text": "`accessControl` autoriza la operación IPC del componente y la política IoT autoriza al núcleo en AWS IoT Core",
+      "explanation": "Son autorizaciones complementarias en dos planos distintos."
+    },
+    {
+      "id": "sustituye",
+      "text": "`accessControl` sustituye siempre a la política IoT del certificado",
+      "explanation": "La autorización IPC local no concede por sí sola permisos en el plano de datos de IoT Core."
+    },
+    {
+      "id": "igual",
+      "text": "Ambos documentos son el mismo permiso y solo se copian en lugares diferentes",
+      "explanation": "Uno pertenece a la configuración del componente y el otro al certificado del dispositivo."
+    },
+    {
+      "id": "comodines",
+      "text": "Permitir todos los temas IPC con `resources: [\"*\"]` permite publicar en cualquier tema de IoT Core",
+      "explanation": "El comodín se limita al ámbito de esa política IPC; no amplía la política IoT."
+    }
+  ],
+  "answer": "ambos",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Autorización IPC",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/interprocess-communication.html"
+    },
+    {
+      "title": "AWS IoT Greengrass · Autenticación de dispositivos",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/device-auth.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ipc"
+    }
+  ]
+}

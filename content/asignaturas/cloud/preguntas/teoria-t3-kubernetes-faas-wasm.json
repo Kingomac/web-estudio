@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-kubernetes-faas-wasm",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué conjunto relaciona correctamente Kubernetes, FaaS y WebAssembly (WASM)?",
+  "explanation": "Kubernetes orquesta contenedores, FaaS ejecuta funciones bajo demanda sin que el usuario administre servidores y WASM ofrece un formato binario portable y ligero con aislamiento, útil también en el borde.",
+  "options": [
+    {
+      "id": "correcto",
+      "text": "Kubernetes orquesta contenedores; FaaS ejecuta funciones bajo demanda; WASM es un formato binario portable y ligero",
+      "explanation": "Las tres definiciones coinciden con las tecnologías presentadas para el continuo."
+    },
+    {
+      "id": "faas-orquestador",
+      "text": "Kubernetes es una función sin servidor; FaaS orquesta discos; WASM es un sistema operativo invitado completo",
+      "explanation": "Intercambia conceptos de orquestación, ejecución de funciones y formato portable."
+    },
+    {
+      "id": "wasm-vm",
+      "text": "Kubernetes solo gestiona máquinas físicas; FaaS exige servidores dedicados permanentes; WASM requiere una VM por función",
+      "explanation": "Ninguna afirmación recoge las ventajas de estas tecnologías."
+    },
+    {
+      "id": "registro",
+      "text": "Kubernetes es un registro de imágenes; FaaS es un hipervisor de tipo 1; WASM es un protocolo MQTT",
+      "explanation": "Confunde tecnologías de ejecución con almacenamiento, virtualización y mensajería."
+    }
+  ],
+  "answer": "correcto",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        24,
+        27,
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "virtualizacion-continuo"
+    }
+  ]
+}

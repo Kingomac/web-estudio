@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-mano-vim",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Dentro de la arquitectura NFV MANO, ¿qué componente gestiona los recursos de computación, almacenamiento y red de la infraestructura NFVI?",
+  "explanation": "El Virtualised Infrastructure Manager (VIM) controla los recursos de la NFVI. El NFVO orquesta servicios y recursos entre distintos VIM, mientras el VNFM gestiona el ciclo de vida de las VNF.",
+  "options": [
+    {
+      "id": "vim",
+      "text": "El VIM (Virtualised Infrastructure Manager)",
+      "explanation": "Es el componente MANO responsable de gestionar la infraestructura virtualizada."
+    },
+    {
+      "id": "vnfm",
+      "text": "El VNFM (VNF Manager)",
+      "explanation": "El VNFM gestiona el ciclo de vida de las funciones de red virtuales, no directamente toda la NFVI."
+    },
+    {
+      "id": "vnf",
+      "text": "La propia VNF (Virtual Network Function)",
+      "explanation": "La VNF implementa una función de red; no es el gestor de los recursos de infraestructura."
+    },
+    {
+      "id": "oss",
+      "text": "El sistema OSS/BSS",
+      "explanation": "OSS/BSS apoya operación y negocio, pero el VIM es el bloque MANO que controla la NFVI."
+    }
+  ],
+  "answer": "vim",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sdn-nfv"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-defender-incidencias",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La auditoría de Device Defender del tutorial detecta dos incidencias. ¿Cuáles son y cómo se corrigen?",
+  "explanation": "Falla la comprobación de políticas excesivamente permisivas, porque `workshopDC` permitía todas las acciones sobre todos los recursos: se crea una nueva versión de privilegio mínimo y se activa. Y falla la de registro desactivado: se activan los registros de AWS IoT con un rol y un nivel de log. Después se repite la auditoría para verificar.",
+  "options": [
+    {
+      "id": "politica-logs",
+      "text": "Política demasiado permisiva, corregida con una nueva versión activa de privilegio mínimo, y registro desactivado, corregido activando los logs",
+      "explanation": "Son las dos incidencias del tutorial y sus correcciones."
+    },
+    {
+      "id": "auto",
+      "text": "Certificado compartido y certificado caducado, que la auditoría revoca y renueva automáticamente",
+      "explanation": "No son las incidencias del tutorial y la auditoría no corrige por sí sola."
+    },
+    {
+      "id": "borrar",
+      "text": "Política demasiado permisiva, corregida borrando el certificado del dispositivo",
+      "explanation": "Se corrige la política creando una versión nueva; el certificado se mantiene."
+    },
+    {
+      "id": "anomalias",
+      "text": "Picos de tráfico y conexiones a IP maliciosas, corregidos bloqueando el dispositivo",
+      "explanation": "Eso sería detección de anomalías, no los hallazgos de la auditoría del tutorial."
+    }
+  ],
+  "answer": "politica-logs",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        88
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Auditoría de la seguridad",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "auditoria"
+    }
+  ]
+}

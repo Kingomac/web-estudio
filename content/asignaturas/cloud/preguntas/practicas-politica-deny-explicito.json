@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-deny-explicito",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un cliente tiene esta política. ¿En cuáles de los temas `trucks/camion-01/telemetry` y `trucks/admin/reset` puede publicar?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Publish\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topic/trucks/*\"\n    },\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"iot:Publish\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topic/trucks/admin/*\"\n    }\n  ]\n}\n```",
+  "explanation": "Las políticas de AWS IoT siguen las convenciones de IAM: un `Deny` explícito prevalece sobre cualquier `Allow`. `trucks/camion-01/telemetry` solo coincide con el `Allow`, mientras que `trucks/admin/reset` coincide con ambos y queda denegado.",
+  "options": [
+    {
+      "id": "solo-telemetria",
+      "text": "Solo en `trucks/camion-01/telemetry`: el `Deny` explícito prevalece sobre el `Allow` en `trucks/admin/reset`",
+      "explanation": "Aplica la regla de evaluación: el `Deny` explícito gana."
+    },
+    {
+      "id": "ambos",
+      "text": "En los dos, porque decide la primera declaración que coincide y es un `Allow`",
+      "explanation": "El orden de las declaraciones no importa; un `Deny` explícito prevalece."
+    },
+    {
+      "id": "ninguno",
+      "text": "En ninguno, porque un `Deny` en la política anula todas sus declaraciones `Allow`",
+      "explanation": "El `Deny` solo afecta a los recursos que coinciden con su ARN."
+    },
+    {
+      "id": "solo-admin",
+      "text": "Solo en `trucks/admin/reset`, porque se aplica la declaración más específica",
+      "explanation": "No gana la declaración más específica, sino el `Deny`."
+    }
+  ],
+  "answer": "solo-telemetria",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    },
+    {
+      "title": "AWS IAM · Lógica de evaluación de políticas",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

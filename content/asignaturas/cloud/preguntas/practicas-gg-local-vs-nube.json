@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-local-vs-nube",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la actividad 3 de la práctica 4, el componente personalizado se despliega primero en local con la CLI de Greengrass y después desde AWS IoT. ¿Qué hace falta para el despliegue desde AWS IoT que no se necesita en el local?",
+  "explanation": "El despliegue local usa directamente los directorios de recetas y artefactos del dispositivo. Para desplegar desde AWS IoT, los artefactos se suben a S3, la receta debe apuntar a ellos con `Artifacts`/`URI` y hay que registrar la versión del componente en el servicio. Solo entonces puede seleccionarse en un despliegue.",
+  "options": [
+    {
+      "id": "s3-registro",
+      "text": "Subir los artefactos a S3, indicar su URI en la receta y registrar la versión del componente en AWS",
+      "explanation": "Son los pasos de publicación que el despliegue local no necesita."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: un despliegue local ya registra el componente en AWS IoT",
+      "explanation": "El despliegue local no publica el componente en el servicio."
+    },
+    {
+      "id": "solo-s3",
+      "text": "Basta con copiar la carpeta de artefactos a S3; Greengrass detecta la receta automáticamente",
+      "explanation": "Además de subir los artefactos, hay que registrar la versión del componente con su receta."
+    },
+    {
+      "id": "certificado",
+      "text": "Crear un certificado X.509 nuevo para el componente",
+      "explanation": "Los componentes no tienen certificado propio; el núcleo usa el suyo."
+    }
+  ],
+  "answer": "s3-registro",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        11,
+        12
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 3 · Componentes ML personalizados",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml-personalizado"
+    }
+  ]
+}

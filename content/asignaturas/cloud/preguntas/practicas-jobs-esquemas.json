@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-esquemas",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la práctica 3 aparecen dos documentos JSON: `{\"operation\": \"echo\", \"args\": [\"Hola...\"]}` y otro con `\"version\": \"1.0\"`, `\"steps\"` y una `\"action\"` de tipo `runHandler`. ¿Qué son?",
+  "explanation": "Ambos son documentos de trabajo para el Device Client. El primero, usado en la operación OTA personalizada, sigue un esquema anterior con `operation` y `args`. El segundo usa el esquema más reciente de pasos (`steps`) y acciones, como las plantillas administradas y la plantilla de la actividad 4.",
+  "options": [
+    {
+      "id": "dos-esquemas",
+      "text": "Dos documentos de trabajo: el primero con el esquema anterior y el segundo con el esquema de pasos más reciente",
+      "explanation": "La actividad 4 compara explícitamente ambos esquemas."
+    },
+    {
+      "id": "sombra",
+      "text": "El primero es un documento de sombra y el segundo un documento de trabajo",
+      "explanation": "Una sombra usa `state`, `desired` y `reported`, no `operation`."
+    },
+    {
+      "id": "receta",
+      "text": "El primero es un documento de trabajo y el segundo una receta de componente Greengrass",
+      "explanation": "Una receta usa campos como `ComponentName`, `Manifests` y `Lifecycle`."
+    },
+    {
+      "id": "politica",
+      "text": "El primero es una regla del motor de reglas y el segundo una política IoT",
+      "explanation": "Una regla usa SQL y una política `Effect`, `Action` y `Resource`."
+    }
+  ],
+  "answer": "dos-esquemas",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Operación OTA personalizada",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/08-advanced-sections/"
+    },
+    {
+      "title": "P3 · Actividad adicional 4 · Manejador de trabajos",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

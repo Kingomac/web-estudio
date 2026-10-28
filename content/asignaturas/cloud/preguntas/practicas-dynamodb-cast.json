@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-dynamodb-cast",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La regla de la actividad usa `SELECT cast(temp AS DECIMAL) AS temperature, cast(door AS BOOLEAN) AS door FROM 'truck/freezer'`. ¿Para qué sirven las conversiones `cast`?",
+  "explanation": "Las conversiones dejan la temperatura como valor decimal y el estado de la puerta como booleano antes de entregar el mensaje procesado a la acción de DynamoDB. No cambian el tema ni ejecutan el almacenamiento por sí mismas.",
+  "options": [
+    {
+      "id": "tipos",
+      "text": "Aseguran que `temperature` sea numérico y `door` booleano en los datos procesados",
+      "explanation": "Es la función de DECIMAL y BOOLEAN en la sentencia SELECT."
+    },
+    {
+      "id": "cifrado",
+      "text": "Cifran la temperatura y la puerta antes de guardarlas",
+      "explanation": "Cast convierte tipos; no es una operación de cifrado."
+    },
+    {
+      "id": "filtro",
+      "text": "Descartan todos los mensajes cuya puerta esté abierta",
+      "explanation": "El filtrado se haría con WHERE; esta sentencia solo tiene SELECT y FROM."
+    },
+    {
+      "id": "permiso",
+      "text": "Conceden a DynamoDB permiso para publicar en `truck/freezer`",
+      "explanation": "Los permisos se configuran mediante roles y políticas, no con cast."
+    }
+  ],
+  "answer": "tipos",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 1 · DynamoDB",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "dynamodb"
+    }
+  ]
+}

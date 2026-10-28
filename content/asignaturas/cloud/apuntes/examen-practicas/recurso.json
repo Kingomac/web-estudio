@@ -129,6 +129,7 @@
         58,
         59,
         60,
+        62,
         71,
         72,
         73,
@@ -138,7 +139,11 @@
         82,
         83,
         84,
-        85
+        85,
+        86,
+        87,
+        88,
+        89
       ],
       "label": "Respaldo conceptual y formatos de AWS IoT"
     }
@@ -275,6 +280,18 @@
     {
       "title": "P4, actividad 2",
       "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/"
+    },
+    {
+      "title": "P3, operación OTA personalizada",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/08-advanced-sections/"
+    },
+    {
+      "title": "AWS Greengrass, referencia de recetas",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html"
+    },
+    {
+      "title": "AWS Greengrass, revisar despliegues",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/revise-deployments.html"
     }
   ],
   "relatedResourceIds": [

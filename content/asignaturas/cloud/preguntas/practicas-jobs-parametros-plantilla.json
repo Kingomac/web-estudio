@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-parametros-plantilla",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La plantilla administrada `AWS-Download-File` genera este documento de trabajo. ¿De dónde salen los valores que sustituyen a los `${aws:iot:parameter:...}`?\n```json\n{\n  \"version\": \"1.0\",\n  \"steps\": [\n    {\n      \"action\": {\n        \"name\": \"Download-File\",\n        \"type\": \"runHandler\",\n        \"input\": {\n          \"handler\": \"download-file.sh\",\n          \"args\": [\n            \"${aws:iot:parameter:downloadUrl}\",\n            \"${aws:iot:parameter:filePath}\"\n          ],\n          \"path\": \"${aws:iot:parameter:pathToHandler}\"\n        },\n        \"runAsUser\": \"${aws:iot:parameter:runAsUser}\"\n      }\n    }\n  ]\n}\n```",
+  "explanation": "Con una plantilla administrada por AWS, al crear el trabajo se introducen los parámetros de entrada (`downloadUrl`, `filePath`, `runAsUser`, `pathToHandler`) y AWS IoT genera con ellos el documento que recibe el dispositivo.",
+  "options": [
+    {
+      "id": "crear-trabajo",
+      "text": "De los parámetros que se introducen al crear el trabajo a partir de la plantilla",
+      "explanation": "AWS IoT genera el documento sustituyendo esos parámetros."
+    },
+    {
+      "id": "sombra",
+      "text": "De la sección `reported` de la sombra del dispositivo",
+      "explanation": "La sombra no interviene en la generación del documento de trabajo."
+    },
+    {
+      "id": "regla",
+      "text": "De una plantilla de sustitución del motor de reglas, como `${timestamp()}`",
+      "explanation": "Las plantillas de reglas se evalúan en acciones de reglas, no en documentos de trabajo."
+    },
+    {
+      "id": "handler",
+      "text": "Del manejador `download-file.sh`, que los lee de su propio archivo de configuración",
+      "explanation": "El manejador recibe los valores ya resueltos como argumentos."
+    }
+  ],
+  "answer": "crear-trabajo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        74
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Operación OTA con AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    },
+    {
+      "title": "P3 · Actividad adicional 4 · Manejador de trabajos",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

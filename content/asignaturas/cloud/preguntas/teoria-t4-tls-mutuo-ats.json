@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-tls-mutuo-ats",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la autenticación TLS mutua entre un dispositivo y AWS IoT Core con un endpoint ATS, ¿qué certificados intervienen?",
+  "explanation": "El dispositivo presenta su certificado X.509 y usa el certificado de la CA raíz de Amazon para validar el certificado del servidor IoT Core. La autenticación es mutua: ambas partes comprueban la identidad de la otra.",
+  "options": [
+    {
+      "id": "mutuo",
+      "text": "El dispositivo presenta su X.509 y valida IoT Core con la CA raíz de Amazon",
+      "explanation": "Describe los dos sentidos de la autenticación TLS mutua con ATS."
+    },
+    {
+      "id": "solo-servidor",
+      "text": "Solo IoT Core presenta certificado; el dispositivo nunca se autentica",
+      "explanation": "Sería autenticación del servidor, no TLS mutuo."
+    },
+    {
+      "id": "solo-dispositivo",
+      "text": "Solo el dispositivo presenta certificado y debe aceptar cualquier certificado del servidor",
+      "explanation": "El dispositivo también valida el servidor mediante la CA raíz."
+    },
+    {
+      "id": "ca-dispositivo",
+      "text": "El dispositivo envía la clave privada de la CA raíz a IoT Core",
+      "explanation": "Las claves privadas no se transmiten para autenticarse; se presentan certificados."
+    }
+  ],
+  "answer": "mutuo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "certificados"
+    }
+  ]
+}

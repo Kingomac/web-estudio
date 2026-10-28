@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-url-prefirmada",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un documento de trabajo debe permitir descargar un archivo de un bucket S3 privado. ¿Qué mecanismo describe el tutorial?",
+  "explanation": "En el documento se pone un enlace provisional a los datos de S3. Cuando el dispositivo solicita el documento, el servicio de trabajos lo sustituye por una URL prefirmada de Amazon S3, que da acceso seguro y limitado en el tiempo sin hacer público el bucket.",
+  "options": [
+    {
+      "id": "prefirmada",
+      "text": "Un enlace provisional que el servicio sustituye por una URL prefirmada de S3, con acceso temporal",
+      "explanation": "Es el mecanismo de URL prefirmadas del tutorial."
+    },
+    {
+      "id": "publico",
+      "text": "Hacer público el bucket, porque los dispositivos no pueden autenticarse en S3",
+      "explanation": "Las URL prefirmadas evitan precisamente hacer público el bucket."
+    },
+    {
+      "id": "credenciales",
+      "text": "Incluir en el documento las claves de acceso de la cuenta para que el dispositivo descargue el archivo",
+      "explanation": "Distribuir credenciales en un documento sería inseguro; la URL prefirmada da acceso limitado."
+    },
+    {
+      "id": "mqtt",
+      "text": "Enviar el archivo completo dentro del mensaje de `notify-next`",
+      "explanation": "Las notificaciones informan de trabajos; los datos externos se enlazan desde el documento."
+    }
+  ],
+  "answer": "prefirmada",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Operación OTA con AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "jobs"
+    }
+  ]
+}

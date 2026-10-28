@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-completed-succeeded",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la operación OTA personalizada se observan `$aws/events/job/workshopDC_Job/completed` y `$aws/events/jobExecution/workshopDC_Job/succeeded`. ¿Qué indica cada uno?",
+  "explanation": "La familia `$aws/events/job/...` informa del trabajo en su conjunto: `completed` significa que el trabajo ha terminado. La familia `$aws/events/jobExecution/...` informa de las ejecuciones en cada destino: `succeeded` significa que una ejecución terminó con éxito.",
+  "options": [
+    {
+      "id": "trabajo-ejecucion",
+      "text": "`completed` es un evento del trabajo en su conjunto y `succeeded` el de una ejecución con éxito en un destino",
+      "explanation": "Distingue el trabajo global de la ejecución en cada dispositivo."
+    },
+    {
+      "id": "sinonimos",
+      "text": "Son dos nombres del mismo evento; AWS publica ambos por compatibilidad",
+      "explanation": "Pertenecen a familias distintas: trabajo y ejecución."
+    },
+    {
+      "id": "invertido",
+      "text": "`completed` indica que un dispositivo terminó su ejecución y `succeeded` que terminó todo el trabajo",
+      "explanation": "Los papeles están invertidos."
+    },
+    {
+      "id": "dispositivo",
+      "text": "Son temas en los que el dispositivo publica para informar de su progreso",
+      "explanation": "El dispositivo usa `$aws/things/<cosa>/jobs/...`; los `$aws/events/...` los publica AWS IoT."
+    }
+  ],
+  "answer": "trabajo-ejecucion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        75
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Operación OTA personalizada",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/08-advanced-sections/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-jobs"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-bridge-mensajes",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la actividad del bridge MQTT, `BridgePublisher` publica en el broker Mosquitto del núcleo y los mensajes aparecen en el cliente MQTT de AWS IoT en `mytopic1/test`. ¿Qué los lleva hasta IoT Core?",
+  "explanation": "Mosquitto actúa como broker local, y su configuración de bridge reenvía los temas indicados a AWS IoT Core usando el endpoint ATS y un certificado propio. Por eso los mensajes publicados localmente aparecen en IoT Core.",
+  "options": [
+    {
+      "id": "bridge",
+      "text": "La configuración de bridge de Mosquitto, que reenvía esos temas a IoT Core con su endpoint y certificado",
+      "explanation": "El broker distribuye localmente y el bridge enlaza con IoT Core."
+    },
+    {
+      "id": "ipc",
+      "text": "La mensajería IPC de Greengrass, que reenvía automáticamente cualquier tema local a IoT Core",
+      "explanation": "IPC es local entre componentes; no reenvía por sí sola a la nube."
+    },
+    {
+      "id": "broker-predefinido",
+      "text": "El broker MQTT predefinido de Greengrass, que el componente activa con el rol de servicio",
+      "explanation": "La actividad usa un broker personalizado porque el predefinido no puede usarse en el laboratorio."
+    },
+    {
+      "id": "mismo-nombre",
+      "text": "Nada: basta con que el tema local y el de IoT Core tengan el mismo nombre",
+      "explanation": "Coincidir en el nombre no conecta dos sistemas de mensajería distintos."
+    }
+  ],
+  "answer": "bridge",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 1 · Bridge MQTT",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "bridge"
+    }
+  ]
+}

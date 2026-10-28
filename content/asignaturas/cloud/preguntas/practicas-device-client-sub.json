@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-device-client-sub",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la demostración de mensajería de AWS IoT Device Client, ¿qué ocurre con un mensaje recibido en `/topic/workshop/dc/sub`?",
+  "explanation": "El Device Client está suscrito a `/topic/workshop/dc/sub` y guarda el contenido recibido en el archivo de salida configurado. El tema `/topic/workshop/dc/pub` se usa para publicar el mensaje «Hello World» al iniciar el cliente.",
+  "options": [
+    {
+      "id": "archivo",
+      "text": "El cliente escribe su contenido en el archivo configurado",
+      "explanation": "Es el comportamiento de la suscripción de demostración."
+    },
+    {
+      "id": "reenvia",
+      "text": "Lo publica automáticamente en `/topic/workshop/dc/pub` cada segundo",
+      "explanation": "La publicación periódica descrita no corresponde a esta demostración."
+    },
+    {
+      "id": "trabajo",
+      "text": "Crea un trabajo de AWS IoT para todos los dispositivos de la flota",
+      "explanation": "Recibir en ese tema no crea trabajos ni cambia sus destinos."
+    },
+    {
+      "id": "sombra",
+      "text": "Actualiza siempre la sección `desired` de la sombra clásica",
+      "explanation": "La demostración de mensajería escribe en un archivo; no es una actualización de sombra."
+    }
+  ],
+  "answer": "archivo",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Transmitir mensajes MQTT con Device Client",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/04-transmit-mqtt-messages/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

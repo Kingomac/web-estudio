@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-ebs-ampliacion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la preparación de la actividad 2 de la práctica 4 se amplía el disco de la instancia. ¿Qué secuencia es necesaria para aprovechar el nuevo espacio?",
+  "explanation": "Después de hacer una copia de seguridad, se amplía el volumen EBS existente, después su partición y finalmente el sistema de archivos ya montado. Aumentar solo el volumen no hace que el sistema de archivos disponga automáticamente de todo el espacio.",
+  "options": [
+    {
+      "id": "existente",
+      "text": "Ampliar el volumen EBS, extender la partición y redimensionar el sistema de archivos existente",
+      "explanation": "Es la secuencia aplicada al volumen ya montado en la actividad."
+    },
+    {
+      "id": "solo-volumen",
+      "text": "Ampliar únicamente el volumen EBS; no hace falta modificar partición ni sistema de archivos",
+      "explanation": "El espacio adicional todavía debe incorporarse a la partición y al sistema de archivos."
+    },
+    {
+      "id": "formatear",
+      "text": "Crear un volumen nuevo, formatear el volumen antiguo y montarlo en otro directorio",
+      "explanation": "La actividad amplía el volumen existente sin formatearlo ni crear otro montaje."
+    },
+    {
+      "id": "fs-primero",
+      "text": "Redimensionar primero el sistema de archivos y después reducir el volumen y la partición",
+      "explanation": "La operación es una ampliación y sigue el orden volumen → partición → sistema de archivos."
+    }
+  ],
+  "answer": "existente",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 4 · Actividad adicional 2 · Preparación de la instancia",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/#preparacion-de-la-instancia-vscode"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml"
+    }
+  ]
+}

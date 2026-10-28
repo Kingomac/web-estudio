@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-greengrass-despliegue",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuántos despliegues de AWS IoT Greengrass puede tener asociados simultáneamente un mismo dispositivo?",
+  "explanation": "El tema establece que un dispositivo solo puede pertenecer a un despliegue. Aunque un despliegue puede alcanzar muchos dispositivos, la relación inversa se limita a uno por dispositivo.",
+  "options": [
+    {
+      "id": "uno",
+      "text": "Uno",
+      "explanation": "Es la restricción indicada para los despliegues de Greengrass."
+    },
+    {
+      "id": "dos",
+      "text": "Dos: uno obligatorio del núcleo y otro de componentes",
+      "explanation": "El núcleo y los demás componentes pueden figurar en el mismo despliegue; no existe esa obligación."
+    },
+    {
+      "id": "uno-componente",
+      "text": "Uno por cada componente instalado",
+      "explanation": "Un despliegue puede incluir varios componentes; no se crea uno independiente por componente."
+    },
+    {
+      "id": "ilimitados",
+      "text": "Todos los que se necesiten, sin límite",
+      "explanation": "Ignora la limitación explícita de un despliegue por dispositivo."
+    }
+  ],
+  "answer": "uno",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "greengrass"
+    }
+  ]
+}

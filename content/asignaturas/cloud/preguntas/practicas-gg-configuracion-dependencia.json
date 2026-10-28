@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-configuracion-dependencia",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la receta del componente personalizado de ML aparecen `{configuration:/LocalTopic}` y `{variant.DLR:configuration:/MLRootPath}`. ¿Qué diferencia hay?",
+  "explanation": "Las variables de receta permiten acceder a configuración. `{configuration:/LocalTopic}` lee un valor de la configuración del propio componente. Con el prefijo `variant.DLR:` se lee la configuración de esa dependencia, aquí la ruta donde el runtime DLR instaló su entorno.",
+  "options": [
+    {
+      "id": "propia-dependencia",
+      "text": "La primera lee la configuración del propio componente y la segunda la del componente del que depende, `variant.DLR`",
+      "explanation": "El prefijo con el nombre de un componente indica de qué componente se lee."
+    },
+    {
+      "id": "igual",
+      "text": "Son equivalentes; el prefijo solo sirve para documentar la receta",
+      "explanation": "El prefijo cambia el componente cuya configuración se consulta."
+    },
+    {
+      "id": "sombra",
+      "text": "La primera lee la sombra del dispositivo y la segunda el registro de AWS IoT",
+      "explanation": "Ambas son referencias a configuración de componentes Greengrass."
+    },
+    {
+      "id": "mqtt",
+      "text": "La primera es un tema MQTT de IoT Core y la segunda una variable de entorno del sistema",
+      "explanation": "`LocalTopic` es el tema IPC configurado, y ninguna es una variable de entorno del sistema."
+    }
+  ],
+  "answer": "propia-dependencia",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 3 · Componentes ML personalizados",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    },
+    {
+      "title": "AWS IoT Greengrass · Referencia de recetas",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

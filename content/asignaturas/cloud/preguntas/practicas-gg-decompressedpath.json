@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-decompressedpath",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La receta del componente personalizado de ML tiene `\"Artifacts\": [{\"URI\": \"s3://.../custom.zip\", \"Unarchive\": \"ZIP\"}]` y su script ejecuta `{artifacts:decompressedPath}/custom/inference.py`. ¿Por qué se usa `decompressedPath`?",
+  "explanation": "Greengrass descarga el artefacto de S3 y, por `Unarchive: ZIP`, lo descomprime. `{artifacts:decompressedPath}` es la ruta raíz donde quedan los artefactos descomprimidos; `{artifacts:path}` apunta a los artefactos tal como se descargan. Ambas son variables de receta que Greengrass sustituye, no rutas literales.",
+  "options": [
+    {
+      "id": "descomprimido",
+      "text": "Porque Greengrass descomprime el ZIP descargado y esa variable apunta a la ruta de los artefactos descomprimidos",
+      "explanation": "Relaciona `Unarchive` con la variable de ruta."
+    },
+    {
+      "id": "s3",
+      "text": "Porque `decompressedPath` es la ruta del ZIP dentro del bucket S3",
+      "explanation": "La variable se refiere a una ruta en el dispositivo, no en S3."
+    },
+    {
+      "id": "manual",
+      "text": "Porque el paso `install` debe descomprimir el ZIP en una carpeta llamada literalmente `decompressedPath`",
+      "explanation": "Greengrass descomprime por `Unarchive` y sustituye la variable por la ruta real."
+    },
+    {
+      "id": "path-igual",
+      "text": "Es indiferente: `{artifacts:path}` y `{artifacts:decompressedPath}` apuntan siempre al mismo directorio",
+      "explanation": "La actividad cambia precisamente de `path` a `decompressedPath` al pasar a un ZIP."
+    }
+  ],
+  "answer": "descomprimido",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 3 · Componentes ML personalizados",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    },
+    {
+      "title": "AWS IoT Greengrass · Referencia de recetas",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

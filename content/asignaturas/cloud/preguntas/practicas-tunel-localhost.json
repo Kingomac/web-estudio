@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-tunel-localhost",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la actividad 3, el operador abre la sesión con `ssh ... ubuntu@localhost -p 5555` desde la instancia de origen. ¿Por qué se conecta a `localhost` y al puerto 5555?",
+  "explanation": "El proxy local del origen escucha en el puerto 5555 de su propia máquina. Lo que entra por ahí viaja por el túnel hasta el Device Client del destino, que lo entrega al servicio SSH del dispositivo. Por eso el prompt pasa a mostrar la IP privada del destino.",
+  "options": [
+    {
+      "id": "proxy-local",
+      "text": "Porque el proxy local del origen escucha en ese puerto y reenvía la conexión por el túnel hasta el SSH del destino",
+      "explanation": "El cliente SSH habla con el proxy local, no directamente con el dispositivo."
+    },
+    {
+      "id": "puerto-destino",
+      "text": "Porque 5555 es el puerto SSH abierto en el firewall del dispositivo destino",
+      "explanation": "5555 es el puerto local del proxy de origen; el destino no abre puertos de entrada."
+    },
+    {
+      "id": "misma-maquina",
+      "text": "Porque origen y destino son la misma instancia en el laboratorio",
+      "explanation": "Son dos instancias distintas; por eso cambia la IP privada del prompt."
+    },
+    {
+      "id": "mqtt",
+      "text": "Porque 5555 es el puerto por el que IoT Core recibe los mensajes MQTT del túnel",
+      "explanation": "El tráfico SSH no viaja como mensajes MQTT."
+    }
+  ],
+  "answer": "proxy-local",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        82
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 3 · Túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-jitr-extension",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué añade el aprovisionamiento Just-In-Time Registration (JITR) respecto a JITP?",
+  "explanation": "JITR extiende JITP con una función Lambda que se ejecuta al producirse el registro para incorporar lógica personalizada, como validaciones adicionales o acciones de aprovisionamiento propias del negocio.",
+  "options": [
+    {
+      "id": "lambda",
+      "text": "Una función Lambda para ejecutar lógica personalizada durante el registro",
+      "explanation": "Es la extensión que distingue JITR del flujo básico de JITP."
+    },
+    {
+      "id": "sin-certificados",
+      "text": "La eliminación de los certificados X.509 de los dispositivos",
+      "explanation": "JITR sigue basándose en el aprovisionamiento con certificados de JITP."
+    },
+    {
+      "id": "claim",
+      "text": "Un certificado de reclamación compartido que sustituye al certificado único del dispositivo",
+      "explanation": "Eso corresponde al aprovisionamiento de flota por reclamación, no a la diferencia JITR/JITP."
+    },
+    {
+      "id": "manual",
+      "text": "La obligación de registrar manualmente cada cosa antes de su primera conexión",
+      "explanation": "JITR automatiza acciones en el registro inicial en lugar de convertirlo en un proceso manual."
+    }
+  ],
+  "answer": "lambda",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        67
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "aprovisionamiento"
+    }
+  ]
+}

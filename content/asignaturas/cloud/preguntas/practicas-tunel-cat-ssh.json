@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-tunel-cat-ssh",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la actividad de túnel seguro, ¿qué diferencia hay entre el token de acceso cliente (CAT) y las credenciales SSH?",
+  "explanation": "El CAT autoriza al proxy local para conectarse al túnel de AWS IoT. Una vez establecido el transporte, las claves o credenciales SSH autentican al usuario en la sesión con el sistema operativo del dispositivo.",
+  "options": [
+    {
+      "id": "capas",
+      "text": "El CAT autentica la conexión al túnel y las credenciales SSH autentican la sesión posterior",
+      "explanation": "Son controles de dos capas distintas y uno no sustituye al otro."
+    },
+    {
+      "id": "mismo",
+      "text": "Son dos nombres del mismo certificado X.509 del dispositivo",
+      "explanation": "El CAT es un token de acceso al túnel y las credenciales SSH pertenecen a la sesión remota."
+    },
+    {
+      "id": "cat-ssh",
+      "text": "El CAT es la contraseña SSH y la clave privada SSH solo cifra los mensajes de sombra",
+      "explanation": "El CAT no sustituye a la autenticación SSH y la clave SSH no pertenece a las sombras."
+    },
+    {
+      "id": "innecesario",
+      "text": "Con un CAT válido ya no hace falta autenticarse en SSH",
+      "explanation": "El túnel proporciona transporte seguro, pero no elimina la autenticación del servicio de destino."
+    }
+  ],
+  "answer": "capas",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        83
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Actividad adicional 3 · Túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-sombra-version-rechazada",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un cliente publica en `$aws/things/sensor01/shadow/update` una actualización con `\"version\": 7`, pero el documento de la sombra ya va por la versión 9. ¿Qué ocurre?",
+  "explanation": "Cada acción de la sombra tiene un tema de solicitud y otros de respuesta `accepted` y `rejected`. Si se actualiza con un número de versión antiguo, el cliente recibe un error y debe sincronizarse con la última versión antes de poder actualizar.",
+  "options": [
+    {
+      "id": "rejected",
+      "text": "Recibe un error en `$aws/things/sensor01/shadow/update/rejected` y debe sincronizarse con la última versión",
+      "explanation": "El control de versiones rechaza las actualizaciones basadas en una copia antigua."
+    },
+    {
+      "id": "vuelve",
+      "text": "Se acepta y la versión del documento vuelve a 7",
+      "explanation": "La versión solo se incrementa; una versión antigua provoca un error."
+    },
+    {
+      "id": "informativa",
+      "text": "Se acepta y se notifica en `/update/accepted`, porque `version` es solo informativa",
+      "explanation": "Si se incluye `version`, el servicio la comprueba."
+    },
+    {
+      "id": "ignora",
+      "text": "Se ignora el control de versiones, igual que si no se enviara `version`",
+      "explanation": "Solo se ignora cuando la propiedad no aparece en el documento."
+    }
+  ],
+  "answer": "rejected",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        57,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sombras"
+    }
+  ]
+}

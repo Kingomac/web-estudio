@@ -405,7 +405,7 @@
 <p>Tiene dos partes: <strong>core device</strong>, que ejecuta el software y aplicaciones en el borde, y <strong>servicio cloud</strong>, que gestiona dispositivos y despliegues. Acerca análisis y reacción al origen, filtra/agrega datos y permite inferencia ML local.</p>
 <p>El <strong>nucleus</strong> proporciona la funcionalidad mínima y gestiona ciclo de vida, despliegue y comunicación de componentes. Los componentes opcionales amplían funciones. No se debe asumir que instalar solo el núcleo activa automáticamente todas las funciones posibles.</p>
 <p>Un componente contiene <strong>receta + artefactos + dependencias</strong>. La receta es JSON/YAML: metadatos, configuración, compatibilidad de plataforma y ciclo de vida. Los artefactos son el código/binarios/scripts que se ejecutan. Las dependencias relacionan componentes y versiones. Los manifiestos permiten especificar plataformas diferentes; el ciclo de vida indica cómo instalar, arrancar o detener.</p>
-<p>Los despliegues especifican componentes y configuraciones para dispositivos o grupos; se comprueba compatibilidad de plataforma y dependencias. Son continuos: un destino que se conecta después recibe la versión vigente. El tema dice «un despliegue a la vez»; entiéndelo en el contexto de procesamiento de despliegues, no como que una flota solo pueda tener un grupo o un componente.</p>
+<p>Los despliegues especifican componentes y configuraciones para dispositivos o grupos; se comprueba compatibilidad de plataforma y dependencias. Son continuos: un destino que se añade o vuelve a conectarse después recibe la versión más actual. Según el tema, <strong>cada dispositivo solo puede tener un despliegue a la vez</strong>: para añadir un componente se revisa el despliegue vigente, que puede incluir muchos componentes. Al recibir un despliegue, el núcleo comprueba la compatibilidad de plataforma y de versiones de dependencias, y deja que cada componente lo retrase si no puede interrumpirse, por ejemplo con poca batería.</p>
 <p><strong>TokenExchangeService</strong> permite a componentes obtener credenciales temporales para servicios AWS. No es el modelo ML ni un broker. En ML separa <strong>modelo</strong> (artefacto entrenado), <strong>runtime</strong> (entorno como DLR o TensorFlow Lite) e <strong>inferencia</strong> (código que aplica el modelo). Entrenar y ejecutar una predicción son tareas distintas.</p>
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=11">T4, pp. 11-18</a>.</p>
 <h3 id="iot-core">IoT Core: registro, seguridad, mensajes y reglas</h3>
@@ -418,7 +418,7 @@
 </ul>
 <p>IoT Core agrupa sus servicios en tres categorías: <strong>control</strong> (seguridad, gestión y registro), <strong>mensajes</strong> (comunicación segura entre dispositivos e IoT Core) y <strong>datos</strong> (persistencia del estado aun sin conexión, es decir, sombras).</p>
 <p><strong>Autenticación</strong> responde quién es una entidad; <strong>autorización</strong>, qué puede hacer; <strong>TLS</strong>, cómo proteger el canal. En los dispositivos se usan certificados X.509 y políticas IoT. Para usuarios/aplicaciones, identidades, roles y políticas IAM; las aplicaciones móviles pueden emplear Cognito.</p>
-<p>En TLS mutuo, AWS valida el certificado del dispositivo y el dispositivo valida el servidor mediante su cadena de confianza. La política IoT se asocia al certificado y concede acciones sobre recursos concretos. Un certificado válido no concede por sí solo permiso para cualquier tema. El proveedor de credenciales IoT permite obtener credenciales temporales mediante el certificado para acceder a servicios que usan SigV4, evitando credenciales permanentes incrustadas.</p>
+<p>Los detalles de certificados y políticas, muy probables en el examen, están en <a href="#certificados">Certificados X.509 y TLS mutuo</a> y <a href="#politicas">Políticas IoT</a>.</p>
 <p><strong>Cosa</strong> = representación en el registro; <strong>tipo</strong> = categoría lógica; <strong>grupo</strong> = agrupación para gestionar conjuntos y jerarquías; <strong>sombra</strong> = estado dinámico persistente. El registro no es el histórico de telemetría.</p>
 <ul>
 <li>El nombre de una cosa es <strong>único dentro de una región</strong>; los nombres de tipo, únicos en la cuenta.</li>
@@ -427,17 +427,209 @@
 <li>El registro es <strong>opcional para conectar</strong>, pero necesario para usar <strong>sombras, eventos o trabajos</strong>. Permite buscar por atributos y notifica la creación, actualización o borrado de cosas, tipos y grupos.</li>
 </ul>
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=22">T4, pp. 22-39</a>; límites del registro en pp. 37-39.</p>
+<h3 id="certificados">Certificados X.509 y TLS mutuo</h3>
+<p>El profesor lo da como casi seguro. Es breve, pero hay que tener claro <strong>qué certificado valida a quién</strong>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Sentido</th>
+<th>Qué ocurre</th>
+<th>Qué necesita</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autenticación del cliente</td>
+<td>El dispositivo envía su certificado X.509 e IoT Core lo valida contra su registro de certificados.</td>
+<td>Certificado emitido por AWS IoT u otra CA, <strong>registrado previamente</strong> en AWS IoT, <strong>no revocado ni caducado</strong>. El dispositivo guarda además su clave privada.</td>
+</tr>
+<tr>
+<td>Autenticación del servidor</td>
+<td>IoT Core envía su certificado y el dispositivo valida su cadena de certificados, como un navegador ante una URL HTTPS.</td>
+<td><strong>Certificado raíz de la CA de Amazon</strong> guardado en el dispositivo; se recomiendan los <strong>endpoints ATS</strong> (Amazon Trust Services) y planificar la rotación de esas CA raíz antes de que caduquen.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En el <strong>aprovisionamiento</strong> se registra la cosa, se obtiene un certificado (AWS IoT lo genera o se registra uno existente), se asocia a la cosa y <strong>se copia al dispositivo junto con su clave privada</strong>. Después se crea una política IoT y <strong>se asocia al certificado</strong>. El tema avisa de que el proceso manual de la consola sirve para desarrollo, no para producción.</p>
+<p>La <strong>PKI</strong> la forman las CA que emiten y firman certificados. El fabricante puede usar <strong>AWS IoT como CA, una CA propia o una CA de terceros</strong>. JITP y JITR parten de certificados de fábrica firmados por una CA registrada; el aprovisionamiento de flota genera clave y certificado firmados por la CA de AWS.</p>
+<p>Para servicios AWS que no admiten certificados y usan SigV4, el <strong>proveedor de credenciales</strong> de IoT Core da al dispositivo un token temporal a cambio de su certificado. Asume un rol IAM mediante STS, así el dispositivo no guarda credenciales permanentes. Es el mecanismo que usa TokenExchangeService en Greengrass.</p>
+<p><strong>Trampas habituales:</strong> el certificado autentica pero no autoriza; el certificado raíz de Amazon valida al servidor, no identifica al dispositivo; la clave privada nunca se envía.</p>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=33">T4, pp. 33-34</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=62">p. 62</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=65">p. 65</a>.</p>
+<h3 id="politicas">Políticas IoT: leer el JSON</h3>
+<p>La identidad solo puede ejecutar operaciones si una política se lo permite. <strong>Dispositivos → políticas de AWS IoT, anexadas a su certificado X.509. Usuarios y aplicaciones → políticas IAM.</strong> Las políticas IoT controlan el plano de datos de IoT Core: conectarse, publicar, suscribirse y recibir. Siguen las mismas convenciones que las políticas IAM.</p>
+<p>Ejemplo del tema (p. 35): permite conectarse con un ID de cliente igual al nombre de una cosa registrada y publicar en un tema con ese mismo nombre.</p>
+<pre><code class="language-json">&#123;
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    &#123;
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: [&quot;iot:Publish&quot;],
+      &quot;Resource&quot;: [&quot;arn:aws:iot:us-east-1:123456789012:topic/$&#123;iot:Connection.Thing.ThingName&#125;&quot;]
+    &#125;,
+    &#123;
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: [&quot;iot:Connect&quot;],
+      &quot;Resource&quot;: [&quot;arn:aws:iot:us-east-1:123456789012:client/$&#123;iot:Connection.Thing.ThingName&#125;&quot;]
+    &#125;
+  ]
+&#125;
+</code></pre>
+<p>Si la cosa es <code>sensor01</code>, puede conectarse como <code>sensor01</code> y publicar en el tema <code>sensor01</code>. <strong><code>client/</code> y <code>topic/</code> son el tipo de recurso del ARN, no parte del nombre.</strong> No puede suscribirse ni recibir: esas acciones no aparecen.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Clave o acción</th>
+<th>Qué indica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Version</code></td>
+<td>Versión del lenguaje de políticas (<code>2012-10-17</code>), no la versión guardada de la política.</td>
+</tr>
+<tr>
+<td><code>Statement</code></td>
+<td>Lista de declaraciones.</td>
+</tr>
+<tr>
+<td><code>Effect</code></td>
+<td><code>Allow</code> o <code>Deny</code>; son valores, no claves.</td>
+</tr>
+<tr>
+<td><code>iot:Connect</code></td>
+<td>Recurso <code>client/ID_CLIENTE</code>: con qué ID de cliente puede conectarse.</td>
+</tr>
+<tr>
+<td><code>iot:Publish</code> / <code>iot:Receive</code></td>
+<td>Recurso <code>topic/TEMA</code>: publicar / recibir los mensajes de ese tema.</td>
+</tr>
+<tr>
+<td><code>iot:Subscribe</code></td>
+<td>Recurso <code>topicfilter/FILTRO</code>: registrar la suscripción. Sin <code>iot:Receive</code> no llegan los mensajes.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Reglas de interpretación:</strong></p>
+<ul>
+<li>Lo que no está permitido, está denegado. Y como en IAM, <strong>un <code>Deny</code> explícito prevalece sobre cualquier <code>Allow</code></strong> que coincida.</li>
+<li>En los ARN, el comodín es <code>*</code>; <strong><code>+</code> y <code>#</code> son caracteres literales</strong>, no comodines MQTT.</li>
+<li>Las <strong>variables de política</strong> como <code>$&#123;iot:Connection.Thing.ThingName&#125;</code> se sustituyen por la cosa de la conexión: una única política sirve para toda la flota y cada dispositivo queda limitado a sus recursos.</li>
+<li>Una política con <code>Action: *</code> y <code>Resource: *</code> funciona, pero incumple el privilegio mínimo; Device Defender la señala como excesivamente permisiva.</li>
+</ul>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=35">T4, p. 35</a>. Deny explícito y comodines contrastados con <a href="https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html">AWS, políticas pub/sub</a>. Más ejemplos en <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/#politicas">Prácticas, políticas</a>.</p>
 <h3 id="reglas">Motor de reglas</h3>
-<p>Una regla tiene nombre, consulta SQL y una o más acciones. Descripción y acción de error son opcionales. <strong>FROM selecciona temas; WHERE filtra el mensaje; SELECT selecciona/transforma campos.</strong> La salida se envía por una acción: republicar, escribir en DynamoDB/S3, notificar por SNS o invocar Lambda, entre otras. La regla necesita permisos para ejecutar la acción.</p>
-<p>Ejemplo del tema: <code>SELECT color AS rgb FROM 'location01/sensor01' WHERE temperature &gt; 50</code>. Para <code>&#123;"color":"red","temperature":100&#125;</code> produce <code>&#123;"rgb":"red"&#125;</code>; con temperatura 50 no se cumple el filtro. Los operadores y funciones permiten acceder a JSON anidado, convertir datos y calcular valores.</p>
-<p>Las <strong>plantillas de sustitución</strong> usan <code>$&#123;expresión&#125;</code> para campos dinámicos de acciones, por ejemplo <code>$&#123;topic()&#125;/republish</code>. No son comodines MQTT ni políticas de permisos.</p>
-<p><strong>Basic Ingest</strong> entra directamente al motor de reglas, evitando el broker en esa ruta. Se publica con el prefijo <code>$aws/rules/NOMBRE_REGLA/...</code>; por eso <code>FROM</code> es opcional en reglas que solo se activan así. Permite reducir el coste de esa ruta de mensajería; no significa que todos los servicios de destino sean gratuitos.</p>
+<p>El profesor lo marcó como probable. El motor de reglas <strong>filtra, transforma y encamina</strong> los mensajes que llegan al agente de mensajes hacia otros servicios AWS o de terceros.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Elemento de la regla</th>
+<th>Obligatorio</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td>Sí</td>
+<td>Identifica la regla; también se usa en Basic Ingest.</td>
+</tr>
+<tr>
+<td>Descripción</td>
+<td>No</td>
+<td>Texto informativo.</td>
+</tr>
+<tr>
+<td>Expresión SQL</td>
+<td>Sí</td>
+<td>Filtra los mensajes de un tema y prepara los datos. Es buena práctica indicar la versión SQL.</td>
+</tr>
+<tr>
+<td>Una o más acciones</td>
+<td>Sí</td>
+<td>Se ejecutan al aplicar la regla: republicar, DynamoDB, S3, SNS, SQS, Lambda, Kinesis, CloudWatch, HTTP, Timestream, etc.</td>
+</tr>
+<tr>
+<td>Acción de error</td>
+<td>No</td>
+<td>Se ejecuta <strong>cuando no se consigue realizar la acción</strong> de la regla. No es una segunda acción en cadena.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>SQL: <code>SELECT datos FROM tema WHERE filtro</code></strong>, evaluado sobre cada mensaje que llega, no sobre un histórico.</p>
+<ul>
+<li><strong>FROM</strong>: filtro de tema MQTT; la regla se activa con cada mensaje cuyo tema coincida. Admite comodines MQTT. Es opcional solo en reglas que se activan exclusivamente por Basic Ingest.</li>
+<li><strong>WHERE</strong> (opcional): condición lógica que decide si se ejecutan las acciones. Puede usar campos que no aparecen en SELECT.</li>
+<li><strong>SELECT</strong>: extrae y transforma campos de la carga útil. <code>*</code> conserva todos, <code>AS</code> renombra y pueden añadirse constantes o funciones.</li>
+<li>Extensiones JSON: <code>.</code> para objetos anidados (<code>data.item2.0.key</code>) y <code>*</code>. Funciones matemáticas, de cadenas, <code>timestamp()</code>, <code>topic()</code>, <code>cast()</code>, consultas a DynamoDB, modelos de SageMaker e invocación de Lambda, que tiene un tiempo máximo de 2 s.</li>
+</ul>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Regla y mensaje</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SELECT color AS rgb FROM 'location01/sensor01' WHERE temperature &gt; 50</code><br><code>&#123;"color":"red","temperature":100&#125;</code></td>
+<td>Se cumple WHERE y la acción recibe <code>&#123;"rgb":"red"&#125;</code>. <code>temperature</code> no se incluye.</td>
+</tr>
+<tr>
+<td>La misma regla con <code>"temperature":50</code></td>
+<td>No se ejecuta ninguna acción: 50 no es mayor que 50. No es un error.</td>
+</tr>
+<tr>
+<td><code>SELECT *, timestamp() AS timestamp FROM 'my/iot/topic'</code> con acción <code>republish</code> a <code>$&#123;topic()&#125;/republish</code></td>
+<td>Republica en <code>my/iot/topic/republish</code> todos los campos originales más <code>timestamp</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Las <strong>plantillas de sustitución</strong> <code>$&#123;expresión&#125;</code> configuran dinámicamente campos de las acciones: tema de republicación, clave del objeto S3 (p. ej. tema + timestamp), valores de DynamoDB… La expresión puede ser cualquiera de las admitidas en SELECT, WHERE o las acciones, y los campos modificables dependen de cada acción. No son comodines MQTT ni variables de política.</p>
+<p><strong>Basic Ingest</strong>: se publica en <code>$aws/rules/NOMBRE_REGLA/tema_original</code>. El mensaje entra <strong>directamente en el motor de reglas sin pasar por el agente de mensajes</strong>, así que solo se invoca la regla nombrada y <strong>los suscriptores del tema no lo reciben</strong>. Reduce los costes de ingestión manteniendo la seguridad: sigue haciendo falta permiso para publicar. Ejemplo del tema: publicar en <code>$aws/rules/BuildingManager/Buildings/Building5/Floor2/Room201/Lights</code> invoca la regla <code>BuildingManager</code>.</p>
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=41">T4, pp. 41-51</a>.</p>
 <h3 id="sombras">Sombras: separar deseo, estado comunicado y ejecución física</h3>
 <p>Una sombra es un documento JSON de estado. <strong>reported</strong> contiene lo comunicado por el dispositivo; <strong>desired</strong>, lo solicitado por la aplicación; <strong>delta</strong>, los valores deseados que difieren de lo informado. Actualizar desired no ejecuta físicamente una acción ni confirma que el dispositivo la realizó.</p>
-<p>Secuencia: el dispositivo informa → la aplicación pide un cambio → la sombra conserva el deseo y notifica diferencias → el dispositivo aplica el cambio cuando puede → informa el resultado → la diferencia desaparece. Si está desconectado, la sombra sigue disponible; al reconectar debe recuperar/sincronizar el estado.</p>
-<p>Hay una sombra clásica sin nombre por cosa y pueden existir varias con nombre para separar grupos de propiedades y permisos. Se accede mediante MQTT o API HTTPS. Las operaciones son obtener, actualizar y borrar; tienen respuestas accepted/rejected. <strong>update/delta</strong> comunica diferencias y <strong>update/documents</strong> incluye estados anterior y actual.</p>
-<p><code>metadata</code> contiene tiempos por propiedad; <code>timestamp</code>, el del mensaje; <code>version</code> permite identificar revisiones; <code>clientToken</code> correlaciona solicitud y respuesta. Si se envía una versión obsoleta al actualizar puede haber conflicto; si no se incluye version se omite esa comprobación optimista. No confundas correlación con autenticación: clientToken no sustituye un certificado.</p>
+<p><strong>Quién escribe qué:</strong> los dispositivos modifican <strong>solo <code>reported</code></strong>; las aplicaciones y servicios en la nube modifican <strong>solo <code>desired</code></strong>. <code>delta</code> no lo escribe nadie: lo calcula el servicio.</p>
+<p>Secuencia: el dispositivo informa → la aplicación pide un cambio → la sombra conserva el deseo y notifica diferencias → el dispositivo aplica el cambio cuando puede → informa el resultado → la diferencia desaparece. Si el dispositivo está desconectado, la aplicación sigue pudiendo usar la sombra; al reconectarse, el dispositivo recibe el estado actual y se sincroniza. A la inversa, si la aplicación está desconectada, el dispositivo mantiene la sombra actualizada.</p>
+<p>Ejemplo: con <code>"reported": &#123;"door": "on", "temp": 4&#125;</code>, la aplicación publica <code>&#123;"state": &#123;"desired": &#123;"door": "off", "temp": 4&#125;&#125;&#125;</code>. El delta es <strong><code>&#123;"door": "off"&#125;</code></strong>, porque <code>temp</code> ya coincide.</p>
+<p><strong>Tipos:</strong> cada cosa tiene <strong>una única sombra clásica</strong> (sin nombre) y puede tener <strong>varias con nombre</strong>. Las sombras con nombre sirven para dividir muchas propiedades en grupos o para limitar el acceso con políticas. Sus temas MQTT <strong>solo difieren en el prefijo</strong>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Tema reservado</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$aws/things/NOMBRE/shadow/...</code></td>
+<td>Prefijo de la sombra clásica.</td>
+</tr>
+<tr>
+<td><code>$aws/things/NOMBRE/shadow/name/SOMBRA/...</code></td>
+<td>Prefijo de una sombra con nombre.</td>
+</tr>
+<tr>
+<td><code>.../get</code>, <code>.../update</code>, <code>.../delete</code></td>
+<td>Solicitudes: se publica aquí.</td>
+</tr>
+<tr>
+<td><code>.../accepted</code>, <code>.../rejected</code></td>
+<td>Respuesta de cada acción: aceptada o con error.</td>
+</tr>
+<tr>
+<td><code>.../update/delta</code></td>
+<td>Diferencias entre desired y reported.</td>
+</tr>
+<tr>
+<td><code>.../update/documents</code></td>
+<td>Documento anterior y actual tras cada actualización.</td>
+</tr>
+</tbody>
+</table></div>
+<p>También hay una URL HTTPS por sombra con GET, UPDATE y DELETE. Publicar y suscribirse en los temas de sombra <strong>necesita autorización</strong> en la política.</p>
+<p><strong>Documento:</strong> <code>state</code> (desired, reported, delta); <code>metadata</code> con la hora UTC de actualización de cada propiedad; <code>version</code>, un entero que aumenta con cada cambio; <code>timestamp</code> del envío; <code>clientToken</code> para emparejar respuestas con solicitudes. clientToken no autentica: no sustituye un certificado.</p>
+<p><strong>Control de versiones:</strong> si un cliente actualiza con una <strong>versión antigua, recibe un error</strong> (en <code>/update/rejected</code>) y debe sincronizarse antes. Un cliente puede ignorar mensajes con versión inferior a la de su copia. <strong>Si no se incluye <code>version</code>, se ignora el control de versiones.</strong></p>
 <p><span class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=53">T4, pp. 53-60</a>. </span>Los mensajes completos se practican en <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/#sombras">Prácticas, sombras</a>.</p>
 <h3 id="aprovisionamiento">Aprovisionamiento y gestión de flotas</h3>
 <p>Aprovisionar prepara identidad y permisos: cosa, certificado/clave y política asociada. Las plantillas JSON describen recursos y parámetros; <code>&#123;"Ref":"nombre"&#125;</code> referencia un parámetro.</p>
@@ -484,10 +676,58 @@
 <p>Un <strong>job</strong> define operaciones remotas, un <strong>documento de trabajo</strong> JSON dice qué ejecutar y una <strong>ejecución</strong> es su instancia en un dispositivo destino. Puede descargar archivos, actualizar software, reiniciar o rotar certificados. El documento puede estar en un bucket S3 o pasarse como argumento al crear el trabajo; el archivo que descarga es otra cosa. Los dispositivos hablan con el servicio de trabajos por <strong>MQTT, HTTP Signature Version 4 o HTTP TLS</strong>.</p>
 <p>Un trabajo <strong>snapshot</strong> se dirige al conjunto de destinos fijado al crear; uno <strong>continuous</strong> sigue activo para nuevos miembros del grupo. Las plantillas preconfiguran documento, destinos, despliegue, programación, cancelación, tiempos de espera y reintentos. Pueden ser <strong>personalizadas</strong> o <strong>gestionadas por AWS</strong>; estas cubren Download-File, Install/Remove/Start/Restart/Stop-Application, Run-Command y Reboot, y comparten los parámetros <code>runAsUser</code> y <code>pathToHandler</code>. En <code>Download-File</code>: <code>downloadUrl</code> es el origen, <code>filePath</code> el destino local, <code>pathToHandler</code> dónde está el manejador y <code>runAsUser</code> el usuario de ejecución.</p>
 <p>Los dispositivos reciben notificaciones y respuestas por temas <code>$aws/things/.../jobs/...</code> y publican solicitudes para consultar/actualizar. Una respuesta accepted confirma una solicitud, no necesariamente el éxito final de la operación física.</p>
-<p>La <strong>tunelización segura</strong> permite acceso remoto a dispositivos tras un firewall mediante conexiones salientes, proxies y TLS, sin abrir una nueva regla de entrada. El agente recibe notificación en <code>$aws/things/thing-name/tunnels/notify</code> con el token correspondiente. Puede multiplexar flujos y conexiones. El token de túnel y las credenciales de SSH cumplen funciones distintas.</p>
+<p>La tunelización segura tiene su propio apartado: <a href="#tunel">Tunelización segura</a>.</p>
 <p><strong>Defender</strong> audita, bajo demanda o de forma programada, que los recursos cumplan buenas prácticas: dispositivos que comparten certificado, certificados caducados o políticas demasiado permisivas. El tema explica también la detección de anomalías con reglas del usuario o modelos ML (entrenados inicialmente 14 días), alertas y mitigación. El tutorial de la práctica 3 avisa de que la <strong>detección</strong> dejó de estar disponible en septiembre de 2026; la <strong>auditoría</strong> sigue.</p>
 <p><strong>Advisor</strong> valida dispositivos contra un endpoint de pruebas. Categorías: TLS, MQTT, sombras, ejecución de trabajos, permisos/políticas y larga duración. Produce informes de calificación; no es el servicio que despliega trabajos ni el que audita continuamente una flota en operación.</p>
-<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=71">T4, pp. 71-76</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=82">pp. 82-93</a> y <a href="https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/">tutorial P3, auditoría</a>.</p>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=71">T4, pp. 71-76</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=86">pp. 86-93</a> y <a href="https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/">tutorial P3, auditoría</a>.</p>
+<h3 id="tunel">Tunelización segura</h3>
+<p>El profesor la marcó como importante. Es una <strong>conexión segura gestionada por AWS IoT con dispositivos situados tras un firewall</strong> en lugares remotos, para solucionar problemas o cambiar la configuración. Frente a enviar un técnico, reduce el tiempo de respuesta y los costes operativos.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firewall</td>
+<td><strong>No se modifican sus reglas.</strong> No se abren puertos de entrada en el dispositivo.</td>
+</tr>
+<tr>
+<td>Proxy local</td>
+<td>Software de código abierto que se ejecuta <strong>en cada extremo</strong>: el portátil del técnico (origen) y el dispositivo remoto (destino). Se comunica con AWS IoT por un <strong>puerto abierto en el firewall, p. ej. 443</strong>.</td>
+</tr>
+<tr>
+<td>TLS</td>
+<td>Los datos del túnel viajan cifrados.</td>
+</tr>
+<tr>
+<td>Agente de IoT</td>
+<td>Aplicación del dispositivo remoto que se conecta a AWS IoT y escucha en <code>$aws/things/thing-name/tunnels/notify</code>. Recibe el mensaje con el <strong>token de acceso cliente (CAT)</strong> e inicia el proxy local con esos parámetros.</td>
+</tr>
+<tr>
+<td>Multiplexación</td>
+<td>Un túnel puede <strong>compartirse entre varios flujos de datos</strong> (p. ej. HTTP a la web de configuración y SSH a la vez) y cada flujo admite <strong>varias conexiones TCP simultáneas</strong> (p. ej. descargar en paralelo los componentes de una web).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Distinciones que caen fácil:</strong></p>
+<ul>
+<li>El tema <code>.../tunnels/notify</code> solo transporta la notificación con el CAT. El tráfico del túnel va por los proxies, no por mensajes MQTT.</li>
+<li>El CAT da acceso al túnel; SSH sigue autenticándose con sus propias credenciales.</li>
+<li>Ningún extremo acepta conexiones entrantes: ambos proxies abren conexiones salientes hacia AWS IoT.</li>
+</ul>
+<p>En la actividad de la práctica 3 se ve el resto del ciclo: un token para cada extremo, los estados OPEN y CLOSED del túnel, CONNECTED y DISCONNECTED de cada extremo, y que un túnel cerrado no se reabre. Está en <a href="/web-estudio/asignaturas/cloud/apuntes/examen-practicas/#tunel">Prácticas, túnel seguro</a>.</p>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=82">T4, pp. 82-85</a>.</p>
 <h2 id="repaso">Repaso final de distinciones</h2>
 <p>Antes de dar la teoría por estudiada, comprueba que puedes explicar sin mirar: las cinco características NIST; IaaS/PaaS/SaaS; los cuatro despliegues; responsabilidad compartida; región/AZ/PoP; edge/fog/MEC; VM/contenedor/unikernel; imagen/runtime; SDN/NFV; SDK/Client/Greengrass; certificado/política/rol; registro/sombra; broker/regla; desired/reported/delta; JITP/JITR/claim; snapshot/continuous; Defender/Advisor.</p>
+<p><strong>Lo que marcó el profesor, en una línea cada uno:</strong></p>
+<ul>
+<li><strong>Reglas:</strong> nombre + SQL + acciones; FROM elige el tema, WHERE decide si se actúa, SELECT da forma a la salida; <code>$&#123;…&#125;</code> rellena campos de acciones; <code>$aws/rules/REGLA/...</code> evita el broker.</li>
+<li><strong>Políticas:</strong> Effect/Action/Resource; <code>client/</code>, <code>topic/</code> y <code>topicfilter/</code>; Subscribe ≠ Receive; Deny gana; <code>*</code> es el comodín y <code>+</code>/<code>#</code> son literales.</li>
+<li><strong>Sombras:</strong> el dispositivo escribe reported y la aplicación desired; delta lo calcula el servicio; se publica en <code>/update</code> y se responde en <code>/accepted</code> o <code>/rejected</code>; una clásica y varias con nombre; una versión antigua se rechaza.</li>
+<li><strong>Certificados:</strong> el dispositivo presenta su X.509 (registrado, no revocado ni caducado) y valida a IoT Core con la CA raíz de Amazon; la política va asociada al certificado.</li>
+<li><strong>Túnel:</strong> sin tocar el firewall; un proxy en cada extremo por 443 con TLS; el agente recibe el CAT en <code>tunnels/notify</code>; multiplexa flujos y conexiones TCP.</li>
+</ul>
 <p>Comprueba lo aprendido con el <a href="/web-estudio/asignaturas/cloud/tests/simulacro-teoria/">simulacro de teoría</a>.</p>

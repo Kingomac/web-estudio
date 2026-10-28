@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-tunel-cerrado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un túnel seguro se cierra al agotar su duración (12 horas por defecto). ¿Qué hay que hacer para volver a acceder al dispositivo?",
+  "explanation": "Un túnel cerrado (`CLOSED`) no puede reabrirse y se rechazan los intentos de conexión a él. Se cierra explícitamente o al pasar el `MaxLifetimeTimeout`, así que hay que crear un túnel nuevo, que genera nuevos tokens de acceso.",
+  "options": [
+    {
+      "id": "nuevo",
+      "text": "Crear un túnel nuevo, con nuevos tokens de acceso",
+      "explanation": "Un túnel cerrado no se reabre."
+    },
+    {
+      "id": "reconectar",
+      "text": "Volver a arrancar el proxy de origen con el mismo token, porque el túnel vuelve a `OPEN`",
+      "explanation": "Las conexiones a un túnel cerrado se rechazan."
+    },
+    {
+      "id": "reabrir",
+      "text": "Reabrir el túnel desde la consola, conservando sus tokens",
+      "explanation": "No existe la reapertura de un túnel cerrado."
+    },
+    {
+      "id": "desconectado",
+      "text": "Nada: el túnel queda en `DISCONNECTED` y se reconecta solo cuando el origen lo use",
+      "explanation": "`DISCONNECTED` es el estado de un extremo dentro de un túnel `OPEN`, no de un túnel cerrado."
+    }
+  ],
+  "answer": "nuevo",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 3 · Túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

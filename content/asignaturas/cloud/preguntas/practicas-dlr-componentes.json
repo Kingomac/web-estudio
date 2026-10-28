@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-dlr-componentes",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la inferencia DLR de las actividades de Greengrass, ¿cómo se reparten las funciones entre modelo, runtime e inferencia?",
+  "explanation": "El componente de modelo contiene los modelos como artefactos, el runtime instala Deep Learning Runtime y sus dependencias, y el componente de inferencia contiene la lógica que utiliza ambos para clasificar la entrada.",
+  "options": [
+    {
+      "id": "correcto",
+      "text": "El modelo aporta los artefactos entrenados, el runtime proporciona DLR y la inferencia ejecuta la clasificación usando ambos",
+      "explanation": "Es la separación de componentes que permite declarar modelo y runtime como dependencias."
+    },
+    {
+      "id": "invertido",
+      "text": "El runtime aporta los modelos entrenados, el componente de modelo instala DLR y la inferencia solo publica los resultados",
+      "explanation": "Los papeles de modelo y runtime están invertidos."
+    },
+    {
+      "id": "todo-en-inferencia",
+      "text": "El componente de inferencia incluye el modelo y DLR en sus propios artefactos; los otros dos son plantillas opcionales",
+      "explanation": "Modelo y runtime son componentes separados de los que depende la inferencia."
+    },
+    {
+      "id": "nube",
+      "text": "El modelo clasifica en IoT Core y el componente de inferencia solo guarda logs en CloudWatch",
+      "explanation": "La actividad realiza inferencia local en el núcleo Greengrass."
+    }
+  ],
+  "answer": "correcto",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Inferencia de aprendizaje automático",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/perform-machine-learning-inference.html"
+    },
+    {
+      "title": "Práctica 4 · Actividad adicional 2 · Inferencia ML",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml"
+    }
+  ]
+}

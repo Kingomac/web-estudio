@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-sombra-roles",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación en la nube quiere que un termostato pase a 21 °C usando su sombra. ¿Qué propiedad debe modificar cada parte?",
+  "explanation": "Las aplicaciones solicitan cambios modificando solo `desired`. El dispositivo comunica su estado modificando solo `reported`. `delta` no lo escribe nadie: el servicio lo calcula como diferencia entre ambos.",
+  "options": [
+    {
+      "id": "correcto",
+      "text": "La aplicación modifica `desired`; el dispositivo, al aplicar el cambio, modifica `reported`",
+      "explanation": "Es el reparto de responsabilidades que indica el tema."
+    },
+    {
+      "id": "invertido",
+      "text": "La aplicación modifica `reported` y el dispositivo `desired`",
+      "explanation": "Los papeles están invertidos: `reported` es el estado comunicado por el dispositivo."
+    },
+    {
+      "id": "delta",
+      "text": "La aplicación escribe el valor en `delta` y el dispositivo lo borra al aplicarlo",
+      "explanation": "`delta` lo calcula el servicio de sombras a partir de `desired` y `reported`."
+    },
+    {
+      "id": "copia",
+      "text": "Ambos modifican `desired` y el servicio copia el valor en `reported`",
+      "explanation": "El servicio no copia `desired` en `reported`; es el dispositivo quien informa de su estado real."
+    }
+  ],
+  "answer": "correcto",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        56,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sombras"
+    }
+  ]
+}

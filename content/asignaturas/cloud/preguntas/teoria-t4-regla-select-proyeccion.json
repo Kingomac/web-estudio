@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-regla-select-proyeccion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La regla `SELECT color AS rgb FROM 'location01/sensor01' WHERE temperature > 50` recibe en `location01/sensor01` el mensaje `{\"color\": \"red\", \"temperature\": 100}`. ¿Qué datos pasan a la acción?",
+  "explanation": "Como 100 > 50, se cumple `WHERE` y la regla se activa. `SELECT` extrae solo `color` y `AS` lo renombra a `rgb`, por lo que la acción recibe `{\"rgb\": \"red\"}`. `WHERE` puede usar campos que no aparecen en `SELECT`.",
+  "options": [
+    {
+      "id": "rgb",
+      "text": "`{\"rgb\": \"red\"}`",
+      "explanation": "`SELECT` proyecta solo `color` con el nombre `rgb`."
+    },
+    {
+      "id": "con-temperatura",
+      "text": "`{\"rgb\": \"red\", \"temperature\": 100}`",
+      "explanation": "El campo usado en `WHERE` no se añade al resultado si no aparece en `SELECT`."
+    },
+    {
+      "id": "color",
+      "text": "`{\"color\": \"red\"}`",
+      "explanation": "`AS rgb` renombra el campo en el resultado."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: la regla no se activa porque `temperature` no aparece en `SELECT`",
+      "explanation": "`WHERE` se evalúa sobre la carga útil del mensaje, no sobre los campos seleccionados."
+    }
+  ],
+  "answer": "rgb",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        44,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-politica-iam-vs-iot",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un sensor y una aplicación web de gestión usan AWS IoT. ¿Qué tipo de política autoriza las operaciones de cada uno?",
+  "explanation": "Los dispositivos se autorizan con políticas de AWS IoT, anexadas a sus certificados X.509, que controlan el acceso al plano de datos de IoT Core. Los usuarios y aplicaciones se autorizan con políticas IAM.",
+  "options": [
+    {
+      "id": "correcto",
+      "text": "Al sensor, una política de AWS IoT anexada a su certificado X.509; a la aplicación, una política IAM",
+      "explanation": "Es la división de autorización que recoge el tema."
+    },
+    {
+      "id": "ambos-iot",
+      "text": "A ambos, políticas de AWS IoT anexadas a sus certificados",
+      "explanation": "Las políticas de AWS IoT son para dispositivos; usuarios y aplicaciones usan IAM."
+    },
+    {
+      "id": "invertido",
+      "text": "Al sensor, una política IAM anexada a la cosa; a la aplicación, una política de AWS IoT",
+      "explanation": "Los papeles están invertidos y la política IoT se anexa al certificado, no a la cosa."
+    },
+    {
+      "id": "rol",
+      "text": "Al sensor, un rol IAM que IoT Core asume para autorizar cada mensaje MQTT",
+      "explanation": "El rol del proveedor de credenciales sirve para acceder a otros servicios con SigV4, no para autorizar MQTT."
+    }
+  ],
+  "answer": "correcto",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        34,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "politicas"
+    }
+  ]
+}

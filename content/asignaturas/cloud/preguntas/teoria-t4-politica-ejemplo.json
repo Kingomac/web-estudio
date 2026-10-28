@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-politica-ejemplo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "La cosa `sensor01` tiene asociado a su certificado esta política del tema 4. ¿Qué puede hacer?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\"iot:Publish\"],\n      \"Resource\": [\"arn:aws:iot:us-east-1:123456789012:topic/${iot:Connection.Thing.ThingName}\"]\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\"iot:Connect\"],\n      \"Resource\": [\"arn:aws:iot:us-east-1:123456789012:client/${iot:Connection.Thing.ThingName}\"]\n    }\n  ]\n}\n```",
+  "explanation": "La variable `${iot:Connection.Thing.ThingName}` se sustituye por `sensor01`. `client/` y `topic/` indican el tipo de recurso del ARN y no forman parte del nombre: puede conectarse con el ID de cliente `sensor01` y publicar en el tema `sensor01`. No hay permisos de suscripción ni recepción.",
+  "options": [
+    {
+      "id": "propio",
+      "text": "Conectarse con el ID de cliente `sensor01` y publicar en el tema `sensor01`",
+      "explanation": "Es lo que concede la política del ejemplo del tema."
+    },
+    {
+      "id": "prefijo-topic",
+      "text": "Conectarse como `sensor01` y publicar en el tema `topic/sensor01`",
+      "explanation": "`topic/` es el tipo de recurso del ARN; el nombre del tema es `sensor01`."
+    },
+    {
+      "id": "suscribir",
+      "text": "Conectarse como `sensor01`, publicar en `sensor01` y suscribirse a ese tema",
+      "explanation": "La política no incluye `iot:Subscribe` ni `iot:Receive`."
+    },
+    {
+      "id": "cualquiera",
+      "text": "Conectarse con cualquier ID de cliente y publicar en cualquier tema",
+      "explanation": "La variable limita ambos recursos al nombre de la cosa."
+    }
+  ],
+  "answer": "propio",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "politicas"
+    }
+  ]
+}

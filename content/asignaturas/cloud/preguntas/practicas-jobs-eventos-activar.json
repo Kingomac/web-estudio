@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-eventos-activar",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un trabajo termina correctamente, pero en el cliente MQTT de prueba no llega nada a `$aws/events/job/<trabajo>/completed` ni a `$aws/events/jobExecution/<trabajo>/succeeded`. ¿Qué paso de la preparación del tutorial falta?",
+  "explanation": "AWS IoT publica mensajes de eventos por MQTT, pero están desactivados por defecto porque tienen costes asociados. En la preparación de la práctica 3 se activan en la configuración de AWS IoT Core; sin ello no se publican en `$aws/events/...`.",
+  "options": [
+    {
+      "id": "activar-eventos",
+      "text": "Activar los mensajes basados en eventos en la configuración de AWS IoT Core",
+      "explanation": "Los eventos están desactivados por defecto y hay que activarlos expresamente."
+    },
+    {
+      "id": "notify",
+      "text": "Suscribirse a `$aws/things/<cosa>/jobs/notify`, porque los eventos solo se envían a quien escucha ese tema",
+      "explanation": "`notify` es el tema del dispositivo para trabajos pendientes; no habilita los eventos."
+    },
+    {
+      "id": "continuo",
+      "text": "Crear el trabajo como continuo, porque los instantáneos no generan eventos",
+      "explanation": "El tipo de trabajo no decide si se publican los eventos."
+    },
+    {
+      "id": "dispositivo",
+      "text": "Que el Device Client publique él mismo esos mensajes al terminar el manejador",
+      "explanation": "Los eventos los publica AWS IoT; el dispositivo informa del estado de su ejecución."
+    }
+  ],
+  "answer": "activar-eventos",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Preparación de los recursos",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/02-lets-begin/"
+    },
+    {
+      "title": "Práctica 3 · Operación OTA personalizada",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/08-advanced-sections/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-jobs"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-sla-ec2-condiciones",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Según el SLA de región de Amazon EC2 que analiza el tema 1 (compromiso mensual del 99,99 %), ¿qué hay que cumplir para obtener créditos por incumplimiento?",
+  "explanation": "El SLA de región solo se aplica si las instancias están desplegadas simultáneamente en al menos 2 zonas de disponibilidad de la región. Además, los créditos no son automáticos: el cliente debe presentar una reclamación con los datos del incidente.",
+  "options": [
+    {
+      "id": "az-reclamacion",
+      "text": "Tener las instancias desplegadas a la vez en al menos 2 AZ de la región y presentar una reclamación",
+      "explanation": "Son las dos condiciones para activar el SLA de región."
+    },
+    {
+      "id": "una-az-auto",
+      "text": "Basta con una instancia en una sola AZ; el crédito se aplica automáticamente en la factura",
+      "explanation": "Con una sola instancia rige el SLA de instancia, y en ningún caso el crédito es automático."
+    },
+    {
+      "id": "az-auto",
+      "text": "Tener las instancias en al menos 2 AZ; AWS descuenta el crédito automáticamente sin reclamación",
+      "explanation": "Falta la reclamación obligatoria por parte del cliente."
+    },
+    {
+      "id": "regiones",
+      "text": "Tener instancias en al menos 2 regiones distintas; el crédito es siempre del 100 %",
+      "explanation": "El requisito es de AZ dentro de una región y el crédito depende del nivel de incumplimiento (10, 30 o 100 %)."
+    }
+  ],
+  "answer": "az-reclamacion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "beneficios-riesgos"
+    }
+  ]
+}

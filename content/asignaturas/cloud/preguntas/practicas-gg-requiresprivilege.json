@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-requiresprivilege",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el ciclo de vida de la receta del runtime DLR aparece `\"install\": {\"RequiresPrivilege\": \"true\", \"script\": \"...\"}`. ¿Qué indica `RequiresPrivilege`?",
+  "explanation": "`RequiresPrivilege` hace que Greengrass ejecute ese script del ciclo de vida con privilegios de administrador (root), en lugar de con el usuario sin privilegios configurado para los componentes. Es una opción local de ejecución, no un permiso de AWS.",
+  "options": [
+    {
+      "id": "root",
+      "text": "Que el script se ejecuta en el dispositivo con privilegios de administrador (root)",
+      "explanation": "Controla con qué privilegios se ejecuta el paso del ciclo de vida."
+    },
+    {
+      "id": "iam",
+      "text": "Que el componente necesita un rol IAM con permisos de administrador en la cuenta",
+      "explanation": "No concede ni exige permisos de IAM en AWS."
+    },
+    {
+      "id": "politica",
+      "text": "Que hace falta una política IoT adicional anexada al certificado del núcleo",
+      "explanation": "Las políticas IoT autorizan operaciones en IoT Core, no la ejecución de scripts locales."
+    },
+    {
+      "id": "ipc",
+      "text": "Que el componente puede usar cualquier tema IPC sin `accessControl`",
+      "explanation": "La autorización IPC se configura aparte con `accessControl`."
+    }
+  ],
+  "answer": "root",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 2 · Componentes ML",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/"
+    },
+    {
+      "title": "AWS IoT Greengrass · Referencia de recetas",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

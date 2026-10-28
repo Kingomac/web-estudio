@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-mosquitto-rol-academy",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué la actividad 1 de la práctica 4 utiliza un broker Mosquitto personalizado en AWS Academy en lugar de los brokers MQTT predefinidos de Greengrass?",
+  "explanation": "Los brokers predefinidos necesitan el rol de servicio de Greengrass para autenticar dispositivos cliente mediante AWS IoT. En AWS Academy no se dispone de los permisos necesarios para configurar ese rol, por lo que se emplea el componente Mosquitto personalizado.",
+  "options": [
+    {
+      "id": "rol-servicio",
+      "text": "Porque no se puede configurar en el laboratorio el rol de servicio de Greengrass que requieren los brokers predefinidos",
+      "explanation": "Es la limitación de AWS Academy que motiva el uso del componente personalizado."
+    },
+    {
+      "id": "descarga",
+      "text": "Porque Mosquitto es el único componente que puede descargar sus artefactos desde S3",
+      "explanation": "El componente se prueba con receta y artefactos locales; la elección no se debe a una ventaja de descarga."
+    },
+    {
+      "id": "mqtt",
+      "text": "Porque los brokers predefinidos de Greengrass no admiten el protocolo MQTT",
+      "explanation": "Los brokers predefinidos sí proporcionan mensajería MQTT; el problema es la configuración del rol."
+    },
+    {
+      "id": "certificados",
+      "text": "Porque el broker personalizado evita cualquier uso de certificados y políticas IoT",
+      "explanation": "El bridge personalizado también utiliza certificado y política para comunicarse con AWS IoT."
+    }
+  ],
+  "answer": "rol-servicio",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 4 · Actividad adicional 1 · Bridge MQTT",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_1/"
+    },
+    {
+      "title": "AWS IoT Greengrass · Rol de servicio",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "bridge"
+    }
+  ]
+}

@@ -4,8 +4,8 @@
   "subjectId": "cloud",
   "slug": "simulacro-teoria",
   "title": "Cloud Computing · Simulacro de teoría",
-  "description": "29 preguntas de respuesta única sobre la materia que entra en la prueba de teoría.",
-  "scope": "T1 pp. 22-62 (sin la iniciativa europea, pp. 64-76); T2 solo Introducción, pp. 8-14; T3 pp. 6-35; T4 pp. 13-93 (sin servicios de análisis de datos, pp. 95-98). Alcance según el correo del profesor.",
+  "description": "55 preguntas de respuesta única sobre la materia que entra en la prueba de teoría, con refuerzo de reglas, políticas, sombras y tunelización segura.",
+  "scope": "T1 pp. 17-77 (sin la iniciativa europea, pp. 64-76); T2 solo Introducción, pp. 7-14; T3 pp. 6-37; T4 pp. 13-93 (sin servicios de análisis de datos, pp. 94-98). Alcance según el correo del profesor.",
   "tagIds": [
     "cloud.tags.cloud",
     "cloud.tags.aws-introduccion",
@@ -26,9 +26,14 @@
         "cloud.preguntas.teoria-t1-paas-control",
         "cloud.preguntas.teoria-t1-cloud-bursting",
         "cloud.preguntas.teoria-t1-responsabilidad-iaas",
+        "cloud.preguntas.teoria-t1-sddc-iac-gitops",
+        "cloud.preguntas.teoria-t1-sla-compromiso",
+        "cloud.preguntas.teoria-t1-sla-ec2-condiciones",
         "cloud.preguntas.teoria-t1-mec-movilidad",
+        "cloud.preguntas.teoria-t1-cloudlet-soft-state",
         "cloud.preguntas.teoria-t1-fog-modelos",
-        "cloud.preguntas.teoria-t1-fog-capas"
+        "cloud.preguntas.teoria-t1-fog-capas",
+        "cloud.preguntas.teoria-t1-hiperescalares-edge"
       ]
     },
     {
@@ -37,8 +42,10 @@
       "context": "Respuesta única, como en la prueba de Moovi.",
       "questionIds": [
         "cloud.preguntas.teoria-t2-az",
+        "cloud.preguntas.teoria-t2-region-az-pop",
         "cloud.preguntas.teoria-t2-rec",
         "cloud.preguntas.teoria-t2-wavelength",
+        "cloud.preguntas.teoria-t2-local-zone-wavelength",
         "cloud.preguntas.teoria-t2-carrier-gateway"
       ]
     },
@@ -49,10 +56,12 @@
       "questionIds": [
         "cloud.preguntas.teoria-t3-hipervisor-tipo1",
         "cloud.preguntas.teoria-t3-paravirtualizacion",
+        "cloud.preguntas.teoria-t3-hvm",
         "cloud.preguntas.teoria-t3-contenedores-ligeros",
         "cloud.preguntas.teoria-t3-unikernel",
         "cloud.preguntas.teoria-t3-sdn",
-        "cloud.preguntas.teoria-t3-nfv"
+        "cloud.preguntas.teoria-t3-nfv",
+        "cloud.preguntas.teoria-t3-mano-vim"
       ]
     },
     {
@@ -62,14 +71,31 @@
       "questionIds": [
         "cloud.preguntas.teoria-t4-registro-opcional",
         "cloud.preguntas.teoria-t4-limites-cosa",
+        "cloud.preguntas.teoria-t4-regla-accion-error",
+        "cloud.preguntas.teoria-t4-regla-select-proyeccion",
+        "cloud.preguntas.teoria-t4-plantilla-republish",
+        "cloud.preguntas.teoria-t4-basic-ingest-suscriptor",
+        "cloud.preguntas.teoria-t4-sombra-roles",
+        "cloud.preguntas.teoria-t4-sombra-desconectado",
+        "cloud.preguntas.teoria-t4-sombra-con-nombre-uso",
+        "cloud.preguntas.teoria-t4-sombra-version",
+        "cloud.preguntas.teoria-t4-sombra-version-rechazada",
+        "cloud.preguntas.teoria-t4-greengrass-despliegue",
+        "cloud.preguntas.teoria-t4-tls-mutuo-ats",
+        "cloud.preguntas.teoria-t4-politica-iam-vs-iot",
+        "cloud.preguntas.teoria-t4-politica-ejemplo",
         "cloud.preguntas.teoria-t4-jitp",
+        "cloud.preguntas.teoria-t4-jitr-extension",
         "cloud.preguntas.teoria-t4-fleet-claim",
+        "cloud.preguntas.teoria-t4-indexacion-vs-reglas",
         "cloud.preguntas.teoria-t4-job-snapshot-continuo",
+        "cloud.preguntas.teoria-t4-tunel-proxy",
+        "cloud.preguntas.teoria-t4-tunel-agente",
+        "cloud.preguntas.teoria-t4-tunel-multiplexacion",
         "cloud.preguntas.teoria-t4-greengrass-nucleo",
         "cloud.preguntas.teoria-t4-token-exchange",
         "cloud.preguntas.teoria-t4-defender-auditoria",
-        "cloud.preguntas.teoria-t4-device-advisor",
-        "cloud.preguntas.teoria-t4-sombra-version"
+        "cloud.preguntas.teoria-t4-device-advisor"
       ]
     }
   ]

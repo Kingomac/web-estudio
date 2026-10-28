@@ -1,0 +1,59 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-defender-auditoria",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el tutorial de Device Defender, ¿qué permite detectar una auditoría de seguridad?",
+  "explanation": "La auditoría compara la configuración de la cuenta y los dispositivos con buenas prácticas de seguridad. Por ejemplo, señala políticas excesivamente permisivas o certificados compartidos por varias identidades.",
+  "options": [
+    {
+      "id": "configuracion",
+      "text": "Configuraciones que se apartan de buenas prácticas, como políticas demasiado permisivas o identidad compartida",
+      "explanation": "Son comprobaciones de configuración propias de la auditoría."
+    },
+    {
+      "id": "deteccion",
+      "text": "Picos de mensajes o tráfico hacia IP maliciosas, comparando métricas con el comportamiento normal del dispositivo",
+      "explanation": "Eso es la monitorización e identificación de anomalías de Device Defender, no la auditoría de configuración."
+    },
+    {
+      "id": "advisor",
+      "text": "Si el dispositivo supera pruebas predefinidas de conexión segura con IoT Core antes de comercializarlo",
+      "explanation": "Esas pruebas previas a la comercialización son de Device Advisor."
+    },
+    {
+      "id": "parches",
+      "text": "Configuraciones inseguras, que la auditoría corrige automáticamente aplicando una política más restrictiva",
+      "explanation": "La auditoría envía alertas e información para mitigar los riesgos, pero no corrige la configuración por sí sola."
+    }
+  ],
+  "answer": "configuracion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        87,
+        88,
+        89,
+        92
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · AWS IoT Device Defender",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "auditoria"
+    }
+  ]
+}

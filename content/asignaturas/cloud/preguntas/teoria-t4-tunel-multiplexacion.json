@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-tunel-multiplexacion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Durante una intervención remota se necesita a la vez una conexión HTTP a la web de configuración del dispositivo y una sesión SSH. ¿Qué permite la tunelización segura?",
+  "explanation": "La multiplexación permite compartir un túnel seguro entre varios flujos de datos, por ejemplo HTTP y SSH. Además, para cada flujo, el túnel admite varias conexiones TCP simultáneas.",
+  "options": [
+    {
+      "id": "multiplexa",
+      "text": "Compartir un mismo túnel entre ambos flujos, cada uno con varias conexiones TCP simultáneas si hace falta",
+      "explanation": "Combina la multiplexación de flujos y las conexiones TCP simultáneas."
+    },
+    {
+      "id": "un-tunel-por-flujo",
+      "text": "Abrir un túnel distinto para cada protocolo, porque cada túnel transporta un solo flujo",
+      "explanation": "Un túnel puede compartirse entre varios flujos de datos."
+    },
+    {
+      "id": "una-conexion",
+      "text": "Usar un único flujo y una única conexión TCP, que HTTP y SSH deben turnarse",
+      "explanation": "Hay varios flujos por túnel y varias conexiones TCP por flujo."
+    },
+    {
+      "id": "sombras",
+      "text": "Separar los flujos en sombras con nombre, una por protocolo",
+      "explanation": "Las sombras guardan estado del dispositivo; no transportan tráfico TCP."
+    }
+  ],
+  "answer": "multiplexa",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        84,
+        85
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tunel"
+    }
+  ]
+}

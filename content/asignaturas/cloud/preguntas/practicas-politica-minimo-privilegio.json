@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-minimo-privilegio",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Tras la auditoría, la política `workshopDC` se sustituye por otra que incluye esta declaración. El dispositivo `deviceClientThing` intenta publicar en `$aws/things/otraCosa/shadow/update`. ¿Qué ocurre?\n```json\n{\n  \"Effect\": \"Allow\",\n  \"Action\": [\"iot:Publish\", \"iot:Receive\"],\n  \"Resource\": [\n    \"arn:aws:iot:us-east-1:123456789012:topic/$aws/things/${iot:Connection.Thing.ThingName}/*\",\n    \"arn:aws:iot:us-east-1:123456789012:topic/workshop/zt/pub\"\n  ]\n}\n```",
+  "explanation": "La variable se sustituye por el nombre de la cosa conectada, así que solo cubre `$aws/things/deviceClientThing/*`. Publicar en la sombra de otra cosa queda denegado. Esa es la corrección de privilegio mínimo frente a la política original con `Action: *` y `Resource: *`.",
+  "options": [
+    {
+      "id": "deniega",
+      "text": "Se deniega: el recurso solo cubre los temas `$aws/things/` de su propia cosa",
+      "explanation": "La variable limita los temas reservados a los de la cosa conectada."
+    },
+    {
+      "id": "reservado",
+      "text": "Se permite, porque los temas `$aws/...` son reservados y no necesitan autorización",
+      "explanation": "Publicar y suscribirse en los temas de la sombra requiere autorización."
+    },
+    {
+      "id": "comodin",
+      "text": "Se permite, porque el `*` final cubre cualquier cosa bajo `$aws/things/`",
+      "explanation": "El `*` está después del nombre de la cosa; no sustituye ese nivel."
+    },
+    {
+      "id": "receive",
+      "text": "Se deniega porque `iot:Receive` impide publicar en temas de sombra",
+      "explanation": "`iot:Receive` autoriza recibir; la denegación se debe al recurso."
+    }
+  ],
+  "answer": "deniega",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35,
+        57
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Auditoría de la seguridad",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "auditoria"
+    }
+  ]
+}

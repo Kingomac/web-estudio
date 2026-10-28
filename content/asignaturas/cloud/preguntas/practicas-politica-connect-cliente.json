@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-connect-cliente",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo con certificado válido tiene esta política y se conecta con el ID de cliente `camion-02`. ¿Qué ocurre?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Connect\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:client/camion-01\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Publish\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topic/trucks/camion-01/*\"\n    }\n  ]\n}\n```",
+  "explanation": "El certificado autentica al dispositivo, pero la política decide qué puede hacer. `iot:Connect` se evalúa sobre el recurso `client/<ID de cliente>` y solo permite `camion-01`, así que la conexión con `camion-02` se rechaza.",
+  "options": [
+    {
+      "id": "rechaza",
+      "text": "Se rechaza la conexión, porque `iot:Connect` solo permite el ID de cliente `camion-01`",
+      "explanation": "El ID de cliente forma parte del recurso autorizado por `iot:Connect`."
+    },
+    {
+      "id": "certificado",
+      "text": "Se conecta, porque `iot:Connect` solo comprueba que el certificado sea válido",
+      "explanation": "El certificado autentica; la autorización depende del recurso `client/...`."
+    },
+    {
+      "id": "publica-01",
+      "text": "Se conecta y publica en `trucks/camion-01/...`, porque el ID de cliente no interviene",
+      "explanation": "La conexión ya se deniega antes de publicar."
+    },
+    {
+      "id": "publica-02",
+      "text": "Se conecta, pero solo puede publicar en `trucks/camion-02/...`",
+      "explanation": "La política no se adapta al ID de cliente: no contiene variables."
+    }
+  ],
+  "answer": "rechaza",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        33,
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    },
+    {
+      "title": "AWS IoT · Acciones de las políticas",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-policy-actions.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

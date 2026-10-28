@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-jobs-path-default",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la plantilla personalizada de la actividad 4 aparece `\"input\": {\"handler\": \"device-client-config.sh\", \"path\": \"default\"}`. ¿Dónde busca el Device Client ese manejador?",
+  "explanation": "`path` indica la ubicación del manejador. Con `default` se usa el directorio de manejadores configurado en el Device Client (`handler-directory`, por defecto `/etc/.aws-iot-device-client/jobs`), que es donde se crea el script de la actividad.",
+  "options": [
+    {
+      "id": "handler-directory",
+      "text": "En el directorio de manejadores configurado en el Device Client",
+      "explanation": "`default` remite a la ubicación prevista en la configuración del cliente."
+    },
+    {
+      "id": "s3",
+      "text": "En el bucket S3 donde se guardó el documento del trabajo",
+      "explanation": "S3 almacena el documento o la plantilla, no el manejador que se ejecuta en el dispositivo."
+    },
+    {
+      "id": "usuario",
+      "text": "En el directorio personal del usuario indicado en `runAsUser`",
+      "explanation": "`runAsUser` fija la cuenta de ejecución, no la ubicación del manejador."
+    },
+    {
+      "id": "descarga",
+      "text": "Lo descarga AWS IoT junto con el documento, porque `default` indica un manejador gestionado por AWS",
+      "explanation": "El manejador debe existir ya en el dispositivo; el trabajo solo indica cuál ejecutar."
+    }
+  ],
+  "answer": "handler-directory",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 4 · Manejador de trabajos",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    },
+    {
+      "title": "Práctica 3 · Configuración del dispositivo IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/03-setup-your-iot-device/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

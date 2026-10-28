@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-tunel-agente",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué función tiene el agente de IoT del dispositivo remoto en la tunelización segura?",
+  "explanation": "El agente de IoT se conecta a AWS IoT y escucha en `$aws/things/thing-name/tunnels/notify`. Así recibe el mensaje con el token de acceso cliente (CAT) del dispositivo e inicia el proxy local con los parámetros adecuados.",
+  "options": [
+    {
+      "id": "notify",
+      "text": "Recibir en `$aws/things/thing-name/tunnels/notify` el token de acceso cliente (CAT) e iniciar el proxy local",
+      "explanation": "Es la función que el tema atribuye al agente."
+    },
+    {
+      "id": "genera",
+      "text": "Generar el CAT del dispositivo y enviárselo al técnico por SSH",
+      "explanation": "El CAT lo proporciona AWS IoT al abrir el túnel; el agente lo recibe."
+    },
+    {
+      "id": "firewall",
+      "text": "Abrir el puerto 22 del firewall al recibir la notificación",
+      "explanation": "No se modifican las reglas del firewall."
+    },
+    {
+      "id": "sustituye",
+      "text": "Sustituir al proxy local transportando el tráfico SSH dentro de mensajes MQTT",
+      "explanation": "El agente arranca el proxy; no transporta el tráfico del túnel."
+    }
+  ],
+  "answer": "notify",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        83
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tunel"
+    }
+  ]
+}

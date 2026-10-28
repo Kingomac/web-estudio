@@ -4,8 +4,8 @@
   "subjectId": "cloud",
   "slug": "autoevaluaciones-completas",
   "title": "Cloud Computing · Todas las autoevaluaciones",
-  "description": "24 preguntas con corrección y explicaciones: 23 actividades de autoevaluación de P1 y P2 y la pregunta adicional de P1.",
-  "scope": "Autoevaluaciones: 9 actividades de P1, 14 de P2 y 1 adicional de P1 sin solución publicada. Se excluyen las dos preguntas de recuento de alertas y temperatura mínima de las lecturas del camión 101. Incluye comprobaciones intermedias y cuestionarios finales. Las actividades abiertas se adaptan a selección y se precisan enunciados ambiguos. Las fuentes originales son HTML, citadas mediante sus enlaces y la lectura local, sin atribuirles páginas PDF. No se han localizado autoevaluaciones equivalentes de P3/P4 en la copia revisada.",
+  "description": "26 preguntas con corrección y explicaciones: 25 actividades de autoevaluación de P1 y P2 y la pregunta adicional de P1.",
+  "scope": "Autoevaluaciones: 9 actividades de P1, 16 de P2 y 1 adicional de P1 sin solución publicada. Incluye las dos preguntas de recuento de alertas y temperatura mínima de las lecturas del camión 101, comprobaciones intermedias y cuestionarios finales. Las actividades abiertas se adaptan a selección y se precisan enunciados ambiguos. Las fuentes originales son HTML, citadas mediante sus enlaces y la lectura local, sin atribuirles páginas PDF. No se han localizado autoevaluaciones equivalentes de P3/P4 en la copia revisada.",
   "tagIds": [
     "cloud.tags.aws-iot",
     "cloud.tags.practicas",
@@ -77,6 +77,15 @@
         "cloud.preguntas.p2-autoevaluacion-q5",
         "cloud.preguntas.p2-autoevaluacion-q6",
         "cloud.preguntas.p2-autoevaluacion-q7"
+      ]
+    },
+    {
+      "id": "p2-alertas",
+      "title": "P2 · Lecturas y alertas del camión 101",
+      "context": "Respuesta única a partir de las lecturas mostradas en la actividad de notificaciones.",
+      "questionIds": [
+        "cloud.preguntas.p2-alertas-q1",
+        "cloud.preguntas.p2-alertas-q2"
       ]
     },
     {

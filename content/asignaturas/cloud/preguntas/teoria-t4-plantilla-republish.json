@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-plantilla-republish",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una regla con `SELECT *, timestamp() AS timestamp FROM 'my/iot/topic'` tiene una acción `republish` con `\"topic\": \"${topic()}/republish\"`. Llega un mensaje a `my/iot/topic`. ¿Dónde y con qué datos se vuelve a publicar?",
+  "explanation": "La plantilla de sustitución `${topic()}` se evalúa con el tema del mensaje, así que el destino es `my/iot/topic/republish`. `SELECT *` conserva todos los campos y `timestamp() AS timestamp` añade la marca temporal.",
+  "options": [
+    {
+      "id": "completo",
+      "text": "En `my/iot/topic/republish`, con todos los campos originales más `timestamp`",
+      "explanation": "Combina la sustitución del tema con la proyección `*` más el campo calculado."
+    },
+    {
+      "id": "solo-timestamp",
+      "text": "En `my/iot/topic/republish`, solo con el campo `timestamp`",
+      "explanation": "`SELECT *` mantiene todos los campos de la carga útil; `timestamp` se añade a ellos."
+    },
+    {
+      "id": "literal",
+      "text": "En el tema literal `${topic()}/republish`, con todos los campos originales",
+      "explanation": "`${...}` es una plantilla que se evalúa al ejecutar la acción, no texto literal."
+    },
+    {
+      "id": "mismo",
+      "text": "En `my/iot/topic`, con todos los campos originales más `timestamp`",
+      "explanation": "La plantilla añade `/republish` al tema de origen."
+    }
+  ],
+  "answer": "completo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

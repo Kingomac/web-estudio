@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-sombra-desconectado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación actualiza la sombra de un dispositivo mientras este está sin conexión. ¿Qué ocurre?",
+  "explanation": "La aplicación puede seguir comunicándose con la sombra aunque el dispositivo esté desconectado. Cuando este se reconecta, recibe el estado actual de sus sombras y sincroniza el suyo con él.",
+  "options": [
+    {
+      "id": "sincroniza",
+      "text": "La sombra guarda el cambio y, al reconectarse, el dispositivo recibe el estado actual y se sincroniza",
+      "explanation": "Es precisamente la utilidad de la sombra con dispositivos intermitentes."
+    },
+    {
+      "id": "rechaza",
+      "text": "IoT Core rechaza la actualización hasta que el dispositivo vuelva a estar en línea",
+      "explanation": "La sombra está disponible tanto si el dispositivo está conectado como si no."
+    },
+    {
+      "id": "se-pierde",
+      "text": "El cambio se pierde si el dispositivo no lo confirma antes de que caduque su sesión MQTT",
+      "explanation": "El estado se almacena en el servicio de sombras, no en la sesión MQTT del dispositivo."
+    },
+    {
+      "id": "reported",
+      "text": "El servicio copia `desired` en `reported` para que la aplicación vea el cambio aplicado",
+      "explanation": "`reported` solo debe reflejar lo que comunica el dispositivo."
+    }
+  ],
+  "answer": "sincroniza",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        53,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sombras"
+    }
+  ]
+}

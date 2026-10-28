@@ -146,6 +146,7 @@
 &#125;
 </code></pre>
 <p><strong>Subscribe y Receive son permisos diferentes.</strong> Permitir publicar tampoco implica permitir suscribirse. Revisa acción, región, cuenta, tipo de recurso y nombre exacto. Las variables como <code>$&#123;iot:Connection.Thing.ThingName&#125;</code> se resuelven según la cosa de la conexión y permiten reutilizar políticas; no son literales de un nombre de dispositivo ni comodines MQTT.</p>
+<p><strong>Cómo se evalúa:</strong> lo que no se permite expresamente, se deniega. Las políticas IoT siguen las convenciones de IAM, así que <strong>un <code>Deny</code> explícito prevalece sobre un <code>Allow</code></strong> que cubra el mismo recurso, sin importar el orden de las declaraciones. <code>iot:Connect</code> se evalúa sobre el <strong>ID de cliente</strong>: con un certificado válido, conectarse con un ID no autorizado se rechaza igualmente.</p>
 <p><strong>Comodines de políticas:</strong> <code>*</code> abarca secuencias de caracteres y <code>?</code> un carácter. No tienen la misma semántica que <code>+</code> y <code>#</code> en filtros MQTT. En una política, <code>+</code> y <code>#</code> se tratan literalmente: pueden formar parte del filtro cuya suscripción autorizas, pero no amplían por sí solos el patrón del ARN. <code>*</code> no se limita a un solo nivel separado por <code>/</code>. La aclaración está contrastada con <a href="https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html">AWS, políticas pub/sub</a>.</p>
 <p><span class="no-print">Fuentes docentes: <a href="https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/">P1, políticas</a>, <a href="https://miot-cniot.github.io/es/cursos/practica_1/10-applying-security-certificates/">P1, aplicación de certificados</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=35">T4, p. 35</a>. </span>En los ejemplos siempre se explicita Resource; no se usa como regla general la frase del tutorial sobre omitirlo.</p>
 <h3 id="adicionales-1">Actividades adicionales de la práctica 1</h3>
@@ -207,7 +208,7 @@ FROM 'tema/o/filtro'
 WHERE condicion
 </code></pre>
 <p><code>FROM</code> selecciona el flujo MQTT; <code>WHERE</code> decide si la acción se ejecuta; <code>SELECT</code> determina qué se envía. No es una consulta a un histórico: se evalúa al llegar mensajes. En la práctica principal, <strong>truckAnalyze</strong> transforma datos de <code>truck/freezer</code> y los republica en <code>truck/analyze</code>: temperatura, voltaje, puerta y tiempo con formatos adaptados. El mensaje original sigue siendo el de entrada; la acción crea otra publicación con los datos procesados.</p>
-<p><strong>Basic Ingest:</strong> <code>$aws/rules/NOMBRE_REGLA/TEMA_ORIGINAL</code> dirige la ingestión a la regla sin pasar por el broker. Las acciones siguen existiendo; no es una forma de saltarse la autorización.</p>
+<p><strong>Basic Ingest:</strong> <code>$aws/rules/NOMBRE_REGLA/TEMA_ORIGINAL</code> dirige la ingestión a la regla sin pasar por el broker. Por eso solo se invoca esa regla y <strong>los suscriptores del tema original no reciben el mensaje</strong>. Las acciones siguen existiendo; no es una forma de saltarse la autorización.</p>
 <p class="no-print">Fuentes: <a href="https://miot-cniot.github.io/es/cursos/practica_2/06_rules_overview/">introducción a reglas</a>, <a href="https://miot-cniot.github.io/es/cursos/practica_2/07_applying_rules/">uso de reglas</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=41">T4, pp. 41-51</a>.</p>
 <h3 id="dynamodb">Actividad 1 · Persistir telemetría en DynamoDB</h3>
 <p>La regla <code>truck2ddb</code> selecciona <code>temp</code> y <code>door</code>, convierte sus tipos y guarda la salida en <code>device_data</code> de la tabla <code>trucks-data</code>:</p>
@@ -346,13 +347,15 @@ WHERE temp &gt; 20
 <p class="no-print">Fuentes: <a href="https://miot-cniot.github.io/es/cursos/practica_2/10_device_shadows/">P2, anatomía de sombras</a>, <a href="https://miot-cniot.github.io/es/cursos/practica_2/11_device_shadows/">sombras en acción</a>, <a href="https://miot-cniot.github.io/es/actividades/practica_2/actividade_3/">actividad adicional 3</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=53">T4, pp. 53-60</a>.</p>
 <h2 id="practica-3">Práctica 3 · Device Client</h2>
 <p><strong>Device SDK</strong> aporta bibliotecas para escribir una aplicación; <strong>Device Client</strong> es un cliente Linux con funcionalidades ya implementadas y configurables. Su configuración incluye endpoint, identidad, certificados y bloques de funciones como pub/sub, jobs, túneles o sensores. El archivo de configuración no es una política de autorización de AWS.</p>
+<p><strong>Credenciales:</strong> al crear la cosa se descargan cuatro archivos, y <strong>solo se pueden descargar en ese momento</strong>: certificado del dispositivo, clave privada, clave pública y certificado raíz de Amazon (<code>AmazonRootCA1.pem</code>). La configuración usa tres: <code>cert</code> y <code>key</code> para que el dispositivo se autentique, y <code>root-ca</code> para validar el endpoint ATS de IoT Core. La clave pública no se configura. La política del tutorial (<code>Action: *</code>, <code>Resource: *</code>) se asocia al certificado y luego la auditoría la corrige.</p>
+<p><strong>Mensajes de eventos:</strong> AWS IoT publica eventos por MQTT en temas <code>$aws/events/...</code>, por ejemplo al crear, actualizar o borrar cosas, o al terminar trabajos. <strong>Vienen desactivados por defecto porque tienen coste</strong> y la preparación de P3 los activa en la configuración de IoT Core. Sin ese paso, suscribirse a <code>$aws/events/...</code> no muestra nada.</p>
 <p>En la práctica, <code>pub-sub</code> utiliza un <strong>tema de publicación</strong> <code>/topic/workshop/dc/pub</code> y un <strong>tema de suscripción</strong> <code>/topic/workshop/dc/sub</code>. Los mensajes salientes se toman del archivo de publicación y los entrantes se guardan en el de suscripción. Son nombres respecto al dispositivo, no respecto a quien mira la consola.</p>
 <p><strong>Actividad 1:</strong> por defecto el mensaje del archivo se publica al iniciar/reiniciar el servicio. Con <code>"publish-on-change": true</code>, cambiar el archivo provoca una nueva publicación sin reiniciar por cada mensaje. Recibir en el archivo de suscripción no significa que se publique automáticamente ese mismo contenido.</p>
 <p><strong>Actividad 2:</strong> <code>sensor-publish</code> permite obtener datos de un sensor local mediante un <strong>socket de dominio UNIX</strong> y publicarlos por MQTT. La telemetría va a <code>/topic/workshop/dc/sensors/sensor01-data</code>; el heartbeat a <code>/topic/workshop/dc/sensors/sensor01-heartbeat</code>. En el ejemplo se comprueba conexión al socket cada 10 segundos y heartbeat cada 300, valores configurados/predeterminados del ejercicio. El heartbeat contiene el nombre del sensor; no es la lectura de temperatura ni el PINGREQ del protocolo MQTT.</p>
 <p class="no-print">Fuentes: <a href="https://miot-cniot.github.io/es/cursos/practica_3/03-setup-your-iot-device/">P3, configuración</a>, <a href="https://miot-cniot.github.io/es/cursos/practica_3/04-transmit-mqtt-messages/">mensajería</a>, <a href="https://miot-cniot.github.io/es/actividades/practica_3/actividade_1/">actividad 1</a> y <a href="https://miot-cniot.github.io/es/actividades/practica_3/actividade_2/">actividad 2</a>.</p>
 <h3 id="jobs">Trabajos remotos: documento, destino y ejecución</h3>
 <p><strong>Job</strong> = operación remota distribuida; <strong>documento JSON</strong> = instrucciones y parámetros; <strong>destinos</strong> = cosas/grupos; <strong>ejecución</strong> = instancia concreta en cada destino; <strong>handler</strong> = software local que interpreta/realiza la operación. El archivo a descargar y el documento que ordena descargarlo son objetos distintos.</p>
-<p>Un trabajo <strong>snapshot</strong> actúa sobre los destinos definidos al crearlo y termina cuando completan o informan que no pueden hacerlo. <strong>Continuous</strong> permanece disponible para nuevos dispositivos que se incorporan al grupo. Un lanzamiento por etapas controla el ritmo; timeout limita ejecuciones atascadas; condiciones de cancelación pueden detener un lanzamiento.</p>
+<p>Un trabajo <strong>snapshot</strong> actúa sobre los destinos definidos al crearlo y termina cuando completan o informan que no pueden hacerlo. <strong>Continuous</strong> permanece disponible para nuevos dispositivos que se incorporan al grupo. Un lanzamiento por etapas controla el ritmo; condiciones de cancelación pueden detener un lanzamiento. Con un <strong>tiempo límite</strong>, una ejecución que pasa demasiado tiempo en <code>IN_PROGRESS</code> falla, pasa al estado final <code>TIMED_OUT</code> y se notifica por MQTT; no se reintenta indefinidamente.</p>
 <p>El dispositivo recibe notificaciones, obtiene el documento, ejecuta el manejador e informa del progreso. <code>IN_PROGRESS</code> es ejecución en curso; <code>SUCCEEDED</code> es éxito de una ejecución; <code>TIMED_OUT</code> significa que venció el tiempo configurado. No confundas el estado global del job con el de una ejecución individual.</p>
 <p>Plantillas gestionadas por AWS disponibles: Download-File, Install-Application, Remove-Application, Start-Application, Restart-Application, Stop-Application, Run-Command y Reboot. <strong><code>runAsUser</code> y <code>pathToHandler</code> son comunes a todas</strong>; el resto de parámetros depende de la operación.</p>
 <p>Las URL prefirmadas permiten acceso temporal a objetos de S3. Un enlace provisional en el documento puede sustituirse por una URL prefirmada al solicitarlo; no convierte el bucket en público.</p>
@@ -424,7 +427,8 @@ WHERE temp &gt; 20
 </tr>
 </tbody>
 </table></div>
-<p>En la plantilla administrada <strong>Download-File</strong>, el manejador es <code>download-file.sh</code>; los parámetros son <code>downloadUrl</code>, <code>filePath</code>, <code>pathToHandler</code> y <code>runAsUser</code>. En su JSON aparecen sustituciones como <code>$&#123;aws:iot:parameter:downloadUrl&#125;</code>. Reconoce <strong>nombre del parámetro y finalidad</strong>, sin estudiar el script del manejador.</p>
+<p>En la plantilla administrada <strong>Download-File</strong>, el manejador es <code>download-file.sh</code>; los parámetros son <code>downloadUrl</code>, <code>filePath</code>, <code>pathToHandler</code> y <code>runAsUser</code>. En su JSON aparecen sustituciones como <code>$&#123;aws:iot:parameter:downloadUrl&#125;</code>: <strong>se rellenan con los valores que se introducen al crear el trabajo</strong> y AWS IoT genera con ellos el documento. En el tutorial, <code>runAsUser</code> es el mismo usuario que ejecuta el servicio Device Client (<code>root</code>) y <code>pathToHandler</code> el directorio de manejadores. Reconoce <strong>nombre del parámetro y finalidad</strong>, sin estudiar el script del manejador.</p>
+<p>Los dos documentos de esta sección son <strong>documentos de trabajo</strong>: <code>operation</code>/<code>args</code> es el esquema anterior, usado en la OTA personalizada del tutorial; <code>version</code>/<code>steps</code>/<code>action</code> es el más reciente, usado por las plantillas. No los confundas con una sombra (<code>state</code>), una receta Greengrass (<code>ComponentName</code>, <code>Manifests</code>) o una política (<code>Effect</code>).</p>
 <p>La actividad personalizada publica la configuración del Device Client dentro de un objeto <code>conf</code>, usando el archivo de publicación y la mensajería configurada. Guardar el JSON en S3, crear una plantilla y crear un trabajo son operaciones diferentes; disponer de una plantilla no significa que se haya ejecutado nada.</p>
 <p class="no-print">Fuente: <a href="https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/">P3, actividad 4: manejador y plantillas</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=74">T4, p. 74</a>.</p>
 <h3 id="temas-jobs">Temas reservados de trabajos</h3>
@@ -470,16 +474,37 @@ WHERE temp &gt; 20
 </tr>
 </tbody>
 </table></div>
-<p>La actividad observa específicamente <code>deviceConfig/completed</code> y <code>deviceConfig/succeeded</code> dentro de sus respectivas familias. <strong><code>$aws/things</code> y <code>$aws/events</code> no son prefijos intercambiables</strong>. Además de suscribirse, en el laboratorio se habilitan los eventos correspondientes.</p>
+<p>La actividad observa específicamente <code>deviceConfig/completed</code> y <code>deviceConfig/succeeded</code> dentro de sus respectivas familias. <strong><code>$aws/things</code> y <code>$aws/events</code> no son prefijos intercambiables</strong>: en <code>$aws/things/...</code> habla el dispositivo con el servicio de trabajos; los <code>$aws/events/...</code> los publica AWS IoT. <code>job/.../completed</code> se refiere al trabajo completo y <code>jobExecution/.../succeeded</code> a una ejecución en un destino. Los eventos solo llegan si se activaron los mensajes de eventos, que vienen desactivados por defecto.</p>
 <p class="no-print">Fuentes: <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=75">T4, pp. 75-76</a>, <a href="https://miot-cniot.github.io/es/cursos/practica_3/02-lets-begin/">P3, preparación</a> y actividad 4.</p>
 <h3 id="tunel">Actividad 3 · Túnel seguro</h3>
 <p>La instancia de <strong>origen</strong> es la del operador; la de <strong>destino</strong> es el dispositivo IoT. Un proxy en cada extremo enlaza con el servicio de túneles. En destino el Device Client incorpora esa función; en origen se usa el proxy local ejecutado mediante un contenedor Docker.</p>
 <p>AWS genera un <strong>CAT para cada extremo</strong>. El agente de destino escucha <code>$aws/things/THING/tunnels/notify</code> y recibe el suyo. Después, la sesión SSH atraviesa el túnel: el CAT da acceso al túnel, pero SSH conserva su autenticación con claves autorizadas.</p>
-<p><strong>OPEN/CLOSED</strong> es el estado del túnel; <strong>CONNECTED/DISCONNECTED</strong>, el de cada extremo. Un túnel OPEN puede tener un extremo desconectado. Ambos deben conectarse para completar la ruta. Cerrar la sesión SSH, desconectar el proxy y cerrar el túnel no son lo mismo. Según la actividad, un túnel cerrado no se reabre: se crea otro; su duración predeterminada es 12 horas en ese escenario.</p>
+<p><strong>OPEN/CLOSED</strong> es el estado del túnel; <strong>CONNECTED/DISCONNECTED</strong>, el de cada extremo. Un túnel OPEN puede tener un extremo desconectado. Ambos deben conectarse para completar la ruta. Cerrar la sesión SSH, desconectar el proxy y cerrar el túnel no son lo mismo. Según la actividad, un túnel cerrado no se reabre: se crea otro, con nuevos tokens. Se cierra explícitamente o al vencer su duración máxima (<code>MaxLifetimeTimeout</code>, 12 horas por defecto).</p>
+<p><strong>Por qué, nada más crearlo, el destino aparece conectado y el origen no:</strong> el Device Client del destino recibe su CAT por <code>tunnels/notify</code> y, como incluye proxy local, se conecta solo. El CAT del origen se descarga al crear el túnel y no se conecta hasta que el operador arranca su proxy local con él.</p>
 <p>No requiere abrir nuevos puertos de entrada en el firewall remoto; sí necesita conectividad saliente hacia AWS. El puerto local 5555 del ejemplo pertenece al proxy de origen, no al puerto habitual del demonio SSH de destino.</p>
 <p class="no-print">Fuente: <a href="https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/">P3, actividad de túnel seguro</a> y <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=82">T4, pp. 82-85</a>.</p>
 <h3 id="auditoria">Auditoría de seguridad del tutorial</h3>
 <p>El tutorial de P3 incluye Device Defender: <strong>auditar configuración</strong>, detectar políticas demasiado permisivas o identidades compartidas, activar registros y repetir la auditoría después de corregir. Una política con todas las acciones y todos los recursos no sigue privilegio mínimo. Ver el resultado de una auditoría anterior no comprueba la corrección posterior.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Incidencia de la auditoría</th>
+<th>Corrección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Políticas de IoT excesivamente permisivas: <code>workshopDC</code> permitía <code>*</code> sobre <code>*</code>.</td>
+<td>Nueva versión de la política, con privilegio mínimo, establecida como versión activa.</td>
+</tr>
+<tr>
+<td>Registro desactivado.</td>
+<td>Activar los registros de AWS IoT con un rol de log y un nivel (DEBUG en el tutorial).</td>
+</tr>
+</tbody>
+</table></div>
+<p>La política corregida limita cada recurso a la cosa conectada mediante variables, por ejemplo <code>topic/$aws/things/$&#123;iot:Connection.Thing.ThingName&#125;/*</code> para publicar y recibir, la misma ruta como <code>topicfilter/</code> para suscribirse, y <code>client/$&#123;iot:Connection.Thing.ThingName&#125;</code> para conectarse. Así el dispositivo puede usar sus propias sombras y trabajos, pero <strong>no los temas reservados de otra cosa</strong>: el <code>*</code> va después del nombre de la cosa.</p>
+<p>Device Defender, además, publica alertas en la consola de AWS IoT, CloudWatch y SNS. Ofrece <strong>acciones de mitigación integradas</strong>, como añadir cosas a un grupo, reemplazar la versión predeterminada de una política o actualizar el certificado. La auditoría puede ser programada (diaria en el tutorial) o puntual, e informa: no corrige sola.</p>
 <p>El tutorial avisa de que la función de <strong>detección</strong> de Device Defender dejó de estar disponible en septiembre de 2026; la <strong>auditoría</strong>, que es lo que se practica, sigue disponible.</p>
 <p class="no-print">Fuente: <a href="https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/">P3, auditoría</a>.</p>
 <h2 id="practica-4">Práctica 4 · Greengrass</h2>
@@ -525,6 +550,43 @@ WHERE temp &gt; 20
 </table></div>
 <p>En la receta reconoce <code>ComponentName</code>, <code>ComponentVersion</code>, <code>ComponentPublisher</code>, <code>ComponentConfiguration</code>, <code>ComponentDependencies</code>, <code>Manifests</code>, <code>Platform</code>, <code>Lifecycle</code> y <code>Artifacts</code>. <code>Lifecycle</code> indica qué ejecutar al instalar/arrancar, mientras <code>Artifacts</code> indica qué obtener. <code>&#123;artifacts:path&#125;</code> referencia la ubicación de artefactos y <code>&#123;artifacts:decompressedPath&#125;</code> la de artefactos descomprimidos; no son rutas literales escritas así en el disco.</p>
 <p>Publicar no despliega automáticamente en todos los dispositivos. Actualizar el componente requiere una versión y un despliegue que la seleccione. Una incompatibilidad de plataforma o de dependencias puede impedir ejecución aunque el archivo exista en S3. El flujo practicado es <strong>probar localmente → subir artefactos → registrar componente → desplegar → revisar estado/logs → actualizar</strong>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Si en una receta ves…</th>
+<th>Significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"Platform": &#123;"os": "linux", "architecture": "amd64"&#125;</code></td>
+<td>El manifiesto solo sirve para esa plataforma. Si ningún manifiesto coincide con el núcleo (p. ej. ARM), el componente no se puede desplegar en él.</td>
+</tr>
+<tr>
+<td><code>"Artifacts": [&#123;"URI": "s3://…/custom.zip", "Unarchive": "ZIP"&#125;]</code></td>
+<td>Greengrass descarga el artefacto de S3 y lo descomprime. Por eso el script usa <code>&#123;artifacts:decompressedPath&#125;</code> y no <code>&#123;artifacts:path&#125;</code>.</td>
+</tr>
+<tr>
+<td><code>&#123;configuration:/LocalTopic&#125;</code></td>
+<td>Valor de la configuración del propio componente.</td>
+</tr>
+<tr>
+<td><code>&#123;variant.DLR:configuration:/MLRootPath&#125;</code></td>
+<td>Valor de la configuración de otro componente, aquí la dependencia <code>variant.DLR</code>.</td>
+</tr>
+<tr>
+<td><code>"RequiresPrivilege": "true"</code></td>
+<td>Ese paso del ciclo de vida se ejecuta con privilegios de administrador (root) en el dispositivo. No es un permiso IAM ni IoT.</td>
+</tr>
+<tr>
+<td><code>setEnv</code> / <code>Setenv</code></td>
+<td>Variables de entorno para los scripts del ciclo de vida.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Despliegue local frente a despliegue desde AWS:</strong> el local usa la CLI de Greengrass con directorios de recetas y artefactos del propio dispositivo, sin S3 ni registro. Para desplegar desde AWS IoT hay que subir los artefactos a S3, apuntar a ellos con <code>URI</code> en la receta y registrar la versión del componente; después se crea o revisa un despliegue.</p>
+<p><strong>Revisar en vez de duplicar:</strong> cada dispositivo tiene un único despliegue vigente por destino. Para añadir un componente público, como el de clasificación DLR, se agrega al despliegue existente del grupo <code>GreengrassQuickStartGroup</code>. Un despliegue nuevo para ese grupo con solo el componente sustituiría al anterior y retiraría los demás.</p>
+<p><strong>Roles en la instalación:</strong> Greengrass se instala con el <strong>rol de intercambio de tokens</strong> <code>LabRole</code> y su alias <code>LabRoleAlias</code>. Con ellos el núcleo obtiene, a través del proveedor de credenciales de AWS IoT, credenciales temporales para servicios AWS como S3 (artefactos) o CloudWatch (logs). No es la política IoT del certificado, que autoriza MQTT. Tampoco es el <strong>rol de servicio</strong> de Greengrass que necesitan los brokers predefinidos y que <code>LabRole</code> no puede asumir.</p>
 <p class="no-print">Fuentes: <a href="/web-estudio/materiales/cloud/practica-4.pdf#page=8">P4, pp. 8-13</a>, <a href="/web-estudio/materiales/cloud/tema-4.pdf#page=13">T4, pp. 13-17</a> y <a href="https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/">actividad ML personalizada</a> para los campos y variables de receta.</p>
 <h3 id="ipc">IPC, logs y consola local</h3>
 <p><strong>IPC pub/sub</strong> comunica componentes localmente en el core device. El ejemplo Publisher/Subscriber de P4 intercambia mensajes por ese mecanismo. <strong>MQTT hacia IoT Core</strong> cruza la conexión con la nube. Usar el mismo nombre de tema en ambos no los conecta automáticamente: hace falta el componente o puente correspondiente y sus permisos.</p>

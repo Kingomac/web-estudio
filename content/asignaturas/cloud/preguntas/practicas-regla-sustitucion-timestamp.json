@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-regla-sustitucion-timestamp",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la actividad de DynamoDB, una acción de regla asigna a `sample_time` la plantilla de sustitución `${timestamp()}`. ¿Qué valor recibe ese campo?",
+  "explanation": "Las plantillas de sustitución permiten insertar valores dinámicos en los parámetros de una acción. `timestamp()` aporta la marca temporal generada al evaluar la regla, sin necesidad de que el dispositivo incluya ese campo en el mensaje.",
+  "options": [
+    {
+      "id": "evaluacion",
+      "text": "La marca temporal obtenida mediante la función `timestamp()` al procesar la regla",
+      "explanation": "La plantilla se sustituye por el resultado dinámico de la función."
+    },
+    {
+      "id": "literal",
+      "text": "La cadena literal `${timestamp()}` en todos los registros",
+      "explanation": "La acción evalúa la plantilla en lugar de guardar su texto sin procesar."
+    },
+    {
+      "id": "temperatura",
+      "text": "El valor del campo `temp` del mensaje convertido en fecha",
+      "explanation": "La función no toma la temperatura como entrada."
+    },
+    {
+      "id": "obligatorio",
+      "text": "Un campo `sample_time` que el dispositivo debe incluir obligatoriamente en el JSON",
+      "explanation": "La regla genera el valor, por lo que no depende de que venga en el mensaje."
+    }
+  ],
+  "answer": "evaluacion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        48
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 1 · DynamoDB",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "dynamodb"
+    }
+  ]
+}

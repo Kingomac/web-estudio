@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-hvm",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué caracteriza a la virtualización asistida por hardware (HVM) en x86?",
+  "explanation": "Las extensiones VT-x de Intel y AMD-V permiten ejecutar sistemas operativos invitados sin modificarlos, mientras el hipervisor usa el soporte del procesador para gestionar la virtualización.",
+  "options": [
+    {
+      "id": "sin-modificar",
+      "text": "El SO invitado puede ejecutarse sin modificaciones gracias a extensiones como VT-x o AMD-V",
+      "explanation": "Es la aportación principal de la virtualización asistida por hardware."
+    },
+    {
+      "id": "kernel-compartido",
+      "text": "Todos los invitados comparten obligatoriamente el kernel del anfitrión",
+      "explanation": "Eso corresponde a contenedores, no a máquinas virtuales HVM."
+    },
+    {
+      "id": "paravirtualizado",
+      "text": "El SO invitado debe modificarse para llamar directamente al hipervisor",
+      "explanation": "Esa descripción corresponde a la paravirtualización."
+    },
+    {
+      "id": "sin-hipervisor",
+      "text": "El invitado accede al hardware sin ningún hipervisor ni mecanismo de aislamiento",
+      "explanation": "HVM sigue empleando un hipervisor y soporte hardware para aislar las máquinas virtuales."
+    }
+  ],
+  "answer": "sin-modificar",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "x86"
+    }
+  ]
+}

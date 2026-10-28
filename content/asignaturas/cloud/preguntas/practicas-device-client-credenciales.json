@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-device-client-credenciales",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Al crear la cosa del Device Client se descargan cuatro archivos: certificado del dispositivo, clave privada, clave pública y certificado raíz de Amazon (`AmazonRootCA1.pem`). ¿Cuáles se indican en la configuración del cliente y para qué?",
+  "explanation": "La configuración usa `cert`, `key` y `root-ca`. El certificado y la clave privada autentican al dispositivo en la conexión TLS mutua; el certificado raíz de la CA de Amazon permite al dispositivo validar el endpoint ATS de IoT Core. La clave pública no se configura. Además, los archivos solo pueden descargarse una vez al crear la cosa.",
+  "options": [
+    {
+      "id": "tres",
+      "text": "Certificado y clave privada para autenticar al dispositivo, y certificado raíz para validar el endpoint de IoT Core",
+      "explanation": "Son los tres archivos de la configuración y cada uno cumple su papel en TLS mutuo."
+    },
+    {
+      "id": "publica",
+      "text": "Certificado y clave pública para autenticar al dispositivo; la clave privada se queda en la consola de AWS",
+      "explanation": "La clave privada debe estar en el dispositivo; la pública no se configura en el cliente."
+    },
+    {
+      "id": "raiz-dispositivo",
+      "text": "Solo el certificado raíz de Amazon, que identifica al dispositivo ante IoT Core",
+      "explanation": "El certificado raíz valida a IoT Core; la identidad del dispositivo es su propio certificado."
+    },
+    {
+      "id": "cuatro-politica",
+      "text": "Los cuatro, porque la clave pública contiene la política IoT que autoriza al dispositivo",
+      "explanation": "La política se asocia al certificado en AWS IoT; no viaja en la clave pública."
+    }
+  ],
+  "answer": "tres",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        33,
+        62
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Configuración del dispositivo IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/03-setup-your-iot-device/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

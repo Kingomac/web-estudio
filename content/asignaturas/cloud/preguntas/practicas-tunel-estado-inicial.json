@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-tunel-estado-inicial",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Nada más crear el túnel seguro de la actividad 3, la consola muestra el destino conectado y el origen desconectado. ¿Por qué?",
+  "explanation": "Al crear el túnel se genera un par de tokens. El Device Client del destino recibe el suyo por MQTT y, como incluye proxy local, se conecta al túnel sin más pasos. El token del origen se descarga y solo se conecta cuando el operador arranca el proxy local con él.",
+  "options": [
+    {
+      "id": "tokens",
+      "text": "El Device Client del destino recibe su token por MQTT y se conecta; el origen espera a que el operador arranque el proxy con el token descargado",
+      "explanation": "Cada extremo tiene su token y se conecta por su cuenta."
+    },
+    {
+      "id": "orden",
+      "text": "El origen solo puede conectarse después de que se abra una sesión SSH en el destino",
+      "explanation": "Es al revés: la sesión SSH se abre a través del túnel una vez conectados ambos extremos."
+    },
+    {
+      "id": "un-token",
+      "text": "AWS genera un único token que primero usa el destino y después se envía al origen",
+      "explanation": "Se genera un par de tokens, uno para cada extremo."
+    },
+    {
+      "id": "firewall",
+      "text": "El destino se conecta porque AWS abre un puerto de entrada en su firewall",
+      "explanation": "No se modifican las reglas de entrada del firewall; el destino se conecta hacia AWS."
+    }
+  ],
+  "answer": "tokens",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        83
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 3 · Túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

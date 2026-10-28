@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-sylva",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué planteamiento tecnológico propone Sylva para la infraestructura cloud nativa de telecomunicaciones?",
+  "explanation": "Sylva propone una capa de infraestructura común y abierta basada en Kubernetes multiclúster sobre bare metal, con despliegues automatizados y gestión GitOps, incluida IaC, para reducir la fragmentación.",
+  "options": [
+    {
+      "id": "kubernetes-gitops",
+      "text": "Una plataforma CaaS abierta con Kubernetes multiclúster, despliegues automatizados y GitOps",
+      "explanation": "Recoge la arquitectura de referencia descrita por el tema."
+    },
+    {
+      "id": "propietaria",
+      "text": "Una plataforma cerrada para un único proveedor, sin automatización ni control de versiones",
+      "explanation": "Contradice la apertura, automatización y gestión GitOps de Sylva."
+    },
+    {
+      "id": "vm-manual",
+      "text": "Una máquina virtual única configurada manualmente para toda la red del operador",
+      "explanation": "Sylva se basa en infraestructura cloud nativa y Kubernetes multiclúster."
+    },
+    {
+      "id": "mqtt",
+      "text": "Un broker MQTT central que sustituye la infraestructura de computación",
+      "explanation": "MQTT es un protocolo de mensajería; no define la plataforma CaaS de Sylva."
+    }
+  ],
+  "answer": "kubernetes-gitops",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        37
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "virtualizacion-continuo"
+    }
+  ]
+}

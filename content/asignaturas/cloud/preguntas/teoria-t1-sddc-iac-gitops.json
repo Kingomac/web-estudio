@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-sddc-iac-gitops",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En un centro de datos definido por software (SDDC), ¿qué relación hay entre infraestructura como código (IaC) y GitOps?",
+  "explanation": "IaC expresa la infraestructura mediante definiciones declarativas y automatizables. GitOps usa un repositorio Git como fuente de verdad de esas definiciones y automatiza su reconciliación con el entorno.",
+  "options": [
+    {
+      "id": "iac-gitops",
+      "text": "IaC define la infraestructura como código y GitOps usa Git como fuente de verdad para automatizar su despliegue y reconciliación",
+      "explanation": "GitOps se apoya en definiciones IaC y mantiene el estado deseado bajo control de versiones."
+    },
+    {
+      "id": "cambios-manuales",
+      "text": "IaC versiona la infraestructura en archivos de texto, pero GitOps aplica los cambios a mano desde la consola",
+      "explanation": "En GitOps los cambios pasan por pipelines CI/CD, de forma reproducible, auditable y reversible."
+    },
+    {
+      "id": "invertido",
+      "text": "GitOps describe la infraestructura en archivos de texto e IaC es el pipeline CI/CD que la despliega",
+      "explanation": "Los papeles están invertidos: IaC describe la infraestructura y GitOps hace del repositorio la fuente de verdad."
+    },
+    {
+      "id": "anterior-sddc",
+      "text": "IaC y GitOps precedieron al SDDC, que sustituyó los archivos de texto por interfaces estandarizadas",
+      "explanation": "El orden es el contrario: el concepto de SDDC evolucionó hacia IaC y GitOps."
+    }
+  ],
+  "answer": "iac-gitops",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-1"
+    }
+  ]
+}

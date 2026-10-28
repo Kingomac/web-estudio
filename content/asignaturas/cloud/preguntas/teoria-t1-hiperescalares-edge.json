@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t1-hiperescalares-edge",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Según la comparación del continuo de computación en hiperescalares, ¿qué equivalencia es correcta para ejecutar servicios en el borde?",
+  "explanation": "La tabla sitúa AWS Greengrass, Azure IoT Edge y Google Distributed Cloud software en la capa de borde, como ofertas para extender servicios de nube fuera del centro de datos central.",
+  "options": [
+    {
+      "id": "edge",
+      "text": "AWS Greengrass · Azure IoT Edge · Google Distributed Cloud software",
+      "explanation": "Son las tres ofertas alineadas en la fila de borde de la tabla."
+    },
+    {
+      "id": "regiones",
+      "text": "AWS Regions · Azure Edge Zones · Google Cloud Regions",
+      "explanation": "Azure Edge Zones no es la oferta regional equivalente a AWS Regions y Google Cloud Regions."
+    },
+    {
+      "id": "dispositivos",
+      "text": "AWS Wavelength · Azure Sphere · Google Coral",
+      "explanation": "Mezcla una oferta MEC/5G con dos de dispositivos; no representa la fila de borde."
+    },
+    {
+      "id": "gestion",
+      "text": "Amazon EKS Anywhere · Azure IoT Hub · Google Coral",
+      "explanation": "Combina gestión de Kubernetes, gestión IoT y hardware de dispositivo, por lo que no es una equivalencia de capa."
+    }
+  ],
+  "answer": "edge",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        77
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

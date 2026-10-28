@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-sombra-con-nombre-uso",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una cosa tiene muchas propiedades y se quiere que una aplicación solo pueda acceder a una parte de ellas. ¿Qué solución propone el tema 4?",
+  "explanation": "Cada cosa tiene una única sombra clásica, pero puede tener múltiples sombras con nombre. Agrupar propiedades en sombras con nombre permite controlar con políticas el acceso a cada grupo. Sus temas MQTT solo difieren en el prefijo.",
+  "options": [
+    {
+      "id": "con-nombre",
+      "text": "Agrupar esas propiedades en sombras con nombre distintas y controlar el acceso a cada una con políticas",
+      "explanation": "Es uno de los usos de las sombras con nombre que recoge el tema."
+    },
+    {
+      "id": "varias-clasicas",
+      "text": "Crear varias sombras clásicas para la misma cosa, una por grupo de propiedades",
+      "explanation": "Cada cosa solo puede tener una sombra clásica."
+    },
+    {
+      "id": "otro-prefijo",
+      "text": "Usar sombras con nombre, cuyos temas MQTT no usan el prefijo `$aws/things` y escapan a las políticas",
+      "explanation": "Los temas difieren solo en el prefijo y siguen requiriendo autorización."
+    },
+    {
+      "id": "metadata",
+      "text": "Marcar las propiedades restringidas en `metadata` para ocultarlas a la aplicación",
+      "explanation": "`metadata` guarda las marcas de tiempo de actualización de `state`, no permisos."
+    }
+  ],
+  "answer": "con-nombre",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        57,
+        58,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sombras"
+    }
+  ]
+}

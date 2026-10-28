@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-politica-comodin-mqtt",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo tiene esta política e intenta publicar en `trucks/camion-01/telemetry`. ¿Qué ocurre?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Publish\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topic/trucks/+/telemetry\"\n    }\n  ]\n}\n```",
+  "explanation": "En los recursos de una política, `+` y `#` no son comodines MQTT, sino caracteres literales. El comodín de las políticas es `*`, por ejemplo `topic/trucks/*/telemetry`. Como el tema no coincide literalmente, la publicación se deniega.",
+  "options": [
+    {
+      "id": "deniega",
+      "text": "Se deniega: en el ARN de la política `+` es un carácter literal; el comodín sería `*`",
+      "explanation": "Los comodines MQTT no funcionan como tales en los recursos de las políticas."
+    },
+    {
+      "id": "permite",
+      "text": "Se permite, porque `+` sustituye exactamente un nivel, como en un filtro de suscripción",
+      "explanation": "Esa semántica es la de los filtros MQTT, no la de los ARN de una política."
+    },
+    {
+      "id": "topicfilter",
+      "text": "Se deniega, porque `iot:Publish` solo acepta recursos `topicfilter`",
+      "explanation": "`iot:Publish` se evalúa sobre recursos `topic`; el problema es el `+`."
+    },
+    {
+      "id": "un-nivel",
+      "text": "Se permite solo si el cliente se conectó con el ID `camion-01`",
+      "explanation": "La política no usa variables ni relaciona el tema con el ID de cliente."
+    }
+  ],
+  "answer": "deniega",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    },
+    {
+      "title": "AWS IoT · Políticas de publicación y suscripción",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t2-region-az-pop",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué descripción distingue correctamente una región, una zona de disponibilidad (AZ) y un punto de presencia (PoP) de AWS?",
+  "explanation": "Una región es un área geográfica con varias AZ aisladas; cada AZ agrupa uno o más centros de datos. Los PoP pertenecen a la red de entrega de contenido y acercan las cachés a los usuarios.",
+  "options": [
+    {
+      "id": "correcta",
+      "text": "Una región contiene varias AZ aisladas; un PoP acerca la entrega de contenido a los usuarios",
+      "explanation": "Distingue la infraestructura regional de cómputo de la red periférica de CloudFront."
+    },
+    {
+      "id": "pop-region",
+      "text": "Una AZ contiene varias regiones y cada PoP es una región independiente",
+      "explanation": "Invierte la jerarquía: las regiones contienen AZ y los PoP no son regiones."
+    },
+    {
+      "id": "mismo",
+      "text": "Región, AZ y PoP son tres nombres para el mismo centro de datos",
+      "explanation": "Representan niveles y funciones distintas de la infraestructura."
+    },
+    {
+      "id": "pop-respaldo",
+      "text": "Una región es una única sala y una AZ es una caché de respaldo de CloudFront",
+      "explanation": "Una región abarca varias AZ y las cachés de CloudFront se ubican en PoP, no en la definición de AZ."
+    }
+  ],
+  "answer": "correcta",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        7,
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

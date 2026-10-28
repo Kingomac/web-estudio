@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-greengrass-logs",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre los logs de Greengrass es correcta?",
+  "explanation": "Por defecto, `/greengrass/v2/logs/greengrass.log` recoge el log del núcleo y cada componente escribe en su propio `ComponentName.log`. Para subirlos a CloudWatch hay que desplegar y configurar el componente Log Manager; no es automático.",
+  "options": [
+    {
+      "id": "correcta",
+      "text": "El núcleo usa `greengrass.log`, cada componente tiene su propio log y Log Manager puede enviarlos a CloudWatch",
+      "explanation": "Describe tanto la ubicación lógica de los logs como el componente necesario para exportarlos."
+    },
+    {
+      "id": "main",
+      "text": "El log principal del núcleo es `main.log` y todos los componentes escriben en ese mismo archivo",
+      "explanation": "El log del núcleo es `greengrass.log` y los componentes tienen archivos separados."
+    },
+    {
+      "id": "automatico",
+      "text": "Todos los logs se suben a CloudWatch y se borran localmente sin configurar nada",
+      "explanation": "La subida requiere Log Manager y su configuración; el borrado es una opción independiente."
+    },
+    {
+      "id": "solo-local",
+      "text": "Cada componente tiene su propio log, pero los logs solo pueden consultarse en el dispositivo: Greengrass no puede enviarlos a CloudWatch",
+      "explanation": "Con el componente Log Manager configurado, los logs pueden subirse a CloudWatch."
+    }
+  ],
+  "answer": "correcta",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Monitorización de logs",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/monitor-logs.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ipc"
+    }
+  ]
+}

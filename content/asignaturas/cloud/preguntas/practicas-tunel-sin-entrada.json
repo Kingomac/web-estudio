@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-tunel-sin-entrada",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo está detrás de un firewall que no permite conexiones entrantes. ¿Cómo permite la tunelización segura de AWS IoT abrir una sesión SSH sin modificar esa regla?",
+  "explanation": "El agente del dispositivo recibe la notificación y arranca un proxy local que establece una conexión saliente TLS con el servicio de túneles, normalmente por un puerto permitido como 443. El proxy del otro extremo conecta la sesión del usuario con ese túnel.",
+  "options": [
+    {
+      "id": "saliente",
+      "text": "Los proxies establecen conexiones salientes con TLS hacia el túnel; no hace falta abrir un puerto de entrada en el dispositivo",
+      "explanation": "La conexión saliente atraviesa el firewall y el túnel transporta después la sesión SSH."
+    },
+    {
+      "id": "entrante",
+      "text": "AWS abre automáticamente el puerto 22 de entrada en el firewall del dispositivo",
+      "explanation": "La ventaja del mecanismo es evitar cambios en las reglas de entrada."
+    },
+    {
+      "id": "sin-tls",
+      "text": "El proxy del dispositivo acepta tráfico TCP sin cifrar directamente desde Internet",
+      "explanation": "El túnel usa TLS y no exige exponer el dispositivo sin cifrar."
+    },
+    {
+      "id": "sombra",
+      "text": "La sombra publica la contraseña SSH para que cualquier cliente se conecte directamente",
+      "explanation": "La sombra no participa en la autenticación ni en el establecimiento del túnel."
+    }
+  ],
+  "answer": "saliente",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        82,
+        83
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Actividad adicional 3 · Túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

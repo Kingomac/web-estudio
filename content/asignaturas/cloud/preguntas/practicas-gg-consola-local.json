@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-gg-consola-local",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué es la consola de depuración local de la sección 11 de la práctica 4 y cómo se accede a ella en el laboratorio?",
+  "explanation": "Es un componente de Greengrass que ofrece una interfaz web en el propio núcleo para ver detalles del dispositivo y el estado de sus componentes. En el laboratorio se accede con reenvío de puertos SSH a la instancia, usando la clave del Learner Lab. No es la consola de AWS ni un túnel seguro de IoT.",
+  "options": [
+    {
+      "id": "componente-ssh",
+      "text": "Un componente que sirve una interfaz web local del núcleo, a la que se accede con reenvío de puertos SSH",
+      "explanation": "Es un componente desplegado en el núcleo y el laboratorio lo alcanza por SSH."
+    },
+    {
+      "id": "tunel",
+      "text": "Una vista de la consola de AWS IoT a la que se llega mediante un túnel seguro",
+      "explanation": "No usa el servicio de túneles seguros de la práctica 3."
+    },
+    {
+      "id": "cloudwatch",
+      "text": "El panel de CloudWatch donde Log Manager publica los logs del núcleo",
+      "explanation": "Eso es la consola de CloudWatch; la consola de depuración se ejecuta en el dispositivo."
+    },
+    {
+      "id": "cli",
+      "text": "Otro nombre de la CLI de Greengrass que se usa en el terminal",
+      "explanation": "La CLI es otro componente; la consola local es una interfaz web."
+    }
+  ],
+  "answer": "componente-ssh",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        16,
+        17
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Consola de depuración local",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/local-debug-console-component.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ipc"
+    }
+  ]
+}

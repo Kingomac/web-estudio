@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-sensor-publish",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En la actividad 2 de la práctica 3, un simulador de sensor y la función `sensor-publish` del Device Client envían telemetría a IoT Core. ¿Cómo se reparten el trabajo?",
+  "explanation": "El simulador crea un socket de dominio UNIX y espera conexiones. El Device Client se conecta a él, lee los datos separados por el delimitador configurado y los publica por MQTT en el tema de datos. Además, publica periódicamente en el tema de heartbeat un mensaje que solo contiene el nombre del sensor.",
+  "options": [
+    {
+      "id": "socket",
+      "text": "El sensor escucha en un socket UNIX; el Device Client se conecta, lee los datos y los publica por MQTT, además de un heartbeat con el nombre del sensor",
+      "explanation": "Describe los papeles y los dos temas de la actividad."
+    },
+    {
+      "id": "sensor-mqtt",
+      "text": "El sensor publica directamente por MQTT en IoT Core y el Device Client solo envía el heartbeat",
+      "explanation": "El simulador no habla MQTT; quien publica es el Device Client."
+    },
+    {
+      "id": "heartbeat-lectura",
+      "text": "El Device Client publica la última lectura en el tema de heartbeat cada 300 segundos",
+      "explanation": "El heartbeat solo contiene el nombre del sensor."
+    },
+    {
+      "id": "archivo",
+      "text": "El sensor escribe en el archivo de publicación y `publish-on-change` lo envía a IoT Core",
+      "explanation": "Eso es la mensajería por archivos de la actividad 1, no `sensor-publish`."
+    }
+  ],
+  "answer": "socket",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 2 · Telemetría de sensores",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_2/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

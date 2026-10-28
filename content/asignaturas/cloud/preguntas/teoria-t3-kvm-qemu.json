@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t3-kvm-qemu",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En una solución de virtualización con KVM y QEMU, ¿cómo se reparten las funciones?",
+  "explanation": "KVM incorpora capacidades de hipervisor al kernel de Linux y aprovecha las extensiones hardware. QEMU proporciona la emulación de dispositivos y la máquina virtual que utiliza el invitado.",
+  "options": [
+    {
+      "id": "kvm-qemu",
+      "text": "KVM aporta la virtualización desde el kernel y QEMU emula el hardware de la máquina virtual",
+      "explanation": "Ambos componentes se complementan para ejecutar la máquina virtual."
+    },
+    {
+      "id": "qemu-kernel",
+      "text": "QEMU sustituye al kernel de Linux y KVM se limita a almacenar imágenes Docker",
+      "explanation": "KVM es un hipervisor integrado en Linux; QEMU no sustituye al kernel."
+    },
+    {
+      "id": "contenedores",
+      "text": "KVM y QEMU configuran contenedores que comparten el kernel del anfitrión",
+      "explanation": "La combinación se usa para máquinas virtuales, no para contenedores con kernel compartido."
+    },
+    {
+      "id": "red",
+      "text": "KVM gestiona exclusivamente SDN y QEMU actúa como registro de imágenes",
+      "explanation": "Ninguna de esas es la función central de KVM o QEMU en la virtualización de servidores."
+    }
+  ],
+  "answer": "kvm-qemu",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tecnicas-virtualizacion"
+    }
+  ]
+}

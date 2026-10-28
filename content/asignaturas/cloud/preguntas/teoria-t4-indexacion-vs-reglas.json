@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.teoria-t4-indexacion-vs-reglas",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué tarea corresponde a la indexación de flotas de AWS IoT y no al motor de reglas de IoT Core?",
+  "explanation": "La indexación de flotas permite buscar y agregar información sobre cosas, grupos, sombras y otros datos indexados. El motor de reglas evalúa mensajes MQTT y ejecuta acciones sobre ellos.",
+  "options": [
+    {
+      "id": "buscar",
+      "text": "Consultar y agregar datos indexados para localizar cosas con determinadas características",
+      "explanation": "Buscar y analizar la flota es la finalidad de la indexación."
+    },
+    {
+      "id": "sql",
+      "text": "Filtrar un mensaje MQTT con una sentencia SQL y publicarlo en otro tema",
+      "explanation": "Evaluar mensajes y ejecutar una acción corresponde al motor de reglas."
+    },
+    {
+      "id": "basic-ingest",
+      "text": "Reducir el coste de ingestión enviando mensajes directamente a través de Basic Ingest",
+      "explanation": "Basic Ingest utiliza el motor de reglas sin publicar mediante el broker convencional."
+    },
+    {
+      "id": "dynamodb",
+      "text": "Insertar los datos de un mensaje en DynamoDB mediante una acción",
+      "explanation": "Es una acción del motor de reglas, no una búsqueda de flotas."
+    }
+  ],
+  "answer": "buscar",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        78
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "aprovisionamiento"
+    }
+  ]
+}

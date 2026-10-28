@@ -4,8 +4,8 @@
   "subjectId": "cloud",
   "slug": "simulacro-practicas",
   "title": "Cloud Computing · Simulacro de prácticas",
-  "description": "18 preguntas de respuesta única sobre los formatos que anunció el profesor: temas MQTT, políticas, temas reservados, sombras y documentos de trabajos.",
-  "scope": "Prácticas 1-4 y sus actividades adicionales, sin código de scripts. Formatos según T4 pp. 14-15, 35, 44, 51, 57-60, 72-76 y 83, y los tutoriales enlazados.",
+  "description": "59 preguntas de respuesta única sobre conceptos, formatos y actividades de las cuatro prácticas: temas MQTT, políticas, reglas, sombras, Device Client, trabajos, túnel seguro, Device Defender y Greengrass.",
+  "scope": "Prácticas 1-4 y sus actividades adicionales, sin código de scripts. Formatos según T4 pp. 13-17, 33-35, 44, 48, 51, 57-60, 62, 72-76 y 82-88, P4 pp. 8-17, y los tutoriales y referencias técnicas enlazados.",
   "tagIds": [
     "cloud.tags.aws-iot",
     "cloud.tags.practicas",
@@ -15,14 +15,21 @@
   "groups": [
     {
       "id": "mqtt-politicas",
-      "title": "Temas MQTT y políticas IoT",
+      "title": "Temas MQTT, conexiones y políticas IoT",
       "context": "Respuesta única, como en la prueba de Moovi.",
       "questionIds": [
         "cloud.preguntas.practicas-filtro-mqtt-valido",
         "cloud.preguntas.practicas-filtro-mas-un-nivel",
         "cloud.preguntas.practicas-politica-subscribe-recurso",
         "cloud.preguntas.practicas-politica-effect",
-        "cloud.preguntas.practicas-lwt-quien-publica"
+        "cloud.preguntas.practicas-politica-json-completa",
+        "cloud.preguntas.practicas-politica-deny-explicito",
+        "cloud.preguntas.practicas-politica-subscribe-sin-receive",
+        "cloud.preguntas.practicas-politica-comodin-mqtt",
+        "cloud.preguntas.practicas-politica-connect-cliente",
+        "cloud.preguntas.practicas-politica-certificado",
+        "cloud.preguntas.practicas-lwt-quien-publica",
+        "cloud.preguntas.practicas-qos-duplicados"
       ]
     },
     {
@@ -32,6 +39,8 @@
       "questionIds": [
         "cloud.preguntas.practicas-basic-ingest",
         "cloud.preguntas.practicas-regla-where-estricto",
+        "cloud.preguntas.practicas-regla-sustitucion-timestamp",
+        "cloud.preguntas.practicas-dynamodb-cast",
         "cloud.preguntas.practicas-sombra-tema-update",
         "cloud.preguntas.practicas-sombra-con-nombre",
         "cloud.preguntas.practicas-sombra-delta"
@@ -39,24 +48,70 @@
     },
     {
       "id": "device-client-jobs",
-      "title": "Device Client, trabajos y túneles",
+      "title": "Device Client y trabajos remotos",
       "context": "Respuesta única, como en la prueba de Moovi.",
       "questionIds": [
-        "cloud.preguntas.practicas-device-client-publish-on-change",
+        "cloud.preguntas.practicas-device-client-credenciales",
+        "cloud.preguntas.practicas-device-client-sub",
+        "cloud.preguntas.practicas-sensor-publish",
         "cloud.preguntas.practicas-jobs-notify-next",
         "cloud.preguntas.practicas-jobs-get-accepted",
         "cloud.preguntas.practicas-jobs-runhandler",
         "cloud.preguntas.practicas-jobs-plantilla-comun",
-        "cloud.preguntas.practicas-tunel-notify"
+        "cloud.preguntas.practicas-jobs-parametros-plantilla",
+        "cloud.preguntas.practicas-jobs-path-default",
+        "cloud.preguntas.practicas-jobs-esquemas",
+        "cloud.preguntas.practicas-jobs-eventos-activar",
+        "cloud.preguntas.practicas-jobs-completed-succeeded",
+        "cloud.preguntas.practicas-jobs-timeout",
+        "cloud.preguntas.practicas-jobs-url-prefirmada"
+      ]
+    },
+    {
+      "id": "tunel-defender",
+      "title": "Túnel seguro y Device Defender",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.practicas-tunel-notify",
+        "cloud.preguntas.practicas-tunel-sin-entrada",
+        "cloud.preguntas.practicas-tunel-estado-inicial",
+        "cloud.preguntas.practicas-tunel-localhost",
+        "cloud.preguntas.practicas-tunel-cat-ssh",
+        "cloud.preguntas.practicas-tunel-cerrado",
+        "cloud.preguntas.practicas-defender-auditoria",
+        "cloud.preguntas.practicas-defender-incidencias",
+        "cloud.preguntas.practicas-politica-minimo-privilegio"
       ]
     },
     {
       "id": "greengrass",
-      "title": "Greengrass",
+      "title": "Greengrass · Recetas y despliegues",
       "context": "Respuesta única, como en la prueba de Moovi.",
       "questionIds": [
         "cloud.preguntas.practicas-greengrass-lifecycle",
-        "cloud.preguntas.practicas-ipc-ml-imagen"
+        "cloud.preguntas.practicas-gg-manifiesto-plataforma",
+        "cloud.preguntas.practicas-gg-decompressedpath",
+        "cloud.preguntas.practicas-gg-configuracion-dependencia",
+        "cloud.preguntas.practicas-gg-requiresprivilege",
+        "cloud.preguntas.practicas-gg-token-exchange-role",
+        "cloud.preguntas.practicas-publicar-vs-desplegar",
+        "cloud.preguntas.practicas-gg-local-vs-nube",
+        "cloud.preguntas.practicas-gg-revisar-despliegue"
+      ]
+    },
+    {
+      "id": "greengrass-ipc-ml",
+      "title": "Greengrass · IPC, bridge, ML y diagnóstico",
+      "context": "Respuesta única, como en la prueba de Moovi.",
+      "questionIds": [
+        "cloud.preguntas.practicas-access-control-ipc",
+        "cloud.preguntas.practicas-gg-ipc-mqtt",
+        "cloud.preguntas.practicas-ipc-ml-imagen",
+        "cloud.preguntas.practicas-dlr-componentes",
+        "cloud.preguntas.practicas-mosquitto-rol-academy",
+        "cloud.preguntas.practicas-gg-bridge-mensajes",
+        "cloud.preguntas.practicas-greengrass-logs",
+        "cloud.preguntas.practicas-gg-consola-local"
       ]
     }
   ]

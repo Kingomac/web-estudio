@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.practicas-qos-duplicados",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación no debe tratar como dos lecturas distintas un mismo mensaje reenviado por MQTT. ¿Qué nivel de QoS exige prestar especial atención a los duplicados y por qué?",
+  "explanation": "QoS 1 garantiza entrega al menos una vez: el emisor reenvía hasta recibir confirmación, por lo que un mensaje puede llegar duplicado. QoS 0 no retransmite para asegurar la entrega y admite pérdidas.",
+  "options": [
+    {
+      "id": "qos1",
+      "text": "QoS 1, porque la retransmisión hasta recibir confirmación puede producir entregas duplicadas",
+      "explanation": "La garantía «al menos una vez» obliga a contemplar duplicados."
+    },
+    {
+      "id": "qos0-exacto",
+      "text": "QoS 0, porque siempre entrega cada mensaje exactamente dos veces",
+      "explanation": "QoS 0 no garantiza entrega ni realiza dos entregas sistemáticas."
+    },
+    {
+      "id": "qos1-exacto",
+      "text": "QoS 1, porque impide duplicados mediante entrega exactamente una vez",
+      "explanation": "QoS 1 significa al menos una vez, no exactamente una vez."
+    },
+    {
+      "id": "ninguno",
+      "text": "Ninguno, porque MQTT elimina siempre los duplicados en el receptor",
+      "explanation": "El receptor puede recibir duplicados con QoS 1 y debe tratarlos si afectan a la aplicación."
+    }
+  ],
+  "answer": "qos1",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Conexiones de dispositivos",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/08_device_connections/"
+    },
+    {
+      "title": "AWS IoT Core · MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "conexiones"
+    }
+  ]
+}
