@@ -1,0 +1,84 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t1-diapo-cuantificador-1",
+  "subjectId": "dispositivos",
+  "slug": "t1-diapo-cuantificador-1",
+  "title": "T1 · Diapositivas · Cuantificador del ±1 %",
+  "description": "Niveles, bits, resolución y error máximo de un cuantificador uniforme.",
+  "scope": "Ejercicio de la diapositiva 87 del tema 1.",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "order": 70,
+  "mode": "form",
+  "prompt": "¿Qué número mínimo de niveles binarios garantiza un error de cuantificación máximo de ±1 %? Indica bits, resolución y error máximo resultante.",
+  "explanation": "El error máximo es ±1/2^(n+1). Para que no supere el 1 %, 2^n ≥ 50; con código binario hay que tomar 64 niveles (6 bits). Resolución 1/64 = 1,56 % y error ±0,78 %.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        85,
+        86,
+        87
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "adc"
+    }
+  ],
+  "fields": [
+    {
+      "id": "niveles",
+      "label": "Niveles",
+      "type": "number",
+      "answer": 64,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "niveles",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "2^n ≥ 50 → la potencia de 2 siguiente es 64."
+    },
+    {
+      "id": "bits",
+      "label": "Bits",
+      "type": "number",
+      "answer": 6,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "bits",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "2^6 = 64."
+    },
+    {
+      "id": "res",
+      "label": "Resolución",
+      "type": "number",
+      "answer": 1.5625,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "%",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "1/64 = 1,5625 %."
+    },
+    {
+      "id": "err",
+      "label": "Error máximo",
+      "type": "number",
+      "answer": 0.78,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "%",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "±1/(2·64) = ±0,78 %."
+    }
+  ],
+  "steps": [
+    "Error máximo = ±1/(2·2^n) ≤ 0,01 → 2^n ≥ 50.",
+    "Potencia de 2 siguiente: 64 → 6 bits.",
+    "Resolución 1/64 = 1,56 %; error ±0,78 %."
+  ]
+}

@@ -1,0 +1,50 @@
+<h2 id="tema-1">Tema 1 · Sensores</h2>
+
+```text
+S = Xmax − Xmin        FSO = Ymax − Ymin        sensibilidad = FSO/S
+εFS = εa / S           %FSO usado = excursión / FSO
+Puente: Vo = VA·R1/(R1+R4) − VA·R2/(R2+R3)     equilibrio R1/R4 = R2/R3
+Inversor −R2/R1 · No inversor 1+R2/R1 · Diferencial simétrico (R2/R1)(V2−V1)
+Instrumentación G = 1 + 2R1/Rg      CMRR = Ad/Ac
+Acondicionamiento Vo = G·Vs + D:  G = ΔVo/ΔVs,  D = Vo,min − G·Vs,min
+ADC: N = 2^n · LSB = FS/2^n · exacta FS/(N−1) · error ±LSB/2 · código = Vi/LSB
+Nyquist fs ≥ 2·fmax
+```
+
+<h2 id="temas-2-3">Temas 2 y 3 · Buses, sensores y actuadores</h2>
+
+```text
+UART: tb = 1/bps · 8N1 = 10 bits/carácter · 9600 bps → 104 µs/bit, 960 car/s
+I²C: 9 ciclos de SCL por byte (8 + ACK) · Sm 100 k · Fm 400 k · arbitraje: gana el 0
+SPI: modo = (CPOL, CPHA): 0 = (0,0) · 1 = (0,1) · 2 = (1,0) · 3 = (1,1)
+Galga R = ρL/A · cuarto de puente Vo = (Vs/4)·ΔR/(R + ΔR/2)
+RTD R = R0(1 + αT) · NTC R = R0·e^(β(1/T − 1/T0)) [K] · R1 = (β−2Tc)/(β+2Tc)·R(Tc)
+Termopar ΔV = α·ΔT · LDR R = R0(L0/L)^α · Hall VH = I·B·RH/dp · Faraday V = −N·dΦ/dt
+Encoder R = πD/(2ar) · ultrasonidos vs = vs0·√(1 + T/273), d = vs·t/2
+```
+
+<h2 id="temas-4-5">Temas 4 y 5 · Alimentación y energy harvesting</h2>
+
+```text
+Q = I·t = C·ΔV        E = ½·C·(V1² − V2²)       C = 2E/(V1² − V2²) = Q/ΔV
+E = Vmedia·I·t        Psal = η·Pent              t carga = E/Psal
+Adaptación: P = Voc²/(4R)        mAh · 3,6 = culombios
+Solar: P = irradiancia · área · rendimiento
+Piezo: Vp = Ip/(ω·Cp)    medio puente Voc = 2Vp, MPP Vp    onda completa Voc = Vp, MPP Vp/2
+       Pmax = Cp·f·Vp²   · con interruptor ×2   · SSHI ×4
+Peltier: V = SE·ΔT − I·RE     RE = V/I (ΔT = 0)    SE = ΔV/ΔT    RT = ΔTM/PM
+Célula: IL ∥ diodo ∥ Rp, Rs en serie;   I = IL − I0·(e^(V/VT) − 1) − V/Rp
+```
+
+<h2 id="tema-6">Tema 6 · Antenas y enlace</h2>
+
+```text
+dB = 10·log(p) · 20·log(v)    λ = c/f    |Γ| = (VSWR−1)/(VSWR+1)
+pat = pt(1−|Γ|²)   prad = η·pat   g = η·d   pire = pat·g = prad·d = 1,64·pra
+∫∫ d·sen θ dθ dφ = 4π            e_ef = √(30·pire)/r      s = pire/(4πr²)
+Pr = PIRE + Gr − Lbf − Ae + PLF − Lrc       Lbf = 20·log(4πr/λ)
+r = (λ/4π)·10^(Lbf/20)     plf: cos²α · 0,5 · 1 · 0
+HPBW: puntos a mitad de potencia; FNBW: entre nulos (anchos completos)
+```
+
+Este formulario resume las fórmulas de los tres apuntes. Antes del examen, rehaz sin mirar un problema de cada tema.

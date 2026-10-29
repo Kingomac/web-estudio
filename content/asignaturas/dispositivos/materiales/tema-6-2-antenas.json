@@ -1,0 +1,22 @@
+{
+  "id": "dispositivos.materiales.tema-6-2-antenas",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "tema-6-2-antenas",
+  "title": "Tema 6.2 · Antenas",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas de antenas: campos, impedancia y desadaptación, parámetros de radiación, diagramas, tipos de antena y antena receptora.",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica"
+  ],
+  "order": 41,
+  "file": "materiales/dispositivos/tema-6-2-antenas.pdf",
+  "format": "pdf",
+  "providedName": "Tema 6.2.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 42,
+  "sha256": "eca0addea65c28828f14206efea112a7ed790f4961a93adf15aab741e33c3bba"
+}

@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t3-inductivo-capacitivo",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Hay que detectar el nivel de un líquido no conductor en un depósito sin contacto. ¿Qué sensor de proximidad es adecuado?",
+  "explanation": "El capacitivo detecta objetos metálicos y no metálicos; el inductivo solo metálicos.",
+  "options": [
+    {
+      "id": "cap",
+      "text": "Capacitivo",
+      "explanation": "Correcto: basta con que la constante dieléctrica sea distinta de la del aire."
+    },
+    {
+      "id": "ind",
+      "text": "Inductivo",
+      "explanation": "Solo detecta objetos metálicos (conductores)."
+    },
+    {
+      "id": "reed",
+      "text": "Reed",
+      "explanation": "Necesita un campo magnético, por ejemplo un imán en una boya."
+    },
+    {
+      "id": "final",
+      "text": "Final de carrera",
+      "explanation": "Es un sensor con contacto."
+    }
+  ],
+  "answer": "cap",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        74,
+        81,
+        84,
+        85
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "cuestiones"
+    }
+  ]
+}

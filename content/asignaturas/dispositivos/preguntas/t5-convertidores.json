@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t5-convertidores",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "¿Qué adaptación necesita cada generador según el tema 5? (Elige todas las correctas)",
+  "explanation": "Peltier: elevador; fotovoltaico: reductor; piezoeléctrico: rectificador; radiofrecuencia: antena y multiplicador de tensión.",
+  "options": [
+    {
+      "id": "pel",
+      "text": "Módulo Peltier → convertidor dc-dc elevador",
+      "explanation": "Correcto: da tensiones de mV."
+    },
+    {
+      "id": "pv",
+      "text": "Módulo solar → convertidor dc-dc reductor",
+      "explanation": "Correcto según la diapositiva 5.1."
+    },
+    {
+      "id": "pz",
+      "text": "Piezoeléctrico → rectificador",
+      "explanation": "Correcto: genera corriente alterna."
+    },
+    {
+      "id": "pzdc",
+      "text": "Piezoeléctrico → solo un convertidor dc-dc, sin rectificar",
+      "explanation": "Su salida es alterna: hace falta rectificar."
+    }
+  ],
+  "answer": [
+    "pel",
+    "pv",
+    "pz"
+  ],
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "cuestiones"
+    }
+  ]
+}

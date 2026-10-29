@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t1-nyquist",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una señal de vibración tiene componentes hasta 2 kHz. ¿Cuál es la frecuencia de muestreo mínima para poder reconstruirla?",
+  "explanation": "Nyquist: fs ≥ 2·fmax = 4 kHz.",
+  "options": [
+    {
+      "id": "a",
+      "text": "4 kHz",
+      "explanation": "Correcto: el doble de la frecuencia máxima."
+    },
+    {
+      "id": "b",
+      "text": "2 kHz",
+      "explanation": "Igual a fmax: no cumple el teorema de muestreo."
+    },
+    {
+      "id": "c",
+      "text": "1 kHz",
+      "explanation": "Es la mitad de fmax: produce aliasing."
+    },
+    {
+      "id": "d",
+      "text": "20 kHz",
+      "explanation": "Sería válida, pero no es la mínima."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        78
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "adc"
+    }
+  ]
+}

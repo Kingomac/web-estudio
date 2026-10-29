@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t2-i2c-lineas",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.buses",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué líneas usa el bus I²C?",
+  "explanation": "I²C (TWI) usa SDA para datos y SCL para el reloj, ambas con pull-up.",
+  "options": [
+    {
+      "id": "a",
+      "text": "SDA y SCL",
+      "explanation": "Correcto: datos y reloj compartidos por todos los dispositivos."
+    },
+    {
+      "id": "b",
+      "text": "TX y RX",
+      "explanation": "Son las líneas de la UART."
+    },
+    {
+      "id": "c",
+      "text": "MOSI, MISO, SCLK y CS",
+      "explanation": "Son las líneas de SPI."
+    },
+    {
+      "id": "d",
+      "text": "Solo SDA",
+      "explanation": "También necesita SCL, porque es síncrono."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-2-comunicacion",
+      "anchor": "i2c"
+    }
+  ]
+}

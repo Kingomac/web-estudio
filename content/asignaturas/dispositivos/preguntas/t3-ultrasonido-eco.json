@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t3-ultrasonido-eco",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un sensor de ultrasonidos de eco recibe el eco 2 ms después de emitir y el sonido viaja a 343 m/s. ¿A qué distancia está el objeto?",
+  "explanation": "El tiempo incluye ida y vuelta: d = 343·0,002/2 = 0,343 m.",
+  "options": [
+    {
+      "id": "a",
+      "text": "34,3 cm",
+      "explanation": "Correcto: la mitad del recorrido total."
+    },
+    {
+      "id": "b",
+      "text": "68,6 cm",
+      "explanation": "Es el recorrido de ida y vuelta, no la distancia al objeto."
+    },
+    {
+      "id": "c",
+      "text": "17,2 cm",
+      "explanation": "Divide entre dos dos veces."
+    },
+    {
+      "id": "d",
+      "text": "3,43 m",
+      "explanation": "Error de un factor 10 al pasar los milisegundos."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        89,
+        91
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "problemas"
+    }
+  ]
+}

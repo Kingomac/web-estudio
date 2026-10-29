@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "dispositivos.tags.buses",
+  "subjectId": "dispositivos",
+  "slug": "buses",
+  "title": "Tema 2 · Comunicación y buses",
+  "type": "topic",
+  "order": 12
+}

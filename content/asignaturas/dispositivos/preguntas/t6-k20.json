@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t6-k20",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué se usa 20·log en lugar de 10·log al expresar en dB una relación de campos o tensiones?",
+  "explanation": "La potencia es proporcional al cuadrado del campo o de la tensión: 10·log(V²) = 20·log(V).",
+  "options": [
+    {
+      "id": "a",
+      "text": "Porque la potencia es proporcional al cuadrado de la tensión o el campo",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "Porque los campos se miden en dBu",
+      "explanation": "La unidad de referencia no cambia el factor."
+    },
+    {
+      "id": "c",
+      "text": "Porque la tensión se reparte entre dos resistencias",
+      "explanation": "No tiene relación con el factor 20."
+    },
+    {
+      "id": "d",
+      "text": "Es una convención sin motivo físico",
+      "explanation": "Proviene de P ∝ V²."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-1-espectro",
+      "pdfPages": [
+        5,
+        6
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "decibelios"
+    }
+  ]
+}

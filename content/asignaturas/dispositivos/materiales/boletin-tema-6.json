@@ -1,0 +1,23 @@
+{
+  "id": "dispositivos.materiales.boletin-tema-6",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "boletin-tema-6",
+  "title": "Boletín · Ejercicios a entregar del tema 6",
+  "description": "Boletín de problemas original de la asignatura.",
+  "scope": "Enunciados de los dos problemas de antenas y balance de enlace publicados en Moovi, sin soluciones.",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.boletines"
+  ],
+  "order": 45,
+  "file": "materiales/dispositivos/boletin-tema-6.pdf",
+  "format": "pdf",
+  "providedName": "Tema 6 - Moovi 2025 10 21.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "boletin",
+  "pageCount": 1,
+  "sha256": "01ac93410148b59f06e78213d42b7c9a44e236cf63429641391a7d2cea40dc52"
+}

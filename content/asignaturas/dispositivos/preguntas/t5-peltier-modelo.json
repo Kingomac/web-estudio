@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t5-peltier-modelo",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el modelo eléctrico de un módulo Peltier usado como generador?",
+  "explanation": "Fuente SE·(TH − TL) en serie con RE: V = SE·ΔT − I·RE.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Fuente SE·(TH − TL) en serie con RE",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "Fuente de corriente en paralelo con Cp",
+      "explanation": "Ese es el modelo piezoeléctrico."
+    },
+    {
+      "id": "c",
+      "text": "Fuente de corriente IL con un diodo y Rp en paralelo",
+      "explanation": "Ese es el modelo de la célula fotovoltaica."
+    },
+    {
+      "id": "d",
+      "text": "Resistencia térmica RT en serie con la carga",
+      "explanation": "RT pertenece al modelo térmico, no al eléctrico."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        20,
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "peltier"
+    }
+  ]
+}

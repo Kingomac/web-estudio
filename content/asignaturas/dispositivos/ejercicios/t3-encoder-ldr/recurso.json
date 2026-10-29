@@ -1,0 +1,60 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t3-encoder-ldr",
+  "subjectId": "dispositivos",
+  "slug": "t3-encoder-ldr",
+  "title": "T3 · Práctica · Encoder óptico y LDR",
+  "description": "Sustitución directa en las fórmulas del encoder y de la fotorresistencia.",
+  "scope": "Práctica propia basada en las pp. 37 y 58 del tema 3.",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "order": 250,
+  "mode": "form",
+  "prompt": "a) Un encoder tiene un disco de 50 mm de diámetro con ranuras de 0,5 mm. Calcula su resolución R = πD/(2ar). b) Una LDR mide 10 kΩ con 10 lux y α = 0,7. ¿Cuánto mide con 100 lux?",
+  "explanation": "a) R = π·50/(2·0,5) ≈ 157. b) R = 10k·(10/100)^0,7 ≈ 2,0 kΩ: más luz, menos resistencia.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        37,
+        58
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "problemas"
+    }
+  ],
+  "fields": [
+    {
+      "id": "enc",
+      "label": "Resolución del encoder",
+      "type": "number",
+      "answer": 157.08,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "ranuras/vuelta",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "π·50/1 = 157,1."
+    },
+    {
+      "id": "ldr",
+      "label": "Resistencia de la LDR con 100 lux",
+      "type": "number",
+      "answer": 1.995,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "kΩ",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "10·0,1^0,7 = 1,995 kΩ."
+    }
+  ],
+  "steps": [
+    "Encoder: π·50/(2·0,5) = 157.",
+    "LDR: 10 kΩ·0,1^0,7 ≈ 2,0 kΩ."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t1-lsb-error",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un ADC de 12 bits tiene un margen de 0 a 4,096 V. ¿Cuál es su error de cuantificación máximo?",
+  "explanation": "LSB = 4,096/4096 = 1 mV y el error máximo es ±LSB/2 = ±0,5 mV.",
+  "options": [
+    {
+      "id": "a",
+      "text": "±0,5 mV",
+      "explanation": "Correcto: la mitad del intervalo de cuantificación."
+    },
+    {
+      "id": "b",
+      "text": "±1 mV",
+      "explanation": "Es el LSB completo; el error máximo es la mitad."
+    },
+    {
+      "id": "c",
+      "text": "±0,024 %",
+      "explanation": "0,024 % es la resolución relativa 1/4096, no el error máximo."
+    },
+    {
+      "id": "d",
+      "text": "±4,096 mV",
+      "explanation": "Sería el LSB de un ADC de 10 bits con 4,096 V de margen."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        84,
+        85,
+        86
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "adc"
+    }
+  ]
+}

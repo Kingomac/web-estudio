@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t4-seebeck",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué relación hay entre los efectos Seebeck, Peltier y Thompson?",
+  "explanation": "La tensión de Seebeck es la suma de los efectos Thompson (en cada metal) y Peltier (en las uniones). Peltier y Thompson son reversibles.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Seebeck = Thompson + Peltier",
+      "explanation": "Correcto según la diapositiva del efecto Seebeck."
+    },
+    {
+      "id": "b",
+      "text": "Peltier = Seebeck + Joule",
+      "explanation": "El efecto Joule es irreversible y no forma parte de la tensión termoeléctrica."
+    },
+    {
+      "id": "c",
+      "text": "Thompson = Seebeck − Joule",
+      "explanation": "No es la relación de las diapositivas."
+    },
+    {
+      "id": "d",
+      "text": "Son tres nombres del mismo efecto",
+      "explanation": "Son efectos distintos que se combinan."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        12,
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "cuestiones"
+    }
+  ]
+}

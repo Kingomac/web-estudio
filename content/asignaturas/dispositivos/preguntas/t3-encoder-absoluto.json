@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t3-encoder-absoluto",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué distingue a un encoder absoluto de uno incremental?",
+  "explanation": "El absoluto codifica la posición en bandas concéntricas en código Gray; el incremental cuenta pulsos y usa dos pares desfasados para el sentido.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Da la posición directamente con bandas en código Gray",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "Tiene dos pares emisor-receptor desfasados ¼ de ranura",
+      "explanation": "Eso es lo que permite al incremental conocer el sentido de giro."
+    },
+    {
+      "id": "c",
+      "text": "Da una tensión analógica proporcional a la velocidad",
+      "explanation": "Eso es un tacogenerador."
+    },
+    {
+      "id": "d",
+      "text": "Usa un sensor Hall en lugar de luz",
+      "explanation": "Ese es el encoder magnético, que puede ser de cualquier tipo."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        38,
+        39,
+        41,
+        42
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "cuestiones"
+    }
+  ]
+}

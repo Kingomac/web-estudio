@@ -1,0 +1,108 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t6-p2-cobertura",
+  "subjectId": "dispositivos",
+  "slug": "t6-p2-cobertura",
+  "title": "T6 · Problema 2 · Distancia de cobertura",
+  "description": "Balance de enlace en dB con desadaptación en recepción y un obstáculo.",
+  "scope": "Problema 2 del boletín del tema 6.",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 170,
+  "mode": "form",
+  "prompt": "A 3 GHz, la PIRE es −10 dBm; la antena receptora tiene 8 dBi y VSWR = 1,2 (plf = 1, espacio libre). Se quieren −70 dBm entregados al receptor. Calcula Lrc, Lbf, la distancia máxima y la nueva PIRE si un obstáculo añade 10 dB.",
+  "explanation": "|Γr| = 1/11 y Lrc = 0,036 dB. Del balance −70 = −10 + 8 − Lbf − 0,036 sale Lbf = 67,96 dB y, con λ = 0,1 m, r ≈ 19,9 m. El obstáculo se compensa subiendo la PIRE 10 dB: 0 dBm.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-tema-6",
+      "pdfPages": [
+        1
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-3-balance-enlace",
+      "pdfPages": [
+        2,
+        4,
+        7
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        12,
+        33
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-1-espectro",
+      "pdfPages": [
+        7,
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "enlace"
+    }
+  ],
+  "fields": [
+    {
+      "id": "lrc",
+      "label": "Pérdida por desadaptación Lrc",
+      "type": "number",
+      "answer": 0.036,
+      "absTol": 0,
+      "relTol": 0.03,
+      "unit": "dB",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "|Γ| = 0,2/2,2; −10·log(1 − 1/121) = 0,036 dB."
+    },
+    {
+      "id": "lbf",
+      "label": "Pérdida básica en espacio libre",
+      "type": "number",
+      "answer": 67.96,
+      "absTol": 0,
+      "relTol": 0.002,
+      "unit": "dB",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Lbf = −10 + 8 + 70 − 0,036 = 67,96 dB."
+    },
+    {
+      "id": "r",
+      "label": "Distancia máxima",
+      "type": "number",
+      "answer": 19.9,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "m",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "r = (0,1/4π)·10^(67,96/20) = 19,9 m."
+    },
+    {
+      "id": "pire",
+      "label": "PIRE con el obstáculo",
+      "type": "number",
+      "answer": 0,
+      "absTol": 0.01,
+      "relTol": 0,
+      "unit": "dBm",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Hay que subirla 10 dB: −10 + 10 = 0 dBm (1 mW)."
+    }
+  ],
+  "hint": "Pr = PIRE + Gr − Lbf − Lrc, todo en dB.",
+  "steps": [
+    "λ = c/f = 0,1 m.",
+    "Lrc = 0,036 dB.",
+    "Lbf = 67,96 dB.",
+    "r = (λ/4π)·10^(Lbf/20) ≈ 19,9 m.",
+    "Obstáculo: +10 dB de PIRE → 0 dBm."
+  ]
+}

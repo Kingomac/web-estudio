@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t2-arbitraje",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.buses",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Dos maestros I²C empiezan a la vez dirigiéndose a 0x68 (1101000) y 0x60 (1100000). ¿Qué ocurre?",
+  "explanation": "En el cuarto bit, 0x68 envía 1 y 0x60 envía 0. La línea queda a 0; el maestro de 0x68 detecta que no coincide, pierde el arbitraje y espera al STOP.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Gana el maestro de 0x60",
+      "explanation": "Correcto: el nivel bajo prevalece y el que quería un 1 pierde."
+    },
+    {
+      "id": "b",
+      "text": "Gana el maestro de 0x68",
+      "explanation": "Es el que detecta la discrepancia en el cuarto bit, así que pierde."
+    },
+    {
+      "id": "c",
+      "text": "Se produce una colisión y ambos reintentan",
+      "explanation": "I²C resuelve el conflicto bit a bit sin perder la transmisión del ganador."
+    },
+    {
+      "id": "d",
+      "text": "Gana el primero en enviar el bit de START",
+      "explanation": "Ambos empiezan a la vez; decide la dirección."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        22,
+        23,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-2-comunicacion",
+      "anchor": "i2c"
+    }
+  ]
+}

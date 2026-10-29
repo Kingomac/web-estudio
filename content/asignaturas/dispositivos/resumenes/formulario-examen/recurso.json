@@ -1,0 +1,116 @@
+{
+  "kind": "resumen",
+  "id": "dispositivos.resumenes.formulario-examen",
+  "subjectId": "dispositivos",
+  "slug": "formulario-examen",
+  "title": "Formulario del examen",
+  "description": "Una hoja con las fórmulas de los seis temas: sensores, buses, transducción, alimentación, energy harvesting y enlace radio.",
+  "scope": "Fórmulas de los cinco apuntes de la asignatura; mismas páginas que ellos.",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.buses",
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "order": 5,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        10,
+        14,
+        30,
+        47,
+        52,
+        61,
+        64,
+        78,
+        84,
+        85,
+        91
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        6,
+        7,
+        20,
+        21,
+        24,
+        45
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        11,
+        12,
+        24,
+        28,
+        37,
+        58,
+        89,
+        102,
+        103,
+        105,
+        106,
+        116
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        32,
+        39
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        5,
+        10,
+        12,
+        15,
+        19,
+        22,
+        24,
+        25,
+        27,
+        40
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        12,
+        13,
+        18,
+        19,
+        31,
+        35
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-3-balance-enlace",
+      "pdfPages": [
+        2,
+        4,
+        7
+      ]
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.apuntes.tema-1-sensores",
+    "dispositivos.apuntes.tema-2-comunicacion",
+    "dispositivos.apuntes.tema-3-sensores-actuadores",
+    "dispositivos.apuntes.temas-4-5-alimentacion",
+    "dispositivos.apuntes.tema-6-enlace-radio"
+  ]
+}

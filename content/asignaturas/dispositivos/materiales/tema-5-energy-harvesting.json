@@ -1,0 +1,22 @@
+{
+  "id": "dispositivos.materiales.tema-5-energy-harvesting",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "tema-5-energy-harvesting",
+  "title": "Tema 5 · Sistemas de energy harvesting",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 5: rectificadores piezoeléctricos, modelo de la célula Peltier y ejemplo fotovoltaico con la placa DC2042.",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting"
+  ],
+  "order": 30,
+  "file": "materiales/dispositivos/tema-5-energy-harvesting.pdf",
+  "format": "pdf",
+  "providedName": "Tema 5. Sistemas de energy harvesting para nodos IoT de bajo consumo_11112024.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 43,
+  "sha256": "aa7d7e5f82df9d5d4142a611ae16a13c5aea51239a5a9180e0ca1951d958cd0e"
+}

@@ -1,0 +1,77 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t1-ej3-amplificador",
+  "subjectId": "dispositivos",
+  "slug": "t1-ej3-amplificador",
+  "title": "Boletín T1-3 · Ej. 3 · Operacional con dos fuentes",
+  "description": "Superposición en un montaje con entrada inversora y no inversora.",
+  "scope": "Ejercicio 3 del boletín de los temas 1-3; corresponde al tema 1 (amplificación).",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 20,
+  "mode": "form",
+  "prompt": "En la figura 2 del boletín, 5 V llegan a la entrada inversora a través de 10 kΩ, la realimentación es de 5 kΩ y la entrada no inversora está fijada por una fuente de 3 V (con 3 kΩ a masa en paralelo). Calcula Vo con el operacional ideal y di si puede darla alimentado a ±15 V.",
+  "explanation": "V+ = 3 V porque la fuente ideal fija esa tensión. Por superposición: Vo = −(5/10)·5 + (1 + 5/10)·3 = −2,5 + 4,5 = 2 V, dentro de ±15 V.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-1-3",
+      "pdfPages": [
+        2
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        50,
+        51,
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "amplificadores"
+    }
+  ],
+  "fields": [
+    {
+      "id": "vo",
+      "label": "Tensión de salida",
+      "type": "number",
+      "answer": 2,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "V",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Inversor: −(5k/10k)·5 = −2,5 V. No inversor: (1 + 5k/10k)·3 = 4,5 V. Suma: 2 V."
+    },
+    {
+      "id": "puede",
+      "label": "¿Puede proporcionarla con ±15 V?",
+      "type": "select",
+      "options": [
+        {
+          "id": "si",
+          "text": "Sí"
+        },
+        {
+          "id": "no",
+          "text": "No, satura"
+        }
+      ],
+      "answer": "si",
+      "explanation": "2 V está muy por debajo de la alimentación de ±15 V; el operacional no satura."
+    }
+  ],
+  "hint": "La resistencia de 3 kΩ está en paralelo con una fuente ideal: no cambia V+.",
+  "steps": [
+    "V+ = 3 V.",
+    "Contribución de 5 V (inversor): −0,5·5 = −2,5 V.",
+    "Contribución de 3 V (no inversor): 1,5·3 = 4,5 V.",
+    "Vo = 2 V; cabe en ±15 V."
+  ]
+}

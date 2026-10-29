@@ -1,0 +1,55 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t4-capacidad",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un nodo consume 20 mA durante 1 s y trabaja entre 3,3 y 2,8 V. ¿Qué capacidad mínima necesita?",
+  "explanation": "C = Q/ΔV = 0,02·1/0,5 = 40 mF.",
+  "options": [
+    {
+      "id": "a",
+      "text": "40 mF",
+      "explanation": "Correcto: carga consumida entre la caída de tensión."
+    },
+    {
+      "id": "b",
+      "text": "6,1 mF",
+      "explanation": "Divide entre 3,3 V en lugar de entre ΔV = 0,5 V."
+    },
+    {
+      "id": "c",
+      "text": "0,4 F",
+      "explanation": "Error de un factor 10 en la carga."
+    },
+    {
+      "id": "d",
+      "text": "20 mF",
+      "explanation": "Olvida dividir entre ΔV."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        39
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "capacidad"
+    }
+  ]
+}

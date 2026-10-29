@@ -1,0 +1,22 @@
+{
+  "id": "dispositivos.materiales.tema-6-3-balance-enlace",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "tema-6-3-balance-enlace",
+  "title": "Tema 6.3 · Balance de enlace",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas de la fórmula de Friis, balance de enlace y definiciones de pérdidas de transmisión.",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica"
+  ],
+  "order": 42,
+  "file": "materiales/dispositivos/tema-6-3-balance-enlace.pdf",
+  "format": "pdf",
+  "providedName": "Tema 6.3.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 7,
+  "sha256": "6a3f149ff6b51eb3cc5b092e4c235022ab0c91cd20effd7a218cc1acd2b697a3"
+}

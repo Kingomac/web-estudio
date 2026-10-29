@@ -1,0 +1,77 @@
+<h2 id="examen">Qué cae y cómo usar estos apuntes</h2>
+
+El tema 2 corresponde a las páginas 98-145 del PDF del bloque 1: comunicación entre el sensor y el microcontrolador. El boletín de los temas 1-3 **no incluye ningún problema de buses**, así que los problemas de práctica de esta página son propios y salen de las diapositivas: tiempos de UART, tramas de I²C, arbitraje y modos SPI. La cuestión suele ser comparar los tres buses.
+
+<h2 id="conceptos">Paralelo o serie, síncrona o asíncrona</h2>
+
+- **Paralela**: todos los bits a la vez, un hilo por bit. **Serie**: bit a bit por la misma línea.
+- **Síncrona**: hay una línea de reloj que marca cuándo leer cada bit (I²C, SPI). **Asíncrona**: sin reloj; ambos extremos acuerdan la velocidad (UART).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=1">T2, pp. 1-4</a>.</p>
+
+<h2 id="uart">UART</h2>
+
+Dos líneas, **TX** y **RX**, punto a punto y sin reloj. Hay que configurar velocidad, bits de datos, paridad y bits de parada. La notación `9600 8N1` indica 9600 bps, 8 bits de datos, sin paridad y 1 bit de parada.
+
+```text
+Tiempo de bit        tb = 1 / velocidad           9600 bps → 104 µs
+Bits por carácter    1 (start) + datos + paridad + stop     8N1 → 10 bits
+Tiempo por carácter  bits por carácter · tb        8N1 a 9600 → 1,04 ms
+Caracteres por s     velocidad / bits por carácter  9600/10 = 960 B/s
+```
+
+El receptor lee cada bit en su centro, a mitad del tiempo de bit (52 µs a 9600 bps).
+
+[Practicar: tiempos de UART](/web-estudio/asignaturas/dispositivos/ejercicios/t2-uart-tiempos/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=4">T2, pp. 4-7</a>.</p>
+
+<h2 id="i2c">I²C</h2>
+
+Dos líneas compartidas con resistencias de *pull-up*: **SDA** (datos) y **SCL** (reloj). Admite varios maestros y esclavos, y cada esclavo tiene una **dirección única**.
+
+**Trama.** START (SDA baja con SCL alta) → dirección de 7 o 10 bits → bit R/W → ACK → bytes de datos de 8 bits, cada uno seguido de ACK/NACK → STOP (SDA sube con SCL alta).
+
+```text
+Ciclos de SCL por byte   8 bits + 1 ACK = 9
+Dirección de 7 bits + R/W + ACK = 9 ciclos
+Tiempo ≈ ciclos / velocidad      (Sm 100 kbps · Fm 400 kbps · Hs 3,5 Mbps · UFm 5 Mbps)
+```
+
+**Arbitraje.** Si dos maestros transmiten a la vez, el que intenta poner un 1 y lee un 0 en la línea **pierde** y espera al STOP. Con 0x68 (1101000) y 0x60 (1100000), los tres primeros bits coinciden; en el cuarto, 0x68 envía 1 y 0x60 envía 0, así que **gana 0x60**.
+
+Ventajas: dos cables, varios maestros y esclavos, confirmación con ACK. Inconvenientes: half-duplex y más complejidad al crecer el número de dispositivos.
+
+[Practicar: trama I²C](/web-estudio/asignaturas/dispositivos/ejercicios/t2-i2c-trama/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=10">T2, pp. 9-27</a>.</p>
+
+<h2 id="spi">SPI</h2>
+
+Cuatro líneas: **SCLK** (reloj del maestro), **MOSI** (maestro → esclavo), **MISO** (esclavo → maestro) y **CS/SS** (selección, activa a nivel bajo). Es **full-duplex**, del orden de MHz y más rápido que UART e I²C. Un maestro, uno o varios esclavos, **sin direcciones**: una línea CS por esclavo.
+
+| Modo | CPOL (reposo del reloj) | CPHA (flanco de muestreo) |
+| --- | --- | --- |
+| 0 | 0 | 0 (flanco inicial) |
+| 1 | 0 | 1 (flanco final) |
+| 2 | 1 | 0 |
+| 3 | 1 | 1 |
+
+Maestro y esclavo deben usar el mismo modo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=28">T2, pp. 28-47</a>.</p>
+
+<h2 id="comparativa">Cuestión típica: comparar UART, I²C y SPI</h2>
+
+| | UART | I²C | SPI |
+| --- | --- | --- | --- |
+| Reloj | Asíncrona | Síncrona | Síncrona |
+| Líneas | 2 (TX, RX) | 2 (SDA, SCL) | 3 + CS |
+| Full-duplex | Sí | No | Sí |
+| Direccionamiento | No | Sí | Con CS |
+| Varios dispositivos | Limitado (punto a punto) | Muy bueno | Sí, con una CS más por cada uno |
+| Velocidad | Baja-media | Media | Alta |
+| Pull-up | No | Sí | No |
+| Uso típico | GPS, CO₂, módems | Sensores ambientales, pantallas OLED | Sensores rápidos, memorias, pantallas, ADC |
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=48">T2, pp. 4 y 48</a>.</p>

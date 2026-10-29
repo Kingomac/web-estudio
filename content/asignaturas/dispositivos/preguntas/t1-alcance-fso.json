@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t1-alcance-fso",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un sensor mide de 0 a 200 °C y da de 1 a 5 V. ¿Qué par de valores corresponde a alcance y FSO?",
+  "explanation": "El alcance se mide en unidades de entrada (200 °C) y el FSO en las de salida (4 V).",
+  "options": [
+    {
+      "id": "a",
+      "text": "Alcance 200 °C; FSO 4 V",
+      "explanation": "Correcto: Xmax − Xmin y Ymax − Ymin."
+    },
+    {
+      "id": "b",
+      "text": "Alcance [0, 200] °C; FSO 5 V",
+      "explanation": "[0, 200] °C es el campo de medida, no el alcance; y el FSO es la diferencia 5 − 1, no el máximo."
+    },
+    {
+      "id": "c",
+      "text": "Alcance 4 V; FSO 200 °C",
+      "explanation": "Intercambia las magnitudes: el alcance va en unidades de entrada."
+    },
+    {
+      "id": "d",
+      "text": "Alcance 200 °C; FSO 20 mV/°C",
+      "explanation": "20 mV/°C es la sensibilidad (FSO/alcance), no el FSO."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        10,
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "calibracion"
+    }
+  ]
+}

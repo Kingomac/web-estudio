@@ -1,0 +1,62 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t3-galga-puente",
+  "subjectId": "dispositivos",
+  "slug": "t3-galga-puente",
+  "title": "T3 · Práctica · Galga en un puente en cuarto",
+  "description": "Tensión de salida de un puente con un único elemento activo.",
+  "scope": "Práctica propia basada en el puente en cuarto de la p. 12 del tema 3.",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "order": 210,
+  "mode": "form",
+  "prompt": "Una galga de 120 Ω forma un puente con otras tres resistencias de 120 Ω, alimentado a 5 V. Al deformarse, su resistencia aumenta 0,24 Ω. Calcula la variación relativa y Vo.",
+  "explanation": "ΔR/R = 0,2 %. Con la fórmula del puente en cuarto, Vo = (5/4)·0,24/(120 + 0,12) = 2,50 mV.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        11,
+        12,
+        116,
+        117
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "problemas"
+    }
+  ],
+  "fields": [
+    {
+      "id": "rel",
+      "label": "Variación relativa ΔR/R",
+      "type": "number",
+      "answer": 0.2,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "%",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "0,24/120 = 0,002 = 0,2 %."
+    },
+    {
+      "id": "vo",
+      "label": "Tensión de salida",
+      "type": "number",
+      "answer": 2.4975,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "mV",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Vo = (Vs/4)·ΔR/(R + ΔR/2) = 1,25·0,24/120,12 = 2,50 mV."
+    }
+  ],
+  "steps": [
+    "ΔR/R = 0,2 %.",
+    "Vo = (5/4)·0,24/(120 + 0,12) = 2,50 mV."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t6-dbm",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿A cuántos vatios equivalen −70 dBm?",
+  "explanation": "P = 10^(−70/10) mW = 10⁻⁷ mW = 10⁻¹⁰ W.",
+  "options": [
+    {
+      "id": "a",
+      "text": "10⁻¹⁰ W",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "10⁻⁷ W",
+      "explanation": "Son 10⁻⁷ mW; olvida pasar de mW a W."
+    },
+    {
+      "id": "c",
+      "text": "10⁻¹³ W",
+      "explanation": "Se resta 30 dB dos veces."
+    },
+    {
+      "id": "d",
+      "text": "−70 mW",
+      "explanation": "Una potencia en dBm negativa sigue siendo positiva en vatios."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-1-espectro",
+      "pdfPages": [
+        6,
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "decibelios"
+    }
+  ]
+}

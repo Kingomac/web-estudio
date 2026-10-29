@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t3-activos-pasivos",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estos sensores es activo, es decir, no necesita alimentación para generar su señal?",
+  "explanation": "Los activos obtienen la energía de la propia magnitud, como el piezoeléctrico o el termoeléctrico.",
+  "options": [
+    {
+      "id": "termopar",
+      "text": "Termopar",
+      "explanation": "Correcto: genera tensión por efecto Seebeck."
+    },
+    {
+      "id": "rtd",
+      "text": "RTD (Pt100)",
+      "explanation": "Es resistivo: necesita una fuente de corriente."
+    },
+    {
+      "id": "ldr",
+      "text": "LDR",
+      "explanation": "Cambia su resistencia; hay que alimentarla en un divisor."
+    },
+    {
+      "id": "galga",
+      "text": "Galga extensiométrica",
+      "explanation": "Es resistiva y se mide alimentando un puente."
+    }
+  ],
+  "answer": "termopar",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        1,
+        30,
+        104
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "clasificacion"
+    }
+  ]
+}

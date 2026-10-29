@@ -1,0 +1,67 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t45-ej3-thevenin-piezo",
+  "subjectId": "dispositivos",
+  "slug": "t45-ej3-thevenin-piezo",
+  "title": "T4-5 · Ej. 3 · Thévenin del piezoeléctrico",
+  "description": "Tensión equivalente e impedancia del modelo de corriente con Cp.",
+  "scope": "Ejercicio 3 del boletín de los temas 4 y 5.",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 120,
+  "mode": "form",
+  "prompt": "Un generador piezoeléctrico se modela como una fuente de corriente de 80 µA de amplitud y 25 Hz en paralelo con Cp = 100 nF. Obtén su equivalente Thévenin y la tensión de salida en vacío.",
+  "explanation": "La fuente de corriente en paralelo con Cp equivale a una fuente de tensión Vp = Ip/(ωCp) en serie con Cp. Vp = 80 µA/(2π·25·100 nF) = 5,09 V de pico y |Z| = 63,7 kΩ a 25 Hz. En vacío sale una senoidal de 5,09 V de pico.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [
+        2
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "piezo"
+    }
+  ],
+  "fields": [
+    {
+      "id": "vp",
+      "label": "Amplitud de la tensión Thévenin",
+      "type": "number",
+      "answer": 5.09,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "V",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Vp = Ip/(ω·Cp) = 80·10⁻⁶/(2π·25·100·10⁻⁹) = 5,09 V."
+    },
+    {
+      "id": "z",
+      "label": "Módulo de la impedancia Thévenin",
+      "type": "number",
+      "answer": 63.66,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "kΩ",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "1/(ω·Cp) = 1/(2π·25·100 nF) = 63,7 kΩ (es la propia Cp en serie)."
+    }
+  ],
+  "steps": [
+    "ω = 2π·25 = 157,1 rad/s.",
+    "Vp = 80 µA/(157,1·100 nF) = 5,09 V.",
+    "Thévenin: fuente de 5,09 V de pico en serie con Cp = 100 nF (63,7 kΩ)."
+  ]
+}

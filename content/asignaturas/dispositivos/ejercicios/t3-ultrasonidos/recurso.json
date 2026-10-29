@@ -1,0 +1,61 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t3-ultrasonidos",
+  "subjectId": "dispositivos",
+  "slug": "t3-ultrasonidos",
+  "title": "T3 · Práctica · Distancia por eco de ultrasonidos",
+  "description": "Corrección de la velocidad del sonido con la temperatura y distancia por tiempo de vuelo.",
+  "scope": "Práctica propia basada en las pp. 89 y 91 del tema 3. La velocidad a 0 °C es dato del enunciado.",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "order": 240,
+  "mode": "form",
+  "prompt": "Un sensor de eco trabaja a 20 °C. Con vs0 = 331 m/s a 0 °C, calcula la velocidad del sonido y la distancia al objeto si el eco llega 5,83 ms después de emitir.",
+  "explanation": "vs = 331·√(1 + 20/273) = 342,9 m/s. El sonido va y vuelve: d = vs·t/2 = 342,9·0,00583/2 ≈ 1,00 m.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        89,
+        91
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "problemas"
+    }
+  ],
+  "fields": [
+    {
+      "id": "v",
+      "label": "Velocidad del sonido a 20 °C",
+      "type": "number",
+      "answer": 342.9,
+      "absTol": 0,
+      "relTol": 0.005,
+      "unit": "m/s",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "331·√(1,0733) = 342,9 m/s."
+    },
+    {
+      "id": "d",
+      "label": "Distancia al objeto",
+      "type": "number",
+      "answer": 1.0,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "m",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "342,9·5,83 ms/2 = 1,00 m (ida y vuelta)."
+    }
+  ],
+  "hint": "El tiempo de eco incluye la ida y la vuelta.",
+  "steps": [
+    "vs = 331·√(1 + 20/273) = 342,9 m/s.",
+    "d = vs·t/2 = 1,00 m."
+  ]
+}

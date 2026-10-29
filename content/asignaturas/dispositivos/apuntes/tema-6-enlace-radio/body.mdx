@@ -1,0 +1,104 @@
+<h2 id="examen">Qué cae y cómo usar estos apuntes</h2>
+
+Los dos problemas del boletín del tema 6 marcan el tipo de examen: **un diagrama de radiación** (directividad, PIRE, campo, potencias y anchos de haz) y **un balance de enlace** (Friis en dB, distancia y margen por un obstáculo). La cuestión suele ser de decibelios, polarización o definiciones de antenas.
+
+<h2 id="decibelios">Decibelios: lo mínimo</h2>
+
+```text
+Potencias          G(dB) = 10·log(p2/p1)
+Campos, tensiones  G(dB) = 20·log(v2/v1)
+dBm                P(dBm) = 10·log(p / 1 mW)      0 dBm = 1 mW; −10 dBm = 0,1 mW; −70 dBm = 10⁻¹⁰ W
+dBi                ganancia respecto a la isotrópica
+Longitud de onda   λ = c/f          (3 GHz → 10 cm; 1 GHz → 30 cm)
+```
+
+En dB, los productos se suman y los cocientes se restan. Duplicar la distancia resta 6 dB en Friis.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=5">T6.1, pp. 5-7 y 11</a>.</p>
+
+<h2 id="antena">Fórmulas de la antena transmisora</h2>
+
+```text
+Desadaptación   |Γ| = (VSWR − 1)/(VSWR + 1)      pat = pt·(1 − |Γ|²)
+Eficiencia      prad = ηt·pat                    g = ηt·d
+PIRE            pire(θ,φ) = pat·g(θ,φ) = prad·d(θ,φ)
+PRA             pire = 1,64·pra       (PRA = PIRE − 2,15 dB)
+PRAVC           pire = 3·pravc        (PRAVC = PIRE − 4,77 dB)
+Normalización   ∫∫ d(θ,φ)·sen θ dθ dφ = 4π
+Densidad        s = pire / (4π·r²) = e_ef² / η0          η0 = 120π Ω
+Campo eficaz    e_ef = √(30·pire) / r
+```
+
+Cadena de potencias: **pt** (disponible) → ×(1 − |Γ|²) → **pat** (entregada a la antena) → ×ηt → **prad** (radiada).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=12">T6.2, pp. 7, 9, 12-13, 17-19 y 30-31</a>.</p>
+
+<h2 id="diagrama">Problema tipo 1: antena con diagrama dado</h2>
+
+**Receta.**
+
+1. Escribe `d(θ,φ) = K·f(θ,φ)` y obtén K con la normalización (integral = 4π).
+2. `prad = pire / d` (sale constante). Después, `pat = prad / ηt` y `pt = pat / (1 − |Γ|²)`.
+3. Campo: `e_ef = √(30·pire)/r`. Es eficaz; no multipliques por √2.
+4. Máximos donde f = 1. HPBW entre los puntos con f = 0,5 (−3 dB) y FNBW entre los primeros nulos. Mide el ancho **completo**, a ambos lados del máximo.
+
+**Boletín, problema 1** (`pire = cos²θ W`, ηt = 80 %, VSWR = 2).
+
+```text
+a) ∫ cos²θ·sen θ dθ (0..π) = 2/3   →  K·2π·2/3 = 4π  →  d = 3·cos²θ  (4,77 dBi)
+   prad = pire/d = 1/3 W
+b) pra = cos²θ / 1,64 = 0,61·cos²θ W
+c) e_ef = √(30·cos²θ) / 1000 = 5,48·|cos θ| mV/m      (máximo 5,48 mV/m)
+d) pat = prad/ηt = (1/3)/0,8 = 0,417 W
+e) |Γ| = 1/3 → 1 − |Γ|² = 8/9 → pt = 0,417 / (8/9) = 0,469 W
+f) Máximos en θ = 0° y θ = 180° (ejes +z y −z); nulo en θ = 90°
+g) cos²α = 0,5 → α = ±45° → HPBW = 90°;  cos²α = 0 → α = ±90° → FNBW = 180°
+```
+
+[Practicar el problema 1](/web-estudio/asignaturas/dispositivos/ejercicios/t6-p1-diagrama-cos2/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=18">T6.2, pp. 18-25, 27 y 31</a>; <a href="/web-estudio/materiales/dispositivos/boletin-tema-6.pdf#page=1">boletín, p. 1</a>.</p>
+
+<h2 id="enlace">Problema tipo 2: balance de enlace</h2>
+
+```text
+Friis (lineal)  par = pire·(λ/(4π·r))²·gr·plf/ae        pr = par·(1 − |Γr|²)
+Balance (dB)    Pr = PIRE + Gr − Lbf − Ae + PLF − Lrc
+Espacio libre   Lbf = 20·log(4π·r/λ)
+Desadaptación   Lrc = −10·log(1 − |Γr|²)
+Distancia       r = (λ/(4π)) · 10^(Lbf/20)
+```
+
+Con polarización adaptada, `plf = 1` y PLF = 0 dB. Si se usa ganancia de potencia (dBi), ya incluye las pérdidas óhmicas; la VSWR se aplica aparte.
+
+**Receta.** Pasa todo a dB, despeja Lbf del balance y de ahí la distancia. Un obstáculo de X dB se compensa subiendo la PIRE esos mismos X dB.
+
+**Boletín, problema 2** (3 GHz, PIRE = −10 dBm, Gr = 8 dBi, VSWR = 1,2, Pr = −70 dBm).
+
+```text
+λ = 0,1 m;  |Γr| = 0,2/2,2 = 1/11;  Lrc = −10·log(120/121) = 0,036 dB
+−70 = −10 + 8 − Lbf − 0,036   →   Lbf = 67,96 dB
+r = (0,1/4π)·10^(67,96/20) ≈ 19,9 m
+Obstáculo de 10 dB  →  la PIRE sube 10 dB: de −10 dBm a 0 dBm (de 0,1 a 1 mW)
+```
+
+[Practicar el problema 2](/web-estudio/asignaturas/dispositivos/ejercicios/t6-p2-cobertura/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-3-balance-enlace.pdf#page=2">T6.3, pp. 2-4 y 6-7</a>; <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=33">T6.2, pp. 33 y 35</a>.</p>
+
+<h2 id="cuestiones">Cuestiones rápidas</h2>
+
+| Si te preguntan… | Responde con… |
+| --- | --- |
+| Campo lejano | A partir de `2D²/λ`. Onda localmente plana, E ⊥ H ⊥ dirección radial; el campo cae con 1/r y la potencia con 1/r². |
+| Polarización | Figura que describe el extremo de **E** en el tiempo: lineal, circular o elíptica, a derechas o a izquierdas. |
+| Factor plf | Lineal-lineal `cos²α`; lineal-circular 0,5; circulares del mismo sentido 1; de sentidos opuestos 0. |
+| Directividad frente a ganancia | `g = ηt·d`: la ganancia de potencia incluye las pérdidas óhmicas. |
+| Antenas lineales | Dipolo corto 1,5 (1,76 dBi); dipolo λ/2 1,64 (2,15 dBi), 73 Ω; antena vertical corta 3 (4,77 dBi). |
+| Lineales frente a apertura | Lineales: omnidireccionales, poca ganancia, banda estrecha y f bajas. Apertura: directivas, mucha ganancia, más banda y f altas. |
+| Área equivalente | `Aeq = λ²·g / (4π)`. |
+| HPBW, FNBW, SLL, FBR | Ancho a −3 dB, ancho entre nulos, lóbulo secundario mayor frente al principal, principal frente al trasero. |
+| Bandas | UHF 300 MHz–3 GHz; SHF 3–30 GHz; EHF 30–300 GHz (milimétricas). |
+| CNAF | Uso común: sin autorización previa, baja potencia (Wi-Fi, RFID, dispositivos de corto alcance…). Privativo: título habilitante. Especial: compartido (radioaficionados). |
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=6">T6.2, pp. 6-7, 10, 19, 25-27 y 34-36</a>; <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=13">T6.1, pp. 13 y 18-20</a>.</p>

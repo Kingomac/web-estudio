@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t3-ntc",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo varía la resistencia de un termistor NTC al aumentar la temperatura?",
+  "explanation": "NTC: coeficiente negativo, la resistencia disminuye de forma exponencial (no lineal).",
+  "options": [
+    {
+      "id": "baja",
+      "text": "Disminuye de forma no lineal",
+      "explanation": "Correcto: R = R0·e^(β(1/T − 1/T0))."
+    },
+    {
+      "id": "sube",
+      "text": "Aumenta de forma no lineal",
+      "explanation": "Eso es un PTC."
+    },
+    {
+      "id": "lineal",
+      "text": "Aumenta linealmente",
+      "explanation": "Ese comportamiento es el de un RTD."
+    },
+    {
+      "id": "nada",
+      "text": "No varía",
+      "explanation": "El termistor se usa precisamente porque varía mucho."
+    }
+  ],
+  "answer": "baja",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        101,
+        102
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "formulas"
+    }
+  ]
+}

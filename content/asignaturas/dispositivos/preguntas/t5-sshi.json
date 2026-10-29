@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t5-sshi",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Con la misma Cp, f y Vp, ¿cuánta potencia extrae el SSHI respecto al rectificador sin interruptor?",
+  "explanation": "Rectificador simple: Cp·f·Vp². Con interruptor: el doble. SSHI: cuatro veces, antes de descontar el control.",
+  "options": [
+    {
+      "id": "x4",
+      "text": "Cuatro veces más",
+      "explanation": "Correcto: Pmax = 4·Cp·f·Vp²."
+    },
+    {
+      "id": "x2",
+      "text": "El doble",
+      "explanation": "Es el resultado con interruptor único."
+    },
+    {
+      "id": "x1",
+      "text": "La misma",
+      "explanation": "El SSHI aprovecha casi toda la carga que se perdía en Cp."
+    },
+    {
+      "id": "x8",
+      "text": "Ocho veces más",
+      "explanation": "No aparece en las diapositivas."
+    }
+  ],
+  "answer": "x4",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        12,
+        15,
+        19
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "piezo"
+    }
+  ]
+}

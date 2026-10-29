@@ -1,0 +1,62 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t3-termistor",
+  "subjectId": "dispositivos",
+  "slug": "t3-termistor",
+  "title": "T3 · Práctica · Termistor NTC",
+  "description": "Resistencia a otra temperatura y resistencia de linealización.",
+  "scope": "Práctica propia basada en las ecuaciones del termistor (pp. 102-103 del tema 3).",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "order": 230,
+  "mode": "form",
+  "prompt": "Una NTC mide 10 kΩ a 25 °C y β = 3950 K. Calcula su resistencia a 50 °C y la resistencia R1 que linealiza el divisor alrededor de Tc = 25 °C.",
+  "explanation": "Con temperaturas en kelvin, R(50 °C) = 10k·e^(3950·(1/323,15 − 1/298,15)) ≈ 3,59 kΩ. R1 = (β − 2Tc)/(β + 2Tc)·R(Tc) = (3950 − 596,3)/(3950 + 596,3)·10 kΩ ≈ 7,38 kΩ.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        102,
+        103
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "problemas"
+    }
+  ],
+  "fields": [
+    {
+      "id": "r50",
+      "label": "Resistencia a 50 °C",
+      "type": "number",
+      "answer": 3.588,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "kΩ",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "10·e^(3950·(0,0030945 − 0,0033540)) = 3,59 kΩ."
+    },
+    {
+      "id": "r1",
+      "label": "R1 de linealización",
+      "type": "number",
+      "answer": 7.377,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "kΩ",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "(3950 − 596,3)/(3950 + 596,3)·10 = 7,38 kΩ."
+    }
+  ],
+  "hint": "Pasa las temperaturas a kelvin antes de usar β.",
+  "steps": [
+    "T = 323,15 K y T0 = 298,15 K.",
+    "R = 10k·e^(−0,925) ≈ 3,59 kΩ.",
+    "R1 = (β − 2Tc)/(β + 2Tc)·10 kΩ ≈ 7,38 kΩ."
+  ]
+}

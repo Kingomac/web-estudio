@@ -1,0 +1,60 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t1-diapo-adc-13-bits",
+  "subjectId": "dispositivos",
+  "slug": "t1-diapo-adc-13-bits",
+  "title": "T1 · Diapositivas · Señal de 0–1 V en ADC de 0–5 V",
+  "description": "Resolución de una señal que no aprovecha todo el margen del ADC.",
+  "scope": "Ejercicio de la diapositiva 88 del tema 1.",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "order": 80,
+  "mode": "form",
+  "prompt": "Una señal de 0 a 1 V se digitaliza con un ADC de 13 bits que admite de 0 a 5 V. Calcula la resolución (peso del LSB) y cuántos códigos usa realmente la señal.",
+  "explanation": "LSB = 5 V / 8192 = 0,61 mV. La señal solo recorre 1 V: 1/0,00061 ≈ 1638 códigos de los 8192.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        85,
+        88
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "adc"
+    }
+  ],
+  "fields": [
+    {
+      "id": "lsb",
+      "label": "Resolución (LSB)",
+      "type": "number",
+      "answer": 0.61,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "mV",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "5/2^13 = 5/8192 = 0,61 mV."
+    },
+    {
+      "id": "codigos",
+      "label": "Códigos usados por la señal",
+      "type": "number",
+      "answer": 1638,
+      "absTol": 0,
+      "relTol": 0.002,
+      "unit": "códigos",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "8192/5 = 1638,4: la señal usa una quinta parte de los códigos."
+    }
+  ],
+  "steps": [
+    "LSB = 5/8192 = 0,61 mV.",
+    "Códigos usados = 1 V / 0,61 mV ≈ 1638."
+  ]
+}

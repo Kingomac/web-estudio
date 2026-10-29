@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t1-instrumentacion",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En un amplificador de instrumentación integrado (R2 = R3), ¿cómo se ajusta la ganancia?",
+  "explanation": "La segunda etapa tiene ganancia unidad; la ganancia la fija la primera etapa con Rg: G = 1 + 2R1/Rg.",
+  "options": [
+    {
+      "id": "rg",
+      "text": "Con la resistencia Rg: G = 1 + 2R1/Rg",
+      "explanation": "Correcto: es la única resistencia externa del integrado."
+    },
+    {
+      "id": "r2r1",
+      "text": "Con R2/R1 de la etapa diferencial",
+      "explanation": "En los integrados esa etapa se construye con ganancia unidad."
+    },
+    {
+      "id": "cmrr",
+      "text": "Con el CMRR",
+      "explanation": "El CMRR es un factor de mérito (Ad/Ac), no un ajuste de ganancia."
+    },
+    {
+      "id": "inv",
+      "text": "Igual que en un inversor: −R2/R1",
+      "explanation": "El de instrumentación usa tres operacionales y no invierte la señal diferencial."
+    }
+  ],
+  "answer": "rg",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        62,
+        63,
+        64
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "amplificadores"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t45-ej1-capacidad-nodo",
+  "subjectId": "dispositivos",
+  "slug": "t45-ej1-capacidad-nodo",
+  "title": "T4-5 · Ej. 1 · Capacidad para un nodo",
+  "description": "Carga por ciclo, energía y capacidad para trabajar entre 3,3 y 2,8 V.",
+  "scope": "Ejercicio 1 del boletín de los temas 4 y 5.",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 90,
+  "mode": "form",
+  "prompt": "Un nodo trabaja entre 3,3 y 2,8 V, duerme con 10 µA y despierta cada media hora para: 15 ms a 5 mA, 2 ms a 3 mA, 40 ms a 6 mA, 12 ms a 7 mA y 200 ms a 40 mA. Calcula la carga activa, la energía por ciclo y la capacidad necesaria.",
+  "explanation": "Carga activa 8405 µC y de sueño 18 mC: 26,4 mC por ciclo. Con tensión media 3,05 V, E ≈ 80,5 mJ. C = 2E/(3,3² − 2,8²) ≈ 53 mF (igual a Q/ΔV). Se elige un valor comercial mayor, p. ej., 0,1 F.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [
+        1
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        39,
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "capacidad"
+    }
+  ],
+  "fields": [
+    {
+      "id": "qact",
+      "label": "Carga de las acciones activas",
+      "type": "number",
+      "answer": 8405,
+      "absTol": 0,
+      "relTol": 0.005,
+      "unit": "µC",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "75 + 6 + 240 + 84 + 8000 = 8405 µC (ms·mA = µC)."
+    },
+    {
+      "id": "energia",
+      "label": "Energía por ciclo de 30 min",
+      "type": "number",
+      "answer": 80.5,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "mJ",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "(8,405 mC + 18 mC)·3,05 V ≈ 80,5 mJ."
+    },
+    {
+      "id": "c",
+      "label": "Capacidad mínima",
+      "type": "number",
+      "answer": 52.8,
+      "absTol": 0,
+      "relTol": 0.03,
+      "unit": "mF",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "2·0,0805/(10,89 − 7,84) = 0,0528 F; también Q/ΔV = 26,4 mC/0,5 V."
+    }
+  ],
+  "hint": "Usa la tensión media (3,05 V) como en el ejemplo 4.1.",
+  "steps": [
+    "Σ q = 8405 µC; sueño 10 µA·1800 s = 18 mC.",
+    "E = 3,05 V · 26,4 mC ≈ 80,5 mJ.",
+    "C = 2E/(V1² − V2²) ≈ 53 mF → elegir 0,1 F."
+  ]
+}

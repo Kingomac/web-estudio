@@ -1,0 +1,22 @@
+{
+  "id": "dispositivos.materiales.tema-3-sensores-actuadores",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "tema-3-sensores-actuadores",
+  "title": "Tema 3 · Tipos de sensores, transducción y actuadores",
+  "description": "Parte del documento original «Dipositivos IoT.pdf» (bloque 1), dividido por temas según su contenido.",
+  "scope": "Páginas 146-276 del PDF original del bloque 1: clasificación, principios de transducción, sensores por magnitud y actuadores.",
+  "tagIds": [
+    "dispositivos.tags.transduccion"
+  ],
+  "order": 14,
+  "file": "materiales/dispositivos/tema-3-sensores-actuadores.pdf",
+  "format": "pdf",
+  "providedName": "Dipositivos IoT.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 131,
+  "sha256": "c9b8981ff7a8b1e5b7d4b14c9b6a74c0bbaa80962c0f33e976ff4e1e1606d3e4"
+}

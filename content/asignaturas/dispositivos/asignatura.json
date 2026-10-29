@@ -1,0 +1,14 @@
+{
+  "kind": "asignatura",
+  "id": "dispositivos",
+  "slug": "dispositivos",
+  "title": "Dispositivos IoT",
+  "bimesterId": "b1",
+  "order": 20,
+  "description": "Sensores, buses, energy harvesting y enlace radio: apuntes breves para resolver los problemas del examen.",
+  "teachingGuide": {
+    "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01101",
+    "title": "Guía docente · Dispositivos IoT",
+    "academicYear": "2026/27"
+  }
+}

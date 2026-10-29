@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "dispositivos.tags.examen",
+  "subjectId": "dispositivos",
+  "slug": "examen",
+  "title": "Preparación del examen",
+  "type": "study",
+  "order": 60
+}

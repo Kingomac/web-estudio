@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "dispositivos.tags.energy-harvesting",
+  "subjectId": "dispositivos",
+  "slug": "energy-harvesting",
+  "title": "Tema 5 · Energy harvesting",
+  "type": "topic",
+  "order": 30
+}

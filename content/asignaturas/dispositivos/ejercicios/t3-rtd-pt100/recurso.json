@@ -1,0 +1,59 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t3-rtd-pt100",
+  "subjectId": "dispositivos",
+  "slug": "t3-rtd-pt100",
+  "title": "T3 · Práctica · Sonda Pt100",
+  "description": "Resistencia a una temperatura y temperatura a partir de una resistencia.",
+  "scope": "Práctica propia basada en la ecuación del RTD (p. 106 del tema 3). α es dato del enunciado.",
+  "tagIds": [
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.examen"
+  ],
+  "order": 220,
+  "mode": "form",
+  "prompt": "Una Pt100 (R0 = 100 Ω a 0 °C) tiene α = 0,00385 /°C. Calcula su resistencia a 50 °C y la temperatura cuando mide 138,5 Ω.",
+  "explanation": "R = R0·(1 + α·T) = 100·(1 + 0,1925) = 119,25 Ω. Despejando, T = (138,5/100 − 1)/0,00385 = 100 °C.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [
+        106
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-3-sensores-actuadores",
+      "anchor": "problemas"
+    }
+  ],
+  "fields": [
+    {
+      "id": "r50",
+      "label": "Resistencia a 50 °C",
+      "type": "number",
+      "answer": 119.25,
+      "absTol": 0,
+      "relTol": 0.002,
+      "unit": "Ω",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "100·(1 + 0,00385·50) = 119,25 Ω."
+    },
+    {
+      "id": "t",
+      "label": "Temperatura para 138,5 Ω",
+      "type": "number",
+      "answer": 100,
+      "absTol": 0,
+      "relTol": 0.005,
+      "unit": "°C",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "(1,385 − 1)/0,00385 = 100 °C."
+    }
+  ],
+  "steps": [
+    "R(50) = 100·1,1925 = 119,25 Ω.",
+    "T = (R/R0 − 1)/α = 100 °C."
+  ]
+}

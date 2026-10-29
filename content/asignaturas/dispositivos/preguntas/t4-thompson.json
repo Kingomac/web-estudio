@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t4-thompson",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Según la regla del efecto Thompson, ¿cuándo se absorbe calor en un conductor homogéneo?",
+  "explanation": "Si los flujos térmico y eléctrico son opuestos se absorbe calor; si tienen el mismo sentido, se libera.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Cuando la corriente circula del punto frío al caliente",
+      "explanation": "Correcto: flujo eléctrico opuesto al térmico."
+    },
+    {
+      "id": "b",
+      "text": "Cuando la corriente circula del punto caliente al frío",
+      "explanation": "En ese caso se libera calor."
+    },
+    {
+      "id": "c",
+      "text": "Siempre, independientemente del sentido",
+      "explanation": "Eso describe el efecto Joule, que es irreversible y siempre genera calor."
+    },
+    {
+      "id": "d",
+      "text": "Solo en la unión de dos metales distintos",
+      "explanation": "Esa es la condición del efecto Peltier."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "cuestiones"
+    }
+  ]
+}

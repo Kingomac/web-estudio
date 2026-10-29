@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t6-distancia-doble",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Si se duplica la distancia de un enlace en espacio libre, ¿cómo cambia Lbf?",
+  "explanation": "Lbf = 20·log(4πr/λ): duplicar r suma 20·log 2 ≈ 6 dB.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Aumenta unos 6 dB",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "Aumenta 3 dB",
+      "explanation": "Usaría 10·log; Lbf va con r²."
+    },
+    {
+      "id": "c",
+      "text": "Se duplica",
+      "explanation": "En dB se suma, no se multiplica."
+    },
+    {
+      "id": "d",
+      "text": "No cambia",
+      "explanation": "Lbf depende de la distancia."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-3-balance-enlace",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "enlace"
+    }
+  ]
+}

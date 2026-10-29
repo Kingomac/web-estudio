@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t2-spi-modo",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.buses",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un esclavo SPI necesita el reloj en reposo a nivel alto (CPOL = 1) y muestrear en el flanco inicial (CPHA = 0). ¿Qué modo es?",
+  "explanation": "Modo 2 = (CPOL 1, CPHA 0).",
+  "options": [
+    {
+      "id": "m2",
+      "text": "Modo 2",
+      "explanation": "Correcto según la tabla de modos."
+    },
+    {
+      "id": "m0",
+      "text": "Modo 0",
+      "explanation": "Es CPOL 0 y CPHA 0."
+    },
+    {
+      "id": "m1",
+      "text": "Modo 1",
+      "explanation": "Es CPOL 0 y CPHA 1."
+    },
+    {
+      "id": "m3",
+      "text": "Modo 3",
+      "explanation": "Es CPOL 1 y CPHA 1."
+    }
+  ],
+  "answer": "m2",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        43,
+        44,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-2-comunicacion",
+      "anchor": "spi"
+    }
+  ]
+}

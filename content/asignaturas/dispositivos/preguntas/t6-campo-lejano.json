@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t6-campo-lejano",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué ocurre en la zona de campo lejano de una antena?",
+  "explanation": "A partir de 2D²/λ la onda es localmente plana, E y H son ortogonales entre sí y a la dirección de propagación, el campo cae con 1/r y la potencia con 1/r².",
+  "options": [
+    {
+      "id": "a",
+      "text": "El campo cae con 1/r y la potencia con 1/r²",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "El campo cae con 1/r²",
+      "explanation": "Es la potencia la que cae con 1/r²."
+    },
+    {
+      "id": "c",
+      "text": "E y H no son ortogonales",
+      "explanation": "Eso ocurre en campo cercano."
+    },
+    {
+      "id": "d",
+      "text": "El diagrama de radiación depende de la distancia",
+      "explanation": "En campo lejano solo depende de la dirección."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        6,
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "cuestiones"
+    }
+  ]
+}

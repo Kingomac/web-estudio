@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t4-almacenamiento",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué elemento de almacenamiento es el adecuado para unos 0,1 F en un nodo de bajo consumo?",
+  "explanation": "Supercondensador: de 0,1 a 1200 F, baja ESR y baja autodescarga.",
+  "options": [
+    {
+      "id": "sc",
+      "text": "Supercondensador",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "ta",
+      "text": "Condensador de tántalo",
+      "explanation": "Es adecuado, pero solo llega a 1 mF."
+    },
+    {
+      "id": "el",
+      "text": "Condensador electrolítico",
+      "explanation": "Tiene corriente de fuga alta: poco adecuado para bajo consumo."
+    },
+    {
+      "id": "pila",
+      "text": "Pila no recargable",
+      "explanation": "No se recarga con la energía captada."
+    }
+  ],
+  "answer": "sc",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        34,
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "capacidad"
+    }
+  ]
+}

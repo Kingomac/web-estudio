@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t1-error-fondo-escala",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Un termómetro clínico de campo [34, 41] °C tiene un error absoluto de 1 °C. ¿Cuál es su error referido al fondo de escala?",
+  "explanation": "εFS = εa/S = 1/7 ≈ 14 %. El error relativo a 37 °C sería solo 2,7 %.",
+  "options": [
+    {
+      "id": "a",
+      "text": "14 %",
+      "explanation": "Correcto: 1 °C entre un alcance de 7 °C."
+    },
+    {
+      "id": "b",
+      "text": "2,7 %",
+      "explanation": "Es el error relativo a la lectura de 37 °C, no sobre el fondo de escala."
+    },
+    {
+      "id": "c",
+      "text": "0,5 %",
+      "explanation": "Corresponde al ejemplo del horno de [100, 300] °C con la lectura de 200 °C."
+    },
+    {
+      "id": "d",
+      "text": "1 %",
+      "explanation": "Confunde el error absoluto (1 °C) con un porcentaje."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        29,
+        30,
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "errores"
+    }
+  ]
+}

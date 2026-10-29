@@ -1,0 +1,141 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t6-p1-diagrama-cos2",
+  "subjectId": "dispositivos",
+  "slug": "t6-p1-diagrama-cos2",
+  "title": "T6 · Problema 1 · Antena con PIRE = cos²θ",
+  "description": "Directividad por normalización, PRA, campo, potencias y anchos de haz.",
+  "scope": "Problema 1 del boletín del tema 6.",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 160,
+  "mode": "form",
+  "prompt": "Una antena radia pire(θ, φ) = cos²θ W. La eficiencia es del 80 % y la VSWR vale 2. Calcula la directividad máxima, la potencia radiada, la PRA máxima, el campo eficaz máximo a 1 km, pat, pt, HPBW y FNBW.",
+  "explanation": "Normalizando, d = 3·cos²θ y prad = 1/3 W. PRA = cos²θ/1,64 (máximo 0,61 W). e_ef = √(30·cos²θ)/1000 = 5,48·|cos θ| mV/m. pat = 0,417 W y pt = 0,469 W. Máximos en θ = 0° y 180°; HPBW = 90° y FNBW = 180°.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-tema-6",
+      "pdfPages": [
+        1
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        12,
+        13,
+        18,
+        19,
+        25,
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "diagrama"
+    }
+  ],
+  "fields": [
+    {
+      "id": "dmax",
+      "label": "Directividad máxima",
+      "type": "number",
+      "answer": 3,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "adimensional",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "∫cos²θ·senθ dθ = 2/3 → K·2π·2/3 = 4π → K = 3."
+    },
+    {
+      "id": "prad",
+      "label": "Potencia radiada",
+      "type": "number",
+      "answer": 0.3333,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "W",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "prad = pire/d = 1/3 W."
+    },
+    {
+      "id": "pra",
+      "label": "PRA máxima",
+      "type": "number",
+      "answer": 0.61,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "W",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "1/1,64 = 0,61 W."
+    },
+    {
+      "id": "e",
+      "label": "Campo eficaz máximo a 1 km",
+      "type": "number",
+      "answer": 5.477,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "mV/m",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "√(30·1)/1000 = 5,48 mV/m."
+    },
+    {
+      "id": "pat",
+      "label": "Potencia entregada a la antena",
+      "type": "number",
+      "answer": 0.4167,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "W",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "pat = prad/η = (1/3)/0,8."
+    },
+    {
+      "id": "pt",
+      "label": "Potencia disponible del transmisor",
+      "type": "number",
+      "answer": 0.4688,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "W",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "|Γ| = 1/3; pt = pat/(8/9) = 0,469 W."
+    },
+    {
+      "id": "hpbw",
+      "label": "HPBW",
+      "type": "number",
+      "answer": 90,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "°",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "cos²α = 0,5 → α = ±45°."
+    },
+    {
+      "id": "fnbw",
+      "label": "FNBW",
+      "type": "number",
+      "answer": 180,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "°",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "cos²α = 0 → α = ±90°."
+    }
+  ],
+  "hint": "La ganancia directiva tiene media 1 sobre la esfera: su integral con sen θ vale 4π.",
+  "steps": [
+    "d = 3·cos²θ; prad = 1/3 W.",
+    "pra = cos²θ/1,64.",
+    "e_ef = √(30·pire)/r = 5,48·|cos θ| mV/m.",
+    "pat = 0,417 W; |Γ| = 1/3 → pt = 0,469 W.",
+    "Máximos en ±z; HPBW 90°, FNBW 180°."
+  ]
+}

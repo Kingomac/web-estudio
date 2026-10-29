@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "dispositivos.tags.transduccion",
+  "subjectId": "dispositivos",
+  "slug": "transduccion",
+  "title": "Tema 3 · Tipos de sensores y actuadores",
+  "type": "topic",
+  "order": 14
+}

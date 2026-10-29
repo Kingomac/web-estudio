@@ -1,0 +1,22 @@
+{
+  "id": "dispositivos.materiales.tema-4-alimentacion",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "tema-4-alimentacion",
+  "title": "Tema 4 · Alimentación para nodos IoT de bajo consumo",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 4: arquitectura de alimentación, termoelectricidad, piezoelectricidad, efecto fotoeléctrico, almacenamiento y conversores.",
+  "tagIds": [
+    "dispositivos.tags.alimentacion"
+  ],
+  "order": 20,
+  "file": "materiales/dispositivos/tema-4-alimentacion.pdf",
+  "format": "pdf",
+  "providedName": "Tema 4. Alimentación para nodos IoT de bajo consumo_02102024.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 47,
+  "sha256": "0fa8739891912bc077e7c34339b3311d4823fbd298c51e0344f3295e3c910041"
+}

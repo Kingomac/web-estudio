@@ -1,0 +1,95 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t2-i2c-trama",
+  "subjectId": "dispositivos",
+  "slug": "t2-i2c-trama",
+  "title": "T2 · Práctica · Trama y arbitraje I²C",
+  "description": "Ciclos de reloj de una escritura, su duración y quién gana el arbitraje.",
+  "scope": "Práctica propia basada en las diapositivas de I²C del tema 2 (pp. 18-24).",
+  "tagIds": [
+    "dispositivos.tags.buses",
+    "dispositivos.tags.examen"
+  ],
+  "order": 190,
+  "mode": "form",
+  "prompt": "Un maestro escribe dos bytes de datos en un esclavo con dirección de 7 bits. Cuenta los ciclos de SCL de la transferencia (sin contar START ni STOP) y calcula su duración en modo estándar (100 kbps) y rápido (400 kbps). Además, dos maestros dirigen a la vez a 0x68 y 0x60: ¿cuál gana el arbitraje?",
+  "explanation": "Dirección (7) + R/W (1) + ACK (1) = 9 ciclos; cada byte de datos, 8 + ACK = 9: en total 27 ciclos. A 100 kbps son 270 µs y a 400 kbps, 67,5 µs. En el arbitraje, 1101000 y 1100000 difieren en el cuarto bit: el que envía 1 (0x68) lee un 0 en la línea y pierde; gana 0x60.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        18,
+        19,
+        20,
+        21,
+        23,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-2-comunicacion",
+      "anchor": "i2c"
+    }
+  ],
+  "fields": [
+    {
+      "id": "ciclos",
+      "label": "Ciclos de SCL",
+      "type": "number",
+      "answer": 27,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "ciclos",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "9 de la dirección + 9 por cada uno de los dos bytes = 27."
+    },
+    {
+      "id": "t100",
+      "label": "Duración a 100 kbps",
+      "type": "number",
+      "answer": 270,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "µs",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "27/100 000 s = 270 µs."
+    },
+    {
+      "id": "t400",
+      "label": "Duración a 400 kbps",
+      "type": "number",
+      "answer": 67.5,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "µs",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "27/400 000 s = 67,5 µs."
+    },
+    {
+      "id": "gana",
+      "label": "Maestro que gana el arbitraje",
+      "type": "select",
+      "options": [
+        {
+          "id": "m68",
+          "text": "El que dirige a 0x68"
+        },
+        {
+          "id": "m60",
+          "text": "El que dirige a 0x60"
+        }
+      ],
+      "answer": "m60",
+      "explanation": "En el cuarto bit, 0x68 quiere un 1 y 0x60 un 0. La línea queda a 0: 0x68 detecta la diferencia, pierde y espera al STOP."
+    }
+  ],
+  "hint": "Cada byte (dirección + R/W incluido) lleva detrás un bit de ACK.",
+  "steps": [
+    "Dirección + R/W + ACK = 9 ciclos.",
+    "Dos bytes de datos: 2·9 = 18 ciclos.",
+    "27 ciclos: 270 µs a 100 kbps; 67,5 µs a 400 kbps.",
+    "0x68 = 1101000 y 0x60 = 1100000: en el cuarto bit gana el 0 → 0x60."
+  ]
+}

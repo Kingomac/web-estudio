@@ -1,0 +1,22 @@
+{
+  "id": "dispositivos.materiales.tema-1-sensores",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "tema-1-sensores",
+  "title": "Tema 1 · Sensores: caracterización y acondicionamiento",
+  "description": "Parte del documento original «Dipositivos IoT.pdf» (bloque 1), dividido por temas según su contenido.",
+  "scope": "Páginas 1-97 del PDF original del bloque 1: introducción, caracterización, ruido, amplificación, filtrado y conversión A/D.",
+  "tagIds": [
+    "dispositivos.tags.sensores"
+  ],
+  "order": 10,
+  "file": "materiales/dispositivos/tema-1-sensores.pdf",
+  "format": "pdf",
+  "providedName": "Dipositivos IoT.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 97,
+  "sha256": "6f94f9e0bff6b275e83a82304e7af08a7816339539f36e9f70130366438c2fc2"
+}

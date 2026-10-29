@@ -1,0 +1,85 @@
+{
+  "kind": "apuntes",
+  "id": "dispositivos.apuntes.tema-6-enlace-radio",
+  "subjectId": "dispositivos",
+  "slug": "tema-6-enlace-radio",
+  "title": "Tema 6 · Antenas y balance de enlace: resolver el boletín",
+  "description": "Decibelios, parámetros de antena y Friis, con los dos problemas del boletín resueltos paso a paso.",
+  "scope": "Tema 6.1, pp. 5-7, 11, 13 y 18-20. Tema 6.2, pp. 6-7, 9-10, 12-13, 17-27, 30-31 y 33-36. Tema 6.3, pp. 2-4 y 6-7. Boletín del tema 6 completo. Sin apéndice electromagnético (6.2, pp. 37-42).",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 30,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-1-espectro",
+      "pdfPages": [
+        5,
+        6,
+        7,
+        11,
+        13,
+        18,
+        19,
+        20
+      ],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        6,
+        7,
+        9,
+        10,
+        12,
+        13,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        30,
+        31,
+        33,
+        34,
+        35,
+        36
+      ],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-3-balance-enlace",
+      "pdfPages": [
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.boletin-tema-6",
+      "pdfPages": [
+        1
+      ],
+      "label": "Enunciados resueltos"
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.resumenes.formulario-examen",
+    "dispositivos.tests.cuestiones-examen"
+  ]
+}

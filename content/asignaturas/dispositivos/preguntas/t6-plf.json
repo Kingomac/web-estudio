@@ -1,0 +1,49 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t6-plf",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una onda polarizada linealmente incide sobre una antena de polarización circular. ¿Cuál es el factor de pérdidas de polarización?",
+  "explanation": "Lineal-circular: plf = 0,5 (−3 dB).",
+  "options": [
+    {
+      "id": "a",
+      "text": "0,5",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "1",
+      "explanation": "Solo con polarizaciones adaptadas, como circulares del mismo sentido."
+    },
+    {
+      "id": "c",
+      "text": "0",
+      "explanation": "Corresponde a circulares de sentidos opuestos."
+    },
+    {
+      "id": "d",
+      "text": "cos²α",
+      "explanation": "Es el caso lineal-lineal."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "cuestiones"
+    }
+  ]
+}

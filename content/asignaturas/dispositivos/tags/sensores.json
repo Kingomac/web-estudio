@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "dispositivos.tags.sensores",
+  "subjectId": "dispositivos",
+  "slug": "sensores",
+  "title": "Tema 1 · Sensores",
+  "type": "topic",
+  "order": 10
+}

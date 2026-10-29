@@ -1,0 +1,24 @@
+{
+  "id": "dispositivos.materiales.boletin-temas-4-5",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "boletin-temas-4-5",
+  "title": "Boletín · Problemas de los temas 4 y 5",
+  "description": "Boletín de problemas original de la asignatura.",
+  "scope": "Enunciados de las cinco cuestiones y los cinco ejercicios de los temas 4 y 5, sin soluciones.",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.boletines"
+  ],
+  "order": 35,
+  "file": "materiales/dispositivos/boletin-temas-4-5.pdf",
+  "format": "pdf",
+  "providedName": "Dispositivos_IoT_Ejercicios_4-5_17102024.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "boletin",
+  "pageCount": 3,
+  "sha256": "6fc97d40374d0c57642314751b3f1a04c08af1a9e812947e9eee5e46dfdf5a34"
+}

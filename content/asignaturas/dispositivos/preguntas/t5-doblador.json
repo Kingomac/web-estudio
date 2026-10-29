@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t5-doblador",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En el generador piezoeléctrico con rectificador de medio puente, ¿cuál es la tensión en vacío y dónde está el MPP?",
+  "explanation": "Es un doblador: en vacío VREC = 2·Vp y la potencia máxima se obtiene con VREC = Vp.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Vacío 2·Vp; MPP en VREC = Vp",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "Vacío Vp; MPP en Vp/2",
+      "explanation": "Eso es el rectificador de onda completa."
+    },
+    {
+      "id": "c",
+      "text": "Vacío Vp; MPP en Vp",
+      "explanation": "Ese es el MPP con interruptor único."
+    },
+    {
+      "id": "d",
+      "text": "Vacío 2·Vp; MPP en 2·Vp",
+      "explanation": "En vacío no circula corriente: la potencia es cero."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        5,
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "piezo"
+    }
+  ]
+}

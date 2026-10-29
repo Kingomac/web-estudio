@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "dispositivos.tags.boletines",
+  "subjectId": "dispositivos",
+  "slug": "boletines",
+  "title": "Boletines de problemas",
+  "type": "study",
+  "order": 50
+}

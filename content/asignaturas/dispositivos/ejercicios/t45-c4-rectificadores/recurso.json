@@ -1,0 +1,116 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t45-c4-rectificadores",
+  "subjectId": "dispositivos",
+  "slug": "t45-c4-rectificadores",
+  "title": "T4-5 · Cuestión 4 · Tabla de rectificadores piezoeléctricos",
+  "description": "Tensión de salida y potencia máxima de cada método de rectificación.",
+  "scope": "Cuestión 4 del boletín de los temas 4 y 5.",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 150,
+  "mode": "form",
+  "prompt": "Con Cp = 80 nF, ω = 2π·30 rad/s e Ip = 70 µA, calcula Vp y la potencia máxima con medio puente u onda completa, con interruptor y con SSHI.",
+  "explanation": "Vp = Ip/(ωCp) = 4,64 V. Medio puente y onda completa: Cp·f·Vp² = 51,7 µW (el medio puente da 9,28 V en vacío y 4,64 V en el MPP; la onda completa 4,64 V en vacío y 2,32 V en el MPP). Con interruptor se duplica, 103 µW; con SSHI se cuadruplica, 207 µW.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [
+        1
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        5,
+        10,
+        12,
+        15,
+        19
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "piezo"
+    }
+  ],
+  "fields": [
+    {
+      "id": "vp",
+      "label": "Vp",
+      "type": "number",
+      "answer": 4.64,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "V",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "70 µA/(2π·30·80 nF) = 4,64 V."
+    },
+    {
+      "id": "vmp-medio",
+      "label": "VREC en el MPP con medio puente",
+      "type": "number",
+      "answer": 4.64,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "V",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "En el doblador el MPP está en VREC = Vp."
+    },
+    {
+      "id": "vmp-completa",
+      "label": "VREC en el MPP con onda completa",
+      "type": "number",
+      "answer": 2.32,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "V",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "En el puente completo el MPP está en Vp/2."
+    },
+    {
+      "id": "p",
+      "label": "Potencia máxima sin interruptor",
+      "type": "number",
+      "answer": 51.7,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "µW",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Cp·f·Vp² = 80 nF·30·4,64² = 51,7 µW."
+    },
+    {
+      "id": "p-sw",
+      "label": "Potencia máxima con interruptor",
+      "type": "number",
+      "answer": 103.4,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "µW",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "2·Cp·f·Vp²."
+    },
+    {
+      "id": "p-sshi",
+      "label": "Potencia máxima con SSHI",
+      "type": "number",
+      "answer": 206.9,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "µW",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "4·Cp·f·Vp²."
+    }
+  ],
+  "steps": [
+    "Vp = 4,64 V; Cp·f·Vp² = 51,7 µW.",
+    "Medio puente: 9,28 V en vacío, MPP 4,64 V, 51,7 µW.",
+    "Onda completa: 4,64 V en vacío, MPP 2,32 V, 51,7 µW.",
+    "Interruptor ×2 = 103 µW; SSHI ×4 = 207 µW."
+  ]
+}

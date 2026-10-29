@@ -1,0 +1,107 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t45-ej4-carga-fotovoltaica",
+  "subjectId": "dispositivos",
+  "slug": "t45-ej4-carga-fotovoltaica",
+  "title": "T4-5 · Ej. 4 · Carga con módulo fotovoltaico",
+  "description": "Potencia de cuatro células, regulador y tiempo de carga de un supercondensador.",
+  "scope": "Ejercicio 4 del boletín de los temas 4 y 5.",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 130,
+  "mode": "form",
+  "prompt": "Cuatro células en serie de 6,59 × 5,28 mm reciben 400 W/m² y rinden un 25 %. El regulador (60 %) trabaja en el MPP (VM = 2,16 V) y carga 1 F de 2,5 a 3,3 V. Calcula la potencia del módulo, la que llega al condensador, la energía necesaria y el tiempo de carga.",
+  "explanation": "Área 139,2 mm²: 55,7 mW de luz, 13,9 mW eléctricos (IM ≈ 6,4 mA) y 8,35 mW a la salida del regulador. E = ½·1·(3,3² − 2,5²) = 2,32 J. t = 2,32/0,00835 ≈ 278 s.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [
+        3
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        34
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "harvesting"
+    }
+  ],
+  "fields": [
+    {
+      "id": "ppv",
+      "label": "Potencia eléctrica del módulo",
+      "type": "number",
+      "answer": 13.92,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "mW",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "400·4·(6,59·5,28)·10⁻⁶·0,25 = 13,9 mW."
+    },
+    {
+      "id": "im",
+      "label": "Corriente en el MPP",
+      "type": "number",
+      "answer": 6.44,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "mA",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "IM = 13,92 mW/2,16 V = 6,44 mA."
+    },
+    {
+      "id": "pout",
+      "label": "Potencia que carga el condensador",
+      "type": "number",
+      "answer": 8.35,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "mW",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "0,6·13,92 = 8,35 mW."
+    },
+    {
+      "id": "e",
+      "label": "Energía necesaria",
+      "type": "number",
+      "answer": 2.32,
+      "absTol": 0,
+      "relTol": 0.005,
+      "unit": "J",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "½·1·(10,89 − 6,25) = 2,32 J."
+    },
+    {
+      "id": "t",
+      "label": "Tiempo de carga",
+      "type": "number",
+      "answer": 278,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "s",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "2,32/0,00835 ≈ 278 s (4,6 min)."
+    }
+  ],
+  "steps": [
+    "A = 4·34,8 mm² = 1,392·10⁻⁴ m².",
+    "P = 400·A·0,25 = 13,9 mW.",
+    "Psal = 0,6·13,9 = 8,35 mW.",
+    "E = 2,32 J → t ≈ 278 s."
+  ]
+}

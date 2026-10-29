@@ -1,0 +1,74 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t45-ejemplo-4-1",
+  "subjectId": "dispositivos",
+  "slug": "t45-ejemplo-4-1",
+  "title": "T4 · Ejemplo 4.1 · Capacidad y duración de una pila",
+  "description": "El ejemplo resuelto de las diapositivas, para practicar el método.",
+  "scope": "Ejemplo 4.1 del tema 4, pp. 39-41.",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.examen"
+  ],
+  "order": 100,
+  "mode": "form",
+  "prompt": "Un nodo trabaja entre 3,3 y 2,7 V, duerme con 20 µA y despierta cada hora para: 20 ms a 5 mA, 1 ms a 2 mA, 30 ms a 5 mA, 10 ms a 8 mA y 100 ms a 30 mA. Calcula la energía por ciclo, la capacidad y cuántos años dura una CR2032 de 240 mAh.",
+  "explanation": "Con V media 3 V: 216 mJ de sueño y unos 10 mJ activos, 226 mJ. C = 2·0,226/(3,3² − 2,7²) = 0,126 F (las diapositivas eligen 0,2 F). La carga por hora es 0,0753 C; la pila tiene 864 C: 11 470 ciclos de 1 h, unos 1,3 años.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        39,
+        40,
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "capacidad"
+    }
+  ],
+  "fields": [
+    {
+      "id": "energia",
+      "label": "Energía por ciclo de 1 h",
+      "type": "number",
+      "answer": 226,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "mJ",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Sueño 3·20 µA·3600 s = 216 mJ; activas ≈ 10 mJ."
+    },
+    {
+      "id": "c",
+      "label": "Capacidad mínima",
+      "type": "number",
+      "answer": 0.126,
+      "absTol": 0,
+      "relTol": 0.05,
+      "unit": "F",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "2·0,226/3,6 = 0,126 F (la diapositiva redondea a 0,12 F y elige 0,2 F)."
+    },
+    {
+      "id": "anos",
+      "label": "Duración de la CR2032",
+      "type": "number",
+      "answer": 1.3,
+      "absTol": 0,
+      "relTol": 0.03,
+      "unit": "años",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "864 C / 0,075328 C = 11 470 h ≈ 1,3 años."
+    }
+  ],
+  "steps": [
+    "Vm = 3 V.",
+    "E = 216 + 10 = 226 mJ → C ≈ 0,12 F.",
+    "Pila: 0,240 A·3600 s = 864 C; Q por hora 0,0753 C.",
+    "864/0,0753 = 11 470 h ≈ 1,3 años."
+  ]
+}

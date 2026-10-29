@@ -1,0 +1,79 @@
+{
+  "kind": "apuntes",
+  "id": "dispositivos.apuntes.tema-1-sensores",
+  "subjectId": "dispositivos",
+  "slug": "tema-1-sensores",
+  "title": "Tema 1 · Sensores: resolver el boletín",
+  "description": "Fórmulas, recetas y los ejercicios del boletín del tema 1 resueltos: calibración, operacionales, errores, conversión A/D y acondicionamiento.",
+  "scope": "Tema 1 (PDF del bloque 1, pp. 1-97): caracterización (10-35), amplificación (46-64) y conversión A/D (78-91). Ejercicios 1, 3, 4, 5 y 6 del boletín de los temas 1-3; el ejercicio 2 está en los apuntes del tema 3.",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 10,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        10,
+        14,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        46,
+        47,
+        49,
+        50,
+        51,
+        52,
+        55,
+        58,
+        59,
+        60,
+        61,
+        62,
+        64,
+        78,
+        84,
+        85,
+        86,
+        87,
+        88,
+        91
+      ],
+      "label": "Diapositivas usadas; páginas físicas"
+    },
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-1-3",
+      "pdfPages": [
+        1,
+        2,
+        3
+      ],
+      "label": "Ejercicios 1, 3, 4, 5 y 6"
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.resumenes.formulario-examen",
+    "dispositivos.tests.cuestiones-examen"
+  ]
+}

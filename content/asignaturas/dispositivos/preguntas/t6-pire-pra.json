@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t6-pire-pra",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Una antena tiene PIRE = 20 dBm en la dirección del receptor. ¿Cuánto vale su PRA?",
+  "explanation": "PRA = PIRE − 2,15 dB = 17,85 dBm, porque el dipolo λ/2 tiene 2,15 dBi.",
+  "options": [
+    {
+      "id": "a",
+      "text": "17,85 dBm",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "22,15 dBm",
+      "explanation": "Suma en lugar de restar la ganancia del dipolo."
+    },
+    {
+      "id": "c",
+      "text": "15,23 dBm",
+      "explanation": "Resta 4,77 dB: eso da la PRAVC."
+    },
+    {
+      "id": "d",
+      "text": "20 dBm",
+      "explanation": "PIRE y PRA usan antenas de referencia distintas."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        30,
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-6-enlace-radio",
+      "anchor": "antena"
+    }
+  ]
+}

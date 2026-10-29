@@ -1,0 +1,143 @@
+<h2 id="examen">Qué cae y cómo usar estos apuntes</h2>
+
+En el examen hay **una cuestión y un problema de cada tema**, parecidos a los del boletín. El PDF del bloque 1 contiene los temas 1, 2 y 3 y comparten un único boletín, titulado «Ejercicios Tema 1». Aquí está el tema 1 (pp. 1-97) con los **ejercicios 1, 3, 4, 5 y 6** del boletín: curva de calibración, amplificador operacional, errores de un sensor, conversión A/D y acondicionamiento. El ejercicio 2 (puente de Wheatstone) está en los [apuntes del tema 3](/web-estudio/asignaturas/dispositivos/apuntes/tema-3-sensores-actuadores/#wheatstone). Ningún ejercicio del boletín trata los buses del tema 2.
+
+Cada apartado tiene la fórmula, los pasos y el ejercicio del boletín resuelto. Practica cada uno en su [ejercicio interactivo](/web-estudio/asignaturas/dispositivos/ejercicios/) antes de mirar la solución.
+
+<h2 id="calibracion">Curva de calibración: campo, alcance, FSO y sensibilidad</h2>
+
+| Concepto | Fórmula | Unidades |
+| --- | --- | --- |
+| Campo de medida (rango) | `[Xmin, Xmax]` | de la entrada |
+| Alcance o fondo de escala | `S = Xmax − Xmin` | de la entrada |
+| Fondo de escala de salida | `FSO = Ymax − Ymin` | de la salida |
+| Sensibilidad (lineal) | `pendiente = FSO / S` | salida / entrada |
+| Curva lineal | `Y = a·X + b` | |
+
+**Receta.** Escribe la recta con los dos extremos, calcula la salida en los puntos que pide el enunciado y compara la excursión usada con el FSO.
+
+**Boletín, ejercicio 1.** Sensor de −20 a 100 °C que da de 2 a 5 V.
+
+1. Campo de medida `[−20, 100] °C`; alcance `S = 120 °C`.
+2. `FSO = 5 − 2 = 3 V`.
+3. Sensibilidad `3 V / 120 °C = 25 mV/°C`. Recta: `V = 2,5 + 0,025·T`.
+4. A 15 °C, 2,875 V; a 25 °C, 3,125 V. Excursión 0,25 V, es decir, `0,25 / 3 = 8,3 %` del FSO. **No es adecuado**: se desaprovecha más del 90 % de la salida y se pierde resolución. Conviene un sensor de menor campo de medida o amplificar.
+
+[Practicar el ejercicio 1](/web-estudio/asignaturas/dispositivos/ejercicios/t1-ej1-sensor-temperatura/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=10">T1, pp. 10, 14 y 17</a>.</p>
+
+<h2 id="amplificadores">Amplificador operacional ideal</h2>
+
+Hipótesis: `V− = V+` (cortocircuito virtual) e `I− = I+ = 0`.
+
+| Montaje | Salida |
+| --- | --- |
+| Inversor | `Vo = −(R2/R1)·Vi` |
+| No inversor | `Vo = (1 + R2/R1)·Vi` |
+| Diferencial | `Vo = −(R2/R1)·V1 + (1 + R2/R1)·R4/(R3+R4)·V2` |
+| Diferencial simétrico (R1 = R3, R2 = R4) | `Vo = (R2/R1)·(V2 − V1)` |
+| Instrumentación (R2 = R3) | `G = 1 + 2R1/Rg` |
+
+**Receta con dos fuentes: superposición.** Anula una fuente, calcula su contribución con la fórmula del inversor o del no inversor y suma. Comprueba al final que `Vo` cabe dentro de la alimentación.
+
+**Boletín, ejercicio 3.** La fuente de 3 V fija directamente `V+ = 3 V`; la resistencia de 3 kΩ en paralelo no cambia esa tensión.
+
+```text
+Vo = −(5k/10k)·5 + (1 + 5k/10k)·3 = −2,5 + 4,5 = 2 V
+```
+
+**Sí puede darla**: 2 V está muy lejos de ±15 V.
+
+[Practicar el ejercicio 3](/web-estudio/asignaturas/dispositivos/ejercicios/t1-ej3-amplificador/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=50">T1, pp. 50-52, 58-61 y 64</a>.</p>
+
+<h2 id="acondicionamiento">Acondicionamiento: Vo = G·Vs + D</h2>
+
+Se busca la recta que lleva el margen del sensor al margen del ADC:
+
+```text
+G = (Vo,max − Vo,min) / (Vs,max − Vs,min)
+D = Vo,min − G · Vs,min
+```
+
+**Ejemplo de las diapositivas.** De −10…10 mV a 0…5 V: `G = 5 / 0,02 = 250` y `D = 0 − 250·(−0,01) = 2,5 V`. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t1-diapo-acondicionamiento-mv/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=47">T1, pp. 47 y 49</a>.</p>
+
+<h2 id="errores">Errores de un sensor y calibración</h2>
+
+```text
+Error absoluto         εa  = |Xreal − Xmedido|
+Error relativo         εr  = εa / Xreal
+Error sobre fondo de escala  εFS = εa / S
+```
+
+±1 % FS no es lo mismo que ±1 % de la lectura: el primero es fijo y pesa mucho en lecturas pequeñas.
+
+- **Calibración a un punto**: corrige el cero (desplazamiento).
+- **Calibración a dos puntos**: corrige cero y ganancia. Después solo queda la **no linealidad**.
+
+**Receta del peor caso sin calibrar.** Suma en tensión el error del cero y el error de sensibilidad al fondo de escala, pásalo a unidades de entrada con la sensibilidad nominal, divide entre el alcance y súmale la no linealidad.
+
+**Boletín, ejercicio 4** (acelerómetro ±50 g).
+
+1. Curva nominal: `Vo = 2,50 V + 0,040 V/g · a`.
+2. Peor caso a 50 g: `0,35 V + 5 mV/g · 50 g = 0,60 V`. En aceleración, `0,60 / 0,040 = 15 g`. Sobre un alcance de 100 g son el 15 %. Con la no linealidad: **15,2 % FS**.
+3. Con cero y ganancia calibrados solo queda la no linealidad: **0,2 % FS**.
+
+[Practicar el ejercicio 4](/web-estudio/asignaturas/dispositivos/ejercicios/t1-ej4-acelerometro/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=19">T1, pp. 19, 28-35</a>.</p>
+
+<h2 id="adc">Conversión A/D</h2>
+
+```text
+Códigos (estados)     N = 2^n
+Resolución exacta     FS / (N − 1)      o, relativa, 1/(N − 1)
+Resolución aproximada FS / N            o, relativa, 1/N
+Peso de 1 LSB         h = FS / 2^n
+Error de cuantificación máximo   ± h/2   (relativo: ± 1/2^(n+1))
+Código de salida      Vi / LSB, sin decimales
+Nyquist               fs ≥ 2·fmax
+```
+
+**Boletín, ejercicio 5** (0–5 V, 10 bits).
+
+1. `2^10 = 1024` códigos.
+2. Exacta: `5 / 1023 = 4,888 mV` (0,0978 %).
+3. Aproximada: `5 / 1024 = 4,883 mV` (0,0977 %).
+4. 1 LSB = **4,883 mV**.
+5. `3,234 / 4,883 mV = 662,3` → código **662 = 1010010110** en binario.
+
+**Ejercicios de las diapositivas.**
+
+- Error máximo de ±1 %: `1 / 2^(n+1) ≤ 0,01` → `2^n ≥ 50`. En binario, **64 niveles, 6 bits**, resolución 1/64 = 1,56 % y error máximo ±0,78 %. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t1-diapo-cuantificador-1/).
+- Señal de 0–1 V en un ADC de 13 bits y 0–5 V: LSB = `5 / 8192 = 0,61 mV`. La señal solo usa unos 1638 códigos. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t1-diapo-adc-13-bits/).
+
+**Boletín, ejercicio 6** (sensor de 0,5 V a 0 °C y 1,5 V a 100 °C, ADC de 12 bits y 0–3,3 V).
+
+1. `Vs = 0,5 + 0,01·T` (10 mV/°C).
+2. De 0,5 a 1,5 V: 1 V de excursión.
+3. `1 / 3,3 = 30,3 %` del margen del ADC.
+4. `a = 3,3 / 1 = 3,3` y `b = −3,3 · 0,5 = −1,65 V`: **Vo = 3,3·Vs − 1,65**.
+5. `100 °C / 4096 = 0,0244 °C/LSB`.
+6. Sin acondicionar: `0,806 mV / 10 mV/°C = 0,0806 °C/LSB`. El acondicionamiento mejora la resolución **3,3 veces**.
+
+[Ejercicio 5](/web-estudio/asignaturas/dispositivos/ejercicios/t1-ej5-adc-10-bits/) · [Ejercicio 6](/web-estudio/asignaturas/dispositivos/ejercicios/t1-ej6-acondicionamiento/).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=78">T1, pp. 78, 84-88 y 91</a>.</p>
+
+<h2 id="cuestiones">Cuestiones rápidas</h2>
+
+| Si te preguntan… | Responde con… |
+| --- | --- |
+| Precisión, veracidad y exactitud | Precisión: medidas repetidas parecidas. Veracidad: la media se acerca al valor real. Exactitud: ambas a la vez. |
+| Histéresis, saturación, zona muerta | La curva depende del sentido del cambio; se pierde sensibilidad en los extremos; hay tramos de pendiente nula. |
+| Resolución y umbral | Cambio mínimo de entrada que se detecta en la salida; valor de entrada más bajo al que reacciona el sensor. |
+| Derivas | Térmicas y temporales; desplazan la recta (cero) o cambian su pendiente (ganancia). |
+| CMRR | `Ad / Ac`. Interesa que sea grande para rechazar el modo común. |
+| Amplificador de instrumentación | Tres operacionales; amplifica µV diferenciales y rechaza voltios en modo común. |
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=20">T1, pp. 20-27, 33, 55 y 62</a>.</p>

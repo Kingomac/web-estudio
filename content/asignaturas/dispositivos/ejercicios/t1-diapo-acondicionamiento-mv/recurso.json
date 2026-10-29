@@ -1,0 +1,60 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t1-diapo-acondicionamiento-mv",
+  "subjectId": "dispositivos",
+  "slug": "t1-diapo-acondicionamiento-mv",
+  "title": "T1 · Diapositivas · De ±10 mV a 0–5 V",
+  "description": "Ganancia y desplazamiento de un circuito de acondicionamiento.",
+  "scope": "Ejercicio de la diapositiva 49 del tema 1.",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "order": 60,
+  "mode": "form",
+  "prompt": "Un sensor da de −10 a 10 mV y el equipo de lectura admite de 0 a 5 V. Determina G y D en Vo = G·Vs + D.",
+  "explanation": "G = 5 V / 20 mV = 250 y D = 0 − 250·(−0,01) = 2,5 V: Vo = 250·Vs + 2,5.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        47,
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "acondicionamiento"
+    }
+  ],
+  "fields": [
+    {
+      "id": "g",
+      "label": "Ganancia G",
+      "type": "number",
+      "answer": 250,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "V/V",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "G = (5 − 0)/(0,01 − (−0,01)) = 250."
+    },
+    {
+      "id": "d",
+      "label": "Desplazamiento D",
+      "type": "number",
+      "answer": 2.5,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "V",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "D = Vo,min − G·Vs,min = 0 + 250·0,01 = 2,5 V."
+    }
+  ],
+  "steps": [
+    "G = ΔVo/ΔVs = 5/0,02 = 250.",
+    "D = 0 − 250·(−0,01) = 2,5 V."
+  ]
+}

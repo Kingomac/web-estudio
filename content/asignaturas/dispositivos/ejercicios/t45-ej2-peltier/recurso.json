@@ -1,0 +1,130 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t45-ej2-peltier",
+  "subjectId": "dispositivos",
+  "slug": "t45-ej2-peltier",
+  "title": "T4-5 · Ej. 2 · Sistema con módulo Peltier",
+  "description": "Potencias del convertidor, capacidad, energía por ciclo y tiempo de carga.",
+  "scope": "Ejercicio 2 del boletín de los temas 4 y 5.",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 110,
+  "mode": "form",
+  "prompt": "Peltier de 200 mV en vacío y 3 Ω, conectado a un convertidor de 3 Ω de entrada y η = 60 %. El nodo funciona entre 3,3 y 2,8 V (umbrales de PGOOD) y consume 30 mA durante 2 s. Calcula Pin, Pout, C, la energía del ciclo y el tiempo de carga. Indica el tipo de convertidor y de condensador.",
+  "explanation": "Con resistencias iguales hay máxima transferencia: Pin = 0,2²/12 = 3,33 mW, convertidor elevador. Pout = 2 mW. C = 0,06 C/0,5 V = 0,12 F (supercondensador). E = ½·0,12·(3,3² − 2,8²) = 0,183 J. Tiempo de carga 0,183/0,002 ≈ 91,5 s.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [
+        2
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        3,
+        7,
+        34,
+        42
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [
+        3,
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "harvesting"
+    }
+  ],
+  "fields": [
+    {
+      "id": "pin",
+      "label": "Potencia de entrada",
+      "type": "number",
+      "answer": 3.333,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "mW",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "I = 0,2/6 = 33,3 mA; Pin = I²·3 Ω = Voc²/(4R) = 3,33 mW."
+    },
+    {
+      "id": "tipo",
+      "label": "Tipo de convertidor",
+      "type": "select",
+      "options": [
+        {
+          "id": "elevador",
+          "text": "Elevador"
+        },
+        {
+          "id": "reductor",
+          "text": "Reductor"
+        }
+      ],
+      "answer": "elevador",
+      "explanation": "Entran 100 mV y sale 3,3 V: hay que elevar la tensión, como el LTC3108 con TEG."
+    },
+    {
+      "id": "pout",
+      "label": "Potencia de salida",
+      "type": "number",
+      "answer": 2,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "mW",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Pout = 0,6·3,33 = 2 mW."
+    },
+    {
+      "id": "c",
+      "label": "Capacidad de almacenamiento",
+      "type": "number",
+      "answer": 0.12,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "F",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "C = I·t/ΔV = 0,03·2/0,5 = 0,12 F → supercondensador."
+    },
+    {
+      "id": "e",
+      "label": "Energía por ciclo de descarga",
+      "type": "number",
+      "answer": 0.183,
+      "absTol": 0,
+      "relTol": 0.01,
+      "unit": "J",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "½·0,12·(10,89 − 7,84) = 0,183 J."
+    },
+    {
+      "id": "t",
+      "label": "Tiempo de carga",
+      "type": "number",
+      "answer": 91.5,
+      "absTol": 0,
+      "relTol": 0.02,
+      "unit": "s",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "t = E/Pout = 0,183/0,002 = 91,5 s."
+    }
+  ],
+  "hint": "Con la misma resistencia de fuente y de carga, la potencia entregada es Voc²/(4R).",
+  "steps": [
+    "Pin = 0,2²/(4·3) = 3,33 mW; elevador.",
+    "Pout = 0,6·3,33 = 2 mW.",
+    "C = 0,03·2/0,5 = 0,12 F (supercondensador).",
+    "E = ½·C·(3,3² − 2,8²) = 0,183 J.",
+    "t = 0,183/0,002 = 91,5 s."
+  ]
+}

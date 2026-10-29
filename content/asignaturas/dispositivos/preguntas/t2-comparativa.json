@@ -1,0 +1,60 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t2-comparativa",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.buses",
+    "dispositivos.tags.examen"
+  ],
+  "type": "multiple",
+  "prompt": "¿Qué afirmaciones sobre los buses son correctas? (Elige todas las correctas)",
+  "explanation": "SPI es full-duplex y el más rápido; I²C usa direcciones y pull-up; UART es asíncrona y punto a punto.",
+  "options": [
+    {
+      "id": "spi",
+      "text": "SPI es full-duplex y selecciona el esclavo con CS",
+      "explanation": "Correcto: no usa direcciones."
+    },
+    {
+      "id": "i2c",
+      "text": "I²C necesita resistencias de pull-up y direcciona a los esclavos",
+      "explanation": "Correcto según la comparativa."
+    },
+    {
+      "id": "uart",
+      "text": "UART es asíncrona",
+      "explanation": "Correcto: no tiene línea de reloj."
+    },
+    {
+      "id": "i2cfd",
+      "text": "I²C es full-duplex",
+      "explanation": "Es half-duplex: datos por una sola línea SDA."
+    },
+    {
+      "id": "spislow",
+      "text": "SPI es más lento que I²C",
+      "explanation": "Es más rápido: reloj del orden de MHz."
+    }
+  ],
+  "answer": [
+    "spi",
+    "i2c",
+    "uart"
+  ],
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        25,
+        47,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-2-comunicacion",
+      "anchor": "comparativa"
+    }
+  ]
+}

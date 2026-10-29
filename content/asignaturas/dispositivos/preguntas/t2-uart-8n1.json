@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t2-uart-8n1",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.buses",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa la configuración UART «9600 8N1»?",
+  "explanation": "9600 bps, 8 bits de datos, sin paridad (N) y 1 bit de stop.",
+  "options": [
+    {
+      "id": "a",
+      "text": "9600 bps, 8 bits de datos, sin paridad, 1 bit de stop",
+      "explanation": "Correcto: velocidad + datos + paridad + stop."
+    },
+    {
+      "id": "b",
+      "text": "9600 bytes/s, 8 bits, paridad par, 1 bit de start",
+      "explanation": "La velocidad es en bits/s y la N indica que no hay paridad."
+    },
+    {
+      "id": "c",
+      "text": "9600 Hz de reloj, 8 dispositivos, 1 maestro",
+      "explanation": "UART es asíncrona: no tiene reloj ni maestro ni esclavos."
+    },
+    {
+      "id": "d",
+      "text": "9600 bps, 8 bits de stop, 1 de datos",
+      "explanation": "El orden es datos, paridad y stop."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        6,
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-2-comunicacion",
+      "anchor": "uart"
+    }
+  ]
+}

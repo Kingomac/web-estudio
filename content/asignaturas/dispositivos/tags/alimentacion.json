@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "dispositivos.tags.alimentacion",
+  "subjectId": "dispositivos",
+  "slug": "alimentacion",
+  "title": "Tema 4 · Alimentación de bajo consumo",
+  "type": "topic",
+  "order": 20
+}

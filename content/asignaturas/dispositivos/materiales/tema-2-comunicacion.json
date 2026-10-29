@@ -1,0 +1,22 @@
+{
+  "id": "dispositivos.materiales.tema-2-comunicacion",
+  "kind": "material",
+  "subjectId": "dispositivos",
+  "slug": "tema-2-comunicacion",
+  "title": "Tema 2 · Comunicación: UART, I²C y SPI",
+  "description": "Parte del documento original «Dipositivos IoT.pdf» (bloque 1), dividido por temas según su contenido.",
+  "scope": "Páginas 98-145 del PDF original del bloque 1: comunicación serie y paralelo, UART, I²C y SPI.",
+  "tagIds": [
+    "dispositivos.tags.buses"
+  ],
+  "order": 12,
+  "file": "materiales/dispositivos/tema-2-comunicacion.pdf",
+  "format": "pdf",
+  "providedName": "Dipositivos IoT.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 48,
+  "sha256": "347a360618b7635d592e07d14d9e068b060316f43fb467f06449797e718979f2"
+}

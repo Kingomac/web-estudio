@@ -1,0 +1,83 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t45-c3-modelo-celula",
+  "subjectId": "dispositivos",
+  "slug": "t45-c3-modelo-celula",
+  "title": "T4-5 · Cuestión 3 · Modelo de la célula solar",
+  "description": "Corriente fotogenerada y componentes del modelo eléctrico.",
+  "scope": "Cuestión 3 del boletín de los temas 4 y 5. Rp se estima con hipótesis explícitas porque el enunciado no da Rs.",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 140,
+  "mode": "form",
+  "prompt": "Con I = 300 W/m², IL = 0,0002·I. En el MPP, IM = 55 mA y VM = 0,56 V; VOC = 0,7 V. Calcula IL, la corriente que no sale en el MPP y una estimación de Rp suponiendo Rs ≈ 0, diodo ideal y VT ≈ 25,7 mV.",
+  "explanation": "IL = 60 mA. En el MPP se pierden 5 mA entre el diodo y Rp. Con las dos condiciones (vacío y MPP) se obtiene I0 ≈ 8·10⁻¹⁴ A y Rp ≈ 118 Ω; el diodo solo se lleva unos 0,23 mA en el MPP. El modelo es IL en paralelo con el diodo y Rp, y Rs en serie.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [
+        1
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        9,
+        30,
+        31,
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "fotovoltaica"
+    }
+  ],
+  "fields": [
+    {
+      "id": "il",
+      "label": "Corriente fotogenerada IL",
+      "type": "number",
+      "answer": 60,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "mA",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "0,0002·300 = 0,06 A."
+    },
+    {
+      "id": "perdida",
+      "label": "Corriente perdida en el MPP",
+      "type": "number",
+      "answer": 5,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "mA",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "IL − IM = 60 − 55 = 5 mA, repartida entre el diodo y Rp."
+    },
+    {
+      "id": "rp",
+      "label": "Rp estimada",
+      "type": "number",
+      "answer": 118,
+      "absTol": 0,
+      "relTol": 0.06,
+      "unit": "Ω",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Resolviendo IL = I0·e^(VOC/VT) + VOC/Rp y IL − IM = I0·e^(VM/VT) + VM/Rp: Rp ≈ 118 Ω. Ignorando el diodo en el MPP saldría 112 Ω; se aceptan ambas aproximaciones."
+    }
+  ],
+  "hint": "En vacío, toda IL va por el diodo y Rp; en el MPP, solo IL − IM.",
+  "steps": [
+    "IL = 60 mA.",
+    "Pérdida en el MPP = 5 mA.",
+    "Sistema de dos ecuaciones en I0 y 1/Rp → Rp ≈ 118 Ω, I0 ≈ 8·10⁻¹⁴ A.",
+    "Dibujo: IL ∥ diodo ∥ Rp, con Rs en serie con la salida."
+  ]
+}

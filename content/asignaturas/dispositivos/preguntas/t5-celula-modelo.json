@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t5-celula-modelo",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "¿Qué elementos forman el circuito equivalente de una célula solar real?",
+  "explanation": "Fuente de corriente IL, diodo y resistencia paralelo Rp en paralelo, con una resistencia serie Rs hacia la salida.",
+  "options": [
+    {
+      "id": "a",
+      "text": "IL, diodo y Rp en paralelo, con Rs en serie",
+      "explanation": "Correcto."
+    },
+    {
+      "id": "b",
+      "text": "Fuente de tensión con resistencia serie",
+      "explanation": "Es el modelo de un Peltier."
+    },
+    {
+      "id": "c",
+      "text": "Fuente de corriente sinusoidal con Cp",
+      "explanation": "Es el modelo piezoeléctrico."
+    },
+    {
+      "id": "d",
+      "text": "Solo IL y un diodo",
+      "explanation": "Es el dispositivo intrínseco; la célula real añade Rp y Rs."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        30,
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "fotovoltaica"
+    }
+  ]
+}

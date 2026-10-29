@@ -1,0 +1,112 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t1-ej5-adc-10-bits",
+  "subjectId": "dispositivos",
+  "slug": "t1-ej5-adc-10-bits",
+  "title": "Boletín T1-3 · Ej. 5 · ADC de 10 bits",
+  "description": "Códigos, resolución exacta y aproximada, LSB y código de salida.",
+  "scope": "Ejercicio 5 del boletín de los temas 1-3; corresponde al tema 1 (conversión A/D).",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.boletines",
+    "dispositivos.tags.examen"
+  ],
+  "order": 40,
+  "mode": "form",
+  "prompt": "Un convertidor A/D de 0–5 V da 10 bits. Calcula el número de códigos, la resolución exacta y aproximada, el peso de 1 LSB y el código para 3,234 V (sin errores, ganancia 1).",
+  "explanation": "2^10 = 1024 códigos. Resolución exacta 5/1023 = 4,888 mV; aproximada 5/1024 = 4,883 mV, que es el peso del LSB. 3,234 V / 4,883 mV = 662,3 → código 662 = 1010010110.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-1-3",
+      "pdfPages": [
+        2
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        84,
+        85,
+        91
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "adc"
+    }
+  ],
+  "fields": [
+    {
+      "id": "codigos",
+      "label": "Número de códigos",
+      "type": "number",
+      "answer": 1024,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "códigos",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "2^10 = 1024."
+    },
+    {
+      "id": "exacta",
+      "label": "Resolución exacta",
+      "type": "number",
+      "answer": 4.888,
+      "absTol": 0,
+      "relTol": 0.002,
+      "unit": "mV",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "FS/(N − 1) = 5/1023 = 4,888 mV (0,0978 %)."
+    },
+    {
+      "id": "aprox",
+      "label": "Resolución aproximada",
+      "type": "number",
+      "answer": 4.883,
+      "absTol": 0,
+      "relTol": 0.002,
+      "unit": "mV",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "FS/N = 5/1024 = 4,883 mV (0,0977 %)."
+    },
+    {
+      "id": "lsb",
+      "label": "Peso de 1 LSB",
+      "type": "number",
+      "answer": 4.883,
+      "absTol": 0,
+      "relTol": 0.002,
+      "unit": "mV",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "h = FS/2^n = 5/1024 = 4,883 mV."
+    },
+    {
+      "id": "codigo",
+      "label": "Código decimal para 3,234 V",
+      "type": "number",
+      "answer": 662,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "código",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "3,234/0,0048828 = 662,3 → 662."
+    },
+    {
+      "id": "binario",
+      "label": "Código en binario",
+      "type": "format",
+      "format": "bits",
+      "answer": "1010010110",
+      "explanation": "662 = 512 + 128 + 16 + 4 + 2 → 1010010110."
+    }
+  ],
+  "hint": "La resolución exacta divide entre N − 1; la aproximada y el LSB, entre N.",
+  "steps": [
+    "N = 1024.",
+    "Exacta 5/1023 = 4,888 mV; aproximada 5/1024 = 4,883 mV.",
+    "Código: 3,234/0,004883 = 662,3 → 662.",
+    "662 en binario: 1010010110."
+  ]
+}

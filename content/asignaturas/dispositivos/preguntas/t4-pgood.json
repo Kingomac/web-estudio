@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t4-pgood",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "En un sistema de energy harvesting, ¿qué hace la señal PGOOD?",
+  "explanation": "La genera un supervisor de tensión: indica que el almacenamiento ha alcanzado el umbral superior y activa el interruptor que alimenta el nodo, que se desconecta al caer al umbral inferior.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Conecta el nodo cuando el condensador alcanza el umbral superior y lo desconecta en el inferior",
+      "explanation": "Correcto: umbrales con histéresis, por ejemplo 3,3 y 2,8 V."
+    },
+    {
+      "id": "b",
+      "text": "Regula la tensión de salida del convertidor a 3,3 V",
+      "explanation": "Eso lo hace el convertidor dc-dc."
+    },
+    {
+      "id": "c",
+      "text": "Rectifica la tensión alterna del generador",
+      "explanation": "Lo hace el rectificador."
+    },
+    {
+      "id": "d",
+      "text": "Indica que el generador funciona en su punto de máxima potencia",
+      "explanation": "El MPP no se señaliza con PGOOD."
+    }
+  ],
+  "answer": "a",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        3,
+        44
+      ]
+    },
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "cuestiones"
+    }
+  ]
+}

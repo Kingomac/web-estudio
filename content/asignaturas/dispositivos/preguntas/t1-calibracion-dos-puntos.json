@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t1-calibracion-dos-puntos",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.examen"
+  ],
+  "type": "single",
+  "prompt": "Tras calibrar un sensor a dos puntos (cero y ganancia), ¿qué error sigue presente?",
+  "explanation": "La calibración a dos puntos corrige el desplazamiento y la pendiente; la no linealidad no se corrige con una recta.",
+  "options": [
+    {
+      "id": "nl",
+      "text": "La no linealidad",
+      "explanation": "Correcto: es la diferencia entre la curva real y la recta, y no depende del cero ni de la ganancia."
+    },
+    {
+      "id": "cero",
+      "text": "El error de cero",
+      "explanation": "Se corrige en el primer punto de la calibración."
+    },
+    {
+      "id": "ganancia",
+      "text": "El error de ganancia",
+      "explanation": "Se corrige con la entrada patrón del segundo punto."
+    },
+    {
+      "id": "ninguno",
+      "text": "Ninguno",
+      "explanation": "Queda la no linealidad; por eso el ejercicio 4 da 0,2 % FS tras calibrar."
+    }
+  ],
+  "answer": "nl",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [
+        19,
+        34,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-1-sensores",
+      "anchor": "errores"
+    }
+  ]
+}

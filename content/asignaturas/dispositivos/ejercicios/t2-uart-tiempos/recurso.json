@@ -1,0 +1,86 @@
+{
+  "kind": "ejercicio",
+  "id": "dispositivos.ejercicios.t2-uart-tiempos",
+  "subjectId": "dispositivos",
+  "slug": "t2-uart-tiempos",
+  "title": "T2 · Práctica · Tiempos de una UART 9600 8N1",
+  "description": "Tiempo de bit, bits por carácter, tiempo por carácter y caracteres por segundo.",
+  "scope": "Práctica propia basada en las diapositivas de UART del tema 2 (pp. 5-7).",
+  "tagIds": [
+    "dispositivos.tags.buses",
+    "dispositivos.tags.examen"
+  ],
+  "order": 180,
+  "mode": "form",
+  "prompt": "Una UART está configurada a 9600 8N1. Calcula el tiempo de bit, cuántos bits ocupa cada carácter, cuánto tarda en enviarse un carácter y cuántos caracteres por segundo puede enviar como máximo.",
+  "explanation": "tb = 1/9600 = 104 µs. 8N1 son 1 bit de start, 8 de datos, sin paridad y 1 de stop: 10 bits, 1,04 ms por carácter y 960 caracteres por segundo.",
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.tema-2-comunicacion",
+      "anchor": "uart"
+    }
+  ],
+  "fields": [
+    {
+      "id": "tb",
+      "label": "Tiempo de bit",
+      "type": "number",
+      "answer": 104.17,
+      "absTol": 0,
+      "relTol": 0.005,
+      "unit": "µs",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "1/9600 s = 104,17 µs, como indica la diapositiva."
+    },
+    {
+      "id": "bits",
+      "label": "Bits por carácter",
+      "type": "number",
+      "answer": 10,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "bits",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "Start (1) + datos (8) + paridad (0, «N») + stop (1) = 10."
+    },
+    {
+      "id": "tc",
+      "label": "Tiempo por carácter",
+      "type": "number",
+      "answer": 1.0417,
+      "absTol": 0,
+      "relTol": 0.005,
+      "unit": "ms",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "10·104,17 µs = 1,042 ms."
+    },
+    {
+      "id": "cps",
+      "label": "Caracteres por segundo",
+      "type": "number",
+      "answer": 960,
+      "absTol": 0,
+      "relTol": 0,
+      "unit": "caracteres/s",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "9600/10 = 960."
+    }
+  ],
+  "hint": "En 8N1 no hay bit de paridad, pero sí los de start y stop.",
+  "steps": [
+    "tb = 1/9600 = 104 µs.",
+    "8N1: 1 + 8 + 0 + 1 = 10 bits.",
+    "Carácter: 10·104 µs = 1,04 ms.",
+    "9600/10 = 960 caracteres/s."
+  ]
+}

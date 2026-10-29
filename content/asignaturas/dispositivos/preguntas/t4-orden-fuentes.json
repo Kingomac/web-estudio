@@ -1,0 +1,54 @@
+{
+  "kind": "pregunta",
+  "id": "dispositivos.preguntas.t4-orden-fuentes",
+  "subjectId": "dispositivos",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.examen"
+  ],
+  "type": "ordering",
+  "prompt": "Ordena de mayor a menor densidad de potencia (tabla 1.1 del tema 4).",
+  "explanation": "Solar exterior 15 000 µW/cm², vibraciones 200, gradiente térmico 15 (con 10 °C) y ruido acústico 0,96 (a 100 dB).",
+  "items": [
+    {
+      "id": "solar",
+      "text": "Solar en exterior",
+      "placementExplanation": "15 000 µW/cm² a pleno sol: la mayor."
+    },
+    {
+      "id": "vib",
+      "text": "Vibraciones",
+      "placementExplanation": "200 µW/cm²."
+    },
+    {
+      "id": "term",
+      "text": "Gradiente de temperatura",
+      "placementExplanation": "15 µW/cm² con 10 °C de diferencia."
+    },
+    {
+      "id": "ac",
+      "text": "Ruido acústico",
+      "placementExplanation": "0,96 µW/cm² a 100 dB: la menor."
+    }
+  ],
+  "answer": [
+    "solar",
+    "vib",
+    "term",
+    "ac"
+  ],
+  "originalReferences": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "dispositivos.apuntes.temas-4-5-alimentacion",
+      "anchor": "cuestiones"
+    }
+  ]
+}

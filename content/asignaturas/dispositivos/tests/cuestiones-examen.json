@@ -1,0 +1,94 @@
+{
+  "kind": "test",
+  "id": "dispositivos.tests.cuestiones-examen",
+  "subjectId": "dispositivos",
+  "slug": "cuestiones-examen",
+  "title": "Cuestiones de examen por tema",
+  "description": "Preguntas cortas de concepto y cálculo rápido de los seis temas para repasar la parte de cuestiones.",
+  "scope": "Temas 1, 2, 3, 4, 5 y 6; mismas páginas que sus apuntes. El examen real es escrito: este test sirve para comprobar conceptos.",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.buses",
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "order": 5,
+  "groups": [
+    {
+      "id": "t1",
+      "title": "Tema 1 · Sensores",
+      "questionIds": [
+        "dispositivos.preguntas.t1-alcance-fso",
+        "dispositivos.preguntas.t1-error-fondo-escala",
+        "dispositivos.preguntas.t1-calibracion-dos-puntos",
+        "dispositivos.preguntas.t1-instrumentacion",
+        "dispositivos.preguntas.t1-lsb-error",
+        "dispositivos.preguntas.t1-nyquist"
+      ]
+    },
+    {
+      "id": "t2",
+      "title": "Tema 2 · Comunicación",
+      "questionIds": [
+        "dispositivos.preguntas.t2-uart-8n1",
+        "dispositivos.preguntas.t2-i2c-lineas",
+        "dispositivos.preguntas.t2-arbitraje",
+        "dispositivos.preguntas.t2-spi-modo",
+        "dispositivos.preguntas.t2-comparativa"
+      ]
+    },
+    {
+      "id": "t3",
+      "title": "Tema 3 · Sensores y actuadores",
+      "questionIds": [
+        "dispositivos.preguntas.t3-activos-pasivos",
+        "dispositivos.preguntas.t3-encoder-absoluto",
+        "dispositivos.preguntas.t3-inductivo-capacitivo",
+        "dispositivos.preguntas.t3-ultrasonido-eco",
+        "dispositivos.preguntas.t3-ntc"
+      ]
+    },
+    {
+      "id": "t4",
+      "title": "Tema 4 · Alimentación",
+      "questionIds": [
+        "dispositivos.preguntas.t4-pgood",
+        "dispositivos.preguntas.t4-orden-fuentes",
+        "dispositivos.preguntas.t4-thompson",
+        "dispositivos.preguntas.t4-seebeck",
+        "dispositivos.preguntas.t4-capacidad",
+        "dispositivos.preguntas.t4-almacenamiento"
+      ]
+    },
+    {
+      "id": "t5",
+      "title": "Tema 5 · Energy harvesting",
+      "questionIds": [
+        "dispositivos.preguntas.t5-convertidores",
+        "dispositivos.preguntas.t5-doblador",
+        "dispositivos.preguntas.t5-sshi",
+        "dispositivos.preguntas.t5-peltier-modelo",
+        "dispositivos.preguntas.t5-celula-modelo"
+      ]
+    },
+    {
+      "id": "t6",
+      "title": "Tema 6 · Antenas y enlace",
+      "questionIds": [
+        "dispositivos.preguntas.t6-dbm",
+        "dispositivos.preguntas.t6-k20",
+        "dispositivos.preguntas.t6-plf",
+        "dispositivos.preguntas.t6-pire-pra",
+        "dispositivos.preguntas.t6-vswr",
+        "dispositivos.preguntas.t6-distancia-doble",
+        "dispositivos.preguntas.t6-campo-lejano"
+      ]
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.resumenes.formulario-examen"
+  ]
+}
