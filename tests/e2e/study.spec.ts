@@ -257,19 +257,19 @@ test('los laboratorios imprimen todos los casos y supuestos cerrados incluso sin
       await page.goto(`${baseURL}${subject}apuntes/${path}/`);
       const details = page.locator('.lab details');
       expect(await details.count()).toBeGreaterThan(0);
-      const contents = details.locator(':scope > :not(summary)');
-      for (const content of await contents.all()) await expect(content).toBeHidden();
+      // Count-based assertions: one retrying check per state instead of one per element keeps the test fast.
+      const contents = page.locator('.lab details > :not(summary)');
+      const total = await contents.count();
+      await expect(page.locator('.lab details > :not(summary):visible')).toHaveCount(0);
       // Preserve the reader's choice when returning from print to screen.
       await details.first().locator('summary').click();
       await page.emulateMedia({ media: 'print' });
-      for (const content of await contents.all()) await expect(content).toBeVisible();
-      for (const control of await page.locator('.lab button, .lab input, .lab select').all()) await expect(control).toBeHidden();
+      await expect(page.locator('.lab details > :not(summary):visible')).toHaveCount(total);
+      await expect(page.locator('.lab :is(button, input, select):visible')).toHaveCount(0);
       await page.emulateMedia({ media: 'screen' });
       await expect(details.first()).toHaveAttribute('open');
-      for (const detail of (await details.all()).slice(1)) {
-        await expect(detail).not.toHaveAttribute('open');
-        for (const content of await detail.locator(':scope > :not(summary)').all()) await expect(content).toBeHidden();
-      }
+      await expect(page.locator('.lab details[open]')).toHaveCount(1);
+      await expect(page.locator('.lab details:not([open]) > :not(summary):visible')).toHaveCount(0);
     }
   } finally {
     await context.close();
