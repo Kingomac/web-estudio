@@ -22,7 +22,7 @@ bun run build && bun run preview   # sitio compilado, servido con Bun.serve
 ```bash
 bun run test:install       # una vez; añade --with-deps en Linux sin bibliotecas de Firefox
 bun run check:content      # cambios solo en content/ o public/materiales/
-bun run check              # cualquier otro cambio; es lo que ejecuta CI
+bun run check              # cualquier otro cambio
 ```
 
 `check:content` ejecuta unitarias, validación de contenido y PDF, compilación y revisión de enlaces y anclas del HTML. `check` añade `astro check` y las E2E en Firefox. `bun check` es un comando de Bun, no el del proyecto. La impresión paginada y la exactitud académica se revisan a mano.

@@ -64,7 +64,7 @@ Todas las lecturas se imprimen con `print.css`: A4, sin navegación ni controles
 | `check-built` | Enlaces, assets y anclas del HTML bajo la base de despliegue. |
 | E2E (Playwright, Firefox) | Navegación, filtro, índice, los tres tipos de pregunta, formularios, reset, almacenamiento roto, móvil, sin JS e impresión emulada. |
 
-No se escribe una prueba por pregunta: la validación cubre todo el banco. Los enlaces externos (guías docentes) se revisan aparte. Los cambios solo de contenido usan `check:content`; CI ejecuta siempre `check`.
+No se escribe una prueba por pregunta: la validación cubre todo el banco. Los enlaces externos (guías docentes) se revisan aparte. Los cambios solo de contenido usan `check:content` y el resto `check`, siempre en local antes de cada commit: el workflow de GitHub solo compila y publica.
 
 ## Pendiente
 

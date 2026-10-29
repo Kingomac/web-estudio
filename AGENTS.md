@@ -25,4 +25,5 @@ El usuario indica en su prompt una ruta de su PC y un objetivo de estudio. El ag
 
 - Solo cambios en `content/` o `public/materiales/`: `bun run check:content`.
 - Cualquier otro cambio: `bun run check` (añade tipos y E2E en Firefox bajo `/web-estudio/`).
+- GitHub no ejecuta tests: su workflow solo compila y publica. Antes de cada commit ejecuta en local la verificación que corresponda y no hagas commit si falla.
 - La revisión académica y la impresión paginada requieren inspección manual.

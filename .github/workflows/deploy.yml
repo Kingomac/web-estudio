@@ -1,8 +1,8 @@
-name: Validar y publicar
+# Solo compila y publica: las verificaciones se ejecutan en local antes de cada commit (ver AGENTS.md).
+name: Publicar
 on:
   push:
     branches: [main]
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
@@ -10,7 +10,7 @@ concurrency:
   group: cuaderno-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  check:
+  build:
     runs-on: ubuntu-latest
     env:
       BASE_PATH: /${{ github.event.repository.name }}
@@ -21,22 +21,12 @@ jobs:
         with:
           bun-version-file: .bun-version
       - run: bun install --frozen-lockfile
-      - run: bun run test:install --with-deps
-      - run: bun run check
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: diagnostico-firefox
-          path: |
-            test-results/
-            playwright-report/
+      - run: bun run build
       - uses: actions/upload-pages-artifact@v3
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           path: dist
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: check
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       pages: write
