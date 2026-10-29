@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sistema de monitorización debe enviar una notificación a un servidor Web únicamente cuando se produzca una determinada alarma. ¿Qué mecanismo resulta más apropiado si no es necesario mantener una comunicación bidireccional permanente?",
+  "explanation": "Un webhook se activa ante un evento y envía un HTTP POST con los datos del evento a la URL configurada. Evita el sondeo y, a diferencia de WebSocket, es adecuado para comunicaciones unidireccionales y notificaciones esporádicas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        28
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        23,
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "coap-observe",
+      "text": "CoAP Observe",
+      "explanation": "Observe es una suscripción CoAP: el cliente pide un recurso con Observe: 0 y el servidor CoAP le envía las actualizaciones. Aquí el destino es un servidor Web y basta con un aviso HTTP puntual."
+    },
+    {
+      "id": "webhook",
+      "text": "Webhook",
+      "explanation": "Envía un HTTP POST al endpoint configurado solo cuando ocurre el evento, sin conexión permanente."
+    },
+    {
+      "id": "websocket",
+      "text": "WebSocket",
+      "explanation": "WebSocket mantiene una conexión persistente y bidireccional, justo lo que el enunciado dice que no hace falta."
+    },
+    {
+      "id": "opc-ua",
+      "text": "OPC UA",
+      "explanation": "OPC UA es una arquitectura cliente/servidor para el intercambio seguro de datos industriales, no un mecanismo ligero de notificación de eventos a un servidor Web."
+    }
+  ],
+  "answer": "webhook"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo se utiliza la cabecera Mesh en 6LoWPAN para el reenvío de paquetes en modo Mesh-Under?",
+  "explanation": "La cabecera Mesh contiene las direcciones MAC Original y Final, que no cambian a lo largo del camino. Cada nodo usa la MAC Final para buscar el siguiente salto, y el destino usa la Original para reensamblar. En cada salto cambian solo las direcciones de la trama IEEE 802.15.4.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        32,
+        33,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "elimina-la-necesidad-de-incluir",
+      "text": "Elimina la necesidad de incluir direcciones de enlace en las tramas",
+      "explanation": "Cada trama 802.15.4 sigue llevando sus direcciones de enlace de salto (quien reenvía y siguiente salto); la cabecera Mesh añade las de los extremos."
+    },
+    {
+      "id": "contiene-exclusivamente-la-direccion-ipv6",
+      "text": "Contiene exclusivamente la dirección IPv6 del siguiente salto",
+      "explanation": "La cabecera Mesh lleva direcciones MAC, no IPv6, y son las de los extremos, no las del siguiente salto."
+    },
+    {
+      "id": "incluye-las-direcciones-mac-de",
+      "text": "Incluye las direcciones MAC de origen y destino finales",
+      "explanation": "Lleva las MAC Original y Final, que permanecen constantes y guían el reenvío y el reensamblado."
+    },
+    {
+      "id": "transporta-las-direcciones-ipv6-comprimidas",
+      "text": "Transporta las direcciones IPv6 comprimidas para el reenvío multisalto",
+      "explanation": "Las direcciones IPv6 comprimidas van en IPHC; Mesh-Under reenvía sin descomprimir IPv6 y basándose en MAC."
+    }
+  ],
+  "answer": "incluye-las-direcciones-mac-de"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el tamaño mínimo que puede ocupar una cabecera UDP comprimida usando el mecanismo LOWPAN_NHC (incluyendo el octeto NHC)?",
+  "explanation": "El mínimo se obtiene con P = 11, que reduce cada puerto a 4 bits (rango 0xF0B0–0xF0BF), y C = 1, que omite el checksum. La longitud UDP siempre se omite. Total: 8 bits del octeto NHC + 4 + 4 = 16 bits.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "16-bits",
+      "text": "16 bits",
+      "explanation": "Octeto NHC (8) + dos puertos de 4 bits, con checksum omitido."
+    },
+    {
+      "id": "12-bits",
+      "text": "12 bits",
+      "explanation": "Faltaría uno de los puertos de 4 bits: con P = 11 ambos puertos van en línea."
+    },
+    {
+      "id": "8-bits",
+      "text": "8 bits",
+      "explanation": "Es solo el octeto NHC; los puertos nunca se omiten del todo, como mínimo ocupan 4 bits cada uno."
+    },
+    {
+      "id": "20-bits",
+      "text": "20 bits",
+      "explanation": "Excede el mínimo: no hay más campos que añadir a NHC + 4 + 4 bits cuando C = 1."
+    }
+  ],
+  "answer": "16-bits"
+}

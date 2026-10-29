@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿En qué situación se requiere el uso de la cabecera Mesh en 6LoWPAN?",
+  "explanation": "La cabecera Mesh (M) solo es necesaria en Mesh-Under: el reenvío se hace en la capa 6LoWPAN y los nodos intermedios necesitan las direcciones MAC del origen y del destino finales, que la trama 802.15.4 de cada salto no conserva.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        17,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "cuando-se-usa-la-compresion",
+      "text": "Cuando se usa la compresión stateful en direcciones IPv6",
+      "explanation": "La compresión basada en contexto (SAC/DAC = 1) pertenece a IPHC y no depende del modo de reenvío."
+    },
+    {
+      "id": "siempre-que-los-paquetes-se",
+      "text": "Siempre que los paquetes se entreguen en un único salto",
+      "explanation": "En un único salto las direcciones de la trama ya son las de los extremos; la cabecera Mesh se omite."
+    },
+    {
+      "id": "cuando-los-nodos-operan-en",
+      "text": "Cuando los nodos operan en el modo Mesh-Under",
+      "explanation": "En Mesh-Under el reenvío multisalto se hace en 6LoWPAN con las MAC finales de la cabecera Mesh."
+    },
+    {
+      "id": "cuando-los-nodos-operan-en-2",
+      "text": "Cuando los nodos operan en el modo Route-Over",
+      "explanation": "En Route-Over cada salto es un salto IPv6 y el router decide con la dirección IPv6 destino; no usa cabecera Mesh."
+    }
+  ],
+  "answer": "cuando-los-nodos-operan-en"
+}

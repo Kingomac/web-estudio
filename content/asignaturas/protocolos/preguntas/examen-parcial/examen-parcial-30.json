@@ -1,0 +1,47 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Si tenemos las siguientes subredes:\n2001:db8:0:1::/64\n2001:db8:0:2::/64\n2001:db8:0:3::/64\n2001:db8:0:4::/64\n\n¿Qué ruta agregada de mayor longitud de prefijo puede representar este conjunto?",
+  "explanation": "Los cuartos hextetos 1–4 (0001, 0010, 0011, 0100) comparten sus 13 primeros bits a cero; hacen falta los 3 bits finales para cubrir de 1 a 4. Prefijo: 48 + 13 = 61 → 2001:db8::/61, que abarca de 0:0 a 0:7.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "2001-db8-61",
+      "text": "2001:db8::/61",
+      "explanation": "Abarca los cuartos hextetos 0–7, incluidos 1–4."
+    },
+    {
+      "id": "2001-db8-62",
+      "text": "2001:db8::/62",
+      "explanation": "Solo abarca 0–3: deja fuera 2001:db8:0:4::/64."
+    },
+    {
+      "id": "2001-db8-60",
+      "text": "2001:db8::/60",
+      "explanation": "Las cubre, pero no es la de mayor longitud: /61 basta."
+    },
+    {
+      "id": "2001-db8-63",
+      "text": "2001:db8::/63",
+      "explanation": "Solo abarca 0–1."
+    }
+  ],
+  "answer": "2001-db8-61"
+}

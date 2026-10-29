@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿De cuál de las siguientes tareas NO se encarga la capa de aplicación?",
+  "explanation": "Hacer llegar los datagramas al nodo destino es responsabilidad de la capa de red (IPv6 y encaminamiento). La capa de aplicación define cómo se representan e intercambian los datos, el formato y orden de los mensajes y el modelo de comunicación, que incluye la notificación de eventos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        5,
+        6,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "gestionar-las-notificaciones-de-eventos",
+      "text": "Gestionar las notificaciones de eventos",
+      "explanation": "Pertenece al modelo de comunicación de la aplicación: notify del broker en publicación/suscripción, webhooks, Observe."
+    },
+    {
+      "id": "hacer-llegar-los-datos-al",
+      "text": "Hacer llegar los datos al nodo destino",
+      "explanation": "Es tarea de la capa de red, no de la de aplicación."
+    },
+    {
+      "id": "definir-el-formato-y-orden",
+      "text": "Definir el formato y orden de los mensajes intercambiados",
+      "explanation": "Figura expresamente entre las funciones de la capa de aplicación."
+    },
+    {
+      "id": "definir-el-formato-de-los",
+      "text": "Definir el formato de los datos intercambiados",
+      "explanation": "La representación de los datos (XML, JSON…) es función de la capa de aplicación."
+    }
+  ],
+  "answer": "hacer-llegar-los-datos-al"
+}

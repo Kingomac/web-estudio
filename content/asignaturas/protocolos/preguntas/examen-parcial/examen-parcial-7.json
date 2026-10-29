@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En un router se ejecutan los siguientes comandos:\ninterface f0/0\n  ipv6 address 2001:db8:1::1/64\nipv6 route 2001:db8:2:A::/64 2001:db8:1::2\nipv6 route 2001:db8::/32 2001:db8:1::3\nipv6 route ::/0 s0/1\n\n¿Qué ocurre si un paquete con dirección IPv6 destino 2001:db8:1::A:1 llega al router?",
+  "explanation": "`ipv6 address 2001:db8:1::1/64` crea una ruta directa (G=0) para 2001:db8:1::/64 por f0/0. El destino 2001:db8:1::A:1 coincide con ella, con 2001:db8::/32 y con ::/0; por longest prefix match gana /64, así que se entrega directamente por f0/0.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        19,
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "es-reenviado-directamente-a-la",
+      "text": "Es reenviado directamente a la máquina 2001:db8:1::A:1 mediante la interfaz f0/0",
+      "explanation": "El destino está en la subred conectada 2001:db8:1::/64, la coincidencia más larga."
+    },
+    {
+      "id": "es-descartado-ya-que-no",
+      "text": "Es descartado, ya que no hay una ruta válida",
+      "explanation": "Hay varias coincidencias, incluida la ruta por defecto ::/0; nunca se descartaría por falta de ruta."
+    },
+    {
+      "id": "es-reenviado-a-2001-db8",
+      "text": "Es reenviado a 2001:db8:1::3 mediante la interfaz f0/0",
+      "explanation": "2001:db8::/32 coincide, pero es menos específica que la /64 conectada."
+    },
+    {
+      "id": "se-reenvia-al-gateway-por",
+      "text": "Se reenvía al gateway por defecto vía s0/1",
+      "explanation": "::/0 solo se usa si no hay coincidencia más específica."
+    }
+  ],
+  "answer": "es-reenviado-directamente-a-la"
+}

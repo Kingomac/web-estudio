@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En CoAP, ¿qué característica distingue a un mensaje confirmable (CON)?",
+  "explanation": "En el modo confirmable el receptor debe asentir con un ACK; si el cliente no lo recibe, reenvía el mensaje hasta 4 veces con backoff exponencial. En el modo non-confirmable no hay ACK.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38,
+        39,
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-receptor-debe-enviar-un",
+      "text": "El receptor debe enviar un ACK.",
+      "explanation": "Es lo que define a CON."
+    },
+    {
+      "id": "nunca-puede-ser-retransmitido",
+      "text": "Nunca puede ser retransmitido.",
+      "explanation": "Al contrario: si no llega el ACK, se retransmite hasta 4 veces."
+    },
+    {
+      "id": "solo-puede-utilizarse-con-multicast",
+      "text": "Solo puede utilizarse con multicast.",
+      "explanation": "CON se usa habitualmente en unicast; el tipo de mensaje se refiere a la confirmación, no al destino."
+    },
+    {
+      "id": "no-puede-transportar-una-respuesta",
+      "text": "No puede transportar una respuesta.",
+      "explanation": "Una respuesta puede ir piggybacked en el ACK o enviarse aparte como mensaje confirmable."
+    }
+  ],
+  "answer": "el-receptor-debe-enviar-un"
+}

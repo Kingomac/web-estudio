@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de los siguientes modos de publicación de MQTT no garantiza que los mensajes lleguen a los suscriptores?",
+  "explanation": "At most once (QoS 0) es un envío fire-and-forget: el broker no confirma la publicación y el publicador solo confía en TCP, cuya conexión podría caerse. QoS 1 y QoS 2 añaden confirmaciones y reenvíos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        51,
+        52,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-es-posible-garantizar-en",
+      "text": "No es posible garantizar en ningún caso la entrega de los mensajes a los suscriptores.",
+      "explanation": "QoS 1 confirma y reenvía hasta obtener confirmación, y QoS 2 además evita duplicados; sí hay modos con garantía de entrega."
+    },
+    {
+      "id": "at-least-once",
+      "text": "At least once",
+      "explanation": "QoS 1: el broker confirma y el publicador reenvía si no recibe confirmación; garantiza la entrega, aunque puede duplicar."
+    },
+    {
+      "id": "at-most-once",
+      "text": "At most once",
+      "explanation": "QoS 0: sin confirmación ni reenvío; si se pierde, no se recupera."
+    },
+    {
+      "id": "exactly-once",
+      "text": "Exactly once",
+      "explanation": "QoS 2: publicación en dos pasos con confirmaciones; garantiza entrega sin duplicados."
+    }
+  ],
+  "answer": "at-most-once"
+}

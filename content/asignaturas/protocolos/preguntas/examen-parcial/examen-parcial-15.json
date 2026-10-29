@@ -1,0 +1,55 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué dirección IPv6 se utiliza como destino en el mensaje NS durante el mecanismo DAD en una red Ethernet?",
+  "explanation": "En DAD el nodo envía un NS preguntando por la dirección que quiere usar, con fuente ::. Como en cualquier NS de resolución, el destino es el grupo solicited-node de la dirección objetivo (FF02::1:FF00:0/104 + sus 24 últimos bits): solo un posible duplicado está suscrito a él.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21,
+        39,
+        41
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 4862 §5.4.2 · envío del NS de DAD",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.html#section-5.4.2"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-direccion-multicast-all-nodes",
+      "text": "La dirección multicast all-nodes (ff02::1)",
+      "explanation": "A all-nodes se envía el NA no solicitado que anuncia la dirección una vez comprobado que no está duplicada, no el NS."
+    },
+    {
+      "id": "la-direccion-global-mas-cercana",
+      "text": "La dirección global más cercana configurada en el router",
+      "explanation": "DAD no se dirige al router; comprueba si otro vecino usa ya la dirección."
+    },
+    {
+      "id": "la-direccion-link-local-configurada",
+      "text": "La dirección link-local configurada automáticamente",
+      "explanation": "Esa es la dirección que se comprueba (dirección objetivo), no el destino del paquete; y aún no puede usarse, por eso la fuente es ::."
+    },
+    {
+      "id": "la-direccion-multicast-solicited-node",
+      "text": "La dirección multicast solicited-node correspondiente",
+      "explanation": "El NS de DAD va al solicited-node de la dirección tentativa."
+    }
+  ],
+  "answer": "la-direccion-multicast-solicited-node"
+}

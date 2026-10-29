@@ -1,0 +1,60 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes rutas será instalada en la FIB y usada para reenviar un paquete con IP destino 2001:DB8:AB44::22:1? Suponga que las interfaces están habilitadas y los routers de siguiente salto son alcanzables.",
+  "explanation": "El destino es 2001:DB8:AB44:0:…, con cuarto hexteto 0. Coinciden 2001:DB8:AB00::/40 (bits AB) y 2001:DB8:A000::/36 (nibble A); por longest prefix match gana /40. Para ese mismo prefijo hay una ruta estática con distancia 2 y otra OSPF (distancia 110): se instala la de menor distancia, la estática.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22,
+        23,
+        27
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Cisco · distancia y selección de rutas",
+      "url": "https://docs.manage.security.cisco.com/c-the-routing-table-and-route-selection.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "una-ruta-creada-con-el",
+      "text": "Una ruta creada con el comando ipv6 route 2001:DB8:AB00::/40 serial0 2",
+      "explanation": "Prefijo /40 coincidente y distancia 2, menor que la de OSPF para el mismo prefijo."
+    },
+    {
+      "id": "una-ruta-creada-con-el-2",
+      "text": "Una ruta creada con el comando ipv6 route 2001:DB8:A000::/36 serial0",
+      "explanation": "Coincide, pero /36 es menos específica que /40."
+    },
+    {
+      "id": "una-ruta-rip-para-la",
+      "text": "Una ruta RIP para la red 2001:DB8:4400::/40",
+      "explanation": "El tercer hexteto del destino empieza por AB, no por 44: no coincide."
+    },
+    {
+      "id": "una-ruta-ospf-para-la",
+      "text": "Una ruta OSPF para la red 2001:DB8:AB00::/40",
+      "explanation": "Mismo prefijo que la estática, pero OSPF tiene distancia 110, mayor que 2; no se instala."
+    },
+    {
+      "id": "una-ruta-conectada-creada-con",
+      "text": "Una ruta conectada creada con el comando ipv6 address 2001:DB8:AB44:2200::/64 eui-64",
+      "explanation": "El cuarto hexteto del destino es 0, no 2200: no coincide con esa /64."
+    }
+  ],
+  "answer": "una-ruta-creada-con-el"
+}

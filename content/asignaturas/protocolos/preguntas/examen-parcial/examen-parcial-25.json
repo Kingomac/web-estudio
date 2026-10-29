@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En una red Ethernet, un host H1 con dirección 3000::1, cuya tabla de vecinos se halla vacía, desea enviar un paquete a H2 con dirección 2000::2. Suponiendo que el default gateway de H1 es 3000::A01:9. ¿cuál es el valor de la dirección IP destino del paquete IPv6 que transporta el mensaje NS de solicitud?",
+  "explanation": "H2 está en otra subred, así que H1 debe enviar el paquete al router y resolver la MAC de 3000::A01:9. El NS va al solicited-node de esa dirección: FF02::1:FF + sus 24 últimos bits. 3000::A01:9 termina en …:0A01:0009, cuyos 24 últimos bits son 01:0009 → FF02::1:FF01:9.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21,
+        22,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff02-1-ff00-2",
+      "text": "FF02::1:FF00:2",
+      "explanation": "Es el solicited-node de 2000::2, pero H2 está fuera de la subred: se resuelve el router, no H2."
+    },
+    {
+      "id": "ff02-1-ff00-9",
+      "text": "FF02::1:FF00:9",
+      "explanation": "Toma solo los 16 últimos bits; el grupo usa 24 bits e incluye el 01 de 0A01."
+    },
+    {
+      "id": "ff02-1-ff01-9",
+      "text": "FF02::1:FF01:9",
+      "explanation": "Solicited-node de 3000::A01:9 (24 últimos bits: 01:0009)."
+    },
+    {
+      "id": "ff02-2",
+      "text": "FF02::2",
+      "explanation": "Es el grupo all-routers; la resolución de direcciones usa el solicited-node del objetivo."
+    },
+    {
+      "id": "2000-2",
+      "text": "2000::2",
+      "explanation": "Es el destino final del paquete de datos, no del NS."
+    },
+    {
+      "id": "3000-a01-9",
+      "text": "3000::A01:9",
+      "explanation": "Es la dirección objetivo del NS (campo Target), pero el paquete se envía a su solicited-node porque aún no se conoce su MAC."
+    }
+  ],
+  "answer": "ff02-1-ff01-9"
+}

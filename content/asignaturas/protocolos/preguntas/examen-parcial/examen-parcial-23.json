@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una empresa registra servicios _mqtt._tcp.iot.example en un servidor DNS unicast. Los clientes están en varias subredes interconectadas por routers. ¿Cómo pueden descubrir las instancias?",
+  "explanation": "DNS-SD define los registros de descubrimiento (PTR para las instancias, SRV para host y puerto, TXT para metadatos) y puede usar DNS unicast convencional, que funciona entre subredes. mDNS es solo una de sus opciones y está limitado al enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "consultando-los-ptr-srv-txt",
+      "text": "Consultando los PTR/SRV/TXT pertinentes de DNS-SD mediante DNS unicast",
+      "explanation": "DNS-SD funciona sobre DNS unicast y sirve entre subredes."
+    },
+    {
+      "id": "publicando-necesariamente-los-servicios-en",
+      "text": "Publicando necesariamente los servicios en .local porque DNS-SD solo funciona sobre mDNS",
+      "explanation": "DNS-SD puede usar DNS unicast o mDNS; .local es solo el dominio de mDNS."
+    },
+    {
+      "id": "consultando-unicamente-el-registro-aaaa",
+      "text": "Consultando únicamente el registro AAAA de _mqtt._tcp.iot.example para conocer todas las instancias",
+      "explanation": "Las instancias se listan con un PTR al nombre del servicio; AAAA da direcciones de un host."
+    },
+    {
+      "id": "enviando-consultas-mdns-a-ff02",
+      "text": "Enviando consultas mDNS a ff02::fb que cruzarán los routers de todas las subredes",
+      "explanation": "ff02::fb es multicast de ámbito de enlace: no atraviesa routers."
+    }
+  ],
+  "answer": "consultando-los-ptr-srv-txt"
+}

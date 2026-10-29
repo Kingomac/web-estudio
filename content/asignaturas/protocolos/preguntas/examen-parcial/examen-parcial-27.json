@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de los siguientes términos NO hace referencia a un formato normalizado para el intercambio de información?",
+  "explanation": "Los apuntes enumeran XML, JSON y SOAP como formatos de intercambio de datos de la capa de aplicación. OPC UA es una arquitectura cliente/servidor para entornos industriales que usa codificaciones XML (con SOAP) o binaria, pero no es en sí un formato de intercambio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        6,
+        31,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "opc-ua",
+      "text": "OPC UA",
+      "explanation": "Es una arquitectura de comunicación industrial, no un formato de datos."
+    },
+    {
+      "id": "json",
+      "text": "JSON",
+      "explanation": "Aparece como formato de intercambio de datos."
+    },
+    {
+      "id": "xml",
+      "text": "XML",
+      "explanation": "Aparece como formato de intercambio de datos."
+    },
+    {
+      "id": "soap",
+      "text": "SOAP",
+      "explanation": "Los apuntes lo incluyen entre los formatos de intercambio: es un estándar W3C basado en XML para intercambiar información estructurada."
+    }
+  ],
+  "answer": "opc-ua"
+}

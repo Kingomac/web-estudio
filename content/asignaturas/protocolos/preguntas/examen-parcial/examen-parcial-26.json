@@ -1,0 +1,58 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación lee el nivel de batería de un equipo con GET coap://nodo7.example/estado/bateria. Otra aplicación se suscribe al topic dispositivos/nodo7/bateria de un broker MQTT. ¿Cuál es la diferencia esencial?",
+  "explanation": "La URI CoAP localiza un recurso en un servidor al que el cliente pide el valor. En MQTT, el topic es una etiqueta y el broker distribuye las publicaciones a los suscriptores de ese topic.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        9,
+        11,
+        36
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    },
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-topic-mqtt-es-obligatoriamente",
+      "text": "El topic MQTT es obligatoriamente una ruta HTTP en el nodo que publica",
+      "explanation": "Un topic es una cadena gestionada por el broker; no es una ruta HTTP ni reside en el publicador."
+    },
+    {
+      "id": "coap-requiere-un-broker-para",
+      "text": "CoAP requiere un broker para cada petición GET",
+      "explanation": "CoAP es cliente/servidor: el GET va directamente al servidor, sin broker."
+    },
+    {
+      "id": "coap-accede-a-un-recurso",
+      "text": "CoAP accede a un recurso identificado por URI; MQTT entrega publicaciones del topic a través del broker",
+      "explanation": "Contrapone el modelo cliente/servidor con URI y el de publicación/suscripción con broker."
+    },
+    {
+      "id": "mqtt-resuelve-automaticamente-por-dns",
+      "text": "MQTT resuelve automáticamente por DNS el host contenido en el topic",
+      "explanation": "El topic no se resuelve por DNS: el cliente conoce el broker y el broker encamina por topic."
+    }
+  ],
+  "answer": "coap-accede-a-un-recurso"
+}

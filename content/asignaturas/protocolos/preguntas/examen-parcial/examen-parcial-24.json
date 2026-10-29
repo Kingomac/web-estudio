@@ -1,0 +1,47 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente ha recibido por DNS-SD el PTR de _coap._udp.lab.example hacia Humedad._coap._udp.lab.example y su TXT. No dispone de información SRV ni direcciones en caché. ¿Qué consultas adicionales permiten obtener el puerto y la IPv6 del servicio?",
+  "explanation": "El SRV del nombre de instancia (Humedad._coap._udp.lab.example) indica el host y el puerto; después el AAAA de ese host da la dirección IPv6.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "srv-de-coap-udp-lab",
+      "text": "SRV de _coap._udp.lab.example y AAAA de _coap._udp.lab.example",
+      "explanation": "_coap._udp.lab.example es el nombre del tipo de servicio, consultado con PTR; el SRV y el AAAA se piden para la instancia y su host."
+    },
+    {
+      "id": "aaaa-de-humedad-coap-udp",
+      "text": "AAAA de Humedad._coap._udp.lab.example y SRV del dominio lab.example",
+      "explanation": "El nombre de instancia no es un nombre de host, y el SRV se asocia a la instancia, no al dominio."
+    },
+    {
+      "id": "srv-de-humedad-coap-udp",
+      "text": "SRV de Humedad._coap._udp.lab.example y AAAA del host señalado en ese SRV",
+      "explanation": "SRV de la instancia → host y puerto; AAAA del host → IPv6."
+    },
+    {
+      "id": "aaaa-del-nombre-del-registro",
+      "text": "AAAA del nombre del registro TXT y SRV del tipo de recurso",
+      "explanation": "El TXT solo aporta metadatos de la instancia y el SRV no se busca por tipo de recurso."
+    }
+  ],
+  "answer": "srv-de-humedad-coap-udp"
+}

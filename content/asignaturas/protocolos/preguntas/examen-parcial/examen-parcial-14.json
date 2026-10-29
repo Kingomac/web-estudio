@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En una instalación hay sensores que intercambian mensajes usando un protocolo propietario no IP. Un dispositivo recoge esos mensajes y los publica en un servicio accesible por Internet. ¿Qué nombre se usa habitualmente para referirse a este dispositivo?",
+  "explanation": "La pasarela (gateway) une la red de acceso de los dispositivos con la red troncal hacia Internet y la aplicación. Cuando los dispositivos no son IP, como en las LPWAN de conectividad híbrida, es la pasarela la que traslada sus datos a la red IP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        11,
+        13
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion"
+    },
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "conmutador",
+      "text": "Conmutador",
+      "explanation": "Un conmutador (bridge/switch) reenvía tramas de nivel 2 dentro de una subred; no adapta un protocolo no IP a un servicio de Internet."
+    },
+    {
+      "id": "border-router",
+      "text": "Border Router",
+      "explanation": "Un border router encamina paquetes IPv6 entre una LoWPAN y otra red IP; presupone que los nodos ya hablan IP."
+    },
+    {
+      "id": "convertidor-de-protocolos",
+      "text": "Convertidor de protocolos",
+      "explanation": "Describe parte de lo que hace, pero no es el nombre habitual del dispositivo en la arquitectura IoT."
+    },
+    {
+      "id": "pasarela-o-gateway",
+      "text": "Pasarela o gateway",
+      "explanation": "Es el término habitual para el equipo que conecta la red de dispositivos con Internet."
+    }
+  ],
+  "answer": "pasarela-o-gateway"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Considere las siguientes rutas en la FIB:\n\n3001:abcd::/32 salida s1/0\n3001:abcd:1234::/48 salida s1/1\n3001:abcd:1234:5678::/64 salida s1/2\n::/0 salida s1/3\n\nSi llega un paquete con dirección destino 3001:abcd:1234:5678:9abc::1, ¿qué salida se selecciona?",
+  "explanation": "El destino coincide con las cuatro rutas. Por longest prefix match se elige la de prefijo más largo, 3001:abcd:1234:5678::/64, con salida s1/2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "s1-3",
+      "text": "s1/3",
+      "explanation": "La ruta por defecto ::/0 coincide siempre, pero es la menos específica."
+    },
+    {
+      "id": "s1-2",
+      "text": "s1/2",
+      "explanation": "La /64 es la coincidencia más larga."
+    },
+    {
+      "id": "s1-1",
+      "text": "s1/1",
+      "explanation": "La /48 coincide, pero la /64 es más específica."
+    },
+    {
+      "id": "s1-0",
+      "text": "s1/0",
+      "explanation": "La /32 coincide, pero hay dos rutas más específicas."
+    }
+  ],
+  "answer": "s1-2"
+}

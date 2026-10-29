@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una ruta creada mediante un comando ipv6 route ::/0 G1 fe80::2 dará lugar a una entrada en la RIB ...",
+  "explanation": "El comando indica la dirección del router de siguiente salto (fe80::2), así que la ruta es indirecta: G=1. Al ser link-local, la interfaz G1 hace de índice de zona. Es una ruta estática con la distancia por defecto de ipv6 route, 1; la distancia 0 corresponde a las rutas conectadas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23,
+        25
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Cisco · distancia y selección de rutas",
+      "url": "https://docs.manage.security.cisco.com/c-the-routing-table-and-route-selection.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "con-g-0-y-con",
+      "text": "Con G=0 y con distancia 0",
+      "explanation": "G=0 sería una ruta que solo indica interfaz, y distancia 0 es la de una ruta conectada; aquí hay next-hop y es estática."
+    },
+    {
+      "id": "con-g-1-y-con",
+      "text": "Con G=1 y con distancia 0",
+      "explanation": "G=1 es correcto, pero la distancia 0 es la de las rutas conectadas, no la de una ruta estática."
+    },
+    {
+      "id": "con-g-1-y-con-2",
+      "text": "Con G=1 y con distancia 1",
+      "explanation": "Next-hop explícito (G=1) y distancia por defecto de las rutas estáticas (1)."
+    },
+    {
+      "id": "con-g-1-y-con-3",
+      "text": "Con G=1 y con distancia desconocida",
+      "explanation": "Si no se especifica distancia, ipv6 route toma su valor por defecto, 1; no queda indeterminada."
+    },
+    {
+      "id": "con-g-0-y-con-2",
+      "text": "Con G=0 y con distancia 1",
+      "explanation": "Indicar la interfaz G1 no convierte la ruta en directa: se indica porque fe80::2 es link-local y necesita índice de zona; la ruta sigue siendo indirecta."
+    }
+  ],
+  "answer": "con-g-1-y-con-2"
+}

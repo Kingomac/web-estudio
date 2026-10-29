@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica diferencia principalmente la comunicación mediante WebSocket de una comunicación HTTP convencional basada en petición/respuesta?",
+  "explanation": "WebSocket mantiene una comunicación bidireccional interactiva sobre una conexión persistente: el servidor puede enviar datos al cliente sin que este los solicite. Se establece con un handshake HTTP/1.1 y funciona sobre TCP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        23,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "websocket-permite-la-comunicacion-bidireccional",
+      "text": "WebSocket permite la comunicación bidireccional sobre una conexión persistente.",
+      "explanation": "Es su rasgo definitorio: ambos extremos envían frames en cualquier momento sin sondeo."
+    },
+    {
+      "id": "websocket-solo-permite-enviar-datos",
+      "text": "WebSocket solo permite enviar datos del cliente al servidor.",
+      "explanation": "Al contrario: su ventaja es que el servidor también puede enviar datos al cliente sin petición previa."
+    },
+    {
+      "id": "websocket-utiliza-exclusivamente-udp",
+      "text": "WebSocket utiliza exclusivamente UDP.",
+      "explanation": "WebSocket funciona sobre TCP (puerto 80) o TLS/TCP (puerto 443)."
+    },
+    {
+      "id": "websocket-no-necesita-el-establecimiento",
+      "text": "WebSocket no necesita el establecimiento de ninguna conexión.",
+      "explanation": "Requiere la conexión TCP y un opening handshake HTTP/1.1 (Upgrade: websocket, 101 Switching Protocols)."
+    }
+  ],
+  "answer": "websocket-permite-la-comunicacion-bidireccional"
+}

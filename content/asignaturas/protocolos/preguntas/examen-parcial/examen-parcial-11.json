@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el modo Mesh-Under de 6LoWPAN, ¿cuál es la característica clave del reenvío de paquetes?",
+  "explanation": "En Mesh-Under el reenvío se hace en la capa 6LoWPAN de los nodos intermedios con direcciones MAC; el nodo se comporta como un bridge, sin descomprimir la cabecera IPv6. Todos los hosts quedan a un salto IP del border router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        16,
+        30,
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-reenvio-se-realiza-en",
+      "text": "El reenvío se realiza en la capa 6LoWPAN usando direcciones MAC",
+      "explanation": "Es la definición de Mesh-Under."
+    },
+    {
+      "id": "el-reenvio-se-realiza-a",
+      "text": "El reenvío se realiza a nivel de red usando direcciones IPv6",
+      "explanation": "Eso describe Route-Over."
+    },
+    {
+      "id": "todos-los-nodos-deben-reensamblar",
+      "text": "Todos los nodos deben reensamblar los paquetes antes de reenviarlos",
+      "explanation": "El reensamblado salto a salto es propio de Route-Over; en Mesh-Under se reensambla en el extremo final."
+    },
+    {
+      "id": "requiere-que-cada-nodo-conozca",
+      "text": "Requiere que cada nodo conozca las rutas completas basadas en direcciones IPv6",
+      "explanation": "Las rutas basadas en IPv6 son de Route-Over; Mesh-Under usa rutas basadas en MAC."
+    }
+  ],
+  "answer": "el-reenvio-se-realiza-en"
+}

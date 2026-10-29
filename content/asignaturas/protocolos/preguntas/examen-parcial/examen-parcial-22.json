@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes afirmaciones sobre COAP es verdadera?",
+  "explanation": "CoAP es cliente/servidor, pero la opción Observe ofrece un servicio de suscripción: el servidor mantiene una lista de observadores y les envía las actualizaciones del recurso.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        36,
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "para-enviar-los-mensajes-coap",
+      "text": "Para enviar los mensajes COAP se suele utilizar TCP como protocolo de transporte.",
+      "explanation": "CoAP va habitualmente sobre UDP (5683) o DTLS; TCP es una opción posterior (RFC 8323)."
+    },
+    {
+      "id": "a-pesar-de-ser-un",
+      "text": "A pesar de ser un protocolo cliente/servidor, es posible ofrecer con COAP un servicio basado en suscripción/publicación.",
+      "explanation": "La opción Observe proporciona suscripción a recursos."
+    },
+    {
+      "id": "los-mensajes-coap-son-excesivamente",
+      "text": "Los mensajes COAP son excesivamente grandes para el intercambio de datos entre dispositivos IoT.",
+      "explanation": "Son pequeños y caben en una única trama de enlace, ideales para 6LoWPAN."
+    },
+    {
+      "id": "los-mensajes-coap-se-codifican",
+      "text": "Los mensajes COAP se codifican mediante secuencias de caracteres ASCII.",
+      "explanation": "Se codifican en binario; la codificación ASCII es la de HTTP/1.x."
+    }
+  ],
+  "answer": "a-pesar-de-ser-un"
+}

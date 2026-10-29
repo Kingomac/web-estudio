@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En una red LLN (Low-Power and Lossy Network) formada por sensores IoT alimentados por batería, los dispositivos transmiten pequeñas cantidades de información de forma periódica. Los enlaces inalámbricos presentan pérdidas ocasionales y los nodos permanecen en reposo durante buena parte del tiempo para reducir su consumo energético. ¿Cuál de las siguientes afirmaciones describe de forma más precisa las implicaciones de estas características sobre el diseño de los protocolos de comunicación?",
+  "explanation": "El compromiso central en las LLN es equilibrar consumo energético, fiabilidad y latencia. Las demás alternativas fallan por su carácter absoluto: las retransmisiones consumen energía y canal, escuchar con la radio encendida también consume, y las confirmaciones pueden convenir cuando perder información es crítico.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10,
+        12
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion"
+    },
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "los-protocolos-deberian-priorizar-la",
+      "text": "Los protocolos deberían priorizar la entrega fiable de todos los mensajes mediante retransmisiones ilimitadas, ya que el reducido tamaño de los datos hace que el consumo energético de las retransmisiones sea despreciable.",
+      "explanation": "Las retransmisiones consumen energía y pueden aumentar mucho la ocupación del canal; no son despreciables en nodos con batería."
+    },
+    {
+      "id": "los-protocolos-deberian-minimizar-el",
+      "text": "Los protocolos deberían minimizar el intercambio de información de control y permitir mecanismos de ahorro energético, aunque ello pueda introducir compromisos entre consumo, latencia y fiabilidad de las comunicaciones.",
+      "explanation": "Refleja el compromiso de diseño de las LLN entre consumo, latencia y fiabilidad."
+    },
+    {
+      "id": "los-protocolos-deberian-mantener-las",
+      "text": "Los protocolos deberían mantener las interfaces de radio permanentemente activas para detectar inmediatamente cualquier transmisión, puesto que el consumo energético depende principalmente de los datos transmitidos y no del tiempo de escucha.",
+      "explanation": "Mantener la radio en escucha puede ser una parte importante del consumo aunque no se reciba nada; por eso los nodos duermen."
+    },
+    {
+      "id": "los-protocolos-deberian-evitar-los",
+      "text": "Los protocolos deberían evitar los mecanismos de confirmación de recepción en cualquier circunstancia, ya que las características de las LLN hacen que su utilización resulte siempre menos eficiente que la transmisión sin confirmación.",
+      "explanation": "Las confirmaciones pueden convenir en aplicaciones donde perder información es crítico; \"en cualquier circunstancia\" es excesivo."
+    }
+  ],
+  "answer": "los-protocolos-deberian-minimizar-el"
+}

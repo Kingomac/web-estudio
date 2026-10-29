@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Supongamos que para alcanzar las subredes de las siguientes máquinas desde cierto router R debe hacerse en todos los casos a través del router FE80::2, que es accesible mediante la interfaz G0/1 de R.\n• 2001:abcd:1234:1::2\n• 2001:abcd:1235:1::2\n• 2001:abcd:1236:1::1\n• 2001:abcd:1237:1::1\n\n¿Qué comando usaría para instalar una única ruta agregada en R para todas las subredes, y que sea de la mayor longitud posible?",
+  "explanation": "Los terceros hextetos 1234–1237 solo difieren en sus 2 últimos bits (0x1234 = …0011 0100, 0x1237 = …0011 0111), así que comparten 32 + 14 = 46 bits: 2001:abcd:1234::/46. Como el next-hop FE80::2 es link-local, hay que indicar también la interfaz G0/1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23,
+        25,
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "ipv6-route-2001-abcd-1234",
+      "text": "ipv6 route 2001:abcd:1234::/48 G0/1",
+      "explanation": "Un /48 solo cubre 2001:abcd:1234; además, indicar solo la interfaz en un enlace multipunto no basta, hace falta la IP del router."
+    },
+    {
+      "id": "ipv6-route-2001-abcd-1234-2",
+      "text": "ipv6 route 2001:abcd:1234::/48 FE80::2",
+      "explanation": "El /48 no cubre 1235–1237, y un next-hop link-local necesita la interfaz."
+    },
+    {
+      "id": "ipv6-route-2001-abcd-32",
+      "text": "ipv6 route 2001:abcd::/32 G0/1 FE80::2",
+      "explanation": "Cubre todas las subredes, pero no es la de mayor longitud posible: /46 también las agrupa."
+    },
+    {
+      "id": "ipv6-route-2001-abcd-1234-3",
+      "text": "ipv6 route 2001:abcd:1234::/46 G0/1 FE80::2",
+      "explanation": "El /46 es el bloque alineado más pequeño que contiene 1234–1237 e incluye interfaz y next-hop link-local."
+    },
+    {
+      "id": "ipv6-route-2001-abcd-1234-4",
+      "text": "ipv6 route 2001:abcd:1234::/48 G0/1 FE80::2",
+      "explanation": "La sintaxis es correcta, pero el /48 solo agrupa la subred 1234."
+    },
+    {
+      "id": "ipv6-route-2001-abcd-1234-5",
+      "text": "ipv6 route 2001:abcd:1234::/64 G0/1 FE80::2",
+      "explanation": "Un /64 es una sola subred (2001:abcd:1234:0::/64) y ni siquiera contiene 2001:abcd:1234:1::."
+    }
+  ],
+  "answer": "ipv6-route-2001-abcd-1234-3"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "HTTP no es un protocolo especialmente adecuado para comunicaciones IoT porque...",
+  "explanation": "Los mensajes HTTP/1.x se codifican en caracteres ASCII y son demasiado grandes para caber en una única trama del nivel de enlace, a diferencia de CoAP o MQTT.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14,
+        19,
+        36,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "utiliza-tcp-como-protocolo-de",
+      "text": "utiliza TCP como protocolo de transporte.",
+      "explanation": "MQTT también usa TCP y es un protocolo pensado para IoT; TCP no es el motivo."
+    },
+    {
+      "id": "permite-el-uso-de-cookies",
+      "text": "permite el uso de cookies.",
+      "explanation": "Las cookies mantienen estado; que estén permitidas no impide usar HTTP en IoT."
+    },
+    {
+      "id": "es-un-protocolo-cliente-servidor",
+      "text": "es un protocolo cliente/servidor.",
+      "explanation": "CoAP también es cliente/servidor y está diseñado para IoT."
+    },
+    {
+      "id": "los-mensajes-http-tienen-un",
+      "text": "los mensajes HTTP tienen un tamaño excesivo.",
+      "explanation": "Son muy grandes para una única trama de enlace en redes limitadas."
+    }
+  ],
+  "answer": "los-mensajes-http-tienen-un"
+}

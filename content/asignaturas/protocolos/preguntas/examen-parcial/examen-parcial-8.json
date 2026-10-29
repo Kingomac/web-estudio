@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sistema IoT que utiliza MQTT necesita que un dispositivo que se conecta por primera vez pueda conocer inmediatamente el último estado conocido de otro dispositivo, aunque este último no esté transmitiendo en ese momento. ¿Qué mecanismo de MQTT resulta adecuado?",
+  "explanation": "El broker guarda el último mensaje publicado con el flag de retención en cada topic y lo envía inmediatamente a cada nuevo suscriptor. Así se conoce el estado actual sin esperar a que el publicador vuelva a transmitir.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        57,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "publicacion-con-nivel-qos-2",
+      "text": "Publicación con nivel QoS 2",
+      "explanation": "QoS 2 garantiza entrega sin duplicados de cada publicación, pero no guarda un mensaje para suscriptores futuros."
+    },
+    {
+      "id": "last-will-and-testament",
+      "text": "Last Will and Testament",
+      "explanation": "El LWT se publica solo si el cliente se desconecta inesperadamente; avisa de la pérdida de conexión, no del último estado."
+    },
+    {
+      "id": "retained-message",
+      "text": "Retained Message",
+      "explanation": "El broker entrega al nuevo suscriptor el último mensaje retenido del topic."
+    },
+    {
+      "id": "mqtt-sn-aggregator",
+      "text": "MQTT-SN Aggregator",
+      "explanation": "Es un tipo de gateway que agrega varios mensajes MQTT-SN en uno MQTT; no almacena estados."
+    }
+  ],
+  "answer": "retained-message"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "protocolos.tests.examen-parcial-moovi",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "examen-parcial-moovi",
+  "title": "Examen parcial de Moovi",
+  "description": "Las 30 preguntas del examen parcial, con la clave oficial y explicaciones apoyadas en los temas.",
+  "scope": "Enunciados y alternativas literales del examen parcial (grupo A) revisado en Moovi, barajados como el resto de tests. La corrección sigue la respuesta correcta que indica Moovi; las explicaciones incorporan las del profesor cuando las hay.",
+  "tagIds": [
+    "protocolos.tags.aplicacion",
+    "protocolos.tags.intro",
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.parcial-1"
+  ],
+  "order": 105,
+  "groups": [
+    {
+      "id": "aplicacion",
+      "title": "Nivel de aplicación",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-1",
+        "protocolos.preguntas.examen-parcial-4",
+        "protocolos.preguntas.examen-parcial-6",
+        "protocolos.preguntas.examen-parcial-8",
+        "protocolos.preguntas.examen-parcial-13",
+        "protocolos.preguntas.examen-parcial-18",
+        "protocolos.preguntas.examen-parcial-22",
+        "protocolos.preguntas.examen-parcial-26",
+        "protocolos.preguntas.examen-parcial-27",
+        "protocolos.preguntas.examen-parcial-28",
+        "protocolos.preguntas.examen-parcial-29"
+      ]
+    },
+    {
+      "id": "intro",
+      "title": "Redes IoT y LLN",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-12",
+        "protocolos.preguntas.examen-parcial-14"
+      ]
+    },
+    {
+      "id": "ipv6",
+      "title": "IPv6, rutas y descubrimiento",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-5",
+        "protocolos.preguntas.examen-parcial-7",
+        "protocolos.preguntas.examen-parcial-9",
+        "protocolos.preguntas.examen-parcial-10",
+        "protocolos.preguntas.examen-parcial-15",
+        "protocolos.preguntas.examen-parcial-20",
+        "protocolos.preguntas.examen-parcial-21",
+        "protocolos.preguntas.examen-parcial-23",
+        "protocolos.preguntas.examen-parcial-24",
+        "protocolos.preguntas.examen-parcial-25",
+        "protocolos.preguntas.examen-parcial-30"
+      ]
+    },
+    {
+      "id": "lowpan",
+      "title": "6LoWPAN",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-2",
+        "protocolos.preguntas.examen-parcial-3",
+        "protocolos.preguntas.examen-parcial-11",
+        "protocolos.preguntas.examen-parcial-16",
+        "protocolos.preguntas.examen-parcial-17",
+        "protocolos.preguntas.examen-parcial-19"
+      ]
+    }
+  ]
+}

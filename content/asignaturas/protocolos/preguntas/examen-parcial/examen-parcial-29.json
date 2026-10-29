@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de los siguientes protocolos de aplicación utiliza, por defecto, UDP como protocolo de transporte?",
+  "explanation": "CoAP funciona sobre UDP (puerto 5683) o DTLS. MQTT, HTTP y WebSocket usan TCP por defecto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14,
+        23,
+        36,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "mqtt",
+      "text": "MQTT",
+      "explanation": "Va sobre TCP (1883) o TLS (8883); la variante sobre UDP es MQTT-SN."
+    },
+    {
+      "id": "coap",
+      "text": "CoAP",
+      "explanation": "Usa UDP por defecto."
+    },
+    {
+      "id": "http",
+      "text": "HTTP",
+      "explanation": "Usa TCP (80) o TLS/TCP (443); solo HTTP/3 usa QUIC sobre UDP."
+    },
+    {
+      "id": "websocket",
+      "text": "WebSocket",
+      "explanation": "Funciona sobre TCP tras un handshake HTTP."
+    }
+  ],
+  "answer": "coap"
+}

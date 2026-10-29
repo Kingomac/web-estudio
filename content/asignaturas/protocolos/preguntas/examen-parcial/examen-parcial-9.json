@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente CoAP consulta el directorio de recursos de un dispositivo mediante la petición:\nGET coap://estacion4.example/.well-known/core\n\nEl servidor devuelve la siguiente respuesta en formato CoRE Link Format:\n</r/31>;rt=\"humidity\", </r/32>;rt=\"temperature\"\n\nSi el cliente desea obtener la lectura de temperatura, ¿qué petición debe enviar?",
+  "explanation": "El atributo rt identifica el tipo de recurso; el enlace del recurso de temperatura es /r/32. El cliente forma la URI con el esquema, el host y esa ruta: coap://estacion4.example/r/32.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        48,
+        53,
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "get-coap-estacion4-example-well",
+      "text": "GET coap://estacion4.example/.well-known/core/r/32",
+      "explanation": "/.well-known/core es solo el punto de descubrimiento; los enlaces devueltos son rutas desde la raíz del servidor."
+    },
+    {
+      "id": "get-coap-estacion4-example-temperature",
+      "text": "GET coap://estacion4.example/temperature",
+      "explanation": "\"temperature\" es el valor de rt, un tipo de recurso, no la ruta del recurso."
+    },
+    {
+      "id": "get-coap-estacion4-example-r",
+      "text": "GET coap://estacion4.example/r/32",
+      "explanation": "Usa el enlace /r/32 del recurso cuyo rt es \"temperature\"."
+    },
+    {
+      "id": "get-coap-estacion4-example-32",
+      "text": "GET coap://estacion4.example/32",
+      "explanation": "El enlace es /r/32 completo; eliminar /r cambia la ruta."
+    }
+  ],
+  "answer": "get-coap-estacion4-example-r"
+}

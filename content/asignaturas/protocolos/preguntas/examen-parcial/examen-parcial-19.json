@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En la compresión stateless en IPHC, ¿cómo se obtiene la dirección IPv6 fuente cuando el campo SAM tiene el valor \"11\"?",
+  "explanation": "Con SAC = 0 (stateless) y SAM = 11 no se transmite nada de la dirección fuente: el prefijo es fe80::/64 y el IID se obtiene de la dirección MAC fuente de la trama.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        23,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-prefijo-ipv6-se-toma",
+      "text": "El prefijo IPv6 se toma como fe80::/64 y el ID se obtiene a partir de la dirección MAC fuente",
+      "explanation": "Es SAM = 11 con SAC = 0: 0 bits en línea."
+    },
+    {
+      "id": "el-prefijo-ipv6-se-toma-2",
+      "text": "El prefijo IPv6 se toma como fe80::/64 y el ID va en línea",
+      "explanation": "Eso es SAM = 01 (IID de 64 bits en línea)."
+    },
+    {
+      "id": "el-prefijo-ipv6-se-infiere",
+      "text": "El prefijo IPv6 se infiere del contexto SCI y el ID se obtiene a partir de la dirección MAC fuente",
+      "explanation": "Es SAM = 11 pero con SAC = 1 (stateful), no la compresión stateless."
+    },
+    {
+      "id": "se-transmite-la-direccion-ipv6",
+      "text": "Se transmite la dirección IPv6 completa en línea",
+      "explanation": "Eso es SAM = 00."
+    }
+  ],
+  "answer": "el-prefijo-ipv6-se-toma"
+}

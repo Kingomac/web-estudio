@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.examen-parcial-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una LoWPAN se organiza con Route-Over y un nodo transmite hacia otro a través de dos routers internos. ¿Qué afirmación describe correctamente el recorrido?",
+  "explanation": "En Route-Over el routing y el forwarding se ejecutan en IPv6: cada salto de enlace es también un salto IP y cada nodo intermedio (6LR) se comporta como un router que decide según la dirección IPv6 destino.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        30,
+        31,
+        36
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "los-nodos-intermedios-solo-interpretan",
+      "text": "Los nodos intermedios solo interpretan la cabecera Mesh de 6LoWPAN",
+      "explanation": "Reenviar con la cabecera Mesh es propio de Mesh-Under."
+    },
+    {
+      "id": "todos-los-nodos-quedan-siempre",
+      "text": "Todos los nodos quedan siempre a un único salto IPv6 del border router",
+      "explanation": "Eso ocurre en Mesh-Under; en Route-Over los nodos suelen estar a varios saltos IP del 6LBR."
+    },
+    {
+      "id": "cada-router-intermedio-realiza-una",
+      "text": "Cada router intermedio realiza una decisión de reenvío de capa IPv6",
+      "explanation": "Cada 6LR actúa como router IP."
+    },
+    {
+      "id": "los-routers-intermedios-seleccionan-la",
+      "text": "Los routers intermedios seleccionan la ruta usando exclusivamente direcciones MAC",
+      "explanation": "Las rutas basadas en MAC son de Mesh-Under; Route-Over usa rutas IPv6."
+    }
+  ],
+  "answer": "cada-router-intermedio-realiza-una"
+}
