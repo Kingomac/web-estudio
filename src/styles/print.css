@@ -3,26 +3,26 @@
 @layer print {
   @media print {
     .no-print { display: none !important; }
-    :root { --color-bg: #fff; --color-surface: #fff; --color-surface-muted: #fff; --color-accent-soft: #fff; --color-text: #000; --color-text-muted: #333; --color-accent: #000; --color-border: #999; --color-border-strong: #777; --shadow: none; font-size: 11pt; }
+    :root { --color-bg: #fff; --color-surface: #fff; --color-surface-muted: #fff; --color-accent-soft: #fff; --color-text: #000; --color-text-muted: #333; --color-accent: #000; --color-border: #999; --color-border-strong: #777; --shadow: none; --leading-tight: 1.2; --leading: 1.35; --leading-prose: 1.4; font-size: 10pt; }
     .site-main { display: block; min-height: 0; margin: 0; }
     main { padding: 0; max-width: none; }
-    .page-header { margin-bottom: 16pt; }
-    .page-header h1 { font-size: 24pt; }
-    .prose { max-width: none; font-size: 11pt; line-height: 1.55; }
-    .prose h2 { font-size: 16pt; margin: 16pt 0 8pt; }
-    .prose h3 { font-size: 13pt; margin: 12pt 0 6pt; }
-    .prose p, .prose ul, .prose ol { margin-bottom: 8pt; }
+    .page-header { margin-bottom: 12pt; }
+    .page-header h1 { font-size: 20pt; }
+    .prose { max-width: none; font-size: 10pt; line-height: var(--leading-prose); }
+    .prose h2 { font-size: 14pt; margin: 14pt 0 6pt; }
+    .prose h3 { font-size: 12pt; margin: 10pt 0 4pt; }
+    .prose p, .prose ul, .prose ol { margin-bottom: 6pt; }
     h2, h3, h4 { break-after: avoid; }
     p, li { orphans: 3; widows: 3; }
-    pre { white-space: pre-wrap; overflow: visible; border: 1px solid var(--color-border); padding: 8pt; margin-block: 10pt; }
+    pre { white-space: pre-wrap; overflow: visible; border: 1px solid var(--color-border); padding: 6pt; margin-block: 8pt; }
     pre code, code { overflow-wrap: anywhere; }
     .table-scroll { overflow: visible; }
     thead { display: table-header-group; }
     tr, pre, .callout, .panel { break-inside: avoid; }
-    th, td { font-size: 9pt; padding: 5pt 7pt; }
+    th, td { font-size: 9pt; padding: 4pt 6pt; }
     .callout { border: 1px solid var(--color-border); border-left-width: 3px; }
     a { color: var(--color-text); text-decoration: none; }
-    .paper-reading .prose { line-height: 1.4; }
-    .paper-reading .prose h2 { font-size: 15pt; margin: 12pt 0 6pt; }
+    .paper-reading .prose { line-height: var(--leading); }
+    .paper-reading .prose h2 { font-size: 13pt; margin: 10pt 0 5pt; }
   }
 }
