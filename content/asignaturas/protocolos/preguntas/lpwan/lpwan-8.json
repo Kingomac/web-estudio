@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué caracteriza el modo NIDD (Non-IP Data Delivery) de NB-IoT y LTE-M?",
+  "explanation": "El dispositivo envía mensajes sin cabeceras IP ni UDP/TCP y la red del operador hace de gateway hacia el servidor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "modo-ip-y-nidd"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-dispositivo-envia-mensajes-sin",
+      "text": "El dispositivo envía mensajes sin cabeceras IP ni UDP/TCP y la red del operador los lleva al servidor.",
+      "explanation": "P. 10: la red actúa de gateway, típicamente por HTTP o MQTT."
+    },
+    {
+      "id": "el-dispositivo-usa-ipv6-global",
+      "text": "El dispositivo usa IPv6 global para que el servidor lo alcance directamente.",
+      "explanation": "Describe una posibilidad del modo IP."
+    },
+    {
+      "id": "el-dispositivo-comprime-las-cabeceras",
+      "text": "El dispositivo comprime las cabeceras IPv6 con IPHC.",
+      "explanation": "IPHC es de 6LoWPAN; NIDD elimina la pila IP en ese intercambio."
+    },
+    {
+      "id": "la-aplicacion-recibe-los-mensajes",
+      "text": "La aplicación recibe los mensajes sin pasar por la red del operador.",
+      "explanation": "La red del operador es precisamente quien los entrega."
+    }
+  ],
+  "answer": "el-dispositivo-envia-mensajes-sin"
+}

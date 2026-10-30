@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica corresponde a NB-IoT y no a LTE-M según la comparativa del tema?",
+  "explanation": "Alta penetración en interiores profundos y con señal débil.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        14,
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-frente-a-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "alta-penetracion-en-interiores-incluso",
+      "text": "Alta penetración en interiores, incluso con señal débil.",
+      "explanation": "Fila «Penetración interiores» de la p. 14."
+    },
+    {
+      "id": "latencia-baja-casi-en-tiempo",
+      "text": "Latencia baja, casi en tiempo real.",
+      "explanation": "Es de LTE-M; NB-IoT tolera esperas de segundos."
+    },
+    {
+      "id": "tasa-de-hasta-1-mbit",
+      "text": "Tasa de hasta ~1 Mbit/s.",
+      "explanation": "LTE-M; NB-IoT llega a 128 kbit/s."
+    },
+    {
+      "id": "handover-entre-celdas",
+      "text": "Handover entre celdas.",
+      "explanation": "Es de LTE-M."
+    }
+  ],
+  "answer": "alta-penetracion-en-interiores-incluso"
+}

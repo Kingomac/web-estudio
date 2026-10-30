@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué ventaja de LoRaWAN se relaciona con usar bandas de uso libre?",
+  "explanation": "No se adquiere licencia de espectro y, en red propia, no hace falta suscripción por dispositivo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "beneficios-y-tipos-de-red"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-hay-licencia-individual-de",
+      "text": "No hay licencia individual de espectro y, en red propia, tampoco suscripción por dispositivo.",
+      "explanation": "«Control de costes», p. 20."
+    },
+    {
+      "id": "elimina-las-limitaciones-de-duty",
+      "text": "Elimina las limitaciones de duty cycle.",
+      "explanation": "Al contrario: las bandas libres de EU868 imponen duty cycle."
+    },
+    {
+      "id": "garantiza-la-cobertura-de-un",
+      "text": "Garantiza la cobertura de un operador.",
+      "explanation": "Eso es propio de las redes celulares."
+    },
+    {
+      "id": "permite-ipv6-extremo-a-extremo",
+      "text": "Permite IPv6 extremo a extremo sin adaptación.",
+      "explanation": "LoRaWAN habitualmente no usa IP."
+    }
+  ],
+  "answer": "no-hay-licencia-individual-de"
+}

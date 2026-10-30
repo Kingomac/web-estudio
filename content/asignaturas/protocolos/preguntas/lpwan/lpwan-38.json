@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Para qué sirve FCnt en la trama LoRaWAN?",
+  "explanation": "Número de secuencia de 2 bytes, distinto en cada sentido, para detectar copias.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "es-un-numero-de-secuencia",
+      "text": "Es un número de secuencia, distinto en cada sentido, para detectar copias.",
+      "explanation": "P. 39."
+    },
+    {
+      "id": "cuenta-los-bytes-de-fopts",
+      "text": "Cuenta los bytes de FOpts.",
+      "explanation": "La longitud de FOpts va en FCtrl."
+    },
+    {
+      "id": "identifica-el-puerto-de-aplicacion",
+      "text": "Identifica el puerto de aplicación.",
+      "explanation": "Eso es FPort."
+    },
+    {
+      "id": "cuenta-los-gateways-que-recibieron",
+      "text": "Cuenta los gateways que recibieron la trama.",
+      "explanation": "El NS combina metadatos de gateways, pero no en FCnt."
+    }
+  ],
+  "answer": "es-un-numero-de-secuencia"
+}

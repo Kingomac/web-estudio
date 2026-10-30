@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En la arquitectura de NB-IoT y LTE-M, ¿qué equipo de cliente se necesita entre el dispositivo y la red?",
+  "explanation": "Ninguno: el dispositivo envía directamente por la red celular.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        5,
+        8
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "tecnologias-y-arquitecturas"
+    }
+  ],
+  "options": [
+    {
+      "id": "ninguno-el-dispositivo-se-comunica",
+      "text": "Ninguno: el dispositivo se comunica directamente con la estación base.",
+      "explanation": "P. 5 y p. 8: no hay gateways ni routers de cliente."
+    },
+    {
+      "id": "un-gateway-lorawan",
+      "text": "Un gateway LoRaWAN.",
+      "explanation": "Eso corresponde a LoRaWAN."
+    },
+    {
+      "id": "un-border-router-6lowpan",
+      "text": "Un border router 6LoWPAN.",
+      "explanation": "Eso corresponde a Wi-SUN FAN."
+    },
+    {
+      "id": "un-router-wi-fi-domestico",
+      "text": "Un router Wi-Fi doméstico.",
+      "explanation": "El acceso es radio celular del operador."
+    }
+  ],
+  "answer": "ninguno-el-dispositivo-se-comunica"
+}

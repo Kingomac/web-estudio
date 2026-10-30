@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué clase LoRaWAN es obligatoria para todos los dispositivos?",
+  "explanation": "La clase A; B y C añaden oportunidades de recepción.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-a",
+      "text": "Clase A.",
+      "explanation": "P. 30."
+    },
+    {
+      "id": "clase-b",
+      "text": "Clase B.",
+      "explanation": "Es opcional y amplía la A con ping slots."
+    },
+    {
+      "id": "clase-c",
+      "text": "Clase C.",
+      "explanation": "Es opcional y consume mucho."
+    },
+    {
+      "id": "ninguna-cada-dispositivo-elige-una",
+      "text": "Ninguna: cada dispositivo elige una.",
+      "explanation": "La A es obligatoria."
+    }
+  ],
+  "answer": "clase-a"
+}

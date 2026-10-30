@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-43",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿En qué se diferencia el frm_payload del JSON que el NS entrega al AS del que el AS envía por webhook?",
+  "explanation": "NS→AS va cifrado; AS→aplicación va descifrado. Ambos en Base64.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        50,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "pasos-en-ttn"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-de-nsas-sigue-cifrado",
+      "text": "El de NS→AS sigue cifrado; el del webhook ya está descifrado con AppSKey. Ambos en Base64.",
+      "explanation": "Pp. 50 y 55."
+    },
+    {
+      "id": "el-de-nsas-va-en",
+      "text": "El de NS→AS va en Base64 y el del webhook en hexadecimal.",
+      "explanation": "Ambos usan Base64."
+    },
+    {
+      "id": "el-webhook-ya-no-incluye",
+      "text": "El webhook ya no incluye frm_payload, solo decoded_payload.",
+      "explanation": "Incluye frm_payload y, si hay decoder, decoded_payload."
+    },
+    {
+      "id": "ninguna-los-dos-van-descifrados",
+      "text": "Ninguna: los dos van descifrados.",
+      "explanation": "El NS no puede descifrar."
+    }
+  ],
+  "answer": "el-de-nsas-sigue-cifrado"
+}

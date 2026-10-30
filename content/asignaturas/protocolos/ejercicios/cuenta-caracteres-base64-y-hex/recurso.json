@@ -1,0 +1,89 @@
+{
+  "id": "protocolos.ejercicios.cuenta-caracteres-base64-y-hex",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "cuenta-caracteres-base64-y-hex",
+  "title": "Cuenta caracteres Base64 y hex",
+  "description": "Cuánto ocupan en JSON los payloads del tema según su codificación.",
+  "scope": "Tema 5, con datos de los ejemplos del propio tema.",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "order": 302,
+  "mode": "form",
+  "prompt": "Los JSON de LoRaWAN representan el binario en Base64 o en hexadecimal. Calcula cuántos caracteres ocupan estos payloads y cuántos «=» de relleno lleva cada Base64.",
+  "explanation": "Base64 agrupa de 3 en 3 bytes y produce 4 caracteres por grupo; el último grupo incompleto se completa con «=» (uno si sobran 2 bytes, dos si sobra 1). Hexadecimal usa 2 caracteres por byte.",
+  "hint": "Divide entre 3 redondeando hacia arriba y multiplica por 4.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        36,
+        45,
+        50
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "b64-27",
+      "label": "Base64 de 27 bytes (PHYPayload de la p. 45): caracteres",
+      "type": "format",
+      "format": "integer",
+      "answer": "36",
+      "explanation": "9 × 4."
+    },
+    {
+      "id": "b64-14",
+      "label": "Base64 de 14 bytes (frm_payload de la p. 50): caracteres",
+      "type": "format",
+      "format": "integer",
+      "answer": "20",
+      "explanation": "5 × 4."
+    },
+    {
+      "id": "eq-14",
+      "label": "«=» en el Base64 de 14 bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "1",
+      "explanation": "El último grupo tiene 2 bytes."
+    },
+    {
+      "id": "hex-14",
+      "label": "Hex de 14 bytes (FRMPayload de Basics Station): caracteres",
+      "type": "format",
+      "format": "integer",
+      "answer": "28",
+      "explanation": "2 por byte."
+    },
+    {
+      "id": "b64-4",
+      "label": "Base64 de 4 bytes: caracteres",
+      "type": "format",
+      "format": "integer",
+      "answer": "8",
+      "explanation": "2 grupos de 4."
+    },
+    {
+      "id": "eq-4",
+      "label": "«=» en el Base64 de 4 bytes",
+      "type": "format",
+      "format": "integer",
+      "answer": "2",
+      "explanation": "El último grupo tiene 1 byte."
+    }
+  ],
+  "steps": [
+    "27 bytes = 9 grupos → 36 caracteres, sin relleno.",
+    "14 bytes = 4 grupos + 2 bytes → 5 grupos = 20 caracteres, un «=».",
+    "14 bytes en hex = 28 caracteres.",
+    "4 bytes = 1 grupo + 1 byte → 8 caracteres, dos «=»."
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "json-y-base64"
+    }
+  ]
+}

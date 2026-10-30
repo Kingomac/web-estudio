@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un uplink de un sensor LoRaWAN llega a la plataforma por tres gateways. ¿Quién elimina las copias?",
+  "explanation": "El Network Server.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        19,
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "arquitectura-de-red"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-network-server",
+      "text": "El Network Server.",
+      "explanation": "Elimina duplicados y combina los metadatos."
+    },
+    {
+      "id": "el-primer-gateway-que-lo",
+      "text": "El primer gateway que lo recibe.",
+      "explanation": "Los gateways no se coordinan entre sí: reenvían lo que reciben."
+    },
+    {
+      "id": "el-application-server",
+      "text": "El Application Server.",
+      "explanation": "Recibe del NS un único mensaje."
+    },
+    {
+      "id": "el-propio-sensor-que-no",
+      "text": "El propio sensor, que no repite el FCnt.",
+      "explanation": "El sensor transmite una vez; las copias aparecen en recepción."
+    }
+  ],
+  "answer": "el-network-server"
+}

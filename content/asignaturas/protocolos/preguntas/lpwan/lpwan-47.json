@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-47",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué hace un nodo LoRaWAN al recibir un downlink confirmado?",
+  "explanation": "Verifica MIC y contador, procesa el contenido y activa el bit ACK en su siguiente uplink.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "activa-el-bit-ack-en",
+      "text": "Activa el bit ACK en su siguiente uplink.",
+      "explanation": "Último punto de la p. 57."
+    },
+    {
+      "id": "envia-de-inmediato-un-join",
+      "text": "Envía de inmediato un Join-request.",
+      "explanation": "El Join solo se usa para activarse."
+    },
+    {
+      "id": "responde-en-rx1",
+      "text": "Responde en RX1.",
+      "explanation": "RX1 es una ventana de recepción, no de transmisión."
+    },
+    {
+      "id": "pide-al-gateway-que-confirme",
+      "text": "Pide al gateway que confirme por IP.",
+      "explanation": "El ACK viaja en la trama LoRaWAN."
+    }
+  ],
+  "answer": "activa-el-bit-ack-en"
+}

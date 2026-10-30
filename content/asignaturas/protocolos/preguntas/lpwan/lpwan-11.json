@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia a eDRX de PSM?",
+  "explanation": "eDRX mantiene ventanas periódicas de escucha; PSM no escucha durante el reposo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        11,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "psm-y-edrx"
+    }
+  ],
+  "options": [
+    {
+      "id": "edrx-mantiene-ventanas-periodicas-de",
+      "text": "eDRX mantiene ventanas periódicas de escucha (paging); en PSM no se escucha.",
+      "explanation": "Por eso un mensaje en eDRX solo espera a la siguiente ventana."
+    },
+    {
+      "id": "edrx-conserva-el-registro-en",
+      "text": "eDRX conserva el registro en la red y PSM no.",
+      "explanation": "PSM también conserva el registro."
+    },
+    {
+      "id": "edrx-solo-existe-en-lte",
+      "text": "eDRX solo existe en LTE-M y PSM solo en NB-IoT.",
+      "explanation": "El tema los presenta para ambas."
+    },
+    {
+      "id": "edrx-no-puede-combinarse-con",
+      "text": "eDRX no puede combinarse con PSM.",
+      "explanation": "Pueden combinarse: eDRX tras transmitir y después PSM."
+    }
+  ],
+  "answer": "edrx-mantiene-ventanas-periodicas-de"
+}

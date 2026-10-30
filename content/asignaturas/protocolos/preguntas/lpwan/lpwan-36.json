@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué indica un MHDR con valor 0x80?",
+  "explanation": "Datos uplink que requieren confirmación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-uplink-de-datos-con",
+      "text": "Un uplink de datos con confirmación.",
+      "explanation": "P. 39; en la p. 45 aparece como \"MHdr\": 128."
+    },
+    {
+      "id": "un-downlink-de-datos-con",
+      "text": "Un downlink de datos con confirmación.",
+      "explanation": "Sería 0xA0."
+    },
+    {
+      "id": "un-uplink-de-datos-sin",
+      "text": "Un uplink de datos sin confirmación.",
+      "explanation": "Sería 0x40."
+    },
+    {
+      "id": "un-join-accept",
+      "text": "Un Join-accept.",
+      "explanation": "Sería 0x20."
+    }
+  ],
+  "answer": "un-uplink-de-datos-con"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-48",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo puede un nodo LoRaWAN usar IPv6 según la comparativa final?",
+  "explanation": "Mediante SCHC (RFC 9011); habitualmente LoRaWAN no usa IP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "comparativa"
+    }
+  ],
+  "options": [
+    {
+      "id": "mediante-schc-rfc-9011",
+      "text": "Mediante SCHC (RFC 9011).",
+      "explanation": "Fila «Conectividad IP del nodo»."
+    },
+    {
+      "id": "mediante-6lowpan-e-iphc-como",
+      "text": "Mediante 6LoWPAN e IPHC, como Wi-SUN FAN.",
+      "explanation": "Esa es la adaptación de Wi-SUN FAN."
+    },
+    {
+      "id": "mediante-el-modo-nidd",
+      "text": "Mediante el modo NIDD.",
+      "explanation": "NIDD es de las celulares, y precisamente evita IP."
+    },
+    {
+      "id": "no-es-posible-en-ningun",
+      "text": "No es posible en ningún caso.",
+      "explanation": "El tema lo da como posible con SCHC."
+    }
+  ],
+  "answer": "mediante-schc-rfc-9011"
+}

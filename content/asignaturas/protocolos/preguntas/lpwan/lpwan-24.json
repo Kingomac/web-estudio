@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuánto tiempo de transmisión por hora permite el duty cycle de la subbanda 868-868,6 MHz?",
+  "explanation": "1 % de 3600 s = 36 s.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "36-s",
+      "text": "36 s.",
+      "explanation": "1 % de una hora."
+    },
+    {
+      "id": "30-s",
+      "text": "30 s.",
+      "explanation": "Son los 30 s diarios de TTN Sandbox."
+    },
+    {
+      "id": "3-6-s",
+      "text": "3,6 s.",
+      "explanation": "Sería el 0,1 %."
+    },
+    {
+      "id": "360-s",
+      "text": "360 s.",
+      "explanation": "Sería el 10 %."
+    }
+  ],
+  "answer": "36-s"
+}

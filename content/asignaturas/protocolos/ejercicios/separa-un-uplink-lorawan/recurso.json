@@ -1,0 +1,123 @@
+{
+  "id": "protocolos.ejercicios.separa-un-uplink-lorawan",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "separa-un-uplink-lorawan",
+  "title": "Separa el uplink de la p. 45",
+  "description": "Trama LoRaWAN real del tema: MHDR, FHDR, FPort, FRMPayload y MIC.",
+  "scope": "Tema 5, con datos de los ejemplos del propio tema.",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "order": 300,
+  "mode": "form",
+  "prompt": "Es el PHYPayload que el UDP Packet Forwarder envía en rxpk.data (p. 45), ya pasado de Base64 a hexadecimal. No lleva FOpts. Cuenta los offsets desde 0. Los campos de varios bytes viajan con el byte menos significativo primero: compruébalo con el DevAddr 670869799 que muestra Basics Station.",
+  "explanation": "80 | 27 a9 fc 27 | 00 | 0d 00 | 05 | 14 bytes de FRMPayload | e2 28 4b a4. Cabeceras y MIC suman 1 + 7 + 1 + 4 = 13 bytes; el resto, 27 − 13 = 14, es FRMPayload cifrado con AppSKey. Coincide con los campos separados de Basics Station: MHdr 128, FCnt 13, FPort 5.",
+  "hint": "MHDR 1 B, DevAddr 4 B, FCtrl 1 B, FCnt 2 B, FOpts 0 B, FPort 1 B; el MIC son los 4 últimos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        45
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "tipo",
+      "label": "Tipo de mensaje según MHDR",
+      "type": "select",
+      "options": [
+        {
+          "id": "join-request",
+          "text": "Join-request"
+        },
+        {
+          "id": "join-accept",
+          "text": "Join-accept"
+        },
+        {
+          "id": "up-sin",
+          "text": "Datos uplink sin confirmación"
+        },
+        {
+          "id": "down-sin",
+          "text": "Datos downlink sin confirmación"
+        },
+        {
+          "id": "up-con",
+          "text": "Datos uplink con confirmación"
+        },
+        {
+          "id": "down-con",
+          "text": "Datos downlink con confirmación"
+        }
+      ],
+      "answer": "up-con",
+      "explanation": "0x80 = datos uplink con confirmación."
+    },
+    {
+      "id": "devaddr",
+      "label": "DevAddr (8 cifras hex, byte más significativo primero)",
+      "type": "format",
+      "format": "hex",
+      "answer": "27fca927",
+      "explanation": "Bytes 27 a9 fc 27 leídos del último al primero; 0x27FCA927 = 670869799."
+    },
+    {
+      "id": "fcnt",
+      "label": "FCnt",
+      "type": "format",
+      "format": "integer",
+      "answer": "13",
+      "explanation": "0d 00 leído al revés: 0x000D."
+    },
+    {
+      "id": "fport",
+      "label": "FPort",
+      "type": "format",
+      "format": "integer",
+      "answer": "5",
+      "explanation": "Byte 8, justo tras el FHDR sin FOpts."
+    },
+    {
+      "id": "frm-bytes",
+      "label": "Bytes de FRMPayload",
+      "type": "format",
+      "format": "integer",
+      "answer": "14",
+      "explanation": "27 − 13 bytes de cabeceras, FPort y MIC."
+    },
+    {
+      "id": "frm-inicio",
+      "label": "FRMPayload: offset inicial",
+      "type": "format",
+      "format": "integer",
+      "answer": "9",
+      "explanation": "Tras MHDR (0), FHDR (1-7) y FPort (8)."
+    },
+    {
+      "id": "frm-fin",
+      "label": "FRMPayload: offset final, incluido",
+      "type": "format",
+      "format": "integer",
+      "answer": "22",
+      "explanation": "Los bytes 23-26 son el MIC."
+    }
+  ],
+  "steps": [
+    "MHDR = 0x80: uplink de datos con confirmación (p. 39).",
+    "DevAddr = bytes 1-4, 27 a9 fc 27, leídos al revés: 0x27FCA927 = 670869799.",
+    "FCtrl = 00: sin FOpts. FCnt = bytes 6-7, 0d 00 → 0x000D = 13.",
+    "FPort = byte 8 = 05.",
+    "FRMPayload = bytes 9 a 22 (14 bytes); MIC = bytes 23 a 26."
+  ],
+  "dump": "80 27 a9 fc 27 00 0d 00 05 0f 3f bf 62 0e 1c 87 08 df 70 a3 34 ad 63 e2 28 4b a4",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ]
+}

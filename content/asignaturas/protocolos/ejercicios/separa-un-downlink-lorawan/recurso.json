@@ -1,0 +1,124 @@
+{
+  "id": "protocolos.ejercicios.separa-un-downlink-lorawan",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "separa-un-downlink-lorawan",
+  "title": "Separa el downlink de la p. 59",
+  "description": "El mismo PHYPayload en txpk.data (Base64) y en dnmsg.pdu (hex).",
+  "scope": "Tema 5, con datos de los ejemplos del propio tema.",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "order": 301,
+  "mode": "form",
+  "prompt": "Downlink que el NS envía al gateway en la p. 59: Basics Station lo da en hex como 6027A9FC2700010001AABB11223344 y el UDP forwarder en Base64 como YCep/CcAAQABqrsRIjNE. No lleva FOpts.",
+  "explanation": "60 | 27 a9 fc 27 | 00 | 01 00 | 01 | aa bb | 11 22 33 44. Es un downlink de datos sin confirmación para la misma DevAddr del uplink, con FCnt 1, FPort 1 (datos de aplicación cifrados con AppSKey) y 2 bytes de FRMPayload. Los 15 bytes ocupan 30 cifras hex y 20 caracteres Base64 sin relleno.",
+  "hint": "Empieza por el MHDR y aplica los mismos tamaños que en el uplink.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        59
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "tipo",
+      "label": "Tipo de mensaje según MHDR",
+      "type": "select",
+      "options": [
+        {
+          "id": "join-request",
+          "text": "Join-request"
+        },
+        {
+          "id": "join-accept",
+          "text": "Join-accept"
+        },
+        {
+          "id": "up-sin",
+          "text": "Datos uplink sin confirmación"
+        },
+        {
+          "id": "down-sin",
+          "text": "Datos downlink sin confirmación"
+        },
+        {
+          "id": "up-con",
+          "text": "Datos uplink con confirmación"
+        },
+        {
+          "id": "down-con",
+          "text": "Datos downlink con confirmación"
+        }
+      ],
+      "answer": "down-sin",
+      "explanation": "0x60 = datos downlink sin confirmación."
+    },
+    {
+      "id": "fcnt",
+      "label": "FCnt",
+      "type": "format",
+      "format": "integer",
+      "answer": "1",
+      "explanation": "01 00 leído al revés."
+    },
+    {
+      "id": "clave",
+      "label": "¿Con qué clave va cifrado el FRMPayload?",
+      "type": "select",
+      "options": [
+        {
+          "id": "appskey",
+          "text": "AppSKey"
+        },
+        {
+          "id": "nwkskey",
+          "text": "NwkSKey"
+        },
+        {
+          "id": "appkey",
+          "text": "AppKey"
+        },
+        {
+          "id": "ninguna",
+          "text": "Ninguna"
+        }
+      ],
+      "answer": "appskey",
+      "explanation": "FPort = 1 ≠ 0: datos de aplicación."
+    },
+    {
+      "id": "frm-bytes",
+      "label": "Bytes de FRMPayload",
+      "type": "format",
+      "format": "integer",
+      "answer": "2",
+      "explanation": "15 − 13."
+    },
+    {
+      "id": "base64",
+      "label": "Caracteres Base64 de txpk.data",
+      "type": "format",
+      "format": "integer",
+      "answer": "20",
+      "explanation": "15 / 3 × 4."
+    }
+  ],
+  "steps": [
+    "MHDR = 0x60: downlink sin confirmación.",
+    "DevAddr = 27 a9 fc 27 → 0x27FCA927, la misma sesión que el uplink de la p. 45.",
+    "FCtrl = 00, FCnt = 01 00 → 1, FPort = 01.",
+    "Quedan 15 − 13 = 2 bytes de FRMPayload (aa bb) y el MIC 11 22 33 44.",
+    "15 bytes = 5 bloques de 3 → 20 caracteres Base64, sin «=»."
+  ],
+  "dump": "60 27 a9 fc 27 00 01 00 01 aa bb 11 22 33 44",
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ]
+}

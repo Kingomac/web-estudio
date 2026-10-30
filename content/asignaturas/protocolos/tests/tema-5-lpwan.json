@@ -1,0 +1,88 @@
+{
+  "id": "protocolos.tests.tema-5-lpwan",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "tema-5-lpwan",
+  "title": "Test · Tema 5 · LPWAN y LoRaWAN",
+  "description": "48 preguntas del tema 5: LPWAN celulares, arquitectura y plataformas LoRaWAN, clases y activación, trama y procesado en gateway, NS y AS.",
+  "scope": "Tema 5 completo (61 páginas).",
+  "tagIds": [
+    "protocolos.tags.lpwan",
+    "protocolos.tags.examen-final"
+  ],
+  "order": 190,
+  "groups": [
+    {
+      "id": "lpwan-y-celulares",
+      "title": "LPWAN, NB-IoT y LTE-M",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-1",
+        "protocolos.preguntas.lpwan-2",
+        "protocolos.preguntas.lpwan-3",
+        "protocolos.preguntas.lpwan-4",
+        "protocolos.preguntas.lpwan-5",
+        "protocolos.preguntas.lpwan-6",
+        "protocolos.preguntas.lpwan-7",
+        "protocolos.preguntas.lpwan-8",
+        "protocolos.preguntas.lpwan-9",
+        "protocolos.preguntas.lpwan-10",
+        "protocolos.preguntas.lpwan-11",
+        "protocolos.preguntas.lpwan-12",
+        "protocolos.preguntas.lpwan-13"
+      ]
+    },
+    {
+      "id": "lorawan-red-y-plataformas",
+      "title": "LoRaWAN: red, plataformas y Data Rate",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-14",
+        "protocolos.preguntas.lpwan-15",
+        "protocolos.preguntas.lpwan-16",
+        "protocolos.preguntas.lpwan-17",
+        "protocolos.preguntas.lpwan-18",
+        "protocolos.preguntas.lpwan-19",
+        "protocolos.preguntas.lpwan-20",
+        "protocolos.preguntas.lpwan-21",
+        "protocolos.preguntas.lpwan-22",
+        "protocolos.preguntas.lpwan-23",
+        "protocolos.preguntas.lpwan-24"
+      ]
+    },
+    {
+      "id": "clases-y-activacion",
+      "title": "Duty cycle, clases y activación",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-25",
+        "protocolos.preguntas.lpwan-26",
+        "protocolos.preguntas.lpwan-27",
+        "protocolos.preguntas.lpwan-28",
+        "protocolos.preguntas.lpwan-29",
+        "protocolos.preguntas.lpwan-30",
+        "protocolos.preguntas.lpwan-31",
+        "protocolos.preguntas.lpwan-32",
+        "protocolos.preguntas.lpwan-33"
+      ]
+    },
+    {
+      "id": "trama-y-procesado",
+      "title": "Trama, gateway, NS, AS y downlinks",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-34",
+        "protocolos.preguntas.lpwan-35",
+        "protocolos.preguntas.lpwan-36",
+        "protocolos.preguntas.lpwan-37",
+        "protocolos.preguntas.lpwan-38",
+        "protocolos.preguntas.lpwan-39",
+        "protocolos.preguntas.lpwan-40",
+        "protocolos.preguntas.lpwan-41",
+        "protocolos.preguntas.lpwan-42",
+        "protocolos.preguntas.lpwan-43",
+        "protocolos.preguntas.lpwan-44",
+        "protocolos.preguntas.lpwan-45",
+        "protocolos.preguntas.lpwan-46",
+        "protocolos.preguntas.lpwan-47",
+        "protocolos.preguntas.lpwan-48"
+      ]
+    }
+  ]
+}

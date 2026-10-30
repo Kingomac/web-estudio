@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lpwan-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué tecnología celular es más adecuada para un tracker que se mueve y debe mantener la conexión al cambiar de celda?",
+  "explanation": "LTE-M admite handover entre celdas; NB-IoT no durante la conexión.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        7,
+        14,
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-frente-a-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "lte-m",
+      "text": "LTE-M.",
+      "explanation": "Movilidad alta con handover entre celdas."
+    },
+    {
+      "id": "nb-iot",
+      "text": "NB-IoT.",
+      "explanation": "No permite handover durante la conexión: está orientada a aplicaciones estáticas."
+    },
+    {
+      "id": "lorawan-de-clase-c",
+      "text": "LoRaWAN de clase C.",
+      "explanation": "No es una tecnología celular, y la clase C no trata el traspaso entre celdas."
+    },
+    {
+      "id": "wi-sun-fan",
+      "text": "Wi-SUN FAN.",
+      "explanation": "No es celular."
+    }
+  ],
+  "answer": "lte-m"
+}

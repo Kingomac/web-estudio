@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cómo funciona ADR en LoRaWAN?",
+  "explanation": "El NS analiza la SNR de los uplinks y pide ajustes de DR y potencia con LinkADRReq; el dispositivo responde LinkADRAns.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        27,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-ns-analiza-la-snr",
+      "text": "El NS analiza la SNR de los uplinks y envía LinkADRReq; el dispositivo contesta LinkADRAns.",
+      "explanation": "P. 27."
+    },
+    {
+      "id": "el-gateway-elige-el-sf",
+      "text": "El gateway elige el SF de cada nodo según el RSSI.",
+      "explanation": "El gateway no gestiona la red; lo hace el NS."
+    },
+    {
+      "id": "el-dispositivo-cambia-de-dr",
+      "text": "El dispositivo cambia de DR sin intervención de la red.",
+      "explanation": "Los ajustes los solicita el NS."
+    },
+    {
+      "id": "el-as-ajusta-la-potencia",
+      "text": "El AS ajusta la potencia según el payload decoder.",
+      "explanation": "ADR es un mecanismo MAC entre nodo y NS."
+    }
+  ],
+  "answer": "el-ns-analiza-la-snr"
+}

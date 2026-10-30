@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia LoRa de LoRaWAN?",
+  "explanation": "LoRa es la tecnología de transmisión radio; LoRaWAN, el protocolo de red que la usa.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "lora-y-lorawan"
+    }
+  ],
+  "options": [
+    {
+      "id": "lora-es-la-radio-lorawan",
+      "text": "LoRa es la radio; LoRaWAN, el protocolo de red que define acceso, mensajes y seguridad.",
+      "explanation": "P. 18."
+    },
+    {
+      "id": "lora-es-la-version-privada",
+      "text": "LoRa es la versión privada y LoRaWAN la pública.",
+      "explanation": "Ambos tipos de red usan LoRaWAN."
+    },
+    {
+      "id": "lorawan-es-la-radio-y",
+      "text": "LoRaWAN es la radio y LoRa la plataforma de servidores.",
+      "explanation": "Está invertido."
+    },
+    {
+      "id": "son-sinonimos",
+      "text": "Son sinónimos.",
+      "explanation": "El tema los separa expresamente."
+    }
+  ],
+  "answer": "lora-es-la-radio-lorawan"
+}

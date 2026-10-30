@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué metadatos añade el gateway al reenviar un uplink al NS?",
+  "explanation": "RSSI, SNR, frecuencia y marca de tiempo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        40,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "rssi-snr-frecuencia-y-marca",
+      "text": "RSSI, SNR, frecuencia y marca de tiempo.",
+      "explanation": "P. 40."
+    },
+    {
+      "id": "deveui-y-el-identificador-de",
+      "text": "DevEUI y el identificador de la aplicación.",
+      "explanation": "Los identifica el NS a partir de DevAddr y el MIC."
+    },
+    {
+      "id": "el-payload-descifrado",
+      "text": "El payload descifrado.",
+      "explanation": "El gateway no descifra."
+    },
+    {
+      "id": "potencia-y-dr-con-los",
+      "text": "Potencia y DR con los que debe transmitir.",
+      "explanation": "Eso lo indica el NS en los downlinks."
+    }
+  ],
+  "answer": "rssi-snr-frecuencia-y-marca"
+}

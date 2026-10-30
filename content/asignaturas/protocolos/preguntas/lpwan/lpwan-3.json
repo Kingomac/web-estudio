@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas tecnologías LPWAN se basa en IPv6 y extiende la cobertura mediante múltiples saltos?",
+  "explanation": "Wi-SUN FAN es una malla IPv6 con 6LoWPAN y RPL.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        4,
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "tecnologias-y-arquitecturas"
+    }
+  ],
+  "options": [
+    {
+      "id": "wi-sun-fan",
+      "text": "Wi-SUN FAN.",
+      "explanation": "Red mallada IPv6 multisalto, orientada a suministros y ciudades."
+    },
+    {
+      "id": "lorawan",
+      "text": "LoRaWAN.",
+      "explanation": "Topología en estrella con gateways y, habitualmente, sin IP en el nodo."
+    },
+    {
+      "id": "nb-iot",
+      "text": "NB-IoT.",
+      "explanation": "Celular: el nodo habla directamente con la estación base, sin saltos."
+    },
+    {
+      "id": "lte-m",
+      "text": "LTE-M.",
+      "explanation": "Celular, sin malla."
+    }
+  ],
+  "answer": "wi-sun-fan"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.lpwan-46",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Qué tiene en cuenta el NS para elegir el gateway de un downlink? (Elige TRES)",
+  "explanation": "Calidad del enlace, disponibilidad del gateway, duty cycle y oportunidad de recepción del nodo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-calidad-del-enlace-segun",
+      "text": "La calidad del enlace según RSSI y SNR de uplinks recientes.",
+      "explanation": "Primer criterio de la p. 60."
+    },
+    {
+      "id": "que-el-gateway-pueda-transmitir",
+      "text": "Que el gateway pueda transmitir en el instante previsto respetando el duty cycle.",
+      "explanation": "Disponibilidad y restricciones."
+    },
+    {
+      "id": "la-ventana-de-recepcion-del",
+      "text": "La ventana de recepción del nodo según su clase.",
+      "explanation": "RX1/RX2, ping slots o RXC."
+    },
+    {
+      "id": "elegir-siempre-el-gateway-con",
+      "text": "Elegir siempre el gateway con mejor señal.",
+      "explanation": "El tema avisa: el de mejor señal no siempre puede transmitir a tiempo."
+    },
+    {
+      "id": "el-gateway-que-tenga-appskey",
+      "text": "El gateway que tenga AppSKey.",
+      "explanation": "Ningún gateway tiene claves de sesión."
+    }
+  ],
+  "answer": [
+    "la-calidad-del-enlace-segun",
+    "que-el-gateway-pueda-transmitir",
+    "la-ventana-de-recepcion-del"
+  ]
+}

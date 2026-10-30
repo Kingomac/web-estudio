@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.lpwan-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Qué limitaciones aceptan las LPWAN a cambio de alcance, bajo consumo y bajo coste? (Elige TRES)",
+  "explanation": "El tema enumera tres renuncias: tasa de datos, frecuencia de envío y disponibilidad para recibir.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "que-es-una-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "tasa-de-datos-limitada",
+      "text": "Tasa de datos limitada.",
+      "explanation": "Primera renuncia de la p. 2."
+    },
+    {
+      "id": "frecuencia-de-envio-limitada",
+      "text": "Frecuencia de envío limitada.",
+      "explanation": "Segunda renuncia de la p. 2."
+    },
+    {
+      "id": "disponibilidad-limitada-para-recibir-mensajes",
+      "text": "Disponibilidad limitada para recibir mensajes.",
+      "explanation": "Tercera renuncia: el nodo duerme la mayor parte del tiempo."
+    },
+    {
+      "id": "alcance-limitado-a-unos-cientos",
+      "text": "Alcance limitado a unos cientos de metros.",
+      "explanation": "Es lo contrario: los enlaces alcanzan varios kilómetros."
+    },
+    {
+      "id": "coste-por-dispositivo-elevado",
+      "text": "Coste por dispositivo elevado.",
+      "explanation": "Buscan precisamente reducir el coste por dispositivo."
+    }
+  ],
+  "answer": [
+    "tasa-de-datos-limitada",
+    "frecuencia-de-envio-limitada",
+    "disponibilidad-limitada-para-recibir-mensajes"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.tema-5-lpwan-lorawan",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "tema-5-lpwan-lorawan",
+  "title": "Tema 5 · Redes LPWAN y LoRaWAN",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento original completo del tema 5: LPWAN, NB-IoT y LTE-M, y LoRaWAN (arquitectura, clases, activación, trama y recorrido de mensajes).",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "order": 50,
+  "file": "materiales/protocolos/tema-5-lpwan-lorawan.pdf",
+  "format": "pdf",
+  "providedName": "Tema 5 - LPWAN y LoRaWAN.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 61,
+  "sha256": "24b3dfd2576e0dc54eb8e91a8ccc03458c3fe86601d5e776c8a3e69dafcfab1d"
+}

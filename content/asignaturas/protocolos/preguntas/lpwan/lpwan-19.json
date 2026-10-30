@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué limita la política de uso justo de TTN Sandbox para cada dispositivo?",
+  "explanation": "30 s de transmisión diarios y 10 mensajes descendentes al día.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "30-s-de-transmision-al",
+      "text": "30 s de transmisión al día y 10 downlinks al día.",
+      "explanation": "P. 23."
+    },
+    {
+      "id": "10-dispositivos-y-10-gateways",
+      "text": "10 dispositivos y 10 gateways.",
+      "explanation": "Es lo que anuncia el plan Discovery de TTS Cloud."
+    },
+    {
+      "id": "36-s-de-transmision-por",
+      "text": "36 s de transmisión por hora.",
+      "explanation": "Es el duty cycle del 1 % en la subbanda 868-868,6 MHz."
+    },
+    {
+      "id": "un-mensaje-cada-15-minutos",
+      "text": "Un mensaje cada 15 minutos.",
+      "explanation": "Es el ejemplo de sensor agrícola de la p. 2."
+    }
+  ],
+  "answer": "30-s-de-transmision-al"
+}

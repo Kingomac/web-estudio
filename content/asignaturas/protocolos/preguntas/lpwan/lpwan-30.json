@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué clave usa LoRaWAN 1.0.4 para cifrar los datos de aplicación entre dispositivo y Application Server?",
+  "explanation": "AppSKey, la clave de sesión de aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        31,
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "activacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "appskey",
+      "text": "AppSKey.",
+      "explanation": "Cifra los datos entre el dispositivo y el AS."
+    },
+    {
+      "id": "nwkskey",
+      "text": "NwkSKey.",
+      "explanation": "Protege integridad y autenticidad de las tramas (MIC)."
+    },
+    {
+      "id": "appkey",
+      "text": "AppKey.",
+      "explanation": "Es la clave raíz de OTAA, no una clave de sesión."
+    },
+    {
+      "id": "deveui",
+      "text": "DevEUI.",
+      "explanation": "Es un identificador, no una clave."
+    }
+  ],
+  "answer": "appskey"
+}

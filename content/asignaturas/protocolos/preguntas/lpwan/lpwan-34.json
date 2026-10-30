@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.lpwan-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué elemento de la cadena LoRaWAN puede leer los datos de aplicación en claro?",
+  "explanation": "Solo el Application Server (y lo que hay después), porque es quien tiene AppSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        34,
+        35,
+        40,
+        49,
+        51
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "arquitectura-de-protocolos"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-application-server",
+      "text": "El Application Server.",
+      "explanation": "Descifra el FRMPayload con AppSKey."
+    },
+    {
+      "id": "el-gateway",
+      "text": "El gateway.",
+      "explanation": "Reenvía el PHYPayload sin descifrar."
+    },
+    {
+      "id": "el-network-server",
+      "text": "El Network Server.",
+      "explanation": "Valida el MIC con NwkSKey, pero entrega el FRMPayload aún cifrado."
+    },
+    {
+      "id": "cualquier-gateway-que-reciba-el",
+      "text": "Cualquier gateway que reciba el mensaje.",
+      "explanation": "Ningún gateway tiene claves de sesión."
+    }
+  ],
+  "answer": "el-application-server"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué necesita cada dispositivo NB-IoT o LTE-M para conectarse a la red del operador?",
+  "explanation": "Un módem compatible y una suscripción, con identificación y autenticación mediante SIM o eSIM.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-y-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-modem-compatible-y-una",
+      "text": "Un módem compatible y una suscripción con SIM o eSIM.",
+      "explanation": "Segundo punto de la p. 8."
+    },
+    {
+      "id": "registrarse-en-un-join-server",
+      "text": "Registrarse en un Join Server mediante OTAA.",
+      "explanation": "OTAA es la activación de LoRaWAN."
+    },
+    {
+      "id": "un-gateway-propio-conectado-a",
+      "text": "Un gateway propio conectado a Internet.",
+      "explanation": "No hay gateways de cliente en las tecnologías celulares."
+    },
+    {
+      "id": "una-appkey-configurada-en-the",
+      "text": "Una AppKey configurada en The Things Stack.",
+      "explanation": "AppKey y TTS pertenecen a LoRaWAN."
+    }
+  ],
+  "answer": "un-modem-compatible-y-una"
+}

@@ -1,0 +1,65 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { lorawanPathView } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-recorrido' } = Astro.props;
+const elements = [['Nodo', 'Nodo'], ['Gateway', 'GW'], ['NS', 'NS'], ['AS', 'AS'], ['Aplicación', 'App']];
+const keys = [
+  { name: 'NwkSKey', role: 'MIC: integridad y autenticidad de la trama', reach: 3, seg: 'seg-2' },
+  { name: 'AppSKey', role: 'Cifrado de los datos de aplicación', reach: 4, seg: 'seg-1' },
+];
+---
+<LabFrame id={id} component="protocolos.lorawan-recorrido" label="Figura · Recorrido y claves" title="Quién lee qué entre el nodo y la aplicación" intro="Cada clave de sesión protege un tramo distinto. El gateway solo reenvía: no tiene ninguna de las dos.">
+  <div class="lw-keys" role="table" aria-label="Elementos que conocen cada clave de sesión">
+    <div class="lw-row" role="row"><span role="columnheader">Clave</span>{elements.map(([full, short]) => <span role="columnheader" class="lw-head"><span class="lw-full">{full}</span><abbr class="lw-short" title={full}>{short}</abbr></span>)}</div>
+    {keys.map(k => <div class="lw-row" role="row"><span role="rowheader"><strong>{k.name}</strong><small>{k.role}</small></span>{elements.map((_, i) => <span role="cell" class:list={['lw-cell', { 'is-on': i === 0 || i === k.reach - 1 }, { 'is-path': i > 0 && i < k.reach - 1 }]} style={`--seg:var(--color-${k.seg})`}>{i === 0 || i === k.reach - 1 ? 'conoce' : i < k.reach - 1 ? 'reenvía' : '—'}</span>)}</div>)}
+  </div>
+  <lorawan-path>
+    <div class="lab-controls no-print">
+      <label>Sentido del mensaje<select class="input" data-direction disabled><option value="up">Uplink · del nodo a la aplicación</option><option value="down">Downlink · de la aplicación al nodo</option></select></label>
+    </div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={lorawanPathView('up')} />
+  </lorawan-path>
+  <details class="lab-all"><summary>Los dos sentidos</summary><h4>Uplink</h4><Fragment set:html={lorawanPathView('up')} /><h4>Downlink</h4><Fragment set:html={lorawanPathView('down')} /></details>
+  <p class="lab-note">NS, AS y Join Server son funciones lógicas que suelen ejecutarse en la misma plataforma. Entre gateway y NS, y entre NS, AS y aplicación, los mensajes viajan sobre IP, habitualmente en JSON. Fuente: tema 5, pp. 35, 37, 40, 49, 51 y 57.</p>
+</LabFrame>
+<style>
+  lorawan-path { display: block; }
+  .lw-keys { display: grid; gap: var(--space-1); margin: var(--space-4) 0; font-size: var(--text-xs); }
+  .lw-row { display: grid; grid-template-columns: minmax(8rem, 1.6fr) repeat(5, minmax(0, 1fr)); gap: var(--space-1); align-items: stretch; }
+  .lw-row > span { display: grid; align-content: center; padding: var(--space-1) var(--space-2); }
+  .lw-row small { color: var(--color-text-muted); }
+  .lw-head { font-weight: var(--weight-semibold); text-align: center; }
+  .lw-short { display: none; text-decoration: none; }
+  .lw-cell { border: 1px solid var(--color-border); border-radius: 4px; text-align: center; color: var(--color-text-muted); }
+  .lw-cell.is-on { border-color: var(--seg); background: var(--seg); color: var(--color-on-accent); font-weight: var(--weight-semibold); }
+  .lw-cell.is-path { border-style: dashed; border-color: var(--seg); }
+  :global(.lw-chain) { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; counter-reset: lw; }
+  :global(.lw-chain li) { position: relative; display: grid; gap: var(--space-1); padding: var(--space-2) var(--space-3) var(--space-2) var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); counter-increment: lw; }
+  :global(.lw-chain li::before) { content: counter(lw); position: absolute; left: var(--space-3); top: var(--space-2); font-size: var(--text-xs); font-weight: var(--weight-semibold); color: var(--color-accent); }
+  :global(.lw-chain p) { margin: 0; font-size: var(--text-sm); }
+  :global(.lw-payload) { justify-self: start; padding: 0 var(--space-2); border-radius: var(--radius-pill); background: var(--color-accent-soft); color: var(--color-accent); font-size: var(--text-xs); font-weight: var(--weight-medium); }
+  @media (max-width: 620px) {
+    .lw-row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .lw-row > span:first-child { grid-column: 1 / -1; padding-inline: 0; }
+    .lw-row:first-child > span:first-child { display: none; }
+    .lw-row > span { padding-inline: 2px; }
+    .lw-full { display: none; }
+    .lw-short { display: inline; }
+  }
+  @media print { .lw-cell.is-on { color: var(--color-text); background: none; border-width: 2px; } }
+</style>
+<script>
+  import { lorawanPathView } from './vistas.ts';
+  class LorawanPath extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const direction = this.querySelector<HTMLSelectElement>('[data-direction]')!;
+      direction.disabled = false;
+      this.addEventListener('change', () => { this.querySelector('[data-output]')!.innerHTML = lorawanPathView(direction.value as 'up' | 'down'); }, { signal: controller.signal });
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('lorawan-path', LorawanPath);
+</script>

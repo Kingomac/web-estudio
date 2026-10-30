@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué contiene FRMPayload cuando FPort = 0?",
+  "explanation": "Comandos MAC cifrados con NwkSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "comandos-mac-cifrados-con-nwkskey",
+      "text": "Comandos MAC cifrados con NwkSKey.",
+      "explanation": "P. 39 y p. 56."
+    },
+    {
+      "id": "datos-de-aplicacion-cifrados-con",
+      "text": "Datos de aplicación cifrados con AppSKey.",
+      "explanation": "Eso ocurre con FPort distinto de 0."
+    },
+    {
+      "id": "comandos-mac-sin-cifrar",
+      "text": "Comandos MAC sin cifrar.",
+      "explanation": "Sin cifrar van en FOpts."
+    },
+    {
+      "id": "una-confirmacion-ack-vacia",
+      "text": "Una confirmación ACK vacía.",
+      "explanation": "El ACK es un bit de FCtrl."
+    }
+  ],
+  "answer": "comandos-mac-cifrados-con-nwkskey"
+}

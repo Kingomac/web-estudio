@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.lpwan-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "ordering",
+  "prompt": "Ordena lo que hace un dispositivo que combina eDRX y PSM, desde que tiene una medida que enviar.",
+  "explanation": "Transmite, permanece accesible con eDRX un tiempo y después entra en PSM.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "psm-y-edrx"
+    }
+  ],
+  "items": [
+    {
+      "id": "transmite-la-medida",
+      "text": "Transmite la medida.",
+      "placementExplanation": "La actividad empieza con el envío."
+    },
+    {
+      "id": "permanece-accesible-un-tiempo-con",
+      "text": "Permanece accesible un tiempo con ventanas eDRX.",
+      "placementExplanation": "Sigue pudiendo recibir órdenes en las ventanas de escucha."
+    },
+    {
+      "id": "entra-en-psm-y-deja",
+      "text": "Entra en PSM y deja de escuchar.",
+      "placementExplanation": "Al acabar ese tiempo, reposo profundo."
+    },
+    {
+      "id": "despierta-para-transmitir-o-actualizar",
+      "text": "Despierta para transmitir o actualizar su registro.",
+      "placementExplanation": "Fin del reposo PSM."
+    }
+  ],
+  "answer": [
+    "transmite-la-medida",
+    "permanece-accesible-un-tiempo-con",
+    "entra-en-psm-y-deja",
+    "despierta-para-transmitir-o-actualizar"
+  ]
+}

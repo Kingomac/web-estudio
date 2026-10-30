@@ -1,0 +1,89 @@
+{
+  "id": "protocolos.ejercicios.cuantos-mensajes-caben",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "cuantos-mensajes-caben",
+  "title": "¿Cuántos mensajes caben?",
+  "description": "Duty cycle del 1 % y uso justo de TTN con el airtime real de un uplink.",
+  "scope": "Tema 5, con datos de los ejemplos del propio tema.",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "order": 303,
+  "mode": "form",
+  "prompt": "El uplink de la p. 50 (SF10, BW125) consumió 0,411648 s de airtime. Supón que todos los envíos se hacen con ese mismo airtime.",
+  "explanation": "El 1 % de una hora son 36 s; 36 / 0,411648 ≈ 87,5, así que caben 87 mensajes completos por hora en la subbanda. TTN Sandbox limita a 30 s diarios: 30 / 0,411648 ≈ 72,9 → 72 al día. El límite de TTN es mucho más estricto que el regulatorio.",
+  "hint": "Primero pasa el 1 % a segundos por hora.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        23,
+        29,
+        50
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "s-hora",
+      "label": "Segundos de transmisión por hora con un duty cycle del 1 %",
+      "type": "number",
+      "answer": 36,
+      "absTol": 0.01,
+      "relTol": 0,
+      "unit": "s",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "1 % de 3600 s."
+    },
+    {
+      "id": "por-hora",
+      "label": "Mensajes completos por hora en la subbanda",
+      "type": "format",
+      "format": "integer",
+      "answer": "87",
+      "explanation": "36 / 0,411648 = 87,45."
+    },
+    {
+      "id": "ttn-dia",
+      "label": "Mensajes completos al día con el límite de TTN Sandbox",
+      "type": "format",
+      "format": "integer",
+      "answer": "72",
+      "explanation": "30 / 0,411648 = 72,88."
+    },
+    {
+      "id": "dr",
+      "label": "Para enviar más mensajes con el mismo payload conviene…",
+      "type": "select",
+      "options": [
+        {
+          "id": "subir",
+          "text": "subir el DR (SF menor)"
+        },
+        {
+          "id": "bajar",
+          "text": "bajar el DR (SF mayor)"
+        },
+        {
+          "id": "confirmar",
+          "text": "pedir confirmación de cada uplink"
+        }
+      ],
+      "answer": "subir",
+      "explanation": "Menor SF, menos airtime; las confirmaciones añaden downlinks innecesarios."
+    }
+  ],
+  "steps": [
+    "1 % × 3600 s = 36 s por hora.",
+    "36 / 0,411648 = 87,45 → 87 mensajes completos.",
+    "30 / 0,411648 = 72,88 → 72 mensajes al día en TTN.",
+    "Subir el DR (bajar el SF) reduce el airtime y permite más mensajes."
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ]
+}

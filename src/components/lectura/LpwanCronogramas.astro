@@ -1,0 +1,58 @@
+---
+// Static timelines (not to scale): radio activity of LoRaWAN classes A/B/C or of PSM/eDRX. Segment widths are proportional and written inline.
+import LabFrame from '../ui/LabFrame.astro';
+interface Props { id?: string; set: 'clases' | 'psm-edrx' }
+const { id = `visual-${Astro.props.set}`, set } = Astro.props;
+type Kind = 'tx' | 'rx' | 'ping' | 'rxc' | 'off' | 'listen';
+const kinds: Record<Kind, [string, string]> = {
+  tx: ['Transmisión', 'seg-3'], rx: ['RX1 / RX2', 'seg-1'], ping: ['Ping slot', 'seg-2'], rxc: ['RXC: escucha continua', 'seg-5'], off: ['Radio apagada', 'seg-6'], listen: ['Escucha de avisos (paging)', 'seg-4'],
+};
+type Row = { name: string; summary: string; parts: [Kind, number, string?][] };
+const rows: Record<Props['set'], { title: string; intro: string; source: string; rows: Row[] }> = {
+  clases: {
+    title: 'Cuándo puede recibir un dispositivo LoRaWAN',
+    intro: 'Las tres clases transmiten igual; cambian las oportunidades de recibir downlinks.',
+    source: 'Tema 5, p. 30. Esquema sin escala: RX1 se abre ≈ 1 s y RX2 ≈ 2 s después del uplink; los beacons de clase B se envían cada 128 s.',
+    rows: [
+      { name: 'Clase A', summary: 'Solo RX1 y RX2 tras cada uplink; el resto del tiempo duerme. Obligatoria para todos. Consumo muy bajo.', parts: [['tx', 10, 'TX'], ['off', 8], ['rx', 7, 'RX1'], ['off', 6], ['rx', 7, 'RX2'], ['off', 62]] },
+      { name: 'Clase B', summary: 'RX1 y RX2 más ping slots periódicos, sincronizados por beacons. Admite downlinks sin uplink previo.', parts: [['tx', 10, 'TX'], ['off', 8], ['rx', 7, 'RX1'], ['off', 6], ['rx', 7, 'RX2'], ['off', 9], ['ping', 3], ['off', 13], ['ping', 3], ['off', 13], ['ping', 3], ['off', 13], ['ping', 3], ['off', 2]] },
+      { name: 'Clase C', summary: 'Escucha casi continua (RXC) salvo al transmitir y durante RX1/RX2. Latencia mínima, consumo alto: dispositivos alimentados.', parts: [['tx', 10, 'TX'], ['rxc', 8, 'RXC'], ['rx', 7, 'RX1'], ['rxc', 6], ['rx', 7, 'RX2'], ['rxc', 62, 'RXC']] },
+    ],
+  },
+  'psm-edrx': {
+    title: 'Menos radio, menos disponibilidad',
+    intro: 'PSM y eDRX apagan la radio parte del tiempo. Lo que cambia es si la red puede alcanzar al dispositivo mientras tanto.',
+    source: 'Tema 5, pp. 11-12. Esquema sin escala; los tiempos se negocian con la red y dependen del operador.',
+    rows: [
+      { name: 'PSM', summary: 'Reposo profundo conservando el registro. La red no puede despertarlo: despierta él para transmitir o actualizar su registro (Tracking Area Update).', parts: [['tx', 10, 'TX'], ['off', 80, 'reposo: inalcanzable'], ['tx', 10, 'TX']] },
+      { name: 'eDRX', summary: 'Alterna radio apagada y ventanas de escucha periódicas. Un mensaje puede esperar a la siguiente ventana.', parts: [['listen', 8], ['off', 22], ['listen', 8], ['off', 22], ['listen', 8], ['off', 22], ['listen', 10]] },
+      { name: 'eDRX + PSM', summary: 'Tras transmitir sigue accesible con eDRX durante un tiempo; después entra en PSM y deja de escuchar.', parts: [['tx', 10, 'TX'], ['listen', 6], ['off', 12], ['listen', 6], ['off', 12], ['listen', 6], ['off', 48, 'PSM']] },
+    ],
+  },
+};
+const data = rows[set];
+const used = [...new Set(data.rows.flatMap(r => r.parts.map(p => p[0])))];
+---
+<LabFrame id={id} component="protocolos.lpwan-cronogramas" label="Figura · Cronograma" title={data.title} intro={data.intro}>
+  <div class="timelines">
+    {data.rows.map(row => (
+      <figure class="timeline">
+        <figcaption><strong>{row.name}</strong> {row.summary}</figcaption>
+        <div class="timeline-bar" aria-hidden="true">{row.parts.map(([kind, width, label]) => <span style={`width:${width}%;--seg:var(--color-${kinds[kind][1]})`} class:list={[{ 'is-light': kind === 'off' || kind === 'rxc' }]}>{label}</span>)}</div>
+      </figure>
+    ))}
+    <p class="timeline-axis" aria-hidden="true">tiempo →</p>
+  </div>
+  <div class="byte-legend" aria-hidden="true">{used.map(k => <span style={`--seg:var(--color-${kinds[k][1]})`}>{kinds[k][0]}</span>)}</div>
+  <p class="lab-note">{data.source}</p>
+</LabFrame>
+<style>
+  .timelines { display: grid; gap: var(--space-4); margin: var(--space-4) 0 var(--space-2); }
+  .timeline { margin: 0; }
+  .timeline figcaption { margin-bottom: var(--space-2); font-size: var(--text-sm); }
+  .timeline-bar { display: flex; height: 28px; border-radius: 4px; overflow: hidden; background: var(--color-surface-muted); }
+  .timeline-bar span { display: grid; place-items: center; overflow: hidden; background: var(--seg); color: var(--color-on-accent); font-size: var(--text-xs); font-weight: var(--weight-semibold); white-space: nowrap; }
+  .timeline-bar span.is-light { color: var(--color-text); font-weight: var(--weight-regular); }
+  .timeline-axis { margin: 0; text-align: right; font-size: var(--text-xs); color: var(--color-text-muted); }
+  @media print { .timeline { break-inside: avoid; } .timeline-bar { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+</style>

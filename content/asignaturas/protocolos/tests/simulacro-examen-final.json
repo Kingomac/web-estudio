@@ -4,13 +4,14 @@
   "subjectId": "protocolos",
   "slug": "simulacro-examen-final",
   "title": "Simulacro del examen final",
-  "description": "74 preguntas de los cuatro temas, con más peso en la parte del tema 4 que no entraba en el parcial.",
-  "scope": "Temas 1, 2 y 3 completos y tema 4 completo (edición del 22/10). 8 preguntas de introducción, 14 de aplicación, 14 de IPv6, 10 del tema 4 hasta la página 37 y 28 desde la 38. Selección de los bancos por tema; no repite las del simulacro del parcial.",
+  "description": "86 preguntas de los cinco temas, con más peso en la parte del tema 4 que no entraba en el parcial.",
+  "scope": "Temas 1, 2 y 3 completos, tema 4 completo (edición del 22/10) y tema 5 completo. 8 preguntas de introducción, 14 de aplicación, 14 de IPv6, 10 del tema 4 hasta la página 37, 28 desde la 38 y 12 del tema 5. Selección de los bancos por tema; no repite las del simulacro del parcial.",
   "tagIds": [
     "protocolos.tags.intro",
     "protocolos.tags.aplicacion",
     "protocolos.tags.ipv6",
     "protocolos.tags.lowpan",
+    "protocolos.tags.lpwan",
     "protocolos.tags.examen-final"
   ],
   "order": 95,
@@ -117,6 +118,24 @@
         "protocolos.preguntas.lowpan-101",
         "protocolos.preguntas.lowpan-104",
         "protocolos.preguntas.lowpan-106"
+      ]
+    },
+    {
+      "id": "tema-5-lpwan",
+      "title": "Tema 5 · LPWAN y LoRaWAN",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-1",
+        "protocolos.preguntas.lpwan-6",
+        "protocolos.preguntas.lpwan-8",
+        "protocolos.preguntas.lpwan-10",
+        "protocolos.preguntas.lpwan-21",
+        "protocolos.preguntas.lpwan-24",
+        "protocolos.preguntas.lpwan-30",
+        "protocolos.preguntas.lpwan-31",
+        "protocolos.preguntas.lpwan-33",
+        "protocolos.preguntas.lpwan-35",
+        "protocolos.preguntas.lpwan-38",
+        "protocolos.preguntas.lpwan-45"
       ]
     }
   ]

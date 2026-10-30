@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.lpwan-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "ordering",
+  "prompt": "Ordena el intercambio OTAA.",
+  "explanation": "Configuración previa, Join-request, validación y Join-accept, derivación de claves.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        32,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "items": [
+    {
+      "id": "se-configuran-deveui-joineui-y",
+      "text": "Se configuran DevEUI, JoinEUI y AppKey en la plataforma.",
+      "placementExplanation": "Configuración previa."
+    },
+    {
+      "id": "el-dispositivo-envia-un-join",
+      "text": "El dispositivo envía un Join-request con DevEUI, JoinEUI y DevNonce.",
+      "placementExplanation": "Llega por uno o varios gateways."
+    },
+    {
+      "id": "el-join-server-valida-y",
+      "text": "El Join Server valida y la red devuelve un Join-accept cifrado con AppKey.",
+      "placementExplanation": "Incluye DevAddr y datos para derivar claves."
+    },
+    {
+      "id": "dispositivo-y-join-server-derivan",
+      "text": "Dispositivo y Join Server derivan NwkSKey y AppSKey.",
+      "placementExplanation": "Quedan disponibles para NS y AS."
+    }
+  ],
+  "answer": [
+    "se-configuran-deveui-joineui-y",
+    "el-dispositivo-envia-un-join",
+    "el-join-server-valida-y",
+    "dispositivo-y-join-server-derivan"
+  ]
+}

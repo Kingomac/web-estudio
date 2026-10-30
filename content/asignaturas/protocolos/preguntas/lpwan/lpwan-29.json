@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Con qué Data Rate y frecuencia se abre típicamente RX2 en EU868?",
+  "explanation": "DR0 (SF12, BW125) a 869,525 MHz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "dr0-a-869-525-mhz",
+      "text": "DR0 a 869,525 MHz.",
+      "explanation": "Valores típicos, configurables por región."
+    },
+    {
+      "id": "el-mismo-dr-y-frecuencia",
+      "text": "El mismo DR y frecuencia que el uplink.",
+      "explanation": "Eso describe la frecuencia de RX1."
+    },
+    {
+      "id": "dr5-a-868-1-mhz",
+      "text": "DR5 a 868,1 MHz.",
+      "explanation": "No son los valores típicos de RX2 que da el tema."
+    },
+    {
+      "id": "dr7-fsk-a-869-525",
+      "text": "DR7 FSK a 869,525 MHz.",
+      "explanation": "RX2 usa típicamente DR0 LoRa."
+    }
+  ],
+  "answer": "dr0-a-869-525-mhz"
+}

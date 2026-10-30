@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un payload de 14 bytes se codifica en Base64. ¿Cuántos caracteres ocupa?",
+  "explanation": "14 = 4 × 3 + 2: cinco bloques de 4 caracteres = 20, con un «=» de relleno.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        36,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "json-y-base64"
+    }
+  ],
+  "options": [
+    {
+      "id": "20-con-un",
+      "text": "20, con un «=».",
+      "explanation": "Como el frm_payload de la p. 50."
+    },
+    {
+      "id": "19-sin-relleno",
+      "text": "19, sin relleno.",
+      "explanation": "Base64 siempre agrupa en bloques de 4 caracteres."
+    },
+    {
+      "id": "28",
+      "text": "28.",
+      "explanation": "Son los caracteres en hexadecimal."
+    },
+    {
+      "id": "20-con-dos",
+      "text": "20, con dos «=».",
+      "explanation": "Dos «=» corresponden a un último bloque de 1 byte; aquí sobran 2."
+    }
+  ],
+  "answer": "20-con-un"
+}

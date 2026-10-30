@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre OTA es correcta según el tema?",
+  "explanation": "OTA es una capacidad del dispositivo y de su sistema de gestión; NB-IoT o LTE-M no la proporcionan automáticamente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "ota"
+    }
+  ],
+  "options": [
+    {
+      "id": "depende-del-dispositivo-y-su",
+      "text": "Depende del dispositivo y su plataforma de gestión; la tecnología de acceso no la proporciona por sí sola.",
+      "explanation": "Último punto de la p. 13."
+    },
+    {
+      "id": "cualquier-dispositivo-nb-iot-admite",
+      "text": "Cualquier dispositivo NB-IoT admite FOTA de serie.",
+      "explanation": "Es justo lo que el tema desmiente."
+    },
+    {
+      "id": "una-actualizacion-de-firmware-transfiere",
+      "text": "Una actualización de firmware transfiere tanto como una medida.",
+      "explanation": "Transfiere mucho más y debe planificarse."
+    },
+    {
+      "id": "con-psm-las-ordenes-ota",
+      "text": "Con PSM las órdenes OTA se entregan inmediatamente.",
+      "explanation": "Deben adaptarse a los periodos de disponibilidad."
+    }
+  ],
+  "answer": "depende-del-dispositivo-y-su"
+}

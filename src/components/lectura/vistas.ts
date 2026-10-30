@@ -1,6 +1,7 @@
 // HTML views of the reading labs. Astro renders the initial state with them (static and printable) and the client re-renders on input.
 import { eui64, iphcSize, frameBudget, hopCompression, hex2, bin8, type IphcChoice } from '../../domain/laboratorios.ts';
 import type { Packet, HostState, Step, NodeId } from '../../domain/ndp.ts';
+import { decodePhyPayload, parseBytes } from '../../domain/lorawan.ts';
 
 const esc = (s: unknown) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 const metric = (value: string, label: string) => `<div class="metric"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`;
@@ -110,3 +111,34 @@ export function stateView(s: HostState | null) {
   return s ? `<div class="ndp-state" aria-label="Estado de A después del paso"><div><strong>Direcciones de A</strong>${esc(s.address)}</div><div><strong>Rutas de A</strong>${esc(s.route)}</div><div><strong>Caché de vecinos de A</strong>${esc(s.cache)}</div></div>` : '';
 }
 export const stepView = (s: Step) => `<h4>${esc(s.title)}</h4><p>${esc(s.text)}</p><p class="meta"><strong>Alcance:</strong> ${esc(s.scope)}</p>${packetView(s.packet)}`;
+
+/** Fields of a LoRaWAN data frame given as hex or Base64, with a byte bar and a table. */
+export function lorawanFrameView(text: string) {
+  const bytes = parseBytes(text);
+  if (!bytes) return '<p class="lab-error">Escribe la trama en hexadecimal (por ejemplo, 60 27 A9 …) o en Base64 (por ejemplo, YCep/…).</p>';
+  const r = decodePhyPayload(bytes);
+  if ('error' in r) return `<p class="lab-error">${esc(r.error)}</p>`;
+  const rows = r.fields.map(f => `<tr><th scope="row">${esc(f.name)}</th><td><code>${esc(f.bytes.map(hex2).join(' ').toUpperCase())}</code></td><td>${esc(f.value)}</td><td>${esc(f.note)}</td></tr>`).join('');
+  return metrics(metric(`${bytes.length} B`, 'PHYPayload'), metric(r.type, 'tipo según MHDR')) + byteBar(r.fields.map(f => [f.name, f.bytes.length]), bytes.length)
+    + `<div class="table-scroll"><table><thead><tr><th scope="col">Campo</th><th scope="col">Bytes</th><th scope="col">Valor</th><th scope="col">Significado</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+type Stage = { name: string; does: string; payload: string };
+export const lorawanStages: Record<'up' | 'down', Stage[]> = {
+  up: [
+    { name: 'Nodo', does: 'Cifra los datos con AppSKey; la MAC añade MHDR, FHDR y FPort y calcula el MIC con NwkSKey. La capa física LoRa transmite la trama.', payload: 'Datos en claro → FRMPayload cifrado' },
+    { name: 'Gateway', does: 'Recupera la trama LoRaWAN (PHYPayload) sin descifrarla y el packet forwarder la envía al NS por IP, en JSON, con RSSI, SNR, frecuencia y marca de tiempo.', payload: 'PHYPayload completo, cifrado' },
+    { name: 'Network Server', does: 'Localiza la sesión por DevAddr, valida el MIC con NwkSKey, identifica dispositivo y aplicación, elimina duplicados de varios gateways y procesa comandos MAC y ADR.', payload: 'FRMPayload aún cifrado' },
+    { name: 'Application Server', does: 'Descifra con AppSKey, aplica el payload decoder si existe y entrega los datos por MQTT o webhook HTTP, normalmente en JSON.', payload: 'Datos en claro (y decoded_payload)' },
+    { name: 'Aplicación final', does: 'Visualiza, almacena y toma decisiones. Si el AS no decodifica, interpreta ella el payload.', payload: 'Datos en claro' },
+  ],
+  down: [
+    { name: 'Aplicación final', does: 'Envía una orden al AS por MQTT o mediante la API HTTP.', payload: 'Orden en claro' },
+    { name: 'Application Server', does: 'Codifica la orden al formato del dispositivo y la cifra con AppSKey. Entrega al NS el FRMPayload, la identidad del dispositivo, FPort y las opciones de envío.', payload: 'FRMPayload cifrado' },
+    { name: 'Network Server', does: 'Construye el PHYPayload (MHDR 0x60 o 0xA0, FHDR con DevAddr) y el MIC con NwkSKey. Según la clase A, B o C programa el envío y elige el gateway.', payload: 'PHYPayload completo, cifrado' },
+    { name: 'Gateway', does: 'Construye la trama física LoRa y la transmite en el instante, frecuencia, DR y potencia que indica el NS.', payload: 'PHYPayload completo, cifrado' },
+    { name: 'Nodo', does: 'Verifica MIC y contador, descifra con AppSKey y entrega los datos a su aplicación. Si el downlink es confirmado, activa ACK en el siguiente uplink.', payload: 'Datos en claro' },
+  ],
+};
+export const lorawanPathView = (dir: 'up' | 'down') =>
+  `<ol class="lw-chain">${lorawanStages[dir].map(s => `<li><strong>${esc(s.name)}</strong><span class="lw-payload">${esc(s.payload)}</span><p>${esc(s.does)}</p></li>`).join('')}</ol>`;

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-41",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación de TTS tiene un decoder común para dos modelos de sensor con formatos distintos que usan el mismo FPort y no se distinguen por el contenido. ¿Qué solución propone el tema?",
+  "explanation": "El decoder de aplicación no recibe la identidad del dispositivo: usar decoders por dispositivo o decodificar en la aplicación final.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "payload-decoder"
+    }
+  ],
+  "options": [
+    {
+      "id": "usar-decoders-por-dispositivo-o",
+      "text": "Usar decoders por dispositivo o decodificar en la aplicación final.",
+      "explanation": "El decoder de dispositivo tiene prioridad; la aplicación recibe el identificador."
+    },
+    {
+      "id": "leer-el-modelo-del-sensor",
+      "text": "Leer el modelo del sensor a partir de FPort.",
+      "explanation": "FPort no identifica el modelo."
+    },
+    {
+      "id": "que-el-decoder-de-aplicacion",
+      "text": "Que el decoder de aplicación consulte el DevEUI que recibe.",
+      "explanation": "Recibe bytes y FPort, no la identidad."
+    },
+    {
+      "id": "que-el-ns-descifre-el",
+      "text": "Que el NS descifre el payload y lo decodifique.",
+      "explanation": "El NS no tiene AppSKey; el decoder actúa en el AS."
+    }
+  ],
+  "answer": "usar-decoders-por-dispositivo-o"
+}

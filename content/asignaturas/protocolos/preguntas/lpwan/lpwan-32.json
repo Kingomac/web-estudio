@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre el Join-request de OTAA es correcta?",
+  "explanation": "No va cifrado, pero incluye un MIC calculado con AppKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-va-cifrado-pero-lleva",
+      "text": "No va cifrado, pero lleva un MIC calculado con AppKey.",
+      "explanation": "P. 33: autenticidad e integridad sin confidencialidad."
+    },
+    {
+      "id": "va-cifrado-con-appkey",
+      "text": "Va cifrado con AppKey.",
+      "explanation": "El que va cifrado es el Join-accept."
+    },
+    {
+      "id": "contiene-nwkskey-y-appskey",
+      "text": "Contiene NwkSKey y AppSKey.",
+      "explanation": "Las claves de sesión nunca viajan por radio."
+    },
+    {
+      "id": "lleva-devaddr-que-el-dispositivo",
+      "text": "Lleva DevAddr, que el dispositivo elige.",
+      "explanation": "Lleva DevEUI, JoinEUI y DevNonce; DevAddr llega en el Join-accept."
+    }
+  ],
+  "answer": "no-va-cifrado-pero-lleva"
+}

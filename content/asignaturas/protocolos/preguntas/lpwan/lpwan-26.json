@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuándo abre un dispositivo de clase A sus ventanas de recepción?",
+  "explanation": "RX1 ≈ 1 s y RX2 ≈ 2 s después de cada uplink.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "rx1-1-s-y-rx2",
+      "text": "RX1 ≈ 1 s y RX2 ≈ 2 s después de cada uplink.",
+      "explanation": "P. 30."
+    },
+    {
+      "id": "en-ping-slots-sincronizados-por",
+      "text": "En ping slots sincronizados por beacons cada 128 s.",
+      "explanation": "Es lo que añade la clase B."
+    },
+    {
+      "id": "continuamente-salvo-al-transmitir",
+      "text": "Continuamente, salvo al transmitir.",
+      "explanation": "Es la clase C."
+    },
+    {
+      "id": "cuando-el-ns-lo-despierta",
+      "text": "Cuando el NS lo despierta mediante paging.",
+      "explanation": "Paging es de eDRX celular."
+    }
+  ],
+  "answer": "rx1-1-s-y-rx2"
+}

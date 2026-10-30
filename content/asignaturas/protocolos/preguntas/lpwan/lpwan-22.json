@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En EU868 con 125 kHz, ¿qué Spreading Factor corresponde a DR3?",
+  "explanation": "DR0 = SF12, DR1 = SF11, DR2 = SF10, DR3 = SF9.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "sf9",
+      "text": "SF9.",
+      "explanation": "DR sube de uno en uno cuando SF baja de uno en uno."
+    },
+    {
+      "id": "sf3",
+      "text": "SF3.",
+      "explanation": "No existe; el DR no coincide con el SF."
+    },
+    {
+      "id": "sf10",
+      "text": "SF10.",
+      "explanation": "Es DR2."
+    },
+    {
+      "id": "sf8",
+      "text": "SF8.",
+      "explanation": "Es DR4."
+    }
+  ],
+  "answer": "sf9"
+}

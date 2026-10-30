@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿En qué documento y año se introdujeron las LPWAN según el tema?",
+  "explanation": "El RFC 8376, informativo, de 2018.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "que-es-una-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-el-rfc-8376-informativo",
+      "text": "En el RFC 8376, informativo, en 2018.",
+      "explanation": "Primer punto de la p. 2."
+    },
+    {
+      "id": "en-el-rfc-6282-estandar",
+      "text": "En el RFC 6282, estándar, en 2011.",
+      "explanation": "El RFC 6282 es la compresión IPHC de 6LoWPAN (tema 4)."
+    },
+    {
+      "id": "en-la-especificacion-lorawan-1",
+      "text": "En la especificación LoRaWAN 1.0.4.",
+      "explanation": "LoRaWAN es una tecnología LPWAN concreta, no la definición del concepto."
+    },
+    {
+      "id": "en-la-release-13-de",
+      "text": "En la Release 13 de 3GPP.",
+      "explanation": "3GPP estandariza NB-IoT y LTE-M; el tema atribuye el término LPWAN al RFC 8376."
+    }
+  ],
+  "answer": "en-el-rfc-8376-informativo"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-45",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Quién genera un downlink con LinkADRReq y cómo viaja?",
+  "explanation": "El NS, como comando MAC en FOpts o en FRMPayload con FPort 0 cifrado con NwkSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-ns-como-comando-mac",
+      "text": "El NS, como comando MAC: en FRMPayload con FPort = 0 y NwkSKey, o en FOpts.",
+      "explanation": "P. 56."
+    },
+    {
+      "id": "el-as-con-fport-0",
+      "text": "El AS, con FPort ≠ 0 y cifrado con AppSKey.",
+      "explanation": "Así viajan los comandos de aplicación."
+    },
+    {
+      "id": "el-gateway-segun-el-rssi",
+      "text": "El gateway, según el RSSI.",
+      "explanation": "El gateway no genera comandos MAC."
+    },
+    {
+      "id": "la-aplicacion-final-mediante-webhook",
+      "text": "La aplicación final, mediante webhook.",
+      "explanation": "ADR lo gestiona el NS."
+    }
+  ],
+  "answer": "el-ns-como-comando-mac"
+}

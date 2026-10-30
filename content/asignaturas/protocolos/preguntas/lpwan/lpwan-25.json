@@ -1,0 +1,46 @@
+{
+  "id": "protocolos.preguntas.lpwan-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Qué clases de dispositivo LoRaWAN pueden recibir un downlink sin haber enviado antes un uplink? (Elige DOS)",
+  "explanation": "B (ping slots) y C (RXC). La clase A solo recibe tras un uplink.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-b",
+      "text": "Clase B.",
+      "explanation": "Ping slots programados, sincronizados por beacons."
+    },
+    {
+      "id": "clase-c",
+      "text": "Clase C.",
+      "explanation": "Escucha casi continua."
+    },
+    {
+      "id": "clase-a",
+      "text": "Clase A.",
+      "explanation": "Solo abre RX1 y RX2 tras su propio uplink."
+    }
+  ],
+  "answer": [
+    "clase-b",
+    "clase-c"
+  ]
+}

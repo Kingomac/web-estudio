@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.lpwan-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Qué ejemplos de redes LoRaWAN comunitarias con cobertura en España cita el tema? (Elige DOS)",
+  "explanation": "The Things Network y Helium.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "beneficios-y-tipos-de-red"
+    }
+  ],
+  "options": [
+    {
+      "id": "the-things-network-ttn",
+      "text": "The Things Network (TTN).",
+      "explanation": "Red comunitaria sobre The Things Stack."
+    },
+    {
+      "id": "helium",
+      "text": "Helium.",
+      "explanation": "Red colaborativa con incentivos."
+    },
+    {
+      "id": "chirpstack",
+      "text": "ChirpStack.",
+      "explanation": "Es una plataforma software de código abierto, no una red comunitaria."
+    },
+    {
+      "id": "1nce",
+      "text": "1NCE.",
+      "explanation": "Es un operador virtual celular."
+    }
+  ],
+  "answer": [
+    "the-things-network-ttn",
+    "helium"
+  ]
+}

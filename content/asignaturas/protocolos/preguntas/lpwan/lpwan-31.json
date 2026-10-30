@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia OTAA de ABP?",
+  "explanation": "En ABP dirección y claves de sesión están preconfiguradas; en OTAA se obtienen en un intercambio con la red.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "activacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-otaa-el-dispositivo-obtiene",
+      "text": "En OTAA el dispositivo obtiene DevAddr y deriva claves nuevas; en ABP vienen preconfiguradas.",
+      "explanation": "P. 31; OTAA es el recomendado."
+    },
+    {
+      "id": "en-abp-las-claves-se",
+      "text": "En ABP las claves se envían por radio en el Join-accept.",
+      "explanation": "ABP no tiene Join; y en OTAA tampoco viajan las claves de sesión."
+    },
+    {
+      "id": "otaa-no-necesita-appkey",
+      "text": "OTAA no necesita AppKey.",
+      "explanation": "AppKey es la clave raíz de OTAA."
+    },
+    {
+      "id": "abp-es-el-metodo-recomendado",
+      "text": "ABP es el método recomendado por seguridad.",
+      "explanation": "El recomendado es OTAA."
+    }
+  ],
+  "answer": "en-otaa-el-dispositivo-obtiene"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.lpwan-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "multiple",
+  "prompt": "En modo IP, ¿de qué depende que la aplicación pueda iniciar una comunicación hacia el dispositivo? (Elige TRES)",
+  "explanation": "Del direccionamiento, de las políticas del operador y del estado de reposo del dispositivo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "modo-ip-y-nidd"
+    }
+  ],
+  "options": [
+    {
+      "id": "del-direccionamiento-por-ejemplo-ipv4",
+      "text": "Del direccionamiento, por ejemplo IPv4 privada tras NAT o IPv6 global.",
+      "explanation": "Primer factor de la p. 9."
+    },
+    {
+      "id": "de-las-politicas-del-operador",
+      "text": "De las políticas del operador.",
+      "explanation": "Segundo factor de la p. 9."
+    },
+    {
+      "id": "de-su-estado-de-reposo",
+      "text": "De su estado de reposo.",
+      "explanation": "Tercer factor: con PSM no puede recibir."
+    },
+    {
+      "id": "de-la-clase-a-b",
+      "text": "De la clase A, B o C del dispositivo.",
+      "explanation": "Las clases son de LoRaWAN."
+    },
+    {
+      "id": "del-spreading-factor-configurado",
+      "text": "Del Spreading Factor configurado.",
+      "explanation": "El SF es un parámetro de la modulación LoRa."
+    }
+  ],
+  "answer": [
+    "del-direccionamiento-por-ejemplo-ipv4",
+    "de-las-politicas-del-operador",
+    "de-su-estado-de-reposo"
+  ]
+}

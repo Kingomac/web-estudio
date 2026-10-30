@@ -1,0 +1,95 @@
+{
+  "id": "protocolos.ejercicios.aplica-el-payload-decoder",
+  "kind": "ejercicio",
+  "subjectId": "protocolos",
+  "slug": "aplica-el-payload-decoder",
+  "title": "Aplica el payload decoder",
+  "description": "Calcula a mano lo que devolvería el decoder de ejemplo del tema.",
+  "scope": "Tema 5, con datos de los ejemplos del propio tema.",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "order": 304,
+  "mode": "form",
+  "prompt": "Usa el decoder de la p. 53. FPort 1: temperatura = (byte0 + byte1) / 2, humedad = byte2, alarma activa si byte3 = 1. FPort 2: luminosidad = byte0, aceleración = byte1 / 100, batería = byte2. Llegan dos uplinks ya descifrados: FPort 1 con 1a 18 46 00 y FPort 2 con 32 96 1e.",
+  "explanation": "FPort 1: (0x1a + 0x18) / 2 = (26 + 24) / 2 = 25; humedad 0x46 = 70; alarma inactiva. FPort 2: luminosidad 0x32 = 50; aceleración 0x96 / 100 = 150 / 100 = 1,5; batería 0x1e = 30. FPort distingue los dos formatos del mismo dispositivo.",
+  "hint": "Pasa cada byte a decimal antes de operar.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        52,
+        53
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "temp",
+      "label": "Temperatura (FPort 1)",
+      "type": "number",
+      "answer": 25,
+      "absTol": 0.01,
+      "relTol": 0,
+      "unit": "unidades del ejemplo",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "(26 + 24) / 2."
+    },
+    {
+      "id": "humedad",
+      "label": "Humedad (FPort 1)",
+      "type": "format",
+      "format": "integer",
+      "answer": "70",
+      "explanation": "0x46."
+    },
+    {
+      "id": "alarma",
+      "label": "Alarma (FPort 1)",
+      "type": "select",
+      "options": [
+        {
+          "id": "activa",
+          "text": "activa"
+        },
+        {
+          "id": "inactiva",
+          "text": "inactiva"
+        }
+      ],
+      "answer": "inactiva",
+      "explanation": "El cuarto byte es 0."
+    },
+    {
+      "id": "acel",
+      "label": "Aceleración (FPort 2)",
+      "type": "number",
+      "answer": 1.5,
+      "absTol": 0.01,
+      "relTol": 0,
+      "unit": "unidades del ejemplo",
+      "decimalPolicy": "comma-or-point",
+      "explanation": "0x96 = 150; 150 / 100."
+    },
+    {
+      "id": "bateria",
+      "label": "Batería (FPort 2)",
+      "type": "format",
+      "format": "integer",
+      "answer": "30",
+      "explanation": "0x1e."
+    }
+  ],
+  "steps": [
+    "0x1a = 26 y 0x18 = 24 → media 25.",
+    "0x46 = 70 → humedad.",
+    "byte3 = 0 → alarma inactiva.",
+    "0x32 = 50; 0x96 = 150 → 1,5; 0x1e = 30."
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "payload-decoder"
+    }
+  ]
+}

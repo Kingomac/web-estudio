@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-44",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Para conectar TTN con ThingsBoard, ¿qué es obligatorio configurar en el AS?",
+  "explanation": "Un payload decoder.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "pasos-en-ttn"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-payload-decoder",
+      "text": "Un payload decoder.",
+      "explanation": "Paso 6 de la p. 54."
+    },
+    {
+      "id": "activacion-abp",
+      "text": "Activación ABP.",
+      "explanation": "El procedimiento usa OTAA."
+    },
+    {
+      "id": "clase-c-en-los-dispositivos",
+      "text": "Clase C en los dispositivos.",
+      "explanation": "No es un requisito de la integración."
+    },
+    {
+      "id": "el-udp-packet-forwarder",
+      "text": "El UDP Packet Forwarder.",
+      "explanation": "Se refiere al gateway, no al AS."
+    }
+  ],
+  "answer": "un-payload-decoder"
+}

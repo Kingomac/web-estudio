@@ -1,0 +1,42 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { lorawanFrameView } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-trama' } = Astro.props;
+const presets = [
+  ['gCep/CcADQAFDz+/Yg4chwjfcKM0rWPiKEuk', 'Uplink de la p. 45 · rxpk.data (Base64)'],
+  ['YCep/CcAAQABqrsRIjNE', 'Downlink de la p. 59 · txpk.data (Base64)'],
+  ['6027A9FC2700010001AABB11223344', 'El mismo downlink · dnmsg.pdu (hex)'],
+] as const;
+---
+<LabFrame id={id} component="protocolos.lorawan-trama" title="Separa una trama LoRaWAN en sus campos" intro="Elige una trama de los JSON del tema o pega la tuya en hexadecimal o Base64. La barra muestra el tamaño de cada campo.">
+  <lorawan-frame>
+    <div class="lab-controls no-print">
+      <label>Ejemplo<select class="input" data-preset disabled>{presets.map(([value, label]) => <option value={value}>{label}</option>)}</select></label>
+      <label>PHYPayload<input class="input" data-frame value={presets[0][0]} spellcheck="false" autocomplete="off" disabled /></label>
+    </div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={lorawanFrameView(presets[0][0])} />
+  </lorawan-frame>
+  <details class="lab-all"><summary>Los dos ejemplos del tema</summary><h4>Uplink de la p. 45</h4><Fragment set:html={lorawanFrameView(presets[0][0])} /><h4>Downlink de la p. 59</h4><Fragment set:html={lorawanFrameView(presets[1][0])} /></details>
+  <p class="lab-note">Solo separa tramas de datos (no Join-request ni Join-accept) y no comprueba el MIC ni descifra: para eso hacen falta NwkSKey y AppSKey. Los campos de varios bytes se leen con el byte menos significativo primero, como muestra la comparación de las dos representaciones de la p. 45 (DevAddr 670869799 = 0x27FCA927). Las posiciones de ADR, ACK y la longitud de FOpts dentro de FCtrl proceden de la especificación LoRaWAN 1.0.4.</p>
+</LabFrame>
+<style>
+  lorawan-frame { display: block; }
+  lorawan-frame [data-frame] { min-width: min(100%, 26rem); font-family: var(--font-mono); }
+</style>
+<script>
+  import { lorawanFrameView } from './vistas.ts';
+  class LorawanFrame extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const preset = this.querySelector<HTMLSelectElement>('[data-preset]')!, frame = this.querySelector<HTMLInputElement>('[data-frame]')!;
+      const render = () => { this.querySelector('[data-output]')!.innerHTML = lorawanFrameView(frame.value); };
+      preset.disabled = frame.disabled = false;
+      preset.addEventListener('change', () => { frame.value = preset.value; render(); }, { signal: controller.signal });
+      frame.addEventListener('input', render, { signal: controller.signal });
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('lorawan-frame', LorawanFrame);
+</script>

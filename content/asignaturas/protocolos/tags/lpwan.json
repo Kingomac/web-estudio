@@ -1,0 +1,9 @@
+{
+  "id": "protocolos.tags.lpwan",
+  "kind": "tag",
+  "subjectId": "protocolos",
+  "slug": "lpwan",
+  "title": "Redes LPWAN y LoRaWAN",
+  "type": "topic",
+  "order": 45
+}

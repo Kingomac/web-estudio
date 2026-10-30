@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué banda ISM usa LoRa en Europa según el tema?",
+  "explanation": "868 MHz (915 MHz en EE. UU.).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "lora-y-lorawan"
+    }
+  ],
+  "options": [
+    {
+      "id": "868-mhz",
+      "text": "868 MHz.",
+      "explanation": "Banda sub-GHz europea."
+    },
+    {
+      "id": "915-mhz",
+      "text": "915 MHz.",
+      "explanation": "Es la de EE. UU."
+    },
+    {
+      "id": "2-4-ghz",
+      "text": "2,4 GHz.",
+      "explanation": "Es la de IEEE 802.15.4 en Zigbee y Thread."
+    },
+    {
+      "id": "espectro-licenciado-del-operador",
+      "text": "Espectro licenciado del operador.",
+      "explanation": "Es el caso de NB-IoT y LTE-M."
+    }
+  ],
+  "answer": "868-mhz"
+}

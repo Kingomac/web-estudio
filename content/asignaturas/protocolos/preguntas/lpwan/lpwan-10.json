@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un sensor NB-IoT está en PSM. ¿Qué ocurre si el servidor quiere enviarle una orden?",
+  "explanation": "En PSM la red no puede despertarlo: la orden espera hasta que despierte para transmitir o actualizar su registro.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        11,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "psm-y-edrx"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-puede-recibirla-hasta-que",
+      "text": "No puede recibirla hasta que el dispositivo despierte por sí mismo.",
+      "explanation": "Despierta para transmitir o por Tracking Area Update."
+    },
+    {
+      "id": "la-red-lo-despierta-mediante",
+      "text": "La red lo despierta mediante paging.",
+      "explanation": "Eso sería eDRX; en PSM la red no puede despertarlo."
+    },
+    {
+      "id": "la-recibe-en-la-siguiente",
+      "text": "La recibe en la siguiente ventana RX1.",
+      "explanation": "RX1 es de LoRaWAN."
+    },
+    {
+      "id": "pierde-el-registro-y-debe",
+      "text": "Pierde el registro y debe volver a registrarse.",
+      "explanation": "En PSM conserva el registro."
+    }
+  ],
+  "answer": "no-puede-recibirla-hasta-que"
+}

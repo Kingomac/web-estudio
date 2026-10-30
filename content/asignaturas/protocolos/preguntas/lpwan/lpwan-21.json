@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué ocurre al aumentar el Spreading Factor de LoRa?",
+  "explanation": "Cada símbolo dura más: mejoran sensibilidad y alcance, pero baja la tasa.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        27,
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "mas-alcance-y-sensibilidad-pero",
+      "text": "Más alcance y sensibilidad, pero menos tasa de bits.",
+      "explanation": "P. 27; en la tabla SF12 corresponde a DR0."
+    },
+    {
+      "id": "mas-tasa-y-menos-alcance",
+      "text": "Más tasa y menos alcance.",
+      "explanation": "Está invertido."
+    },
+    {
+      "id": "aumenta-el-ancho-de-banda",
+      "text": "Aumenta el ancho de banda.",
+      "explanation": "El ancho de banda es otro parámetro del DR."
+    },
+    {
+      "id": "disminuye-el-airtime-del-mensaje",
+      "text": "Disminuye el airtime del mensaje.",
+      "explanation": "Al bajar la tasa, el mismo mensaje ocupa más tiempo."
+    }
+  ],
+  "answer": "mas-alcance-y-sensibilidad-pero"
+}

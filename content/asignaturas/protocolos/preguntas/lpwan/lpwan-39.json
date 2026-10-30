@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.lpwan-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "multiple",
+  "prompt": "¿Qué diferencia el UDP Packet Forwarder de LoRa Basics Station? (Elige DOS correctas)",
+  "explanation": "UDP (puerto 1700) no cifra ni autentica; Basics Station usa JSON sobre WebSocket con TLS. UDP envía el PHYPayload en Base64; Basics Station, campos separados con el FRMPayload en hex.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        41,
+        43,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "udp-packet-forwarder-no-cifra",
+      "text": "UDP Packet Forwarder no cifra ni autentica el transporte; Basics Station usa WebSocket con TLS.",
+      "explanation": "P. 41."
+    },
+    {
+      "id": "udp-envia-el-phypayload-completo",
+      "text": "UDP envía el PHYPayload completo en Base64; Basics Station separa los campos y da el FRMPayload en hex.",
+      "explanation": "P. 45."
+    },
+    {
+      "id": "basics-station-descifra-el-frmpayload",
+      "text": "Basics Station descifra el FRMPayload antes de enviarlo.",
+      "explanation": "Sigue cifrado: el gateway no tiene AppSKey."
+    },
+    {
+      "id": "chirpstack-solo-admite-el-udp",
+      "text": "ChirpStack solo admite el UDP Packet Forwarder.",
+      "explanation": "Admite ambos; para UDP necesita ChirpStack Gateway Bridge."
+    }
+  ],
+  "answer": [
+    "udp-packet-forwarder-no-cifra",
+    "udp-envia-el-phypayload-completo"
+  ]
+}

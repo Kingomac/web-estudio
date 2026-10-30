@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué dispositivo encaja mejor con la clase C?",
+  "explanation": "Un actuador alimentado a red que debe recibir órdenes con muy baja latencia.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-controlador-de-alumbrado-alimentado",
+      "text": "Un controlador de alumbrado alimentado a red que debe obedecer órdenes al momento.",
+      "explanation": "Consumo alto pero latencia mínima."
+    },
+    {
+      "id": "un-sensor-de-suelo-a",
+      "text": "Un sensor de suelo a pilas que envía una medida cada hora.",
+      "explanation": "Encaja con la clase A."
+    },
+    {
+      "id": "un-tracker-a-bateria-que",
+      "text": "Un tracker a batería que solo necesita órdenes con latencia acotada.",
+      "explanation": "Encaja con la clase B."
+    },
+    {
+      "id": "cualquier-dispositivo-porque-c-consume",
+      "text": "Cualquier dispositivo, porque C consume menos que A.",
+      "explanation": "C es la que más consume."
+    }
+  ],
+  "answer": "un-controlador-de-alumbrado-alimentado"
+}

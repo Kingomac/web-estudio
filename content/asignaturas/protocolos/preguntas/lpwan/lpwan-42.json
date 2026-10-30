@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-42",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Con el decoder de la p. 53, ¿qué temperatura devuelve un uplink con FPort 1 y bytes 18 17 3C 01?",
+  "explanation": "(0x18 + 0x17) / 2 = (24 + 23) / 2 = 23,5.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "payload-decoder"
+    }
+  ],
+  "options": [
+    {
+      "id": "23-5",
+      "text": "23,5.",
+      "explanation": "Media de los dos primeros bytes."
+    },
+    {
+      "id": "24",
+      "text": "24.",
+      "explanation": "Solo es el primer byte."
+    },
+    {
+      "id": "47",
+      "text": "47.",
+      "explanation": "Falta dividir entre 2."
+    },
+    {
+      "id": "60",
+      "text": "60.",
+      "explanation": "Es la humedad (0x3C)."
+    }
+  ],
+  "answer": "23-5"
+}

@@ -7,5 +7,8 @@ export const components: Record<string, { title: string; file: string }> = {
   'protocolos.presupuesto-trama': { title: 'Presupuesto de una trama IEEE 802.15.4', file: 'src/components/lectura/PresupuestoTrama.astro' },
   'protocolos.compresion-iphc': { title: 'Compresión IPHC y NHC UDP', file: 'src/components/lectura/CompresionIphc.astro' },
   'protocolos.saltos-compresion': { title: 'Compresión por salto: mesh-under y route-over', file: 'src/components/lectura/SaltosCompresion.astro' },
+  'protocolos.lorawan-recorrido': { title: 'Recorrido de un mensaje LoRaWAN y sus claves', file: 'src/components/lectura/LorawanRecorrido.astro' },
+  'protocolos.lpwan-cronogramas': { title: 'Cronogramas de clases LoRaWAN y de PSM/eDRX', file: 'src/components/lectura/LpwanCronogramas.astro' },
+  'protocolos.lorawan-trama': { title: 'Campos de una trama LoRaWAN', file: 'src/components/lectura/LorawanTrama.astro' },
 };
 export const workshops: Record<string, string> = { 'protocolos.ndp': 'protocolos.ndp' };

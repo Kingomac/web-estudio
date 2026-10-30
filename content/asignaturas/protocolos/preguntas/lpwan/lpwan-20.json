@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué permite Packet Broker?",
+  "explanation": "Que un gateway de una red reciba mensajes de dispositivos de otra y los encamine a la red donde están registrados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        24,
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "usar-gateways-de-otra-red",
+      "text": "Usar gateways de otra red: los mensajes se encaminan a la red donde está registrado el dispositivo.",
+      "explanation": "El sensor sigue gestionado por su red privada."
+    },
+    {
+      "id": "registrar-el-dispositivo-a-la",
+      "text": "Registrar el dispositivo a la vez en TTN y en la red privada.",
+      "explanation": "Sigue registrado solo en su red."
+    },
+    {
+      "id": "cifrar-el-trafico-entre-gateway",
+      "text": "Cifrar el tráfico entre gateway y NS.",
+      "explanation": "Eso lo hace Basics Station con WSS."
+    },
+    {
+      "id": "pagar-el-uso-de-la",
+      "text": "Pagar el uso de la red con Data Credits.",
+      "explanation": "Data Credits son de Helium."
+    }
+  ],
+  "answer": "usar-gateways-de-otra-red"
+}
