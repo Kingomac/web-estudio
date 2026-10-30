@@ -67,7 +67,7 @@ test('la lectura contiene índice, visual independiente y fuentes; el resumen us
 });
 test('corrige única y múltiple, muestra todas las explicaciones y restaura la sesión', async ({ page }) => {
   await page.addInitScript(() => { Math.random = () => 0; });
-  await page.goto(quizPath);
+  await page.goto(`${quizPath}#pregunta-longitud-ipv6`);
   const single = page.locator('[data-question="protocolos.preguntas.longitud-ipv6"]');
   await expect(single.locator('[data-options] input').first()).toHaveValue('bits-64');
   await single.getByLabel('32 bits', { exact: true }).check();
@@ -80,6 +80,8 @@ test('corrige única y múltiple, muestra todas las explicaciones y restaura la 
   await expect(page.locator('[data-summary]')).toContainText('0 correctas');
   await single.getByRole('button', { name: 'Comprobar', exact: true }).click();
   const multiple = page.locator('[data-question="protocolos.preguntas.tipos-ipv6"]');
+  await page.evaluate(() => { location.hash = '#pregunta-tipos-ipv6'; });
+  await expect(single).toBeHidden();
   await multiple.getByLabel('Unicast', { exact: true }).check();
   await multiple.getByRole('button', { name: 'Comprobar', exact: true }).click();
   await expect(multiple.getByText('Correcta omitida', { exact: true })).toHaveCount(2);
@@ -90,9 +92,38 @@ test('corrige única y múltiple, muestra todas las explicaciones y restaura la 
   const before = await single.locator('[data-options] input').evaluateAll(inputs => inputs.map(i => (i as HTMLInputElement).value));
   await page.reload();
   await expect(page.locator('[data-summary]')).toContainText('2 correctas');
+  await expect(multiple).toBeVisible();
   expect(await single.locator('[data-options] input').evaluateAll(inputs => inputs.map(i => (i as HTMLInputElement).value))).toEqual(before);
   await page.getByRole('button', { name: 'Reiniciar test' }).click();
   await expect(page.locator('[data-summary]')).toContainText('3 pendientes');
+});
+test('muestra una pregunta cada vez y permite ir y volver a cualquiera', async ({ page }) => {
+  await page.addInitScript(() => { Math.random = () => 0; });
+  await page.goto(quizPath);
+  const questions = page.locator('[data-question]');
+  await expect(questions.filter({ visible: true })).toHaveCount(1);
+  const pager = page.getByRole('navigation', { name: 'Navegación entre preguntas' });
+  const position = page.locator('[data-position]');
+  await expect(position).toHaveText('Pregunta 1 de 3');
+  await expect(pager.getByRole('button', { name: '← Anterior' })).toBeDisabled();
+  const first = await questions.filter({ visible: true }).getAttribute('data-question');
+  await pager.getByRole('button', { name: 'Siguiente →' }).click();
+  await expect(position).toHaveText('Pregunta 2 de 3');
+  expect(await questions.filter({ visible: true }).getAttribute('data-question')).not.toBe(first);
+  await page.keyboard.press('ArrowLeft');
+  await expect(position).toHaveText('Pregunta 1 de 3');
+  await page.locator('[data-navigator] summary').click();
+  await page.getByRole('button', { name: 'Pregunta 3: pendiente' }).click();
+  await expect(position).toHaveText('Pregunta 3 de 3');
+  await expect(pager.getByRole('button', { name: 'Siguiente →' })).toBeDisabled();
+  const current = questions.filter({ visible: true });
+  await current.locator('input').first().check();
+  await current.getByRole('button', { name: 'Comprobar', exact: true }).click();
+  await expect(page.getByRole('button', { name: /^Pregunta 3: (correcta|incorrecta)$/ })).toHaveAttribute('aria-current', 'step');
+  await page.reload();
+  await expect(position).toHaveText('Pregunta 3 de 3');
+  await page.emulateMedia({ media: 'print' });
+  await expect(questions.filter({ visible: true })).toHaveCount(3);
 });
 test('ordena por teclado y conserva el contexto y el enlace directo', async ({ page }) => {
   await page.addInitScript(() => { Math.random = () => 0; });
@@ -106,10 +137,10 @@ test('ordena por teclado y conserva el contexto y el enlace directo', async ({ p
   await q.getByRole('button', { name: 'Comprobar', exact: true }).click();
   await expect(q.locator('[data-result]')).toHaveText('✓ Respuesta correcta');
   await expect(q.locator('[data-feedback] .feedback-options li')).toHaveCount(3);
-  await expect(q.locator('..').locator('..').getByText('Considera una resolución que termina con una respuesta del vecino.')).toBeVisible();
+  await expect(q.getByText('Considera una resolución que termina con una respuesta del vecino.')).toBeVisible();
 });
 test('formularios con coma decimal y reset independiente del test', async ({ page }) => {
-  await page.goto(quizPath);
+  await page.goto(`${quizPath}#pregunta-longitud-ipv6`);
   const q = page.locator('[data-question="protocolos.preguntas.longitud-ipv6"]');
   await q.getByLabel('128 bits', { exact: true }).check();
   await q.getByRole('button', { name: 'Comprobar', exact: true }).click();
@@ -133,7 +164,7 @@ test('se puede practicar con almacenamiento deshabilitado o corrupto', async ({ 
     Storage.prototype.getItem = () => '{json roto';
     Storage.prototype.setItem = () => { throw new Error('Storage unavailable'); };
   });
-  await page.goto(quizPath);
+  await page.goto(`${quizPath}#pregunta-longitud-ipv6`);
   const q = page.locator('[data-question="protocolos.preguntas.longitud-ipv6"]');
   await q.getByLabel('128 bits', { exact: true }).check();
   await q.getByRole('button', { name: 'Comprobar', exact: true }).click();
@@ -206,11 +237,12 @@ for (const width of [320, 390]) {
       await page.goto(route);
       await expect(page.locator('[data-reset]')).toBeEnabled();
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
-      const question = await page.locator('[data-question]').first().boundingBox();
+      const question = await page.locator('[data-question].is-current').boundingBox();
       expect(question?.x).toBe(0);
       expect(question?.width).toBe(width);
-      // Reveal all explanations, including long addresses and source links.
+      // Reveal all explanations, unpaged, including long addresses and source links.
       await page.locator('[data-question]').evaluateAll(questions => {
+        questions[0].closest('study-test')!.removeAttribute('data-paged');
         for (const question of questions) {
           question.querySelector<HTMLInputElement>('input')?.click();
           question.querySelector<HTMLButtonElement>('[data-check]')?.click();

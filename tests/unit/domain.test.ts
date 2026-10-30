@@ -31,24 +31,35 @@ test('ordenar exige la secuencia completa y no muta las soluciones', () => {
   assert.equal(gradeQuestion(ordering, [...ordering.answer].reverse()).correct, false);
   assert.deepEqual(ordering, original);
 });
-test('mezcla reproducible con grupos intactos y sin mutar las entradas', () => {
+test('mezcla reproducible de todas las preguntas sin mutar las entradas', () => {
   const original = structuredClone({ quiz, questions });
   assert.deepEqual(shuffle(['a', 'b', 'c'], () => 0), ['b', 'c', 'a']);
   const session = createSession(quiz, questions, () => 0);
   assert.equal(validSession(session, quiz, questions), true);
+  assert.equal(session.current, 0);
   assert.deepEqual({ quiz, questions }, original);
-  for (const g of session.groups) assert.deepEqual([...g.questions].sort(), [...quiz.groups.find(q => q.id === g.id)!.questionIds].sort());
+  assert.deepEqual([...session.sequence].sort(), quiz.groups.flatMap(g => g.questionIds).sort());
   assert.throws(() => shuffle([1, 2], () => 1), RangeError);
+});
+test('las preguntas de un grupo no salen en bloque', () => {
+  const largest = catalog.entries.filter((e): e is Test => e.kind === 'test' && e.groups.length > 1).sort((a, b) => b.groups.flatMap(g => g.questionIds).length - a.groups.flatMap(g => g.questionIds).length)[0];
+  let seed = 7;
+  const random = () => (seed = (seed * 1103515245 + 12345) % 2 ** 31) / 2 ** 31;
+  const groupOf = new Map(largest.groups.flatMap(g => g.questionIds.map(id => [id, g.id])));
+  const { sequence } = createSession(largest, questions, random);
+  const changes = sequence.filter((id, i) => i > 0 && groupOf.get(id) !== groupOf.get(sequence[i - 1])).length;
+  assert.ok(changes > largest.groups.length - 1, `Solo ${changes} cambios de grupo en ${sequence.length} preguntas`);
 });
 test('ordenar nunca empieza resuelto incluso con una fuente aleatoria constante', () => {
   const ordered = { ...ordering, items: ordering.answer.map(id => ordering.items.find(item => item.id === id)!) };
   assert.notDeepEqual(initialOrder(ordered, () => .999), ordered.answer);
 });
 test('una sesión corrupta se rechaza sin romper la práctica', () => {
-  for (const value of [null, [], {}, { groups: [null], answers: {}, orders: {}, checked: [] }]) assert.equal(validSession(value, quiz, questions), false);
+  for (const value of [null, [], {}, { sequence: [null], current: 0, answers: {}, orders: {}, checked: [] }]) assert.equal(validSession(value, quiz, questions), false);
   const session = createSession(quiz, questions);
-  session.groups[0].questions.push('inventada');
+  session.sequence.push('inventada');
   assert.equal(validSession(session, quiz, questions), false);
+  for (const current of [-1, quiz.groups.flatMap(g => g.questionIds).length, 0.5]) assert.equal(validSession({ ...createSession(quiz, questions), current }, quiz, questions), false);
   const invalid = createSession(quiz, questions);
   invalid.answers[single.id] = single.answer;
   invalid.checked = [single.id, single.id];

@@ -1,6 +1,7 @@
 import type { Question, Test } from '../schemas/content.ts';
 import type { Answer } from './evaluacion.ts';
-export interface Session { groups: { id: string; questions: string[] }[]; orders: Record<string, string[]>; answers: Record<string, Answer>; checked: string[] }
+// `sequence` mezcla las preguntas de todos los grupos; `current` es la posición que se está respondiendo.
+export interface Session { sequence: string[]; current: number; orders: Record<string, string[]>; answers: Record<string, Answer>; checked: string[] }
 export function shuffle<T>(items: readonly T[], random = Math.random): T[] {
   const copy = [...items];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -18,7 +19,7 @@ export function initialOrder(question: Question, random = Math.random) {
 }
 export function createSession(test: Test, questions: Question[], random = Math.random): Session {
   return {
-    groups: shuffle(test.groups, random).map(g => ({ id: g.id, questions: shuffle(g.questionIds, random) })),
+    sequence: shuffle(test.groups.flatMap(g => g.questionIds), random), current: 0,
     orders: Object.fromEntries(questions.map(q => [q.id, initialOrder(q, random)])),
     answers: {}, checked: [],
   };
@@ -27,12 +28,12 @@ const permutation = (actual: unknown, expected: string[]): actual is string[] =>
 export function validSession(value: unknown, test: Test, questions: Question[]): value is Session {
   if (!value || typeof value !== 'object') return false;
   const session = value as Partial<Session>;
-  if (!session || !Array.isArray(session.groups) || !session.orders || !session.answers || !Array.isArray(session.checked)) return false;
+  if (!session || !Array.isArray(session.sequence) || !session.orders || !session.answers || !Array.isArray(session.checked)) return false;
   if (typeof session.orders !== 'object' || typeof session.answers !== 'object' || Array.isArray(session.orders) || Array.isArray(session.answers)) return false;
-  if (!session.groups.every(g => g && typeof g === 'object' && typeof g.id === 'string' && Array.isArray(g.questions))) return false;
+  const current = session.current;
+  if (typeof current !== 'number' || !Number.isInteger(current) || current < 0 || current >= session.sequence.length) return false;
   if (new Set(session.checked).size !== session.checked.length || Object.keys(session.answers).some(id => !questions.some(q => q.id === id))) return false;
-  if (!permutation(session.groups.map(g => g.id), test.groups.map(g => g.id))) return false;
-  for (const group of session.groups) if (!permutation(group.questions, test.groups.find(g => g.id === group.id)!.questionIds)) return false;
+  if (!permutation(session.sequence, test.groups.flatMap(g => g.questionIds))) return false;
   for (const question of questions) {
     const choices = (question.type === 'ordering' ? question.items : question.options).map(o => o.id);
     if (!permutation(session.orders[question.id], choices)) return false;

@@ -14,12 +14,46 @@ class StudyTest extends HTMLElement {
     let session = validSession(saved, test, questions) ? saved : createSession(test, questions);
     const controller = new AbortController(); this.cleanup = () => controller.abort();
     const questionElements = new Map([...this.querySelectorAll<HTMLElement>('[data-question]')].map(el => [el.dataset.question!, el]));
-    const groupElements = new Map([...this.querySelectorAll<HTMLElement>('[data-group]')].map(el => [el.dataset.group!, el]));
+    const navItems = [...this.querySelectorAll<HTMLButtonElement>('[data-goto]')];
+    const prev = this.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = this.querySelector<HTMLButtonElement>('[data-next]')!;
+    const byId = new Map(questions.map(q => [q.id, q]));
     const save = () => store.write(session);
     const updateSummary = () => {
       const correct = questions.filter(q => session.checked.includes(q.id) && gradeQuestion(q, session.answers[q.id]).correct).length;
       const incorrect = session.checked.length - correct;
       this.querySelector('[data-summary]')!.textContent = `${correct} correctas · ${incorrect} incorrectas · ${questions.length - session.checked.length} pendientes`;
+      session.sequence.forEach((id, i) => {
+        const item = navItems[i];
+        const checked = session.checked.includes(id);
+        const correct = checked && gradeQuestion(byId.get(id)!, session.answers[id]).correct;
+        const state = checked ? correct ? 'correcta' : 'incorrecta' : session.answers[id] !== undefined ? 'respondida sin comprobar' : 'pendiente';
+        item.classList.toggle('is-correct', checked && correct);
+        item.classList.toggle('is-incorrect', checked && !correct);
+        item.classList.toggle('is-answered', !checked && session.answers[id] !== undefined);
+        item.setAttribute('aria-label', `Pregunta ${i + 1}: ${state}`);
+      });
+    };
+    // Muestra una sola pregunta; el resto sigue en el DOM para imprimir y para el enlace directo.
+    const show = (index: number, { focus = false } = {}) => {
+      session.current = Math.min(Math.max(index, 0), session.sequence.length - 1);
+      const element = questionElements.get(session.sequence[session.current])!;
+      questionElements.forEach(el => el.classList.toggle('is-current', el === element));
+      navItems.forEach((item, i) => { if (i === session.current) item.setAttribute('aria-current', 'step'); else item.removeAttribute('aria-current'); });
+      prev.disabled = session.current === 0;
+      next.disabled = session.current === session.sequence.length - 1;
+      this.querySelector('[data-position]')!.textContent = `Pregunta ${session.current + 1} de ${session.sequence.length}`;
+      if (location.hash !== `#${element.id}`) history.replaceState(history.state, '', `#${element.id}`);
+      if (focus) {
+        element.focus({ preventScroll: true });
+        const top = element.getBoundingClientRect().top;
+        if (top < 0 || top > innerHeight) element.scrollIntoView({ block: 'start' });
+      }
+      save();
+    };
+    const fromHash = () => {
+      const index = session.sequence.findIndex(id => location.hash === `#${questionElements.get(id)!.id}`);
+      return index === -1 ? null : index;
     };
     const readAnswer = (q: Question, element: HTMLElement): Answer => {
       if (q.type === 'ordering') return [...element.querySelectorAll<HTMLElement>('[data-options] [data-option]')].map(el => el.dataset.option!);
@@ -49,11 +83,8 @@ class StudyTest extends HTMLElement {
       rows.forEach((row, i) => { const up = row.querySelector<HTMLButtonElement>('[data-up]'); const down = row.querySelector<HTMLButtonElement>('[data-down]'); if (up) up.disabled = i === 0; if (down) down.disabled = i === rows.length - 1; });
     };
     const apply = () => {
-      for (const group of session.groups) {
-        const el = groupElements.get(group.id)!;
-        this.querySelector('[data-groups]')!.append(el);
-        group.questions.forEach(id => el.querySelector('[data-questions]')!.append(questionElements.get(id)!));
-      }
+      const list = this.querySelector('[data-questions]')!;
+      session.sequence.forEach(id => list.append(questionElements.get(id)!));
       for (const q of questions) {
         const element = questionElements.get(q.id)!;
         const list = element.querySelector('[data-options]')!;
@@ -62,7 +93,7 @@ class StudyTest extends HTMLElement {
         element.querySelectorAll<HTMLInputElement>('input').forEach(input => { const answer = session.answers[q.id]; input.checked = Array.isArray(answer) ? answer.includes(input.value) : answer === input.value; });
         orderingButtons(element); feedback(q, element);
       }
-      updateSummary(); save();
+      updateSummary(); show(session.current);
     };
     this.querySelectorAll<HTMLInputElement | HTMLButtonElement>('input, button').forEach(el => { el.disabled = false; });
     for (const q of questions) {
@@ -92,9 +123,23 @@ class StudyTest extends HTMLElement {
         row.querySelector<HTMLButtonElement>(direction)!.focus();
       }, { signal: controller.signal }));
     }
-    this.querySelector('[data-reset]')!.addEventListener('click', () => { store.reset(); session = createSession(test, questions); apply(); }, { signal: controller.signal });
+    this.querySelector('[data-reset]')!.addEventListener('click', () => { store.reset(); session = createSession(test, questions); apply(); show(0, { focus: true }); }, { signal: controller.signal });
+    prev.addEventListener('click', () => show(session.current - 1, { focus: true }), { signal: controller.signal });
+    next.addEventListener('click', () => show(session.current + 1, { focus: true }), { signal: controller.signal });
+    navItems.forEach((item, i) => item.addEventListener('click', () => show(i, { focus: true }), { signal: controller.signal }));
+    addEventListener('hashchange', () => { const index = fromHash(); if (index !== null) show(index, { focus: true }); }, { signal: controller.signal });
+    // Flechas para pasar de pregunta salvo en los campos, donde mueven la selección.
+    this.addEventListener('keydown', event => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || (event.target as HTMLElement).closest('input, select, textarea')) return;
+      if (event.key === 'ArrowLeft' && !prev.disabled) { event.preventDefault(); show(session.current - 1, { focus: true }); }
+      if (event.key === 'ArrowRight' && !next.disabled) { event.preventDefault(); show(session.current + 1, { focus: true }); }
+    }, { signal: controller.signal });
+    const linked = fromHash();
+    if (linked !== null) session.current = linked;
     apply();
-    if (location.hash.startsWith('#pregunta-')) requestAnimationFrame(() => document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView());
+    this.dataset.paged = '';
+    this.querySelectorAll<HTMLElement>('[data-navigator], [data-pager]').forEach(el => { el.hidden = false; });
+    if (linked !== null) requestAnimationFrame(() => questionElements.get(session.sequence[linked])!.scrollIntoView());
   }
   disconnectedCallback() { this.cleanup?.(); }
 }

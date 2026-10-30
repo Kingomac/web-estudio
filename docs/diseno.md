@@ -32,6 +32,7 @@ La fuente es Inter, servida desde el paquete `@fontsource-variable/inter` (sin p
 
 - **Entrada a una asignatura:** abre la sección Apuntes. La navegación ofrece secciones por tipo de recurso, sin un listado combinado de todos los materiales.
 - **Lectura en escritorio:** menú principal plegable, índice pegado al margen izquierdo y columna de texto de ancho legible. Con el menú oculto y espacio suficiente, el texto se centra en la pantalla; título, herramientas y fuentes se alinean con él. La preferencia del menú se conserva entre páginas y no cambia el menú móvil.
+- **Tests:** una pregunta cada vez, en un orden que mezcla todos los grupos; «Anterior/Siguiente», las flechas ← → y la cuadrícula «Ir a una pregunta» permiten saltar a cualquiera y marcan su estado. Sin JavaScript y al imprimir se muestran todas.
 - **Tests en móvil:** preguntas como secciones a todo el ancho, separadas por líneas, sin marco ni sombra de tarjeta. Enunciados, opciones y correcciones pueden partir palabras largas; los controles de respuesta aprovechan el ancho disponible.
 
 `src/styles/global.css` declara las capas en orden; cada capa posterior gana a la anterior:

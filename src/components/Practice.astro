@@ -16,40 +16,59 @@ const typeLabels = { single: 'Una respuesta', multiple: 'Varias respuestas', ord
   <script type="application/json" data-payload set:html={jsonForHtml(payload)} />
   <div class="practice-bar"><div><p class="summary" data-summary role="status">{questions.length} preguntas pendientes</p><p class="meta">Cada respuesta incluye corrección, explicación y fuentes.</p></div><button type="button" class="button button--secondary button--small no-print" data-reset disabled>Reiniciar test</button></div>
   <noscript><p class="callout">Activa JavaScript para responder, mezclar las preguntas y comprobar tus respuestas.</p></noscript>
-  <div data-groups>{test.groups.map(group => <section class="question-group" data-group={group.id}>
-    <header class="group-header"><h2>{group.title}</h2>{group.context && <p class="meta">{group.context}</p>}</header>
-    <div data-questions>{group.questionIds.map(id => {
-      const q = questions.find(q => q.id === id)!;
-      const local = q.id.split('.').at(-1);
-      return <article class="question panel" id={`pregunta-${local}`} data-question={q.id} data-type={q.type}>
-        <div class="question-top"><span class="badge badge--neutral">{typeLabels[q.type]}</span><a class="question-permalink" href={`#pregunta-${local}`} aria-label={`Enlace a esta pregunta: ${q.prompt}`}>#</a></div>
-        <fieldset><legend set:html={inlineMarkdown(q.prompt)} />
-          {q.type === 'ordering' ? <ol class="options ordering-options" data-options>{q.items.map(item => <li class="option" data-option={item.id}><span class="ordering-text" set:html={inlineMarkdown(item.text)} /><span class="ordering-controls no-print"><button type="button" class="button button--secondary button--small" data-up aria-label={`Subir: ${item.text}`} disabled>↑</button><button type="button" class="button button--secondary button--small" data-down aria-label={`Bajar: ${item.text}`} disabled>↓</button></span></li>)}</ol> : <div class="options choice-options" data-options>{q.options.map(option => <label class="option" data-option={option.id}><input type={q.type === 'single' ? 'radio' : 'checkbox'} name={q.id} value={option.id} disabled /><span set:html={inlineMarkdown(option.text)} /></label>)}</div>}
-        </fieldset>
-        <div class="actions answer-actions no-print"><button type="button" class="button" data-check disabled>Comprobar</button><span class="status" data-result role="status" aria-live="polite"></span></div>
-        <section class="feedback" data-feedback hidden aria-label="Corrección completa">
-          <p class="feedback-explanation" set:html={inlineMarkdown(q.explanation)} />
-          {q.type === 'ordering' ? <ol class="feedback-options">{q.answer.map(itemId => { const item = q.items.find(i => i.id === itemId)!; return <li><strong set:html={inlineMarkdown(item.text)} /><p set:html={inlineMarkdown(item.placementExplanation)} /></li>; })}</ol> : <ul class="feedback-options">{q.options.map(option => <li><span class="badge badge--danger outcome" data-outcome={option.id}></span><strong set:html={inlineMarkdown(option.text)} /><p set:html={inlineMarkdown(option.explanation)} /></li>)}</ul>}
-          <Sources references={q.originalReferences} external={q.externalReferences} catalog={catalog} prominent />
-          {q.readingReferences.length > 0 && <div class="support-readings"><p class="eyebrow">Lecturas de apoyo</p><ul>{q.readingReferences.map(ref => { const reading = catalog.byId.get(ref.resourceId); return reading && (reading.kind === 'apuntes' || reading.kind === 'resumen') && <li><a href={`${resourceUrl(reading, catalog)}${ref.anchor ? `#${ref.anchor}` : ''}`}>{reading.title} →</a></li>; })}</ul></div>}
-        </section>
-      </article>;
-    })}</div>
-  </section>)}</div>
+  <details class="question-nav panel--muted no-print" data-navigator hidden>
+    <summary>Ir a una pregunta</summary>
+    <ol class="question-nav-list">{questions.map((_, i) => <li><button type="button" class="question-nav-item" data-goto={i}>{i + 1}</button></li>)}</ol>
+  </details>
+  <div data-questions>{test.groups.flatMap(group => group.questionIds.map(id => {
+    const q = questions.find(q => q.id === id)!;
+    const local = q.id.split('.').at(-1);
+    return <article class="question panel" id={`pregunta-${local}`} data-question={q.id} data-type={q.type} tabindex="-1">
+      <div class="question-top"><p class="eyebrow question-group">{group.title}</p><span class="badge badge--neutral">{typeLabels[q.type]}</span><a class="question-permalink" href={`#pregunta-${local}`} aria-label={`Enlace a esta pregunta: ${q.prompt}`}>#</a></div>
+      {group.context && <p class="meta question-context">{group.context}</p>}
+      <fieldset><legend set:html={inlineMarkdown(q.prompt)} />
+        {q.type === 'ordering' ? <ol class="options ordering-options" data-options>{q.items.map(item => <li class="option" data-option={item.id}><span class="ordering-text" set:html={inlineMarkdown(item.text)} /><span class="ordering-controls no-print"><button type="button" class="button button--secondary button--small" data-up aria-label={`Subir: ${item.text}`} disabled>↑</button><button type="button" class="button button--secondary button--small" data-down aria-label={`Bajar: ${item.text}`} disabled>↓</button></span></li>)}</ol> : <div class="options choice-options" data-options>{q.options.map(option => <label class="option" data-option={option.id}><input type={q.type === 'single' ? 'radio' : 'checkbox'} name={q.id} value={option.id} disabled /><span set:html={inlineMarkdown(option.text)} /></label>)}</div>}
+      </fieldset>
+      <div class="actions answer-actions no-print"><button type="button" class="button" data-check disabled>Comprobar</button><span class="status" data-result role="status" aria-live="polite"></span></div>
+      <section class="feedback" data-feedback hidden aria-label="Corrección completa">
+        <p class="feedback-explanation" set:html={inlineMarkdown(q.explanation)} />
+        {q.type === 'ordering' ? <ol class="feedback-options">{q.answer.map(itemId => { const item = q.items.find(i => i.id === itemId)!; return <li><strong set:html={inlineMarkdown(item.text)} /><p set:html={inlineMarkdown(item.placementExplanation)} /></li>; })}</ol> : <ul class="feedback-options">{q.options.map(option => <li><span class="badge badge--danger outcome" data-outcome={option.id}></span><strong set:html={inlineMarkdown(option.text)} /><p set:html={inlineMarkdown(option.explanation)} /></li>)}</ul>}
+        <Sources references={q.originalReferences} external={q.externalReferences} catalog={catalog} prominent />
+        {q.readingReferences.length > 0 && <div class="support-readings"><p class="eyebrow">Lecturas de apoyo</p><ul>{q.readingReferences.map(ref => { const reading = catalog.byId.get(ref.resourceId); return reading && (reading.kind === 'apuntes' || reading.kind === 'resumen') && <li><a href={`${resourceUrl(reading, catalog)}${ref.anchor ? `#${ref.anchor}` : ''}`}>{reading.title} →</a></li>; })}</ul></div>}
+      </section>
+    </article>;
+    }))}</div>
+  <nav class="pager no-print" aria-label="Navegación entre preguntas" data-pager hidden>
+    <button type="button" class="button button--secondary" data-prev>← Anterior</button>
+    <p class="pager-position meta" data-position></p>
+    <button type="button" class="button button--secondary" data-next>Siguiente →</button>
+  </nav>
 </study-test>
 <style>
   study-test { display: block; min-width: 0; overflow-wrap: anywhere; }
-  .practice-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); background: var(--color-surface-muted); border: 1px solid var(--color-border); border-radius: var(--radius); position: sticky; top: var(--space-2); z-index: 5; }
+  .practice-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); background: var(--color-surface-muted); border: 1px solid var(--color-border); border-radius: var(--radius); }
   .practice-bar p { margin: 0; }
   .summary { font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
-  .question-group { margin-top: var(--space-7); }
-  .group-header h2 { margin-bottom: var(--space-2); }
-  .question { margin-top: var(--space-4); scroll-margin-top: 96px; border-left: 4px solid var(--color-border); }
+  .question-nav { margin-top: var(--space-3); border: var(--border-width) solid var(--color-border); border-radius: var(--radius); }
+  .question-nav summary { padding: var(--space-3) var(--space-5); font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-accent); cursor: pointer; }
+  .question-nav-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--touch-target), 1fr)); gap: var(--space-2); margin: 0; padding: 0 var(--space-5) var(--space-4); list-style: none; }
+  .question-nav-item { width: 100%; min-height: calc(var(--touch-target) - var(--space-2)); border: var(--border-width) solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text); font-size: var(--text-sm); font-variant-numeric: tabular-nums; cursor: pointer; transition: border-color var(--duration), background-color var(--duration); }
+  .question-nav-item:hover { border-color: var(--color-accent); }
+  .question-nav-item.is-answered { background: var(--color-accent-soft); }
+  .question-nav-item.is-correct { background: var(--color-success-soft); border-color: var(--color-success); color: var(--color-success); }
+  .question-nav-item.is-incorrect { background: var(--color-danger-soft); border-color: var(--color-danger); color: var(--color-danger); }
+  .question-nav-item[aria-current="step"] { border-color: var(--color-accent); box-shadow: inset 0 0 0 var(--border-width) var(--color-accent); font-weight: var(--weight-semibold); }
+  .question { margin-top: var(--space-4); scroll-margin-top: var(--space-4); border-left: 4px solid var(--color-border); }
+  @media screen { study-test[data-paged] .question:not(.is-current) { display: none; } }
+  .question-group { flex: 1; min-width: 0; margin: 0; }
+  .question-context { margin: 0 0 var(--space-3); }
+  .pager { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
+  .pager-position { margin: 0; font-variant-numeric: tabular-nums; }
   .question.is-correct { border-left-color: var(--color-success); }
   .question.is-incorrect { border-left-color: var(--color-danger); }
   .question.is-correct .status { color: var(--color-success); }
   .question.is-incorrect .status { color: var(--color-danger); }
-  .question-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+  .question-top { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
   .question-permalink { color: var(--color-text-muted); text-decoration: none; padding: 0 var(--space-2); }
   .question-permalink:hover { color: var(--color-accent); }
   legend { max-width: 100%; margin-bottom: var(--space-4); font-size: var(--text-prose); font-weight: var(--weight-semibold); line-height: var(--leading); }
@@ -83,10 +102,14 @@ const typeLabels = { single: 'Una respuesta', multiple: 'Varias respuestas', ord
     .practice-bar > div { flex: 1; min-width: 0; }
     .practice-bar .meta { margin-top: var(--space-2); }
     .practice-bar > button { min-height: var(--touch-target); }
-    .question-group { margin-top: var(--space-6); }
-    .group-header { padding-inline: var(--page-gutter); }
+    .question-nav { margin-top: 0; border-inline: 0; border-top: 0; border-radius: 0; }
+    .question-nav summary { display: flex; align-items: center; min-height: var(--touch-target); padding: 0 var(--page-gutter); }
+    .question-nav-list { padding: 0 var(--page-gutter) var(--space-4); }
+    .question-nav-item { min-height: var(--touch-target); }
+    .pager { margin-top: 0; padding: var(--space-4) var(--page-gutter); }
+    .pager .button { min-height: var(--touch-target); }
     .question { margin: 0; padding: var(--space-5) var(--page-gutter); border: 0; border-top: var(--border-width) solid var(--color-border); border-radius: 0; box-shadow: none; scroll-margin-top: var(--space-4); }
-    .question:last-child { border-bottom: var(--border-width) solid var(--color-border); }
+    .question:last-child, study-test[data-paged] .question { border-bottom: var(--border-width) solid var(--color-border); }
     .question.is-correct { border-top-color: var(--color-success); }
     .question.is-incorrect { border-top-color: var(--color-danger); }
     .question-permalink { display: inline-flex; align-items: center; justify-content: center; min-width: var(--touch-target); min-height: var(--touch-target); }
@@ -101,6 +124,6 @@ const typeLabels = { single: 'Una respuesta', multiple: 'Varias respuestas', ord
     .ordering-controls { grid-column: 2; justify-self: end; }
     .ordering-controls .button { min-height: var(--touch-target); min-width: var(--touch-target); }
   }
-  @media print { .practice-bar { position: static; } .question { break-inside: avoid; } }
+  @media print { .question { break-inside: avoid; } }
 </style>
 <script>import '../client/practice.ts';</script>
