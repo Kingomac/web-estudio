@@ -4,13 +4,17 @@ Los dos problemas del boletín del tema 6 marcan el tipo de examen: **un diagram
 
 <h2 id="decibelios">Decibelios: lo mínimo</h2>
 
-```text
-Potencias          G(dB) = 10·log(p2/p1)
-Campos, tensiones  G(dB) = 20·log(v2/v1)
-dBm                P(dBm) = 10·log(p / 1 mW)      0 dBm = 1 mW; −10 dBm = 0,1 mW; −70 dBm = 10⁻¹⁰ W
-dBi                ganancia respecto a la isotrópica
-Longitud de onda   λ = c/f          (3 GHz → 10 cm; 1 GHz → 30 cm)
-```
+<div class="table-scroll">
+
+| Magnitud | Fórmula | Ejemplos |
+| --- | --- | --- |
+| Potencias | $G(\mathrm{dB}) = 10 \log \dfrac{p_2}{p_1}$ | |
+| Campos, tensiones | $G(\mathrm{dB}) = 20 \log \dfrac{v_2}{v_1}$ | |
+| dBm | $P(\mathrm{dBm}) = 10 \log \dfrac{p}{1\ \mathrm{mW}}$ | 0 dBm = 1 mW; −10 dBm = 0,1 mW; −70 dBm = $10^{-10}$ W |
+| dBi | Ganancia respecto a la isotrópica | |
+| Longitud de onda | $\lambda = \dfrac{c}{f}$ | 3 GHz → 10 cm; 1 GHz → 30 cm |
+
+</div>
 
 En dB, los productos se suman y los cocientes se restan. Duplicar la distancia resta 6 dB en Friis.
 
@@ -18,18 +22,22 @@ En dB, los productos se suman y los cocientes se restan. Duplicar la distancia r
 
 <h2 id="antena">Fórmulas de la antena transmisora</h2>
 
-```text
-Desadaptación   |Γ| = (VSWR − 1)/(VSWR + 1)      pat = pt·(1 − |Γ|²)
-Eficiencia      prad = ηt·pat                    g = ηt·d
-PIRE            pire(θ,φ) = pat·g(θ,φ) = prad·d(θ,φ)
-PRA             pire = 1,64·pra       (PRA = PIRE − 2,15 dB)
-PRAVC           pire = 3·pravc        (PRAVC = PIRE − 4,77 dB)
-Normalización   ∫∫ d(θ,φ)·sen θ dθ dφ = 4π
-Densidad        s = pire / (4π·r²) = e_ef² / η0          η0 = 120π Ω
-Campo eficaz    e_ef = √(30·pire) / r
-```
+<div class="table-scroll">
 
-Cadena de potencias: **pt** (disponible) → ×(1 − |Γ|²) → **pat** (entregada a la antena) → ×ηt → **prad** (radiada).
+| Magnitud | Fórmula |
+| --- | --- |
+| Desadaptación | $\lvert\Gamma\rvert = \dfrac{\mathrm{VSWR} - 1}{\mathrm{VSWR} + 1} \qquad p_{\mathrm{at}} = p_t \left(1 - \lvert\Gamma\rvert^2\right)$ |
+| Eficiencia | $p_{\mathrm{rad}} = \eta_t\, p_{\mathrm{at}} \qquad g = \eta_t\, d$ |
+| PIRE | $\mathrm{pire}(\theta,\varphi) = p_{\mathrm{at}}\, g(\theta,\varphi) = p_{\mathrm{rad}}\, d(\theta,\varphi)$ |
+| PRA | $\mathrm{pire} = 1{,}64\, \mathrm{pra}$ (PRA = PIRE − 2,15 dB) |
+| PRAVC | $\mathrm{pire} = 3\, \mathrm{pravc}$ (PRAVC = PIRE − 4,77 dB) |
+| Normalización | $\displaystyle\iint d(\theta,\varphi) \operatorname{sen}\theta\, d\theta\, d\varphi = 4\pi$ |
+| Densidad | $s = \dfrac{\mathrm{pire}}{4\pi r^2} = \dfrac{e_{\mathrm{ef}}^2}{\eta_0}$, con $\eta_0 = 120\pi\ \Omega$ |
+| Campo eficaz | $e_{\mathrm{ef}} = \dfrac{\sqrt{30\, \mathrm{pire}}}{r}$ |
+
+</div>
+
+Cadena de potencias: $p_t$ (disponible) → $\times\left(1 - \lvert\Gamma\rvert^2\right)$ → $p_{\mathrm{at}}$ (entregada a la antena) → $\times\, \eta_t$ → $p_{\mathrm{rad}}$ (radiada).
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=12">T6.2, pp. 7, 9, 12-13, 17-19 y 30-31</a>.</p>
 
@@ -37,23 +45,20 @@ Cadena de potencias: **pt** (disponible) → ×(1 − |Γ|²) → **pat** (entre
 
 **Receta.**
 
-1. Escribe `d(θ,φ) = K·f(θ,φ)` y obtén K con la normalización (integral = 4π).
-2. `prad = pire / d` (sale constante). Después, `pat = prad / ηt` y `pt = pat / (1 − |Γ|²)`.
-3. Campo: `e_ef = √(30·pire)/r`. Es eficaz; no multipliques por √2.
-4. Máximos donde f = 1. HPBW entre los puntos con f = 0,5 (−3 dB) y FNBW entre los primeros nulos. Mide el ancho **completo**, a ambos lados del máximo.
+1. Escribe $d(\theta,\varphi) = K f(\theta,\varphi)$ y obtén $K$ con la normalización (integral = 4π).
+2. $p_{\mathrm{rad}} = \mathrm{pire} / d$ (sale constante). Después, $p_{\mathrm{at}} = p_{\mathrm{rad}} / \eta_t$ y $p_t = \dfrac{p_{\mathrm{at}}}{1 - \lvert\Gamma\rvert^2}$.
+3. Campo: $e_{\mathrm{ef}} = \sqrt{30\, \mathrm{pire}}\, / r$. Es eficaz; no multipliques por $\sqrt{2}$.
+4. Máximos donde $f = 1$. HPBW entre los puntos con $f = 0{,}5$ (−3 dB) y FNBW entre los primeros nulos. Mide el ancho **completo**, a ambos lados del máximo.
 
-**Boletín, problema 1** (`pire = cos²θ W`, ηt = 80 %, VSWR = 2).
+**Boletín, problema 1** ($\mathrm{pire} = \cos^2\theta\ \mathrm{W}$, $\eta_t = 80\ \%$, VSWR = 2).
 
-```text
-a) ∫ cos²θ·sen θ dθ (0..π) = 2/3   →  K·2π·2/3 = 4π  →  d = 3·cos²θ  (4,77 dBi)
-   prad = pire/d = 1/3 W
-b) pra = cos²θ / 1,64 = 0,61·cos²θ W
-c) e_ef = √(30·cos²θ) / 1000 = 5,48·|cos θ| mV/m      (máximo 5,48 mV/m)
-d) pat = prad/ηt = (1/3)/0,8 = 0,417 W
-e) |Γ| = 1/3 → 1 − |Γ|² = 8/9 → pt = 0,417 / (8/9) = 0,469 W
-f) Máximos en θ = 0° y θ = 180° (ejes +z y −z); nulo en θ = 90°
-g) cos²α = 0,5 → α = ±45° → HPBW = 90°;  cos²α = 0 → α = ±90° → FNBW = 180°
-```
+- **a)** $\displaystyle\int_0^\pi \cos^2\theta \operatorname{sen}\theta\, d\theta = \frac{2}{3}$ → $K \cdot 2\pi \cdot \dfrac{2}{3} = 4\pi$ → $d = 3\cos^2\theta$ (4,77 dBi). Además, $p_{\mathrm{rad}} = \mathrm{pire}/d = \tfrac{1}{3}\ \mathrm{W}$.
+- **b)** $\mathrm{pra} = \dfrac{\cos^2\theta}{1{,}64} = 0{,}61 \cos^2\theta\ \mathrm{W}$.
+- **c)** $e_{\mathrm{ef}} = \dfrac{\sqrt{30 \cos^2\theta}}{1000}$ $= 5{,}48\, \lvert\cos\theta\rvert\ \mathrm{mV/m}$ (máximo 5,48 mV/m).
+- **d)** $p_{\mathrm{at}} = \dfrac{p_{\mathrm{rad}}}{\eta_t} = \dfrac{1/3}{0{,}8} = 0{,}417\ \mathrm{W}$.
+- **e)** $\lvert\Gamma\rvert = \tfrac{1}{3}$ → $1 - \lvert\Gamma\rvert^2 = \tfrac{8}{9}$ → $p_t = \dfrac{0{,}417}{8/9} = 0{,}469\ \mathrm{W}$.
+- **f)** Máximos en $\theta = 0^\circ$ y $\theta = 180^\circ$ (ejes $+z$ y $-z$); nulo en $\theta = 90^\circ$.
+- **g)** $\cos^2\alpha = 0{,}5$ → $\alpha = \pm 45^\circ$ → HPBW = 90°; $\cos^2\alpha = 0$ → $\alpha = \pm 90^\circ$ → FNBW = 180°.
 
 [Practicar el problema 1](/web-estudio/asignaturas/dispositivos/ejercicios/t6-p1-diagrama-cos2/).
 
@@ -61,26 +66,36 @@ g) cos²α = 0,5 → α = ±45° → HPBW = 90°;  cos²α = 0 → α = ±90° �
 
 <h2 id="enlace">Problema tipo 2: balance de enlace</h2>
 
-```text
-Friis (lineal)  par = pire·(λ/(4π·r))²·gr·plf/ae        pr = par·(1 − |Γr|²)
-Balance (dB)    Pr = PIRE + Gr − Lbf − Ae + PLF − Lrc
-Espacio libre   Lbf = 20·log(4π·r/λ)
-Desadaptación   Lrc = −10·log(1 − |Γr|²)
-Distancia       r = (λ/(4π)) · 10^(Lbf/20)
-```
+<div class="table-scroll">
 
-Con polarización adaptada, `plf = 1` y PLF = 0 dB. Si se usa ganancia de potencia (dBi), ya incluye las pérdidas óhmicas; la VSWR se aplica aparte.
+| Magnitud | Fórmula |
+| --- | --- |
+| Friis (lineal) | $p_{\mathrm{ar}} = \mathrm{pire} \left(\dfrac{\lambda}{4\pi r}\right)^{2} \dfrac{g_r\, \mathrm{plf}}{a_e} \qquad p_r = p_{\mathrm{ar}} \left(1 - \lvert\Gamma_r\rvert^2\right)$ |
+| Balance (dB) | $P_r = \mathrm{PIRE} + G_r - L_{\mathrm{bf}} - A_e + \mathrm{PLF} - L_{\mathrm{rc}}$ |
+| Espacio libre | $L_{\mathrm{bf}} = 20 \log \dfrac{4\pi r}{\lambda}$ |
+| Desadaptación | $L_{\mathrm{rc}} = -10 \log\left(1 - \lvert\Gamma_r\rvert^2\right)$ |
+| Distancia | $r = \dfrac{\lambda}{4\pi} \cdot 10^{L_{\mathrm{bf}}/20}$ |
 
-**Receta.** Pasa todo a dB, despeja Lbf del balance y de ahí la distancia. Un obstáculo de X dB se compensa subiendo la PIRE esos mismos X dB.
+</div>
 
-**Boletín, problema 2** (3 GHz, PIRE = −10 dBm, Gr = 8 dBi, VSWR = 1,2, Pr = −70 dBm).
+Con polarización adaptada, $\mathrm{plf} = 1$ y PLF = 0 dB. Si se usa ganancia de potencia (dBi), ya incluye las pérdidas óhmicas; la VSWR se aplica aparte.
 
-```text
-λ = 0,1 m;  |Γr| = 0,2/2,2 = 1/11;  Lrc = −10·log(120/121) = 0,036 dB
-−70 = −10 + 8 − Lbf − 0,036   →   Lbf = 67,96 dB
-r = (0,1/4π)·10^(67,96/20) ≈ 19,9 m
-Obstáculo de 10 dB  →  la PIRE sube 10 dB: de −10 dBm a 0 dBm (de 0,1 a 1 mW)
-```
+**Receta.** Pasa todo a dB, despeja $L_{\mathrm{bf}}$ del balance y de ahí la distancia. Un obstáculo de X dB se compensa subiendo la PIRE esos mismos X dB.
+
+**Boletín, problema 2** (3 GHz, PIRE = −10 dBm, $G_r = 8\ \mathrm{dBi}$, VSWR = 1,2, $P_r = -70\ \mathrm{dBm}$).
+
+$$
+\begin{aligned}
+\lambda &= 0{,}1\ \mathrm{m} \\
+\lvert\Gamma_r\rvert &= \frac{0{,}2}{2{,}2} = \frac{1}{11} \\
+L_{\mathrm{rc}} &= -10 \log \frac{120}{121} = 0{,}036\ \mathrm{dB} \\
+-70 &= -10 + 8 - L_{\mathrm{bf}} - 0{,}036 \\
+L_{\mathrm{bf}} &= 67{,}96\ \mathrm{dB} \\
+r &= \frac{0{,}1}{4\pi} \cdot 10^{67{,}96/20} \approx 19{,}9\ \mathrm{m}
+\end{aligned}
+$$
+
+Obstáculo de 10 dB → la PIRE sube 10 dB: de −10 dBm a 0 dBm (de 0,1 a 1 mW).
 
 [Practicar el problema 2](/web-estudio/asignaturas/dispositivos/ejercicios/t6-p2-cobertura/).
 
@@ -88,17 +103,21 @@ Obstáculo de 10 dB  →  la PIRE sube 10 dB: de −10 dBm a 0 dBm (de 0,1 a 1 m
 
 <h2 id="cuestiones">Cuestiones rápidas</h2>
 
+<div class="table-scroll">
+
 | Si te preguntan… | Responde con… |
 | --- | --- |
-| Campo lejano | A partir de `2D²/λ`. Onda localmente plana, E ⊥ H ⊥ dirección radial; el campo cae con 1/r y la potencia con 1/r². |
+| Campo lejano | A partir de $2D^2/\lambda$. Onda localmente plana, E ⊥ H ⊥ dirección radial; el campo cae con 1/r y la potencia con 1/r². |
 | Polarización | Figura que describe el extremo de **E** en el tiempo: lineal, circular o elíptica, a derechas o a izquierdas. |
-| Factor plf | Lineal-lineal `cos²α`; lineal-circular 0,5; circulares del mismo sentido 1; de sentidos opuestos 0. |
-| Directividad frente a ganancia | `g = ηt·d`: la ganancia de potencia incluye las pérdidas óhmicas. |
+| Factor plf | Lineal-lineal $\cos^2\alpha$; lineal-circular 0,5; circulares del mismo sentido 1; de sentidos opuestos 0. |
+| Directividad frente a ganancia | $g = \eta_t\, d$: la ganancia de potencia incluye las pérdidas óhmicas. |
 | Antenas lineales | Dipolo corto 1,5 (1,76 dBi); dipolo λ/2 1,64 (2,15 dBi), 73 Ω; antena vertical corta 3 (4,77 dBi). |
 | Lineales frente a apertura | Lineales: omnidireccionales, poca ganancia, banda estrecha y f bajas. Apertura: directivas, mucha ganancia, más banda y f altas. |
-| Área equivalente | `Aeq = λ²·g / (4π)`. |
+| Área equivalente | $A_{\mathrm{eq}} = \dfrac{\lambda^2 g}{4\pi}$. |
 | HPBW, FNBW, SLL, FBR | Ancho a −3 dB, ancho entre nulos, lóbulo secundario mayor frente al principal, principal frente al trasero. |
 | Bandas | UHF 300 MHz–3 GHz; SHF 3–30 GHz; EHF 30–300 GHz (milimétricas). |
 | CNAF | Uso común: sin autorización previa, baja potencia (Wi-Fi, RFID, dispositivos de corto alcance…). Privativo: título habilitante. Especial: compartido (radioaficionados). |
+
+</div>
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=6">T6.2, pp. 6-7, 10, 19, 25-27 y 34-36</a>; <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=13">T6.1, pp. 13 y 18-20</a>.</p>

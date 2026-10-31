@@ -6,5 +6,6 @@
 @import './base.css';
 @import './layout.css';
 @import './components.css';
+@import 'temml/dist/Temml-Local.css' layer(prose);
 @import './prose.css';
 @import './print.css';

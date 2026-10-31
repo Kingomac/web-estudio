@@ -16,6 +16,9 @@
     p, li { orphans: 3; widows: 3; }
     pre { white-space: pre-wrap; overflow: visible; border: 1px solid var(--color-border); padding: 6pt; margin-block: 8pt; }
     pre code, code { overflow-wrap: anywhere; }
+    .prose math { font-size: 11pt; }
+    .prose .math-display { overflow: visible; margin-block: 6pt; break-inside: avoid; }
+    .prose td math { font-size: 9.5pt; }
     .table-scroll { overflow: visible; }
     thead { display: table-header-group; }
     tr, pre, .callout, .panel { break-inside: avoid; }

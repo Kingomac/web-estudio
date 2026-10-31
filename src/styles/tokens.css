@@ -38,6 +38,7 @@
 
     /* Typography. */
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-math: 'STIX Two Math', 'Cambria Math', 'Latin Modern Math', 'DejaVu Math TeX Gyre', math;
     --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Consolas, monospace;
     --text-xs: .8125rem;   /* 13px: minimum size, labels and metadata */
     --text-sm: .875rem;    /* 14px: secondary text, navigation */

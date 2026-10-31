@@ -1,21 +1,25 @@
 <h2 id="examen">Qué cae y cómo usar estos apuntes</h2>
 
-Los temas 4 y 5 comparten boletín: cinco cuestiones teóricas y cinco ejercicios. Casi todos los problemas se resuelven con **tres ideas**: carga y energía de un condensador, potencia que entrega cada generador y balance `energía = potencia · tiempo`.
+Los temas 4 y 5 comparten boletín: cinco cuestiones teóricas y cinco ejercicios. Casi todos los problemas se resuelven con **tres ideas**: carga y energía de un condensador, potencia que entrega cada generador y balance $\text{energía} = \text{potencia} \cdot \text{tiempo}$.
 
 <h2 id="formulas">Las fórmulas que resuelven casi todo</h2>
 
-```text
-Carga                 Q = I · t                 Q = C · ΔV
-Energía del condensador   E = ½·C·V²
-Energía entre dos tensiones  E = ½·C·(V1² − V2²)
-Capacidad necesaria   C = 2E / (V1² − V2²)  =  Q / (V1 − V2)
-Energía consumida     E = V · I · t        (con V media = (V1 + V2)/2)
-Rendimiento           Psal = η · Pent
-Tiempo de carga       t = E / Psal
-Máxima transferencia  Pmax = Voc² / (4R)   (carga igual a la resistencia interna)
-```
+<div class="table-scroll">
 
-Las dos formas de calcular C coinciden, porque `V1² − V2² = 2·Vmedia·ΔV`.
+| Magnitud | Fórmula |
+| --- | --- |
+| Carga | $Q = I\, t \qquad Q = C\, \Delta V$ |
+| Energía del condensador | $E = \tfrac{1}{2} C V^2$ |
+| Energía entre dos tensiones | $E = \tfrac{1}{2} C \left(V_1^2 - V_2^2\right)$ |
+| Capacidad necesaria | $C = \dfrac{2E}{V_1^2 - V_2^2} = \dfrac{Q}{V_1 - V_2}$ |
+| Energía consumida | $E = V I t$, con $V_{\text{media}} = \dfrac{V_1 + V_2}{2}$ |
+| Rendimiento | $P_{\text{sal}} = \eta\, P_{\text{ent}}$ |
+| Tiempo de carga | $t = \dfrac{E}{P_{\text{sal}}}$ |
+| Máxima transferencia | $P_{\max} = \dfrac{V_{\mathrm{oc}}^2}{4R}$ (carga igual a la resistencia interna) |
+
+</div>
+
+Las dos formas de calcular C coinciden, porque $V_1^2 - V_2^2 = 2\, V_{\text{media}}\, \Delta V$.
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=39">T4, pp. 39-41</a> y <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=40">T5, pp. 40-41</a>.</p>
 
@@ -23,22 +27,29 @@ Las dos formas de calcular C coinciden, porque `V1² − V2² = 2·Vmedia·ΔV`.
 
 **Receta del ejemplo 4.1.**
 
-1. Tensión media: `Vm = (Vmax + Vmin) / 2`.
-2. Carga o energía de cada acción: `qi = Ii · ti`, `Ei = Vm · Ii · ti`.
+1. Tensión media: $V_m = \dfrac{V_{\max} + V_{\min}}{2}$.
+2. Carga o energía de cada acción: $q_i = I_i\, t_i$, $E_i = V_m\, I_i\, t_i$.
 3. Carga o energía del sueño durante todo el periodo (el tiempo activo apenas cuenta).
-4. `C = 2E / (Vmax² − Vmin²)`. Elige el valor comercial superior.
-5. Duración de una pila: `ciclos = capacidad (C) / Qciclo`, con `mAh · 3,6 = C`.
+4. $C = \dfrac{2E}{V_{\max}^2 - V_{\min}^2}$. Elige el valor comercial superior.
+5. Duración de una pila: $\text{ciclos} = \dfrac{\text{capacidad (C)}}{Q_{\text{ciclo}}}$, con $\mathrm{mAh} \cdot 3{,}6 = \mathrm{C}$.
 
-**Ejemplo 4.1 de las diapositivas** (3,3–2,7 V, 20 µA en sueño, despierta cada hora): `E ≈ 216 mJ + 10 mJ` → `C = 0,12 F`, se elige 0,2 F. Con una CR2032 de 240 mAh dura unos **1,3 años**. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ejemplo-4-1/).
+**Ejemplo 4.1 de las diapositivas** (3,3–2,7 V, 20 µA en sueño, despierta cada hora): $E \approx 216\ \mathrm{mJ} + 10\ \mathrm{mJ}$ → $C = 0{,}12\ \mathrm{F}$, se elige 0,2 F. Con una CR2032 de 240 mAh dura unos **1,3 años**. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ejemplo-4-1/).
 
 **Boletín, ejercicio 1** (3,3–2,8 V, 10 µA en sueño, despierta cada media hora).
 
-```text
-Σ q activas = 15·5 + 2·3 + 40·6 + 12·7 + 200·40 = 8405 µC   (ms · mA = µC)
-q sueño    = 10 µA · 1800 s = 18 mC
-Q total    ≈ 26,4 mC          E = 3,05 V · 26,4 mC ≈ 80,5 mJ
-C = 2·0,0805 / (3,3² − 2,8²) = 0,0805·2 / 3,05 ≈ 53 mF
-```
+Con tiempos en ms y corrientes en mA, cada producto sale en µC:
+
+$$
+\begin{aligned}
+\textstyle\sum q_{\text{activas}} &= 15 \cdot 5 + 2 \cdot 3 + 40 \cdot 6 \\
+&\quad + 12 \cdot 7 + 200 \cdot 40 = 8405\ \mathrm{\mu C} \\
+q_{\text{sueño}} &= 10\ \mathrm{\mu A} \cdot 1800\ \mathrm{s} = 18\ \mathrm{mC} \\
+Q_{\text{total}} &\approx 26{,}4\ \mathrm{mC} \\
+E &= 3{,}05\ \mathrm{V} \cdot 26{,}4\ \mathrm{mC} \approx 80{,}5\ \mathrm{mJ} \\
+C &= \frac{2 \cdot 0{,}0805}{3{,}3^2 - 2{,}8^2} \\
+&= \frac{0{,}0805 \cdot 2}{3{,}05} \approx 53\ \mathrm{mF}
+\end{aligned}
+$$
 
 Se elige un supercondensador de **0,1 F**. Comprobación: tras la ráfaga activa baja a unos 3,22 V y tras el sueño a 3,04 V, por encima de 2,8 V. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ej1-capacidad-nodo/).
 
@@ -46,57 +57,68 @@ Se elige un supercondensador de **0,1 F**. Comprobación: tras la ráfaga activa
 
 Generador → convertidor dc-dc (rendimiento η) → condensador C → interruptor controlado por **PGOOD** → nodo.
 
-1. **Potencia de entrada**: con resistencias adaptadas, `Pin = Voc² / (4R)`. Con una célula solar, `P = irradiancia · área · rendimiento`.
-2. **Potencia de salida**: `Pout = η · Pin`.
-3. **Capacidad**: la carga que gasta el nodo mientras la tensión cae de Vmax a Vmin: `C = I·t / ΔV`.
-4. **Energía del ciclo**: `E = ½·C·(Vmax² − Vmin²)`.
-5. **Tiempo de carga**: `t = E / Pout`. Mientras carga, PGOOD mantiene el nodo desconectado.
+1. **Potencia de entrada**: con resistencias adaptadas, $P_{\mathrm{in}} = \dfrac{V_{\mathrm{oc}}^2}{4R}$. Con una célula solar, $P$ = irradiancia · área · rendimiento.
+2. **Potencia de salida**: $P_{\mathrm{out}} = \eta\, P_{\mathrm{in}}$.
+3. **Capacidad**: la carga que gasta el nodo mientras la tensión cae de $V_{\max}$ a $V_{\min}$: $C = \dfrac{I\, t}{\Delta V}$.
+4. **Energía del ciclo**: $E = \tfrac{1}{2} C \left(V_{\max}^2 - V_{\min}^2\right)$.
+5. **Tiempo de carga**: $t = \dfrac{E}{P_{\mathrm{out}}}$. Mientras carga, PGOOD mantiene el nodo desconectado.
 
 **Boletín, ejercicio 2** (Peltier de 200 mV y 3 Ω, η = 60 %, nodo de 30 mA durante 2 s entre 3,3 y 2,8 V).
 
-1. `Pin = 0,2² / (4·3) = 3,33 mW`. Convertidor **elevador**: sube unas décimas de voltio a 3,3 V, como el LTC3108.
-2. `Pout = 0,6 · 3,33 = 2 mW`.
-3. `C = 0,03·2 / 0,5 = 0,12 F`: un **supercondensador**.
-4. `E = ½·0,12·(3,3² − 2,8²) = 0,183 J`.
-5. `t = 0,183 / 0,002 ≈ 91,5 s`.
+1. $P_{\mathrm{in}} = \dfrac{0{,}2^2}{4 \cdot 3} = 3{,}33\ \mathrm{mW}$. Convertidor **elevador**: sube unas décimas de voltio a 3,3 V, como el LTC3108.
+2. $P_{\mathrm{out}} = 0{,}6 \cdot 3{,}33 = 2\ \mathrm{mW}$.
+3. $C = \dfrac{0{,}03 \cdot 2}{0{,}5} = 0{,}12\ \mathrm{F}$: un **supercondensador**.
+4. $E = \tfrac{1}{2} \cdot 0{,}12 \cdot \left(3{,}3^2 - 2{,}8^2\right)$ $= 0{,}183\ \mathrm{J}$.
+5. $t = \dfrac{0{,}183}{0{,}002} \approx 91{,}5\ \mathrm{s}$.
 
 [Practicar el ejercicio 2](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ej2-peltier/).
 
 **Boletín, ejercicio 4** (4 células de 6,59 × 5,28 mm, 400 W/m², 25 %, regulador al 60 %, 1 F de 2,5 a 3,3 V).
 
-```text
-Área   = 4 · 34,8 mm² = 139,2 mm² = 1,392·10⁻⁴ m²
-P luz  = 400 · 1,392·10⁻⁴ = 55,7 mW
-P PV   = 0,25 · 55,7 = 13,9 mW      (en el MPP, IM = 13,9 / 2,16 ≈ 6,4 mA)
-P sal  = 0,6 · 13,9 = 8,35 mW
-E      = ½·1·(3,3² − 2,5²) = 2,32 J
-t      = 2,32 / 0,00835 ≈ 278 s  (≈ 4,6 min)
-```
+$$
+\begin{aligned}
+\text{Área} &= 4 \cdot 34{,}8\ \mathrm{mm^2} = 139{,}2\ \mathrm{mm^2} \\
+&= 1{,}392 \cdot 10^{-4}\ \mathrm{m^2} \\
+P_{\text{luz}} &= 400 \cdot 1{,}392 \cdot 10^{-4} = 55{,}7\ \mathrm{mW} \\
+P_{\text{PV}} &= 0{,}25 \cdot 55{,}7 = 13{,}9\ \mathrm{mW} \\
+P_{\text{sal}} &= 0{,}6 \cdot 13{,}9 = 8{,}35\ \mathrm{mW} \\
+E &= \tfrac{1}{2} \cdot 1 \cdot \left(3{,}3^2 - 2{,}5^2\right) = 2{,}32\ \mathrm{J} \\
+t &= 2{,}32 / 0{,}00835 \approx 278\ \mathrm{s} \quad (\approx 4{,}6\ \mathrm{min})
+\end{aligned}
+$$
 
-VM solo hace falta si se pide la corriente: el rendimiento ya da la potencia. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ej4-carga-fotovoltaica/).
+En el MPP, $I_M = 13{,}9 / 2{,}16 \approx 6{,}4\ \mathrm{mA}$.
+
+$V_M$ solo hace falta si se pide la corriente: el rendimiento ya da la potencia. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ej4-carga-fotovoltaica/).
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=3">T4, pp. 3, 7, 34, 38 y 42</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=3">T5, pp. 3 y 34</a>.</p>
 
 <h2 id="piezo">Problema tipo 3: generador piezoeléctrico</h2>
 
-Modelo: fuente de corriente `ip = Ip·sen(ωt)` en paralelo con `Cp`. Su **equivalente Thévenin** es una fuente sinusoidal en serie con Cp:
+Modelo: fuente de corriente $i_p = I_p \operatorname{sen}(\omega t)$ en paralelo con $C_p$. Su **equivalente Thévenin** es una fuente sinusoidal en serie con $C_p$:
 
-```text
-Vp = Ip / (ω·Cp)          |Zc| = 1 / (ω·Cp)
-```
+$$
+V_p = \frac{I_p}{\omega C_p} \qquad \lvert Z_c \rvert = \frac{1}{\omega C_p}
+$$
 
-| Rectificador | Tensión en vacío | VREC en el MPP | Potencia máxima |
+<div class="table-scroll">
+
+| Rectificador | Tensión en vacío | $V_{\mathrm{REC}}$ en el MPP | Potencia máxima |
 | --- | --- | --- | --- |
-| Medio puente (doblador) | `2·Vp` | `Vp` | `Cp·f·Vp²` |
-| Puente de onda completa | `Vp` | `Vp/2` | `Cp·f·Vp²` |
-| Onda completa con interruptor | — | `Vp` | `2·Cp·f·Vp²` |
-| SSHI (interruptor y bobina) | — | — | `4·Cp·f·Vp²` |
+| Medio puente (doblador) | $2V_p$ | $V_p$ | $C_p f V_p^2$ |
+| Puente de onda completa | $V_p$ | $V_p/2$ | $C_p f V_p^2$ |
+| Onda completa con interruptor | — | $V_p$ | $2 C_p f V_p^2$ |
+| SSHI (interruptor y bobina) | — | — | $4 C_p f V_p^2$ |
 
-El interruptor descarga Cp en cada paso por cero y duplica la potencia. El SSHI invierte la tensión de Cp con una bobina y la cuadruplica, aunque hay que descontar el consumo del control. La carga óptima del medio puente es `R = 1/(f·Cp)`.
+</div>
 
-**Boletín, ejercicio 3** (80 µA, 25 Hz, 100 nF): `Vp = 80 µA / (2π·25·100 nF) = 5,09 V` de pico, en serie con 100 nF (`|Z| = 63,7 kΩ` a 25 Hz). En vacío, la salida es una senoidal de 5,09 V de pico y 25 Hz. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ej3-thevenin-piezo/).
+El interruptor descarga $C_p$ en cada paso por cero y duplica la potencia. El SSHI invierte la tensión de $C_p$ con una bobina y la cuadruplica, aunque hay que descontar el consumo del control. La carga óptima del medio puente es $R = \dfrac{1}{f C_p}$.
 
-**Boletín, cuestión 4** (Cp = 80 nF, f = 30 Hz, Ip = 70 µA): `Vp = 4,64 V` y `Cp·f·Vp² = 51,7 µW`.
+**Boletín, ejercicio 3** (80 µA, 25 Hz, 100 nF): $V_p = \dfrac{80\ \mathrm{\mu A}}{2\pi \cdot 25 \cdot 100\ \mathrm{nF}} = 5{,}09\ \mathrm{V}$ de pico, en serie con 100 nF ($\lvert Z \rvert = 63{,}7\ \mathrm{k\Omega}$ a 25 Hz). En vacío, la salida es una senoidal de 5,09 V de pico y 25 Hz. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t45-ej3-thevenin-piezo/).
+
+**Boletín, cuestión 4** ($C_p = 80\ \mathrm{nF}$, $f = 30\ \mathrm{Hz}$, $I_p = 70\ \mathrm{\mu A}$): $V_p = 4{,}64\ \mathrm{V}$ y $C_p f V_p^2 = 51{,}7\ \mathrm{\mu W}$.
+
+<div class="table-scroll">
 
 | Método | Tensión de salida | Potencia máxima |
 | --- | --- | --- |
@@ -105,24 +127,35 @@ El interruptor descarga Cp en cada paso por cero y duplica la potencia. El SSHI 
 | Con interruptor | 4,64 V en el MPP | 103 µW |
 | SSHI | — | 207 µW |
 
+</div>
+
 [Practicar la cuestión 4](/web-estudio/asignaturas/dispositivos/ejercicios/t45-c4-rectificadores/).
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=5">T5, pp. 5, 10, 12, 15 y 19</a>.</p>
 
 <h2 id="peltier">Problema tipo 4: modelo de un módulo Peltier</h2>
 
-```text
-Eléctrico:  V = SE·(TH − TL) − I·RE         (fuente Seebeck en serie con RE)
-Térmico:    QH = I·TH·SE − ½·I²·RE + (TH − TL)/RT
-            QL = I·TL·SE + ½·I²·RE + (TH − TL)/RT
-```
+Eléctrico (fuente Seebeck en serie con $R_E$):
+
+$$
+V = S_E (T_H - T_L) - I R_E
+$$
+
+Térmico:
+
+$$
+\begin{aligned}
+Q_H &= I T_H S_E - \tfrac{1}{2} I^2 R_E + \frac{T_H - T_L}{R_T} \\
+Q_L &= I T_L S_E + \tfrac{1}{2} I^2 R_E + \frac{T_H - T_L}{R_T}
+\end{aligned}
+$$
 
 **Receta con la hoja de características** (ejercicio 5 del boletín, igual que el ejemplo del CP60333):
 
-1. Punto A, sin salto térmico: `RE = V/I` (8,6 V / 3,6 A = 2,39 Ω).
-2. Puntos A y B con la misma corriente: `SE = ΔV/ΔT` (1,4 V / 55 K = 0,0254 V/K).
-3. Potencia máxima bombeada y salto máximo: `RT = ΔTM / PM` (55 / 39 = 1,41 K/W).
-4. Ajuste cuadrático de PM frente a I: da `RE1` (parte interna) y `ST·TL`. La diferencia con RE es `RE2`, de las conexiones.
+1. Punto A, sin salto térmico: $R_E = V/I$ (8,6 V / 3,6 A = 2,39 Ω).
+2. Puntos A y B con la misma corriente: $S_E = \Delta V / \Delta T$ (1,4 V / 55 K = 0,0254 V/K).
+3. Potencia máxima bombeada y salto máximo: $R_T = \Delta T_M / P_M$ (55 / 39 = 1,41 K/W).
+4. Ajuste cuadrático de $P_M$ frente a $I$: da $R_{E1}$ (parte interna) y $S_T T_L$. La diferencia con $R_E$ es $R_{E2}$, de las conexiones.
 
 Para el CP60240 se repite con sus curvas, que el boletín pide consultar en la hoja del fabricante (no está entre los materiales).
 
@@ -130,13 +163,13 @@ Para el CP60240 se repite con sus curvas, que el boletín pide consultar en la h
 
 <h2 id="fotovoltaica">Modelo de la célula fotovoltaica (cuestión 3)</h2>
 
-Circuito: fuente de corriente `IL` en paralelo con un diodo y con `Rp`, y `Rs` en serie con la salida. En vacío toda la corriente IL circula por el diodo y Rp.
+Circuito: fuente de corriente $I_L$ en paralelo con un diodo y con $R_p$, y $R_s$ en serie con la salida. En vacío toda la corriente $I_L$ circula por el diodo y $R_p$.
 
-**Cuestión 3** (I = 300 W/m², `IL = 0,0002·I`, IM = 55 mA, VM = 0,56 V, VOC = 0,7 V):
+**Cuestión 3** ($I = 300\ \mathrm{W/m^2}$, $I_L = 0{,}0002\, I$, $I_M = 55\ \mathrm{mA}$, $V_M = 0{,}56\ \mathrm{V}$, $V_{\mathrm{OC}} = 0{,}7\ \mathrm{V}$):
 
-- `IL = 0,0002 · 300 = 60 mA`.
-- En el MPP se pierden `60 − 55 = 5 mA` entre el diodo y Rp.
-- **Propuesta** (el boletín no trae solución): con Rs ≈ 0, diodo ideal (n = 1) y VT ≈ 25,7 mV, las dos condiciones de VOC y del MPP dan `I0 ≈ 8·10⁻¹⁴ A` y `Rp ≈ 118 Ω`. Si se ignora el diodo en el MPP, `Rp ≈ 0,56 V / 5 mA = 112 Ω`. Indica siempre las hipótesis.
+- $I_L = 0{,}0002 \cdot 300 = 60\ \mathrm{mA}$.
+- En el MPP se pierden $60 - 55 = 5\ \mathrm{mA}$ entre el diodo y $R_p$.
+- **Propuesta** (el boletín no trae solución): con $R_s \approx 0$, diodo ideal ($n = 1$) y $V_T \approx 25{,}7\ \mathrm{mV}$, las dos condiciones de $V_{\mathrm{OC}}$ y del MPP dan $I_0 \approx 8 \cdot 10^{-14}\ \mathrm{A}$ y $R_p \approx 118\ \Omega$. Si se ignora el diodo en el MPP, $R_p \approx 0{,}56\ \mathrm{V} / 5\ \mathrm{mA} = 112\ \Omega$. Indica siempre las hipótesis.
 
 [Practicar la cuestión 3](/web-estudio/asignaturas/dispositivos/ejercicios/t45-c3-modelo-celula/).
 
@@ -148,6 +181,8 @@ Circuito: fuente de corriente `IL` en paralelo con un diodo y con `Rp`, y `Rs` e
 
 **Cuestión 2 · Fuentes ordenadas por densidad de potencia** (tabla 1.1): solar exterior (15 000 µW/cm² a pleno sol) > vibraciones (200 µW/cm²) > gradiente térmico (15 µW/cm² con 10 °C) > ruido acústico (0,96 µW/cm² a 100 dB). Salida y convertidor:
 
+<div class="table-scroll">
+
 | Fuente | Salida | Adaptación |
 | --- | --- | --- |
 | Fotovoltaica | dc, unos 0,5–0,7 V por célula; se asocian en serie | dc-dc **reductor** |
@@ -156,6 +191,8 @@ Circuito: fuente de corriente `IL` en paralelo con un diodo y con `Rp`, y `Rs` e
 | Electrodinámica | ac | rectificador y dc-dc |
 | Radiofrecuencia | ac | antena y multiplicador de tensión |
 
-**Cuestión 5 · Thompson y Peltier.** **Thompson**: en un conductor homogéneo con un gradiente de temperatura que recorre una corriente se absorbe o libera calor, `Q = ±i·dT/dl`. Si los flujos térmico y eléctrico son opuestos se absorbe calor; si van en el mismo sentido se libera. **Peltier**: en la unión de dos metales distintos (termopar) aparece una tensión proporcional al salto de temperatura, `V = (Pa − Pb)·(T2 − T1)`. Ambos son **reversibles**, a diferencia del efecto Joule. Su suma es el efecto **Seebeck**.
+</div>
+
+**Cuestión 5 · Thompson y Peltier.** **Thompson**: en un conductor homogéneo con un gradiente de temperatura que recorre una corriente se absorbe o libera calor, $Q = \pm\, i \dfrac{dT}{dl}$. Si los flujos térmico y eléctrico son opuestos se absorbe calor; si van en el mismo sentido se libera. **Peltier**: en la unión de dos metales distintos (termopar) aparece una tensión proporcional al salto de temperatura, $V = (P_a - P_b)(T_2 - T_1)$. Ambos son **reversibles**, a diferencia del efecto Joule. Su suma es el efecto **Seebeck**.
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=3">T4, pp. 3-5, 10-16 y 42-44</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=3">T5, p. 3</a>.</p>

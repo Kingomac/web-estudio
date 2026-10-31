@@ -13,12 +13,16 @@ El tema 2 corresponde a las páginas 98-145 del PDF del bloque 1: comunicación 
 
 Dos líneas, **TX** y **RX**, punto a punto y sin reloj. Hay que configurar velocidad, bits de datos, paridad y bits de parada. La notación `9600 8N1` indica 9600 bps, 8 bits de datos, sin paridad y 1 bit de parada.
 
-```text
-Tiempo de bit        tb = 1 / velocidad           9600 bps → 104 µs
-Bits por carácter    1 (start) + datos + paridad + stop     8N1 → 10 bits
-Tiempo por carácter  bits por carácter · tb        8N1 a 9600 → 1,04 ms
-Caracteres por s     velocidad / bits por carácter  9600/10 = 960 B/s
-```
+<div class="table-scroll">
+
+| Magnitud | Fórmula | Ejemplo |
+| --- | --- | --- |
+| Tiempo de bit | $t_b = \dfrac{1}{\text{velocidad}}$ | 9600 bps → 104 µs |
+| Bits por carácter | $1\ (\text{start}) + \text{datos} + \text{paridad} + \text{stop}$ | 8N1 → 10 bits |
+| Tiempo por carácter | $\text{bits por carácter} \cdot t_b$ | 8N1 a 9600 → 1,04 ms |
+| Caracteres por segundo | $\dfrac{\text{velocidad}}{\text{bits por carácter}}$ | $9600 / 10 = 960\ \mathrm{B/s}$ |
+
+</div>
 
 El receptor lee cada bit en su centro, a mitad del tiempo de bit (52 µs a 9600 bps).
 
@@ -32,11 +36,15 @@ Dos líneas compartidas con resistencias de *pull-up*: **SDA** (datos) y **SCL**
 
 **Trama.** START (SDA baja con SCL alta) → dirección de 7 o 10 bits → bit R/W → ACK → bytes de datos de 8 bits, cada uno seguido de ACK/NACK → STOP (SDA sube con SCL alta).
 
-```text
-Ciclos de SCL por byte   8 bits + 1 ACK = 9
-Dirección de 7 bits + R/W + ACK = 9 ciclos
-Tiempo ≈ ciclos / velocidad      (Sm 100 kbps · Fm 400 kbps · Hs 3,5 Mbps · UFm 5 Mbps)
-```
+<div class="table-scroll">
+
+| Magnitud | Fórmula |
+| --- | --- |
+| Ciclos de SCL por byte | $8\ \text{bits} + 1\ \text{ACK} = 9$ |
+| Dirección de 7 bits | $7 + \text{R/W} + \text{ACK} = 9\ \text{ciclos}$ |
+| Tiempo | $t \approx \dfrac{\text{ciclos}}{\text{velocidad}}$ (Sm 100 kbps · Fm 400 kbps · Hs 3,5 Mbps · UFm 5 Mbps) |
+
+</div>
 
 **Arbitraje.** Si dos maestros transmiten a la vez, el que intenta poner un 1 y lee un 0 en la línea **pierde** y espera al STOP. Con 0x68 (1101000) y 0x60 (1100000), los tres primeros bits coinciden; en el cuarto, 0x68 envía 1 y 0x60 envía 0, así que **gana 0x60**.
 
@@ -50,6 +58,8 @@ Ventajas: dos cables, varios maestros y esclavos, confirmación con ACK. Inconve
 
 Cuatro líneas: **SCLK** (reloj del maestro), **MOSI** (maestro → esclavo), **MISO** (esclavo → maestro) y **CS/SS** (selección, activa a nivel bajo). Es **full-duplex**, del orden de MHz y más rápido que UART e I²C. Un maestro, uno o varios esclavos, **sin direcciones**: una línea CS por esclavo.
 
+<div class="table-scroll">
+
 | Modo | CPOL (reposo del reloj) | CPHA (flanco de muestreo) |
 | --- | --- | --- |
 | 0 | 0 | 0 (flanco inicial) |
@@ -57,11 +67,15 @@ Cuatro líneas: **SCLK** (reloj del maestro), **MOSI** (maestro → esclavo), **
 | 2 | 1 | 0 |
 | 3 | 1 | 1 |
 
+</div>
+
 Maestro y esclavo deben usar el mismo modo.
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=28">T2, pp. 28-47</a>.</p>
 
 <h2 id="comparativa">Cuestión típica: comparar UART, I²C y SPI</h2>
+
+<div class="table-scroll">
 
 | | UART | I²C | SPI |
 | --- | --- | --- | --- |
@@ -73,5 +87,7 @@ Maestro y esclavo deben usar el mismo modo.
 | Velocidad | Baja-media | Media | Alta |
 | Pull-up | No | Sí | No |
 | Uso típico | GPS, CO₂, módems | Sensores ambientales, pantallas OLED | Sensores rápidos, memorias, pantallas, ADC |
+
+</div>
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=48">T2, pp. 4 y 48</a>.</p>

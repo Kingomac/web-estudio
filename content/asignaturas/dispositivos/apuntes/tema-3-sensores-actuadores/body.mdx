@@ -4,6 +4,8 @@ El tema 3 son las páginas 146-276 del PDF del bloque 1: clasificación de senso
 
 <h2 id="clasificacion">Clasificación de sensores</h2>
 
+<div class="table-scroll">
+
 | Criterio | Tipos |
 | --- | --- |
 | Alimentación | **Pasivos** (necesitan alimentación) y **activos** (la magnitud aporta la energía: piezoeléctrico, termoeléctrico) |
@@ -11,45 +13,62 @@ El tema 3 son las páginas 146-276 del PDF del bloque 1: clasificación de senso
 | Rango | De medida y todo/nada |
 | Integración | Discretos e integrados (sensor y acondicionamiento en un chip) |
 
+</div>
+
 Principios de transducción: piezorresistivo/resistivo, capacitivo, piezoeléctrico, ultrasonidos, magnético (Hall y Faraday), térmico, fotoeléctrico y químico-eléctrico.
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=1">T3, pp. 1-8</a>.</p>
 
 <h2 id="formulas">Las fórmulas del tema</h2>
 
-```text
-Resistencia (galga)     R = ρ·L/A
-Puente en cuarto        Vo = (Vs/4) · ΔR / (R + ΔR/2)          ≈ (Vs/4)·ΔR/R
-RTD (Pt100)             R = R0·(1 + α·T)                        α: coeficiente de temperatura (dato)
-Termistor (NTC)         R = R0·e^(β·(1/T − 1/T0))               T en kelvin
-  linealización en Tc   R1 = (β − 2Tc)/(β + 2Tc) · R(Tc)
-Termopar                ΔVAB = α·ΔT                             α: coeficiente Seebeck
-LDR                     R = R0·(L0/L)^α                         α entre 0,5 y 0,8
-Efecto Hall             VH = I·B·RH / dp
-Faraday                 V = −N·dΦ/dt
-Encoder                 R = π·D / (2·ar)                        D: diámetro, ar: ancho de ranura
-Ultrasonidos            vs = vs0·√(1 + T/273)      distancia por eco d = vs·t/2
-Pirómetro               P = σ·T⁴ (Stefan-Boltzmann)
-```
+<div class="table-scroll">
+
+| Sensor | Fórmula | Notas |
+| --- | --- | --- |
+| Resistencia (galga) | $R = \rho \dfrac{L}{A}$ | |
+| Puente en cuarto | $V_o = \dfrac{V_s}{4} \cdot \dfrac{\Delta R}{R + \Delta R/2} \approx \dfrac{V_s}{4} \cdot \dfrac{\Delta R}{R}$ | |
+| RTD (Pt100) | $R = R_0 (1 + \alpha T)$ | $\alpha$: coeficiente de temperatura (dato) |
+| Termistor (NTC) | $R = R_0\, e^{\beta \left(\frac{1}{T} - \frac{1}{T_0}\right)}$ | $T$ en kelvin |
+| Linealización del termistor en $T_c$ | $R_1 = \dfrac{\beta - 2T_c}{\beta + 2T_c} \cdot R(T_c)$ | |
+| Termopar | $\Delta V_{\mathrm{AB}} = \alpha\, \Delta T$ | $\alpha$: coeficiente Seebeck |
+| LDR | $R = R_0 \left(\dfrac{L_0}{L}\right)^{\alpha}$ | $\alpha$ entre 0,5 y 0,8 |
+| Efecto Hall | $V_H = \dfrac{I B R_H}{d_p}$ | |
+| Faraday | $V = -N \dfrac{d\Phi}{dt}$ | |
+| Encoder | $R = \dfrac{\pi D}{2 a_r}$ | $D$: diámetro; $a_r$: ancho de ranura |
+| Ultrasonidos | $v_s = v_{s0} \sqrt{1 + \dfrac{T}{273}}$ | Distancia por eco: $d = \dfrac{v_s\, t}{2}$ |
+| Pirómetro | $P = \sigma T^4$ | Stefan-Boltzmann |
+
+</div>
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=11">T3, pp. 11-12, 24, 28, 37, 58, 89, 91, 102-106, 111 y 116</a>.</p>
 
 <h2 id="wheatstone">Puente de Wheatstone</h2>
 
-Con la numeración del boletín (R4 arriba a la izquierda, R1 abajo a la izquierda, R3 arriba a la derecha y R2 abajo a la derecha):
+Con la numeración del boletín ($R_4$ arriba a la izquierda, $R_1$ abajo a la izquierda, $R_3$ arriba a la derecha y $R_2$ abajo a la derecha):
 
-```text
-Vx = VA · R1 / (R1 + R4)        Vy = VA · R2 / (R2 + R3)
-Vo = Vx − Vy
-Equilibrio (Vo = 0):  R1 / R4 = R2 / R3
-```
+$$
+\begin{aligned}
+V_x &= V_A \frac{R_1}{R_1 + R_4} \\
+V_y &= V_A \frac{R_2}{R_2 + R_3}
+\end{aligned}
+$$
+
+$$
+V_o = V_x - V_y
+$$
+
+Equilibrio ($V_o = 0$):
+
+$$
+\frac{R_1}{R_4} = \frac{R_2}{R_3}
+$$
 
 **Receta.** Usa la condición de equilibrio para la resistencia desconocida. Después cambia el valor del sensor y calcula cada divisor por separado. No apliques fórmulas aproximadas si el enunciado da valores concretos.
 
 **Boletín de los temas 1-3, ejercicio 2.**
 
-1. `R1 = R4 · R2 / R3 = 80 · 100 / 350 = 22,86 Ω`.
-2. Con `R1' = 1,01 · 22,86 = 23,09 Ω`: `Vx = 5 · 23,09 / 103,09 = 1,1197 V` y `Vy = 5 · 100 / 450 = 1,1111 V`. **Vo ≈ 8,6 mV**.
+1. $R_1 = \dfrac{R_4 R_2}{R_3}$ $= \dfrac{80 \cdot 100}{350} = 22{,}86\ \Omega$.
+2. Con $R_1' = 1{,}01 \cdot 22{,}86 = 23{,}09\ \Omega$: $V_x = 5 \cdot \dfrac{23{,}09}{103{,}09} = 1{,}1197\ \mathrm{V}$ y $V_y = 5 \cdot \dfrac{100}{450} = 1{,}1111\ \mathrm{V}$. $\boldsymbol{V_o \approx 8{,}6\ \mathrm{mV}}$.
 3. Porque son milivoltios: un ADC de 12 bits y 3,3 V tiene un LSB de 0,8 mV y solo distinguiría unos pocos códigos. Al amplificar, la señal ocupa el margen del ADC y el ruido que se añada después pesa menos.
 
 [Practicar el ejercicio 2](/web-estudio/asignaturas/dispositivos/ejercicios/t3-ej2-puente-wheatstone/).
@@ -58,17 +77,19 @@ Equilibrio (Vo = 0):  R1 / R4 = R2 / R3
 
 <h2 id="problemas">Problemas tipo y cómo resolverlos</h2>
 
-**Galga en un puente en cuarto** (caso particular del puente anterior). Usa la fórmula exacta con ΔR/2 en el denominador. Ejemplo: Vs = 5 V, R = 120 Ω y ΔR = 0,24 Ω → `Vo = 1,25·0,24/120,12 = 2,50 mV`. Después se amplifica (tema 1). [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-galga-puente/).
+**Galga en un puente en cuarto** (caso particular del puente anterior). Usa la fórmula exacta con $\Delta R/2$ en el denominador. Ejemplo: $V_s = 5\ \mathrm{V}$, $R = 120\ \Omega$ y $\Delta R = 0{,}24\ \Omega$ → $V_o = 1{,}25 \cdot \dfrac{0{,}24}{120{,}12} = 2{,}50\ \mathrm{mV}$. Después se amplifica (tema 1). [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-galga-puente/).
 
-**RTD.** Despeja R o T de la recta. Pt100 con R0 = 100 Ω y, como dato del enunciado, α = 0,00385 /°C: a 50 °C, R = 119,25 Ω; con 138,5 Ω, T = 100 °C. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-rtd-pt100/).
+**RTD.** Despeja R o T de la recta. Pt100 con $R_0 = 100\ \Omega$ y, como dato del enunciado, $\alpha = 0{,}00385\ /^\circ\mathrm{C}$: a 50 °C, $R = 119{,}25\ \Omega$; con 138,5 Ω, $T = 100\ ^\circ\mathrm{C}$. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-rtd-pt100/).
 
-**Termistor.** Pasa siempre las temperaturas a kelvin. NTC de 10 kΩ a 25 °C con β = 3950: a 50 °C, R ≈ 3,59 kΩ. Para linealizar alrededor de Tc = 25 °C: `R1 = (3950 − 596,3)/(3950 + 596,3)·10 kΩ ≈ 7,38 kΩ`. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-termistor/).
+**Termistor.** Pasa siempre las temperaturas a kelvin. NTC de 10 kΩ a 25 °C con $\beta = 3950$: a 50 °C, $R \approx 3{,}59\ \mathrm{k\Omega}$. Para linealizar alrededor de $T_c = 25\ ^\circ\mathrm{C}$: $R_1 = \dfrac{3950 - 596{,}3}{3950 + 596{,}3} \cdot 10\ \mathrm{k\Omega}$ $\approx 7{,}38\ \mathrm{k\Omega}$. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-termistor/).
 
-**Ultrasonidos.** Corrige la velocidad con la temperatura y divide el tiempo de eco entre dos (ida y vuelta). El dato de vs0 lo da el enunciado; con 331 m/s a 0 °C, a 20 °C es 342,9 m/s y un eco de 5,83 ms corresponde a 1,00 m. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-ultrasonidos/).
+**Ultrasonidos.** Corrige la velocidad con la temperatura y divide el tiempo de eco entre dos (ida y vuelta). El dato de $v_{s0}$ lo da el enunciado; con 331 m/s a 0 °C, a 20 °C es 342,9 m/s y un eco de 5,83 ms corresponde a 1,00 m. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-ultrasonidos/).
 
-**Encoder y LDR.** Sustitución directa. Encoder de D = 50 mm y ranuras de 0,5 mm: `R = π·50/1 ≈ 157`. LDR con R0 = 10 kΩ a 10 lux, α = 0,7 y 100 lux: `R = 10k·0,1^0,7 ≈ 2,0 kΩ`. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-encoder-ldr/).
+**Encoder y LDR.** Sustitución directa. Encoder de $D = 50\ \mathrm{mm}$ y ranuras de 0,5 mm: $R = \pi \cdot 50 / 1 \approx 157$. LDR con $R_0 = 10\ \mathrm{k\Omega}$ a 10 lux, $\alpha = 0{,}7$ y 100 lux: $R = 10\ \mathrm{k\Omega} \cdot 0{,}1^{0{,}7} \approx 2{,}0\ \mathrm{k\Omega}$. [Practicar](/web-estudio/asignaturas/dispositivos/ejercicios/t3-encoder-ldr/).
 
 <h2 id="cuestiones">Cuestiones rápidas</h2>
+
+<div class="table-scroll">
 
 | Si te preguntan… | Responde con… |
 | --- | --- |
@@ -82,5 +103,7 @@ Equilibrio (Vo = 0):  R1 / R4 = R2 / R3
 | Fotodiodo | Se polariza en **inversa** para que la luz controle la corriente. |
 | Galgas | Se miden con puente de Wheatstone; les afecta la temperatura. |
 | Actuadores | Neumáticos (baratos y rápidos, ruidosos), hidráulicos (mucha carga, caros) y eléctricos. Relé: bobina que abre o cierra contactos. |
+
+</div>
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=13">T3, pp. 13-17, 36-43, 54, 74-95, 100, 117 y 123-131</a>.</p>
