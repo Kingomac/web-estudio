@@ -1,0 +1,65 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-certificado-sin-politica",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la práctica 1 registras la cosa, generas y activas su certificado y lo asocias a la cosa, pero **olvidas asociar una política**. El dispositivo tiene el endpoint correcto, su certificado, su clave privada y el certificado raíz. ¿Qué ocurre al ejecutar el ejemplo?",
+  "explanation": "El certificado autentica al dispositivo (TLS mutuo), pero la autorización depende de las políticas IoT asociadas a ese certificado. Una identidad solo puede ejecutar operaciones de AWS IoT si tiene una política que se lo permita. Sin política no hay nada permitido, así que se rechaza incluso `iot:Connect`.",
+  "options": [
+    {
+      "id": "sin-autorizacion",
+      "text": "La autenticación con el certificado funciona, pero la conexión MQTT se rechaza porque ninguna política permite `iot:Connect`",
+      "explanation": "Separa autenticación (certificado) de autorización (política)."
+    },
+    {
+      "id": "todo-ok",
+      "text": "Funciona: un certificado activo asociado a una cosa basta para conectar y publicar",
+      "explanation": "Sin una política que lo permita, la identidad no puede realizar ninguna operación."
+    },
+    {
+      "id": "tls",
+      "text": "Falla el TLS, porque el certificado raíz solo es válido si hay una política",
+      "explanation": "El certificado raíz sirve para validar el endpoint; no depende de las políticas."
+    },
+    {
+      "id": "solo-publicar",
+      "text": "Conecta, pero solo puede publicar en el tema con el nombre de la cosa",
+      "explanation": "No hay permisos por defecto; ese comportamiento requeriría una política como la del tema 4."
+    }
+  ],
+  "answer": "sin-autorizacion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        33,
+        35,
+        62
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.practica-1",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-1"
+    }
+  ]
+}

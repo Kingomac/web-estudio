@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-finops",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un director financiero se queja de que la factura cloud varía cada mes y nadie sabe prever cuánto se gastará. ¿Cómo clasifica el tema este problema y qué aproximación cita?",
+  "explanation": "Entre los retos del tema, dentro de las dificultades operacionales, aparece la falta de control y predictibilidad de los costes, con la necesidad de adoptar aproximaciones FinOps. No es lock-in, que trata de mover cargas entre proveedores, ni un aspecto legislativo.",
+  "options": [
+    {
+      "id": "finops",
+      "text": "Dificultad operacional; se aborda con aproximaciones FinOps",
+      "explanation": "Clasificación y respuesta del tema."
+    },
+    {
+      "id": "lockin",
+      "text": "Dependencia del proveedor; se aborda con la EU Data Act",
+      "explanation": "El lock-in trata de la dificultad para cambiar de proveedor, no de prever el gasto."
+    },
+    {
+      "id": "legislativo",
+      "text": "Aspecto legislativo; se aborda con un DPA",
+      "explanation": "El DPA trata del tratamiento de datos, no del control de costes."
+    },
+    {
+      "id": "beneficio",
+      "text": "No es un reto: el pago por uso garantiza un coste siempre menor",
+      "explanation": "El pago por uso es un beneficio, pero no garantiza un coste menor ni previsible."
+    }
+  ],
+  "answer": "finops",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        40,
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "beneficios-riesgos"
+    }
+  ]
+}

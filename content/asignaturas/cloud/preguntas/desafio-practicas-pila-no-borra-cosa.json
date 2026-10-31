@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-pila-no-borra-cosa",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Terminada una práctica, borras la pila de CloudFormation que creó la instancia VSCode. ¿Qué pasa con la cosa, el certificado y la política que creaste a mano en la consola de AWS IoT?",
+  "explanation": "CloudFormation crea y agrupa en una pila los recursos de su plantilla, como la instancia que emula el dispositivo. La cosa, el certificado y la política se crearon fuera de la pila, desde la consola de IoT. Por eso los enunciados piden eliminarlos por separado en la consola de AWS IoT, además de borrar la pila.",
+  "options": [
+    {
+      "id": "siguen",
+      "text": "Siguen existiendo: no pertenecen a la pila y hay que borrarlos aparte en la consola de IoT",
+      "explanation": "Es lo que reflejan las instrucciones de limpieza."
+    },
+    {
+      "id": "se-borran",
+      "text": "Se borran con la pila, porque estaban asociados a la instancia",
+      "explanation": "La pila solo elimina los recursos que ella creó."
+    },
+    {
+      "id": "certificado",
+      "text": "Se borra el certificado, pero la cosa permanece",
+      "explanation": "Ninguno de los dos pertenece a la pila."
+    },
+    {
+      "id": "error",
+      "text": "CloudFormation impide borrar la pila mientras exista la cosa",
+      "explanation": "La pila no tiene dependencias con recursos creados a mano fuera de ella."
+    }
+  ],
+  "answer": "siguen",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-1",
+      "pdfPages": [
+        6,
+        7
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-1"
+    }
+  ]
+}

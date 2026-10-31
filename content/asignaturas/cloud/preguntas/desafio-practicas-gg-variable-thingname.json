@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-variable-thingname",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "El script de un componente Greengrass necesita el nombre de la cosa del dispositivo core, y lo recibe como argumento en `Lifecycle`. ¿Qué escribes en la receta?",
+  "explanation": "Las recetas admiten variables con la sintaxis `{variable}`; `{iot:thingName}` es el nombre de la cosa asociada al dispositivo. `${iot:Connection.Thing.ThingName}` es una variable de política IoT y `${topic()}` una plantilla de sustitución de reglas: pertenecen a otros formatos.",
+  "options": [
+    {
+      "id": "receta",
+      "text": "`{iot:thingName}`",
+      "explanation": "Es la variable de receta para el nombre de la cosa."
+    },
+    {
+      "id": "politica",
+      "text": "`${iot:Connection.Thing.ThingName}`",
+      "explanation": "Es una variable de política IoT y se evalúa al autorizar, no en la receta."
+    },
+    {
+      "id": "regla",
+      "text": "`${topic(2)}`",
+      "explanation": "Es una expresión de las reglas de IoT Core."
+    },
+    {
+      "id": "configuracion",
+      "text": "`{configuration:/thingName}`",
+      "explanation": "Leería una clave `thingName` de la configuración del componente, que no existe salvo que la definas."
+    }
+  ],
+  "answer": "receta",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        15,
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Referencia de recetas",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

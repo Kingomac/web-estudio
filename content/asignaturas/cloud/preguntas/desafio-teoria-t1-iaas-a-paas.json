@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-iaas-a-paas",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un equipo migra su aplicación de máquinas virtuales IaaS a una plataforma PaaS. ¿Qué describe con precisión el cambio en lo que **controla** el consumidor?",
+  "explanation": "En IaaS el consumidor no controla la infraestructura subyacente, pero sí los SO, el almacenamiento, la red y las aplicaciones. En PaaS tampoco controla el entorno de despliegue: solo sus aplicaciones y, posiblemente, la configuración de ese entorno. Al pasar a PaaS pierde el control del SO, el almacenamiento y la red, y conserva las aplicaciones.",
+  "options": [
+    {
+      "id": "pierde-so",
+      "text": "Deja de controlar el SO, el almacenamiento y la red; conserva sus aplicaciones y, posiblemente, la configuración del entorno de despliegue",
+      "explanation": "Coincide con las definiciones de IaaS y PaaS del tema."
+    },
+    {
+      "id": "pierde-apps",
+      "text": "Pierde el control de sus aplicaciones, que pasan a ser del proveedor, y solo conserva su configuración personal",
+      "explanation": "Eso describe SaaS, donde el consumidor usa las aplicaciones del proveedor."
+    },
+    {
+      "id": "gana-hw",
+      "text": "Gana control sobre el hardware, porque la plataforma se ejecuta en servidores dedicados al cliente",
+      "explanation": "En ninguno de los modelos de servicio controla el consumidor la infraestructura subyacente."
+    },
+    {
+      "id": "igual",
+      "text": "Nada: en ambos controla el SO y las aplicaciones; solo cambia la facturación",
+      "explanation": "En PaaS el consumidor ya no controla el SO: es parte del entorno que gestiona el proveedor."
+    }
+  ],
+  "answer": "pierde-so",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        30,
+        31,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "modelos-servicio"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-cloudlet-escenario",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un museo instala, junto a sus puntos de acceso WiFi, un pequeño nodo de 1-3 servidores de confianza. Las gafas de realidad aumentada de los visitantes le descargan cómputo en VM, y todo el estado persistente sigue en la nube. ¿Qué paradigma es y cuál es su limitación típica?",
+  "explanation": "Es una cloudlet: un centro de datos pequeño y de confianza, situado a 1-2 saltos inalámbricos y colocado con los puntos de acceso WiFi. Ejecuta VM con estado suave (soft state), mientras el estado persistente reside en la nube. Entre sus limitaciones está una cobertura restringida al alcance del WiFi. MEC, en cambio, se sitúa en la red de acceso radio del operador (estaciones base 4G/5G) y expone APIs estandarizadas por ETSI.",
+  "options": [
+    {
+      "id": "cloudlet",
+      "text": "Cloudlet; cobertura limitada al alcance del WiFi",
+      "explanation": "Coincide en escala, ubicación, uso de VM, soft state y limitación."
+    },
+    {
+      "id": "mec",
+      "text": "MEC; depende de la estación base 5G del operador",
+      "explanation": "El caso no implica al operador móvil ni a la red de acceso radio: el nodo está junto al WiFi del museo."
+    },
+    {
+      "id": "fog",
+      "text": "Niebla; requiere una jerarquía de varios niveles hasta la nube",
+      "explanation": "La niebla abarca toda la ruta con varios niveles. El caso describe un único nodo de proximidad con soft state."
+    },
+    {
+      "id": "local-zone",
+      "text": "Zona local de AWS; los precios difieren de los de la región",
+      "explanation": "Una zona local es infraestructura de AWS cerca de ciudades, no un nodo de 1-3 servidores dentro del museo."
+    }
+  ],
+  "answer": "cloudlet",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        55,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

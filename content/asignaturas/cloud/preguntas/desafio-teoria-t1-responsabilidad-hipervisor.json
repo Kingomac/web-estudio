@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-responsabilidad-hipervisor",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En cuatro máquinas virtuales EC2 (IaaS) de clientes distintos se producen cuatro incidentes. Según el reparto de responsabilidad compartida del tema, ¿cuál es responsabilidad del **proveedor**?",
+  "explanation": "En IaaS el consumidor no controla la infraestructura subyacente, pero sí el SO, el almacenamiento, la red y sus aplicaciones. El proveedor protege los servicios que presta, y entre los retos de seguridad que asume el tema están la seguridad física y las garantías de aislamiento del entorno de virtualización. En el ejemplo de una VM en AWS, el cliente se encarga de IAM y sus credenciales, de los parches del SO, de las aplicaciones, del grupo de seguridad y del cifrado.",
+  "options": [
+    {
+      "id": "aislamiento",
+      "text": "Un fallo de aislamiento del hipervisor permite que la VM de otro inquilino lea la memoria de la víctima",
+      "explanation": "El hipervisor forma parte de la infraestructura subyacente, que el cliente de IaaS no controla. Garantizar el aislamiento del entorno de virtualización corresponde al proveedor."
+    },
+    {
+      "id": "parches",
+      "text": "Se explota una vulnerabilidad conocida del SO invitado porque no se aplicaron los parches publicados",
+      "explanation": "En IaaS el SO de la VM lo administra el cliente, incluidos sus parches y actualizaciones."
+    },
+    {
+      "id": "grupo-seguridad",
+      "text": "El grupo de seguridad de la VM deja el puerto SSH abierto a cualquier dirección de Internet",
+      "explanation": "Configurar el cortafuegos (grupo de seguridad) de cada VM corresponde al cliente, aunque la herramienta la ofrezca el proveedor."
+    },
+    {
+      "id": "credenciales",
+      "text": "Un desarrollador publica en un repositorio público las claves de acceso IAM de la cuenta",
+      "explanation": "Gestionar IAM y proteger las credenciales es responsabilidad del cliente."
+    }
+  ],
+  "answer": "aislamiento",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        30,
+        41,
+        46,
+        47
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "beneficios-riesgos"
+    }
+  ]
+}

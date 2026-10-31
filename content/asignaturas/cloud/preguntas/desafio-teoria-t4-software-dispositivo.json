@@ -1,0 +1,54 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-software-dispositivo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una empresa tiene tres equipos: (1) un microcontrolador de bajo consumo, (2) una pasarela Linux potente que debe ejecutar componentes y modelos ML para otros dispositivos y (3) un equipo Linux que solo necesita túneles, trabajos y sombras **sin escribir código**. ¿Qué software de AWS IoT corresponde a cada uno?",
+  "explanation": "FreeRTOS es un SO en tiempo real para microcontroladores y dispositivos pequeños de baja potencia. Greengrass está pensado para pasarelas de borde con más procesamiento y memoria, que despliegan componentes y actúan como pasarela. Device Client es un cliente de referencia para Linux con funciones ya implementadas (túnel SSH, trabajos, sombras...). El Device SDK, en cambio, son librerías para programar tu propia aplicación.",
+  "options": [
+    {
+      "id": "correcto",
+      "text": "(1) FreeRTOS, (2) Greengrass, (3) Device Client",
+      "explanation": "Cada producto encaja con su tipo de dispositivo."
+    },
+    {
+      "id": "sdk",
+      "text": "(1) FreeRTOS, (2) Greengrass, (3) Device SDK",
+      "explanation": "El Device SDK obliga a programar la aplicación; el Device Client ya trae esas funciones implementadas."
+    },
+    {
+      "id": "gg-micro",
+      "text": "(1) Greengrass, (2) Device Client, (3) FreeRTOS",
+      "explanation": "Greengrass es para pasarelas con capacidad, y FreeRTOS no es un cliente Linux."
+    },
+    {
+      "id": "tester",
+      "text": "(1) Device Tester, (2) Greengrass, (3) Device Client",
+      "explanation": "Device Tester automatiza pruebas de dispositivos con FreeRTOS o Greengrass; no es su SO."
+    }
+  ],
+  "answer": "correcto",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "greengrass"
+    }
+  ]
+}

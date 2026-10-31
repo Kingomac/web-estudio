@@ -1,0 +1,96 @@
+{
+  "kind": "test",
+  "id": "cloud.tests.desafio-practicas",
+  "subjectId": "cloud",
+  "slug": "desafio-practicas",
+  "title": "Cloud Computing · Desafío de prácticas",
+  "description": "50 preguntas inéditas y difíciles de respuesta única: diagnósticos y lecturas de configuraciones de las prácticas que no aparecen tal cual en los tutoriales.",
+  "scope": "Prácticas 1-4 y sus actividades adicionales, sin código de scripts: políticas, temas MQTT, LWT, reglas, sombras, trabajos, túnel seguro y Greengrass.",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "order": 8,
+  "groups": [
+    {
+      "id": "p1",
+      "title": "Práctica 1 · Identidad, políticas y conexión",
+      "context": "Respuesta única, sin consultar materiales. Varias preguntas describen un fallo: busca la causa que explica todos los síntomas, no solo uno.",
+      "questionIds": [
+        "cloud.preguntas.desafio-practicas-politica-receive-parcial",
+        "cloud.preguntas.desafio-practicas-certificado-sin-politica",
+        "cloud.preguntas.desafio-practicas-client-id-compartido",
+        "cloud.preguntas.desafio-practicas-politica-version-activa",
+        "cloud.preguntas.desafio-practicas-mqtt5-sin-receive",
+        "cloud.preguntas.desafio-practicas-pila-no-borra-cosa"
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Práctica 2 · MQTT, reglas y sombras",
+      "context": "Respuesta única, sin consultar materiales. Varias preguntas describen un fallo: busca la causa que explica todos los síntomas, no solo uno.",
+      "questionIds": [
+        "cloud.preguntas.desafio-practicas-filtro-dos-niveles",
+        "cloud.preguntas.desafio-practicas-lwt-desconexion-ordenada",
+        "cloud.preguntas.desafio-practicas-sombra-desired-revertido",
+        "cloud.preguntas.desafio-practicas-dynamodb-nivel-tema",
+        "cloud.preguntas.desafio-practicas-sns-sin-confirmar",
+        "cloud.preguntas.desafio-practicas-tema-mayusculas-barra",
+        "cloud.preguntas.desafio-practicas-sns-salida-json",
+        "cloud.preguntas.desafio-practicas-ddb-tipo-numero",
+        "cloud.preguntas.desafio-practicas-ddb-rol-accion-error",
+        "cloud.preguntas.desafio-practicas-sombra-documents",
+        "cloud.preguntas.desafio-practicas-delta-forma",
+        "cloud.preguntas.desafio-practicas-reported-repetido",
+        "cloud.preguntas.desafio-practicas-sombra-actualizacion-parcial",
+        "cloud.preguntas.desafio-practicas-keepalive-lwt",
+        "cloud.preguntas.desafio-practicas-qos2",
+        "cloud.preguntas.desafio-practicas-basic-ingest-politica",
+        "cloud.preguntas.desafio-practicas-basic-ingest-topic"
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Práctica 3 · Device Client, trabajos, túnel y auditoría",
+      "context": "Respuesta única, sin consultar materiales. Varias preguntas describen un fallo: busca la causa que explica todos los síntomas, no solo uno.",
+      "questionIds": [
+        "cloud.preguntas.desafio-practicas-jobs-dispositivo-panel",
+        "cloud.preguntas.desafio-practicas-tunel-destino-desconectado",
+        "cloud.preguntas.desafio-practicas-dc-consola-a-dispositivo",
+        "cloud.preguntas.desafio-practicas-dc-config-reinicio",
+        "cloud.preguntas.desafio-practicas-jobs-runasuser",
+        "cloud.preguntas.desafio-practicas-jobs-plantilla-sin-trabajo",
+        "cloud.preguntas.desafio-practicas-jobs-manejador-ausente",
+        "cloud.preguntas.desafio-practicas-sensor-heartbeat",
+        "cloud.preguntas.desafio-practicas-auditoria-nueva",
+        "cloud.preguntas.desafio-practicas-endpoint-ats",
+        "cloud.preguntas.desafio-practicas-eventos-registro",
+        "cloud.preguntas.desafio-practicas-tunel-proxy-origen",
+        "cloud.preguntas.desafio-practicas-jobs-update-accepted-privado",
+        "cloud.preguntas.desafio-practicas-config-no-autoriza"
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Práctica 4 · Greengrass",
+      "context": "Respuesta única, sin consultar materiales. Varias preguntas describen un fallo: busca la causa que explica todos los síntomas, no solo uno.",
+      "questionIds": [
+        "cloud.preguntas.desafio-practicas-gg-tes-dependencia",
+        "cloud.preguntas.desafio-practicas-gg-peticion-desde-nube",
+        "cloud.preguntas.desafio-practicas-gg-variable-thingname",
+        "cloud.preguntas.desafio-practicas-gg-version-unica",
+        "cloud.preguntas.desafio-practicas-gg-artefacto-modificado",
+        "cloud.preguntas.desafio-practicas-gg-ipc-sin-autorizacion",
+        "cloud.preguntas.desafio-practicas-gg-log-nucleo",
+        "cloud.preguntas.desafio-practicas-gg-runtime-roto",
+        "cloud.preguntas.desafio-practicas-gg-dependencia-hard",
+        "cloud.preguntas.desafio-practicas-gg-nuevo-nucleo-grupo",
+        "cloud.preguntas.desafio-practicas-gg-manifiestos-varios",
+        "cloud.preguntas.desafio-practicas-gg-bridge-region",
+        "cloud.preguntas.desafio-practicas-gg-rol-s3-artefactos"
+      ]
+    }
+  ]
+}

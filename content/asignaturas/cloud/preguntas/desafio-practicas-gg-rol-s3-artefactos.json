@@ -1,0 +1,65 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-rol-s3-artefactos",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Fuera del laboratorio, publicas un componente con sus artefactos en un bucket S3 **nuevo**. Un despliegue en la nube falla al descargar los artefactos, aunque el núcleo está conectado a IoT Core. ¿Qué identidad necesita el permiso?",
+  "explanation": "El núcleo descarga los artefactos con las credenciales temporales del rol de intercambio de tokens, obtenidas del proveedor de credenciales de AWS IoT a través del alias del rol. Esos roles no tienen acceso a los buckets S3 por defecto: hay que añadir permisos de lectura sobre el bucket. En el laboratorio, `LabRole` ya los tenía. La política IoT del certificado solo autoriza MQTT.",
+  "options": [
+    {
+      "id": "tes",
+      "text": "El rol de intercambio de tokens del núcleo (en el laboratorio, `LabRole` vía `LabRoleAlias`) necesita lectura sobre ese bucket",
+      "explanation": "Es el rol que usa el núcleo para acceder a servicios AWS como S3."
+    },
+    {
+      "id": "politica-iot",
+      "text": "La política IoT del certificado del núcleo necesita `s3:GetObject`",
+      "explanation": "La política IoT autoriza el plano de datos de IoT Core, no S3."
+    },
+    {
+      "id": "accesscontrol",
+      "text": "El `accessControl` de la receta debe incluir el bucket",
+      "explanation": "`accessControl` autoriza operaciones IPC locales."
+    },
+    {
+      "id": "publico",
+      "text": "El bucket debe ser público",
+      "explanation": "No hace falta: basta con dar permisos al rol del núcleo."
+    }
+  ],
+  "answer": "tes",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        16,
+        34
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        8,
+        9
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Publicar componentes",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/publish-components.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

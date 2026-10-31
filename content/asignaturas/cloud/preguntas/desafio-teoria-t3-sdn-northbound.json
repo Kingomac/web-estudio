@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-sdn-northbound",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En una red SDN, una aplicación de monitorización consulta al controlador el estado de la red, y el controlador instala reglas en la tabla de flujos de un switch. ¿Qué interfaces intervienen?",
+  "explanation": "La Northbound API comunica el controlador con las aplicaciones de gestión (suele ser REST/RESTCONF o gRPC). La Southbound API lo comunica con los dispositivos de red: OpenFlow es el protocolo de referencia para programar tablas de flujo, y NETCONF la alternativa para configuración.",
+  "options": [
+    {
+      "id": "north-south",
+      "text": "Aplicación-controlador: Northbound (p. ej., REST); controlador-switch: Southbound (p. ej., OpenFlow)",
+      "explanation": "Cada interfaz conecta las capas correctas."
+    },
+    {
+      "id": "invertido",
+      "text": "Aplicación-controlador: Southbound (OpenFlow); controlador-switch: Northbound (REST)",
+      "explanation": "Invierte las interfaces: OpenFlow programa los dispositivos y REST atiende a las aplicaciones."
+    },
+    {
+      "id": "openflow-ambos",
+      "text": "OpenFlow en los dos tramos",
+      "explanation": "OpenFlow programa tablas de flujo en los dispositivos; las aplicaciones usan la Northbound API."
+    },
+    {
+      "id": "directo",
+      "text": "La aplicación programa directamente el switch, sin pasar por el controlador",
+      "explanation": "En SDN el control está centralizado en el controlador."
+    }
+  ],
+  "answer": "north-south",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        30,
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sdn-nfv"
+    }
+  ]
+}

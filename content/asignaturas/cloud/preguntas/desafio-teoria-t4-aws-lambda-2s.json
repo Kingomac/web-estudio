@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-aws-lambda-2s",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una regla enriquece cada mensaje llamando en el `SELECT` a `aws_lambda(...)` con una función que tarda unos 5 segundos. ¿Qué problema anticipa el tema?",
+  "explanation": "El tema muestra la función SQL `aws_lambda()`, que invoca una Lambda dentro del `SELECT` con un tiempo máximo de 2 s. Una función que tarda 5 s excede ese límite. Para lanzar una Lambda con los datos del mensaje sin esperar su resultado en la consulta existe la acción Lambda de la regla.",
+  "options": [
+    {
+      "id": "dos-segundos",
+      "text": "La invocación desde el SQL tiene un máximo de 2 s; para trabajo largo encaja mejor la acción Lambda de la regla",
+      "explanation": "Respeta el límite de la función SQL y propone la vía alternativa."
+    },
+    {
+      "id": "sin-limite",
+      "text": "Ninguno: la regla espera lo que tarde la función",
+      "explanation": "El tema indica expresamente un tiempo máximo de 2 s."
+    },
+    {
+      "id": "accion-error",
+      "text": "La acción de error reintentará hasta que la Lambda responda",
+      "explanation": "La acción de error trata fallos al ejecutar acciones; no amplía el tiempo de la función SQL."
+    },
+    {
+      "id": "prohibido",
+      "text": "No se pueden invocar funciones Lambda desde reglas",
+      "explanation": "Se pueden invocar tanto en el SQL como mediante una acción."
+    }
+  ],
+  "answer": "dos-segundos",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        47,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

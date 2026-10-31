@@ -1,0 +1,63 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-politica-version-activa",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Editas en la consola la política de tu dispositivo para añadir `iot:Subscribe` y guardas una **nueva versión**, pero sin marcarla como activa. El dispositivo sigue sin poder suscribirse. ¿Por qué?",
+  "explanation": "Las políticas IoT guardan varias versiones y solo una es la activa (predeterminada), que es la que se evalúa. En la práctica 2 se pide comprobar «la versión correcta activada», y en la auditoría de la práctica 3 se marca «Establecer esta versión como versión activa» antes de guardar. Una versión nueva sin activar no cambia los permisos.",
+  "options": [
+    {
+      "id": "activa",
+      "text": "Solo se aplica la versión activa de la política; la nueva no se ha establecido como tal",
+      "explanation": "Es el paso que falta."
+    },
+    {
+      "id": "version-json",
+      "text": "Hay que cambiar el campo `Version` del JSON a la fecha de hoy",
+      "explanation": "`Version` es la versión del lenguaje de políticas (2012-10-17), no la versión guardada."
+    },
+    {
+      "id": "reconectar",
+      "text": "Las políticas solo se aplican a certificados nuevos",
+      "explanation": "La política está asociada al certificado existente; lo que no cambia es la versión activa."
+    },
+    {
+      "id": "sombra",
+      "text": "La suscripción se gestiona desde la sombra, no desde la política",
+      "explanation": "La sombra guarda estado; los permisos MQTT están en la política."
+    }
+  ],
+  "answer": "activa",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-2",
+      "pdfPages": [
+        6
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        90
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · AWS IoT Device Defender",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

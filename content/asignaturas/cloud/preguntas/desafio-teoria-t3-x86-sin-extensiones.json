@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-x86-sin-extensiones",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Hay que virtualizar un Windows **sin modificar** en un servidor x86 antiguo cuya CPU no tiene Intel VT-x ni AMD-V. ¿Qué técnica del tema lo permite?",
+  "explanation": "Sin extensiones de hardware, las instrucciones problemáticas de x86 deben tratarse por software. La virtualización completa usa traducción binaria para detectarlas y sustituirlas, y no requiere modificar el SO invitado (ejemplo: VMware ESX). La paravirtualización exige modificar y recompilar el SO, lo que no es posible con Windows. HVM y KVM dependen de las extensiones, y los contenedores comparten el kernel del anfitrión.",
+  "options": [
+    {
+      "id": "completa",
+      "text": "Virtualización completa con traducción binaria",
+      "explanation": "Trata las instrucciones problemáticas por software y no requiere tocar el SO invitado, que son las dos condiciones del caso."
+    },
+    {
+      "id": "paravirtualizacion",
+      "text": "Paravirtualización",
+      "explanation": "No necesita las extensiones, pero exige modificar y recompilar el código fuente del SO invitado. El tema cita precisamente Windows como ejemplo de su baja portabilidad."
+    },
+    {
+      "id": "hvm",
+      "text": "Virtualización asistida por hardware (HVM)",
+      "explanation": "HVM consiste en aprovechar Intel VT-x o AMD-V, que esta CPU no tiene."
+    },
+    {
+      "id": "kvm",
+      "text": "KVM con QEMU",
+      "explanation": "KVM requiere un procesador con extensiones de virtualización para acelerar la emulación."
+    },
+    {
+      "id": "contenedores",
+      "text": "Contenedores LXC sobre un anfitrión Linux",
+      "explanation": "Comparten el kernel del anfitrión, así que no pueden ejecutar un SO diferente como Windows."
+    }
+  ],
+  "answer": "completa",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        10,
+        11,
+        13,
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "x86"
+    }
+  ]
+}

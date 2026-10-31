@@ -1,0 +1,54 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-lwt-desconexion-ordenada",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la práctica 2, el aviso por correo depende del LWT: desconexión → mensaje LWT → regla → SNS. Un técnico apaga el camión de forma ordenada: el cliente envía `DISCONNECT` y cierra la conexión. No llega ningún correo. ¿Qué ha pasado?",
+  "explanation": "El broker publica el LWT cuando detecta una desconexión inesperada del cliente, para avisar a los suscriptores de un apagado imprevisto. Si el cliente se despide con `DISCONNECT`, la desconexión es normal y el broker descarta el mensaje de última voluntad. Que no llegue el correo es el comportamiento correcto.",
+  "options": [
+    {
+      "id": "esperado",
+      "text": "Es lo esperado: el broker solo publica el LWT ante una desconexión inesperada, y con un `DISCONNECT` ordenado lo descarta",
+      "explanation": "El LWT avisa de caídas imprevistas, no de apagados normales."
+    },
+    {
+      "id": "keep-alive",
+      "text": "El correo llegará más tarde, cuando venza el periodo Keep Alive del cliente",
+      "explanation": "Keep Alive sirve para detectar conexiones caídas. Aquí la conexión se cerró de forma ordenada y no hay nada que detectar."
+    },
+    {
+      "id": "dispositivo",
+      "text": "El dispositivo debería haber publicado el LWT justo antes de enviar `DISCONNECT`",
+      "explanation": "El LWT lo configura el cliente al conectarse, pero lo publica el broker. Un mensaje enviado por el propio dispositivo sería una publicación normal."
+    },
+    {
+      "id": "reservado",
+      "text": "La regla no se activa porque los LWT se publican en temas reservados `$aws/...`",
+      "explanation": "El tema del LWT lo elige el cliente al configurarlo, y la regla de la práctica lo procesa cuando se publica."
+    }
+  ],
+  "answer": "esperado",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Conexiones de dispositivos",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/08_device_connections/"
+    },
+    {
+      "title": "AWS IoT Core · MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "conexiones"
+    }
+  ]
+}

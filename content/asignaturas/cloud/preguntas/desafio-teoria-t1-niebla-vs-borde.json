@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-niebla-vs-borde",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Según el tema, ¿qué distingue a la computación en la niebla de la computación en el borde?",
+  "explanation": "El tema subraya que, a diferencia del borde, que se centra en el último salto, la niebla abarca toda la ruta del dispositivo a la nube mediante múltiples capas jerárquicas (nodos de acceso, agregación y red). Integra recursos heterogéneos en distintos niveles de proximidad. Además, comparte con la nube los modelos de servicio y de despliegue.",
+  "options": [
+    {
+      "id": "ruta",
+      "text": "La niebla abarca toda la ruta dispositivo→nube con varias capas jerárquicas; el borde se centra en el último salto",
+      "explanation": "Es la distinción explícita del tema."
+    },
+    {
+      "id": "sin-nube",
+      "text": "La niebla sustituye a la nube y nunca envía datos a ella",
+      "explanation": "La niebla se sitúa entre los dispositivos y la nube; el modelo «sin nube» es solo uno de los posibles despliegues."
+    },
+    {
+      "id": "modelos",
+      "text": "La niebla no usa los modelos IaaS, PaaS y SaaS",
+      "explanation": "Según OpenFog, los modelos de servicio y despliegue son los mismos que en la nube."
+    },
+    {
+      "id": "dispositivo",
+      "text": "La niebla se ejecuta solo en el propio dispositivo IoT",
+      "explanation": "Sus nodos pueden ser switches, routers, servidores o cloudlets entre los dispositivos y la nube."
+    }
+  ],
+  "answer": "ruta",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        58,
+        59,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

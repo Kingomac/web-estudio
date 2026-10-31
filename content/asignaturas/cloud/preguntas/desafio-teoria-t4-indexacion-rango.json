@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-indexacion-rango",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Con la indexación de flotas quieres las cosas cuya sombra comunica una batería **mayor que 70 y como máximo 100**. ¿Qué consulta es correcta?",
+  "explanation": "La sintaxis, basada en la de Lucene, usa corchetes para incluir el extremo y llaves para excluirlo. El tema da `attributes.temp:{25 TO 30]` para el intervalo (25, 30]. Para (70, 100] sobre la sombra: `shadow.reported.battery:{70 TO 100]`.",
+  "options": [
+    {
+      "id": "correcta",
+      "text": "`shadow.reported.battery:{70 TO 100]`",
+      "explanation": "Llave a la izquierda (excluye 70) y corchete a la derecha (incluye 100)."
+    },
+    {
+      "id": "cerrado",
+      "text": "`shadow.reported.battery:[70 TO 100]`",
+      "explanation": "El corchete izquierdo incluiría 70."
+    },
+    {
+      "id": "abierto",
+      "text": "`shadow.reported.battery:{70 TO 100}`",
+      "explanation": "La llave derecha excluiría 100."
+    },
+    {
+      "id": "atributo",
+      "text": "`attributes.battery:{70 TO 100]`",
+      "explanation": "Consulta un atributo del registro, no el valor que comunica la sombra."
+    }
+  ],
+  "answer": "correcta",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        78,
+        79
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "gestion-remota"
+    }
+  ]
+}

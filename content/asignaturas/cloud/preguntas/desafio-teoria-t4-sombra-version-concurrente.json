@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-sombra-version-concurrente",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "La sombra de `camion01` está en `version` 12, con `reported` `{\"door\":\"on\"}` y sin `desired`. Dos aplicaciones la leen. Después llegan a `/update`, en este orden:\n1. Aplicación A: `{\"state\":{\"desired\":{\"door\":\"off\"}},\"version\":12}`\n2. Aplicación B: `{\"state\":{\"desired\":{\"door\":\"on\"}},\"version\":12}`\n3. Dispositivo: `{\"state\":{\"reported\":{\"door\":\"off\"}}}`\n¿Cómo queda la sombra?",
+  "explanation": "Cada actualización aceptada incrementa la versión. La de A coincide con la versión actual (12): se acepta y la sombra pasa a 13. B envía la versión 12, ya antigua: recibe un error y debe sincronizarse. El dispositivo no incluye `version`, así que no se aplica el control de versiones: se acepta y la sombra pasa a 14. Al final, `desired` y `reported` valen `door: off`, de modo que no hay delta.",
+  "options": [
+    {
+      "id": "v14",
+      "text": "B se rechaza; las otras dos se aceptan. Versión 14, `desired` y `reported` con `door: off` y sin delta",
+      "explanation": "Aplica las tres reglas: versión obsoleta rechazada, control ignorado si falta `version` e incremento en cada actualización aceptada."
+    },
+    {
+      "id": "gana-b",
+      "text": "Las tres se aceptan y gana la última orden de las aplicaciones: versión 15, `desired` `door: on`, `reported` `door: off` y delta `{\"door\":\"on\"}`",
+      "explanation": "Ignora el control de versiones: B usó una versión antigua y se rechaza."
+    },
+    {
+      "id": "rechaza-dispositivo",
+      "text": "B y el dispositivo se rechazan, este último por no incluir `version`. Versión 13 y delta `{\"door\":\"off\"}`",
+      "explanation": "Sin la propiedad `version` no se aplica el control de versiones, así que la actualización se acepta."
+    },
+    {
+      "id": "gana-ultima",
+      "text": "Se acepta B por ser la más reciente y se descarta A. Versión 13, `desired` `door: on` y delta pendiente tras el dispositivo",
+      "explanation": "La versión no se decide por quién llega último: A ya consumió la versión 12, y B, al llegar después con 12, es la obsoleta."
+    }
+  ],
+  "answer": "v14",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        59,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sombras"
+    }
+  ]
+}

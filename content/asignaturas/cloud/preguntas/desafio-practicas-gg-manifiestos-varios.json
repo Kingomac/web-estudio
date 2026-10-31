@@ -1,0 +1,59 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-manifiestos-varios",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una receta tiene dos manifiestos: el primero con `{\"os\": \"linux\", \"architecture\": \"amd64\"}` y el segundo con `{\"os\": \"linux\", \"architecture\": \"aarch64\"}`, cada uno con sus artefactos. Se despliega en una Raspberry Pi de 64 bits (`aarch64`). ¿Qué ocurre?",
+  "explanation": "El soporte multiplataforma se basa en manifiestos con definiciones específicas para cada plataforma. El núcleo usa el primer manifiesto cuyos requisitos de plataforma cumple, aquí el de `aarch64`, con su ciclo de vida y sus artefactos. Solo si ningún manifiesto coincidiera, el componente no se instalaría y el despliegue fallaría.",
+  "options": [
+    {
+      "id": "aarch64",
+      "text": "Se usa el manifiesto `aarch64`, con su ciclo de vida y sus artefactos",
+      "explanation": "Es el primero que coincide con la plataforma del núcleo."
+    },
+    {
+      "id": "primero",
+      "text": "Se usa siempre el primer manifiesto, por orden",
+      "explanation": "Se elige el primero que coincide con la plataforma, no el primero de la lista."
+    },
+    {
+      "id": "falla",
+      "text": "Falla, porque una receta solo admite un manifiesto",
+      "explanation": "Las recetas pueden tener varios manifiestos, uno por plataforma."
+    },
+    {
+      "id": "ambos",
+      "text": "Se instalan los artefactos de los dos manifiestos",
+      "explanation": "Se aplica un único manifiesto."
+    }
+  ],
+  "answer": "aarch64",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        11,
+        15,
+        17
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Referencia de recetas",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

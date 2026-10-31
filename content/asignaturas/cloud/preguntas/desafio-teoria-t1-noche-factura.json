@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-noche-factura",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Como en el ejemplo de Forbes.com, una empresa aloja su web en un proveedor cloud, arranca servidores por la mañana, los libera por la noche y su factura nocturna cae casi a cero. ¿Qué pareja de características esenciales del NIST explica **las dos cosas**: poder soltar los servidores y dejar de pagarlos?",
+  "explanation": "Liberar capacidad cuando baja la demanda es la elasticidad rápida: las capacidades se aprovisionan y se liberan rápida y elásticamente. Que eso se traduzca en pagar menos exige el servicio medido: el uso se mide y se cobra por uso (pay-per-use). Sin medición, liberar servidores no cambiaría la factura; sin elasticidad, no se podrían liberar.",
+  "options": [
+    {
+      "id": "elasticidad-medido",
+      "text": "Elasticidad rápida y servicio medido",
+      "explanation": "Una explica que se puedan liberar los recursos y la otra que el pago siga al consumo."
+    },
+    {
+      "id": "autoservicio-red",
+      "text": "Autoservicio bajo demanda y fácil acceso por red",
+      "explanation": "Explican que se pueda pedir capacidad sin intermediarios y acceder desde cualquier cliente, no que la factura dependa del uso."
+    },
+    {
+      "id": "agrupacion-red",
+      "text": "Agrupación de recursos y fácil acceso por red",
+      "explanation": "La agrupación explica que el proveedor reutilice esos servidores para otros clientes, pero no por qué tu factura baja."
+    },
+    {
+      "id": "autoservicio-agrupacion",
+      "text": "Autoservicio bajo demanda y agrupación de recursos",
+      "explanation": "Ninguna de las dos trata de medir y cobrar el consumo, que es lo que hace bajar la factura."
+    }
+  ],
+  "answer": "elasticidad-medido",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        12,
+        27,
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "nist"
+    }
+  ]
+}

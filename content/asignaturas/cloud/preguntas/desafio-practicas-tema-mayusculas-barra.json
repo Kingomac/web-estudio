@@ -1,0 +1,54 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-tema-mayusculas-barra",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación se suscribe a `truck/freezer`. Tres dispositivos publican en `Truck/freezer`, `/truck/freezer` y `truck/freezer`. ¿Cuántos mensajes recibe?",
+  "explanation": "Los nombres de temas distinguen mayúsculas, y la barra inicial crea un primer nivel vacío. `Truck/freezer` y `/truck/freezer` son temas diferentes de `truck/freezer`, así que solo coincide el tercero.",
+  "options": [
+    {
+      "id": "uno",
+      "text": "Uno",
+      "explanation": "Solo `truck/freezer` coincide exactamente con el filtro."
+    },
+    {
+      "id": "tres",
+      "text": "Tres, porque MQTT normaliza mayúsculas y barras",
+      "explanation": "MQTT no normaliza nada: distingue mayúsculas y la barra inicial cuenta como nivel."
+    },
+    {
+      "id": "dos-barra",
+      "text": "Dos: la barra inicial se ignora",
+      "explanation": "`/truck/freezer` tiene un primer nivel vacío; es otro tema."
+    },
+    {
+      "id": "dos-mayus",
+      "text": "Dos: las mayúsculas no importan",
+      "explanation": "Los temas son sensibles a mayúsculas."
+    }
+  ],
+  "answer": "uno",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Uso de temas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    },
+    {
+      "title": "AWS IoT Core · Temas MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/topics.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas"
+    }
+  ]
+}

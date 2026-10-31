@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-tunel-sin-agente",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un técnico crea un túnel seguro hacia una pasarela situada tras un cortafuegos que solo permite tráfico saliente por 443. Quiere abrir SSH y, a la vez, la web de configuración de la pasarela. El túnel se crea, pero el extremo de la pasarela nunca se conecta. En la pasarela no hay ningún proceso suscrito a `$aws/things/pasarela01/tunnels/notify`. ¿Cuál es el diagnóstico correcto?",
+  "explanation": "El agente IoT del dispositivo remoto escucha `$aws/things/thing-name/tunnels/notify` para recibir el token de acceso cliente (CAT) y arrancar el proxy local con los parámetros adecuados. Si nadie escucha ese tema, el proxy del destino no arranca. El cortafuegos no es el problema: los proxys usan un puerto saliente ya abierto (p. ej. 443) con TLS, y no hace falta tocar sus reglas. Tampoco hacen falta dos túneles: un túnel multiplexa varios flujos, como SSH y HTTP.",
+  "options": [
+    {
+      "id": "agente",
+      "text": "Falta el agente IoT: la pasarela no recibe su token de acceso (CAT) ni arranca su proxy local",
+      "explanation": "Es la pieza que falta según el síntoma descrito."
+    },
+    {
+      "id": "puerto-22",
+      "text": "Hay que abrir el puerto 22 de entrada en el cortafuegos de la pasarela",
+      "explanation": "La tunelización segura funciona precisamente sin modificar las reglas del cortafuegos: la conexión sale por el puerto ya abierto."
+    },
+    {
+      "id": "dos-tuneles",
+      "text": "Hay que crear un túnel para SSH y otro para la web, porque un túnel solo transporta un flujo",
+      "explanation": "La multiplexación permite compartir un túnel entre varios flujos de datos; el tema usa este mismo ejemplo de HTTP y SSH."
+    },
+    {
+      "id": "tls",
+      "text": "El cortafuegos bloquea el tráfico TLS por 443, así que el túnel debe usar otro puerto sin cifrar",
+      "explanation": "El túnel transmite los datos cifrados con TLS precisamente por ese puerto abierto, y el síntoma lo explica la falta del agente."
+    }
+  ],
+  "answer": "agente",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        82,
+        83,
+        84
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tunel"
+    }
+  ]
+}

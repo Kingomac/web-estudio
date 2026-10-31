@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-dynamodb-nivel-tema",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Variante de la regla de DynamoDB: `SELECT cast(temp AS DECIMAL) AS temperature FROM 'truck/+/freezer'`, con `sample_time` = `${timestamp()}` y `device_id` = `${cast(topic(2) AS DECIMAL)}`. Llegan estos mensajes:\n1. `{\"temp\":\"4.5\"}` en `truck/17/freezer`\n2. `{\"temp\":\"3\"}` en `truck/freezer`\n3. `{\"temp\":\"5\"}` en `truck/17/freezer/door`\n¿Qué se guarda en la tabla?",
+  "explanation": "La regla solo se activa con mensajes cuyo tema coincide con el filtro de FROM. `truck/+/freezer` exige exactamente tres niveles con `freezer` al final, así que solo coincide el mensaje 1. En él, `topic(2)` es el segundo nivel del tema (`17`), que el `cast` convierte en número, y `temperature` toma el valor decimal 4.5.",
+  "options": [
+    {
+      "id": "una-17",
+      "text": "Un único elemento, con `device_id` 17 y `temperature` 4.5",
+      "explanation": "Solo el primer tema coincide con el filtro, y `topic(2)` toma su segundo nivel."
+    },
+    {
+      "id": "dos",
+      "text": "Dos elementos: el del camión 17 y otro del mensaje 2 con `device_id` vacío",
+      "explanation": "`truck/freezer` no tiene el nivel intermedio que exige `+`, así que la regla no llega a activarse."
+    },
+    {
+      "id": "tres",
+      "text": "Tres elementos, porque el motor de reglas recibe todos los temas que empiezan por `truck/`",
+      "explanation": "FROM selecciona por coincidencia con el filtro: los mensajes 2 y 3 no coinciden con `truck/+/freezer`."
+    },
+    {
+      "id": "indice",
+      "text": "Un elemento sin `device_id` válido, porque `topic(2)` cuenta desde 0 y devuelve `freezer`",
+      "explanation": "En la actividad, `topic(2)` devuelve el segundo nivel del tema: el identificador del camión."
+    }
+  ],
+  "answer": "una-17",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        44,
+        48
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 1 · DynamoDB",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "dynamodb"
+    }
+  ]
+}

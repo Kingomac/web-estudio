@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-microvm",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una plataforma multiinquilino ejecuta código **no confiable** de clientes distintos. Necesita aislamiento de hardware completo, como el de una VM tradicional, pero con un arranque por debajo de unos 125 ms y una densidad parecida a la de los contenedores. ¿Qué técnica del continuo encaja?",
+  "explanation": "Las MicroVM (por ejemplo, Firecracker o Cloud Hypervisor) son VM ultraligeras. Arrancan en menos de 125 ms con una huella de memoria mínima, ofrecen aislamiento de hardware completo como las VM tradicionales y tienen una agilidad y densidad comparables a las de los contenedores. Los contenedores comparten el kernel y su principal desventaja es una menor seguridad.",
+  "options": [
+    {
+      "id": "microvm",
+      "text": "MicroVM",
+      "explanation": "Combina aislamiento de VM y arranque y densidad cercanos a los de los contenedores."
+    },
+    {
+      "id": "contenedores",
+      "text": "Contenedores",
+      "explanation": "Comparten el kernel del anfitrión: no hay aislamiento de hardware completo entre inquilinos."
+    },
+    {
+      "id": "vm",
+      "text": "VM tradicional con hipervisor",
+      "explanation": "Aísla, pero su arranque ronda los segundos según la tabla comparativa."
+    },
+    {
+      "id": "faas",
+      "text": "FaaS",
+      "explanation": "Es un modelo de plataforma que puede apoyarse en MicroVM o contenedores, no una técnica de aislamiento en sí."
+    }
+  ],
+  "answer": "microvm",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        15,
+        20,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "virtualizacion-continuo"
+    }
+  ]
+}

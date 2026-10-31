@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-sdn-como-vim",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Según el tema, cuando SDN y NFV se combinan, ¿qué papel juega el controlador SDN?",
+  "explanation": "El tema explica que NFV virtualiza las funciones de red, separándolas del hardware, y que SDN virtualiza la propia red que las interconecta. En esa combinación, el controlador SDN actúa como VIM de red dentro de la NFVI: programa los switches virtuales (OVS/DPDK) y configura los caminos de datos que necesitan las VNF.",
+  "options": [
+    {
+      "id": "vim-red",
+      "text": "Actúa como VIM de red dentro de la NFVI y programa los caminos de datos entre las VNF",
+      "explanation": "Es la complementariedad que describe el tema."
+    },
+    {
+      "id": "vnf",
+      "text": "Es una VNF más, como el cortafuegos o el NAT",
+      "explanation": "El controlador gestiona la red que interconecta las VNF; no es una de ellas."
+    },
+    {
+      "id": "nfvo",
+      "text": "Sustituye al NFVO como orquestador de servicios",
+      "explanation": "La orquestación de servicios entre VIM sigue siendo del NFVO."
+    },
+    {
+      "id": "datos",
+      "text": "Forma parte del plano de datos y reenvía los paquetes",
+      "explanation": "El controlador SDN es el plano de control; el reenvío lo hacen los dispositivos del plano de datos."
+    }
+  ],
+  "answer": "vim-red",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        31,
+        36
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sdn-nfv"
+    }
+  ]
+}

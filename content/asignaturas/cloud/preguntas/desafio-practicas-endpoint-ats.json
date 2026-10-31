@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-endpoint-ats",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En P3, el endpoint se obtiene con `aws iot describe-endpoint --endpoint-type iot:Data-ATS` y la configuración usa `root-ca` = `AmazonRootCA1.pem`. ¿Por qué tienen que encajar esas dos piezas?",
+  "explanation": "En la autenticación del servidor, IoT Core envía su certificado y el dispositivo valida su cadena. Los endpoints ATS (Amazon Trust Services) presentan certificados encadenados a las CA raíz de Amazon, que el dispositivo debe guardar. El tema recomienda usar endpoints ATS y planificar la rotación de esos certificados raíz.",
+  "options": [
+    {
+      "id": "cadena",
+      "text": "El endpoint ATS presenta un certificado encadenado a la CA raíz de Amazon, que el dispositivo usa para verificar que habla con AWS IoT",
+      "explanation": "Es la autenticación del servidor en el TLS mutuo."
+    },
+    {
+      "id": "cliente",
+      "text": "AmazonRootCA1 es la identidad del dispositivo ante IoT Core",
+      "explanation": "La identidad del dispositivo es su certificado y su clave privada; la raíz sirve para validar al servidor."
+    },
+    {
+      "id": "politica",
+      "text": "El endpoint ATS solo acepta dispositivos con una política adjunta a la CA raíz",
+      "explanation": "Las políticas se adjuntan a los certificados de dispositivo, no a la CA raíz."
+    },
+    {
+      "id": "region",
+      "text": "ATS indica la región us-east-1, y la raíz fija la región",
+      "explanation": "ATS no se refiere a ninguna región, y el certificado raíz no la determina."
+    }
+  ],
+  "answer": "cadena",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Configuración del dispositivo IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/03-setup-your-iot-device/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

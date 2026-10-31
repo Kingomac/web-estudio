@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-vnfm-escalado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Ante un pico de tráfico, hay que añadir instancias de un cortafuegos virtual (VNF) y, al terminar, retirarlas. ¿Qué componente de NFV MANO gestiona ese ciclo de vida?",
+  "explanation": "En NFV MANO, el VNFM (VNF Manager) gestiona el ciclo de vida de cada VNF: instanciación, escalado, actualización y terminación. El NFVO orquesta servicios de red y recursos entre distintos VIM, y el VIM controla los recursos de cómputo, almacenamiento y red de la NFVI.",
+  "options": [
+    {
+      "id": "vnfm",
+      "text": "VNFM",
+      "explanation": "El escalado de una VNF forma parte de su ciclo de vida."
+    },
+    {
+      "id": "nfvo",
+      "text": "NFVO",
+      "explanation": "Orquesta servicios de red completos y recursos entre VIM, no el ciclo de vida de cada VNF."
+    },
+    {
+      "id": "vim",
+      "text": "VIM",
+      "explanation": "Controla los recursos de la NFVI, no el ciclo de vida de la función de red."
+    },
+    {
+      "id": "oss",
+      "text": "OSS/BSS",
+      "explanation": "Son los sistemas previos del operador, que solicitan servicios al NFVO."
+    }
+  ],
+  "answer": "vnfm",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sdn-nfv"
+    }
+  ]
+}

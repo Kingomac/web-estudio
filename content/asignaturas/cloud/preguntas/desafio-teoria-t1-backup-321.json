@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-backup-321",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una empresa presume de seguir la regla 3-2-1: guarda tres copias de sus datos, en dos formatos distintos, **todas dentro de la misma región de su proveedor cloud**. ¿Qué falla?",
+  "explanation": "El tema recomienda mantener copias locales o en servicios de terceros con el modelo 3-2-1: 3 copias, 2 formatos y 1 en una instalación diferente. La idea es estar preparado para lo inesperado, incluido un problema con el propio proveedor. Si todas las copias dependen de la misma región del mismo proveedor, falta la copia fuera de esa instalación.",
+  "options": [
+    {
+      "id": "instalacion",
+      "text": "Falta la copia en una instalación diferente: todas dependen del mismo proveedor y región",
+      "explanation": "Es la parte del «1» que incumple."
+    },
+    {
+      "id": "formatos",
+      "text": "Dos formatos son insuficientes: la regla exige tres",
+      "explanation": "La regla pide 2 formatos; los que faltan no son formatos."
+    },
+    {
+      "id": "copias",
+      "text": "Debería guardar dos copias, no tres",
+      "explanation": "El primer número de la regla es 3 copias."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: varias copias en una región ya cumplen la regla, porque las AZ están aisladas",
+      "explanation": "Aunque las AZ estén aisladas entre sí, todas las copias siguen dependiendo del mismo proveedor y región."
+    }
+  ],
+  "answer": "instalacion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        42
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "beneficios-riesgos"
+    }
+  ]
+}

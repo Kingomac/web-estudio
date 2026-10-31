@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-faas-limites",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Se plantea migrar a FaaS un proceso que analiza durante dos horas seguidas un flujo de datos y mantiene en memoria su estado intermedio. ¿Por qué no encaja?",
+  "explanation": "En FaaS, las funciones son sin estado por defecto (el estado persistente requiere servicios externos) y tienen un tiempo de ejecución limitado, típicamente 15 minutos. No son adecuadas para tareas largas de ejecución continua. Sí ofrecen escalado automático y facturación por ejecución.",
+  "options": [
+    {
+      "id": "limites",
+      "text": "Las funciones tienen un tiempo máximo de ejecución, típicamente 15 min, y son sin estado por defecto",
+      "explanation": "Son las dos características que chocan con el proceso."
+    },
+    {
+      "id": "escalado",
+      "text": "FaaS no escala automáticamente",
+      "explanation": "El escalado automático es una de sus ventajas."
+    },
+    {
+      "id": "lenguaje",
+      "text": "FaaS solo admite un lenguaje",
+      "explanation": "Es multilenguaje: Node.js, Python, Go, Java..."
+    },
+    {
+      "id": "eventos",
+      "text": "FaaS solo responde a peticiones HTTP",
+      "explanation": "Se activa con eventos de muchos tipos: HTTP, colas, streams, temporizadores..."
+    }
+  ],
+  "answer": "limites",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        24,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "virtualizacion-continuo"
+    }
+  ]
+}

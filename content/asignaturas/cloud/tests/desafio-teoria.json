@@ -1,0 +1,98 @@
+{
+  "kind": "test",
+  "id": "cloud.tests.desafio-teoria",
+  "subjectId": "cloud",
+  "slug": "desafio-teoria",
+  "title": "Cloud Computing · Desafío de teoría",
+  "description": "50 preguntas inéditas y difíciles de respuesta única: casos que obligan a combinar y aplicar la teoría en lugar de reconocer frases de los apuntes.",
+  "scope": "Misma materia que la prueba de teoría: T1 pp. 17-63, T2 pp. 7-14, T3 pp. 6-37 y T4 pp. 7-93 (sin la iniciativa europea del T1 ni los servicios de análisis de datos del T4).",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.virtualizacion",
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "order": 7,
+  "groups": [
+    {
+      "id": "tema-1",
+      "title": "Tema 1 · Computación en la nube",
+      "context": "Respuesta única, sin consultar materiales. Lee cada caso entero: el detalle que decide la respuesta suele estar en una condición secundaria.",
+      "questionIds": [
+        "cloud.preguntas.desafio-teoria-t1-ubicacion-recursos",
+        "cloud.preguntas.desafio-teoria-t1-responsabilidad-hipervisor",
+        "cloud.preguntas.desafio-teoria-t1-noche-factura",
+        "cloud.preguntas.desafio-teoria-t1-iaas-a-paas",
+        "cloud.preguntas.desafio-teoria-t1-comunitaria-tercero",
+        "cloud.preguntas.desafio-teoria-t1-privada-externa",
+        "cloud.preguntas.desafio-teoria-t1-data-act",
+        "cloud.preguntas.desafio-teoria-t1-backup-321",
+        "cloud.preguntas.desafio-teoria-t1-finops",
+        "cloud.preguntas.desafio-teoria-t1-cloudlet-escenario",
+        "cloud.preguntas.desafio-teoria-t1-mec-rnis",
+        "cloud.preguntas.desafio-teoria-t1-niebla-vs-borde",
+        "cloud.preguntas.desafio-teoria-t1-mec-adopcion"
+      ]
+    },
+    {
+      "id": "tema-2",
+      "title": "Tema 2 · Introducción a AWS",
+      "context": "Respuesta única, sin consultar materiales. Lee cada caso entero: el detalle que decide la respuesta suele estar en una condición secundaria.",
+      "questionIds": [
+        "cloud.preguntas.desafio-teoria-t2-cpd-misma-az",
+        "cloud.preguntas.desafio-teoria-t2-pop-rec",
+        "cloud.preguntas.desafio-teoria-t2-zona-local-supuestos",
+        "cloud.preguntas.desafio-teoria-t2-continuo-motivos",
+        "cloud.preguntas.desafio-teoria-t2-servicios-por-region"
+      ]
+    },
+    {
+      "id": "tema-3",
+      "title": "Tema 3 · Virtualización",
+      "context": "Respuesta única, sin consultar materiales. Lee cada caso entero: el detalle que decide la respuesta suele estar en una condición secundaria.",
+      "questionIds": [
+        "cloud.preguntas.desafio-teoria-t3-x86-sin-extensiones",
+        "cloud.preguntas.desafio-teoria-t3-sdn-nfv-planos",
+        "cloud.preguntas.desafio-teoria-t3-microvm",
+        "cloud.preguntas.desafio-teoria-t3-containerd-oci",
+        "cloud.preguntas.desafio-teoria-t3-unikernel-migracion",
+        "cloud.preguntas.desafio-teoria-t3-tabla-memoria",
+        "cloud.preguntas.desafio-teoria-t3-faas-limites",
+        "cloud.preguntas.desafio-teoria-t3-wasm-heterogeneo",
+        "cloud.preguntas.desafio-teoria-t3-vnfm-escalado",
+        "cloud.preguntas.desafio-teoria-t3-sdn-como-vim",
+        "cloud.preguntas.desafio-teoria-t3-sdn-northbound",
+        "cloud.preguntas.desafio-teoria-t3-k8s-deep-edge"
+      ]
+    },
+    {
+      "id": "tema-4",
+      "title": "Tema 4 · AWS IoT",
+      "context": "Respuesta única, sin consultar materiales. Lee cada caso entero: el detalle que decide la respuesta suele estar en una condición secundaria.",
+      "questionIds": [
+        "cloud.preguntas.desafio-teoria-t4-basic-ingest-otra-regla",
+        "cloud.preguntas.desafio-teoria-t4-politica-deny-ajeno",
+        "cloud.preguntas.desafio-teoria-t4-sombra-version-concurrente",
+        "cloud.preguntas.desafio-teoria-t4-flota-sin-identidad",
+        "cloud.preguntas.desafio-teoria-t4-tunel-sin-agente",
+        "cloud.preguntas.desafio-teoria-t4-software-dispositivo",
+        "cloud.preguntas.desafio-teoria-t4-despliegue-aplazar",
+        "cloud.preguntas.desafio-teoria-t4-despliegue-offline",
+        "cloud.preguntas.desafio-teoria-t4-movil-cognito",
+        "cloud.preguntas.desafio-teoria-t4-sigv4-iam",
+        "cloud.preguntas.desafio-teoria-t4-tipo-atributos",
+        "cloud.preguntas.desafio-teoria-t4-regla-json-anidado",
+        "cloud.preguntas.desafio-teoria-t4-aws-lambda-2s",
+        "cloud.preguntas.desafio-teoria-t4-dynamodbv2",
+        "cloud.preguntas.desafio-teoria-t4-app-escribe-reported",
+        "cloud.preguntas.desafio-teoria-t4-jitr-pendiente",
+        "cloud.preguntas.desafio-teoria-t4-pki-csr",
+        "cloud.preguntas.desafio-teoria-t4-indexacion-rango",
+        "cloud.preguntas.desafio-teoria-t4-defender-mitigacion",
+        "cloud.preguntas.desafio-teoria-t4-advisor-vs-defender"
+      ]
+    }
+  ]
+}

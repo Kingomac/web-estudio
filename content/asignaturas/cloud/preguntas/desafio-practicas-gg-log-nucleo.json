@@ -1,0 +1,66 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-log-nucleo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un despliegue de Greengrass falla **antes** de que el componente llegue a arrancar (no se resuelve una dependencia). El log del componente está vacío. ¿Dónde buscas la causa?",
+  "explanation": "El log del núcleo, `greengrass.log`, registra la gestión de despliegues, dependencias y ciclo de vida. El log de cada componente solo recoge su ejecución. Si el componente no llegó a arrancar, su log no explica el fallo.",
+  "options": [
+    {
+      "id": "nucleo",
+      "text": "En `greengrass.log`, el log del núcleo, que registra despliegues y dependencias",
+      "explanation": "Es el log útil para fallos previos a la ejecución."
+    },
+    {
+      "id": "componente",
+      "text": "En el log del componente, esperando a que se llene",
+      "explanation": "Si el componente no arranca, su log no va a contener la causa."
+    },
+    {
+      "id": "cloudtrail",
+      "text": "En la sombra del dispositivo",
+      "explanation": "La sombra guarda estado; no registra despliegues."
+    },
+    {
+      "id": "consola-local",
+      "text": "Abriendo un túnel seguro de P3",
+      "explanation": "El túnel da acceso remoto; no es un registro de diagnóstico."
+    }
+  ],
+  "answer": "nucleo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        10,
+        12,
+        15
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        13,
+        17
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Monitorización de logs",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/monitor-logs.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ipc"
+    }
+  ]
+}

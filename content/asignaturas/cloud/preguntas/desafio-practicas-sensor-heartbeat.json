@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-sensor-heartbeat",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la actividad 2 de P3, el cliente MQTT de la consola recibe cada 5 minutos en `/topic/workshop/dc/sensors/sensor01-heartbeat` un mensaje con el nombre del sensor, pero **nada** en `sensor01-data`. ¿Qué indica?",
+  "explanation": "El heartbeat lo publica el Device Client (`sensor-publish`) para indicar que la función está viva, en el ejemplo cada 300 s. No es un PINGREQ de MQTT ni una lectura. Los datos van a `sensor01-data` y proceden del socket de dominio UNIX donde escribe el simulador. Si solo llega el heartbeat, el cliente funciona y está conectado, pero no le llegan lecturas del socket; lo más probable es que el simulador esté parado.",
+  "options": [
+    {
+      "id": "socket",
+      "text": "El Device Client y su conexión funcionan, pero no le llegan datos del sensor por el socket (p. ej., el simulador está parado)",
+      "explanation": "Separa la señal de vida de la telemetría."
+    },
+    {
+      "id": "desconectado",
+      "text": "El Device Client está desconectado de IoT Core",
+      "explanation": "Si lo estuviera, tampoco llegaría el heartbeat."
+    },
+    {
+      "id": "keepalive",
+      "text": "Solo funciona el Keep Alive de MQTT, que se ve como heartbeat",
+      "explanation": "PINGREQ/PINGRESP no se publican en temas visibles; el heartbeat es un mensaje de aplicación."
+    },
+    {
+      "id": "politica",
+      "text": "La política no permite publicar en temas que terminan en `-data`",
+      "explanation": "Nada en el caso apunta a una política distinta para ese tema; la causa natural está en el origen de los datos."
+    }
+  ],
+  "answer": "socket",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 2 · Telemetría de sensores",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_2/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

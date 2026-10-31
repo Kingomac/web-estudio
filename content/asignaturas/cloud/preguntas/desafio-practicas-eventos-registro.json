@@ -1,0 +1,67 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-eventos-registro",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Con los mensajes de eventos activados como en P3, creas la cosa `sensor99`. ¿Quién publica el aviso y en qué tema?",
+  "explanation": "Con los eventos activados (vienen desactivados por defecto porque tienen coste), el registro de AWS IoT genera eventos al crear, actualizar o eliminar cosas. AWS IoT los publica en temas reservados como `$aws/events/thing/sensor99/created`. El cliente solo puede suscribirse a ellos.",
+  "options": [
+    {
+      "id": "aws-events",
+      "text": "AWS IoT, en `$aws/events/thing/sensor99/created`",
+      "explanation": "Es el evento del registro para la creación de una cosa."
+    },
+    {
+      "id": "dispositivo",
+      "text": "El dispositivo `sensor99`, al conectarse por primera vez, en `$aws/things/sensor99/created`",
+      "explanation": "Crear la cosa en el registro no requiere que el dispositivo se conecte, y el evento lo publica AWS IoT."
+    },
+    {
+      "id": "sombra",
+      "text": "El servicio de sombras, en `$aws/things/sensor99/shadow/update/documents`",
+      "explanation": "Ese tema notifica actualizaciones de la sombra, no altas en el registro."
+    },
+    {
+      "id": "nadie",
+      "text": "Nadie: los eventos solo existen para trabajos",
+      "explanation": "El registro también genera eventos de cosas, tipos y grupos."
+    }
+  ],
+  "answer": "aws-events",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        39
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.practica-3",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Preparación de los recursos",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/02-lets-begin/"
+    },
+    {
+      "title": "AWS IoT · Temas reservados",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/reserved-topics.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

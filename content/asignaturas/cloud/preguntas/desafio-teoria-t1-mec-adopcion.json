@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-mec-adopcion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la comparación de paradigmas del tema, ¿cuál tiene la mayor adopción comercial y qué servicio de AWS se cita como implementación de sus conceptos?",
+  "explanation": "La comparación asigna a MEC una adopción alta, integrada en el 5G de los operadores, y cita AWS Wavelength, Azure Edge Zones with Carrier y GDC+Nephio. Las cloudlets tienen adopción baja, y sus conceptos los absorbieron MEC y las plataformas de edge computing. La niebla tiene adopción moderada-baja: el término se sustituyó comercialmente por «edge computing».",
+  "options": [
+    {
+      "id": "mec-wavelength",
+      "text": "MEC; AWS Wavelength",
+      "explanation": "Coincide con la tabla comparativa."
+    },
+    {
+      "id": "fog-greengrass",
+      "text": "Niebla; AWS IoT Greengrass",
+      "explanation": "La tabla da a la niebla una adopción moderada-baja y no la asocia a Greengrass."
+    },
+    {
+      "id": "cloudlet-local",
+      "text": "Cloudlets; zonas locales de AWS",
+      "explanation": "Las cloudlets quedaron en la investigación académica."
+    },
+    {
+      "id": "mec-cloudfront",
+      "text": "MEC; CloudFront",
+      "explanation": "CloudFront es una red de distribución de contenidos, no una implementación de MEC."
+    }
+  ],
+  "answer": "mec-wavelength",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        63
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

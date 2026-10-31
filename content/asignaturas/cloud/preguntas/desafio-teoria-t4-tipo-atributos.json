@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-tipo-atributos",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una cosa necesita **ocho** atributos de búsqueda (fabricante, modelo, planta, línea...). Según los límites del registro del tema, ¿cómo se consigue?",
+  "explanation": "Una cosa puede tener 3 atributos por sí misma. Los tipos de cosa organizan las cosas en categorías con atributos comunes y admiten hasta 50 atributos. Cada cosa solo puede tener un tipo. Para tener ocho atributos hay que asociarle un tipo.",
+  "options": [
+    {
+      "id": "tipo",
+      "text": "Asociándole un tipo de cosa, que admite hasta 50 atributos",
+      "explanation": "Es la vía que da el tema para superar los 3 atributos."
+    },
+    {
+      "id": "dos-tipos",
+      "text": "Asociándole dos tipos de cuatro atributos cada uno",
+      "explanation": "Cada cosa solo puede tener un tipo."
+    },
+    {
+      "id": "grupos",
+      "text": "Metiéndola en varios grupos, cada uno con 3 atributos",
+      "explanation": "Los grupos sirven para gestionar conjuntos de cosas y heredar configuraciones; no amplían el límite de atributos."
+    },
+    {
+      "id": "sombra",
+      "text": "Imposible: el límite es de 3 atributos y el resto debe ir en la sombra",
+      "explanation": "El límite de 3 se aplica sin tipo; con un tipo se amplía a 50. La sombra guarda estado, no metadatos estáticos."
+    }
+  ],
+  "answer": "tipo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        37,
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "iot-core"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-jobs-plantilla-sin-trabajo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la actividad 4 de P3 subes a S3 el JSON con el paso `Get-Configuration` (`runHandler`, `device-client-config.sh`) y creas con él una **plantilla de trabajo personalizada**. El log del Device Client no muestra nada. ¿Qué falta?",
+  "explanation": "Una plantilla solo preconfigura trabajos reutilizables: documento, destinos y configuraciones. Guardar el JSON en S3, crear la plantilla y crear un trabajo son operaciones diferentes. Hasta que no se crea un trabajo a partir de la plantilla, dirigido a la cosa, no hay ninguna ejecución.",
+  "options": [
+    {
+      "id": "crear-trabajo",
+      "text": "Crear un trabajo a partir de la plantilla con la cosa como destino",
+      "explanation": "Sin trabajo no hay ejecución en el dispositivo."
+    },
+    {
+      "id": "eventos",
+      "text": "Activar los mensajes de eventos",
+      "explanation": "Los eventos informan en `$aws/events/...`, pero no lanzan trabajos."
+    },
+    {
+      "id": "url",
+      "text": "Sustituir la URL de S3 por una URL prefirmada",
+      "explanation": "Es un detalle del documento, pero no explica que no se ejecute nada."
+    },
+    {
+      "id": "continuo",
+      "text": "Marcar la plantilla como continua",
+      "explanation": "El tipo snapshot o continuous se elige al crear el trabajo, y aún no se ha creado ninguno."
+    }
+  ],
+  "answer": "crear-trabajo",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        72,
+        73
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 4 · Manejador de trabajos",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

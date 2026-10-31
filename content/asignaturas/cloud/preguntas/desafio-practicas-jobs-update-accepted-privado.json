@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-jobs-update-accepted-privado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un panel de monitorización se suscribe a `$aws/things/camion-01/jobs/+/update/accepted` para seguir el progreso de los trabajos del camión, pero nunca recibe nada aunque el camión actualiza sus ejecuciones. ¿Por qué?",
+  "explanation": "Las respuestas de la API MQTT de trabajos (`get/accepted`, `update/accepted`...) se envían directamente al cliente que hizo la solicitud: no pasan por el broker y otros clientes o reglas no pueden suscribirse a ellas. Para monitorizar desde fuera están los eventos `$aws/events/jobExecution/...`, con los mensajes de eventos activados.",
+  "options": [
+    {
+      "id": "privado",
+      "text": "Esas respuestas solo las recibe el dispositivo que hizo la solicitud; para monitorizar se usan los eventos `$aws/events/jobExecution/...`",
+      "explanation": "Distingue la API del dispositivo de los eventos de flota."
+    },
+    {
+      "id": "comodin",
+      "text": "El `+` no puede sustituir al jobId",
+      "explanation": "El filtro es sintácticamente válido; el problema es el tipo de tema."
+    },
+    {
+      "id": "politica",
+      "text": "Falta `iot:Receive` sobre `topic/$aws/things/*`",
+      "explanation": "Aunque tuviera permiso, esas respuestas no se distribuyen a otros clientes."
+    },
+    {
+      "id": "notify",
+      "text": "Hay que suscribirse a `notify-next`, que publica cada actualización de estado",
+      "explanation": "`notify-next` avisa de cambios en la siguiente ejecución pendiente, no del progreso de cada actualización."
+    }
+  ],
+  "answer": "privado",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        75
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Temas reservados",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/reserved-topics.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-jobs"
+    }
+  ]
+}

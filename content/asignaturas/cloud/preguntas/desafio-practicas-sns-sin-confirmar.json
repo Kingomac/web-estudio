@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-sns-sin-confirmar",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "La regla `truck2sns` (`SELECT i AS device, temp AS temperature, 20 AS temperature_max FROM 'truck/freezer' WHERE temp > 20`) recibe en `truck/freezer` mensajes con temperaturas 19, 20, 20.5 y 35. En la consola de SNS, la suscripción de correo aparece como **pendiente de confirmación**. ¿Cuántos correos llegan?",
+  "explanation": "La regla se evalúa al llegar cada mensaje y la condición es estricta: se activa con 20.5 y 35, pero no con 19 ni con 20. Sin embargo, la entrega por correo depende de la suscripción SNS, que la actividad pide confirmar desde el enlace recibido. Mientras está pendiente, el destinatario no recibe avisos: llegan 0 correos aunque la regla se haya activado dos veces.",
+  "options": [
+    {
+      "id": "cero",
+      "text": "Ninguno, aunque la regla se activa dos veces (20.5 y 35)",
+      "explanation": "Separa la evaluación de la regla de la entrega en SNS, que depende de la confirmación."
+    },
+    {
+      "id": "dos",
+      "text": "Dos, por 20.5 y 35",
+      "explanation": "La regla se activa esas dos veces, pero no se entrega nada a una suscripción sin confirmar."
+    },
+    {
+      "id": "tres",
+      "text": "Tres, por 20, 20.5 y 35",
+      "explanation": "`temp > 20` es estricto, así que 20 no activa la regla. Además, la suscripción está sin confirmar."
+    },
+    {
+      "id": "regla-inactiva",
+      "text": "Ninguno, porque la regla no se evalúa mientras su destino SNS no esté confirmado",
+      "explanation": "El resultado es el mismo, pero la causa no: la regla se evalúa igualmente, y lo que falla es la entrega en SNS."
+    }
+  ],
+  "answer": "cero",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        44
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 2 (SNS)",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_2/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "sns"
+    }
+  ]
+}

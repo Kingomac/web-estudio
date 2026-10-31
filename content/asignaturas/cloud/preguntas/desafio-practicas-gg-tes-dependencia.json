@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-tes-dependencia",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Despliegas desde AWS un componente Greengrass cuyos artefactos están en S3, y el núcleo los descarga sin problemas. Pero el script del componente, que lee otro objeto de S3 con el AWS SDK, falla porque no encuentra credenciales. La receta no declara ninguna dependencia y el rol de intercambio de tokens permite ese acceso. ¿Qué falta?",
+  "explanation": "El núcleo descarga los artefactos con sus propias credenciales temporales, obtenidas del proveedor de credenciales de AWS IoT a través del rol de intercambio de tokens. Eso no da credenciales automáticamente al código del componente. Para que su cliente del AWS SDK las obtenga, la receta debe declarar `aws.greengrass.TokenExchangeService` como dependencia: así el SDK se conecta a un servidor local que entrega credenciales temporales, una hora de validez por defecto.",
+  "options": [
+    {
+      "id": "tes",
+      "text": "Declarar `aws.greengrass.TokenExchangeService` como dependencia en la receta",
+      "explanation": "Es el componente que proporciona credenciales temporales al código de otros componentes."
+    },
+    {
+      "id": "politica-iot",
+      "text": "Añadir `iot:*` a la política IoT del certificado del núcleo",
+      "explanation": "La política IoT autoriza el plano de datos de IoT Core (MQTT), no las llamadas a S3 desde el SDK."
+    },
+    {
+      "id": "claves",
+      "text": "Copiar en el dispositivo las claves de acceso del Learner Lab y configurarlas con `aws configure`",
+      "explanation": "El proveedor de credenciales existe precisamente para no guardar credenciales permanentes en el dispositivo."
+    },
+    {
+      "id": "nada",
+      "text": "Nada en la receta: si el núcleo pudo descargar los artefactos, el componente usa automáticamente esas credenciales",
+      "explanation": "Es la trampa del caso: el núcleo tiene credenciales, pero el componente solo las obtiene si declara la dependencia."
+    }
+  ],
+  "answer": "tes",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        16,
+        34
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Interactuar con servicios de AWS",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/interact-with-aws-services.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-4"
+    }
+  ]
+}

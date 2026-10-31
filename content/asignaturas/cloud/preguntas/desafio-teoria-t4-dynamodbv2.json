@@ -1,0 +1,56 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-dynamodbv2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Quieres que cada campo del JSON que sale de una regla (`temperature`, `door`, `device`) quede en **su propia columna** de una tabla DynamoDB, en lugar de guardarse junto en un solo atributo. ¿Qué acción eliges?",
+  "explanation": "La tabla de acciones del tema distingue `dynamoDB`, que envía un mensaje a una tabla, de `dynamoDBv2`, que envía los datos del mensaje a varias columnas. En la actividad de la práctica 2 se usa la acción DynamoDB, y la salida del SELECT queda en un único atributo, `device_data`.",
+  "options": [
+    {
+      "id": "v2",
+      "text": "DynamoDBv2",
+      "explanation": "Reparte los datos del mensaje en varias columnas."
+    },
+    {
+      "id": "v1",
+      "text": "DynamoDB",
+      "explanation": "Guarda el mensaje en la tabla, pero no reparte cada campo en su columna."
+    },
+    {
+      "id": "timestream",
+      "text": "Timestream",
+      "explanation": "Envía el mensaje a otra base de datos, Amazon Timestream, no a DynamoDB."
+    },
+    {
+      "id": "republish",
+      "text": "Republish con un tema por campo",
+      "explanation": "Republish vuelve a publicar en MQTT; no escribe en ninguna tabla."
+    }
+  ],
+  "answer": "v2",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 1 · DynamoDB",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

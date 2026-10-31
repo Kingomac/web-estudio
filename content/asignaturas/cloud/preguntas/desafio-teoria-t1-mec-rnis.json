@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-mec-rnis",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación de vídeo debe adaptar su calidad a la información de la red radio en tiempo real y conocer la ubicación del usuario mediante APIs estandarizadas. ¿Qué paradigma de borde lo ofrece y por qué no una cloudlet?",
+  "explanation": "MEC está estandarizado por ETSI. Se sitúa en la RAN, junto al gNB o eNB, y expone APIs estandarizadas como RNIS (información de la red radio), localización o reglas de tráfico. Las cloudlets, impulsadas por el OEC, no tienen un organismo que las normalice y se quedaron sobre todo en la investigación académica.",
+  "options": [
+    {
+      "id": "mec",
+      "text": "MEC: expone APIs ETSI como RNIS y localización; las cloudlets no tienen un organismo que las normalice",
+      "explanation": "Recoge la diferencia de estandarización y de exposición de información radio."
+    },
+    {
+      "id": "cloudlet",
+      "text": "Cloudlet: al estar junto al WiFi, conoce la red radio mejor que MEC",
+      "explanation": "Las cloudlets no exponen APIs normalizadas de información radio."
+    },
+    {
+      "id": "fog-ieee",
+      "text": "Niebla: el estándar IEEE 1934 define las APIs RNIS",
+      "explanation": "IEEE 1934-2018 es la arquitectura de referencia de la niebla; RNIS pertenece a las APIs de ETSI MEC."
+    },
+    {
+      "id": "cualquiera",
+      "text": "Cualquiera de los tres, porque todos procesan cerca del usuario",
+      "explanation": "La proximidad no implica ofrecer APIs estandarizadas de información de red."
+    }
+  ],
+  "answer": "mec",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        56,
+        63
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "edge-fog"
+    }
+  ]
+}

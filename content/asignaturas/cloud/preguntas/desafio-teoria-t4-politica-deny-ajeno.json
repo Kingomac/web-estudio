@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-politica-deny-ajeno",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "La cosa `sensor07` se conecta con el ID de cliente `sensor07` usando un certificado que tiene asociada esta política. ¿Cuál de estas publicaciones se **acepta**?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Connect\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:client/${iot:Connection.Thing.ThingName}\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Publish\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topic/fabrica/*\"\n    },\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"iot:Publish\",\n      \"Resource\": \"arn:aws:iot:eu-west-1:123456789012:topic/fabrica/${iot:Connection.Thing.ThingName}/config\"\n    }\n  ]\n}\n```",
+  "explanation": "La variable se resuelve como `sensor07`. `topic/fabrica/*` permite publicar en cualquier tema que empiece por `fabrica/`, y el `Deny` explícito solo excluye `fabrica/sensor07/config`. Por tanto, el dispositivo puede escribir en la configuración de **otro** sensor. Es el tipo de política demasiado permisiva que detecta la auditoría de Device Defender. El orden de las declaraciones no importa: un Deny explícito prevalece sobre un Allow.",
+  "options": [
+    {
+      "id": "ajeno",
+      "text": "Publicar en `fabrica/sensor08/config`",
+      "explanation": "La cubre `fabrica/*` y el Deny no le afecta, porque la variable solo vale `sensor07`."
+    },
+    {
+      "id": "propio",
+      "text": "Publicar en `fabrica/sensor07/config`",
+      "explanation": "El Deny explícito prevalece sobre el Allow de `fabrica/*`."
+    },
+    {
+      "id": "raiz",
+      "text": "Publicar en `fabrica`",
+      "explanation": "El patrón `fabrica/*` exige la barra: el tema `fabrica`, sin nivel posterior, no coincide."
+    },
+    {
+      "id": "invertido",
+      "text": "Publicar en `sensor07/fabrica/datos`",
+      "explanation": "El recurso permitido empieza por `fabrica/`. La variable no convierte el nombre de la cosa en un prefijo autorizado."
+    }
+  ],
+  "answer": "ajeno",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35,
+        88
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IAM · Lógica de evaluación de políticas",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+    },
+    {
+      "title": "AWS IoT · Políticas de publicación y suscripción",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "politicas"
+    }
+  ]
+}

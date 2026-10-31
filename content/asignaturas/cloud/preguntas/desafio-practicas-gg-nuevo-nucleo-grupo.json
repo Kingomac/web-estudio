@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-nuevo-nucleo-grupo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Instalas Greengrass en un **segundo** dispositivo y, al igual que el primero, queda en el grupo `GreengrassQuickStartGroup`, que ya tiene un despliegue con `HelloWorld` y Log Manager. ¿Qué recibe el nuevo núcleo?",
+  "explanation": "Los despliegues de Greengrass son continuos: cuando se añade un dispositivo nuevo al grupo de destino, se le envía la versión más actual del despliegue de ese grupo. No hace falta crear otro.",
+  "options": [
+    {
+      "id": "recibe",
+      "text": "La versión actual del despliegue del grupo, sin crear otro",
+      "explanation": "Los despliegues se aplican también a los destinos que se añaden después."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: el despliegue ya terminó cuando se creó",
+      "explanation": "Eso describiría un trabajo instantáneo, no un despliegue de Greengrass."
+    },
+    {
+      "id": "nuevo",
+      "text": "Nada hasta que crees un despliegue nuevo dirigido solo a él",
+      "explanation": "Pertenecer al grupo basta para recibir su despliegue."
+    },
+    {
+      "id": "primera",
+      "text": "La primera versión del despliegue, para después ir aplicando las revisiones",
+      "explanation": "Se envía la versión más actual, no el historial."
+    }
+  ],
+  "answer": "recibe",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        17
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        8,
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

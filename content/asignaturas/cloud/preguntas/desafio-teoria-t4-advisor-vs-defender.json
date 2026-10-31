@@ -1,0 +1,53 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-advisor-vs-defender",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Antes de sacar al mercado un nuevo termostato, quieres comprobar que su política no concede más permisos de los necesarios y que gestiona bien las sombras, y obtener un informe válido para el AWS Partner Device Catalog. ¿Qué servicio usas?",
+  "explanation": "Device Advisor valida en la nube, antes de ir al mercado, que el dispositivo conecta de forma segura y fiable. Tiene seis categorías de pruebas predefinidas (TLS, MQTT, Sombra, Ejecución de trabajos, Permisos y políticas, Larga duración), y su informe de calificación sirve para el catálogo de colaboradores. Device Defender audita flotas ya desplegadas.",
+  "options": [
+    {
+      "id": "advisor",
+      "text": "Device Advisor",
+      "explanation": "Valida antes de comercializar e incluye pruebas de permisos y políticas y de sombras."
+    },
+    {
+      "id": "defender",
+      "text": "Device Defender",
+      "explanation": "Audita la configuración de flotas desplegadas; no emite el informe de calificación previo al mercado."
+    },
+    {
+      "id": "tester",
+      "text": "Device Tester",
+      "explanation": "Automatiza pruebas de dispositivos con FreeRTOS o Greengrass; no es la capacidad de validación con IoT Core del tema."
+    },
+    {
+      "id": "indexacion",
+      "text": "Indexación de flotas",
+      "explanation": "Busca y agrega datos de dispositivos existentes; no valida un producto antes de lanzarlo."
+    }
+  ],
+  "answer": "advisor",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        7,
+        88,
+        92,
+        93
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "gestion-remota"
+    }
+  ]
+}

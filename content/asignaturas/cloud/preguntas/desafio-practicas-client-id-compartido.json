@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-client-id-compartido",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Para ahorrar tiempo, se graba **el mismo certificado y el mismo ID de cliente MQTT** en dos camiones. Ambos funcionan por separado, pero juntos se desconectan una y otra vez. ¿Qué ocurre y qué auditoría lo señalaría?",
+  "explanation": "El broker identifica a cada cliente por su ID: dos clientes con el mismo ID no pueden estar conectados a la vez. Cuando uno se conecta, se acepta la nueva conexión y se desconecta la anterior, así que los dos se expulsan mutuamente. Device Defender audita, entre otras cosas, los dispositivos que comparten certificado, porque incumplen la identidad única por dispositivo.",
+  "options": [
+    {
+      "id": "expulsion",
+      "text": "Cada conexión nueva con ese ID desconecta la anterior; Device Defender señalaría el certificado compartido",
+      "explanation": "Explica el síntoma y la buena práctica que se incumple."
+    },
+    {
+      "id": "cola",
+      "text": "El broker reparte los mensajes entre los dos camiones por turnos",
+      "explanation": "No hay reparto: el broker no admite dos sesiones simultáneas con el mismo ID."
+    },
+    {
+      "id": "politica",
+      "text": "La política solo admite una conexión por certificado; basta con añadir `iot:Connect` dos veces",
+      "explanation": "Lo que impide la doble conexión es el ID de cliente duplicado, no la política."
+    },
+    {
+      "id": "keepalive",
+      "text": "Es un problema de Keep Alive: hay que aumentar el periodo",
+      "explanation": "Keep Alive detecta conexiones caídas; aquí la causa es la colisión de IDs."
+    }
+  ],
+  "answer": "expulsion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        88
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Core · MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html"
+    },
+    {
+      "title": "Práctica 3 · AWS IoT Device Defender",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-1"
+    }
+  ]
+}

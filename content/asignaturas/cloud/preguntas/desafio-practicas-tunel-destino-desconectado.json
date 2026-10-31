@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-tunel-destino-desconectado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Has creado el túnel de la actividad 3 de P3 y has arrancado el proxy de origen con su token. La consola muestra: túnel `OPEN`, origen `CONNECTED`, destino `DISCONNECTED`. `ssh ubuntu@localhost -p 5555` no llega al dispositivo. ¿Dónde está el problema más probable?",
+  "explanation": "Es la situación inversa a la habitual al crear el túnel. Normalmente el destino se conecta solo: el Device Client recibe su token por MQTT y su proxy local integrado se une al túnel. Si el origen está conectado y el destino no, falla el lado del dispositivo: el Device Client no está en ejecución o no tiene activada la tunelización. El puerto 5555 es el del proxy local de origen, el túnel abierto no hay que recrearlo y no hace falta abrir puertos de entrada.",
+  "options": [
+    {
+      "id": "device-client",
+      "text": "En el dispositivo: el Device Client no está en ejecución o no tiene activada la tunelización, así que no recibe su token ni conecta su proxy",
+      "explanation": "Explica que solo el extremo de destino esté desconectado."
+    },
+    {
+      "id": "puerto-22",
+      "text": "En el comando: hay que usar `-p 22`, que es donde escucha SSH en el destino",
+      "explanation": "El cliente SSH se conecta al proxy local de origen, que escucha en 5555; el túnel lleva el tráfico hasta el SSH del destino."
+    },
+    {
+      "id": "reabrir",
+      "text": "En el túnel: hay que cerrarlo y reabrirlo para que el destino se reconecte",
+      "explanation": "Un túnel cerrado no se reabre, y mientras está `OPEN` los extremos pueden reconectarse sin recrearlo."
+    },
+    {
+      "id": "entrada",
+      "text": "En la red: falta abrir el puerto 22 de entrada en el grupo de seguridad del dispositivo",
+      "explanation": "El túnel no necesita puertos de entrada: el proxy del destino se conecta hacia AWS."
+    }
+  ],
+  "answer": "device-client",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        82,
+        83
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 3 · Túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

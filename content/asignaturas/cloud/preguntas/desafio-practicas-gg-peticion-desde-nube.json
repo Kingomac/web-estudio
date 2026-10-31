@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-peticion-desde-nube",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Con el componente personalizado de inferencia de la actividad 3 de P4 desplegado, publicas `{\"image\":\"cat.jpeg\"}` en `ml/image` desde el cliente MQTT de la consola de AWS IoT, y no aparece nada en `ml/custom/image-classification`. Si publicas lo mismo con la CLI de Greengrass en el dispositivo, sí funciona. ¿Por qué?",
+  "explanation": "El componente se suscribe al tema IPC local `ml/image`, configurado con `LocalTopic`. La CLI de Greengrass publica en ese bus local; la consola publica en IoT Core por MQTT. Que el tema se llame igual no conecta los dos mundos: haría falta un componente que reenvíe los mensajes, como un bridge. El resultado, en cambio, sí sale por MQTT hacia IoT Core, y por eso se ve en la consola cuando la petición llega bien.",
+  "options": [
+    {
+      "id": "ipc",
+      "text": "El componente escucha el tema IPC local `ml/image`; lo que se publica en IoT Core no llega al bus IPC sin un componente que lo reenvíe",
+      "explanation": "Distingue la mensajería IPC local de MQTT hacia la nube."
+    },
+    {
+      "id": "politica",
+      "text": "La política IoT del certificado del núcleo no permite `iot:Publish` en `ml/image`",
+      "explanation": "La consola publica con permisos IAM. Aunque el mensaje llegue a IoT Core, el problema es que el componente no escucha ahí."
+    },
+    {
+      "id": "base64",
+      "text": "Desde la nube la imagen debe ir codificada en base64 dentro del mensaje; `cat.jpeg` solo vale en local",
+      "explanation": "El mensaje solo contiene el nombre del archivo, que el componente busca en su directorio local."
+    },
+    {
+      "id": "resultado-ipc",
+      "text": "El resultado se publica por IPC y solo puede verse con la CLI del dispositivo",
+      "explanation": "El resultado se publica por MQTT en `ml/custom/image-classification` y se consulta desde la consola de AWS IoT."
+    }
+  ],
+  "answer": "ipc",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 3 · Componentes ML personalizados",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_3/"
+    },
+    {
+      "title": "P4 · Actividad adicional 1 · Bridge MQTT",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml-personalizado"
+    }
+  ]
+}

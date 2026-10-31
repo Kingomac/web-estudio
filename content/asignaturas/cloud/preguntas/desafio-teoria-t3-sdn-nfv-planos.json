@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-sdn-nfv-planos",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un operador sustituye su cortafuegos físico por software en servidores estándar y lo encadena con un balanceador, también software, por el que pasa el tráfico después. Además, un controlador central calcula las reglas que aplican sus conmutadores. ¿Qué afirmación es correcta?",
+  "explanation": "Desplegar funciones de red como software en hardware estándar es NFV: el cortafuegos y el balanceador son VNF, y encadenarlas es organizarlas en un grafo de encaminamiento (forwarding graph). Que un controlador central defina las reglas que aplican los conmutadores es SDN: el plano de control se separa del hardware y se centraliza, y el plano de datos sigue en los dispositivos que encaminan el tráfico.",
+  "options": [
+    {
+      "id": "nfv-sdn",
+      "text": "Cortafuegos y balanceador son VNF encadenadas en un grafo de encaminamiento (NFV); el controlador central es el plano de control separado y centralizado (SDN)",
+      "explanation": "Asigna cada mecanismo a su paradigma."
+    },
+    {
+      "id": "intercambiado",
+      "text": "El encadenamiento cortafuegos→balanceador es SDN, y el controlador central es una VNF del plano de datos",
+      "explanation": "Intercambia los conceptos: encadenar VNF es propio de NFV, y el controlador pertenece al plano de control, no al de datos."
+    },
+    {
+      "id": "todo-nfv",
+      "text": "Todo es NFV: al centralizar el control, los conmutadores pasan a ser funciones de red virtuales",
+      "explanation": "Separar el plano de control no virtualiza los conmutadores: siguen siendo el plano de datos que encamina el tráfico."
+    },
+    {
+      "id": "todo-sdn",
+      "text": "Todo es SDN: el software del cortafuegos es el plano de datos y los servidores estándar, el plano de control",
+      "explanation": "En SDN el plano de datos es el hardware que encamina el tráfico y el de control define su configuración. Ejecutar un cortafuegos en servidores estándar es NFV."
+    }
+  ],
+  "answer": "nfv-sdn",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        30,
+        33,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sdn-nfv"
+    }
+  ]
+}

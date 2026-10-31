@@ -1,0 +1,54 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-keepalive-lwt",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "El camión de la práctica 2 se queda sin alimentación de golpe: no envía `DISCONNECT` y deja de transmitir. ¿Qué determina cuándo publica AWS IoT su mensaje LWT?",
+  "explanation": "Sin un DISCONNECT, el broker detecta la caída porque deja de recibir tráfico del cliente, incluidos los PINGREQ de Keep Alive. AWS IoT cierra la conexión cuando no recibe ningún paquete durante 1,5 veces el periodo Keep Alive. Esa desconexión no iniciada por el cliente provoca la publicación del LWT.",
+  "options": [
+    {
+      "id": "keepalive",
+      "text": "Que el broker no reciba ningún paquete durante el margen del Keep Alive (en AWS IoT, 1,5 veces el periodo); entonces cierra la conexión y publica el LWT",
+      "explanation": "Keep Alive es el mecanismo que detecta la caída."
+    },
+    {
+      "id": "inmediato",
+      "text": "Se publica en el mismo instante del corte, porque el dispositivo lo envía al perder la alimentación",
+      "explanation": "El dispositivo sin alimentación no puede enviar nada: el LWT lo publica el broker."
+    },
+    {
+      "id": "nunca",
+      "text": "Nunca: sin `DISCONNECT` el broker no sabe que el cliente se ha ido",
+      "explanation": "Keep Alive existe precisamente para detectarlo."
+    },
+    {
+      "id": "sombra",
+      "text": "Cuando la sombra marque el dispositivo como desconectado",
+      "explanation": "La sombra guarda estado; no detecta conexiones ni publica el LWT."
+    }
+  ],
+  "answer": "keepalive",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Conexiones de dispositivos",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/08_device_connections/"
+    },
+    {
+      "title": "AWS IoT Core · MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "conexiones"
+    }
+  ]
+}

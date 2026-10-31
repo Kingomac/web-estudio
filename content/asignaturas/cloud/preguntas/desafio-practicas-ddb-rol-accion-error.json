@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-ddb-rol-accion-error",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Los mensajes llegan a `truck/freezer` y la regla `truck2ddb` coincide, pero la tabla sigue vacía. La acción de error de la regla registra un `AccessDenied` al escribir en DynamoDB. La política IoT del camión permite publicar en `truck/freezer`. ¿Qué hay que corregir?",
+  "explanation": "Las acciones de la regla actúan en nombre del usuario con un rol IAM, que debe tener permisos sobre el servicio de destino (escribir en la tabla). La política IoT del dispositivo solo autoriza su conexión y su publicación en IoT Core. La acción de error se activa precisamente cuando falla una acción, por ejemplo por falta de permisos.",
+  "options": [
+    {
+      "id": "rol",
+      "text": "El rol IAM de la acción DynamoDB de la regla, que no tiene permiso para escribir en la tabla",
+      "explanation": "La acción falla por los permisos del rol de la regla."
+    },
+    {
+      "id": "politica-iot",
+      "text": "La política IoT del camión: debe incluir `dynamodb:PutItem`",
+      "explanation": "El camión solo publica en IoT Core; quien escribe en DynamoDB es la regla con su rol."
+    },
+    {
+      "id": "sql",
+      "text": "El `FROM`: debe ser `$aws/rules/truck2ddb`",
+      "explanation": "La regla ya coincide; el error está al ejecutar la acción, no al seleccionar."
+    },
+    {
+      "id": "clave",
+      "text": "La clave de partición, que DynamoDB rechaza con `AccessDenied`",
+      "explanation": "Un error de claves no se reporta como denegación de acceso."
+    }
+  ],
+  "answer": "rol",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        42
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad de las notificaciones",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/06_rules_overview/"
+    },
+    {
+      "title": "AWS IoT · Gestión de errores de reglas",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/rule-error-handling.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "reglas"
+    }
+  ]
+}

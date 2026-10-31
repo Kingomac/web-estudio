@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-mqtt5-sin-receive",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la actividad 3 de P1, el ejemplo MQTT5 del SDK v2 se suscribe a `truck/pubsub` y publica en ese mismo tema, esperando recibir sus propios mensajes. Con una política que permite `Connect`, `Publish` y `Subscribe`, pero **no** `Receive`, ¿qué se observa?",
+  "explanation": "El ejemplo usa el mismo tema para publicar y suscribirse, así que necesita las cuatro acciones: Connect, Publish, Subscribe y Receive. Sin `iot:Receive`, la conexión, la publicación y la suscripción se aceptan, pero el broker no entrega ningún mensaje al cliente: el ejemplo publica y se queda esperando.",
+  "options": [
+    {
+      "id": "espera",
+      "text": "Publica sin errores (los mensajes se ven desde la consola), pero el ejemplo nunca recibe nada",
+      "explanation": "Publicar y suscribirse están permitidos; la entrega de cada mensaje requiere Receive."
+    },
+    {
+      "id": "no-conecta",
+      "text": "No llega a conectar",
+      "explanation": "`iot:Connect` sí está permitido."
+    },
+    {
+      "id": "no-publica",
+      "text": "No puede publicar, porque Publish exige Receive",
+      "explanation": "Son acciones independientes."
+    },
+    {
+      "id": "recibe",
+      "text": "Recibe sus mensajes, porque es él quien los publica",
+      "explanation": "Que el cliente sea el publicador no le exime de la autorización de recepción."
+    }
+  ],
+  "answer": "espera",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P1 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_1/actividade_3/"
+    },
+    {
+      "title": "AWS IoT · Acciones de las políticas",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-policy-actions.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "adicionales-1"
+    }
+  ]
+}

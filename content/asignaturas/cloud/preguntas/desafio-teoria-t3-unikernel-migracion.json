@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-unikernel-migracion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un operador necesita migración en vivo sin intervención manual y libertad para programar en cualquier lenguaje. Según la tabla comparativa del tema, ¿qué técnica debería **descartar**?",
+  "explanation": "En la tabla, el unikernel tiene migración en vivo «Manual», dependencia del lenguaje «Sí» y portabilidad hardware «Media». Las VM y los contenedores admiten migración en vivo y no dependen del lenguaje. Esto encaja con sus desventajas: dependen de SO en forma de librerías y hay que compilar una imagen por cada combinación de arquitectura y plataforma.",
+  "options": [
+    {
+      "id": "unikernel",
+      "text": "Unikernel",
+      "explanation": "Es la única con migración manual y dependencia del lenguaje."
+    },
+    {
+      "id": "vm",
+      "text": "Máquina virtual",
+      "explanation": "La tabla le asigna migración en vivo y ninguna dependencia del lenguaje."
+    },
+    {
+      "id": "contenedor",
+      "text": "Contenedor",
+      "explanation": "También admite migración en vivo y no depende del lenguaje."
+    },
+    {
+      "id": "ninguna",
+      "text": "Ninguna: las tres admiten migración en vivo transparente",
+      "explanation": "La tabla marca la del unikernel como manual."
+    }
+  ],
+  "answer": "unikernel",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        19,
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tecnicas-virtualizacion"
+    }
+  ]
+}

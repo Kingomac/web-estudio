@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-despliegue-aplazar",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Llega un despliegue de Greengrass a un dispositivo core con la batería al 5 % que está en mitad de un proceso que no puede interrumpirse. ¿Qué prevé el tema?",
+  "explanation": "Cuando un dispositivo core recibe un despliegue, comprueba la compatibilidad con la plataforma y entre las versiones de las dependencias. Después notifica a cada componente presente para que pueda retrasar el despliegue, por ejemplo por batería baja o por un proceso que no admite interrupción.",
+  "options": [
+    {
+      "id": "aplazar",
+      "text": "El núcleo notifica a los componentes, que pueden pedir que se retrase el despliegue",
+      "explanation": "Es el mecanismo que describe el tema."
+    },
+    {
+      "id": "forzar",
+      "text": "El despliegue se aplica de inmediato: los despliegues no pueden aplazarse",
+      "explanation": "El tema prevé expresamente que los componentes puedan retrasarlo."
+    },
+    {
+      "id": "cancelar",
+      "text": "Se cancela y hay que crear otro cuando el dispositivo tenga batería",
+      "explanation": "No se cancela; se retrasa."
+    },
+    {
+      "id": "segundo",
+      "text": "Se crea un segundo despliegue en paralelo para no interrumpir el primero",
+      "explanation": "Cada dispositivo solo puede tener un despliegue a la vez."
+    }
+  ],
+  "answer": "aplazar",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "greengrass"
+    }
+  ]
+}

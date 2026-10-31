@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-sombra-actualizacion-parcial",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "La sombra tiene `desired` `{\"door\": \"off\", \"temp\": 4}`. Una aplicación publica en `/update` `{\"state\": {\"desired\": {\"temp\": 2}}}`. ¿Cómo queda `desired`?",
+  "explanation": "Una actualización de la sombra solo afecta a los campos indicados en la solicitud. `temp` pasa a 2 y `door` conserva su valor `off`. Para eliminar una propiedad hay que asignarle `null` explícitamente.",
+  "options": [
+    {
+      "id": "parcial",
+      "text": "`{\"door\": \"off\", \"temp\": 2}`",
+      "explanation": "Solo cambia el campo enviado."
+    },
+    {
+      "id": "reemplazo",
+      "text": "`{\"temp\": 2}`: la actualización sustituye el objeto `desired` entero",
+      "explanation": "No se reemplaza el objeto: se actualizan los campos indicados."
+    },
+    {
+      "id": "rechazo",
+      "text": "Se rechaza porque falta `door`",
+      "explanation": "Las solicitudes pueden incluir solo las propiedades que cambian."
+    },
+    {
+      "id": "null",
+      "text": "`{\"door\": null, \"temp\": 2}`",
+      "explanation": "`door` no se toca; `null` solo aparece si lo envía alguien, y entonces elimina la propiedad."
+    }
+  ],
+  "answer": "parcial",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        59,
+        60
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Interactuar con las sombras",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-data-flow.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "sombras"
+    }
+  ]
+}

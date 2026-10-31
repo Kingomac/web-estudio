@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-basic-ingest-otra-regla",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Hay dos reglas activas:\n`Alarmas`: `SELECT * FROM 'fabrica/#' WHERE temp > 80`\n`Historico`: `SELECT * FROM 'fabrica/#'`\nUna aplicación está suscrita a `fabrica/#`. Un sensor publica `{\"temp\": 95}` en `$aws/rules/Alarmas/fabrica/l3/horno`. ¿Qué ocurre?",
+  "explanation": "Con la ingestión básica, el mensaje entra directamente en el motor de reglas sin pasar por el agente de mensajes, y el tema `$aws/rules/NOMBRE_REGLA/...` indica qué regla se invoca. Solo se evalúa `Alarmas`, que ejecuta su acción porque 95 > 80. Como el mensaje no pasa por el broker, la aplicación no lo recibe y `Historico` no se activa, aunque su filtro coincidiría con `fabrica/l3/horno`.",
+  "options": [
+    {
+      "id": "solo-alarmas",
+      "text": "Solo se evalúa `Alarmas`, que ejecuta su acción; ni `Historico` ni la aplicación reciben el mensaje",
+      "explanation": "La ingestión básica invoca únicamente la regla nombrada en el tema y se salta el broker."
+    },
+    {
+      "id": "dos-reglas",
+      "text": "Se ejecutan `Alarmas` e `Historico`, porque `fabrica/l3/horno` coincide con ambos filtros, pero la aplicación no lo recibe",
+      "explanation": "El tema reservado no dispara todas las reglas cuyo filtro coincide: solo la que se nombra."
+    },
+    {
+      "id": "todo",
+      "text": "Se ejecutan ambas reglas y la aplicación lo recibe, porque el broker quita el prefijo `$aws/rules/Alarmas`",
+      "explanation": "La ingestión básica consiste precisamente en no pasar por el broker; nadie reenvía el mensaje al tema original."
+    },
+    {
+      "id": "ninguna",
+      "text": "No se ejecuta ninguna: `FROM 'fabrica/#'` no coincide con un tema que empieza por `$aws`",
+      "explanation": "El prefijo de ingestión básica selecciona la regla; el resto del tema es el que se compara, como en el ejemplo `BuildingManager` del tema. Para reglas que solo se usan con ingestión básica, FROM es incluso opcional."
+    }
+  ],
+  "answer": "solo-alarmas",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        44,
+        51
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Reducir costes con Basic Ingest",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-basic-ingest.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

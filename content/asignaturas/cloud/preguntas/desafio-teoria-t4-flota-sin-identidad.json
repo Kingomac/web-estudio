@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-flota-sin-identidad",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un fabricante de enchufes baratos no puede, por coste, grabar en fábrica una identidad única en cada unidad. Quiere que cada enchufe obtenga su propio certificado en la primera conexión **sin que el comprador ni un instalador usen ninguna app**. ¿Qué método encaja y qué precio paga?",
+  "explanation": "Si el dispositivo no tiene certificado propio, se usa el aprovisionamiento de flota, que genera la clave y el certificado firmado por la CA de AWS en la primera conexión. Sin intervención de un usuario de confianza con app, queda el aprovisionamiento por reclamación: todos los dispositivos llevan el mismo certificado de reclamación con permisos limitados. El tema advierte de que este método es más arriesgado si ese certificado se ve comprometido. JITP, JITR, el aprovisionamiento individual y el registro en masa parten de dispositivos que ya traen certificado y clave de fábrica.",
+  "options": [
+    {
+      "id": "reclamacion",
+      "text": "Aprovisionamiento de flota por reclamación; todos llevan el mismo certificado de reclamación, y si se compromete el riesgo es mayor que con los demás métodos",
+      "explanation": "Es el único método sin identidad previa ni usuario de confianza, y el tema le asocia ese riesgo."
+    },
+    {
+      "id": "jitp",
+      "text": "JITP; el precio es tener que registrar la CA y conocer la cuenta AWS de destino",
+      "explanation": "JITP exige que el dispositivo ya tenga un certificado firmado por una CA registrada, justo lo que el fabricante no puede grabar."
+    },
+    {
+      "id": "jitr",
+      "text": "JITR; una Lambda crea el certificado del enchufe al detectar su primera conexión",
+      "explanation": "JITR añade lógica a JITP cuando se verifica el certificado que ya trae el dispositivo; no le crea una identidad desde cero."
+    },
+    {
+      "id": "confianza",
+      "text": "Aprovisionamiento por usuario de confianza; el precio es depender de credenciales temporales",
+      "explanation": "Requiere que un usuario o instalador use la app del fabricante, y el caso lo descarta."
+    },
+    {
+      "id": "masa",
+      "text": "Registro en masa desde una lista en S3; el precio es mantener esa lista",
+      "explanation": "La lista solo aporta los parámetros de la plantilla para dispositivos que ya traen certificado y clave."
+    }
+  ],
+  "answer": "reclamacion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        64,
+        66,
+        67,
+        69
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "aprovisionamiento"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-containerd-oci",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "¿Qué cambio en Docker Engine permite que la misma imagen se ejecute en Linux, Windows o macOS y con runtimes distintos, como runC, Kata, gVisor o Firecracker?",
+  "explanation": "En su origen, Docker Engine se implementó en Linux usando LXC. Hoy usa containerd, un entorno de código abierto para gestionar y ejecutar contenedores que implementa los estándares OCI (Open Container Initiative). Gracias a eso la misma imagen es portable y puede usar diferentes runtimes.",
+  "options": [
+    {
+      "id": "containerd",
+      "text": "Usar containerd, que implementa los estándares OCI, en lugar de LXC",
+      "explanation": "Es el cambio que describe el tema."
+    },
+    {
+      "id": "lxc",
+      "text": "Basarse en LXC, que es multiplataforma",
+      "explanation": "LXC era la implementación original de Docker Engine en Linux; la portabilidad llegó con containerd y OCI."
+    },
+    {
+      "id": "hipervisor",
+      "text": "Incluir un hipervisor de tipo 1 en cada imagen",
+      "explanation": "Las imágenes de contenedor no incluyen un hipervisor."
+    },
+    {
+      "id": "dockerfile",
+      "text": "Que el Dockerfile se compila para cada SO",
+      "explanation": "El Dockerfile contiene las instrucciones para crear la imagen; no es lo que la hace portable entre runtimes."
+    }
+  ],
+  "answer": "containerd",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        16,
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "docker"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-jobs-runasuser",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Al crear el trabajo de la plantilla `AWS-Download-File`, ¿por qué el tutorial exige `runAsUser` = `root` y `pathToHandler` = `/etc/.aws-iot-device-client/jobs/`?",
+  "explanation": "`runAsUser` debe coincidir con el usuario que ejecuta el servicio Device Client (root en el tutorial). `pathToHandler` es la ruta local donde están los manejadores: la predeterminada coincide con el `handler-directory` configurado al instalar el cliente. Son los dos parámetros comunes a todas las plantillas gestionadas por AWS.",
+  "options": [
+    {
+      "id": "coincidir",
+      "text": "`runAsUser` debe coincidir con el usuario del servicio Device Client y `pathToHandler` con su directorio de manejadores",
+      "explanation": "Ambos dependen de cómo se instaló el Device Client."
+    },
+    {
+      "id": "aws",
+      "text": "Son el usuario y la ruta del bucket S3 desde donde descarga AWS",
+      "explanation": "Son datos locales del dispositivo; la descarga se indica con `downloadUrl`."
+    },
+    {
+      "id": "iam",
+      "text": "`root` es el rol IAM del trabajo y la ruta, su política",
+      "explanation": "No son identidades de AWS: son un usuario y una ruta del SO del dispositivo."
+    },
+    {
+      "id": "destino",
+      "text": "Indican dónde se guarda el archivo descargado",
+      "explanation": "Eso es `filePath` (`/home/ubuntu/workshop_dc/downloadLocation/...`)."
+    }
+  ],
+  "answer": "coincidir",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        74
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-bridge-region",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la actividad del bridge MQTT, el log de `BridgeSubscriber` muestra los mensajes locales, pero en el cliente MQTT de la consola (us-east-1) no aparece nada en `mytopic1/test`. En `bridge.conf` dejaste el endpoint ATS de **otra región**. ¿Qué ocurre?",
+  "explanation": "La mensajería local funciona, pero el puente reenvía hacia el endpoint configurado. El espacio de nombres de los temas está limitado a una cuenta y una región: `mytopic1/test` en otra región es un tema distinto del que observas en us-east-1. Por eso la actividad pide usar us-east-1 en el endpoint ATS de `bridge.conf`.",
+  "options": [
+    {
+      "id": "region",
+      "text": "El puente envía a IoT Core de otra región; los temas son distintos por región, así que no los ves en us-east-1",
+      "explanation": "Explica que lo local funcione y la consola no muestre nada."
+    },
+    {
+      "id": "ipc",
+      "text": "BridgeSubscriber consume los mensajes y ya no llegan a la nube",
+      "explanation": "Un suscriptor no impide que el broker o el puente entreguen copias a otros destinos."
+    },
+    {
+      "id": "politica",
+      "text": "La política IoT del núcleo no permite publicar en `mytopic1/test`",
+      "explanation": "Podría causar un fallo, pero no encaja con el error de configuración del caso."
+    },
+    {
+      "id": "comodin",
+      "text": "La consola necesita suscribirse a `mytopic1/#`",
+      "explanation": "Una suscripción al tema exacto basta si los mensajes llegan a esa región."
+    }
+  ],
+  "answer": "region",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        19
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 1 · Bridge MQTT",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_1/"
+    },
+    {
+      "title": "AWS IoT Core · Temas MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/topics.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "bridge"
+    }
+  ]
+}

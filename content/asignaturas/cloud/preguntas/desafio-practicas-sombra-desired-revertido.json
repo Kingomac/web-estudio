@@ -1,0 +1,62 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-sombra-desired-revertido",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "El dispositivo de la actividad de sombras de P2 se desconecta con `reported` `{\"door\":\"on\"}`. Mientras está desconectado, una aplicación publica `desired` `{\"door\":\"off\"}` y, minutos después, `desired` `{\"door\":\"on\"}`. Al reconectar, el dispositivo pide la sombra con `/get`. ¿Qué debe hacer con la puerta?",
+  "explanation": "La sombra guarda el estado vigente, no un historial de órdenes. Al reconectarse, el dispositivo recibe el estado actual para sincronizarse. `desired` vuelve a ser `on`, igual que `reported`, así que el documento no tiene delta para `door`: no hay ningún cambio pendiente. Las versiones habrán aumentado, pero eso no significa que haya que actuar.",
+  "options": [
+    {
+      "id": "nada",
+      "text": "Nada: `desired` vuelve a coincidir con `reported`, así que no hay delta para `door`",
+      "explanation": "La sincronización se basa en la diferencia actual entre deseado y comunicado."
+    },
+    {
+      "id": "reproducir",
+      "text": "Cerrarla y volver a abrirla, para reproducir en orden las dos órdenes recibidas",
+      "explanation": "La sombra no conserva la secuencia de órdenes intermedias; solo el estado deseado vigente."
+    },
+    {
+      "id": "primera",
+      "text": "Cerrarla, porque el delta conserva la primera diferencia hasta que el dispositivo la confirme",
+      "explanation": "El delta se calcula con el estado actual: cuando `desired` vuelve a `on`, la diferencia desaparece."
+    },
+    {
+      "id": "lista",
+      "text": "Leer en `/get/accepted` la lista de cambios pendientes y aplicarlos uno a uno",
+      "explanation": "`/get/accepted` devuelve el documento de sombra actual (state, metadata, version...), no una cola de cambios."
+    }
+  ],
+  "answer": "nada",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        55,
+        60
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Sombras en acción",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/11_device_shadows/"
+    },
+    {
+      "title": "Práctica 2 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "secuencia-sombra"
+    }
+  ]
+}

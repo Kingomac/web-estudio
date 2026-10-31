@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-artefacto-modificado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Para «arreglar rápido» un error, sustituyes en S3 el archivo `custom.zip` de un componente ya publicado, sin cambiar la receta ni la versión. El siguiente despliegue de esa versión falla. ¿Por qué?",
+  "explanation": "Al crear la versión del componente, AWS IoT Greengrass calcula el resumen (digest) de cada artefacto. Si después se modifica el archivo en S3, el resumen no coincide y los despliegues que incluyen esa versión fallan. Hay que crear una versión nueva del componente.",
+  "options": [
+    {
+      "id": "digest",
+      "text": "Greengrass guardó el resumen del artefacto al crear la versión, y el archivo nuevo no coincide",
+      "explanation": "Por eso un artefacto modificado exige una versión nueva."
+    },
+    {
+      "id": "permisos",
+      "text": "El rol de intercambio de tokens no tiene permiso sobre archivos reemplazados",
+      "explanation": "El permiso de lectura no depende de si el objeto se reemplazó."
+    },
+    {
+      "id": "unarchive",
+      "text": "`Unarchive` solo funciona la primera vez",
+      "explanation": "La descompresión no es la causa: el archivo ya no coincide con lo registrado."
+    },
+    {
+      "id": "funciona",
+      "text": "No falla: el núcleo descarga siempre la última copia de S3",
+      "explanation": "El núcleo verifica el artefacto contra el resumen registrado."
+    }
+  ],
+  "answer": "digest",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        11,
+        13
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Publicar componentes",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/publish-components.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

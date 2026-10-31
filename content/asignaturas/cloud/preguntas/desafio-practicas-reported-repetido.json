@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-reported-repetido",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la actividad de sombras, el dispositivo publica dos veces seguidas el mismo `{\"state\": {\"reported\": {\"door\": \"on\"}}}` sin `version`. ¿Qué ocurre con la sombra?",
+  "explanation": "Cada actualización aceptada incrementa la versión del documento, aunque el valor sea el mismo, y actualiza los metadatos de hora. La actividad lo comprueba al reenviar el mismo reported. Que cambien la versión y los metadatos no significa que haya cambiado el estado físico ni que aparezca un delta.",
+  "options": [
+    {
+      "id": "sube-version",
+      "text": "Se aceptan las dos y la versión aumenta en cada una, aunque `door` no cambie",
+      "explanation": "La versión cuenta actualizaciones, no cambios de valor."
+    },
+    {
+      "id": "rechaza",
+      "text": "La segunda se rechaza por duplicada",
+      "explanation": "No hay detección de duplicados, y sin `version` no se aplica el control de versiones."
+    },
+    {
+      "id": "igual",
+      "text": "La segunda se ignora y la versión no cambia",
+      "explanation": "La versión se incrementa en cada actualización aceptada."
+    },
+    {
+      "id": "delta",
+      "text": "Aparece un delta por la repetición",
+      "explanation": "El delta compara desired y reported; repetir reported no lo crea."
+    }
+  ],
+  "answer": "sube-version",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        59,
+        60
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "secuencia-sombra"
+    }
+  ]
+}

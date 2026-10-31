@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t2-cpd-misma-az",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Para que su servicio sobreviva a un corte eléctrico, un arquitecto propone colocar dos réplicas en «dos centros de datos distintos» de la misma zona de disponibilidad, porque «son edificios diferentes». ¿Qué objeción es correcta?",
+  "explanation": "Una AZ está formada por uno o más centros de datos. Lo que el tema garantiza es que las AZ están aisladas entre sí: cada una tiene su propia infraestructura redundada y no comparte instalación eléctrica ni refrigeración con las demás. Esa garantía es entre AZ, no entre los centros de datos de una misma AZ. Además, con la agrupación de recursos el cliente no controla la ubicación exacta, solo preferencias de alto nivel. Para resistir un corte hay que repartir las réplicas entre AZ, que están unidas por conexiones privadas de baja latencia.",
+  "options": [
+    {
+      "id": "entre-az",
+      "text": "El aislamiento eléctrico y de refrigeración se garantiza entre AZ, no entre los centros de datos de una AZ, y el cliente ni siquiera elige el centro de datos: hay que repartir las réplicas en dos AZ",
+      "explanation": "Sitúa la garantía en la unidad correcta y recuerda que el cliente no controla la ubicación exacta."
+    },
+    {
+      "id": "equivale",
+      "text": "La propuesta es correcta: cada centro de datos de una AZ tiene su propia instalación eléctrica, así que equivale a usar dos AZ",
+      "explanation": "Confunde centro de datos con AZ. El tema atribuye la infraestructura independiente a cada AZ, no a cada centro de datos que la forma."
+    },
+    {
+      "id": "regiones",
+      "text": "Debe usar dos regiones, porque las AZ de una misma región comparten la instalación eléctrica",
+      "explanation": "Las AZ de una región no comparten instalación eléctrica ni refrigeración. Usar varias regiones puede tener otros motivos, pero no es necesario para este fallo."
+    },
+    {
+      "id": "pop",
+      "text": "Debe usar dos puntos de presencia (PoP), que son la unidad de alta disponibilidad para cómputo en AWS",
+      "explanation": "Los PoP pertenecen a CloudFront y sirven para entregar contenido con baja latencia, no para replicar un servicio frente a cortes."
+    }
+  ],
+  "answer": "entre-az",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        8,
+        9
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

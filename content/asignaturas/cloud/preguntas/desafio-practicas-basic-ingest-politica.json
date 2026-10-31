@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-basic-ingest-politica",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un camión con una política que solo permite `iot:Publish` sobre `topic/truck/freezer` empieza a publicar en `$aws/rules/truck2ddb/truck/freezer` para ahorrar costes. ¿Qué ocurre?",
+  "explanation": "Basic Ingest no se salta la autorización: el dispositivo necesita permiso de publicación sobre `$aws/rules/*` o `$aws/rules/truck2ddb/*`. El recurso `topic/truck/freezer` no cubre el tema reservado, así que la publicación se deniega.",
+  "options": [
+    {
+      "id": "denegado",
+      "text": "Se deniega: necesita permiso de publicación sobre `topic/$aws/rules/truck2ddb/*` (o `$aws/rules/*`)",
+      "explanation": "El tema de ingestión es otro recurso y requiere su propio permiso."
+    },
+    {
+      "id": "permitido",
+      "text": "Se permite, porque el sufijo coincide con `truck/freezer`",
+      "explanation": "El permiso se evalúa sobre el tema completo, con el prefijo `$aws/rules/...`."
+    },
+    {
+      "id": "sin-politica",
+      "text": "Se permite: Basic Ingest no pasa por el broker y no evalúa políticas",
+      "explanation": "Evita el broker, pero no la autorización."
+    },
+    {
+      "id": "rol",
+      "text": "Depende solo del rol IAM de la regla",
+      "explanation": "El rol autoriza las acciones de la regla; publicar sigue dependiendo de la política del dispositivo."
+    }
+  ],
+  "answer": "denegado",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35,
+        51
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Reducir costes con Basic Ingest",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-basic-ingest.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "reglas"
+    }
+  ]
+}

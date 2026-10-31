@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-ubicacion-recursos",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Al crear un volumen en una nube IaaS pública, un cliente puede elegir «UE (Fráncfort)», pero el proveedor no le dice en qué servidor ni en qué sala están sus datos. Además, mueve esos recursos entre equipos según la demanda del resto de clientes. ¿Qué característica esencial del NIST describe **exactamente** ese comportamiento?",
+  "explanation": "En la agrupación de recursos (resource pooling), el proveedor atiende a varios clientes con un modelo multi-tenant y asigna y reasigna dinámicamente los recursos físicos o virtuales según la demanda. El cliente no controla la ubicación exacta, aunque sí puede indicar sus preferencias a un nivel más alto (país, estado o centro de datos). Que el cliente elija la región en una consola puede parecer autoservicio, pero lo que describe el caso es cómo comparte y ubica los recursos el proveedor.",
+  "options": [
+    {
+      "id": "agrupacion",
+      "text": "Agrupación de recursos (resource pooling)",
+      "explanation": "Recoge los tres rasgos del caso: modelo multi-tenant, reasignación dinámica e independencia de la ubicación exacta con preferencia de alto nivel."
+    },
+    {
+      "id": "elasticidad",
+      "text": "Elasticidad rápida (rapid elasticity)",
+      "explanation": "Se refiere a cuánta capacidad se aprovisiona y se libera según la demanda, y a que parezca ilimitada. No trata de dónde están los recursos ni de que se compartan entre clientes."
+    },
+    {
+      "id": "autoservicio",
+      "text": "Autoservicio bajo demanda (on-demand self-service)",
+      "explanation": "Explica que el cliente puede elegir la región sin hablar con nadie, pero no que el proveedor oculte la ubicación exacta y reparta los equipos entre inquilinos."
+    },
+    {
+      "id": "acceso-red",
+      "text": "Fácil acceso por red (broad network access)",
+      "explanation": "Se refiere al acceso por mecanismos estándar desde clientes heterogéneos. No dice nada sobre la ubicación ni sobre cómo se reparten los recursos."
+    },
+    {
+      "id": "medido",
+      "text": "Servicio medido (measured service)",
+      "explanation": "Se refiere a medir y facturar el uso y a hacerlo transparente. Que el proveedor optimice el uso no equivale a que reasigne recursos entre clientes sin revelar su ubicación."
+    }
+  ],
+  "answer": "agrupacion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        24,
+        26,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "nist"
+    }
+  ]
+}

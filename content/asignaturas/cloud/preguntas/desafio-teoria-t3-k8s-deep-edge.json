@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-k8s-deep-edge",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En el mapa de proyectos K8s para edge/IoT del tema, un sensor con un microcontrolador ARM Cortex-M y menos de 64 MB de RAM pertenece al **deep edge**. ¿Cómo se integra con Kubernetes?",
+  "explanation": "En el deep edge (hardware muy limitado: ARM Cortex-M/A, RISC-V, menos de 64 MB de RAM), el tema no sitúa una distribución de K8s en el dispositivo. Propone extender el plano de control: proyectar las APIs de K8s hasta los dispositivos mediante agentes ultraligeros con sincronización bidireccional de estado (por ejemplo, KubeEdge, Akri o Eclipse Kanto). Como alternativa cita runtimes WASM ultraligeros. Las distribuciones ligeras como K3s se sitúan en el far edge.",
+  "options": [
+    {
+      "id": "proyeccion",
+      "text": "Se extiende el plano de control: agentes ultraligeros proyectan las APIs de K8s hasta el dispositivo",
+      "explanation": "Es la propuesta del tema para el deep edge."
+    },
+    {
+      "id": "k3s",
+      "text": "Ejecutando K3s directamente en el microcontrolador",
+      "explanation": "K3s requiere en torno a 512 MB y el tema lo ubica en el far edge."
+    },
+    {
+      "id": "cluster",
+      "text": "Como un clúster K8s completo federado con la nube",
+      "explanation": "La federación multiclúster corresponde al near edge, con hardware de capacidad media."
+    },
+    {
+      "id": "imposible",
+      "text": "No puede integrarse: K8s solo gestiona servidores del centro de datos",
+      "explanation": "El tema muestra cómo K8s ha extendido su alcance hacia el borde y el IoT."
+    }
+  ],
+  "answer": "proyeccion",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        24,
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "virtualizacion-continuo"
+    }
+  ]
+}

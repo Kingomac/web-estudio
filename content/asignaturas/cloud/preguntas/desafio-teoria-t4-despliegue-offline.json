@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-despliegue-offline",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo core de Greengrass está apagado mientras su grupo recibe dos revisiones sucesivas del despliegue (la 3 y la 4). Al volver a estar en línea, ¿qué recibe?",
+  "explanation": "Los despliegues de Greengrass son continuos: cuando un destino vuelve a estar en línea, o se añade uno nuevo, se le envía la versión más actual del despliegue. Esto los diferencia de un trabajo instantáneo (snapshot), que termina cuando sus destinos iniciales completan el trabajo. Además, cada dispositivo solo puede tener un despliegue a la vez.",
+  "options": [
+    {
+      "id": "ultima",
+      "text": "Solo la revisión más actual (la 4)",
+      "explanation": "Un despliegue continuo envía la versión más actual."
+    },
+    {
+      "id": "ambas",
+      "text": "La 3 y después la 4, en orden",
+      "explanation": "No se reproducen las revisiones intermedias: se aplica la vigente."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: se perdió los despliegues por estar desconectado",
+      "explanation": "Los despliegues son continuos: el dispositivo recibe la versión actual al reconectar."
+    },
+    {
+      "id": "snapshot",
+      "text": "Nada, porque los despliegues usan trabajos instantáneos que ya terminaron",
+      "explanation": "Aunque se apoyen en trabajos remotos, el tema define los despliegues como continuos."
+    }
+  ],
+  "answer": "ultima",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        17,
+        72
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "greengrass"
+    }
+  ]
+}

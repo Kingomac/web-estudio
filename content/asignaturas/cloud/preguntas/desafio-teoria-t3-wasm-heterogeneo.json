@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-wasm-heterogeneo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un mismo módulo debe ejecutarse **sin recompilar** en nodos de borde ARM y x86, aislado en un sandbox y con un arranque de milisegundos. ¿Qué técnica encaja mejor, y por qué no un unikernel?",
+  "explanation": "WebAssembly es un formato binario portable que se ejecuta en un sandbox de seguridad, con arranque ultrarrápido, independiente del lenguaje original y de la plataforma de destino. El tema lo considera idóneo para el borde por la heterogeneidad del hardware. El unikernel, en cambio, exige compilar una imagen por cada combinación de arquitectura y plataforma.",
+  "options": [
+    {
+      "id": "wasm",
+      "text": "WASM: binario portable entre plataformas; el unikernel exige una imagen por arquitectura y plataforma",
+      "explanation": "Recoge la portabilidad de WASM y la desventaja del unikernel."
+    },
+    {
+      "id": "unikernel",
+      "text": "Unikernel: una sola imagen se ejecuta en cualquier arquitectura",
+      "explanation": "Es justo al revés: su menor portabilidad obliga a recompilar."
+    },
+    {
+      "id": "contenedor",
+      "text": "Contenedor: la misma imagen se ejecuta en ARM y x86 sin cambios",
+      "explanation": "Una imagen de contenedor contiene binarios de una arquitectura; el tema destaca la portabilidad total como rasgo de WASM."
+    },
+    {
+      "id": "vm",
+      "text": "VM tradicional: es la que arranca más rápido",
+      "explanation": "Las VM son las más lentas de arrancar según la tabla."
+    }
+  ],
+  "answer": "wasm",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        19,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "virtualizacion-continuo"
+    }
+  ]
+}

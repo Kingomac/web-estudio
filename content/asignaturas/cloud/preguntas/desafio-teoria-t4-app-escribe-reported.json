@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-app-escribe-reported",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "La sombra tiene `desired` `{\"valve\":\"closed\"}` y `reported` `{\"valve\":\"open\"}`. Para «ir más rápido», una aplicación publica ella misma `reported` `{\"valve\":\"closed\"}`. ¿Qué consecuencia tiene?",
+  "explanation": "El tema exige coordinación: los dispositivos solo modifican `reported` y las aplicaciones solo `desired`. Si la aplicación escribe `reported`, desired y reported coinciden y el delta desaparece. El dispositivo ya no tiene ninguna diferencia que aplicar, así que la válvula sigue abierta mientras la sombra dice que está cerrada.",
+  "options": [
+    {
+      "id": "inconsistente",
+      "text": "Desaparece el delta, el dispositivo no recibe la orden y la sombra deja de reflejar el estado real",
+      "explanation": "Rompe la consistencia entre la sombra y el dispositivo."
+    },
+    {
+      "id": "acelera",
+      "text": "La válvula se cierra antes, porque el dispositivo lee `reported`",
+      "explanation": "El dispositivo actúa sobre el delta; al eliminarlo, no actúa."
+    },
+    {
+      "id": "rechazo",
+      "text": "AWS rechaza la actualización, porque una aplicación no puede escribir `reported`",
+      "explanation": "Es una norma de uso, no una restricción del servicio. Con los permisos adecuados, la escritura se acepta."
+    },
+    {
+      "id": "sin-efecto",
+      "text": "No pasa nada: el delta se mantiene hasta que el dispositivo confirme",
+      "explanation": "El delta se calcula con desired y reported; si coinciden, no hay delta."
+    }
+  ],
+  "answer": "inconsistente",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        56,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "sombras"
+    }
+  ]
+}

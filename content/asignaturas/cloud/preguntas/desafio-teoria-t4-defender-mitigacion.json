@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-defender-mitigacion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una auditoría de Device Defender detecta que la política de una flota es demasiado permisiva. ¿Cuál de estas es una acción de mitigación que cita el tema?",
+  "explanation": "El tema enumera acciones de mitigación: añadir cosas a un grupo, sustituir la versión de la política predeterminada, actualizar el certificado del dispositivo y descargar parches. Con una política demasiado permisiva, lo que corresponde es sustituir la versión predeterminada por una restrictiva. Las políticas IoT guardan versiones, y una de ellas es la activa o predeterminada.",
+  "options": [
+    {
+      "id": "version-politica",
+      "text": "Sustituir la versión predeterminada de la política",
+      "explanation": "Corrige el problema detectado y es una de las acciones del tema."
+    },
+    {
+      "id": "borrar-cosas",
+      "text": "Eliminar automáticamente todas las cosas afectadas",
+      "explanation": "No es una acción de mitigación del tema y destruiría el registro."
+    },
+    {
+      "id": "auditoria-corrige",
+      "text": "Nada: la auditoría corrige sola la política al terminar",
+      "explanation": "La auditoría informa y alerta; la corrección es una acción aparte."
+    },
+    {
+      "id": "tunel",
+      "text": "Abrir un túnel seguro a cada dispositivo",
+      "explanation": "El túnel sirve para acceso remoto, no para corregir la política."
+    }
+  ],
+  "answer": "version-politica",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        88,
+        90
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "gestion-remota"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t3-tabla-memoria",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.virtualizacion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Según la tabla comparativa del tema (VM, contenedor, unikernel), ¿en qué métrica tiene el **contenedor** un valor mejor que el **unikernel**?",
+  "explanation": "La tabla da al contenedor una huella de memoria de unos 5 MB y al unikernel de unos 8 MB. En las demás métricas de las opciones gana el unikernel: instanciación en menos de 50 ms frente a ~800/100 ms, imagen de menos de 5 MB frente a unos 50 MB y seguridad alta frente a media. El detalle sorprende porque se suele asumir que el unikernel es más ligero en todo.",
+  "options": [
+    {
+      "id": "memoria",
+      "text": "Huella de memoria",
+      "explanation": "Unos 5 MB del contenedor frente a unos 8 MB del unikernel."
+    },
+    {
+      "id": "imagen",
+      "text": "Tamaño de imagen",
+      "explanation": "El unikernel ocupa menos de 5 MB, frente a unos 50 MB del contenedor."
+    },
+    {
+      "id": "instanciacion",
+      "text": "Tiempo de instanciación",
+      "explanation": "El unikernel tarda menos de 50 ms y el contenedor, ~800/100 ms."
+    },
+    {
+      "id": "seguridad",
+      "text": "Seguridad",
+      "explanation": "La tabla da seguridad media al contenedor y alta al unikernel."
+    }
+  ],
+  "answer": "memoria",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-3",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tecnicas-virtualizacion"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-regla-json-anidado",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Llega a `fabrica/l3` el mensaje `{\"motor\": {\"fases\": {\"0\": {\"temp\": 70}, \"1\": {\"temp\": 95}}}}`. ¿Qué regla lo deja pasar **y** devuelve `{\"t\": 95}`?",
+  "explanation": "Las extensiones JSON del SQL de AWS IoT permiten navegar por objetos anidados con el operador `.`, como en el ejemplo del tema `data.item2.0.key`, donde `0` es una clave del objeto. Aquí, `motor.fases.1.temp` vale 95 y `AS t` renombra la salida. La condición sobre esa misma ruta (95 > 90) se cumple.",
+  "options": [
+    {
+      "id": "indice-1",
+      "text": "`SELECT motor.fases.1.temp AS t FROM 'fabrica/l3' WHERE motor.fases.1.temp > 90`",
+      "explanation": "Selecciona y filtra la clave `1`, que vale 95."
+    },
+    {
+      "id": "indice-0",
+      "text": "`SELECT motor.fases.0.temp AS t FROM 'fabrica/l3' WHERE motor.fases.0.temp > 90`",
+      "explanation": "La clave `0` vale 70: no cumple la condición y la regla no actúa."
+    },
+    {
+      "id": "sin-ruta",
+      "text": "`SELECT temp AS t FROM 'fabrica/l3' WHERE temp > 90`",
+      "explanation": "`temp` no está en el primer nivel del JSON; hay que indicar la ruta anidada."
+    },
+    {
+      "id": "from-mal",
+      "text": "`SELECT motor.fases.1.temp AS t FROM 'fabrica/+/l3' WHERE motor.fases.1.temp > 90`",
+      "explanation": "El filtro exige tres niveles, y el tema `fabrica/l3` solo tiene dos."
+    }
+  ],
+  "answer": "indice-1",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        44,
+        45,
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "reglas"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-qos2",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Para evitar duplicados, un desarrollador configura su cliente para suscribirse a `truck/freezer` con **QoS 2**, «exactamente una vez». La suscripción nunca se confirma. ¿Por qué?",
+  "explanation": "AWS IoT solo admite QoS 0 y 1. Si se pide QoS 2, el broker no envía SUBACK ni PUBACK. Con QoS 1 puede haber entregas repetidas, así que la aplicación debe tolerar duplicados.",
+  "options": [
+    {
+      "id": "no-qos2",
+      "text": "AWS IoT no admite QoS 2: ante esa petición el broker no envía SUBACK",
+      "explanation": "Es una diferencia documentada de AWS IoT respecto al estándar MQTT."
+    },
+    {
+      "id": "politica",
+      "text": "Falta `iot:Subscribe` para QoS 2 en la política",
+      "explanation": "Los permisos no dependen del nivel de QoS; el nivel en sí no está soportado."
+    },
+    {
+      "id": "persistente",
+      "text": "QoS 2 solo funciona con sesión persistente",
+      "explanation": "AWS IoT no admite QoS 2 en ningún caso."
+    },
+    {
+      "id": "filtro",
+      "text": "El filtro es inválido para QoS 2",
+      "explanation": "`truck/freezer` es un filtro válido; el problema es el nivel de QoS."
+    }
+  ],
+  "answer": "no-qos2",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Core · MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html"
+    },
+    {
+      "title": "Práctica 2 · Conexiones de dispositivos",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/08_device_connections/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "conexiones"
+    }
+  ]
+}

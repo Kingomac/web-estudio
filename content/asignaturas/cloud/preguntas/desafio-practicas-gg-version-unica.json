@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-version-unica",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En el apartado 4.5 de P4 corriges el código de `HelloWorld` y vuelves a crear el componente en AWS con la misma versión `1.0.0`. ¿Qué pasa?",
+  "explanation": "Cada versión de componente que se sube a AWS IoT Greengrass debe ser única y no puede editarse después. Para actualizar hay que incrementar la versión en la receta, publicarla y revisar el despliegue para que seleccione la nueva.",
+  "options": [
+    {
+      "id": "nueva-version",
+      "text": "No se puede: las versiones publicadas no se editan; hay que crear, por ejemplo, la `1.0.1` y desplegarla",
+      "explanation": "Recoge la unicidad de las versiones y el flujo de actualización."
+    },
+    {
+      "id": "sobrescribe",
+      "text": "Se sobrescribe la `1.0.0` y los núcleos se actualizan solos",
+      "explanation": "Las versiones no se editan, y publicar no despliega."
+    },
+    {
+      "id": "s3",
+      "text": "Basta con reemplazar el artefacto en S3 manteniendo la versión",
+      "explanation": "Greengrass guarda el resumen (digest) del artefacto: cambiarlo hace fallar los despliegues de esa versión."
+    },
+    {
+      "id": "local",
+      "text": "Solo hay que reiniciar el núcleo",
+      "explanation": "Reiniciar no cambia la versión publicada en la nube."
+    }
+  ],
+  "answer": "nueva-version",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        11,
+        13
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Publicar componentes",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/publish-components.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

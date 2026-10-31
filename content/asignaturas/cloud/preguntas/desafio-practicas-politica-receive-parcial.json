@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-politica-receive-parcial",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "El cliente `camion-01` se conecta con esta política y se suscribe a `truck/#`. Otros dispositivos publican en `truck/freezer`, `truck/cabin` y `truck/freezer/door`. ¿Qué mensajes recibe?\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Connect\",\n      \"Resource\": \"arn:aws:iot:us-east-1:123456789012:client/camion-01\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Subscribe\",\n      \"Resource\": \"arn:aws:iot:us-east-1:123456789012:topicfilter/truck/#\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iot:Receive\",\n      \"Resource\": \"arn:aws:iot:us-east-1:123456789012:topic/truck/freezer\"\n    }\n  ]\n}\n```",
+  "explanation": "`iot:Subscribe` se evalúa sobre el filtro solicitado: el recurso `topicfilter/truck/#` coincide literalmente con el filtro `truck/#`, así que la suscripción se acepta. Después, cada mensaje se autoriza con `iot:Receive` sobre el tema concreto en el que se publicó. Solo se permite `topic/truck/freezer`, sin comodines, de modo que únicamente llega ese mensaje.",
+  "options": [
+    {
+      "id": "solo-freezer",
+      "text": "Solo el de `truck/freezer`",
+      "explanation": "La suscripción es amplia, pero `iot:Receive` filtra mensaje a mensaje y solo autoriza ese tema exacto."
+    },
+    {
+      "id": "todos",
+      "text": "Los tres, porque la suscripción a `truck/#` está autorizada",
+      "explanation": "Confunde suscribirse con recibir: la entrega de cada mensaje se autoriza aparte con `iot:Receive`."
+    },
+    {
+      "id": "ninguno",
+      "text": "Ninguno: la suscripción se rechaza porque `#` no funciona como comodín en una política",
+      "explanation": "En la política `#` se trata como un carácter literal, y por eso el recurso coincide exactamente con el filtro `truck/#` que se solicita."
+    },
+    {
+      "id": "freezer-y-door",
+      "text": "Los de `truck/freezer` y `truck/freezer/door`, porque Receive sobre `truck/freezer` cubre sus subniveles",
+      "explanation": "El recurso no lleva comodín: `topic/truck/freezer` no incluye los temas que cuelgan de él."
+    }
+  ],
+  "answer": "solo-freezer",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 1 · Políticas de AWS IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_1/09-aws-iot-policies/"
+    },
+    {
+      "title": "AWS IoT · Políticas de publicación y suscripción",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/pub-sub-policy.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "politicas"
+    }
+  ]
+}

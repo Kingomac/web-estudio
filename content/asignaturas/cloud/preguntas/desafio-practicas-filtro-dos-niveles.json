@@ -1,0 +1,59 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-filtro-dos-niveles",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Necesitas un filtro que reciba `truck/7/freezer/temp` y `truck/8/cabin/temp`, pero **no** `truck/7/freezer/door/temp` ni `truck/7/freezer/hum`. ¿Cuál cumple las dos condiciones?",
+  "explanation": "`+` ocupa exactamente un nivel completo. `truck/+/+/temp` exige cuatro niveles con `temp` en el último: recibe los dos primeros temas y descarta `truck/7/freezer/door/temp` (cinco niveles) y `truck/7/freezer/hum` (el último nivel no es `temp`). `#` solo puede ir al final, y `*` no es comodín en MQTT.",
+  "options": [
+    {
+      "id": "dos-mas",
+      "text": "`truck/+/+/temp`",
+      "explanation": "Fija el número de niveles y el nivel final, que es lo que pide el caso."
+    },
+    {
+      "id": "almohadilla-medio",
+      "text": "`truck/#/temp`",
+      "explanation": "Es un filtro inválido: `#` tiene que ser el último nivel."
+    },
+    {
+      "id": "mas-almohadilla",
+      "text": "`truck/+/#`",
+      "explanation": "Es válido, pero también recibe `truck/7/freezer/door/temp` y `truck/7/freezer/hum`."
+    },
+    {
+      "id": "asterisco",
+      "text": "`truck/*/temp`",
+      "explanation": "`*` no es un comodín MQTT: el filtro solo coincidiría con un nivel llamado literalmente `*`."
+    },
+    {
+      "id": "un-mas",
+      "text": "`truck/+/temp`",
+      "explanation": "Solo admite tres niveles; los temas pedidos tienen cuatro."
+    }
+  ],
+  "answer": "dos-mas",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Uso de temas",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_2/03_using_topics/"
+    },
+    {
+      "title": "AWS IoT Core · Temas MQTT",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/topics.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-config-no-autoriza",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Tras la auditoría, `workshopDC` solo permite publicar y recibir en `$aws/things/${iot:Connection.Thing.ThingName}/*` y en el tema del tutorial. Después cambias en el archivo de configuración del Device Client `publish-topic` a `/fabrica/linea2` y reinicias el servicio. ¿Qué ocurre?",
+  "explanation": "El archivo de configuración dice qué intenta hacer el cliente, pero no le da permisos. La política corregida, con mínimo privilegio, no incluye `/fabrica/linea2`, así que AWS IoT deniega la publicación. Habría que crear una nueva versión de la política, activarla y que incluya ese tema.",
+  "options": [
+    {
+      "id": "denegado",
+      "text": "La publicación se deniega: la configuración no autoriza; la política no cubre ese tema",
+      "explanation": "Configuración y autorización son piezas distintas."
+    },
+    {
+      "id": "permitido",
+      "text": "Se permite: lo que figura en la configuración del Device Client queda autorizado",
+      "explanation": "El archivo de configuración no es una política de AWS."
+    },
+    {
+      "id": "variable",
+      "text": "Se permite: `${iot:Connection.Thing.ThingName}` actúa como comodín",
+      "explanation": "La variable se sustituye por el nombre de la cosa, y además el tema no empieza por `$aws/things/`."
+    },
+    {
+      "id": "sombra",
+      "text": "El mensaje se redirige a la sombra",
+      "explanation": "No existe esa redirección: la publicación simplemente se deniega."
+    }
+  ],
+  "answer": "denegado",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        35
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Auditoría de la seguridad",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "auditoria"
+    }
+  ]
+}

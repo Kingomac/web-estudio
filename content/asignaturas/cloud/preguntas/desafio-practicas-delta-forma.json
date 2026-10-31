@@ -1,0 +1,62 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-delta-forma",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "El dispositivo recibe en `/update/delta` el mensaje `{\"version\": 12, \"timestamp\": 1790000000, \"state\": {\"door\": \"off\"}}`. ¿Cómo debe interpretar `state`?",
+  "explanation": "En el mensaje de `/update/delta`, `state` contiene directamente las diferencias entre desired y reported. Aquí, que el estado deseado de la puerta es `off` y aún no se ha comunicado. No hay que buscar `state.delta` ni `state.desired`; esos objetos aparecen al obtener el documento completo. El dispositivo debe aplicar el cambio y comunicarlo en `reported`.",
+  "options": [
+    {
+      "id": "diferencias",
+      "text": "Son las diferencias pendientes: debe cerrar la puerta y comunicar `reported` `{\"door\": \"off\"}`",
+      "explanation": "Es el uso previsto del delta."
+    },
+    {
+      "id": "reported",
+      "text": "Es el último estado comunicado: la puerta ya está cerrada",
+      "explanation": "Es lo deseado y aún no aplicado, no lo comunicado."
+    },
+    {
+      "id": "incompleto",
+      "text": "Está mal formado, porque falta `state.delta`",
+      "explanation": "En el mensaje delta, `state` contiene directamente las diferencias."
+    },
+    {
+      "id": "desired-completo",
+      "text": "Es todo el estado deseado, incluidas las propiedades que ya coinciden",
+      "explanation": "Solo aparecen las propiedades que difieren."
+    }
+  ],
+  "answer": "diferencias",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        54,
+        60
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 3",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_3/"
+    },
+    {
+      "title": "AWS IoT · Documentos del servicio de sombras",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-document.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "secuencia-sombra"
+    }
+  ]
+}

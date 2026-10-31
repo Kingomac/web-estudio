@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-pki-csr",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En los dos ejemplos de PKI del tema, ¿en cuál la clave privada del dispositivo **nunca** tiene que copiarse desde otro sitio?",
+  "explanation": "En el ejemplo de certificado generado por AWS, AWS IoT genera la clave privada y el certificado, el fabricante los descarga y los copia al dispositivo. En el ejemplo de PKI propia, el dispositivo tiene su clave privada y envía una solicitud de firma (CSR) a la CA intermedia del fabricante, que emite y firma el certificado. La clave se queda en el dispositivo.",
+  "options": [
+    {
+      "id": "pki-propia",
+      "text": "En la PKI propia del fabricante, con una CSR firmada por su CA intermedia",
+      "explanation": "Solo viaja la CSR; la clave privada permanece en el dispositivo."
+    },
+    {
+      "id": "aws",
+      "text": "En el certificado generado por AWS IoT",
+      "explanation": "En ese ejemplo AWS genera la clave y hay que copiarla al dispositivo junto con el certificado."
+    },
+    {
+      "id": "ambos",
+      "text": "En ambos, porque AWS nunca maneja claves privadas",
+      "explanation": "En el primer ejemplo AWS genera la clave privada."
+    },
+    {
+      "id": "ninguno",
+      "text": "En ninguno: siempre se genera en la nube",
+      "explanation": "En la PKI propia, la clave pertenece al dispositivo y solo sale de él la CSR."
+    }
+  ],
+  "answer": "pki-propia",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        62,
+        65
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "aprovisionamiento"
+    }
+  ]
+}

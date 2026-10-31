@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-sigv4-iam",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo autenticado con su certificado X.509 necesita subir un archivo directamente a S3, que usa Signature Version 4. Obtiene un token temporal del proveedor de credenciales de AWS IoT. ¿Qué decide si la subida está permitida?",
+  "explanation": "Para los servicios que usan SigV4, el proveedor de credenciales de IoT Core entrega al dispositivo un token temporal a cambio de su certificado. Para la autorización, el proveedor asume un rol IAM mediante STS, y el servicio invocado (S3) verifica con IAM los permisos asociados a ese rol. La política IoT del certificado controla el plano de datos de IoT Core, no S3.",
+  "options": [
+    {
+      "id": "rol-iam",
+      "text": "Los permisos del rol IAM que asume el proveedor de credenciales, verificados por S3 con IAM",
+      "explanation": "Es el flujo descrito en el tema."
+    },
+    {
+      "id": "politica-iot",
+      "text": "La política IoT asociada al certificado del dispositivo",
+      "explanation": "Las políticas IoT controlan el acceso al plano de datos de IoT Core: conectar, publicar, recibir..."
+    },
+    {
+      "id": "certificado",
+      "text": "Nada más: el certificado X.509 válido basta para cualquier servicio AWS",
+      "explanation": "S3 no acepta el certificado; por eso existe el proveedor de credenciales."
+    },
+    {
+      "id": "claves",
+      "text": "Las claves SigV4 permanentes guardadas en el dispositivo",
+      "explanation": "El proveedor de credenciales evita precisamente guardar credenciales SigV4 en el dispositivo."
+    }
+  ],
+  "answer": "rol-iam",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        34,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "certificados"
+    }
+  ]
+}

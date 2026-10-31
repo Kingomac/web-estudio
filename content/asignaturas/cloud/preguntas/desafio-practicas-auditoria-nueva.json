@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-auditoria-nueva",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Tras corregir la política `workshopDC` y activar los registros, abres el informe de auditoría de Device Defender y sigue marcando «Políticas de IoT excesivamente permisivas». ¿Qué ocurre?",
+  "explanation": "La auditoría informa del estado en el momento en que se ejecutó: no corrige ni se actualiza sola. El tutorial pide crear una nueva auditoría bajo demanda después de las correcciones para comprobar que el dispositivo ya la supera. Ver el informe anterior no prueba nada sobre la corrección.",
+  "options": [
+    {
+      "id": "nueva",
+      "text": "Estás viendo el informe anterior: hay que lanzar una nueva auditoría bajo demanda",
+      "explanation": "Es el paso de verificación del tutorial."
+    },
+    {
+      "id": "detect",
+      "text": "Hay que activar la detección (Detect) para que la auditoría se actualice",
+      "explanation": "La detección es otra función, y el tutorial advierte de que dejó de estar disponible."
+    },
+    {
+      "id": "borrar",
+      "text": "Hay que borrar la política y crear otra con otro nombre",
+      "explanation": "Basta con una versión activa corregida y una nueva auditoría."
+    },
+    {
+      "id": "diaria",
+      "text": "Hay que esperar 14 días de entrenamiento",
+      "explanation": "Ese plazo se refiere a los modelos ML de detección de anomalías, no a la auditoría."
+    }
+  ],
+  "answer": "nueva",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        88
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Auditoría de la seguridad",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/06-device-defender/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "auditoria"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-jitr-pendiente",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un fabricante configura JITR. Un dispositivo se conecta por primera vez: el certificado queda en `PENDING_ACTIVATION`, pero nunca se crea la cosa ni se le asocia una política. ¿Qué pieza falla con más probabilidad?",
+  "explanation": "En JITR, al verificarse la firma del certificado, este se registra en `PENDING_ACTIVATION` y AWS IoT publica un evento en `$aws/events/certificates/registered/<caCertificateID>`. Una regla del fabricante debe invocar entonces una Lambda que cree la cosa, configure las políticas y las asocie al certificado. Si nada de eso ocurre, falla esa regla o su Lambda. JITP, en cambio, no necesita código: usa una plantilla asociada a la CA.",
+  "options": [
+    {
+      "id": "regla-lambda",
+      "text": "La regla sobre `$aws/events/certificates/registered/...` o la Lambda que debe aprovisionar",
+      "explanation": "Es el código que JITR exige escribir y mantener."
+    },
+    {
+      "id": "plantilla",
+      "text": "La plantilla de aprovisionamiento asociada a la CA",
+      "explanation": "Ese es el mecanismo de JITP; en JITR el aprovisionamiento lo hace la Lambda."
+    },
+    {
+      "id": "ca",
+      "text": "La CA no está registrada",
+      "explanation": "Si no lo estuviera, el certificado no habría llegado a registrarse en `PENDING_ACTIVATION`."
+    },
+    {
+      "id": "reclamacion",
+      "text": "Falta el certificado de reclamación de flota",
+      "explanation": "Eso pertenece al aprovisionamiento de flota, para dispositivos sin certificado."
+    }
+  ],
+  "answer": "regla-lambda",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        66,
+        67,
+        68
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Temas reservados",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/reserved-topics.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "aprovisionamiento"
+    }
+  ]
+}

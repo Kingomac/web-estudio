@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t2-pop-rec",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un usuario de CloudFront pide un objeto que el PoP más cercano no tiene almacenado. Según el tema, ¿qué recorrido sigue la petición?",
+  "explanation": "La solicitud se dirige al PoP con menor latencia. Las REC se sitúan entre el servidor web de origen y los PoP: tienen más capacidad y almacenan contenido solicitado desde varios PoP para que los accesos siguientes sean más rápidos. Si el PoP no tiene el objeto, se busca en la REC antes de ir al origen.",
+  "options": [
+    {
+      "id": "rec",
+      "text": "PoP → REC → servidor de origen si la REC tampoco lo tiene",
+      "explanation": "La REC es la capa intermedia de mayor capacidad entre los PoP y el origen."
+    },
+    {
+      "id": "otro-pop",
+      "text": "Se reenvía a otro PoP cercano que sí lo tenga",
+      "explanation": "El tema no describe consultas entre PoP; la capa intermedia es la REC."
+    },
+    {
+      "id": "origen",
+      "text": "Va directamente al servidor de origen; las REC solo sirven contenido dinámico",
+      "explanation": "Las REC almacenan contenido para acelerar accesos posteriores; no se limitan al contenido dinámico."
+    },
+    {
+      "id": "az",
+      "text": "Va a la zona de disponibilidad más cercana",
+      "explanation": "Las AZ forman parte de las regiones de cómputo, no de la cadena de caché de CloudFront."
+    }
+  ],
+  "answer": "rec",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t2-continuo-motivos",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "¿Qué argumento usa el tema para justificar que AWS extienda su nube a lo largo del continuo, con zonas locales, Wavelength y otros despliegues fuera de las regiones?",
+  "explanation": "Según el tema, no todo puede estar en la nube: hay aplicaciones sensibles a la latencia, IA/ML en el borde y requisitos normativos de privacidad y soberanía. AWS promete una experiencia consistente a lo largo del continuo: misma infraestructura y operativa, y mismos servicios (EC2, EKS, ECS, VPC...), APIs y herramientas.",
+  "options": [
+    {
+      "id": "consistencia",
+      "text": "Latencia, IA/ML en el borde y cumplimiento normativo, con la misma infraestructura, servicios y APIs en todo el continuo",
+      "explanation": "Reúne los motivos y la promesa de experiencia consistente."
+    },
+    {
+      "id": "precio",
+      "text": "Que los servicios en el borde son siempre más baratos que en la región",
+      "explanation": "El tema advierte de que los precios son diferentes, no necesariamente menores."
+    },
+    {
+      "id": "apis-propias",
+      "text": "Que cada ubicación del borde ofrece APIs propias, optimizadas para su hardware",
+      "explanation": "Lo que se busca es usar las mismas APIs y herramientas en todo el continuo."
+    },
+    {
+      "id": "sustituir",
+      "text": "Sustituir las regiones por ubicaciones del borde",
+      "explanation": "Las ubicaciones del borde se conectan con la región; la complementan, no la sustituyen."
+    }
+  ],
+  "answer": "consistencia",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

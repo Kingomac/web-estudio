@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-sombra-documents",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un panel necesita, tras cada actualización de la sombra de `truck_1`, el estado **anterior y el nuevo** del documento completo para dibujar el cambio. ¿A qué tema se suscribe?",
+  "explanation": "`/update/documents` publica tras cada actualización aceptada un documento con `previous` y `current`. `/update/accepted` solo contiene los campos incluidos en la solicitud, `/update/delta` solo las diferencias entre desired y reported, y `/get/accepted` responde a una consulta puntual.",
+  "options": [
+    {
+      "id": "documents",
+      "text": "`$aws/things/truck_1/shadow/update/documents`",
+      "explanation": "Incluye `previous` y `current`."
+    },
+    {
+      "id": "accepted",
+      "text": "`$aws/things/truck_1/shadow/update/accepted`",
+      "explanation": "Confirma la actualización con los campos de la solicitud, no con los dos documentos completos."
+    },
+    {
+      "id": "delta",
+      "text": "`$aws/things/truck_1/shadow/update/delta`",
+      "explanation": "Solo contiene las diferencias entre desired y reported."
+    },
+    {
+      "id": "get",
+      "text": "`$aws/things/truck_1/shadow/get/accepted`",
+      "explanation": "Responde a una solicitud `/get` concreta; no notifica cada actualización."
+    }
+  ],
+  "answer": "documents",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        57,
+        59
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Documentos del servicio de sombras",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-document.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-sombra"
+    }
+  ]
+}

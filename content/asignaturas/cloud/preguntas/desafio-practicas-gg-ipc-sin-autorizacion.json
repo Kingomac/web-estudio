@@ -1,0 +1,63 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-ipc-sin-autorizacion",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo Pub/Sub IPC de P4, eliminas de la receta del Publisher el bloque `accessControl` de `aws.greengrass.ipc.pubsub`. ¿Qué ocurre al desplegarlo?",
+  "explanation": "Para usar operaciones IPC como `PublishToTopic`, el componente necesita políticas de autorización en su `accessControl`, que indican las operaciones y los recursos (temas) permitidos. Sin ellas, la operación devuelve un error de no autorizado y el Subscriber no recibe nada. Esta autorización es local y distinta de la política IoT del certificado.",
+  "options": [
+    {
+      "id": "unauthorized",
+      "text": "El Publisher recibe un error de no autorizado al publicar por IPC y el Subscriber no recibe nada",
+      "explanation": "La autorización IPC se declara en `accessControl`."
+    },
+    {
+      "id": "politica-iot",
+      "text": "Funciona igual, porque lo que autoriza es la política IoT del certificado del núcleo",
+      "explanation": "La política IoT controla el plano de datos de IoT Core, no la IPC local."
+    },
+    {
+      "id": "rol",
+      "text": "Funciona igual, porque lo autoriza `LabRole`",
+      "explanation": "El rol de intercambio de tokens da acceso a servicios AWS, no a operaciones IPC."
+    },
+    {
+      "id": "nube",
+      "text": "Los mensajes se envían a IoT Core en lugar de por IPC",
+      "explanation": "No hay redirección automática: la operación IPC simplemente se rechaza."
+    }
+  ],
+  "answer": "unauthorized",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-4",
+      "pdfPages": [
+        14
+      ]
+    },
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Autorización IPC",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/interprocess-communication.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ipc"
+    }
+  ]
+}

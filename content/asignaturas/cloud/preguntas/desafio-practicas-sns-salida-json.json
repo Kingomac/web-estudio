@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-sns-salida-json",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "La regla `truck2sns` es `SELECT i AS device, temp AS temperature, 20 AS temperature_max FROM 'truck/freezer' WHERE temp > 20`. Llega `{\"i\": 3, \"temp\": 25, \"door\": \"off\"}`. ¿Qué JSON envía la acción a SNS?",
+  "explanation": "El SELECT determina qué se envía: renombra `i` a `device` y `temp` a `temperature`, y añade la constante `temperature_max` con valor 20. `door` no se selecciona, así que no aparece. Como 25 > 20, la acción se ejecuta.",
+  "options": [
+    {
+      "id": "correcto",
+      "text": "`{\"device\": 3, \"temperature\": 25, \"temperature_max\": 20}`",
+      "explanation": "Solo los campos proyectados, con sus alias y la constante."
+    },
+    {
+      "id": "original",
+      "text": "`{\"i\": 3, \"temp\": 25, \"door\": \"off\"}`",
+      "explanation": "Es el mensaje de entrada; el SELECT lo transforma."
+    },
+    {
+      "id": "con-door",
+      "text": "`{\"device\": 3, \"temperature\": 25, \"temperature_max\": 20, \"door\": \"off\"}`",
+      "explanation": "`door` no está en el SELECT, así que no se incluye."
+    },
+    {
+      "id": "nada",
+      "text": "Nada, porque `temperature_max` no existe en el mensaje",
+      "explanation": "`20 AS temperature_max` es una constante que añade la propia consulta."
+    }
+  ],
+  "answer": "correcto",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        44,
+        45
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 2 (SNS)",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_2/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "sns"
+    }
+  ]
+}

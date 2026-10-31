@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-dependencia-hard",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "El componente B declara a A en `ComponentDependencies` **sin indicar** `DependencyType`. Despliegas una nueva versión de A. ¿Qué le pasa a B?",
+  "explanation": "Las dependencias permiten actualizar o reiniciar automáticamente los componentes que dependen de otro. En el ejemplo del tema, actualizar un componente de cifrado reinicia el de mensajería que depende de él. En la receta, `DependencyType` vale `HARD` por defecto: el componente se reinicia si la dependencia cambia de estado. Con `SOFT` no se reiniciaría.",
+  "options": [
+    {
+      "id": "reinicia",
+      "text": "Se reinicia, porque la dependencia es `HARD` por defecto",
+      "explanation": "Coincide con el comportamiento por defecto y con el ejemplo del tema."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: los componentes son independientes",
+      "explanation": "Declarar la dependencia los relaciona."
+    },
+    {
+      "id": "soft",
+      "text": "Nada, porque por defecto la dependencia es `SOFT`",
+      "explanation": "El valor por defecto es `HARD`."
+    },
+    {
+      "id": "elimina",
+      "text": "Se desinstala hasta que se publique una versión compatible de B",
+      "explanation": "No se desinstala; se reinicia."
+    }
+  ],
+  "answer": "reinicia",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT Greengrass · Referencia de recetas",
+      "url": "https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "componentes"
+    }
+  ]
+}

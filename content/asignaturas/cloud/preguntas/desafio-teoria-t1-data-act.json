@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-data-act",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una empresa teme quedar atrapada en su proveedor cloud (vendor lock-in) y no poder llevarse sus datos y servicios a otro. ¿Qué norma de la UE citada en el tema ataca **directamente** ese problema?",
+  "explanation": "Entre los retos del tema, la dependencia del proveedor se relaciona con la EU Data Act, que obliga a ofrecer portabilidad de datos y servicios en formatos estándar e interoperables. NIS2 trata de ciberseguridad, el GDPR de protección de datos personales y el EU-US Data Privacy Framework de las transferencias de datos a EE. UU.",
+  "options": [
+    {
+      "id": "data-act",
+      "text": "La EU Data Act",
+      "explanation": "Obliga a facilitar la portabilidad y la migración entre proveedores."
+    },
+    {
+      "id": "nis2",
+      "text": "NIS2",
+      "explanation": "Aparece en los aspectos legislativos y de seguridad, no como solución a la dependencia del proveedor."
+    },
+    {
+      "id": "gdpr",
+      "text": "El GDPR",
+      "explanation": "Protege datos personales; no obliga al proveedor a ofrecer portabilidad de servicios."
+    },
+    {
+      "id": "dpf",
+      "text": "El EU-US Data Privacy Framework",
+      "explanation": "Regula las transferencias de datos a EE. UU., no el cambio de proveedor."
+    }
+  ],
+  "answer": "data-act",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        41,
+        42
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "beneficios-riesgos"
+    }
+  ]
+}

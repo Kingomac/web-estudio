@@ -1,0 +1,62 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-jobs-dispositivo-panel",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Con los mensajes de eventos activados, el Device Client de `camion-01` necesita saber cuándo cambia **su primera ejecución pendiente**, y un panel en la nube quiere enterarse cuando la ejecución de `deviceConfig` **en un dispositivo** termina con éxito. ¿Qué par de suscripciones es correcto?",
+  "explanation": "Los temas `$aws/things/THING/jobs/...` sirven para que el dispositivo hable con el servicio de trabajos: `notify-next` avisa de cambios en la primera ejecución pendiente, mientras que `notify` avisa de altas y bajas en la lista. Los temas `$aws/events/...` los publica AWS IoT como eventos: `jobExecution/JOB/succeeded` se refiere a una ejecución concreta, y `job/JOB/completed` al trabajo completo.",
+  "options": [
+    {
+      "id": "correcto",
+      "text": "Dispositivo: `$aws/things/camion-01/jobs/notify-next`. Panel: `$aws/events/jobExecution/deviceConfig/succeeded`",
+      "explanation": "Cada tema corresponde a lo que pide cada extremo."
+    },
+    {
+      "id": "notify",
+      "text": "Dispositivo: `$aws/things/camion-01/jobs/notify`. Panel: `$aws/events/jobExecution/deviceConfig/succeeded`",
+      "explanation": "`notify` informa de cambios en la lista de trabajos pendientes, no específicamente de la primera ejecución."
+    },
+    {
+      "id": "completed",
+      "text": "Dispositivo: `$aws/things/camion-01/jobs/notify-next`. Panel: `$aws/events/job/deviceConfig/completed`",
+      "explanation": "`job/.../completed` indica que ha terminado el trabajo completo, no una ejecución en un dispositivo."
+    },
+    {
+      "id": "get-accepted",
+      "text": "Dispositivo: `$aws/things/camion-01/jobs/notify-next`. Panel: `$aws/things/camion-01/jobs/deviceConfig/get/accepted`",
+      "explanation": "`get/accepted` es la respuesta a una solicitud del dispositivo para obtener la ejecución, no un evento de éxito."
+    }
+  ],
+  "answer": "correcto",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        75,
+        76
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · AWS IoT Jobs",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/05-aws-iot-jobs/"
+    },
+    {
+      "title": "Práctica 3 · Actividad adicional 4 · Manejador de trabajos",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "temas-jobs"
+    }
+  ]
+}

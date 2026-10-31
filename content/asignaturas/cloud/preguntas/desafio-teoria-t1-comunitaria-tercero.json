@@ -1,0 +1,52 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-comunitaria-tercero",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Tres hospitales con las mismas obligaciones normativas comparten una infraestructura **operada por una empresa externa** en un centro de datos ajeno. El acceso está restringido a esos hospitales y comparten la gobernanza y los costes. ¿Qué modelo de despliegue es?",
+  "explanation": "La nube comunitaria la usa un grupo de organizaciones con misión o requisitos normativos comunes. Su propietario puede ser una o varias organizaciones de la comunidad o un tercero, y el acceso está restringido a ese grupo. Que la gestione una empresa externa no la convierte en pública, porque la pública está abierta al público general.",
+  "options": [
+    {
+      "id": "comunitaria",
+      "text": "Nube comunitaria",
+      "explanation": "Grupo cerrado con requisitos comunes y gobernanza compartida, aunque la opere un tercero."
+    },
+    {
+      "id": "publica",
+      "text": "Nube pública, porque la infraestructura es de una empresa externa",
+      "explanation": "La pública está abierta al público general. Aquí el acceso está restringido a la comunidad."
+    },
+    {
+      "id": "privada",
+      "text": "Nube privada alojada (hosted)",
+      "explanation": "La privada es de uso exclusivo de una única organización, y aquí la comparten tres."
+    },
+    {
+      "id": "hibrida",
+      "text": "Nube híbrida, porque combina organizaciones distintas",
+      "explanation": "La híbrida combina modelos de despliegue, no organizaciones dentro del mismo modelo."
+    }
+  ],
+  "answer": "comunitaria",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        35,
+        36,
+        37
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "modelos-despliegue"
+    }
+  ]
+}

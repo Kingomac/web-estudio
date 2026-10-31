@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t4-movil-cognito",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Una app móvil controla luces (como usuario) y además publica la telemetría del propio teléfono (como dispositivo). Según el tema, ¿con qué se identifica y qué la autoriza?",
+  "explanation": "El tema asigna a cada cliente su credencial: dispositivos con certificados X.509, móviles con identidades de Amazon Cognito y usuarios con credenciales AWS. Los móviles pueden actuar como ambos, así que su autorización combina políticas de AWS IoT y roles y políticas IAM.",
+  "options": [
+    {
+      "id": "cognito",
+      "text": "Identidad de Amazon Cognito; políticas AWS IoT y roles y políticas IAM",
+      "explanation": "Es el caso «móviles (pueden actuar como ambos)» del tema."
+    },
+    {
+      "id": "x509",
+      "text": "Un certificado X.509 propio; solo políticas AWS IoT",
+      "explanation": "Es el esquema de los dispositivos; el tema no lo asigna a los móviles."
+    },
+    {
+      "id": "iam-user",
+      "text": "Credenciales de usuario IAM guardadas en la app; solo políticas IAM",
+      "explanation": "Las credenciales AWS corresponden a usuarios. Además, la app actúa también como dispositivo."
+    },
+    {
+      "id": "token",
+      "text": "El token del proveedor de credenciales; solo el rol IAM",
+      "explanation": "El proveedor de credenciales lo usan los dispositivos con certificado para acceder a servicios SigV4."
+    }
+  ],
+  "answer": "cognito",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        30,
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "iot-core"
+    }
+  ]
+}

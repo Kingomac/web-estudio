@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-jobs-manejador-ausente",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un trabajo tiene el paso `{\"type\": \"runHandler\", \"input\": {\"handler\": \"device-client-config.sh\", \"path\": \"default\"}}`, pero ese script no se copió al directorio de manejadores del Device Client. ¿Qué ocurre?",
+  "explanation": "`runHandler` ordena ejecutar en el dispositivo el manejador indicado. Con `path` `default` se busca en el directorio de manejadores del Device Client (`/etc/.aws-iot-device-client/jobs`). Si el script no está, el dispositivo no puede ejecutar la operación y la ejecución termina con error. El documento del trabajo no contiene el código.",
+  "options": [
+    {
+      "id": "falla",
+      "text": "La ejecución falla en el dispositivo: el documento nombra el manejador, pero no lo contiene",
+      "explanation": "El manejador debe estar instalado localmente."
+    },
+    {
+      "id": "descarga",
+      "text": "El Device Client descarga el script desde S3 automáticamente",
+      "explanation": "El paso nombra un manejador local; no indica ninguna URL de descarga."
+    },
+    {
+      "id": "ignora",
+      "text": "Se marca como `SUCCEEDED` porque no había nada que hacer",
+      "explanation": "No ejecutar la operación pedida no es un éxito."
+    },
+    {
+      "id": "nube",
+      "text": "El script se ejecuta en la nube, en el servicio de trabajos",
+      "explanation": "Los manejadores se ejecutan en el dispositivo."
+    }
+  ],
+  "answer": "falla",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        72,
+        74
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 4 · Manejador de trabajos",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_4/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "documentos-jobs"
+    }
+  ]
+}

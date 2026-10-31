@@ -1,0 +1,9 @@
+{
+  "kind": "tag",
+  "id": "cloud.tags.desafio",
+  "subjectId": "cloud",
+  "slug": "desafio",
+  "title": "Desafío: preguntas inéditas de examen",
+  "type": "study",
+  "order": 70
+}

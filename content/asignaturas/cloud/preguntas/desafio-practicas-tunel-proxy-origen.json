@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-tunel-proxy-origen",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la actividad del túnel seguro de P3, el destino no necesita instalar nada más, pero en la instancia de origen hay que lanzar un contenedor Docker con el token de origen y la opción `-s 5555`. ¿Por qué?",
+  "explanation": "Cada extremo necesita un proxy local. En el destino, el Device Client ya incluye uno y tiene activada la tunelización. En el origen no hay Device Client, así que el proxy local se ejecuta en un contenedor Docker con el CAT de origen y escuchando en el puerto local 5555. Después, `ssh ... localhost -p 5555` entra en el túnel.",
+  "options": [
+    {
+      "id": "proxy-origen",
+      "text": "El contenedor es el proxy local del origen: usa el CAT de origen y escucha en 5555, por donde entra SSH al túnel",
+      "explanation": "Explica el papel del contenedor y del puerto."
+    },
+    {
+      "id": "ssh-destino",
+      "text": "El contenedor ejecuta el servidor SSH del dispositivo destino",
+      "explanation": "El SSH de destino corre en el dispositivo; el contenedor solo hace de proxy en origen."
+    },
+    {
+      "id": "firewall",
+      "text": "El contenedor abre el puerto 5555 de entrada en el cortafuegos del destino",
+      "explanation": "No se abren puertos de entrada; 5555 es local en la instancia de origen."
+    },
+    {
+      "id": "agente",
+      "text": "El contenedor es el agente que escucha `tunnels/notify`",
+      "explanation": "Ese papel lo cumple el Device Client en el destino."
+    }
+  ],
+  "answer": "proxy-origen",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        82,
+        83
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P3 · Actividad adicional 3 · Túnel seguro",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_3/actividade_3/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "tunel"
+    }
+  ]
+}

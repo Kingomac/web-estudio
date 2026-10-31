@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-ddb-tipo-numero",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la consola de DynamoDB, el elemento de la actividad 1 se ve en formato JSON de DynamoDB así: `\"device_data\": {\"M\": {\"temperature\": {\"N\": \"21.82\"}, \"door\": {\"BOOL\": false}}}`. ¿De qué tipo es `temperature`?",
+  "explanation": "En el JSON de DynamoDB cada valor lleva un descriptor de tipo: `N` es número, `BOOL` booleano y `M` mapa. El valor de un `N` se representa como cadena, pero el atributo sigue siendo numérico, gracias al `cast(temp AS DECIMAL)` de la regla.",
+  "options": [
+    {
+      "id": "numero",
+      "text": "Número (N), aunque su valor se escriba entre comillas",
+      "explanation": "La cadena es solo la representación del descriptor N."
+    },
+    {
+      "id": "texto",
+      "text": "Texto, porque aparece entre comillas",
+      "explanation": "El descriptor de tipo es N; las comillas forman parte del formato."
+    },
+    {
+      "id": "mapa",
+      "text": "Mapa (M)",
+      "explanation": "M es el tipo de `device_data`, que contiene el mapa de campos."
+    },
+    {
+      "id": "booleano",
+      "text": "Booleano, por el `cast` de la regla",
+      "explanation": "El cast a BOOLEAN se aplica a `door`, no a `temperature`."
+    }
+  ],
+  "answer": "numero",
+  "originalReferences": [],
+  "externalReferences": [
+    {
+      "title": "Práctica 2 · Actividad adicional 1 · DynamoDB",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_2/actividade_1/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "dynamodb"
+    }
+  ]
+}

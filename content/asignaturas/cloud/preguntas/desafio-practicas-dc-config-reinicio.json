@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-dc-config-reinicio",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Con el servicio `aws-iot-device-client` en marcha, editas `/etc/.aws-iot-device-client/aws-iot-device-client.conf` para cambiar `publish-topic`. Los mensajes siguen saliendo por el tema antiguo. ¿Qué falta?",
+  "explanation": "El tutorial indica que, para cambiar la configuración, hay que detener el servicio (`systemctl stop`), editar el archivo y volver a arrancarlo (`systemctl start`). El servicio lee la configuración al iniciar, así que editarla en caliente no tiene efecto.",
+  "options": [
+    {
+      "id": "reiniciar",
+      "text": "Detener el servicio, editar y volver a arrancarlo: la configuración se lee al iniciar",
+      "explanation": "Es el procedimiento del tutorial."
+    },
+    {
+      "id": "politica",
+      "text": "Crear una nueva versión de la política IoT con el tema nuevo",
+      "explanation": "Puede ser necesario para autorizar el tema nuevo, pero no explica que siga usando el antiguo."
+    },
+    {
+      "id": "publish-on-change",
+      "text": "Activar `publish-on-change`",
+      "explanation": "Esa opción vuelve a publicar cuando cambia el archivo de publicación, no cuando cambia la configuración."
+    },
+    {
+      "id": "certificado",
+      "text": "Volver a descargar el certificado",
+      "explanation": "El certificado no tiene relación con el tema configurado."
+    }
+  ],
+  "answer": "reiniciar",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-3",
+      "pdfPages": [
+        8
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Configuración del dispositivo IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/03-setup-your-iot-device/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

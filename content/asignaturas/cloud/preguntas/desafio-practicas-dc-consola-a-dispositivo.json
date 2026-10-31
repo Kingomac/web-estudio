@@ -1,0 +1,61 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-dc-consola-a-dispositivo",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la práctica 3, el Device Client tiene `publish-topic` `/topic/workshop/dc/pub` y `subscribe-topic` `/topic/workshop/dc/sub`. Desde el cliente MQTT de la consola quieres que el texto aparezca en `subfile.txt` del dispositivo. ¿Dónde publicas?",
+  "explanation": "Los nombres de los temas se definen desde el punto de vista del dispositivo: lo que llega a su `subscribe-topic` se guarda en el archivo de suscripción. Desde la consola hay que publicar en `/topic/workshop/dc/sub`, con la barra inicial, porque sin ella sería otro tema.",
+  "options": [
+    {
+      "id": "sub-barra",
+      "text": "`/topic/workshop/dc/sub`",
+      "explanation": "Es el tema al que está suscrito el dispositivo, con su barra inicial."
+    },
+    {
+      "id": "sub-sin-barra",
+      "text": "`topic/workshop/dc/sub`",
+      "explanation": "Sin la barra inicial es un tema distinto, y el dispositivo no está suscrito a él."
+    },
+    {
+      "id": "pub",
+      "text": "`/topic/workshop/dc/pub`",
+      "explanation": "Es donde publica el dispositivo; publicar ahí no llega a su archivo de suscripción."
+    },
+    {
+      "id": "shadow",
+      "text": "`$aws/things/deviceClientThing/shadow/update`",
+      "explanation": "Eso actualiza la sombra; la función pub-sub del Device Client usa sus propios temas."
+    }
+  ],
+  "answer": "sub-barra",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.practica-3",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "Práctica 3 · Configuración del dispositivo IoT",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/03-setup-your-iot-device/"
+    },
+    {
+      "title": "Práctica 3 · Transmitir mensajes MQTT con Device Client",
+      "url": "https://miot-cniot.github.io/es/cursos/practica_3/04-transmit-mqtt-messages/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "practica-3"
+    }
+  ]
+}

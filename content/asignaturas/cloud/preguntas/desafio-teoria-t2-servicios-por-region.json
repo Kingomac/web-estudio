@@ -1,0 +1,50 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t2-servicios-por-region",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un estudiante prepara un despliegue copiando una guía escrita para la región de Virginia del Norte, pero trabaja en otra región. Un servicio de la guía no aparece en su consola y el coste estimado es distinto. ¿Qué lo explica?",
+  "explanation": "La infraestructura de AWS se organiza en regiones independientes, y los servicios disponibles y sus precios pueden variar según la región. No es un fallo de permisos ni de la AZ.",
+  "options": [
+    {
+      "id": "region",
+      "text": "Las regiones son independientes y los servicios disponibles y los precios pueden variar entre ellas",
+      "explanation": "Es lo que indica el tema."
+    },
+    {
+      "id": "az",
+      "text": "Debe cambiar de zona de disponibilidad dentro de la región para ver el servicio",
+      "explanation": "La oferta de servicios y precios se define por región, no por AZ."
+    },
+    {
+      "id": "permisos",
+      "text": "Es un problema de permisos IAM; los precios no dependen de la región",
+      "explanation": "El tema afirma que los precios pueden variar por región."
+    },
+    {
+      "id": "cdn",
+      "text": "Los servicios se sirven desde el PoP más cercano, que no tiene caché del servicio",
+      "explanation": "Los PoP entregan contenido de CloudFront; no determinan qué servicios ofrece una región."
+    }
+  ],
+  "answer": "region",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

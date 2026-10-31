@@ -1,0 +1,57 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-gg-runtime-roto",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "En la inferencia DLR, el componente del **modelo** se instala bien, pero la instalación del **runtime** falla. ¿Qué ocurre con el componente de inferencia?",
+  "explanation": "Los componentes de ML se dividen en modelo, runtime y código de inferencia, y el de inferencia depende de los otros dos. Si el runtime no se instala, no hay entorno para ejecutar el modelo, y la inferencia no funciona aunque el modelo esté presente. Por eso la actividad sustituye el runtime por una variante local cuando falla la instalación con Conda.",
+  "options": [
+    {
+      "id": "no-funciona",
+      "text": "No puede inferir: depende del runtime, y tener el modelo no basta",
+      "explanation": "Las tres piezas son necesarias."
+    },
+    {
+      "id": "funciona",
+      "text": "Infiere igual, porque el modelo contiene su propio entorno",
+      "explanation": "El modelo es un artefacto de datos; el entorno lo instala el runtime."
+    },
+    {
+      "id": "nube",
+      "text": "Pasa automáticamente a inferir en la nube",
+      "explanation": "No hay ninguna conmutación a la nube: la inferencia se hace en el borde."
+    },
+    {
+      "id": "entrena",
+      "text": "Reentrena el modelo localmente para no necesitar runtime",
+      "explanation": "En el borde no se entrena; los modelos vienen entrenados de la nube."
+    }
+  ],
+  "answer": "no-funciona",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "P4 · Actividad adicional 2 · Componentes ML",
+      "url": "https://miot-cniot.github.io/es/actividades/practica_4/actividade_2/"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "ml"
+    }
+  ]
+}

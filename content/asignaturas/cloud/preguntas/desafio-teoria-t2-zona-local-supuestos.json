@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t2-zona-local-supuestos",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-introduccion",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un equipo despliega un videojuego en una zona local de AWS para lograr menos de 10 ms. Antes de decidir, enumera cuatro supuestos. ¿Cuál es **correcto**?",
+  "explanation": "Las zonas locales llevan infraestructura y servicios de AWS cerca de ciudades y centros industriales, para aplicaciones con latencias por debajo de 10 ms. Se conectan con los recursos de la región por una red privada dedicada de alta capacidad, lo que da acceso eficiente a servicios como S3 o DynamoDB. Sus precios son diferentes a los de la región.",
+  "options": [
+    {
+      "id": "red-privada",
+      "text": "Podrá usar DynamoDB de la región a través de una red privada dedicada de alta capacidad",
+      "explanation": "Es lo que describe el tema."
+    },
+    {
+      "id": "mismo-precio",
+      "text": "Pagará los mismos precios que en la región a la que pertenece",
+      "explanation": "El tema indica que los precios de las zonas locales son diferentes a los de la región."
+    },
+    {
+      "id": "5g",
+      "text": "La zona local está dentro de la red 5G de un operador",
+      "explanation": "Eso describe las zonas Wavelength."
+    },
+    {
+      "id": "internet",
+      "text": "La conexión con la región va por Internet pública",
+      "explanation": "La conexión es una red privada dedicada."
+    }
+  ],
+  "answer": "red-privada",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-2",
+      "pdfPages": [
+        11,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "tema-2"
+    }
+  ]
+}

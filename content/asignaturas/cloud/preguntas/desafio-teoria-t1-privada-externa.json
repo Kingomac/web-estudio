@@ -1,0 +1,51 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-teoria-t1-privada-externa",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.cloud",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "Un banco contrata a un proveedor para que le gestione, **en exclusiva y por encargo**, una infraestructura cloud en un centro de datos externo. Ningún otro cliente comparte esos recursos. ¿Qué modelo es?",
+  "explanation": "En la nube privada, el propietario puede ser la propia organización o un tercero que la gestiona en modo exclusivo por encargo. El acceso está restringido a una única organización (single-tenant), y la ubicación puede ser on-premises o hosted, en un centro de datos externo de uso exclusivo. Lo que la define es la exclusividad, no dónde está ni quién la opera.",
+  "options": [
+    {
+      "id": "privada",
+      "text": "Nube privada (hosted)",
+      "explanation": "Infraestructura dedicada a una sola organización, aunque esté fuera y la gestione otro."
+    },
+    {
+      "id": "publica",
+      "text": "Nube pública, porque los recursos están en el centro de datos de un proveedor",
+      "explanation": "En la pública los recursos físicos se comparten entre clientes (multi-tenant), y aquí no."
+    },
+    {
+      "id": "comunitaria",
+      "text": "Nube comunitaria, porque intervienen dos organizaciones",
+      "explanation": "La comunitaria la usan varias organizaciones con una misión común. El proveedor aquí solo la opera."
+    },
+    {
+      "id": "hibrida",
+      "text": "Nube híbrida, porque mezcla propiedad del cliente y del proveedor",
+      "explanation": "Lo híbrido combina modelos de despliegue, no tipos de propietario de una misma infraestructura."
+    }
+  ],
+  "answer": "privada",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-1",
+      "pdfPages": [
+        35,
+        36
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-teoria",
+      "anchor": "modelos-despliegue"
+    }
+  ]
+}

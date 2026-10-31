@@ -1,0 +1,58 @@
+{
+  "kind": "pregunta",
+  "id": "cloud.preguntas.desafio-practicas-basic-ingest-topic",
+  "subjectId": "cloud",
+  "tagIds": [
+    "cloud.tags.aws-iot",
+    "cloud.tags.practicas",
+    "cloud.tags.examen",
+    "cloud.tags.desafio"
+  ],
+  "type": "single",
+  "prompt": "La regla `BuildingManager` es `SELECT *, topic(2) AS edificio FROM 'Buildings/#'`. Un dispositivo publica por Basic Ingest en `$aws/rules/BuildingManager/Buildings/Building5/Floor2`. ¿Qué vale `edificio`?",
+  "explanation": "El prefijo de Basic Ingest (`$aws/rules/NOMBRE_REGLA`) no está disponible para la función `topic()`: la regla ve el tema original, `Buildings/Building5/Floor2`. `topic(2)` es su segundo nivel, `Building5`. La regla se comporta igual que si el mensaje hubiera llegado por el broker.",
+  "options": [
+    {
+      "id": "building5",
+      "text": "`Building5`",
+      "explanation": "`topic()` trabaja sobre el tema sin el prefijo de ingestión."
+    },
+    {
+      "id": "rules",
+      "text": "`rules`",
+      "explanation": "Sería el segundo nivel si se contara el prefijo, que no está disponible para `topic()`."
+    },
+    {
+      "id": "buildingmanager",
+      "text": "`BuildingManager`",
+      "explanation": "El nombre de la regla forma parte del prefijo, que se excluye."
+    },
+    {
+      "id": "floor2",
+      "text": "`Floor2`",
+      "explanation": "Es el tercer nivel del tema original."
+    }
+  ],
+  "answer": "building5",
+  "originalReferences": [
+    {
+      "materialId": "cloud.materiales.tema-4",
+      "pdfPages": [
+        48,
+        51
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "AWS IoT · Reducir costes con Basic Ingest",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/iot-basic-ingest.html"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "cloud.apuntes.examen-practicas",
+      "anchor": "reglas"
+    }
+  ]
+}
