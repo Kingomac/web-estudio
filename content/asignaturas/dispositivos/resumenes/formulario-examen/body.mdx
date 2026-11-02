@@ -1,50 +1,89 @@
 <h2 id="tema-1">Tema 1 · Sensores</h2>
 
-```text
-S = Xmax − Xmin        FSO = Ymax − Ymin        sensibilidad = FSO/S
-εFS = εa / S           %FSO usado = excursión / FSO
-Puente: Vo = VA·R1/(R1+R4) − VA·R2/(R2+R3)     equilibrio R1/R4 = R2/R3
-Inversor −R2/R1 · No inversor 1+R2/R1 · Diferencial simétrico (R2/R1)(V2−V1)
-Instrumentación G = 1 + 2R1/Rg      CMRR = Ad/Ac
-Acondicionamiento Vo = G·Vs + D:  G = ΔVo/ΔVs,  D = Vo,min − G·Vs,min
-ADC: N = 2^n · LSB = FS/2^n · exacta FS/(N−1) · error ±LSB/2 · código = Vi/LSB
-Nyquist fs ≥ 2·fmax
-```
+<div class="table-scroll">
+
+| Magnitud | Fórmula |
+| --- | --- |
+| Campo de medida y salida | $S = X_{\max} - X_{\min} \qquad \mathrm{FSO} = Y_{\max} - Y_{\min}$ |
+| Sensibilidad | $\dfrac{\mathrm{FSO}}{S}$ |
+| Error a fondo de escala | $\varepsilon_{\mathrm{FS}} = \dfrac{\varepsilon_a}{S}$ |
+| Fracción del FSO usada | $\dfrac{\text{excursión}}{\mathrm{FSO}}$ |
+| Puente de Wheatstone | $V_o = V_A \dfrac{R_1}{R_1 + R_4} - V_A \dfrac{R_2}{R_2 + R_3}$; equilibrio $\dfrac{R_1}{R_4} = \dfrac{R_2}{R_3}$ |
+| Inversor y no inversor | $-\dfrac{R_2}{R_1} \qquad 1 + \dfrac{R_2}{R_1}$ |
+| Diferencial simétrico | $V_o = \dfrac{R_2}{R_1} (V_2 - V_1)$ |
+| Instrumentación | $G = 1 + \dfrac{2 R_1}{R_g} \qquad \mathrm{CMRR} = \dfrac{A_d}{A_c}$ |
+| Acondicionamiento | $V_o = G V_s + D$: $G = \dfrac{\Delta V_o}{\Delta V_s}$, $D = V_{o,\min} - G V_{s,\min}$ |
+| ADC: códigos y LSB | $N = 2^n \qquad \mathrm{LSB} = \dfrac{\mathrm{FS}}{2^n}$ |
+| ADC: resolución exacta | $\dfrac{\mathrm{FS}}{N - 1}$ |
+| ADC: error y código | error $\pm \dfrac{\mathrm{LSB}}{2}$; código $= \dfrac{V_i}{\mathrm{LSB}}$ |
+| Nyquist | $f_s \ge 2 f_{\max}$ |
+
+</div>
 
 <h2 id="temas-2-3">Temas 2 y 3 · Buses, sensores y actuadores</h2>
 
-```text
-UART: tb = 1/bps · 8N1 = 10 bits/carácter · 9600 bps → 104 µs/bit, 960 car/s
-I²C: 9 ciclos de SCL por byte (8 + ACK) · Sm 100 k · Fm 400 k · arbitraje: gana el 0
-SPI: modo = (CPOL, CPHA): 0 = (0,0) · 1 = (0,1) · 2 = (1,0) · 3 = (1,1)
-Galga R = ρL/A · cuarto de puente Vo = (Vs/4)·ΔR/(R + ΔR/2)
-RTD R = R0(1 + αT) · NTC R = R0·e^(β(1/T − 1/T0)) [K] · R1 = (β−2Tc)/(β+2Tc)·R(Tc)
-Termopar ΔV = α·ΔT · LDR R = R0(L0/L)^α · Hall VH = I·B·RH/dp · Faraday V = −N·dΦ/dt
-Encoder R = πD/(2ar) · ultrasonidos vs = vs0·√(1 + T/273), d = vs·t/2
-```
+<div class="table-scroll">
+
+| Magnitud | Fórmula |
+| --- | --- |
+| UART | $t_b = \dfrac{1}{\mathrm{bps}}$; 8N1 = 10 bits/carácter; 9600 bps → 104 µs/bit, 960 car/s |
+| I²C | 9 ciclos de SCL por byte (8 + ACK); Sm 100 kbps, Fm 400 kbps; en el arbitraje gana el 0 |
+| SPI | modo = (CPOL, CPHA): 0 = (0,0), 1 = (0,1), 2 = (1,0), 3 = (1,1) |
+| Galga | $R = \rho \dfrac{L}{A}$ |
+| Cuarto de puente | $V_o = \dfrac{V_s}{4} \cdot \dfrac{\Delta R}{R + \Delta R/2}$ |
+| RTD | $R = R_0 (1 + \alpha T)$ |
+| NTC ($T$ en K) | $R = R_0\, e^{\beta \left(\frac{1}{T} - \frac{1}{T_0}\right)}$ |
+| Linealización de la NTC | $R_1 = \dfrac{\beta - 2T_c}{\beta + 2T_c} \cdot R(T_c)$ |
+| Termopar | $\Delta V = \alpha\, \Delta T$ |
+| LDR | $R = R_0 \left(\dfrac{L_0}{L}\right)^{\alpha}$ |
+| Hall | $V_H = \dfrac{I B R_H}{d_p}$ |
+| Faraday | $V = -N \dfrac{d\Phi}{dt}$ |
+| Encoder | $R = \dfrac{\pi D}{2 a_r}$ |
+| Ultrasonidos | $v_s = v_{s0} \sqrt{1 + \dfrac{T}{273}} \qquad d = \dfrac{v_s\, t}{2}$ |
+
+</div>
 
 <h2 id="temas-4-5">Temas 4 y 5 · Alimentación y energy harvesting</h2>
 
-```text
-Q = I·t = C·ΔV        E = ½·C·(V1² − V2²)       C = 2E/(V1² − V2²) = Q/ΔV
-E = Vmedia·I·t        Psal = η·Pent              t carga = E/Psal
-Adaptación: P = Voc²/(4R)        mAh · 3,6 = culombios
-Solar: P = irradiancia · área · rendimiento
-Piezo: Vp = Ip/(ω·Cp)    medio puente Voc = 2Vp, MPP Vp    onda completa Voc = Vp, MPP Vp/2
-       Pmax = Cp·f·Vp²   · con interruptor ×2   · SSHI ×4
-Peltier: V = SE·ΔT − I·RE     RE = V/I (ΔT = 0)    SE = ΔV/ΔT    RT = ΔTM/PM
-Célula: IL ∥ diodo ∥ Rp, Rs en serie;   I = IL − I0·(e^(V/VT) − 1) − V/Rp
-```
+<div class="table-scroll">
+
+| Magnitud | Fórmula |
+| --- | --- |
+| Carga | $Q = I\, t = C\, \Delta V$ |
+| Energía del condensador | $E = \tfrac{1}{2} C \left(V_1^2 - V_2^2\right)$ |
+| Condensador necesario | $C = \dfrac{2E}{V_1^2 - V_2^2} = \dfrac{Q}{\Delta V}$ |
+| Energía consumida | $E = V_{\text{media}}\, I\, t$ |
+| Convertidor | $P_{\text{sal}} = \eta\, P_{\text{ent}} \qquad t_{\text{carga}} = \dfrac{E}{P_{\text{sal}}}$ |
+| Adaptación de carga | $P = \dfrac{V_{\mathrm{oc}}^2}{4R}$ |
+| Capacidad de la batería | $\mathrm{mAh} \cdot 3{,}6 = \mathrm{C}$ |
+| Solar | $P = \text{irradiancia} \cdot \text{área} \cdot \text{rendimiento}$ |
+| Piezo | $V_p = \dfrac{I_p}{\omega C_p} \qquad P_{\max} = C_p f V_p^2$ |
+| Piezo, medio puente | vacío $2V_p$, MPP $V_p$ |
+| Piezo, onda completa | vacío $V_p$, MPP $V_p/2$; con interruptor ×2, SSHI ×4 |
+| Peltier | $V = S_E\, \Delta T - I R_E$ |
+| Peltier, hoja de datos | $R_E = \dfrac{V}{I}$ (con $\Delta T = 0$) $\qquad S_E = \dfrac{\Delta V}{\Delta T} \qquad R_T = \dfrac{\Delta T_M}{P_M}$ |
+| Célula solar | $I_L \parallel$ diodo $\parallel R_p$, con $R_s$ en serie: $I = I_L - I_0 \left(e^{V/V_T} - 1\right) - \dfrac{V}{R_p}$ |
+
+</div>
 
 <h2 id="tema-6">Tema 6 · Antenas y enlace</h2>
 
-```text
-dB = 10·log(p) · 20·log(v)    λ = c/f    |Γ| = (VSWR−1)/(VSWR+1)
-pat = pt(1−|Γ|²)   prad = η·pat   g = η·d   pire = pat·g = prad·d = 1,64·pra
-∫∫ d·sen θ dθ dφ = 4π            e_ef = √(30·pire)/r      s = pire/(4πr²)
-Pr = PIRE + Gr − Lbf − Ae + PLF − Lrc       Lbf = 20·log(4πr/λ)
-r = (λ/4π)·10^(Lbf/20)     plf: cos²α · 0,5 · 1 · 0
-HPBW: puntos a mitad de potencia; FNBW: entre nulos (anchos completos)
-```
+<div class="table-scroll">
 
-Este formulario resume las fórmulas de los tres apuntes. Antes del examen, rehaz sin mirar un problema de cada tema.
+| Magnitud | Fórmula |
+| --- | --- |
+| Decibelios | $10 \log p \qquad 20 \log v$ |
+| Longitud de onda | $\lambda = \dfrac{c}{f}$ |
+| Desadaptación | $\lvert\Gamma\rvert = \dfrac{\mathrm{VSWR} - 1}{\mathrm{VSWR} + 1} \qquad p_{\mathrm{at}} = p_t \left(1 - \lvert\Gamma\rvert^2\right)$ |
+| Potencia radiada y ganancia | $p_{\mathrm{rad}} = \eta\, p_{\mathrm{at}} \qquad g = \eta\, d$ |
+| PIRE | $\mathrm{pire} = p_{\mathrm{at}}\, g = p_{\mathrm{rad}}\, d = 1{,}64\, \mathrm{pra}$ |
+| Normalización de la directividad | $\displaystyle\iint d \operatorname{sen}\theta\, d\theta\, d\varphi = 4\pi$ |
+| Campo y densidad de potencia | $e_{\mathrm{ef}} = \dfrac{\sqrt{30\, \mathrm{pire}}}{r} \qquad s = \dfrac{\mathrm{pire}}{4\pi r^2}$ |
+| Balance del enlace (dB) | $P_r = \mathrm{PIRE} + G_r - L_{\mathrm{bf}} - A_e + \mathrm{PLF} - L_{\mathrm{rc}}$ |
+| Pérdidas en espacio libre | $L_{\mathrm{bf}} = 20 \log \dfrac{4\pi r}{\lambda} \qquad r = \dfrac{\lambda}{4\pi}\, 10^{L_{\mathrm{bf}}/20}$ |
+| Factor plf | lineal-lineal $\cos^2\alpha$; lineal-circular 0,5; circulares del mismo sentido 1; opuestos 0 |
+| Anchos del haz | HPBW entre los puntos de mitad de potencia; FNBW entre nulos (anchos completos) |
+
+</div>
+
+Este formulario resume las fórmulas de los cinco apuntes. Antes del examen, rehaz sin mirar un problema de cada tema.
