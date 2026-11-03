@@ -3,142 +3,142 @@
   "timezone": "Europe/Madrid",
   "from": "2026-09-01",
   "until": "2027-09-01",
-  "updatedAt": "2026-10-29T16:30:07.590Z",
+  "updatedAt": "2026-11-03T01:11:05.479Z",
   "sources": [
     {
       "id": "google",
       "label": "MUIoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-02",
       "label": "MUIoT - Aprendizaxe Automática",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-03",
       "label": "MUIoT - Big Data",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-04",
       "label": "MUIoT - Ciberseguridade en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-05",
       "label": "MUIoT - Computación na Nube para IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-06",
       "label": "MUIoT - Dispositivos IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-07",
       "label": "MUIoT - Enxeñería de Datos para IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-08",
       "label": "MUIoT - Green IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-09",
       "label": "MUIoT - Innovación e Emprendemento en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-10",
       "label": "MUIoT - Integración de Sistemas en IIoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-11",
       "label": "MUIoT - Novas Arquitecturas e Paradigmas IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-12",
       "label": "MUIoT - Protocolos de Comunicacións en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-13",
       "label": "MUIoT - Redes de Comunicacións en IoT",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-14",
       "label": "MUIoT - Sistemas Encaixados",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-15",
       "label": "MUIoT - Xemelgos Dixitais en plantas industriais",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "google-16",
       "label": "MUIoT - Análise de Vídeo",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     },
     {
       "id": "moovi",
       "label": "Moovi · Entregas",
       "status": "ok",
-      "checkedAt": "2026-10-29T16:30:07.590Z",
-      "lastSuccessAt": "2026-10-29T16:30:07.590Z",
+      "checkedAt": "2026-11-03T01:11:05.479Z",
+      "lastSuccessAt": "2026-11-03T01:11:05.479Z",
       "limitedDetails": false
     }
   ],
@@ -608,14 +608,6 @@
       "end": "2026-10-26T19:00:00.000Z"
     },
     {
-      "id": "871ba4f2d0787d11006aade4",
-      "sourceId": "moovi",
-      "title": "Entrega Práctica 5 pendente de entrega",
-      "allDay": false,
-      "start": "2026-10-26T22:59:00.000Z",
-      "end": "2026-10-26T22:59:00.000Z"
-    },
-    {
       "id": "1f64623931b4c9aa6922cb36",
       "sourceId": "google-12",
       "title": "Protocolos de Comunicacións en IoT",
@@ -623,14 +615,6 @@
       "allDay": false,
       "start": "2026-10-27T14:00:00.000Z",
       "end": "2026-10-27T15:30:00.000Z"
-    },
-    {
-      "id": "329070b34c9a803eccf55a50",
-      "sourceId": "moovi",
-      "title": "Entrega práctica 4 pendente de entrega",
-      "allDay": false,
-      "start": "2026-10-27T14:00:00.000Z",
-      "end": "2026-10-27T14:00:00.000Z"
     },
     {
       "id": "60ecf5c21fbe47a422965e13",
@@ -658,22 +642,6 @@
       "allDay": false,
       "start": "2026-10-28T17:30:00.000Z",
       "end": "2026-10-28T19:00:00.000Z"
-    },
-    {
-      "id": "40147244fb4c412c972224c6",
-      "sourceId": "moovi",
-      "title": "Ejercicios temas 4 y 5 pendente de entrega",
-      "allDay": false,
-      "start": "2026-10-28T22:59:00.000Z",
-      "end": "2026-10-28T22:59:00.000Z"
-    },
-    {
-      "id": "6ebc264d6aaccd614d925fc2",
-      "sourceId": "moovi",
-      "title": "Memoria prácticas 4 y 5 pendente de entrega",
-      "allDay": false,
-      "start": "2026-10-28T22:59:00.000Z",
-      "end": "2026-10-28T22:59:00.000Z"
     },
     {
       "id": "8980a56e1b8d40ab2752fe2e",
@@ -710,6 +678,38 @@
       "allDay": false,
       "start": "2026-11-02T17:00:00.000Z",
       "end": "2026-11-02T19:00:00.000Z"
+    },
+    {
+      "id": "ff6dd0f96ee30bbdf04bb249",
+      "sourceId": "moovi",
+      "title": "Proba de avaliación de prácticas [OP1] aberta",
+      "allDay": false,
+      "start": "2026-11-02T17:00:00.000Z",
+      "end": "2026-11-02T17:00:00.000Z"
+    },
+    {
+      "id": "28d7216d944b57f09c5f6c12",
+      "sourceId": "moovi",
+      "title": "Exame de teoría [OP1] aberta",
+      "allDay": false,
+      "start": "2026-11-02T17:55:00.000Z",
+      "end": "2026-11-02T17:55:00.000Z"
+    },
+    {
+      "id": "644d72aa311bf315d586c62b",
+      "sourceId": "moovi",
+      "title": "Proba de avaliación de prácticas [OP1] pechan",
+      "allDay": false,
+      "start": "2026-11-02T17:55:00.000Z",
+      "end": "2026-11-02T17:55:00.000Z"
+    },
+    {
+      "id": "d82ca8f8a2aa7c4266a97c87",
+      "sourceId": "moovi",
+      "title": "Exame de teoría [OP1] pechan",
+      "allDay": false,
+      "start": "2026-11-02T18:55:00.000Z",
+      "end": "2026-11-02T18:55:00.000Z"
     },
     {
       "id": "d95169de52a4fcf0ffd23210",
