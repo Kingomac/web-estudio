@@ -1,0 +1,152 @@
+---
+import { createHash } from 'node:crypto';
+import type { GradeModality } from '../schemas/content.ts';
+import { jsonForHtml } from '../lib/sitio.ts';
+import { formatMark } from '../domain/notas.ts';
+// One grading modality of a subject: marks per component, live final grade and the guide's own formula.
+interface Props { subjectId: string; modality: GradeModality; passMark: number }
+const { subjectId, modality, passMark } = Astro.props;
+const revision = createHash('sha256').update(JSON.stringify({ modality, passMark })).digest('hex').slice(0, 16);
+const prefix = `${subjectId}-${modality.id}`;
+const percent = (weight: number) => `${(weight * 100).toLocaleString('es-ES', { maximumFractionDigits: 1 })} %`;
+type Component = GradeModality['components'][number];
+const range = (total: number, r?: [number, number]) => !r ? 'cualquiera' : r[0] === r[1] ? String(r[0]) : r[1] === total ? `≥ ${r[0]}` : `${r[0]}–${r[1]}`;
+const rule = (c: Component) => [`${percent(c.weight)} de la nota`, `sobre ${c.max.toLocaleString('es-ES')}`, c.min !== undefined && `mínimo ${formatMark(c.min)}`].filter(Boolean).join(' · ');
+---
+<grade-calculator data-key={`${subjectId}.evaluacion.${modality.id}`} data-revision={revision} data-base={import.meta.env.BASE_URL}>
+  <script type="application/json" data-payload set:html={jsonForHtml({ modality, passMark })} />
+  <section class="grade panel" aria-labelledby={`${prefix}-titulo`}>
+    <h2 id={`${prefix}-titulo`}>{modality.title}</h2>
+    {modality.description && <p class="meta">{modality.description}</p>}
+    <form class="grade-form" novalidate>
+      {modality.components.map(c => c.counts ? <fieldset class="field grade-field grade-counts" aria-describedby={`${prefix}-${c.id}-regla ${prefix}-${c.id}-aporte`}>
+        <legend class="field-label">{c.label}{c.symbol && <span class="field-hint"> ({c.symbol})</span>}</legend>
+        <p class="meta grade-rule" id={`${prefix}-${c.id}-regla`}><strong>{rule(c)}</strong>. {c.description}</p>
+        <div class="grade-count-inputs">{c.counts.categories.map(k => <label class="grade-count"><span class="field-label">{k.label}</span><input class="input" name={`${c.id}.${k.id}`} type="text" inputmode="numeric" autocomplete="off" disabled /></label>)}</div>
+        <p class="meta grade-remainder">{c.counts.remainderLabel}: el resto hasta {c.counts.total} {c.counts.items}. No cambia la nota.</p>
+        <p class="status grade-contribution" id={`${prefix}-${c.id}-aporte`} data-contribution={c.id}></p>
+        <details class="grade-table"><summary>Tabla de calificación</summary>
+          <div class="table-scroll"><table>
+            <thead><tr>{c.counts.categories.map(k => <th scope="col">{k.label.split(' · ')[0]}</th>)}<th scope="col">Nota</th></tr></thead>
+            <tbody>{c.counts.rows.map(row => <tr>{c.counts!.categories.map(k => <td>{range(c.counts!.total, row.ranges[k.id])}</td>)}<td>{formatMark(row.mark)}</td></tr>)}</tbody>
+          </table></div>
+        </details>
+      </fieldset> : <div class="field grade-field">
+        <label class="field-label" for={`${prefix}-${c.id}`}>{c.label}{c.symbol && <span class="field-hint"> ({c.symbol})</span>}</label>
+        <p class="meta grade-rule" id={`${prefix}-${c.id}-regla`}><strong>{rule(c)}</strong>. {c.description}</p>
+        <input class="input" id={`${prefix}-${c.id}`} name={c.id} type="text" inputmode="decimal" autocomplete="off" aria-describedby={`${prefix}-${c.id}-regla ${prefix}-${c.id}-aporte`} disabled />
+        <p class="status grade-contribution" id={`${prefix}-${c.id}-aporte`} data-contribution={c.id}></p>
+      </div>)}
+      <div class="grade-result" data-result role="status">
+        <p class="grade-final"><span data-final>—</span> <span class="badge" data-verdict hidden></span></p>
+        <p class="meta" data-detail>Escribe tus notas. Deja en blanco las que aún no tengas.</p>
+      </div>
+      <div class="actions no-print"><button type="button" class="button button--secondary button--small" data-reset disabled>Borrar notas</button></div>
+    </form>
+    <details class="grade-guide"><summary>Fórmula de la guía docente</summary><blockquote>{modality.guideText}</blockquote></details>
+  </section>
+  <noscript><p class="callout">Activa JavaScript para calcular la nota. Los pesos y mínimos de cada parte están arriba.</p></noscript>
+</grade-calculator>
+<style>
+  grade-calculator { display: block; }
+  .grade h2 { margin: 0 0 var(--space-1); font-size: var(--text-lg); }
+  .grade-field { margin: var(--space-5) 0; }
+  .grade-rule { max-width: var(--measure); margin: 0 0 var(--space-2); }
+  .grade-rule strong { color: var(--color-text); font-weight: var(--weight-medium); }
+  .grade-counts { min-width: 0; padding: 0; border: 0; }
+  .grade-counts legend { padding: 0; }
+  .grade-count-inputs { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); }
+  .grade-count { display: block; }
+  .grade-count .field-label { font-size: var(--text-sm); font-weight: var(--weight-medium); }
+  .grade-count .input { max-width: 8rem; }
+  .grade-remainder { margin: var(--space-2) 0 0; }
+  .grade-table { margin-top: var(--space-3); font-size: var(--text-sm); }
+  .grade-table summary { color: var(--color-accent); font-weight: var(--weight-medium); }
+  .grade-table .table-scroll { max-width: 24rem; margin: var(--space-2) 0 0; }
+  .grade-table table { font-variant-numeric: tabular-nums; }
+  .grade-table th, .grade-table td { padding: var(--space-1) var(--space-3); }
+  .grade-contribution { min-height: 1lh; margin-top: var(--space-1); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+  .grade-result { margin-top: var(--space-6); padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+  .grade-final { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: 0 0 var(--space-2); font-size: var(--text-2xl); font-weight: var(--weight-semibold); line-height: var(--leading-tight); font-variant-numeric: tabular-nums; }
+  .grade-final .badge { font-size: var(--text-sm); }
+  [data-detail] { max-width: var(--measure); margin: 0; }
+  .actions { margin-top: var(--space-4); }
+  .grade-guide { margin-top: var(--space-5); font-size: var(--text-sm); }
+  .grade-guide summary { color: var(--color-accent); font-weight: var(--weight-medium); }
+  .grade-guide blockquote { margin: var(--space-2) 0 0; padding-left: var(--space-4); border-left: 3px solid var(--color-border-strong); color: var(--color-text-muted); }
+  @media (max-width: 620px) { .grade { padding: var(--space-4); } }
+  @media print { .grade-guide blockquote { color: inherit; } }
+</style>
+<script>
+  import { computeGrade, formatMark, markFromCounts, parseMark } from '../domain/notas.ts';
+  import type { GradeInputs } from '../domain/notas.ts';
+  import { storageFor } from '../client/almacenamiento.ts';
+  import type { GradeModality } from '../schemas/content.ts';
+  class GradeCalculator extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const { modality, passMark } = JSON.parse(this.querySelector('[data-payload]')!.textContent!) as { modality: GradeModality; passMark: number };
+      const store = storageFor(this.dataset.key!, this.dataset.revision!, this.dataset.base!);
+      const form = this.querySelector('form')!;
+      const inputs = [...form.querySelectorAll<HTMLInputElement>('input')];
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      this.querySelectorAll<HTMLInputElement | HTMLButtonElement>('input, button').forEach(el => { el.disabled = false; });
+      const saved = store.read();
+      if (saved && typeof saved === 'object') inputs.forEach(input => { const value = (saved as Record<string, unknown>)[input.name]; if (typeof value === 'string') input.value = value; });
+      const byId = new Map(modality.components.map(c => [c.id, c]));
+      const name = (id: string) => { const c = byId.get(id)!; return c.symbol ? `${c.label} (${c.symbol})` : c.label; };
+      const list = (ids: string[]) => new Intl.ListFormat('es', { type: 'conjunction' }).format(ids.map(name));
+      const final = this.querySelector<HTMLElement>('[data-final]')!;
+      const verdict = this.querySelector<HTMLElement>('[data-verdict]')!;
+      const detail = this.querySelector<HTMLElement>('[data-detail]')!;
+      const update = () => {
+        const values: GradeInputs = {};
+        let invalid = false;
+        for (const component of modality.components) {
+          const own = inputs.filter(i => i.name === component.id || i.name.startsWith(`${component.id}.`));
+          const { counts } = component;
+          const parsed = counts
+            ? markFromCounts(counts, Object.fromEntries(own.map(i => [i.name.slice(component.id.length + 1), i.value])))
+            : parseMark(own[0].value, component.max);
+          const note = this.querySelector<HTMLElement>(`[data-contribution="${component.id}"]`)!;
+          own.forEach(i => i.toggleAttribute('aria-invalid', parsed === 'invalid' && i.value.trim() !== ''));
+          note.classList.toggle('is-incorrect', parsed === 'invalid');
+          if (parsed === 'invalid') {
+            invalid = true;
+            note.textContent = counts ? `Escribe números enteros que sumen como mucho ${counts.total}.` : `Escribe un número entre 0 y ${component.max.toLocaleString('es-ES')}, con coma o punto.`;
+            continue;
+          }
+          values[component.id] = parsed;
+          const mark = counts && parsed !== undefined ? `Nota de la tabla: ${formatMark(parsed)} de ${formatMark(component.max)}. ` : '';
+          note.textContent = parsed === undefined ? '' : `${mark}Aporta ${formatMark(component.weight * parsed / component.max * 10)} puntos.`;
+        }
+        const result = computeGrade(modality, values, passMark);
+        verdict.hidden = true;
+        if (invalid) { final.textContent = '—'; detail.textContent = 'Corrige las notas marcadas para calcular el resultado.'; return; }
+        const failed = result.failedMinimums.length ? ` No llegas al mínimo en ${list(result.failedMinimums)}.` : '';
+        if (result.final !== undefined) {
+          final.textContent = formatMark(result.final);
+          verdict.hidden = false;
+          verdict.textContent = result.passed ? 'Aprobado' : 'Suspenso';
+          verdict.className = `badge ${result.passed ? 'badge--success' : 'badge--danger'}`;
+          detail.textContent = result.capped ? `La media ponderada es ${formatMark(result.points)}, pero la guía la limita a ${formatMark(modality.cap.value)}.${failed}` : result.passed ? 'Superas todos los mínimos.' : failed.trim() || `Te faltan ${formatMark(passMark - result.points)} puntos para el ${formatMark(passMark)}.`;
+          return;
+        }
+        final.textContent = result.missing.length === modality.components.length ? '—' : `${formatMark(result.points)} de 10`;
+        if (result.needed) {
+          const component = byId.get(result.needed.componentId)!;
+          detail.textContent = result.needed.value === null
+            ? `Ya no puedes aprobar en esta modalidad.${failed || ` Ni con ${formatMark(component.max)} en ${name(component.id)} llegas al ${formatMark(passMark)}.`}`
+            : `Para aprobar necesitas al menos ${formatMark(result.needed.value)} sobre ${component.max.toLocaleString('es-ES')} en ${name(component.id)}.`;
+        } else if (result.missing.length < modality.components.length) detail.textContent = `Puntos acumulados hasta ahora. Faltan ${list(result.missing)}.${failed}`;
+        else detail.textContent = 'Escribe tus notas. Deja en blanco las que aún no tengas.';
+      };
+      form.addEventListener('input', () => { update(); store.write(Object.fromEntries(inputs.map(i => [i.name, i.value]))); }, { signal: controller.signal });
+      form.addEventListener('submit', event => event.preventDefault(), { signal: controller.signal });
+      this.querySelector('[data-reset]')!.addEventListener('click', () => { form.reset(); store.reset(); update(); }, { signal: controller.signal });
+      update();
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('grade-calculator', GradeCalculator);
+</script>

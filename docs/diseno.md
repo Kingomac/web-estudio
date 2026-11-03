@@ -4,7 +4,7 @@ Interfaz sobria para estudiar: fondo neutro, un color de acento y dos estados de
 
 ## Principios
 
-- **Jerarquía con tamaño y peso, no con color.** El acento marca lo interactivo y lo activo; el verde y el rojo solo indican acierto y error.
+- **Jerarquía con tamaño y peso, no con color.** El acento marca lo interactivo y lo activo; el verde y el rojo solo indican acierto y error (o aprobado y suspenso en la calculadora de notas).
 - **Un único botón primario por bloque.** El resto, `button--secondary` o `button--ghost`.
 - **Texto legible.** Mínimo 13 px (`--text-xs`), lecturas a 17 px con columna de `--measure` (70ch). Contraste AA en texto secundario.
 - **Mayúsculas por CSS.** Los textos se escriben en minúscula normal; `.eyebrow` los transforma.
@@ -87,6 +87,7 @@ Los estilos propios de un componente van en su `<style>` (con ámbito de Astro) 
 | `Sources`, `Relations` | Fuentes originales (normal o `prominent` dentro de una corrección) y recursos relacionados. |
 | `ui/HexDump.astro` | Volcado hexadecimal con inspector de offset, hex, decimal y binario. |
 | `Practice`, `FormExercise`, `lectura/*` | Actividades y laboratorios interactivos. |
+| `GradeCalculator` | Calculadora de una modalidad de evaluación: campos por parte, resultado en vivo y fórmula literal de la guía. |
 
 ## Reglas para código nuevo
 

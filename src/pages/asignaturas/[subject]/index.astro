@@ -1,8 +1,11 @@
 ---
 import { siteCatalog, url } from '../../../lib/sitio.ts';
+import { evaluationPath } from '../../../lib/rutas.ts';
 import type { Subject } from '../../../schemas/content.ts';
 export async function getStaticPaths() { const catalog = await siteCatalog(); return catalog.entries.filter(e => e.kind === 'asignatura').map(entry => ({ params: { subject: entry.slug }, props: { entry } })); }
 interface Props { entry: Subject }
 const { entry } = Astro.props;
-return Astro.redirect(url(`/asignaturas/${entry.slug}/apuntes/`), 301);
+const catalog = await siteCatalog();
+const hasNotes = catalog.entries.some(e => e.kind === 'apuntes' && e.subjectId === entry.id);
+return Astro.redirect(url(!hasNotes && entry.evaluation ? evaluationPath(entry) : `/asignaturas/${entry.slug}/apuntes/`), 301);
 ---

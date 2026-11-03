@@ -5,7 +5,7 @@ import { PDFDocument } from 'pdf-lib';
 import { parseEntry } from '../schemas/content.ts';
 import type { Entry, Resource, Subject } from '../schemas/content.ts';
 import { components, workshops } from './registro.ts';
-import { resourcePath, sections } from './rutas.ts';
+import { evaluationPath, resourcePath, sections } from './rutas.ts';
 
 export interface ContentError { id?: string; file: string; field: string; message: string }
 export interface Edge { from: string; to: string; field: string; anchor?: string; pages?: number[] }
@@ -43,6 +43,7 @@ export function buildCatalog(entries: Entry[], files = new Map<string, string>()
   const routes = new Map([['/', 'inicio']]);
   for (const e of entries.filter((e): e is Subject => e.kind === 'asignatura')) {
     for (const section of Object.values(sections)) routes.set(`/asignaturas/${e.slug}/${section}/`, e.id);
+    if (e.evaluation) routes.set(evaluationPath(e), e.id);
   }
   const tagSlugs = new Set();
   for (const e of entries) {

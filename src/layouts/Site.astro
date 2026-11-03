@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import MenuIcon from '../components/ui/MenuIcon.astro';
 import { siteCatalog, url, resourceUrl } from '../lib/sitio.ts';
-import { labels, sections } from '../lib/rutas.ts';
+import { labels, sections, evaluationSection, evaluationPath } from '../lib/rutas.ts';
 import type { Subject } from '../schemas/content.ts';
 interface Props { title: string; description?: string; subject?: Subject; reading?: boolean }
 const { title, description = 'Materiales de estudio del máster en Internet de las Cosas.', subject, reading = false } = Astro.props;
@@ -40,7 +40,7 @@ const current = Astro.url.pathname;
                 {subject?.id === s.id && <ul class="nav-sections">{Object.entries(sections).map(([kind, section]) => {
                   const sectionHref = url(`/asignaturas/${s.slug}/${section}/`);
                   return <li><a class:list={{ 'is-active': current.startsWith(sectionHref) }} href={sectionHref} aria-current={current === sectionHref ? 'page' : current.startsWith(sectionHref) ? 'location' : undefined}>{labels[kind as keyof typeof labels]}</a></li>;
-                })}</ul>}
+                })}{s.evaluation && <li><a class:list={{ 'is-active': current === url(evaluationPath(s)) }} href={url(evaluationPath(s))} aria-current={current === url(evaluationPath(s)) ? 'page' : undefined}>{evaluationSection.label}</a></li>}</ul>}
               </div>)}
             </div>;
           })}

@@ -8,7 +8,7 @@ test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', 
   await page.getByRole('main').getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();
   await expect(page).toHaveURL(/\/protocolos\/apuntes\/$/);
   await expect(page.getByRole('link', { name: 'Todos los recursos', exact: true })).toHaveCount(0);
-  await expect(page.getByRole('navigation', { name: 'Tipos de recurso' }).getByRole('link', { name: 'Apuntes', exact: true })).toHaveAttribute('aria-current', 'page');
+  await expect(page.getByRole('navigation', { name: 'Secciones de la asignatura' }).getByRole('link', { name: 'Apuntes', exact: true })).toHaveAttribute('aria-current', 'page');
   const rows = page.locator('[data-resource]');
   const total = await rows.count();
   const filtered = async (slug: string) => {

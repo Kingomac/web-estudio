@@ -1,0 +1,37 @@
+---
+import Site from '../../../../layouts/Site.astro';
+import PageHeader from '../../../../components/ui/PageHeader.astro';
+import SectionTabs from '../../../../components/ui/SectionTabs.astro';
+import GradeCalculator from '../../../../components/GradeCalculator.astro';
+import { siteCatalog } from '../../../../lib/sitio.ts';
+import { evaluationSection } from '../../../../lib/rutas.ts';
+import type { Evaluation, Subject } from '../../../../schemas/content.ts';
+export async function getStaticPaths() {
+  const catalog = await siteCatalog();
+  return catalog.entries.filter((e): e is Subject & { evaluation: Evaluation } => e.kind === 'asignatura' && !!e.evaluation).map(subject => ({ params: { subject: subject.slug }, props: { subject } }));
+}
+interface Props { subject: Subject & { evaluation: Evaluation } }
+const { subject } = Astro.props;
+const { evaluation } = subject;
+const consulted = new Date(`${evaluation.source.consultedAt}T12:00:00Z`).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Madrid' });
+---
+<Site title={`${evaluationSection.label} · ${subject.title}`} subject={subject}>
+  <PageHeader eyebrow={subject.title} title={evaluationSection.label} description="Calcula tu nota con los criterios de la guía docente 2026/27." />
+  <SectionTabs subject={subject} current={evaluationSection.path} />
+  <p class="intro">Escribe cada nota en su escala. Deja en blanco las que aún no tengas: con una sola pendiente verás la nota mínima que necesitas en ella para aprobar. Los resultados se muestran con dos decimales, sin el redondeo del acta.</p>
+  <div class="modalities">{evaluation.modalities.map(modality => <GradeCalculator subjectId={subject.id} modality={modality} passMark={evaluation.passMark} />)}</div>
+  {evaluation.notes.length > 0 && <section class="section" aria-labelledby="otras-condiciones">
+    <h2 id="otras-condiciones" class="section-title">Otras condiciones de la guía</h2>
+    <ul class="notes">{evaluation.notes.map(note => <li>{note}</li>)}</ul>
+  </section>}
+  <section class="section" aria-labelledby="fuente-evaluacion">
+    <h2 id="fuente-evaluacion" class="section-title">Fuente</h2>
+    <p class="meta">{evaluation.source.label} Consultada el {consulted}. <a href={subject.teachingGuide.url}>Abrir la guía docente <span aria-hidden="true">↗</span></a></p>
+  </section>
+</Site>
+<style>
+  .intro { max-width: var(--measure); color: var(--color-text-muted); }
+  .modalities { display: grid; gap: var(--space-5); margin-top: var(--space-5); }
+  .notes { max-width: var(--measure); padding-left: var(--space-5); }
+  .notes li + li { margin-top: var(--space-2); }
+</style>

@@ -1,11 +1,12 @@
 ---
 import { url } from '../../lib/sitio.ts';
-import { sections, labels } from '../../lib/rutas.ts';
+import { sections, labels, evaluationSection, evaluationPath } from '../../lib/rutas.ts';
 import type { Resource, Subject } from '../../schemas/content.ts';
-// Navigation between the subject's resource types.
-interface Props { subject: Subject; current: Resource['kind'] }
+// Navigation between the subject's resource types and, if transcribed, its grading page.
+interface Props { subject: Subject; current: Resource['kind'] | typeof evaluationSection.path }
 const { subject, current } = Astro.props;
 ---
-<nav class="tabs" aria-label="Tipos de recurso">
+<nav class="tabs" aria-label="Secciones de la asignatura">
   {Object.entries(sections).map(([kind, section]) => <a href={url(`/asignaturas/${subject.slug}/${section}/`)} aria-current={current === kind ? 'page' : undefined}>{labels[kind as keyof typeof labels]}</a>)}
+  {subject.evaluation && <a href={url(evaluationPath(subject))} aria-current={current === evaluationSection.path ? 'page' : undefined}>{evaluationSection.label}</a>}
 </nav>

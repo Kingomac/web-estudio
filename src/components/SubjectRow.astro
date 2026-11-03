@@ -2,7 +2,7 @@
 import type { Subject } from '../schemas/content.ts';
 import type { Catalog } from '../lib/catalogo.ts';
 import { isResource } from '../lib/catalogo.ts';
-import { sections, labels } from '../lib/rutas.ts';
+import { sections, labels, evaluationSection, evaluationPath } from '../lib/rutas.ts';
 import { resourceUrl, url } from '../lib/sitio.ts';
 interface Props { entry: Subject; catalog: Catalog; heading?: 'h2' | 'h3' }
 const { entry, catalog, heading: Heading = 'h2' } = Astro.props;
@@ -16,6 +16,7 @@ const resources = catalog.entries.filter(isResource).filter(e => e.subjectId ===
       const count = resources.filter(e => e.kind === kind).length;
       return count > 0 && <a class="button button--secondary button--small" href={url(`/asignaturas/${entry.slug}/${section}/`)}>{labels[kind as keyof typeof labels]} <span class="count">{count}</span></a>;
     })}
+    {entry.evaluation && <a class="button button--secondary button--small" href={url(evaluationPath(entry))}>{evaluationSection.label}</a>}
     {!resources.length && <span class="meta">Sin recursos incorporados</span>}
   </nav>
 </article>
