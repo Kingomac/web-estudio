@@ -1,0 +1,119 @@
+{
+  "kind": "asignatura",
+  "id": "embebidos",
+  "slug": "embebidos",
+  "title": "Sistemas embebidos",
+  "bimesterId": "b1",
+  "order": 40,
+  "description": "Diseño de sistemas embebidos para aplicaciones IoT: prácticas de laboratorio, informes y proyecto.",
+  "teachingGuide": {
+    "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01107",
+    "title": "Guía docente · Sistemas embebidos",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UVigo 2026/27, apartado «Avaliación». Copia descargada por el usuario: la web de UVigo no la muestra ahora.",
+      "consultedAt": "2026-11-03"
+    },
+    "modalities": [
+      {
+        "id": "continua-ordinaria",
+        "title": "Evaluación continua · ordinaria",
+        "description": "Pruebas a lo largo del bimestre. Sin examen.",
+        "components": [
+          {
+            "id": "practicas",
+            "symbol": "NPrac",
+            "label": "Prácticas de laboratorio",
+            "description": "Media de las prácticas. En grupo, todos los asistentes reciben la misma nota.",
+            "weight": 0.4,
+            "min": 4
+          },
+          {
+            "id": "informes",
+            "symbol": "NInf",
+            "label": "Informes de prácticas",
+            "description": "Media de los informes. Solo se entrega el de una práctica a la que asististe.",
+            "weight": 0.2,
+            "min": 4
+          },
+          {
+            "id": "proyecto",
+            "symbol": "NPro",
+            "label": "Proyecto",
+            "description": "Sistema embebido para una aplicación IoT, con tutorización.",
+            "weight": 0.4,
+            "min": 4
+          }
+        ],
+        "cap": {
+          "value": 4.9,
+          "belowPassMark": true
+        },
+        "guideText": "Final_AC = (NPrac*0.4 + NInf*0.2 + NPro*0.4) si NPrac, NInf e NPro son maiores ou iguais a 4 e Final_AC é maior ou igual a 5; Final_AC = min [(NPrac*0.4 + NInf*0.2 + NPro*0.4), 4.9] en calquera outro caso."
+      },
+      {
+        "id": "continua-extraordinaria",
+        "title": "Evaluación continua · extraordinaria",
+        "description": "El examen práctico sustituye a prácticas e informes, y el proyecto completado sustituye al anterior.",
+        "components": [
+          {
+            "id": "examen",
+            "symbol": "NExam",
+            "label": "Examen práctico",
+            "description": "Sustituye a NPrac y NInf.",
+            "weight": 0.6,
+            "min": 4
+          },
+          {
+            "id": "proyecto",
+            "symbol": "NPro",
+            "label": "Proyecto",
+            "description": "Proyecto completado; sustituye a la nota anterior.",
+            "weight": 0.4,
+            "min": 4
+          }
+        ],
+        "cap": {
+          "value": 4.9,
+          "belowPassMark": true
+        },
+        "guideText": "Final_AC = (NExam*0.6 + NPro*0.4) si NExam e NPro son maiores ou iguais a 4 e Final_AC é maior ou igual a 5; Final_AC = min [(NExam*0.6 + NPro*0.4), 4.9] en calquera outro caso."
+      },
+      {
+        "id": "global",
+        "title": "Evaluación global",
+        "description": "Ordinaria y extraordinaria.",
+        "components": [
+          {
+            "id": "examen",
+            "symbol": "NExam",
+            "label": "Examen práctico",
+            "description": "Contenidos teóricos y prácticos, con complejidad similar a la de las prácticas.",
+            "weight": 0.6,
+            "min": 4
+          },
+          {
+            "id": "proyecto",
+            "symbol": "NPro",
+            "label": "Proyecto individual",
+            "description": "Mismos objetivos y complejidad que el de la evaluación continua.",
+            "weight": 0.4,
+            "min": 4
+          }
+        ],
+        "cap": {
+          "value": 4.9,
+          "belowPassMark": true
+        },
+        "guideText": "Final_AG = (NExam*0.6 + NPro*0.4) si NExam e NPro son maiores ou iguais a 4 e Final_AG é maior ou igual a 5; Final_AG = min [(NExam*0.6 + NPro*0.4), 4.9] en calquera outro caso."
+      }
+    ],
+    "notes": [
+      "La tabla de la guía da 40 % a prácticas, 40 % al proyecto y 20 % a informes, como la fórmula, pero sus descripciones dicen 30 % prácticas y 30 % informes. La calculadora usa la fórmula.",
+      "Las prácticas son obligatorias: hay que asistir al menos al 80 %. La calculadora no lo comprueba.",
+      "Quien asiste a más de 2 sesiones de laboratorio opta por la evaluación continua. Se puede renunciar hasta un mes antes del final del cuatrimestre."
+    ]
+  }
+}

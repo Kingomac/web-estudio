@@ -10,5 +10,79 @@
     "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01101",
     "title": "Guía docente · Dispositivos IoT",
     "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UVigo 2026/27, apartado «Avaliación». Copia descargada por el usuario: la web de UVigo no la muestra ahora.",
+      "consultedAt": "2026-11-03"
+    },
+    "modalities": [
+      {
+        "id": "continua",
+        "title": "Evaluación continua",
+        "description": "Ordinaria al final del bimestre. En la extraordinaria se aplica la misma fórmula.",
+        "components": [
+          {
+            "id": "examen",
+            "symbol": "NExam",
+            "label": "Pruebas escritas",
+            "description": "Preguntas de desarrollo (35 %) y problemas (20 %) del bimestre. Hay al menos dos pruebas y ninguna supera el 40 % de la nota final.",
+            "weight": 0.55,
+            "min": 4
+          },
+          {
+            "id": "ejercicios",
+            "symbol": "NExerc",
+            "label": "Problemas autónomos",
+            "description": "Problemas o ejercicios propuestos en teoría y entregados en las fechas fijadas.",
+            "weight": 0.1
+          },
+          {
+            "id": "practicas",
+            "symbol": "NPrac",
+            "label": "Prácticas de laboratorio",
+            "description": "Simulación o montaje de cada guion e informe de resultados.",
+            "weight": 0.35
+          }
+        ],
+        "cap": {
+          "value": 4.9,
+          "belowPassMark": true
+        },
+        "guideText": "Final_AC = (NExam*0.55 + NExerc*0.1 + NPrac*0.35) se NExam e maior ou igual a 4 e Final_AC e maior ou igual a 5; Final_AC = min[(NExam*0.55 + NExerc*0.1 + NPrac*0.35), 4.9] en calquera outro caso."
+      },
+      {
+        "id": "global",
+        "title": "Evaluación global",
+        "description": "Ordinaria y extraordinaria.",
+        "components": [
+          {
+            "id": "examen",
+            "symbol": "NExam",
+            "label": "Examen teórico",
+            "description": "Problemas, ejercicios y preguntas de desarrollo de todo el temario.",
+            "weight": 0.6,
+            "min": 4
+          },
+          {
+            "id": "practicas",
+            "symbol": "NPrac",
+            "label": "Examen práctico",
+            "description": "Diseño de sistemas con una complejidad similar a la de las prácticas.",
+            "weight": 0.4
+          }
+        ],
+        "cap": {
+          "value": 4.9,
+          "belowPassMark": true
+        },
+        "guideText": "Final_AG = (NExam*0.6 + NPrac*0.4) se NExam e maior ou iguai a 4 e Final_AG e maior ou igual a 5; Final_AG = min[(NExam*0.6 + NPrac*0.4), 4.9] en calquera outro caso."
+      }
+    ],
+    "notes": [
+      "Las prácticas son obligatorias: hay que asistir al menos al 80 %. La calculadora no lo comprueba.",
+      "Quien asiste a más de 2 sesiones de laboratorio opta por la evaluación continua. Se puede renunciar hasta un mes antes del final del cuatrimestre.",
+      "En la extraordinaria de evaluación continua, el examen teórico sustituye a NExam y completar las prácticas sustituye a NPrac."
+    ]
   }
 }

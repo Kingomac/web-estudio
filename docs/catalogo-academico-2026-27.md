@@ -10,10 +10,10 @@ La distribución de materias de especialidad entre los bimestres 3 y 4 se contra
 
 | Bimestre | Materia | Guía enlazada | Estado |
 | --- | --- | --- | --- |
-| B1 | Dispositivos IoT | [Guía](https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01101) | L |
+| B1 | Dispositivos IoT | [Guía](https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01101) | V · 2026/27 (copia local) |
 | B1 | Protocolos de comunicación para IoT | [Guía](https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01104) | V · 2026/27 |
 | B1 | Cloud Computing para IoT | [Guía](https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103624&_anoAcademico=2026&idiomaPais=gl.ES) | V · 2026/27 |
-| B1 | Sistemas embebidos | [Guía](https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01107) | L |
+| B1 | Sistemas embebidos | [Guía](https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01107) | V · 2026/27 (copia local) |
 | B2 | Novas arquitecturas e paradigmas IoT | [Guía](https://academica.udc.gal/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103626&_anoAcademico=2026&idiomaPais=gl.ES) | L |
 | B2 | Redes de comunicación en IoT | [Guía](https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01103) | L |
 | B2 | Innovación e Emprendemento Tecnolóxico en IoT | [Guía](https://www.usc.gal/es/estudios/masteres/ingenieria-arquitectura/master-universitario-internet-iot/20262027/innovacion-emprendimiento-tecnologico-iot-19399-18493-2-103886) | L |
@@ -61,6 +61,8 @@ La distribución de materias de especialidad entre los bimestres 3 y 4 se contra
 ## Incidencias y uso de los enlaces
 
 El estado V de Cloud y Protocolos corresponde al contenido consultado de sus guías UDC y UVigo: ambas identifican la materia y el curso 2026/27. En Protocolos se confirma además el código `V05M200V01104`. Las guías marcadas L no se presentan como verificadas: algunas URLs incluyen el año correcto, pero eso no basta para confirmar su contenido. Los errores de acceso durante la consulta tampoco prueban que estén rotas para el usuario.
+
+El 03/11/2026 la web de UVigo no mostraba las guías. Las de Dispositivos (`V05M200V01101`), Protocolos (`V05M200V01104`) y Sistemas embebidos (`V05M200V01107`, publicada como «Sistemas empotrados») se verificaron en copias HTML descargadas por el usuario: identifican materia, código y curso 2026/27. Las copias no se incorporan al repositorio; su apartado de evaluación está transcrito en el `evaluation` de cada `asignatura.json`. La de Cloud se consultó en la web pública de la UDC.
 
 Los enlaces marcados R presentan estas diferencias en el programa:
 

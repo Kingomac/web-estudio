@@ -10,5 +10,257 @@
     "url": "https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103624&_anoAcademico=2026&idiomaPais=gl.ES",
     "title": "Guía docente de Cloud Computing para IoT · UDC · 2026/27",
     "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UDC 2026/27, apartado «Evaluación» (versión en castellano; en caso de discrepancia prevalece la gallega), y «Táboa de cualificación das prácticas e actividades» de CNIoT 2026/27, facilitada por el usuario.",
+      "consultedAt": "2026-11-03"
+    },
+    "modalities": [
+      {
+        "id": "primera",
+        "title": "Primera oportunidad",
+        "description": "La segunda oportunidad sigue los mismos criterios.",
+        "components": [
+          {
+            "id": "entregas",
+            "label": "Entregas de prácticas",
+            "description": "Las 15 prácticas y actividades se califican A, B o C, y la nota (hasta 2 puntos) sale de la tabla de la asignatura según cuántas A y cuántas C tengas.",
+            "weight": 0.2,
+            "max": 2,
+            "counts": {
+              "total": 15,
+              "items": "prácticas y actividades",
+              "categories": [
+                {
+                  "id": "a",
+                  "label": "A · Apta"
+                },
+                {
+                  "id": "c",
+                  "label": "C · No entregada, incompleta o no apta"
+                }
+              ],
+              "remainderLabel": "B · Apta con errores no graves",
+              "rows": [
+                {
+                  "ranges": {
+                    "a": [
+                      11,
+                      15
+                    ],
+                    "c": [
+                      0,
+                      0
+                    ]
+                  },
+                  "mark": 2
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      8,
+                      10
+                    ],
+                    "c": [
+                      0,
+                      0
+                    ]
+                  },
+                  "mark": 1.75
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      4,
+                      7
+                    ],
+                    "c": [
+                      0,
+                      0
+                    ]
+                  },
+                  "mark": 1.5
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      0,
+                      3
+                    ],
+                    "c": [
+                      0,
+                      0
+                    ]
+                  },
+                  "mark": 1.25
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      11,
+                      14
+                    ],
+                    "c": [
+                      1,
+                      3
+                    ]
+                  },
+                  "mark": 1.5
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      8,
+                      10
+                    ],
+                    "c": [
+                      1,
+                      3
+                    ]
+                  },
+                  "mark": 1.25
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      4,
+                      7
+                    ],
+                    "c": [
+                      1,
+                      3
+                    ]
+                  },
+                  "mark": 1
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      0,
+                      3
+                    ],
+                    "c": [
+                      1,
+                      3
+                    ]
+                  },
+                  "mark": 0.75
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      11,
+                      11
+                    ],
+                    "c": [
+                      4,
+                      4
+                    ]
+                  },
+                  "mark": 1
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      8,
+                      10
+                    ],
+                    "c": [
+                      4,
+                      7
+                    ]
+                  },
+                  "mark": 0.75
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      4,
+                      7
+                    ],
+                    "c": [
+                      4,
+                      7
+                    ]
+                  },
+                  "mark": 0.5
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      0,
+                      3
+                    ],
+                    "c": [
+                      4,
+                      7
+                    ]
+                  },
+                  "mark": 0.25
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      4,
+                      7
+                    ],
+                    "c": [
+                      8,
+                      10
+                    ]
+                  },
+                  "mark": 0.25
+                },
+                {
+                  "ranges": {
+                    "a": [
+                      0,
+                      3
+                    ],
+                    "c": [
+                      8,
+                      10
+                    ]
+                  },
+                  "mark": 0
+                },
+                {
+                  "ranges": {
+                    "c": [
+                      11,
+                      15
+                    ]
+                  },
+                  "mark": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "teoria",
+            "label": "Prueba objetiva de teoría",
+            "description": "Test, respuesta breve o ejercicios de las sesiones magistrales.",
+            "weight": 0.4,
+            "min": 4
+          },
+          {
+            "id": "practicas",
+            "label": "Prueba mixta de prácticas",
+            "description": "Test, respuesta breve o ejercicios de los contenidos de las prácticas.",
+            "weight": 0.4
+          }
+        ],
+        "cap": {
+          "value": 4,
+          "belowPassMark": true
+        },
+        "guideText": "Para superar la asignatura en la primera oportunidad serán condiciones necesarias: Obtener un mínimo del 40% en la nota de la prueba objetiva. Obtener un 50% en la nota media total, calculada como la media ponderada de las notas de prácticas (seguimiento continuo y prueba de prácticas) y de la prueba objetiva. En el caso de incumplir alguna de las condiciones necesarias para superar la asignatura, la calificación final en las actas será un Suspenso y la nota máxima que se podrá obtener es 4."
+      }
+    ],
+    "notes": [
+      "En la segunda oportunidad se conservan las notas de la primera. No hay nuevas entregas de prácticas, pero se puede repetir la prueba de prácticas, y la de teoría es obligatoria si no llegaste al 40 %.",
+      "Quien no entregue prácticas ni haga ninguna prueba figura como no presentado."
+    ]
   }
 }

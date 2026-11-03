@@ -10,5 +10,72 @@
     "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01104",
     "title": "Guía docente · Protocolos de comunicación para IoT",
     "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UVigo 2026/27, apartado «Avaliación». Copia descargada por el usuario: la web de UVigo no la muestra ahora.",
+      "consultedAt": "2026-11-03"
+    },
+    "modalities": [
+      {
+        "id": "continua",
+        "title": "Evaluación continua",
+        "description": "Se opta por ella al presentarse a la prueba intermedia de control.",
+        "components": [
+          {
+            "id": "examen-final",
+            "symbol": "EF",
+            "label": "Examen final",
+            "description": "Preguntas de desarrollo de toda la materia.",
+            "weight": 0.4,
+            "min": 4
+          },
+          {
+            "id": "prueba-intermedia",
+            "symbol": "PIC",
+            "label": "Prueba intermedia de control",
+            "description": "Test de una hora a mitad del bimestre.",
+            "weight": 0.2
+          },
+          {
+            "id": "moovi",
+            "symbol": "PM",
+            "label": "Puntos MooVi",
+            "description": "Tareas, programas de red y tests autoevaluables de MooVi, sobre 400 puntos.",
+            "weight": 0.4,
+            "max": 400
+          }
+        ],
+        "cap": {
+          "value": 4,
+          "belowPassMark": false
+        },
+        "guideText": "A Nota Final da materia calcúlase como a media ponderada das cualificacións de cada apartado se a nota do Exame Final (EF) é maior ou igual que 4. Se fose inferior, a Nota Final será o mínimo entre 4,0 e a media ponderada anterior. […] NF-AC = 0,4 x EF + 0,2 x PIC + PM/100"
+      },
+      {
+        "id": "global",
+        "title": "Evaluación global",
+        "description": "Para quien no se presenta a la prueba intermedia.",
+        "components": [
+          {
+            "id": "examen-final",
+            "symbol": "EF",
+            "label": "Examen final",
+            "description": "El mismo examen final de la evaluación continua.",
+            "weight": 1,
+            "min": 4
+          }
+        ],
+        "cap": {
+          "value": 4,
+          "belowPassMark": false
+        },
+        "guideText": "A Avaliación Global (AG) consisitirá na realización do mesmo Exame Final e a nota será a obtida en devandito exame."
+      }
+    ],
+    "notes": [
+      "La extraordinaria es en julio, con un nuevo examen final, solo para quien no apruebe en la ordinaria.",
+      "Para pasar a evaluación global tras suspender por continua hay que pedirlo por escrito al coordinador antes de la revisión del examen final ordinario."
+    ]
   }
 }
