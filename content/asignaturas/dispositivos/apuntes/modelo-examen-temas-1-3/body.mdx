@@ -1,0 +1,169 @@
+<p class="lead">Boletín para resolver en papel, sin soluciones. Imita el examen: una cuestión de desarrollo y un ejercicio de cada tema, con enunciados parecidos a los del boletín de los temas 1-3. Hay más material del que cabe en un examen para que puedas repetir el simulacro con otra combinación.</p>
+
+<div class="callout">
+
+**Cómo usarlo**
+
+1. Estudia primero los apuntes del tema y el formulario.
+2. Haz el **simulacro** de abajo sin mirar nada, salvo la calculadora.
+3. Responde en folios aparte e indica el código de cada pregunta (C1.2, E3.1…). Escribe los pasos y las unidades, no solo el resultado.
+4. Después resuelve el resto, tema a tema.
+
+</div>
+
+<h2 id="simulacro">Simulacro: temas 1-3</h2>
+
+Una cuestión y un ejercicio de cada tema:
+
+| Tema | Cuestión | Ejercicio |
+| --- | --- | --- |
+| 1 · Sensores, acondicionamiento y A/D | C1.3 | E1.3 |
+| 2 · UART, I²C y SPI | C2.2 | E2.2 |
+| 3 · Sensores y actuadores | C3.2 | E3.2 |
+
+Segundo simulacro, otro día: C1.5 + E1.4, C2.4 + E2.1, C3.4 + E3.1.
+
+<h2 id="tema-1">Tema 1 · Sensores: caracterización, acondicionamiento y conversión A/D</h2>
+
+<h3 id="t1-cuestiones">Cuestiones</h3>
+
+**C1.1.** Define campo de medida, alcance, fondo de escala de salida (FSO), sensibilidad y no linealidad. ¿Qué valores interesan de sensibilidad y por qué? Explica con un ejemplo numérico por qué un error de ±1 % del fondo de escala no equivale a un ±1 % de la lectura.
+
+**C1.2.** Explica la diferencia entre repetibilidad y reproducibilidad, y entre precisión, veracidad y exactitud. Dibuja cuatro dianas que muestren las combinaciones posibles de precisión y veracidad. ¿Puede un equipo ser preciso y no veraz?
+
+**C1.3.** ¿Qué son las derivas de un sensor y qué tipos hay? Dibuja cómo afectan a la curva de calibración. Explica la calibración a un punto y a dos puntos: qué error corrige cada una y qué error queda después de calibrar perfectamente.
+
+**C1.4.** Caracterización dinámica: explica el ancho de banda (con un diagrama de Bode) y el tiempo de establecimiento (con la respuesta a un escalón). ¿Cómo se relacionan ambos en un sensor rápido?
+
+**C1.5.** Modo diferencial y modo común en un amplificador operacional: define $A_d$, $A_c$ y CMRR. ¿Para qué sirve un amplificador de instrumentación? Dibuja su esquema de tres operacionales, indica qué etapa da la ganancia y de qué depende su CMRR.
+
+**C1.6.** Describe las tres etapas de la conversión A/D. Enuncia el teorema de Nyquist y explica qué es el error de cuantificación y cuánto vale como máximo en un cuantificador uniforme. Define al menos cuatro características o errores de un ADC (resolución, ganancia, error de cero, no monotonicidad, tiempo de conversión…).
+
+<h3 id="t1-ejercicios">Ejercicios</h3>
+
+**E1.1. Sensor de presión.** Un transductor de presión mide en el rango 0-10 bar y proporciona una salida lineal de 0,5 a 4,5 V.
+
+1. ¿Cuáles son el campo de medida, el alcance y el FSO?
+2. ¿Cuál es la sensibilidad?
+3. Se instala en un circuito de agua que trabaja entre 2 y 4 bar. Determina el intervalo y la excursión de tensión de salida. ¿Qué porcentaje del FSO se aprovecha?
+4. La hoja de características indica un error de ±0,5 % del fondo de escala. Expresa ese error en bar y calcula el error relativo, en %, cuando la presión real es de 2 bar. ¿Consideras adecuado este sensor para la aplicación? Justifica la respuesta.
+
+**E1.2. Hoja de características de una célula de carga.** La hoja de datos de un sensor de fuerza indica:
+
+| Parámetro | Valor |
+| --- | --- |
+| Campo de medida | 0-500 N |
+| No linealidad | 0,3 % respecto del fondo de escala |
+| Tensión de salida a 0 N | 0,20 ± 0,05 V |
+| Sensibilidad | 8,0 ± 0,4 mV/N |
+
+1. Determina la curva de calibración nominal y el FSO nominal.
+2. Determina el máximo error en % sobre el fondo de escala si no se calibra el sistema.
+3. Determina el máximo error en % sobre el fondo de escala si solo se calibra el cero.
+4. Determina el máximo error en % sobre el fondo de escala si se calibran perfectamente el cero y la ganancia.
+
+**E1.3. Acondicionamiento para un ADC.** Un sensor de temperatura integrado entrega 10 mV/°C, con 0 V a 0 °C, y se usa entre 0 y 80 °C. La señal se adquiere con un ADC de 10 bits y margen de entrada 0-5 V.
+
+1. ¿Qué intervalo de tensión proporciona el sensor? ¿Qué porcentaje del margen del ADC se usa si se conecta directamente?
+2. Calcula el peso de 1 LSB y la resolución en °C/LSB sin acondicionamiento.
+3. Diseña una función $V_o = a V_s + b$ que lleve la salida del sensor a 0-5 V.
+4. Implementa la función con un amplificador no inversor con $R_1 = 10\ \mathrm{k\Omega}$: calcula $R_2$.
+5. Con el acondicionamiento, ¿qué resolución se obtiene en °C/LSB? ¿Qué código da el ADC a 25 °C?
+6. Si la temperatura no varía más rápido que 0,5 Hz, ¿cuál es la frecuencia de muestreo mínima? ¿Por qué en la práctica se muestrea bastante más rápido?
+
+**E1.4. Amplificadores.** Considera operacionales ideales alimentados a ±15 V.
+
+1. Un amplificador diferencial simétrico tiene $R_1 = 10\ \mathrm{k\Omega}$ en ambas entradas y $R_2 = 100\ \mathrm{k\Omega}$ en la realimentación y hacia masa. Calcula la salida si $V_1 = 1{,}2\ \mathrm{V}$ y $V_2 = 1{,}5\ \mathrm{V}$.
+2. Repite el cálculo con $V_2 = 3\ \mathrm{V}$. ¿Puede el operacional dar esa tensión? ¿Qué ocurre?
+3. Un amplificador de instrumentación con la segunda etapa de ganancia unidad tiene $R_1 = 25\ \mathrm{k\Omega}$. Calcula $R_g$ para una ganancia de 51.
+4. A su entrada llega la señal de un puente: 2 mV diferenciales sobre una tensión de modo común de 2,5 V. Si su CMRR es de 100 dB ($10^5$), calcula la salida debida a cada modo y el error relativo que introduce el modo común.
+
+<h2 id="tema-2">Tema 2 · Comunicación: UART, I²C y SPI</h2>
+
+<h3 id="t2-cuestiones">Cuestiones</h3>
+
+**C2.1.** Explica la diferencia entre comunicación serie y paralela y entre síncrona y asíncrona. Clasifica UART, I²C y SPI según ambos criterios. ¿Cómo sabe el receptor de una UART cuándo leer cada bit si no hay reloj?
+
+**C2.2.** Describe paso a paso una transacción I²C en la que el maestro escribe un byte en un esclavo. Dibuja el cronograma de SDA y SCL y marca START, dirección, R/W, ACK, dato y STOP. ¿Por qué el bus necesita resistencias de pull-up?
+
+**C2.3.** ¿Qué es el arbitraje en I²C y por qué hace falta? Explica cómo se resuelve y pon un ejemplo con dos maestros que envían direcciones distintas. Enumera las ventajas y los inconvenientes del bus I²C.
+
+**C2.4.** Describe las líneas del bus SPI y la secuencia de una transferencia. ¿Cómo se elige el esclavo si no hay direcciones? Explica CPOL y CPHA y los cuatro modos. ¿Qué define SPI y qué deja al fabricante del dispositivo?
+
+**C2.5.** Haz una tabla comparativa de UART, I²C y SPI (sincronización, líneas, dúplex, direccionamiento, número de dispositivos, velocidad, complejidad). Elige el bus más adecuado, y justifica, para: un módulo GPS, una pantalla TFT que se refresca a menudo y ocho sensores ambientales en la misma placa.
+
+<h3 id="t2-ejercicios">Ejercicios</h3>
+
+**E2.1. Trama UART.** Un microcontrolador envía datos a un módem por UART a 115 200 bps con la configuración 8E1 (8 bits de datos, paridad par, 1 bit de parada). Datos: el bit de paridad par hace que el número total de unos (datos más paridad) sea par, y los datos se envían empezando por el bit menos significativo.
+
+1. ¿Cuánto dura un bit? ¿Cuántos bits ocupa cada carácter?
+2. ¿Cuánto se tarda en enviar un mensaje de 64 bytes sin pausas entre caracteres? ¿Cuántos caracteres por segundo se pueden enviar como máximo?
+3. Dibuja la forma de onda en TX del carácter «A» (0x41), con el nivel de reposo, el bit de inicio, los datos, la paridad y la parada. Indica la duración de cada bit.
+4. Si el módem estuviera configurado a 9600 8N1, explica qué recibiría y por qué.
+
+**E2.2. Lectura de un sensor por I²C.** Un microcontrolador lee un sensor de presión cuya dirección de 7 bits es 0x76. El bus trabaja en modo rápido (400 kbps).
+
+1. Escribe en binario y en hexadecimal el primer byte que envía el maestro para escribir en el sensor y el que envía para leer de él.
+2. El maestro lee 2 bytes del sensor: START, dirección con R/W, dos bytes de datos y STOP. ¿Cuántos ciclos de SCL hacen falta (sin contar START ni STOP)? ¿Cuánto dura la lectura?
+3. Repite el cálculo en modo estándar.
+4. Dos maestros empiezan a la vez: M1 envía la dirección 0x3C y M2 la 0x3A. Escribe ambas en binario de 7 bits, indica en qué bit se decide el arbitraje y qué maestro gana. ¿Qué hace el que pierde?
+
+**E2.3. Transferencia SPI.** Un maestro SPI controla tres esclavos: una memoria, un ADC y una pantalla que solo recibe datos. El reloj SCLK es de 8 MHz.
+
+1. ¿Cuántas líneas hacen falta en total? Nómbralas e indica el sentido de cada una.
+2. El ADC trabaja en modo 3. ¿Cuál es el nivel del reloj en reposo y en qué flanco se muestrean los datos?
+3. El maestro intercambia 4 bytes con el ADC. ¿Cuántos ciclos de reloj genera y cuánto dura la transferencia? ¿Cuántos bytes recibe el maestro en ese tiempo y por qué?
+4. Compara con I²C a 400 kbps para los mismos 4 bytes más el byte de dirección. ¿Qué bus es más rápido y cuántas veces?
+
+<h2 id="tema-3">Tema 3 · Sensores por principio de transducción y actuadores</h2>
+
+<h3 id="t3-cuestiones">Cuestiones</h3>
+
+**C3.1.** Explica los criterios de clasificación de los sensores (funcionamiento, tipo de señal, rango e integración) con un ejemplo de cada tipo. ¿Qué significa que un sensor tenga grado de protección IP67?
+
+**C3.2.** Compara los sensores de proximidad inductivos y capacitivos: principio de funcionamiento, qué objetos detectan, ventajas e inconvenientes. ¿Qué diferencia hay entre un sensor enrasable y uno no enrasable?
+
+**C3.3.** Describe un encoder óptico. Explica la diferencia entre encoder incremental y absoluto, cómo se obtiene el sentido de giro en el primero y por qué el segundo usa código Gray. ¿En qué se diferencia un tacogenerador de un encoder?
+
+**C3.4.** Haz una tabla comparativa de termistor, termopar, RTD y sensor de temperatura integrado: principio, ventajas e inconvenientes. ¿Cuál elegirías para medir 800 °C en un horno y cuál para la temperatura de una sala con un nodo IoT de bajo coste?
+
+**C3.5.** Explica el efecto Hall con un esquema. ¿Qué aplicaciones tiene y cuáles son sus ventajas e inconvenientes? Compara un detector de proximidad Hall con uno reed.
+
+**C3.6.** Explica el funcionamiento de un sensor de ultrasonidos en modo barrera y en modo eco. ¿Qué es la zona ciega? ¿De qué depende la velocidad del sonido y cómo se compensa? Enumera ventajas e inconvenientes.
+
+**C3.7.** ¿Qué es un actuador? Compara los actuadores neumáticos, hidráulicos y eléctricos. Explica con un esquema cómo funciona un relé.
+
+<h3 id="t3-ejercicios">Ejercicios</h3>
+
+**E3.1. Pt100 en un puente de Wheatstone.** Una sonda Pt100 ($R_0 = 100\ \Omega$ a 0 °C, $\alpha = 0{,}00385\ \mathrm{^\circ C^{-1}}$) es la resistencia $R_1$ de un puente alimentado con $V_A = 5\ \mathrm{V}$, en el que $R_2 = R_3 = R_4 = 100\ \Omega$. Las tensiones de los puntos medios son $V_x = V_A \frac{R_1}{R_1 + R_4}$ y $V_y = V_A \frac{R_2}{R_2 + R_3}$, y la salida es $V_o = V_x - V_y$.
+
+1. Calcula la resistencia de la sonda a 0, 50 y 100 °C.
+2. ¿A qué temperatura está equilibrado el puente?
+3. Calcula $V_o$ a 50 y a 100 °C. ¿Es lineal la salida del puente con la temperatura? Justifícalo con los números.
+4. ¿Qué ganancia debe tener el amplificador para que 0-100 °C ocupe 0-3,3 V a la entrada de un ADC? ¿Por qué conviene amplificar antes del ADC?
+5. Cita dos inconvenientes de las RTD frente a los termistores.
+
+**E3.2. Termistor NTC linealizado.** Una NTC tiene $R_0 = 10\ \mathrm{k\Omega}$ a 25 °C y $\beta = 3500\ \mathrm{K}$. Se coloca en serie con una resistencia $R_1$ y el conjunto se alimenta con $V_i = 3{,}3\ \mathrm{V}$; la salida $V_A$ se toma en bornes de $R_1$.
+
+1. Calcula la resistencia de la NTC a 0, 30 y 60 °C.
+2. Calcula $R_1$ para linealizar la respuesta alrededor de $T_c = 30\ ^\circ\mathrm{C}$.
+3. Calcula $V_A$ a 0, 30 y 60 °C. Comenta si la respuesta es aproximadamente lineal.
+4. Calcula la sensibilidad en $T_c$ en mV/°C.
+5. ¿Qué es el autocalentamiento y cómo se reduce?
+
+**E3.3. Nivel de un depósito por ultrasonidos.** Un sensor de ultrasonidos está en la tapa de un depósito de 2,0 m de altura, apuntando hacia el líquido. La velocidad del sonido a 0 °C es 331 m/s y el aire del depósito está a 30 °C.
+
+1. Calcula la velocidad del sonido a 30 °C.
+2. El eco llega 6,0 ms después de emitir el pulso. Calcula la distancia a la superficie y el nivel del líquido.
+3. Si el microcontrolador no compensa la temperatura y supone 20 °C, ¿qué nivel calcula? ¿Qué error comete?
+4. La zona ciega del sensor es de 25 cm. ¿Cuál es el nivel máximo que se puede medir y cuál es el tiempo de eco mínimo?
+5. ¿Qué otro sensor de nivel usarías si el líquido hace mucha espuma? Justifica la respuesta.
+
+**E3.4. Encoder incremental.** Un encoder óptico tiene un disco de 40 mm de diámetro con ranuras de 0,5 mm de ancho.
+
+1. Calcula su resolución (número de ranuras; redondea al entero inferior) y la resolución angular en grados.
+2. El eje gira a 1500 rpm. ¿Qué frecuencia tiene la señal de cada canal?
+3. Dibuja las señales de los canales A y B cuando el eje gira en un sentido y en el contrario. ¿Cómo distingue el microcontrolador el sentido de giro?
+4. Para un encoder absoluto con al menos la misma resolución, ¿cuántas bandas (bits) harían falta? Escribe en código Gray las posiciones 5 y 6 y explica por qué se usa este código.
+
+<p class="no-print">Para estudiar antes: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/">cuestiones teóricas</a>, <a href="/web-estudio/asignaturas/dispositivos/resumenes/formulario-examen/">formulario</a> y <a href="/web-estudio/materiales/dispositivos/boletin-temas-1-3.pdf#page=1">boletín original de los temas 1-3</a>.</p>
