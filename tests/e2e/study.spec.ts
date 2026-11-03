@@ -335,3 +335,66 @@ test('laboratorios de los apuntes: NDP, EUI-64, IPHC y presupuesto responden y c
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
+
+test('puente de Wheatstone: casos, equilibrio, impresión y móvil', async ({ page }) => {
+  await page.goto('asignaturas/dispositivos/apuntes/tema-3-sensores-actuadores/');
+  const lab = page.locator('#visual-puente');
+  const output = lab.locator('[data-output]');
+  await expect(output.locator('.metrics')).toContainText('8,62 mV');
+  await lab.getByRole('button', { name: /Pt100 a 100/ }).click();
+  await expect(output.locator('.metrics')).toContainText('403,56 mV');
+  await lab.getByRole('button', { name: 'Volver al equilibrio' }).click();
+  await expect(output).toContainText('Puente equilibrado');
+  await lab.getByLabel('R2 (Ω)').fill('0');
+  await expect(output.locator('.lab-error')).toBeVisible();
+  await page.emulateMedia({ media: 'print' });
+  await expect(lab.locator('details > :not(summary):visible').first()).toBeVisible();
+  await expect(lab.locator(':is(button, input):visible')).toHaveCount(0);
+  await page.emulateMedia({ media: 'screen' });
+  await page.setViewportSize({ width: 320, height: 800 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('amplificadores: montajes, superposición, saturación, impresión y móvil', async ({ page }) => {
+  await page.goto('asignaturas/dispositivos/apuntes/tema-1-sensores/');
+  const lab = page.locator('#visual-amplificadores');
+  const output = lab.locator('[data-output]');
+  await expect(output.locator('.metrics')).toContainText('2 V');
+  await expect(output).toContainText('-2,5 V');
+  await lab.getByRole('button', { name: 'Saturación (E1.4)' }).click();
+  await expect(output).toContainText('satura');
+  await lab.getByRole('button', { name: 'Instrumentación (E1.4)' }).click();
+  await expect(output.locator('.metrics')).toContainText('102 mV');
+  await expect(lab.getByLabel('Rg (kΩ)')).toBeVisible();
+  await expect(lab.getByLabel('V1 (V)')).toBeHidden();
+  await lab.getByLabel('Montaje').selectOption('no-inversor');
+  await lab.getByLabel('R1 (kΩ)').fill('0');
+  await expect(output.locator('.lab-error')).toBeVisible();
+  await page.emulateMedia({ media: 'print' });
+  await expect(lab.locator('details > :not(summary):visible').first()).toBeVisible();
+  await expect(lab.locator(':is(button, input, select):visible')).toHaveCount(0);
+  await page.emulateMedia({ media: 'screen' });
+  await page.setViewportSize({ width: 320, height: 800 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('tema 6 desde cero: figuras SVG, diagrama de radiación, impresión y móvil', async ({ page }) => {
+  await page.goto('asignaturas/dispositivos/apuntes/tema-6-desde-cero/');
+  await expect(page.locator('.radio-fig svg')).toHaveCount(14);
+  const lab = page.locator('#visual-diagrama');
+  const output = lab.locator('[data-output]');
+  await expect(output.locator('.metrics')).toContainText('4,77 dBi');
+  await expect(output.locator('.metrics')).toContainText('90°');
+  await lab.getByRole('button', { name: 'Dipolo λ/2' }).click();
+  await expect(output.locator('.metrics')).toContainText('1,64');
+  await lab.getByLabel('Exponente n de cosⁿ θ', { exact: true }).fill('8');
+  await expect(output.locator('.metrics')).toContainText('9 (9,54 dBi)');
+  await expect(lab.getByRole('button', { name: 'cos⁸ θ' })).toHaveAttribute('aria-pressed', 'true');
+  await page.emulateMedia({ media: 'print' });
+  await expect(lab.locator('details > :not(summary):visible').first()).toBeVisible();
+  await expect(lab.locator(':is(button, input):visible')).toHaveCount(0);
+  await expect(page.locator('.radio-fig svg').first()).toBeVisible();
+  await page.emulateMedia({ media: 'screen' });
+  await page.setViewportSize({ width: 320, height: 800 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});

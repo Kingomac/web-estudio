@@ -1,0 +1,79 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { bridgeView } from './vistas.ts';
+interface Props { id?: string }
+const { id = 'visual-puente' } = Astro.props;
+// Cases of the bulletin (exercise 2) and of the exam model (E3.1). R1 = equilibrium value × (1 + change).
+const cases = [
+  { key: 'boletin', label: 'Boletín, ej. 2: R1 +1 %', va: 5, r2: 100, r3: 350, r4: 80, change: 1 },
+  { key: 'pt100-50', label: 'Pt100 a 50 °C (+19,25 %)', va: 5, r2: 100, r3: 100, r4: 100, change: 19.25 },
+  { key: 'pt100-100', label: 'Pt100 a 100 °C (+38,5 %)', va: 5, r2: 100, r3: 100, r4: 100, change: 38.5 },
+];
+const toBridge = (c: (typeof cases)[number]) => ({ va: c.va, r2: c.r2, r3: c.r3, r4: c.r4, r1: (c.r4 * c.r2 / c.r3) * (1 + c.change / 100) });
+const first = cases[0]!;
+---
+<LabFrame id={id} component="dispositivos.puente-wheatstone" label="Esquema · Prueba y observa" title="El puente como dos divisores de tensión" intro="Cada rama es un divisor: la izquierda da Vx y la derecha Vy. Mueve el sensor R1 y mira cómo solo cambia Vx mientras Vy se queda fija. En el equilibrio, Vo vale cero.">
+  <wheatstone-lab data-id={id}>
+    <div class="lab-controls no-print">
+      <label>VA (V)<input class="input" type="number" data-field="va" value={first.va} step="any" min="0" disabled /></label>
+      <label>R4 (Ω)<input class="input" type="number" data-field="r4" value={first.r4} step="any" min="0" disabled /></label>
+      <label>R3 (Ω)<input class="input" type="number" data-field="r3" value={first.r3} step="any" min="0" disabled /></label>
+      <label>R2 (Ω)<input class="input" type="number" data-field="r2" value={first.r2} step="any" min="0" disabled /></label>
+      <label class="bridge-slider">Cambio del sensor R1 respecto al equilibrio: <output data-change-value>{first.change.toLocaleString('es-ES')} %</output><input type="range" data-field="change" min="-50" max="50" step="0.25" value={first.change} disabled /></label>
+    </div>
+    <div class="chip-group no-print" role="group" aria-label="Casos de ejemplo">
+      {cases.map((c, i) => <button type="button" class="chip" data-case={c.key} data-values={JSON.stringify(c)} aria-pressed={i === 0 ? 'true' : 'false'} disabled>{c.label}</button>)}
+      <button type="button" class="chip" data-case="equilibrio" aria-pressed="false" disabled>Volver al equilibrio</button>
+    </div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={bridgeView(toBridge(first), id)} />
+  </wheatstone-lab>
+  <details class="lab-all"><summary>Los tres casos resueltos</summary>{cases.map((c, i) => <><h4>{c.label}</h4><Fragment set:html={bridgeView(toBridge(c), `${id}-caso-${i}`)} /></>)}</details>
+  <p class="lab-note">R1 se calcula como el valor de equilibrio, R4 · R2 / R3, multiplicado por (1 + cambio). En un ejercicio con R1 conocida, el procedimiento es el mismo con su valor.</p>
+</LabFrame>
+<style>
+  wheatstone-lab { display: block; }
+  .bridge-slider { flex: 1 1 18rem; }
+  .bridge-slider input { width: 100%; }
+  :global(.bridge-figure) { max-width: 28rem; margin: 0 auto var(--space-4); }
+  :global(.bridge-svg) { display: block; width: 100%; height: auto; font-family: var(--font-sans); font-size: var(--text-xl); }
+  :global(.bridge-svg text) { fill: var(--color-text); }
+  :global(.bridge-svg .bridge-strong) { font-weight: var(--weight-semibold); }
+  :global(.bridge-svg .bridge-muted) { fill: var(--color-text-muted); }
+  :global(.bridge-wire), :global(.bridge-out) { fill: none; stroke: var(--color-border-strong); stroke-width: 2.5; }
+  :global(.bridge-out) { stroke-dasharray: 6 5; }
+  :global(.bridge-arm) { fill: none; stroke-width: 3; stroke-linejoin: round; }
+  :global(.bridge-arm--x) { stroke: var(--color-seg-1); }
+  :global(.bridge-arm--y) { stroke: var(--color-seg-2); }
+  :global(.bridge-sensor) { fill: none; stroke: var(--color-text); stroke-width: 2; }
+  :global(.bridge-node) { fill: var(--color-text); }
+  :global(.bridge-svg .bridge-x), :global(.bridge-x) { fill: var(--color-seg-1); color: var(--color-seg-1); font-weight: var(--weight-semibold); }
+  :global(.bridge-svg .bridge-y), :global(.bridge-y) { fill: var(--color-seg-2); color: var(--color-seg-2); font-weight: var(--weight-semibold); }
+  :global(.lab-detail .formula) { overflow-wrap: anywhere; }
+</style>
+<script>
+  import { bridgeView } from './vistas.ts';
+  class WheatstoneLab extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const signal = controller.signal, id = this.dataset.id ?? 'visual-puente';
+      const field = (name: string) => this.querySelector<HTMLInputElement>(`[data-field="${name}"]`)!;
+      const chips = [...this.querySelectorAll<HTMLButtonElement>('[data-case]')];
+      const render = () => {
+        const [va, r2, r3, r4, change] = ['va', 'r2', 'r3', 'r4', 'change'].map(n => Number(field(n).value));
+        this.querySelector('[data-change-value]')!.textContent = `${change.toLocaleString('es-ES')} %`;
+        this.querySelector('[data-output]')!.innerHTML = bridgeView({ va, r2, r3, r4, r1: (r4 * r2 / r3) * (1 + change / 100) }, id);
+      };
+      const press = (chip?: HTMLButtonElement) => chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+      this.querySelectorAll<HTMLInputElement | HTMLButtonElement>('input, button').forEach(el => { el.disabled = false; });
+      this.addEventListener('input', () => { press(); render(); }, { signal });
+      chips.forEach(chip => chip.addEventListener('click', () => {
+        const values = chip.dataset.values ? JSON.parse(chip.dataset.values) as Record<string, number> : { change: 0 };
+        for (const [k, v] of Object.entries(values)) if (k !== 'key' && k !== 'label') field(k).value = String(v);
+        press(chip); render();
+      }, { signal }));
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('wheatstone-lab', WheatstoneLab);
+</script>

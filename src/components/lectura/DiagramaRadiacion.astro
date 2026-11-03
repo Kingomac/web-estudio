@@ -1,0 +1,74 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { radiationView } from './vistas.ts';
+import type { Pattern } from '../../domain/diagrama.ts';
+interface Props { id?: string }
+const { id = 'visual-diagrama' } = Astro.props;
+const cases: { key: string; label: string; pattern: Pattern }[] = [
+  { key: 'cos2', label: 'cos² θ (boletín, problema 1)', pattern: { kind: 'cosn', n: 2 } },
+  { key: 'cos4', label: 'cos⁴ θ', pattern: { kind: 'cosn', n: 4 } },
+  { key: 'cos8', label: 'cos⁸ θ', pattern: { kind: 'cosn', n: 8 } },
+  { key: 'corto', label: 'Dipolo corto', pattern: { kind: 'dipolo-corto' } },
+  { key: 'media', label: 'Dipolo λ/2', pattern: { kind: 'dipolo-media-onda' } },
+];
+const first = cases[0]!;
+---
+<LabFrame id={id} component="dispositivos.diagrama-radiacion" label="Diagrama · Prueba y observa" title="Diagrama de radiación, directividad y anchos de haz" intro="El dibujo es un corte del diagrama de potencia normalizado en un plano que contiene el eje z: la distancia al centro dice cuánto radia la antena en esa dirección. El círculo discontinuo es la mitad de la potencia (−3 dB). Sube el exponente de cosⁿ θ y mira cómo, al estrecharse el haz, crece la directividad.">
+  <radiation-lab data-id={id}>
+    <div class="chip-group no-print" role="group" aria-label="Diagramas de ejemplo">
+      {cases.map((c, i) => <button type="button" class="chip" data-pattern={JSON.stringify(c.pattern)} aria-pressed={i === 0 ? 'true' : 'false'} disabled>{c.label}</button>)}
+    </div>
+    <div class="lab-controls no-print">
+      <label class="rad-slider">Exponente n de cosⁿ θ: <output data-n-value>2</output><input type="range" aria-label="Exponente n de cosⁿ θ" data-field="n" min="2" max="20" step="2" value="2" disabled /></label>
+    </div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={radiationView(first.pattern, id)} />
+  </radiation-lab>
+  <details class="lab-all"><summary>Los cinco diagramas resueltos</summary>{cases.map((c, i) => <><h4>{c.label}</h4><Fragment set:html={radiationView(c.pattern, `${id}-caso-${i}`)} /></>)}</details>
+  <p class="lab-note">Diagramas con simetría alrededor del eje z: no dependen de φ, así que basta un corte. El de cos² θ es el del problema 1 del boletín; los de los dipolos son los de la tabla de antenas lineales (T6.2, p. 27).</p>
+</LabFrame>
+<style>
+  radiation-lab { display: block; }
+  .rad-slider { flex: 1 1 18rem; }
+  .rad-slider input { width: 100%; }
+  :global(.rad-figure) { max-width: 26rem; margin: 0 auto var(--space-4); }
+  :global(.rad-svg) { display: block; width: 100%; height: auto; font-family: var(--font-sans); font-size: var(--text-lg); }
+  :global(.rad-svg text) { fill: var(--color-text); }
+  :global(.rad-svg .rad-muted) { fill: var(--color-text-muted); }
+  :global(.rad-svg .rad-hpbw) { fill: var(--color-seg-2); font-weight: var(--weight-semibold); }
+  :global(.rad-grid), :global(.rad-axis) { fill: none; stroke: var(--color-border-strong); stroke-width: 1.5; }
+  :global(.rad-half) { fill: none; stroke: var(--color-text-muted); stroke-width: 1.5; stroke-dasharray: 6 5; }
+  :global(.rad-shape) { fill: var(--color-accent-soft); stroke: var(--color-accent); stroke-width: 3; stroke-linejoin: round; }
+  :global(.rad-beam) { fill: none; stroke: var(--color-seg-2); stroke-width: 2; stroke-dasharray: 4 4; }
+  :global(.rad-arc) { fill: none; stroke: var(--color-seg-2); stroke-width: 3; }
+  :global(.rad-point) { fill: var(--color-seg-2); }
+  :global(.rad-wire) { fill: none; stroke: var(--color-text); stroke-width: 5; stroke-linecap: round; }
+  @media print { :global(.rad-svg) { print-color-adjust: exact; -webkit-print-color-adjust: exact; } :global(.rad-figure) { max-width: 18rem; } }
+</style>
+<script>
+  import { radiationView } from './vistas.ts';
+  import type { Pattern } from '../../domain/diagrama.ts';
+  class RadiationLab extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const signal = controller.signal, id = this.dataset.id ?? 'visual-diagrama';
+      const slider = this.querySelector<HTMLInputElement>('[data-field="n"]')!;
+      const chips = [...this.querySelectorAll<HTMLButtonElement>('[data-pattern]')];
+      const render = (p: Pattern) => {
+        if (p.kind === 'cosn') { slider.value = String(p.n); }
+        this.querySelector('[data-n-value]')!.textContent = slider.value;
+        this.querySelector('[data-output]')!.innerHTML = radiationView(p, id);
+      };
+      const press = (chip?: HTMLButtonElement) => chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+      this.querySelectorAll<HTMLInputElement | HTMLButtonElement>('input, button').forEach(el => { el.disabled = false; });
+      slider.addEventListener('input', () => {
+        const n = Number(slider.value);
+        press(chips.find(c => { const p = JSON.parse(c.dataset.pattern!) as Pattern; return p.kind === 'cosn' && p.n === n; }));
+        render({ kind: 'cosn', n });
+      }, { signal });
+      chips.forEach(chip => chip.addEventListener('click', () => { press(chip); render(JSON.parse(chip.dataset.pattern!) as Pattern); }, { signal }));
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('radiation-lab', RadiationLab);
+</script>

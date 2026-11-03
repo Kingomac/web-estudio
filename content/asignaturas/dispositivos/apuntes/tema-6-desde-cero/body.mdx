@@ -1,0 +1,526 @@
+import FigurasRadio from '../../../../../src/components/lectura/FigurasRadio.astro';
+import DiagramaRadiacion from '../../../../../src/components/lectura/DiagramaRadiacion.astro';
+
+<p class="lead">Este tema responde a una sola pregunta: **si un dispositivo emite por radio, ¿llega a otro suficiente potencia para entender el mensaje?** Todo lo demás (decibelios, ganancia, PIRE, diagramas, Friis) son las piezas para contestarla. Aquí van en orden y con la idea antes de cada fórmula. Cuando lo tengas claro, pasa a los <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-6-enlace-radio/">apuntes del tema 6</a> para resolver el boletín.</p>
+
+<h2 id="mapa">El mapa del tema en un dibujo</h2>
+
+<FigurasRadio figura="enlace"><strong>El enlace completo.</strong> El transmisor (TX) entrega potencia por un cable a su antena, la antena la lanza al aire, la onda recorre la distancia r y la antena receptora recoge una parte que baja por otro cable al receptor (RX). Los números marcan los seis sitios donde la potencia cambia; la lista de abajo explica cada uno.</FigurasRadio>
+
+La potencia sale del transmisor y en cada paso se pierde una parte o se «concentra»:
+
+1. **Al entrar en la antena** rebota algo si la antena y el cable no están adaptados.
+2. **Dentro de la antena** se pierde algo en calor (resistencia del metal).
+3. **La antena reparte** lo que radia: puede mandar más hacia unas direcciones que hacia otras (ganancia).
+4. **Por el aire** la potencia se esparce sobre una esfera cada vez mayor: cuanto más lejos, menos llega a cada sitio.
+5. **La antena receptora** captura solo la parte de la onda que le cae encima, y menos si su orientación no coincide con la de la onda (polarización).
+6. **Al salir de la antena receptora** vuelve a rebotar algo si no está adaptada al receptor.
+
+La **fórmula de Friis** es simplemente multiplicar todos esos pasos. En decibelios, sumarlos y restarlos.
+
+<h2 id="decibelios">Paso 0: los decibelios</h2>
+
+<h3 id="db-por-que">Por qué se usan</h3>
+
+En radio las potencias van de vatios en el emisor a milmillonésimas de milivatio en el receptor. Con números así es fácil equivocarse. El decibelio usa el logaritmo y tiene una gran ventaja: **convierte las multiplicaciones en sumas**. Como el enlace es una cadena de multiplicaciones (pierde la mitad, gana ×4, pierde ÷1000…), en dB se convierte en una suma y resta de números normales.
+
+<h3 id="db-relativo">dB: comparar dos potencias</h3>
+
+$$
+G(\mathrm{dB}) = 10 \log \frac{p_2}{p_1}
+$$
+
+Un dB no es una cantidad, es un **cuánto más o cuánto menos**. Con estos valores de memoria haces casi todo:
+
+<div class="table-scroll">
+
+| Multiplicar la potencia por… | …equivale a sumar |
+| --- | --- |
+| ×2 | +3 dB |
+| ×4 | +6 dB |
+| ×10 | +10 dB |
+| ×100 | +20 dB |
+| ×1000 | +30 dB |
+| ÷2 | −3 dB |
+| ÷10 | −10 dB |
+
+</div>
+
+Si es positivo es **ganancia**; si es negativo, **pérdida** o atenuación.
+
+Para **tensiones y campos** se usa $20 \log$ en lugar de $10 \log$, porque la potencia va con el cuadrado de la tensión ($p = v^2/R$): $10 \log v^2 = 20 \log v$. Así el resultado en dB es el mismo midas potencia o campo.
+
+<h3 id="dbm">dBm: una potencia concreta</h3>
+
+Si en el denominador se pone un valor fijo de referencia, el resultado ya sí es una cantidad. La «m» indica que la referencia es **1 mW**:
+
+$$
+P(\mathrm{dBm}) = 10 \log \frac{p}{1\ \mathrm{mW}}
+$$
+
+<div class="table-scroll">
+
+| Potencia | dBm |
+| --- | --- |
+| 1 W | 30 dBm |
+| 100 mW | 20 dBm |
+| 10 mW | 10 dBm |
+| 1 mW | 0 dBm |
+| 0,1 mW | −10 dBm |
+| 1 µW | −30 dBm |
+| $10^{-10}$ W | −70 dBm |
+
+</div>
+
+<FigurasRadio figura="decibelios"><strong>La regla de los dBm.</strong> A la izquierda, la potencia en dBm; a la derecha, la misma potencia en vatios. Cada escalón de 10 dB multiplica o divide por 10: subir de 0 dBm a +10 dBm es pasar de 1 mW a 10 mW, y bajar 20 dB es dividir entre 100. Por eso la escala cabe en una línea aunque vaya de 1 µW a 1 W.</FigurasRadio>
+
+Las potencias negativas en dBm no son «potencia negativa»: son potencias menores de 1 mW. Igual se usa **dBW** (referencia 1 W): 30 dBm = 0 dBW.
+
+<div class="callout">
+
+**Las tres reglas de oro.**
+
+- dBm + dB = dBm (una potencia que gana o pierde algo sigue siendo una potencia).
+- dBm − dBm = dB (la diferencia entre dos potencias es una relación).
+- **Nunca se suman dos dBm.** 0 dBm + 0 dBm no son 0 dBm: 1 mW + 1 mW = 2 mW = 3 dBm.
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=5">T6.1, pp. 5-7</a>.</p>
+
+<h2 id="ondas">Paso 1: la onda, su frecuencia y su longitud de onda</h2>
+
+Una antena emite una **onda electromagnética**: un campo eléctrico (**E**) y uno magnético (**H**) que oscilan y avanzan por el espacio. «LoRa transmite a 868 MHz» significa que ese campo oscila 868 millones de veces por segundo, o sea, que la señal está concentrada en frecuencias alrededor de 868 MHz.
+
+La onda avanza a la velocidad de la luz, $c = 3 \cdot 10^8\ \mathrm{m/s}$. La distancia que recorre durante una oscilación es la **longitud de onda**:
+
+$$
+\lambda = \frac{c}{f}
+$$
+
+<div class="table-scroll">
+
+| Tecnología | Frecuencia | λ |
+| --- | --- | --- |
+| LoRa (Europa) | 868 MHz | 34,6 cm |
+| — | 1 GHz | 30 cm |
+| Wi-Fi, Bluetooth | 2,4 GHz | 12,5 cm |
+| 5G | 3,5 GHz | 8,6 cm |
+| Problema 2 del boletín | 3 GHz | 10 cm |
+
+</div>
+
+La λ importa por dos motivos: **el tamaño de las antenas se mide en λ** (un dipolo de media onda mide λ/2) y aparece en Friis. Ojo con las unidades: f en Hz y c en m/s para que λ salga en metros.
+
+Las frecuencias se agrupan en bandas por décadas. Las de IoT caen sobre todo en **UHF** (300 MHz–3 GHz) y **SHF** (3–30 GHz); por encima, **EHF** (30–300 GHz), las ondas milimétricas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=9">T6.1, pp. 9-11 y 13</a>.</p>
+
+<h2 id="antena">Paso 2: qué es una antena y cómo entra la potencia</h2>
+
+<h3 id="antena-idea">La idea</h3>
+
+Por un cable la energía viaja **guiada**. Una antena es la pieza que hace la transición entre el cable y el espacio libre: la diseñan para que la máxima potencia posible salga radiada. En recepción hace lo contrario: la onda que le llega induce corrientes en el metal y eso se convierte en potencia para el receptor. **La misma antena tiene los mismos parámetros en transmisión y en recepción.**
+
+<h3 id="antena-circuito">La antena vista desde el circuito: la impedancia</h3>
+
+Para el transmisor, la antena es «algo» conectado al final del cable que se traga potencia. Ese algo se describe con un solo número: su **impedancia**.
+
+**Qué es una impedancia.** En continua, una resistencia relaciona tensión y corriente: $v = R\, i$. En alterna (y la radio es alterna a cientos de millones de ciclos por segundo) existen además elementos que no consumen energía, sino que **la guardan y la devuelven** en cada ciclo: las bobinas (en su campo magnético) y los condensadores (en su campo eléctrico). La impedancia $Z$ es una «resistencia generalizada» que recoge las dos cosas a la vez. Se mide en ohmios y se escribe como un número complejo:
+
+$$
+Z_A = R_A + jX_A
+$$
+
+<div class="table-scroll">
+
+| Símbolo | Nombre | Qué significa |
+| --- | --- | --- |
+| $Z_A$ | Impedancia de antena | Lo que «ve» el transmisor al conectarle la antena. La A es de antena |
+| $R_A$ | Resistencia (parte real) | La parte que **se consume**: potencia que entra en la antena y ya no vuelve. Nunca es negativa |
+| $X_A$ | Reactancia (parte imaginaria) | La parte que **guarda y devuelve** energía en cada ciclo, sin consumirla. Si es positiva, la antena se comporta como una bobina (inductiva); si es negativa, como un condensador (capacitiva) |
+| $j$ | Unidad imaginaria, $j = \sqrt{-1}$ | La etiqueta que separa las dos partes. En electricidad se escribe $j$ y no $i$ porque la $i$ ya es la corriente |
+
+</div>
+
+**Por qué hace falta la j.** $R$ y $X$ no se pueden sumar como dos números normales. En la resistencia, tensión y corriente suben y bajan a la vez; en la reactancia van desfasadas un cuarto de ciclo (90°). La $j$ indica ese desfase. En la práctica, $Z$ es un punto de un plano: $R$ en el eje horizontal y $X$ en el vertical. Por eso $50 + j50\ \Omega$ no son «100 Ω»: su tamaño (módulo) es $\lvert Z\rvert = \sqrt{50^2 + 50^2} \approx 70{,}7\ \Omega$.
+
+<FigurasRadio figura="plano-z"><strong>La impedancia como un punto de un plano.</strong> La parte real R va en horizontal y la reactancia X en vertical. La flecha es una antena con 50 Ω de resistencia y 50 Ω de reactancia inductiva. El punto sobre el eje horizontal es el dipolo λ/2 resonante: 73 Ω y reactancia nula. Por encima del eje, la antena se comporta como una bobina; por debajo, como un condensador.</FigurasRadio>
+
+**Cambia con la frecuencia.** Las diapositivas escriben $Z_A = R_A(\omega) + jX_A(\omega)$, con $\omega = 2\pi f$: las dos partes dependen de la frecuencia, sobre todo la reactancia. A la frecuencia en la que $X_A \approx 0$ la antena es **resonante** y se comporta como una resistencia pura. Las antenas se diseñan para trabajar ahí; el dipolo λ/2, por ejemplo, tiene unos 73 Ω. Fuera de esa zona aparece reactancia y la antena se desadapta: por eso solo funciona bien en un margen de frecuencias (su ancho de banda).
+
+**De qué está hecha $R_A$.** La parte real se divide a su vez en dos resistencias en serie, $R_A = R_\Omega + R_{\mathrm{rad}}$:
+
+- $R_{\mathrm{rad}}$, **resistencia de radiación**: no es una resistencia física que puedas medir con un polímetro. Representa la potencia que «se va» por el aire como onda: $R_{\mathrm{rad}} = p_{\mathrm{rad}} / i^2$. Es la potencia útil.
+- $R_\Omega$, **resistencia de pérdidas**: la del metal. Esa potencia se convierte en calor.
+
+<FigurasRadio figura="circuito"><strong>El modelo circuital de la antena.</strong> El transmisor es un generador de tensión vg con su impedancia interna ZG. La antena es un circuito en serie: RΩ (lo que se pierde en calor), Rrad (lo que se radia) y la reactancia jXA (lo que se guarda y se devuelve en cada ciclo). Juntas forman ZA.</FigurasRadio>
+
+**Para qué sirve: la adaptación.** Cuánta potencia rebota depende de lo distintas que sean la impedancia de la antena y la del transmisor y el cable, $Z_G$:
+
+$$
+\Gamma = \frac{Z_A - Z_G}{Z_A + Z_G}
+$$
+
+Si $Z_A = Z_G$, $\Gamma = 0$ y no rebota nada: es la **adaptación**. Dos ejemplos con un cable de $Z_G = 50\ \Omega$:
+
+- **Dipolo resonante**, $Z_A = 73\ \Omega$: $\Gamma = 23/123 = 0{,}187$. Rebota $\lvert\Gamma\rvert^2 = 3{,}5\ \%$ (VSWR = 1,46).
+- **Antena no resonante**, $Z_A = 50 + j50\ \Omega$: la parte real coincide con la del cable, pero $\Gamma = \dfrac{j50}{100 + j50}$ y $\lvert\Gamma\rvert = 50 / 111{,}8 = 0{,}447$. Rebota el 20 % (VSWR = 2,62). **La reactancia, por sí sola, ya hace rebotar potencia.** Por eso interesa que la antena sea resonante.
+
+<h3 id="cadena">La cadena de potencias</h3>
+
+Esto es lo que más se confunde en los problemas. Hay tres potencias distintas en el lado transmisor:
+
+<FigurasRadio figura="cadena"><strong>La cadena de potencias con números.</strong> Un transmisor que dispone de 1 W, una antena con VSWR = 2 y una eficiencia del 80 %. Rebota el 11 % y llegan a la antena 0,889 W; de ellos, el 20 % se pierde en calor y se radian 0,711 W. Los recuadros discontinuos son lo que se pierde en cada paso.</FigurasRadio>
+
+**1. Desadaptación (lo que rebota).** Si la impedancia de la antena no coincide con la del cable o transmisor, parte de la potencia rebota hacia atrás, como una ola que choca contra un muro. Se mide con el **coeficiente de reflexión** $\Gamma$ o con la **VSWR** (o ROE), que es lo que suelen dar los enunciados:
+
+$$
+\lvert\Gamma\rvert = \frac{\mathrm{VSWR} - 1}{\mathrm{VSWR} + 1}
+\qquad
+p_{\mathrm{at}} = p_t \left(1 - \lvert\Gamma\rvert^2\right)
+$$
+
+$\lvert\Gamma\rvert^2$ es la fracción de potencia que rebota. VSWR = 1 significa adaptación perfecta (no rebota nada). Con VSWR = 2: $\lvert\Gamma\rvert = 1/3$, rebota $1/9 \approx 11\ \%$ y entra el 89 %. Las diapositivas citan VSWR = 2 como máximo admitido habitual.
+
+**2. Eficiencia (lo que se calienta).** De lo que entra, solo la parte de $R_{\mathrm{rad}}$ sale radiada:
+
+$$
+\eta_t = \frac{R_{\mathrm{rad}}}{R_{\mathrm{rad}} + R_\Omega}
+\qquad
+p_{\mathrm{rad}} = \eta_t\, p_{\mathrm{at}}
+$$
+
+Una eficiencia del 80 % significa que el 20 % de lo que entra en la antena se pierde en calor.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=4">T6.2, pp. 4-5, 12-14 y 27</a>.</p>
+
+<h2 id="ganancia">Paso 3: hacia dónde radia (directividad y ganancia)</h2>
+
+<h3 id="isotropica">La antena isotrópica: la referencia</h3>
+
+Imagina una bombilla desnuda: ilumina igual en todas las direcciones. Su equivalente en radio es la **antena isotrópica**: radia la misma potencia en todas las direcciones. No existe en la realidad, pero sirve de vara de medir.
+
+Ahora imagina una linterna: con la misma bombilla, el reflector junta la luz en un haz. **No crea luz**, solo la quita de atrás para ponerla delante. Delante se ve mucho más; detrás, nada. Eso es lo que hace una antena directiva.
+
+<FigurasRadio figura="isotropica"><strong>Misma potencia, distinto reparto.</strong> Las dos antenas radian la misma potencia total y están dibujadas a la misma escala. La isotrópica reparte por igual (d = 1 en todas direcciones). La directiva tiene d = 4 cos θ hacia delante y nada hacia atrás. El círculo discontinuo marca d = 1: donde la forma lo supera, la antena manda más que la isotrópica, y donde no llega, menos.</FigurasRadio>
+
+<h3 id="directividad">Directividad d(θ, φ)</h3>
+
+La **ganancia directiva** en una dirección dice **cuántas veces más potencia** manda la antena hacia ahí que la que mandaría una isotrópica que radiase la misma potencia total:
+
+- $d = 1$: igual que la isotrópica.
+- $d = 4$: en esa dirección llega 4 veces más (+6 dB).
+- $d = 0$: un **nulo**, no radia nada ahí.
+
+Su valor máximo se llama **directividad**. Como la antena no crea potencia, si hacia unas direcciones $d > 1$, hacia otras tiene que ser $d < 1$. En promedio sobre toda la esfera, $d$ vale exactamente 1. Eso es lo que expresa la **condición de normalización**:
+
+$$
+\int_0^{2\pi}\!\!\int_0^{\pi} d(\theta,\varphi) \operatorname{sen}\theta\, d\theta\, d\varphi = 4\pi
+$$
+
+($4\pi$ es el «tamaño» de la esfera completa en ángulo sólido; si $d = 1$ en todas partes, la integral da justo $4\pi$.) Ejemplo mental: una antena que radiase por igual pero **solo hacia media esfera** tendría $d = 2$ (+3 dB) en esa mitad y 0 en la otra.
+
+Esta integral es la que se usa en el problema 1 del boletín para hallar la constante $K$ de $d = K f(\theta,\varphi)$.
+
+<h3 id="ganancia-potencia">Ganancia de potencia g(θ, φ)</h3>
+
+La directividad ignora las pérdidas óhmicas. La **ganancia de potencia** las incluye:
+
+$$
+g(\theta,\varphi) = \eta_t\, d(\theta,\varphi)
+$$
+
+Es la que se usa en la práctica y la que dan los fabricantes. En dB respecto a la isotrópica se escribe **dBi**: $G = 10 \log g$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=18">T6.2, pp. 18-19</a>.</p>
+
+<h2 id="pire">Paso 4: PIRE, la «potencia que parece que tiene»</h2>
+
+Si estás en una dirección y recibes la señal, no puedes distinguir entre:
+
+- una antena de 1 W con ganancia 10 que te apunta, o
+- una isotrópica de 10 W.
+
+Te llega exactamente lo mismo. La **PIRE** (potencia isotrópica radiada equivalente) es esa potencia «aparente»: **la que habría que darle a una isotrópica para producir el mismo campo en esa dirección**.
+
+$$
+\mathrm{pire}(\theta,\varphi) = p_{\mathrm{at}}\, g(\theta,\varphi) = p_{\mathrm{rad}}\, d(\theta,\varphi)
+$$
+
+Las dos formas son lo mismo: la primera parte de la potencia **entregada** y usa la ganancia (que ya incluye pérdidas); la segunda parte de la **radiada** y usa la directividad (que no las incluye). En dB: $\mathrm{PIRE} = P_{\mathrm{at}} + G$.
+
+Muchos enunciados dan directamente la PIRE porque resume al transmisor y su antena en un solo número.
+
+**PRA y PRAVC** son la misma idea, pero comparando con otras antenas de referencia en lugar de la isotrópica:
+
+<div class="table-scroll">
+
+| Nombre | Referencia | Relación |
+| --- | --- | --- |
+| PIRE | Isotrópica ($g = 1$) | — |
+| PRA | Dipolo λ/2 ($g = 1{,}64$) | $\mathrm{pire} = 1{,}64\, \mathrm{pra}$ → PRA = PIRE − 2,15 dB |
+| PRAVC | Antena vertical corta ($g = 3$) | $\mathrm{pire} = 3\, \mathrm{pravc}$ → PRAVC = PIRE − 4,77 dB |
+
+</div>
+
+Como la referencia gana más que la isotrópica, hace falta darle **menos** potencia para lograr lo mismo: por eso PRA y PRAVC son menores que la PIRE.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=30">T6.2, pp. 30-31</a>.</p>
+
+<h2 id="esfera">Paso 5: la potencia se esparce (densidad y campo)</h2>
+
+<h3 id="densidad">La esfera que crece</h3>
+
+Piensa en la isotrópica equivalente con potencia $\mathrm{pire}$. A distancia $r$, esa potencia se reparte sobre una esfera de área $4\pi r^2$. La potencia que atraviesa cada metro cuadrado es la **densidad de potencia** $s$ (W/m²):
+
+$$
+s = \frac{\mathrm{pire}}{4\pi r^2}
+$$
+
+<FigurasRadio figura="esfera"><strong>Por qué la potencia cae con r².</strong> El haz de la antena se abre como un cono. A distancia r la potencia atraviesa un cuadro; a 2r, la misma potencia se reparte en un cuadro el doble de ancho y el doble de alto, es decir, en cuatro cuadros. Cada uno recibe la cuarta parte: s/4, −6 dB.</FigurasRadio>
+
+Esta es la causa principal de que la señal se debilite: **no es que el aire «se coma» la señal, es que se diluye**. Al doble de distancia, el área es 4 veces mayor y llega 4 veces menos potencia (−6 dB). Al décuplo, 100 veces menos (−20 dB).
+
+<h3 id="campo">El campo eléctrico</h3>
+
+En el aire, la densidad y el campo eléctrico eficaz están ligados por la impedancia del vacío, $\eta_0 = 120\pi \approx 377\ \Omega$ (es como $p = v^2/R$, pero para ondas):
+
+$$
+s = \frac{e_{\mathrm{ef}}^2}{\eta_0}
+$$
+
+Igualando las dos expresiones de $s$ y despejando sale la fórmula del campo que se usa en los problemas:
+
+$$
+e_{\mathrm{ef}}^2 = \frac{120\pi \cdot \mathrm{pire}}{4\pi r^2} = \frac{30\, \mathrm{pire}}{r^2}
+\quad\Rightarrow\quad
+e_{\mathrm{ef}} = \frac{\sqrt{30\, \mathrm{pire}}}{r}
+$$
+
+El campo cae con $1/r$ y la potencia con $1/r^2$: es coherente, porque la potencia va con el cuadrado del campo. Con la PIRE en W y $r$ en m, $e_{\mathrm{ef}}$ sale en V/m y es valor **eficaz** (la amplitud de pico es $\sqrt{2}$ veces mayor).
+
+<h3 id="campo-lejano">Todo esto solo vale lejos: campo lejano</h3>
+
+Cerca de la antena los campos son complicados y dependen de cómo está construida. A partir de cierta distancia ($r > 2D^2/\lambda$, con $D$ el tamaño de la antena) estás en **campo lejano**, donde todo se simplifica:
+
+- La onda es localmente plana; **E**, **H** y la dirección de avance son perpendiculares entre sí.
+- La antena solo influye en cuánto radia en cada dirección (el diagrama), no en la forma de la onda.
+- El campo cae con $1/r$ y la potencia con $1/r^2$, como acabamos de ver.
+
+Todas las fórmulas del tema suponen campo lejano.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=6">T6.2, pp. 6-7, 9 y 17-18</a>.</p>
+
+<h2 id="diagrama">Paso 6: el diagrama de radiación</h2>
+
+<h3 id="angulos">Cómo se dan las direcciones: θ y φ</h3>
+
+Ponte en el centro de una esfera con el eje $z$ apuntando hacia arriba:
+
+- $\theta$ es el ángulo **desde el eje z**: $\theta = 0^\circ$ es arriba (+z), $\theta = 90^\circ$ el plano horizontal (el «ecuador») y $\theta = 180^\circ$ abajo (−z).
+- $\varphi$ es el ángulo **alrededor** del eje z, como la longitud geográfica.
+
+Si una fórmula no tiene $\varphi$, la antena radia igual al girar alrededor de z.
+
+<FigurasRadio figura="angulos"><strong>Cómo se da una dirección.</strong> θ es el ángulo que forma la dirección con el eje +z: 0° es mirar hacia arriba y 90° es mirar en horizontal, dentro del plano xy. φ es el giro alrededor de z, medido desde el eje x sobre ese plano. Cualquier dirección del espacio es una pareja (θ, φ).</FigurasRadio>
+
+<h3 id="ejemplos-diagrama">Dos ejemplos para entrenar la intuición</h3>
+
+- **Dipolo** (un hilo vertical a lo largo de z): $g \propto \operatorname{sen}^2\theta$. Es máxima en el ecuador ($\theta = 90^\circ$) y nula a lo largo del propio hilo ($\theta = 0^\circ$ y $180^\circ$). En 3D parece **un donut** con el hilo en el agujero: un hilo no radia en su propia dirección.
+- **Problema 1 del boletín**: $\mathrm{pire} = \cos^2\theta$. Al revés: máxima arriba y abajo ($\theta = 0^\circ$ y $180^\circ$) y nula en el ecuador.
+
+Para encontrar el máximo, busca dónde la función vale 1; para los nulos, dónde vale 0.
+
+<FigurasRadio figura="dipolo"><strong>El donut del dipolo.</strong> A la izquierda, un corte con el hilo vertical (la raya negra): el diagrama sen² θ forma un ocho, con el máximo en horizontal y cero a lo largo del hilo. A la derecha, la misma antena vista desde arriba: radia igual en todas las direcciones horizontales (omnidireccional en φ). Girando el ocho alrededor del hilo sale el donut.</FigurasRadio>
+
+Prueba los dos casos y el efecto de estrechar el haz:
+
+<DiagramaRadiacion />
+
+<h3 id="lobulos">Lóbulos y anchos de haz</h3>
+
+El diagrama dibuja cuánto radia la antena en cada dirección. Suele normalizarse para que el máximo valga 1 (o 0 dB).
+
+<FigurasRadio figura="lobulos"><strong>Las partes de un diagrama.</strong> Diagrama de potencia en dB de una antena directiva: el círculo exterior es 0 dB (el máximo), los siguientes −10 y −20 dB, y el discontinuo −3 dB. El lóbulo principal apunta hacia arriba. El HPBW es el ángulo entre los dos puntos donde el lóbulo principal corta el círculo de −3 dB; el FNBW, el ángulo entre las líneas que van a los primeros nulos. A los lados están los lóbulos laterales y abajo el trasero.</FigurasRadio>
+
+<div class="table-scroll">
+
+| Término | Qué es |
+| --- | --- |
+| Lóbulo principal | El que contiene la dirección de máxima radiación |
+| Lóbulos secundarios | Todos los demás; los laterales son los pegados al principal |
+| Lóbulo trasero | El que apunta en sentido contrario al principal |
+| **HPBW** (ancho de haz a −3 dB) | Ángulo entre los dos puntos donde la potencia cae a la **mitad** (0,5) |
+| **FNBW** (ancho entre nulos) | Ángulo entre los primeros nulos a ambos lados del máximo |
+| **SLL** o NLPS | Cuánto más bajo es el mayor lóbulo secundario que el principal |
+| **FBR** (relación delante-atrás) | Principal frente al trasero |
+
+</div>
+
+Error típico: el HPBW es el ancho **completo**. Si la potencia cae a la mitad 45° a cada lado del máximo, HPBW = 90°, no 45°.
+
+Cuanto más estrecho es el haz, más concentra la antena y mayor es su directividad (la linterna con el haz más fino ilumina más lejos).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=24">T6.2, pp. 24-25 y 27</a>.</p>
+
+<h2 id="tipos">Paso 7: tipos de antena</h2>
+
+<div class="table-scroll">
+
+| | Lineales (dipolos, monopolos) | De apertura (bocinas, parabólicas) |
+| --- | --- | --- |
+| Forma | Hilos | Superficie que «emite» |
+| Diagrama | Casi omnidireccional | Muy directivo |
+| Ganancia | Baja | Alta |
+| Banda | Estrecha | Ancha |
+| Frecuencias | Bajas: radio, TV, móviles | Altas: satélite, radioenlaces, radar |
+
+</div>
+
+Las tres antenas lineales de referencia y sus ganancias máximas:
+
+<div class="table-scroll">
+
+| Antena | Ganancia máxima | Resistencia de radiación |
+| --- | --- | --- |
+| Dipolo corto ($l \ll \lambda$) | 1,5 (1,76 dBi) | $80\pi^2 (l/\lambda)^2$ |
+| Dipolo λ/2 | 1,64 (2,15 dBi) | 73 Ω |
+| Antena vertical corta (monopolo sobre tierra) | 3 (4,77 dBi) | $40\pi^2 (h/\lambda)^2$ |
+
+</div>
+
+El monopolo sobre tierra gana el doble porque el suelo actúa como espejo y toda la potencia va a la media esfera de arriba (justo el ejemplo de media esfera del paso 3).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=26">T6.2, pp. 26-27</a>.</p>
+
+<h2 id="polarizacion">Paso 8: la polarización</h2>
+
+El campo eléctrico de la onda apunta en alguna dirección y va oscilando. La **polarización** es la figura que dibuja la punta de **E** con el tiempo, mirando en un punto fijo:
+
+- **Lineal**: oscila arriba y abajo sobre una recta (un dipolo vertical produce polarización vertical).
+- **Circular**: la punta gira en un círculo, a derechas o a izquierdas.
+- **Elíptica**: el caso general, gira dibujando una elipse.
+
+<FigurasRadio figura="polarizacion"><strong>Los tres tipos de polarización.</strong> Recorrido de la punta del campo eléctrico E en un punto fijo, con la onda viniendo hacia ti. En la lineal oscila sobre una recta; en la circular gira con el mismo tamaño; en la elíptica gira cambiando de tamaño.</FigurasRadio>
+
+La antena receptora también tiene «su» polarización. Si no coincide con la de la onda, captura menos. Lo mide el **factor de pérdidas de polarización** $\mathrm{plf}$ (de 0 a 1):
+
+<FigurasRadio figura="plf"><strong>De dónde sale cos² α.</strong> La onda tiene el campo vertical y la antena, una varilla, está girada un ángulo α. La antena solo aprovecha la parte del campo que va en su dirección, E · cos α. Como la potencia va con el cuadrado del campo, recibe cos² α veces la potencia: todo con α = 0° y nada con α = 90°.</FigurasRadio>
+
+<div class="table-scroll">
+
+| Onda y antena | plf | En dB | Intuición |
+| --- | --- | --- | --- |
+| Lineal y lineal, formando un ángulo α | $\cos^2\alpha$ | — | Alineadas: 1. Cruzadas a 90°: 0, no se recibe nada |
+| Lineal y circular | 0,5 | −3 dB | La circular solo «encaja» en una de sus dos componentes |
+| Circulares del mismo sentido | 1 | 0 dB | Encajan perfectamente |
+| Circulares de sentidos opuestos | 0 | — | Giran al revés: no se recibe nada |
+
+</div>
+
+Si el enunciado dice «adaptación de polarización», $\mathrm{plf} = 1$ y te olvidas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=10">T6.2, pp. 10 y 34-35</a>.</p>
+
+<h2 id="receptora">Paso 9: la antena receptora y su área equivalente</h2>
+
+Ya sabemos cuánta potencia llega por metro cuadrado: $s$. La antena receptora se comporta como una **red** de cierta superficie: captura la potencia que pasa por ella. Esa superficie es el **área equivalente**:
+
+$$
+A_{\mathrm{eq}} = \frac{\lambda^2}{4\pi}\, g_r
+\qquad
+p_{\mathrm{ar}} = s \cdot A_{\mathrm{eq}} \cdot \mathrm{plf}
+$$
+
+<FigurasRadio figura="area"><strong>La antena receptora como una red.</strong> Por cada metro cuadrado pasa una densidad de potencia s. La antena se queda con lo que atraviesa su área equivalente Aeq (flechas de color) y el resto pasa de largo. Si la polarización no encaja, aprovecha además solo una fracción plf.</FigurasRadio>
+
+$p_{\mathrm{ar}}$ es la potencia **disponible** en bornes de la antena receptora. Fíjate en que el área depende de $\lambda^2$: con la misma ganancia, una antena a 868 MHz «recoge» unas 8 veces más que una a 2,4 GHz ($(34{,}6/12{,}5)^2 \approx 7{,}7$). Es una de las razones por las que las frecuencias bajas llegan más lejos.
+
+Del lado receptor también hay desadaptación: no toda la potencia disponible entra al receptor.
+
+$$
+p_r = p_{\mathrm{ar}} \left(1 - \lvert\Gamma_r\rvert^2\right)
+$$
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=33">T6.2, pp. 33 y 36</a>.</p>
+
+<h2 id="friis">Paso 10: juntarlo todo, la fórmula de Friis</h2>
+
+<h3 id="friis-lineal">Construirla en tres líneas</h3>
+
+No hace falta memorizarla si recuerdas los pasos anteriores:
+
+$$
+\begin{aligned}
+s &= \frac{\mathrm{pire}}{4\pi r^2} && \text{(la potencia se esparce)} \\
+p_{\mathrm{ar}} &= s \cdot \frac{\lambda^2 g_r}{4\pi} \cdot \mathrm{plf} && \text{(la antena recoge un trozo)} \\
+p_{\mathrm{ar}} &= \mathrm{pire} \cdot g_r \cdot \mathrm{plf} \cdot \left(\frac{\lambda}{4\pi r}\right)^2 && \text{(juntando)}
+\end{aligned}
+$$
+
+El término $\left(\frac{4\pi r}{\lambda}\right)^2$ se llama **pérdida básica de propagación en espacio libre**, $l_{\mathrm{bf}}$. Si además hay un obstáculo, lluvia, etc., se divide por una atenuación adicional $a_e$.
+
+<h3 id="friis-db">El balance de enlace: Friis en dB</h3>
+
+Pasando a dB, todo se suma o se resta. Convención de las diapositivas: **minúsculas = lineal, mayúsculas = dB** ($\mathrm{pire}$ en W, $\mathrm{PIRE}$ en dBm).
+
+$$
+P_r = \mathrm{PIRE} + G_r - L_{\mathrm{bf}} - A_e + \mathrm{PLF} - L_{\mathrm{rc}}
+$$
+
+<div class="table-scroll">
+
+| Término | Qué es | Signo |
+| --- | --- | --- |
+| PIRE | Lo que «parece» que emite el transmisor hacia el receptor (dBm) | + |
+| $G_r$ | Ganancia de la antena receptora (dBi) | + |
+| $L_{\mathrm{bf}} = 20 \log \dfrac{4\pi r}{\lambda}$ | Dilución por la distancia | − |
+| $A_e$ | Obstáculos y otras atenuaciones (0 en espacio libre) | − |
+| PLF = $10 \log \mathrm{plf}$ | Polarización (0 dB si está adaptada; si no, es negativo) | + |
+| $L_{\mathrm{rc}} = -10 \log\left(1 - \lvert\Gamma_r\rvert^2\right)$ | Rebote en el receptor | − |
+
+</div>
+
+**Cosas que conviene ver en la fórmula de $L_{\mathrm{bf}}$:**
+
+- Doble de distancia → +6 dB de pérdida. Diez veces la distancia → +20 dB.
+- Más frecuencia (λ más pequeña) → más pérdida. Es el efecto del área equivalente del paso 9.
+
+<h3 id="ejemplo">Un ejemplo de principio a fin</h3>
+
+Un nodo Wi-Fi a 2,4 GHz emite una PIRE de 100 mW. El receptor está a 100 m, con una antena de 2 dBi, en espacio libre, con polarización y antenas adaptadas. ¿Cuánta potencia recibe?
+
+1. Todo a dB: PIRE = $10 \log 100 = 20\ \mathrm{dBm}$.
+2. $\lambda = 3 \cdot 10^8 / 2{,}4 \cdot 10^9 = 0{,}125\ \mathrm{m}$.
+3. $L_{\mathrm{bf}} = 20 \log \dfrac{4\pi \cdot 100}{0{,}125}$ $= 20 \log 10\,053 = 80{,}0\ \mathrm{dB}$.
+4. Balance: $P_r = 20 + 2 - 80 = -58\ \mathrm{dBm}$ (unos 1,6 nW).
+
+<FigurasRadio figura="balance"><strong>El balance como una escalera.</strong> Se parte de la PIRE (20 dBm), la antena receptora suma 2 dB y el espacio libre resta 80 dB: llegan −58 dBm. En dB cada término es un escalón que sube o baja; la pérdida de espacio libre es, con diferencia, el más grande.</FigurasRadio>
+
+¿Y a 200 m? Sin recalcular nada: doble de distancia, 6 dB más de pérdida → −64 dBm.
+
+El problema 2 del boletín es este mismo cálculo **al revés**: te dan la potencia recibida que quieres, despejas $L_{\mathrm{bf}}$ del balance y de ella la distancia con $r = \dfrac{\lambda}{4\pi} \cdot 10^{L_{\mathrm{bf}}/20}$. Está resuelto en los <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-6-enlace-radio/#enlace">apuntes del tema 6</a>.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-3-balance-enlace.pdf#page=2">T6.3, pp. 2-4 y 7</a>.</p>
+
+<h2 id="chuleta">Chuleta: si en el enunciado ves… piensa en…</h2>
+
+<div class="table-scroll">
+
+| Ves | Piensa |
+| --- | --- |
+| dBm, dBW | Una potencia concreta. Pásala a W con $p = 10^{P/10}$ (mW o W según la referencia) |
+| dB, dBi | Una relación o ganancia. Se suma o resta a una potencia en dBm |
+| VSWR o ROE | $\lvert\Gamma\rvert = (\mathrm{VSWR}-1)/(\mathrm{VSWR}+1)$ y la fracción que entra, $1 - \lvert\Gamma\rvert^2$ |
+| Eficiencia η | $p_{\mathrm{rad}} = \eta\, p_{\mathrm{at}}$ y $g = \eta\, d$ |
+| Ganancia directiva o directividad | Se calcula con la integral de normalización (= 4π) |
+| PIRE | $p_{\mathrm{at}}\, g = p_{\mathrm{rad}}\, d$; lo que «parece» que emite |
+| PRA | PIRE / 1,64 (−2,15 dB) |
+| Campo a una distancia | $e_{\mathrm{ef}} = \sqrt{30\, \mathrm{pire}}\, / r$ |
+| HPBW / FNBW | Donde la potencia vale 0,5 / donde vale 0; ancho completo a ambos lados |
+| Distancia de cobertura | Balance en dB → $L_{\mathrm{bf}}$ → $r$ |
+| Obstáculo de X dB | Hay que subir la PIRE esos X dB para la misma distancia |
+| Polarización adaptada | plf = 1, PLF = 0 dB |
+
+</div>

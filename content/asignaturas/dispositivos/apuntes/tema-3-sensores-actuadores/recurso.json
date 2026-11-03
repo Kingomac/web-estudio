@@ -14,7 +14,7 @@
   "order": 14,
   "body": "body.mdx",
   "printIntent": "paper",
-  "componentIds": [],
+  "componentIds": ["dispositivos.puente-wheatstone"],
   "sources": [
     {
       "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",

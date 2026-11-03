@@ -1,0 +1,77 @@
+{
+  "kind": "apuntes",
+  "id": "dispositivos.apuntes.tema-6-desde-cero",
+  "subjectId": "dispositivos",
+  "slug": "tema-6-desde-cero",
+  "title": "Tema 6 desde cero · Qué es una antena y por qué llega (o no) la señal",
+  "description": "Explicación desde lo más básico, con figuras: decibelios, ondas, impedancia de antena, ganancia, PIRE, diagrama de radiación, polarización y fórmula de Friis.",
+  "scope": "Tema 6.1, pp. 5-7, 9-11 y 13. Tema 6.2, pp. 4-7, 9-10, 12-14, 17-19, 24-27, 30-31 y 33-36. Tema 6.3, pp. 2-4 y 7. Sin CNAF ni apéndice electromagnético; para resolver el boletín, ver los apuntes del tema 6.",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "order": 29,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [
+    "dispositivos.figuras-radio",
+    "dispositivos.diagrama-radiacion"
+  ],
+  "sources": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-1-espectro",
+      "pdfPages": [
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        13
+      ],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        17,
+        18,
+        19,
+        24,
+        25,
+        26,
+        27,
+        30,
+        31,
+        33,
+        34,
+        35,
+        36
+      ],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-3-balance-enlace",
+      "pdfPages": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "label": "Diapositivas usadas"
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.apuntes.tema-6-enlace-radio",
+    "dispositivos.resumenes.formulario-examen"
+  ]
+}

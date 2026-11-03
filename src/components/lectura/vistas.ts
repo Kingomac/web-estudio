@@ -2,6 +2,9 @@
 import { eui64, iphcSize, frameBudget, hopCompression, hex2, bin8, type IphcChoice } from '../../domain/laboratorios.ts';
 import type { Packet, HostState, Step, NodeId } from '../../domain/ndp.ts';
 import { decodePhyPayload, parseBytes } from '../../domain/lorawan.ts';
+import { bridge, type Bridge } from '../../domain/puente.ts';
+import { amplifier, type Amplifier } from '../../domain/amplificadores.ts';
+import { analyzePattern, patternValue, mainDirection, type Pattern } from '../../domain/diagrama.ts';
 
 const esc = (s: unknown) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 const metric = (value: string, label: string) => `<div class="metric"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`;
@@ -142,3 +145,181 @@ export const lorawanStages: Record<'up' | 'down', Stage[]> = {
 };
 export const lorawanPathView = (dir: 'up' | 'down') =>
   `<ol class="lw-chain">${lorawanStages[dir].map(s => `<li><strong>${esc(s.name)}</strong><span class="lw-payload">${esc(s.payload)}</span><p>${esc(s.does)}</p></li>`).join('')}</ol>`;
+
+// Wheatstone bridge (dispositivos.puente-wheatstone): diagram with live values and the three-step solution.
+const num = (n: number, digits = 4) => n.toLocaleString('es-ES', { maximumFractionDigits: digits, useGrouping: false });
+const volts = (v: number) => Math.abs(v) < 1e-9 ? '0 V' : Math.abs(v) < 1 ? `${num(v * 1000, 2)} mV` : `${num(v)} V`;
+const ohms = (r: number) => `${num(r, 2)} Ω`;
+/** Resistor between two points: straight leads and a zigzag in the middle third. */
+function resistorPath(x1: number, y1: number, x2: number, y2: number) {
+  const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy), nx = -dy / len, ny = dx / len;
+  const at = (t: number, k = 0) => `${(x1 + dx * t + nx * k).toFixed(1)} ${(y1 + dy * t + ny * k).toFixed(1)}`;
+  const zig = Array.from({ length: 7 }, (_, i) => `L ${at(0.33 + (0.34 * (i + 0.5)) / 7, i % 2 ? -9 : 9)}`).join(' ');
+  return `M ${at(0)} L ${at(0.33)} ${zig} L ${at(0.67)} L ${at(1)}`;
+}
+export function bridgeDiagram(b: Bridge, id: string) {
+  const r = bridge(b);
+  if (!r) return '<p class="lab-error">Las resistencias deben ser números mayores que cero.</p>';
+  const [top, left, right, bottom] = [[220, 55], [80, 190], [360, 190], [220, 325]];
+  const label = (x: number, y: number, text: string, cls = '', anchor = 'middle') => `<text class="${cls}" x="${x}" y="${y}" text-anchor="${anchor}">${esc(text)}</text>`;
+  const sign = r.balanced ? 'equilibrado' : r.vo > 0 ? 'Vx mayor que Vy' : 'Vy mayor que Vx';
+  return `<svg class="bridge-svg" viewBox="0 0 440 400" role="img" aria-labelledby="${id}-svg-title ${id}-svg-desc"><title id="${id}-svg-title">Puente de Wheatstone: Vo = ${esc(volts(r.vo))}</title>`
+    + `<desc id="${id}-svg-desc">Alimentación VA = ${esc(volts(b.va))} arriba y masa abajo. Rama izquierda: R4 = ${esc(ohms(b.r4))} arriba y el sensor R1 = ${esc(ohms(b.r1))} abajo; su punto medio está a Vx = ${esc(volts(r.vx))}. Rama derecha: R3 = ${esc(ohms(b.r3))} arriba y R2 = ${esc(ohms(b.r2))} abajo; su punto medio está a Vy = ${esc(volts(r.vy))}. La salida se mide entre los dos puntos medios: ${esc(sign)}.</desc>`
+    + `<path class="bridge-wire" d="M 220 32 V ${top[1]} M 220 ${bottom[1]} V 345 M 202 345 H 238 L 220 365 Z"/>`
+    + `<path class="bridge-arm bridge-arm--x" d="${resistorPath(top[0], top[1], left[0], left[1])} ${resistorPath(left[0], left[1], bottom[0], bottom[1])}"/>`
+    + `<path class="bridge-arm bridge-arm--y" d="${resistorPath(top[0], top[1], right[0], right[1])} ${resistorPath(right[0], right[1], bottom[0], bottom[1])}"/>`
+    + `<path class="bridge-sensor" d="M 120 292 L 166 246 M 166 246 l -12 1 m 12 -1 l -1 12"/>`
+    + `<path class="bridge-out" d="M ${left[0]} ${left[1]} H 190 M 250 ${right[1]} H ${right[0]}"/><circle class="bridge-node" cx="${left[0]}" cy="${left[1]}" r="6"/><circle class="bridge-node" cx="${right[0]}" cy="${right[1]}" r="6"/>`
+    + label(220, 24, `VA = ${volts(b.va)}`, 'bridge-strong') + label(220, 392, 'masa (0 V)', 'bridge-muted')
+    + label(126, 110, 'R4', 'bridge-strong', 'end') + label(126, 136, ohms(b.r4), 'bridge-muted', 'end')
+    + label(314, 110, 'R3', 'bridge-strong', 'start') + label(314, 136, ohms(b.r3), 'bridge-muted', 'start')
+    + label(108, 268, 'R1', 'bridge-strong', 'end') + label(108, 294, ohms(b.r1), 'bridge-muted', 'end')
+    + label(332, 268, 'R2', 'bridge-strong', 'start') + label(332, 294, ohms(b.r2), 'bridge-muted', 'start')
+    + label(66, 198, 'Vx', 'bridge-x', 'end') + label(374, 198, 'Vy', 'bridge-y', 'start')
+    + label(220, 198, 'Vo', 'bridge-strong') + label(220, 226, volts(r.vo), 'bridge-muted')
+    + '</svg>';
+}
+export function bridgeView(b: Bridge, id: string) {
+  const r = bridge(b);
+  if (!r) return bridgeDiagram(b, id);
+  const verdict = r.balanced
+    ? '<strong>Puente equilibrado</strong>: las dos ramas reparten la tensión en la misma proporción, así que Vx = Vy y Vo = 0.'
+    : `<strong>Puente desequilibrado</strong>: ${r.vo > 0 ? 'R1 pesa más en su rama que R2 en la suya, así que Vx sube por encima de Vy y Vo es positiva' : 'R1 pesa menos en su rama que R2 en la suya, así que Vx queda por debajo de Vy y Vo es negativa'}. Lo equilibraría R1 = R4 · R2 / R3 = ${num(b.r4)} · ${num(b.r2)} / ${num(b.r3)} = ${ohms(r.r1Balance)}.`;
+  return `<div class="bridge-figure">${bridgeDiagram(b, id)}</div>`
+    + metrics(metric(volts(r.vx), 'Vx, rama izquierda'), metric(volts(r.vy), 'Vy, rama derecha'), metric(volts(r.vo), 'Vo = Vx − Vy'))
+    + '<ol class="lab-detail">'
+    + `<li><span class="bridge-x"><strong>Rama izquierda</strong></span>, divisor de R4 y R1: <span class="formula">Vx = VA · R1 / (R1 + R4) = ${num(b.va)} · ${num(b.r1)} / ${num(b.r1 + b.r4)} = ${volts(r.vx)}</span></li>`
+    + `<li><span class="bridge-y"><strong>Rama derecha</strong></span>, divisor de R3 y R2: <span class="formula">Vy = VA · R2 / (R2 + R3) = ${num(b.va)} · ${num(b.r2)} / ${num(b.r2 + b.r3)} = ${volts(r.vy)}</span></li>`
+    + `<li><strong>Salida</strong>: <span class="formula">Vo = Vx − Vy = ${volts(r.vx)} − ${volts(r.vy)} = ${volts(r.vo)}</span></li>`
+    + `<li><strong>Comprobación</strong>: <span class="formula">R1/R4 = ${num(r.left)}</span> y <span class="formula">R2/R3 = ${num(r.right)}</span>. ${verdict}</li>`
+    + '</ol>';
+}
+
+// Op-amp circuits (dispositivos.amplificadores): schematic with the values and the solution step by step.
+const kohms = (r: number) => r >= 1000 ? `${num(r / 1000, 3)} kΩ` : `${num(r, 2)} Ω`;
+const svgText = (x: number, y: number, text: string, cls = '', anchor = 'middle') => `<text class="${cls}" x="${x}" y="${y}" text-anchor="${anchor}">${esc(text)}</text>`;
+const zigH = (x1: number, x2: number, y: number) => `M ${x1} ${y} ${Array.from({ length: 6 }, (_, i) => `L ${x1 + ((x2 - x1) * (i + 0.5)) / 6} ${y + (i % 2 ? 9 : -9)}`).join(' ')} L ${x2} ${y}`;
+const zigV = (x: number, y1: number, y2: number) => `M ${x} ${y1} ${Array.from({ length: 6 }, (_, i) => `L ${x + (i % 2 ? 9 : -9)} ${y1 + ((y2 - y1) * (i + 0.5)) / 6}`).join(' ')} L ${x} ${y2}`;
+const ground = (x: number, y: number) => `M ${x} ${y - 10} V ${y} M ${x - 14} ${y} H ${x + 14} M ${x - 9} ${y + 6} H ${x + 9} M ${x - 4} ${y + 12} H ${x + 4}`;
+const opampSymbol = '<path class="amp-body" d="M 250 110 V 230 L 350 170 Z"/>' + svgText(264, 148, '−', 'amp-strong') + svgText(264, 208, '+', 'amp-strong');
+const outputWire = (vo: number) => '<path class="amp-wire" d="M 350 170 H 450"/><circle class="amp-node" cx="450" cy="170" r="5"/>' + svgText(462, 166, 'Vo', 'amp-strong', 'start') + svgText(462, 192, volts(vo), 'amp-out', 'start');
+const feedback = (r2: number) => `<path class="amp-wire" d="M 210 140 V 60 H 270 M 350 60 H 410 V 170"/><path class="amp-res" d="${zigH(270, 350, 60)}"/><circle class="amp-node" cx="210" cy="140" r="5"/>` + svgText(310, 36, 'R2', 'amp-strong') + svgText(310, 90, kohms(r2), 'amp-muted');
+
+export function amplifierDiagram(a: Amplifier, id: string) {
+  const r = amplifier(a);
+  if (!r) return '<p class="lab-error">Las resistencias deben ser números mayores que cero (R3 del diferencial puede valer 0).</p>';
+  const names = { inversor: 'Amplificador inversor', 'no-inversor': 'Amplificador no inversor', diferencial: 'Amplificador diferencial', instrumentacion: 'Amplificador de instrumentación' };
+  let body = '', desc = '';
+  if (a.kind === 'inversor') {
+    body = feedback(a.r2) + `<path class="amp-wire" d="M 60 140 H 90 M 170 140 H 250 M 250 200 H 210 V 222 ${ground(210, 232)}"/><path class="amp-res" d="${zigH(90, 170, 140)}"/>`
+      + svgText(14, 128, 'Vi', 'amp-strong', 'start') + svgText(14, 170, volts(a.vi), 'amp-in', 'start') + svgText(130, 120, `R1 = ${kohms(a.r1)}`, 'amp-muted');
+    desc = `Vi = ${volts(a.vi)} entra por R1 = ${kohms(a.r1)} a la entrada inversora; R2 = ${kohms(a.r2)} realimenta de la salida a esa entrada; la entrada no inversora va a masa.`;
+  } else if (a.kind === 'no-inversor') {
+    body = feedback(a.r2) + `<path class="amp-wire" d="M 250 140 H 160 M 80 140 H 50 V 160 ${ground(50, 170)} M 60 200 H 250"/><path class="amp-res" d="${zigH(80, 160, 140)}"/>`
+      + svgText(14, 232, 'Vi', 'amp-strong', 'start') + svgText(14, 262, volts(a.vi), 'amp-in', 'start') + svgText(120, 120, `R1 = ${kohms(a.r1)}`, 'amp-muted');
+    desc = `Vi = ${volts(a.vi)} entra directamente por la entrada no inversora; R1 = ${kohms(a.r1)} va de la entrada inversora a masa y R2 = ${kohms(a.r2)} realimenta desde la salida.`;
+  } else if (a.kind === 'diferencial') {
+    const r3 = a.r3 > 0 ? `<path class="amp-res" d="${zigH(90, 170, 200)}"/>` + svgText(130, 234, `R3 = ${kohms(a.r3)}`, 'amp-muted') : '<path class="amp-wire" d="M 90 200 H 170"/>' + svgText(130, 234, 'R3 = 0', 'amp-muted');
+    body = feedback(a.r2) + `<path class="amp-wire" d="M 60 140 H 90 M 170 140 H 250 M 60 200 H 90 M 170 200 H 250 M 210 200 V 214 M 210 270 V 278 ${ground(210, 288)}"/><path class="amp-res" d="${zigH(90, 170, 140)} ${zigV(210, 214, 270)}"/><circle class="amp-node" cx="210" cy="200" r="5"/>`
+      + svgText(14, 128, 'V1', 'amp-strong', 'start') + svgText(14, 170, volts(a.v1), 'amp-in', 'start') + svgText(130, 120, `R1 = ${kohms(a.r1)}`, 'amp-muted')
+      + svgText(14, 230, 'V2', 'amp-strong', 'start') + svgText(14, 262, volts(a.v2), 'amp-in', 'start') + r3 + svgText(226, 250, 'R4', 'amp-strong', 'start') + svgText(226, 276, kohms(a.r4), 'amp-muted', 'start');
+    desc = `V1 = ${volts(a.v1)} entra por R1 = ${kohms(a.r1)} a la entrada inversora, con R2 = ${kohms(a.r2)} de realimentación. V2 = ${volts(a.v2)} llega a la entrada no inversora por el divisor de R3 = ${kohms(a.r3)} y R4 = ${kohms(a.r4)} a masa.`;
+  } else {
+    body = `<rect class="amp-box" x="195" y="70" width="155" height="170" rx="8"/><rect class="amp-box" x="380" y="110" width="100" height="120" rx="8"/>`
+      + '<path class="amp-wire" d="M 20 110 H 195 M 20 200 H 195 M 350 140 H 380 M 350 200 H 380 M 480 170 H 515"/><circle class="amp-node" cx="515" cy="170" r="5"/>'
+      + svgText(20, 98, `Vi− = ${volts(a.vim)}`, 'amp-in', 'start') + svgText(20, 188, `Vi+ = ${volts(a.vip)}`, 'amp-in', 'start')
+      + svgText(272, 104, 'Etapa 1', 'amp-strong') + svgText(272, 144, `R1 = ${kohms(a.r1)}`, 'amp-muted') + svgText(272, 174, `Rg = ${kohms(a.rg)}`, 'amp-muted') + svgText(272, 218, `× ${num(1 + (2 * a.r1) / a.rg, 3)}`, 'amp-strong')
+      + svgText(430, 150, 'Etapa 2', 'amp-strong') + svgText(430, 198, `× ${num(a.r3 / a.r2, 3)}`, 'amp-strong')
+      + svgText(535, 150, 'Vo', 'amp-strong', 'end') + svgText(535, 268, volts(r.vo), 'amp-out', 'end');
+    desc = `Primera etapa con dos operacionales, R1 = ${kohms(a.r1)} y Rg = ${kohms(a.rg)}; segunda etapa diferencial con R3/R2 = ${num(a.r3 / a.r2, 3)}. Entradas Vi+ = ${volts(a.vip)} y Vi− = ${volts(a.vim)}.`;
+    return `<svg class="amp-svg" viewBox="0 0 540 300" role="img" aria-labelledby="${id}-svg-title ${id}-svg-desc"><title id="${id}-svg-title">${names[a.kind]}: Vo = ${esc(volts(r.vo))}</title><desc id="${id}-svg-desc">${esc(desc)}</desc>${body}</svg>`;
+  }
+  return `<svg class="amp-svg" viewBox="0 0 540 300" role="img" aria-labelledby="${id}-svg-title ${id}-svg-desc"><title id="${id}-svg-title">${names[a.kind]}: Vo = ${esc(volts(r.vo))}</title><desc id="${id}-svg-desc">${esc(desc)}</desc>${body}${opampSymbol}${outputWire(r.vo)}</svg>`;
+}
+
+export function amplifierView(a: Amplifier, id: string) {
+  const r = amplifier(a);
+  if (!r) return amplifierDiagram(a, id);
+  const f = (s: string) => `<span class="formula">${s}</span>`;
+  const steps: string[] = [];
+  if (a.kind === 'inversor') {
+    steps.push(`<strong>Entrada +</strong>: está a masa, V+ = 0. Por el cortocircuito virtual, V− = V+ = 0.`);
+    steps.push(`<strong>Corriente por R1</strong>: ${f(`I1 = (Vi − 0) / R1 = ${volts(a.vi)} / ${kohms(a.r1)}`)}. Como no entra corriente en el operacional, toda sigue por R2: I2 = I1.`);
+    steps.push(`<strong>Salida</strong>: ${f(`Vo = −(R2/R1) · Vi = −(${kohms(a.r2)} / ${kohms(a.r1)}) · ${volts(a.vi)} = ${volts(r.ideal)}`)}. El signo menos invierte la señal.`);
+  } else if (a.kind === 'no-inversor') {
+    steps.push(`<strong>Entrada +</strong>: recibe Vi directamente, V+ = ${volts(a.vi)}. Por el cortocircuito virtual, V− = ${volts(a.vi)}.`);
+    steps.push(`<strong>Divisor R1-R2</strong>: V− es la parte de Vo que cae en R1, ${f('V− = Vo · R1 / (R1 + R2)')}. Despejando, ${f('Vo = (1 + R2/R1) · Vi')}.`);
+    steps.push(`<strong>Salida</strong>: ${f(`Vo = (1 + ${kohms(a.r2)} / ${kohms(a.r1)}) · ${volts(a.vi)} = ${num(r.gain!, 4)} · ${volts(a.vi)} = ${volts(r.ideal)}`)}. No invierte y la ganancia nunca es menor que 1.`);
+  } else if (a.kind === 'diferencial') {
+    steps.push(`<strong>Tensión en +</strong>: ${a.r3 > 0 ? f(`V+ = V2 · R4 / (R3 + R4) = ${volts(a.v2)} · ${kohms(a.r4)} / ${kohms(a.r3 + a.r4)} = ${volts(r.vplus!)}`) : `con R3 = 0, la fuente V2 está conectada directamente a la entrada + y fija ${f(`V+ = V2 = ${volts(a.v2)}`)}; R4 en paralelo con una fuente ideal no cambia esa tensión`}.`);
+    steps.push(`<strong>Superposición, solo V1</strong> (V2 = 0, así que V+ = 0): es un inversor, ${f(`−(R2/R1) · V1 = −(${kohms(a.r2)} / ${kohms(a.r1)}) · ${volts(a.v1)} = ${volts(r.term1!)}`)}.`);
+    steps.push(`<strong>Superposición, solo V2</strong> (V1 = 0, R1 queda a masa): es un no inversor que amplifica V+, ${f(`(1 + R2/R1) · V+ = (1 + ${kohms(a.r2)} / ${kohms(a.r1)}) · ${volts(r.vplus!)} = ${volts(r.term2!)}`)}.`);
+    steps.push(`<strong>Suma</strong>: ${f(`Vo = ${volts(r.term1!)} + ${volts(r.term2!)} = ${volts(r.ideal)}`)}.`
+      + (a.r1 === a.r3 && a.r2 === a.r4 ? ` Es simétrico (R1 = R3, R2 = R4), así que también sale directo con ${f(`Vo = (R2/R1) · (V2 − V1) = ${num(a.r2 / a.r1, 4)} · ${volts(a.v2 - a.v1)}`)}.` : ''));
+  } else {
+    steps.push(`<strong>Ganancia</strong>: ${f(`G = (R3/R2) · (1 + 2R1/Rg) = ${num(a.r3 / a.r2, 4)} · (1 + 2 · ${kohms(a.r1)} / ${kohms(a.rg)}) = ${num(r.gain!, 4)}`)}. Con la segunda etapa de ganancia unidad (R2 = R3), toda la ganancia la da Rg.`);
+    steps.push(`<strong>Señal diferencial</strong>: ${f(`Vd = Vi+ − Vi− = ${volts(a.vip)} − ${volts(a.vim)} = ${volts(a.vip - a.vim)}`)}. El modo común, lo que comparten las dos entradas (${volts((a.vip + a.vim) / 2)}), idealmente no pasa a la salida.`);
+    steps.push(`<strong>Salida</strong>: ${f(`Vo = G · Vd = ${num(r.gain!, 4)} · ${volts(a.vip - a.vim)} = ${volts(r.ideal)}`)}.`);
+  }
+  steps.push(`<strong>¿Puede darla?</strong> La salida no puede superar la alimentación (±${num(Math.abs(a.vcc))} V). `
+    + (r.saturated ? `Saldrían ${volts(r.ideal)}: el operacional <strong>satura</strong> y se queda en ${volts(r.vo)} (algo menos en uno real). La salida deja de ser proporcional a la entrada.` : `${volts(r.ideal)} cabe dentro de ese margen: <strong>sí</strong>.`));
+  return `<div class="amp-figure" tabindex="0" role="group" aria-label="Esquema del circuito; desplázalo si no cabe">${amplifierDiagram(a, id)}</div>`
+    + metrics(metric(volts(r.vo), r.saturated ? 'Vo (saturada)' : 'Vo'), ...(r.gain !== undefined ? [metric(num(r.gain, 4), 'ganancia')] : []), ...(r.vplus !== undefined ? [metric(volts(r.vplus), 'V+ = V−')] : []))
+    + `<ol class="lab-detail">${steps.map(s => `<li>${s}</li>`).join('')}</ol>`;
+}
+
+// Radiation patterns (dispositivos.diagrama-radiacion): polar cut with z upwards, −3 dB circle, beam widths and directivity.
+export const patternNames = (p: Pattern) => p.kind === 'cosn' ? `cos${p.n === 2 ? '²' : `^${p.n}`} θ` : p.kind === 'dipolo-corto' ? 'sen² θ (dipolo corto)' : 'dipolo λ/2';
+const degrees = (a: number) => `${num(a, 1)}°`;
+
+export function radiationDiagram(p: Pattern, id: string) {
+  const cx = 210, cy = 205, R = 165;
+  const at = (theta: number, f: number) => [cx + R * f * Math.sin(theta), cy - R * f * Math.cos(theta)] as const;
+  const pts = Array.from({ length: 721 }, (_, i) => { const t = -Math.PI + (i * Math.PI) / 360; return at(t, patternValue(p, t)); });
+  const shape = `M ${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(' L ')} Z`;
+  const r = analyzePattern(p);
+  let marks = '';
+  if (r?.hpbw) {
+    const m = mainDirection(p) * Math.PI / 180, h = (r.hpbw / 2) * Math.PI / 180;
+    const [x1, y1] = at(m - h, 1.08), [x2, y2] = at(m + h, 1.08);
+    const [ax1, ay1] = at(m - h, 0.5), [ax2, ay2] = at(m + h, 0.5);
+    const large = r.hpbw > 180 ? 1 : 0;
+    marks += `<path class="rad-beam" d="M ${cx} ${cy} L ${x1.toFixed(1)} ${y1.toFixed(1)} M ${cx} ${cy} L ${x2.toFixed(1)} ${y2.toFixed(1)}"/>`
+      + `<path class="rad-arc" d="M ${ax1.toFixed(1)} ${ay1.toFixed(1)} A ${R * 0.5} ${R * 0.5} 0 ${large} 1 ${ax2.toFixed(1)} ${ay2.toFixed(1)}"/>`
+      + `<circle class="rad-point" cx="${ax1.toFixed(1)}" cy="${ay1.toFixed(1)}" r="5"/><circle class="rad-point" cx="${ax2.toFixed(1)}" cy="${ay2.toFixed(1)}" r="5"/>`;
+    marks += p.kind === 'cosn'
+      ? svgText(cx, cy - R * 0.5 - 14, `HPBW ${degrees(r.hpbw)}`, 'rad-hpbw')
+      : svgText(cx + R * 0.5 + 12, cy - 10, `HPBW ${degrees(r.hpbw)}`, 'rad-hpbw', 'start');
+  }
+  const wire = p.kind === 'cosn' ? '' : `<path class="rad-wire" d="M ${cx} ${cy - 34} V ${cy + 34}"/>`;
+  return `<svg class="rad-svg" viewBox="0 0 420 430" role="img" aria-labelledby="${id}-svg-t"><title id="${id}-svg-t">Corte del diagrama de potencia ${esc(patternNames(p))} en un plano que contiene el eje z</title>`
+    + `<circle class="rad-grid" cx="${cx}" cy="${cy}" r="${R}"/><circle class="rad-half" cx="${cx}" cy="${cy}" r="${R / 2}"/>`
+    + `<path class="rad-axis" d="M ${cx} ${cy - R - 18} V ${cy + R + 6} M ${cx - R - 6} ${cy} H ${cx + R + 6}"/>`
+    + `<path class="rad-shape" d="${shape}"/>${wire}${marks}`
+    + svgText(cx + 8, cy - R - 20, '+z (θ = 0°)', 'rad-label', 'start')
+    + svgText(cx + R - 4, cy + 22, 'θ = 90°', 'rad-label', 'end')
+    + svgText(cx + 8, cy + R + 22, 'θ = 180°', 'rad-label', 'start')
+    + svgText(cx - R / 2 + 4, cy + 20, '0,5', 'rad-muted', 'start')
+    + svgText(cx - R + 4, cy + 20, '1', 'rad-muted', 'start')
+    + '</svg>';
+}
+
+export function radiationView(p: Pattern, id: string) {
+  const r = analyzePattern(p);
+  if (!r) return '<p class="lab-error">El exponente debe ser un número par entre 2 y 20.</p>';
+  const k = num(r.directivity, 3);
+  const steps: string[] = [];
+  if (p.kind === 'cosn') {
+    steps.push(`<strong>Constante K</strong>. Se escribe d(θ) = K · cos${p.n === 2 ? '²' : `^${p.n}`} θ y se impone la normalización: <span class="formula">∫₀^π cos^${p.n} θ · sen θ dθ = 2/${p.n + 1} = ${num(r.integral, 4)}</span>, así que <span class="formula">K · 2π · ${num(r.integral, 4)} = 4π → K = ${k}</span>. La directividad es ${k} (${num(r.directivityDb, 2)} dBi).`);
+    steps.push('<strong>Máximos</strong> donde cos θ = ±1: θ = 0° (+z) y θ = 180° (−z). <strong>Nulo</strong> donde cos θ = 0: todo el plano θ = 90°.');
+    steps.push(`<strong>HPBW</strong>: la potencia cae a la mitad cuando cos^${p.n} α = 0,5, en α = ±${degrees(r.hpbw! / 2)} → HPBW = ${degrees(r.hpbw!)}. <strong>FNBW</strong>: los primeros nulos están a ±90° del máximo → ${degrees(r.fnbw!)}.`);
+  } else {
+    const name = p.kind === 'dipolo-corto' ? 'dipolo corto' : 'dipolo λ/2';
+    steps.push(`<strong>Constante K</strong>. La integral de la normalización vale ${num(r.integral, 4)}, así que <span class="formula">K = 2 / ${num(r.integral, 4)} = ${k}</span>: la ganancia máxima del ${name} en las diapositivas (${num(r.directivityDb, 2)} dBi).`);
+    steps.push('<strong>Máximo</strong> en θ = 90°: todo el plano perpendicular al hilo, igual en cualquier φ (un donut). <strong>Nulos</strong> a lo largo del propio hilo, θ = 0° y 180°.');
+    steps.push(`<strong>HPBW</strong>: la potencia cae a la mitad a ±${degrees(r.hpbw! / 2)} del plano θ = 90° → ${degrees(r.hpbw!)}. <strong>FNBW</strong>: los nulos están a ±90° del máximo → ${degrees(r.fnbw!)}.`);
+  }
+  return `<div class="rad-figure">${radiationDiagram(p, id)}</div>`
+    + metrics(metric(`${k} (${num(r.directivityDb, 2)} dBi)`, 'directividad'), metric(degrees(r.hpbw!), 'HPBW'), metric(degrees(r.fnbw!), 'FNBW'))
+    + `<ol class="lab-detail">${steps.map(s => `<li>${s}</li>`).join('')}</ol>`;
+}

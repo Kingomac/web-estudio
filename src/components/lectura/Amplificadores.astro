@@ -1,0 +1,102 @@
+---
+import LabFrame from '../ui/LabFrame.astro';
+import { amplifierView } from './vistas.ts';
+import type { Amplifier } from '../../domain/amplificadores.ts';
+interface Props { id?: string }
+const { id = 'visual-amplificadores' } = Astro.props;
+// Cases from the slides, the bulletin (exercise 3) and the exam model (E1.3 and E1.4). Resistors in kΩ, voltages in V.
+type Values = { kind: Amplifier['kind']; vi?: number; v1?: number; v2?: number; vip?: number; vim?: number; r1: number; r2: number; r3?: number; r4?: number; rg?: number };
+const cases: { key: string; label: string; values: Values }[] = [
+  { key: 'inversor', label: 'Inversor', values: { kind: 'inversor', vi: 0.2, r1: 10, r2: 100 } },
+  { key: 'no-inversor', label: 'No inversor (E1.3)', values: { kind: 'no-inversor', vi: 0.8, r1: 10, r2: 52.5 } },
+  { key: 'boletin', label: 'Boletín, ej. 3', values: { kind: 'diferencial', v1: 5, v2: 3, r1: 10, r2: 5, r3: 0, r4: 3 } },
+  { key: 'simetrico', label: 'Diferencial simétrico (E1.4)', values: { kind: 'diferencial', v1: 1.2, v2: 1.5, r1: 10, r2: 100, r3: 10, r4: 100 } },
+  { key: 'saturacion', label: 'Saturación (E1.4)', values: { kind: 'diferencial', v1: 1.2, v2: 3, r1: 10, r2: 100, r3: 10, r4: 100 } },
+  { key: 'instrumentacion', label: 'Instrumentación (E1.4)', values: { kind: 'instrumentacion', vip: 2.501, vim: 2.499, r1: 25, rg: 1, r2: 10, r3: 10 } },
+];
+const toAmplifier = (v: Values, vcc = 15): Amplifier => {
+  const k = (r?: number) => (r ?? 0) * 1000;
+  switch (v.kind) {
+    case 'inversor': case 'no-inversor': return { kind: v.kind, vi: v.vi ?? 0, r1: k(v.r1), r2: k(v.r2), vcc };
+    case 'diferencial': return { kind: v.kind, v1: v.v1 ?? 0, v2: v.v2 ?? 0, r1: k(v.r1), r2: k(v.r2), r3: k(v.r3), r4: k(v.r4), vcc };
+    case 'instrumentacion': return { kind: v.kind, vip: v.vip ?? 0, vim: v.vim ?? 0, r1: k(v.r1), rg: k(v.rg), r2: k(v.r2), r3: k(v.r3), vcc };
+  }
+};
+const first = cases[2]!;
+// Fields and the circuits that use them.
+const fields: [string, string, string][] = [
+  ['vi', 'Vi (V)', 'inversor no-inversor'], ['v1', 'V1 (V)', 'diferencial'], ['v2', 'V2 (V)', 'diferencial'],
+  ['vip', 'Vi+ (V)', 'instrumentacion'], ['vim', 'Vi− (V)', 'instrumentacion'],
+  ['r1', 'R1 (kΩ)', 'inversor no-inversor diferencial instrumentacion'], ['r2', 'R2 (kΩ)', 'inversor no-inversor diferencial instrumentacion'],
+  ['r3', 'R3 (kΩ)', 'diferencial instrumentacion'], ['r4', 'R4 (kΩ)', 'diferencial'], ['rg', 'Rg (kΩ)', 'instrumentacion'],
+];
+const { kind: _kind, ...firstValues } = first.values;
+const initial: Record<string, number> = { vi: 0.2, v1: 5, v2: 3, vip: 2.501, vim: 2.499, r3: 0, r4: 3, rg: 1, ...firstValues };
+---
+<LabFrame id={id} component="dispositivos.amplificadores" label="Esquema · Prueba y observa" title="Cuatro montajes con el operacional ideal" intro="Elige un montaje o un ejercicio, cambia los valores y sigue los pasos: cortocircuito virtual, superposición si hay dos fuentes y comprobación de la saturación.">
+  <amplifier-lab data-id={id}>
+    <div class="chip-group no-print" role="group" aria-label="Casos de ejemplo">
+      {cases.map(c => <button type="button" class="chip" data-values={JSON.stringify(c.values)} aria-pressed={c.key === first.key ? 'true' : 'false'} disabled>{c.label}</button>)}
+    </div>
+    <div class="lab-controls no-print">
+      <label>Montaje<select class="input" data-field="kind" disabled>
+        <option value="inversor">Inversor</option><option value="no-inversor">No inversor</option>
+        <option value="diferencial" selected>Diferencial</option><option value="instrumentacion">Instrumentación</option>
+      </select></label>
+      {fields.map(([name, label, kinds]) => <label data-kinds={kinds} hidden={!kinds.split(' ').includes(first.values.kind)}>{label}<input class="input amp-input" type="number" data-field={name} value={initial[name]} step="any" disabled /></label>)}
+      <label>Alimentación ±V<input class="input amp-input" type="number" data-field="vcc" value="15" step="any" min="0" disabled /></label>
+    </div>
+    <div class="lab-output no-print" data-output aria-live="polite" set:html={amplifierView(toAmplifier(first.values), id)} />
+  </amplifier-lab>
+  <details class="lab-all"><summary>Los seis casos resueltos</summary>{cases.map((c, i) => <><h4>{c.label}</h4><Fragment set:html={amplifierView(toAmplifier(c.values), `${id}-caso-${i}`)} /></>)}</details>
+  <p class="lab-note">Operacional ideal: la salida se recorta exactamente a ±V de alimentación. En el boletín, R3 = 0 representa la fuente de 3 V conectada directamente a la entrada +.</p>
+</LabFrame>
+<style>
+  amplifier-lab { display: block; }
+  .amp-input { width: 7rem; }
+  :global(.amp-figure) { max-width: 34rem; margin: 0 auto var(--space-4); overflow-x: auto; }
+  :global(.amp-svg) { display: block; width: 100%; min-width: 28rem; height: auto; font-family: var(--font-sans); font-size: var(--text-xl); }
+  :global(.amp-svg text) { fill: var(--color-text); }
+  :global(.amp-svg .amp-strong) { font-weight: var(--weight-semibold); }
+  :global(.amp-svg .amp-muted) { fill: var(--color-text-muted); }
+  :global(.amp-svg .amp-in) { fill: var(--color-seg-1); font-weight: var(--weight-semibold); }
+  :global(.amp-svg .amp-out) { fill: var(--color-seg-2); font-weight: var(--weight-semibold); }
+  :global(.amp-wire) { fill: none; stroke: var(--color-border-strong); stroke-width: 2.5; }
+  :global(.amp-res) { fill: none; stroke: var(--color-text); stroke-width: 2.5; stroke-linejoin: round; }
+  :global(.amp-body), :global(.amp-box) { fill: var(--color-surface); stroke: var(--color-text); stroke-width: 2.5; }
+  :global(.amp-node) { fill: var(--color-text); }
+</style>
+<script>
+  import { amplifierView } from './vistas.ts';
+  import type { Amplifier } from '../../domain/amplificadores.ts';
+  class AmplifierLab extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() {
+      const controller = new AbortController(); this.cleanup = () => controller.abort();
+      const signal = controller.signal, id = this.dataset.id ?? 'visual-amplificadores';
+      const field = (name: string) => this.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-field="${name}"]`)!;
+      const value = (name: string) => Number(field(name).value);
+      const chips = [...this.querySelectorAll<HTMLButtonElement>('[data-values]')];
+      const read = (): Amplifier => {
+        const kind = field('kind').value as Amplifier['kind'], vcc = value('vcc'), k = (n: string) => value(n) * 1000;
+        if (kind === 'diferencial') return { kind, v1: value('v1'), v2: value('v2'), r1: k('r1'), r2: k('r2'), r3: k('r3'), r4: k('r4'), vcc };
+        if (kind === 'instrumentacion') return { kind, vip: value('vip'), vim: value('vim'), r1: k('r1'), rg: k('rg'), r2: k('r2'), r3: k('r3'), vcc };
+        return { kind, vi: value('vi'), r1: k('r1'), r2: k('r2'), vcc };
+      };
+      const render = () => {
+        const kind = field('kind').value;
+        this.querySelectorAll<HTMLElement>('[data-kinds]').forEach(l => { l.hidden = !(l.dataset.kinds ?? '').split(' ').includes(kind); });
+        this.querySelector('[data-output]')!.innerHTML = amplifierView(read(), id);
+      };
+      const press = (chip?: HTMLButtonElement) => chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+      this.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLButtonElement>('input, select, button').forEach(el => { el.disabled = false; });
+      this.addEventListener('input', () => { press(); render(); }, { signal });
+      chips.forEach(chip => chip.addEventListener('click', () => {
+        for (const [k, v] of Object.entries(JSON.parse(chip.dataset.values!) as Record<string, string | number>)) field(k).value = String(v);
+        press(chip); render();
+      }, { signal }));
+    }
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+  customElements.define('amplifier-lab', AmplifierLab);
+</script>

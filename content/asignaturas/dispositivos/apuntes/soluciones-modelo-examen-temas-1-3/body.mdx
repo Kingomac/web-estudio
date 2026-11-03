@@ -1,0 +1,667 @@
+<p class="lead">Soluciones explicadas del <a href="/web-estudio/asignaturas/dispositivos/apuntes/modelo-examen-temas-1-3/">modelo de examen de los temas 1-3</a>. En los ejercicios están todos los pasos y la razón de cada uno. En las cuestiones, lo que debe contener tu respuesta; la teoría completa está en las <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/">cuestiones teóricas</a>.</p>
+
+<div class="callout">
+
+**Antes de mirar**
+
+Intenta cada pregunta en papel y compara después. Si tu resultado no coincide, busca el primer paso en el que te separas: casi siempre es una unidad (mV frente a V, °C frente a K) o un dato que no has usado.
+
+Los apartados marcados como **razonamiento** no están escritos en las diapositivas: son deducciones a partir de ellas que conviene justificar en el examen.
+
+</div>
+
+<h2 id="tema-1">Tema 1 · Sensores, acondicionamiento y conversión A/D</h2>
+
+<h3 id="c1-1">C1.1 · Curva de calibración</h3>
+
+- **Campo de medida**: intervalo de entradas admisible, $[X_{\min}, X_{\max}]$.
+- **Alcance** o fondo de escala: $S = X_{\max} - X_{\min}$, en unidades de la entrada.
+- **FSO**: salida máxima menos salida mínima, en unidades de la salida.
+- **Sensibilidad**: pendiente de la curva. Interesa **grande** (mucha salida para poca entrada) y **constante** (sensor lineal).
+- **No linealidad**: máxima diferencia entre la curva real y la recta ajustada; se da en % del FSO.
+
+**Ejemplo numérico.** Un termómetro de 0 a 100 °C con un error de ±1 % FS tiene un error fijo de ±1 °C en toda la escala. Si mide 10 °C, ese grado es el **10 % de la lectura**. Un error de ±1 % de la lectura solo sería ±0,1 °C. El error referido al fondo de escala pesa mucho en las lecturas pequeñas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=9">T1, pp. 9-17 y 28-32</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t1-estatica">curva de calibración</a>.</p>
+
+<h3 id="c1-2">C1.2 · Repetibilidad, precisión y exactitud</h3>
+
+- **Repetibilidad**: medidas del mismo valor en tiempos cercanos, mismo equipo y misma persona. **Reproducibilidad**: tiempos no próximos, equipos y personas distintos. Las dos se miden con la desviación estándar.
+- **Precisión**: poca dispersión entre medidas repetidas. **Veracidad**: la media coincide con el valor real. **Exactitud**: las dos a la vez.
+
+**Las cuatro dianas**: impactos agrupados en el centro (preciso y veraz, es decir, exacto); agrupados lejos del centro (preciso, no veraz); dispersos alrededor del centro (veraz, no preciso); dispersos y descentrados (ni una cosa ni otra).
+
+**Sí**, un equipo puede ser preciso y no veraz: todas las medidas salen parecidas pero desplazadas, por ejemplo por un error de cero. Ese error se corrige calibrando.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=25">T1, pp. 25-30</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t1-exactitud">precisión y exactitud</a>.</p>
+
+<h3 id="c1-3">C1.3 · Derivas y calibración</h3>
+
+Las **derivas** son cambios del comportamiento estático por las condiciones ambientales o el paso del tiempo: **térmicas** y **temporales** (envejecimiento).
+
+**Dibujo**: la recta ideal y dos rectas reales. Una **desplazada en paralelo** (deriva de cero: misma pendiente, otro corte) y otra **con distinta pendiente** que sale del mismo punto (deriva de ganancia).
+
+- **Calibración a un punto**: se aplica la entrada mínima del campo y se ajusta la salida al mínimo del FSO. Corrige el **cero**.
+- **Calibración a dos puntos**: primero el cero y después la ganancia con una entrada patrón. Corrige **cero y ganancia**.
+- Tras una calibración perfecta a dos puntos solo queda la **no linealidad**, que ninguna recta puede corregir.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=33">T1, pp. 33-35</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t1-derivas">derivas y calibración</a>.</p>
+
+<h3 id="c1-4">C1.4 · Caracterización dinámica</h3>
+
+- **Ancho de banda** (Bode, ganancia frente a frecuencia): intervalo de frecuencias en que el sensor responde bien. Se toma hasta la frecuencia de corte $f_c$, donde la ganancia cae **3 dB** respecto a la zona plana. Dibuja la curva plana que cae a partir de $f_c$.
+- **Tiempo de establecimiento** (respuesta a un escalón): lo que tarda la salida en entrar y quedarse en una banda del 5 % o del 1 % del valor final. Dibuja el escalón de entrada, la salida que sube hacia el valor final y la banda marcada.
+- **Relación**: un sensor rápido tiene **ancho de banda grande** y **tiempo de establecimiento pequeño**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=36">T1, pp. 36-42</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t1-dinamica">caracterización dinámica</a>.</p>
+
+<h3 id="c1-5">C1.5 · Modo común, CMRR e instrumentación</h3>
+
+- **Modo diferencial**: la diferencia entre las entradas, amplificada por $A_d$. **Modo común**: el valor que comparten, amplificado por $A_c$.
+- Se quiere $A_d$ grande y $A_c \to 0$. **CMRR** $= A_d / A_c$; cuanto mayor, mejor se rechaza el modo común.
+- **Amplificador de instrumentación**: amplifica señales diferenciales de µV que llegan sobre voltios de modo común (un puente, por ejemplo).
+- **Esquema**: dos operacionales de entrada como no inversores, unidos por $R_g$ y con $R_1$ en cada realimentación; detrás, un diferencial con $R_2$ y $R_3$.
+- La **ganancia** la da la **primera etapa**: con la segunda de ganancia unidad, $G = 1 + 2R_1/R_g$, y se ajusta con una sola resistencia, $R_g$.
+- El **CMRR** depende de que **$R_2$ y $R_3$ sean iguales** (apareadas).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=55">T1, pp. 55-56 y 61-64</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t1-ao">operacional e instrumentación</a>.</p>
+
+<h3 id="c1-6">C1.6 · Conversión A/D</h3>
+
+1. **Muestreo**: se toman muestras cada periodo $T$, con $f_s = 1/T$.
+2. **Cuantificación**: cada muestra se aproxima a uno de los $2^n$ niveles.
+3. **Codificación**: se asigna un código binario a cada nivel.
+
+**Nyquist**: una señal de ancho de banda limitado se puede reconstruir si se muestrea a $f_s \ge 2 f_{\max}$.
+
+**Error de cuantificación**: diferencia entre la señal cuantificada y la original. En un cuantificador uniforme vale como máximo $\pm h/2$, medio intervalo de cuantificación (medio LSB).
+
+**Características y errores** (elige cuatro): resolución $\mathrm{FS}/(2^n - 1)$; margen de entrada; ganancia (pendiente entre el primer y el último peldaño); error de cero (la primera transición no ocurre a ½ LSB); error de ganancia; no monotonicidad (la entrada sube más de 1 LSB y el código no aumenta); tiempo de conversión; *throughput rate*.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=78">T1, pp. 78, 84-89 y 91</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t1-adc">conversión A/D</a>.</p>
+
+<h3 id="e1-1">E1.1 · Sensor de presión</h3>
+
+**1.** Campo de medida $[0, 10]\ \mathrm{bar}$. Alcance $S = 10\ \mathrm{bar}$. $\mathrm{FSO} = 4{,}5 - 0{,}5 = 4\ \mathrm{V}$.
+
+**2.** La sensibilidad es la pendiente:
+
+$$
+\frac{\mathrm{FSO}}{S} = \frac{4\ \mathrm{V}}{10\ \mathrm{bar}} = 0{,}4\ \mathrm{V/bar}
+$$
+
+La recta es $V = 0{,}5 + 0{,}4\, P$ (a 0 bar da 0,5 V).
+
+**3.** Se sustituye en la recta:
+
+- A 2 bar: $V = 0{,}5 + 0{,}8 = 1{,}3\ \mathrm{V}$.
+- A 4 bar: $V = 0{,}5 + 1{,}6 = 2{,}1\ \mathrm{V}$.
+
+Intervalo 1,3-2,1 V; excursión 0,8 V. Se aprovecha $0{,}8 / 4 = 20\ \%$ del FSO.
+
+**4.** El error se refiere al **alcance**, no a la lectura:
+
+$$
+\pm 0{,}5\ \% \cdot 10\ \mathrm{bar} = \pm 0{,}05\ \mathrm{bar}
+$$
+
+A 2 bar, el error relativo es $0{,}05 / 2 = 2{,}5\ \%$ (a 4 bar, el 1,25 %).
+
+**¿Es adecuado?** Funciona, pero **no es el más adecuado**: solo usa el 20 % de su salida y, como el error es fijo, en la zona de trabajo pesa hasta cinco veces más que el 0,5 % nominal. Sería mejor un sensor de menor campo de medida, como 0-5 bar, o amplificar la señal. Si la aplicación tolera ±0,05 bar, puede servir.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=10">T1, pp. 10, 14, 17 y 28-32</a>. Es el mismo planteamiento que el <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-1-sensores/#calibracion">ejercicio 1 del boletín</a>.</p>
+
+<h3 id="e1-2">E1.2 · Hoja de características de una célula de carga</h3>
+
+**1.** Curva nominal, con los valores centrales:
+
+$$
+V = 0{,}20\ \mathrm{V} + 0{,}008\ \mathrm{V/N} \cdot F
+$$
+
+$\mathrm{FSO} = 0{,}008 \cdot 500 = 4{,}0\ \mathrm{V}$ (de 0,20 a 4,20 V).
+
+**2. Sin calibrar.** El peor caso es el fondo de escala (500 N), donde el error de sensibilidad es máximo. Se suman los errores **en tensión**:
+
+- Error de cero: 0,05 V.
+- Error de sensibilidad: $0{,}4\ \mathrm{mV/N} \cdot 500\ \mathrm{N} = 0{,}20\ \mathrm{V}$.
+- Total: 0,25 V.
+
+Se pasa a fuerza con la sensibilidad **nominal** y se divide entre el alcance:
+
+$$
+\frac{0{,}25\ \mathrm{V}}{0{,}008\ \mathrm{V/N}} = 31{,}25\ \mathrm{N}
+$$
+
+$31{,}25 / 500 = 6{,}25\ \%$. Con la no linealidad: $6{,}25 + 0{,}3 =$ **6,55 % FS**.
+
+**3. Solo el cero calibrado.** Desaparecen los 0,05 V. Quedan 0,20 V, es decir, 25 N y el 5 %. Con la no linealidad: **5,3 % FS**.
+
+**4. Cero y ganancia calibrados.** Solo queda la no linealidad: **0,3 % FS**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=28">T1, pp. 28-35</a>. Mismo método que el <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-1-sensores/#errores">ejercicio 4 del boletín</a>.</p>
+
+<h3 id="e1-3">E1.3 · Acondicionamiento para un ADC</h3>
+
+**1.** $V_s = 0{,}01\ \mathrm{V/^\circ C} \cdot T$. De 0 a 80 °C da **0-0,8 V**. Conectado directamente usa $0{,}8 / 5 = 16\ \%$ del margen del ADC.
+
+**2.** Peso de 1 LSB:
+
+$$
+h = \frac{5\ \mathrm{V}}{2^{10}} = \frac{5}{1024} = 4{,}883\ \mathrm{mV}
+$$
+
+En temperatura, se divide entre la sensibilidad del sensor:
+
+$$
+\frac{4{,}883\ \mathrm{mV}}{10\ \mathrm{mV/^\circ C}} = 0{,}488\ \mathrm{^\circ C/LSB}
+$$
+
+**3.** Hay que llevar 0-0,8 V a 0-5 V:
+
+$$
+a = \frac{5 - 0}{0{,}8 - 0} = 6{,}25
+$$
+
+$b = 0 - 6{,}25 \cdot 0 = 0$. La función es $V_o = 6{,}25\, V_s$: basta una ganancia, sin desplazamiento.
+
+**4.** En el no inversor, $G = 1 + R_2/R_1$:
+
+$$
+1 + \frac{R_2}{10\ \mathrm{k\Omega}} = 6{,}25 \;\Rightarrow\; R_2 = 52{,}5\ \mathrm{k\Omega}
+$$
+
+**5.** Ahora los 80 °C ocupan los 1024 códigos:
+
+$$
+\frac{80\ ^\circ\mathrm{C}}{1024} = 0{,}078\ \mathrm{^\circ C/LSB}
+$$
+
+Es 6,25 veces mejor que sin acondicionar, la misma proporción que la ganancia.
+
+A 25 °C: $V_s = 0{,}25\ \mathrm{V}$ y $V_o = 6{,}25 \cdot 0{,}25 = 1{,}5625\ \mathrm{V}$.
+
+$$
+\text{código} = \frac{1{,}5625\ \mathrm{V}}{4{,}883\ \mathrm{mV}} = 320
+$$
+
+En binario de 10 bits: **0101000000**.
+
+**6.** Por Nyquist, $f_s \ge 2 \cdot 0{,}5 = 1\ \mathrm{Hz}$.
+
+**Razonamiento** sobre por qué se muestrea más rápido en la práctica: Nyquist supone una señal de banda estrictamente limitada y una reconstrucción ideal. En la realidad hay ruido por encima de 0,5 Hz, los filtros no cortan en seco y, con más muestras, se puede promediar para reducir el ruido.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=47">T1, pp. 47, 49, 58-60, 78 y 84-88</a>. Mismo método que el <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-1-sensores/#adc">ejercicio 6 del boletín</a>.</p>
+
+<h3 id="e1-4">E1.4 · Amplificadores</h3>
+
+**1.** En el diferencial simétrico ($R_1 = R_3$, $R_2 = R_4$):
+
+$$
+V_o = \frac{R_2}{R_1}(V_2 - V_1) = 10 \cdot (1{,}5 - 1{,}2) = 3\ \mathrm{V}
+$$
+
+**2.** Con $V_2 = 3\ \mathrm{V}$: $V_o = 10 \cdot 1{,}8 = 18\ \mathrm{V}$. **No puede darla**: la salida no supera la alimentación. El operacional **satura** en torno a +15 V (algo menos en uno real) y la salida deja de ser proporcional a la entrada.
+
+**3.** Con la segunda etapa de ganancia unidad:
+
+$$
+G = 1 + \frac{2R_1}{R_g} = 51 \;\Rightarrow\; R_g = \frac{2 \cdot 25\ \mathrm{k\Omega}}{50} = 1\ \mathrm{k\Omega}
+$$
+
+**4.** Salida por el **modo diferencial**: $A_d = 51$, así que $51 \cdot 2\ \mathrm{mV} = 102\ \mathrm{mV}$.
+
+Ganancia de **modo común**, de la definición del CMRR:
+
+$$
+A_c = \frac{A_d}{\mathrm{CMRR}} = \frac{51}{10^5} = 5{,}1 \cdot 10^{-4}
+$$
+
+Salida por el modo común: $5{,}1 \cdot 10^{-4} \cdot 2{,}5\ \mathrm{V} = 1{,}275\ \mathrm{mV}$.
+
+Error relativo: $1{,}275 / 102 = 1{,}25\ \%$. Aunque el modo común es 1250 veces mayor que la señal, el amplificador lo reduce a un error pequeño. Con un CMRR peor, el error crecería en la misma proporción.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=50">T1, pp. 50-52, 55-56 y 58-64</a>. Fórmulas: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-1-sensores/#amplificadores">amplificador operacional</a>.</p>
+
+<h2 id="tema-2">Tema 2 · Comunicación: UART, I²C y SPI</h2>
+
+<h3 id="c2-1">C2.1 · Serie, paralelo, síncrona y asíncrona</h3>
+
+- **Paralela**: todos los bits a la vez, una línea por bit. **Serie**: bit a bit por una misma línea.
+- **Síncrona**: una línea de reloj indica cuándo leer cada bit. **Asíncrona**: no hay reloj compartido.
+- **UART**: serie y asíncrona. **I²C** y **SPI**: serie y síncronos.
+
+**Sin reloj en la UART**, los dos extremos se configuran con la **misma velocidad**, que fija la duración de cada bit (104 µs a 9600 bps). El flanco de bajada del **bit de inicio** marca el comienzo y el receptor lee cada bit en su **centro**, medio bit después (52 µs).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=1">T2, pp. 1-7</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t2-conceptos">conceptos</a> y <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t2-uart">UART</a>.</p>
+
+<h3 id="c2-2">C2.2 · Escritura de un byte por I²C</h3>
+
+1. **START**: el maestro baja SDA mientras SCL está alta.
+2. **Dirección** de 7 bits y **R/W = 0** (escritura), un bit por ciclo de SCL.
+3. El esclavo con esa dirección responde **ACK**: pone SDA a 0 en el noveno ciclo.
+4. El maestro envía el **byte de datos** (8 bits) y el esclavo responde **ACK**.
+5. **STOP**: el maestro sube SDA mientras SCL está alta.
+
+**Cronograma**: SCL con 9 pulsos para la dirección y 9 para el dato. Marca START y STOP en los extremos, con SCL alta, y el ACK en el noveno pulso de cada bloque. Como regla general del bus, que las diapositivas no mencionan, SDA solo cambia con SCL baja; por eso un cambio con SCL alta se reconoce como START o STOP.
+
+**Pull-up**: las diapositivas solo dicen que el bus las lleva y que el nivel bajo domina. **Razonamiento**: los dispositivos solo **bajan** la línea y nadie la sube activamente. La resistencia la devuelve a nivel alto cuando nadie la baja. Por eso un 0 se impone a un 1, y en eso se basan el ACK y el arbitraje.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=9">T2, pp. 9-21 y 23</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t2-i2c">I²C</a>.</p>
+
+<h3 id="c2-3">C2.3 · Arbitraje en I²C</h3>
+
+Hace falta porque I²C admite **varios maestros**: si dos empiezan a la vez, solo uno debe quedarse con el bus.
+
+**Cómo se resuelve**: cada maestro lee la línea mientras transmite. El 0 domina sobre el 1, así que el maestro que envía un 1 y lee un 0 **pierde**, deja de transmitir y espera al STOP. El ganador no se entera de nada y su trama sale intacta.
+
+**Ejemplo de las diapositivas**: M1 envía 0x68 (1101000) y M2 0x60 (1100000). Los tres primeros bits coinciden. En el cuarto, M1 envía 1 y M2 envía 0: **gana M2**.
+
+<div class="table-scroll">
+
+| Ventajas | Inconvenientes |
+| --- | --- |
+| Dos cables | Half-duplex |
+| Varios maestros y esclavos | Se complica al crecer el número de dispositivos |
+| Confirmación con ACK | |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=22">T2, pp. 22-26</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t2-arbitraje">arbitraje</a>.</p>
+
+<h3 id="c2-4">C2.4 · SPI</h3>
+
+- **Líneas**: SCLK (reloj del maestro), MOSI (maestro → esclavo), MISO (esclavo → maestro) y CS (selección, activa a nivel bajo).
+- **Transferencia**: el maestro baja la CS del esclavo, genera el reloj, envía por MOSI y recibe por MISO **a la vez**, y sube CS al terminar.
+- **Sin direcciones**: hay una **CS por esclavo**, y solo responde aquel cuya CS está baja.
+- **CPOL** fija el nivel del reloj en reposo (0 bajo, 1 alto). **CPHA** fija en qué flanco se muestrea (0 el primero, *leading*; 1 el segundo, *trailing*).
+- **Modos**: 0 (0,0), 1 (0,1), 2 (1,0) y 3 (1,1). Maestro y esclavo deben usar el mismo.
+- **Qué define**: las señales y su temporización. **Qué deja al fabricante**: los comandos, el número de bytes y su formato, porque no hay una trama de alto nivel.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=28">T2, pp. 28-47</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t2-spi">SPI</a>.</p>
+
+<h3 id="c2-5">C2.5 · Comparativa y elección de bus</h3>
+
+La tabla está en la [comparativa de las cuestiones teóricas](/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t2-comparativa). Elección:
+
+- **Módulo GPS → UART**. Es punto a punto, envía texto de forma continua y a velocidad modesta. Las diapositivas lo ponen como uso típico de la UART.
+- **Pantalla TFT → SPI**. Refrescarla a menudo exige mucha velocidad, y SPI es el más rápido (MHz). La pantalla solo recibe, así que ni siquiera usa MISO.
+- **Ocho sensores ambientales → I²C**. Con dos cables y una dirección por sensor caben todos en el mismo bus. Con SPI harían falta ocho líneas CS, y con UART, ocho puertos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=48">T2, pp. 4, 42 y 48</a>.</p>
+
+<h3 id="e2-1">E2.1 · Trama UART</h3>
+
+**1.** Tiempo de bit:
+
+$$
+t_b = \frac{1}{115\,200\ \mathrm{bps}} = 8{,}68\ \mathrm{\mu s}
+$$
+
+Cada carácter 8E1 tiene un bit de inicio, 8 de datos, 1 de paridad y 1 de parada: **11 bits**.
+
+**2.** 64 caracteres de 11 bits son 704 bits:
+
+$$
+t = 704 \cdot 8{,}68\ \mathrm{\mu s} = 6{,}11\ \mathrm{ms}
+$$
+
+Caracteres por segundo: $115\,200 / 11 = 10\,472$.
+
+**3.** 0x41 = **0100 0001**. Se envía **del bit menos significativo al más significativo**: 1, 0, 0, 0, 0, 0, 1, 0. Tiene dos unos, ya es par, así que el **bit de paridad es 0**.
+
+<div class="table-scroll">
+
+| Reposo | Inicio | D0 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | Paridad | Parada | Reposo |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 1 |
+
+</div>
+
+Cada bit dura 8,68 µs; el carácter completo, $11 \cdot 8{,}68 = 95{,}5\ \mathrm{\mu s}$.
+
+**4.** Recibiría **caracteres erróneos**. La UART no tiene reloj: el receptor solo puede fiarse de la velocidad configurada. A 9600 bps cada bit le dura 104 µs, unas **12 veces** más que los bits que llegan (8,68 µs). Detecta un bit de inicio, pero sus muestras caen en bits que no corresponden, o en el reposo después del carácter. Tampoco esperaría el bit de paridad (8N1 frente a 8E1). Velocidad y formato deben coincidir en los dos extremos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=4">T2, pp. 4-7</a>. Fórmulas: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-2-comunicacion/#uart">UART</a>.</p>
+
+<h3 id="e2-2">E2.2 · Lectura de un sensor por I²C</h3>
+
+**1.** 0x76 en 7 bits es **1110110**. El primer byte es la dirección seguida del bit R/W:
+
+- Escritura (R/W = 0): **1110 1100 = 0xEC**.
+- Lectura (R/W = 1): **1110 1101 = 0xED**.
+
+Equivale a desplazar la dirección un bit a la izquierda y sumar R/W: $2 \cdot 0x76 = 0xEC$.
+
+**2.** Cada bloque de 8 bits va seguido de un ACK o NACK, es decir, 9 ciclos de SCL:
+
+- Dirección + R/W + ACK: 9 ciclos.
+- Dos bytes de datos con su ACK/NACK: $2 \cdot 9 = 18$ ciclos.
+- Total: **27 ciclos**.
+
+$$
+t = \frac{27}{400\,000\ \mathrm{bps}} = 67{,}5\ \mathrm{\mu s}
+$$
+
+**3.** En modo estándar (100 kbps): $27 / 100\,000 = 270\ \mathrm{\mu s}$, cuatro veces más.
+
+**4.** En binario de 7 bits:
+
+<div class="table-scroll">
+
+| Bit | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| M1: 0x3C | 0 | 1 | 1 | 1 | **1** | 0 | 0 |
+| M2: 0x3A | 0 | 1 | 1 | 1 | **0** | 1 | 0 |
+
+</div>
+
+Los cuatro primeros bits coinciden. En el **quinto**, M1 envía 1 y M2 envía 0; el 0 domina, así que M1 lee un 0 distinto de lo que envió. **Gana M2**. M1 deja de transmitir y espera al STOP para volver a intentarlo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=18">T2, pp. 18-24</a>. Fórmulas: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-2-comunicacion/#i2c">I²C</a>.</p>
+
+<h3 id="e2-3">E2.3 · Transferencia SPI</h3>
+
+**1.** **Seis líneas**: SCLK, MOSI y MISO, compartidas por los tres esclavos, más una CS para cada uno (CS1, CS2, CS3).
+
+- SCLK: maestro → esclavos.
+- MOSI: maestro → esclavos.
+- MISO: esclavos → maestro. La pantalla no la usa, pero la memoria y el ADC sí.
+- CS1, CS2, CS3: maestro → cada esclavo.
+
+**2.** Modo 3: **CPOL = 1**, el reloj está **alto en reposo**. **CPHA = 1**, se muestrea en el **segundo flanco** de cada pulso (*trailing*). Con el reloj en alto, cada pulso empieza con un flanco de bajada y termina con uno de subida: se muestrea en el **flanco de subida**.
+
+**3.** Un bit por ciclo: $4 \cdot 8 = 32$ ciclos.
+
+$$
+t = \frac{32}{8\ \mathrm{MHz}} = 4\ \mathrm{\mu s}
+$$
+
+El maestro **recibe también 4 bytes**: SPI es **full-duplex** y, en cada ciclo, sale un bit por MOSI y entra otro por MISO.
+
+**4.** En I²C: $(1 + 4) \cdot 9 = 45$ ciclos.
+
+$$
+t = \frac{45}{400\,000\ \mathrm{bps}} = 112{,}5\ \mathrm{\mu s}
+$$
+
+SPI es $112{,}5 / 4 \approx 28$ veces más rápido, por la mayor frecuencia de reloj y porque no gasta ciclos en la dirección ni en los ACK.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=38">T2, pp. 28-30, 38-39, 42 y 44-46</a>. Fórmulas: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-2-comunicacion/#spi">SPI</a>.</p>
+
+<h2 id="tema-3">Tema 3 · Sensores por principio de transducción y actuadores</h2>
+
+<h3 id="c3-1">C3.1 · Clasificación de sensores e IP67</h3>
+
+<div class="table-scroll">
+
+| Criterio | Tipos y ejemplo |
+| --- | --- |
+| Funcionamiento | **Pasivos**: necesitan alimentación (RTD). **Activos**: la magnitud aporta la energía (termopar, piezoeléctrico). |
+| Señal | **Analógicos** (4-20 mA, 0-10 V), **digitales** (BME280 por I²C) y **temporales** (ultrasonidos: la información está en un tiempo). |
+| Rango | **De medida** (dan el valor) y **todo/nada** (detector de proximidad inductivo). |
+| Integración | **Discretos**, **integrados** (LM35: sensor y acondicionamiento en un chip) e **inteligentes** (comunican, calculan, se autocalibran). |
+
+</div>
+
+**IP67**: la primera cifra es la protección contra sólidos (6: **estanco al polvo**) y la segunda contra el agua (7: **inmersión eventual**).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=3">T3, pp. 3, 4 y 7</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t3-clasificacion">clasificación y grado IP</a>.</p>
+
+<h3 id="c3-2">C3.2 · Proximidad inductivo frente a capacitivo</h3>
+
+<div class="table-scroll">
+
+| | Inductivo | Capacitivo |
+| --- | --- | --- |
+| Principio | La bobina forma parte de un oscilador LC. Un metal cerca cambia la inductancia y **detiene la oscilación**. | El objeto, con constante dieléctrica distinta del aire, aumenta la capacidad y **hace oscilar** el circuito. |
+| Detecta | **Solo metales**; mejor los ferromagnéticos (hierro, acero), a más distancia que cobre o aluminio. | **Metales y no metales**; mejor cuanto mayor sea el objeto o su constante dieléctrica y cuanto más cerca esté. |
+| Ventajas | Sin contacto ni desgaste, rápido, larga vida, insensible a polvo y humedad. | Detecta a través de algunos materiales, rápido, larga vida. |
+| Inconvenientes | Solo metales, le afectan los campos electromagnéticos, poca distancia. | Sensible al ambiente, poco alcance, necesita ajuste inicial. |
+
+</div>
+
+Tras el oscilador vienen un rectificador con filtro, un comparador y la etapa de salida.
+
+**Enrasable**: el cuerpo metálico rodea la bobina o el condensador y evita la dispersión lateral del campo, así que se puede montar a ras de una superficie metálica. **No enrasable**: el elemento no está apantallado y el campo se dispersa lateralmente.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=74">T3, pp. 74-77, 79 y 81-84</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t3-proximidad">nivel y proximidad</a>.</p>
+
+<h3 id="c3-3">C3.3 · Encoder óptico y tacogenerador</h3>
+
+- **Encoder óptico**: emisor de luz, receptor (fotodiodo o fototransistor) y disco ranurado en el eje. Al girar, la luz se corta y pasa alternativamente; la **frecuencia** de esa señal da la velocidad.
+- **Incremental**: cuenta pulsos. Tiene al menos **dos pares** emisor-receptor desfasados **¼ de ranura**; cuál de los dos canales va adelantado indica el **sentido de giro**. A veces lleva una ranura extra por vuelta.
+- **Absoluto**: bandas concéntricas, cada una con su par emisor-receptor, que dan la **posición** directamente. Usa **código Gray** porque entre dos posiciones consecutivas solo cambia un bit; en binario podrían cambiar varios a la vez y, con el más mínimo desalineamiento, leerse una posición falsa durante la transición.
+- **Tacogenerador**: reluctancia variable; genera una tensión **analógica** proporcional a la velocidad. El encoder da una señal **digital**. Es sensible a las vibraciones y a las velocidades bajas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=36">T3, pp. 36-39 y 42</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t3-posicion">posición y velocidad</a>.</p>
+
+<h3 id="c3-4">C3.4 · Sensores de temperatura</h3>
+
+<div class="table-scroll">
+
+| Sensor | Principio | Ventajas | Inconvenientes |
+| --- | --- | --- | --- |
+| Termistor | Semiconductor; R baja (NTC) o sube (PTC) exponencialmente con T. | Salida elevada, rápido, muy sensible, fácil | No lineal, rango limitado, fuente de corriente, autocalentamiento |
+| Termopar | Dos metales con las uniones a distinta T (Seebeck): $\Delta V = \alpha\, \Delta T$. | Sencillo, barato, **amplio rango** | No lineal, salida baja, poca estabilidad |
+| RTD (Pt100) | Metal: $R = R_0(1 + \alpha T)$; se mide con puente. | Estable y preciso | Caro, lento, cambios pequeños de R, puente y fuente de corriente |
+| Integrado (LM35) | Sensor y acondicionamiento en un chip. | Lineal, salida elevada, barato | Rango limitado (< 250 °C), alimentación, lento |
+
+</div>
+
+- **Horno a 800 °C → termopar**: es el único de la tabla con rango suficiente; el termistor y el integrado no llegan.
+- **Sala con un nodo IoT barato → integrado** (LM35, o un BME280 digital): lineal, barato y con salida grande, sin puente; la temperatura de una sala está dentro de su rango.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=100">T3, pp. 100-101, 104 y 106</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t3-temperatura">temperatura</a>.</p>
+
+<h3 id="c3-5">C3.5 · Efecto Hall</h3>
+
+**Principio**: una corriente $I$ que atraviesa una placa conductora dentro de un campo magnético $B$ sufre una fuerza transversal. Las cargas se acumulan en un lateral y aparece una tensión $V_H$, perpendicular a la corriente y proporcional a $I$ y $B$. **Esquema**: placa con $I$ a lo largo, $B$ perpendicular a la placa y $V_H$ medida entre los laterales.
+
+- **Aplicaciones**: posición, velocidad, encoders magnéticos, detección de arranque de motor, alarmas, finales de carrera.
+- **Ventajas**: inmune a suciedad, agua y polvo.
+- **Inconvenientes**: le afectan los campos electromagnéticos externos y se calienta por la corriente $I$.
+
+**Hall frente a reed**: el **reed** son dos lengüetas metálicas que se cierran mecánicamente ante un imán; es barato y de bajo consumo, pero tiene contacto mecánico. El **Hall** es de estado sólido y lleva amplificador y comparador; sus problemas son la alineación del campo, que debe ser perpendicular a la placa, y la conmutación lenta.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=23">T3, pp. 23-26, 80 y 97-98</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t3-transduccion">principios de transducción</a>.</p>
+
+<h3 id="c3-6">C3.6 · Ultrasonidos</h3>
+
+- **Ultrasonidos**: sonido de más de 20 kHz; un piezoeléctrico convierte la onda en señal eléctrica y viceversa.
+- **Barrera**: emisor y receptor separados y enfrentados; el objeto bloquea el sonido. Salida **todo/nada**.
+- **Eco**: emisor y receptor en el mismo equipo; se mide el tiempo de ida y vuelta, $d = v_s t / 2$. Detecta y **mide distancia**.
+- **Zona ciega**: distancia mínima por debajo de la cual no puede medir.
+- **Velocidad del sonido**: depende de la **temperatura**, el **medio** y la **humedad**. Se compensa midiendo la temperatura y corrigiendo con $v_s = v_{s0}\sqrt{1 + T/273}$.
+- **Ventajas**: gran rango, muchos materiales, objetos transparentes, poco sensible al polvo.
+- **Inconvenientes**: superficies inclinadas, lento, caro, zona ciega.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=88">T3, pp. 21, 88-91 y 95</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t3-proximidad">nivel y proximidad</a>.</p>
+
+<h3 id="c3-7">C3.7 · Actuadores y relé</h3>
+
+Un **actuador** convierte una señal eléctrica en una salida, normalmente mecánica, que actúa sobre el sistema controlado.
+
+<div class="table-scroll">
+
+| Tipo | Ventajas | Inconvenientes |
+| --- | --- | --- |
+| Neumático (aire comprimido) | Barato, rápido, sencillo, robusto | Instalación especial, ruidoso |
+| Hidráulico (aceite a presión) | Mucha carga, estable con cargas estáticas | Mantenimiento complicado, caro, sucio |
+| Eléctrico | Preciso, fiable, silencioso, control sencillo | Potencia limitada |
+
+</div>
+
+**Relé**: interruptor controlado eléctricamente. **Esquema**: un circuito de control con la bobina y un circuito de potencia con los contactos y la carga. Sin corriente en la bobina, los contactos están en reposo. Con corriente, la bobina actúa como **electroimán**, atrae el pivote y conmuta los contactos que alimentan la carga (por ejemplo, un motor). Así, una señal pequeña controla una tensión grande, alterna o continua.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=124">T3, pp. 124-128</a>. Teoría: <a href="/web-estudio/asignaturas/dispositivos/apuntes/cuestiones-teoricas/#t3-actuadores">actuadores</a>.</p>
+
+<h3 id="e3-1">E3.1 · Pt100 en un puente de Wheatstone</h3>
+
+**1.** Con $R = R_0(1 + \alpha T)$:
+
+- 0 °C: $R = 100\ \Omega$.
+- 50 °C: $R = 100 \cdot (1 + 0{,}1925) = 119{,}25\ \Omega$.
+- 100 °C: $R = 100 \cdot (1 + 0{,}385) = 138{,}5\ \Omega$.
+
+**2.** El puente está equilibrado cuando $R_1/R_4 = R_2/R_3$. Como $R_2 = R_3$, hace falta $R_1 = R_4 = 100\ \Omega$: a **0 °C**.
+
+**3.** $V_y$ no depende de la temperatura: $V_y = 5 \cdot \frac{100}{200} = 2{,}5\ \mathrm{V}$.
+
+A 50 °C:
+
+$$
+V_x = 5 \cdot \frac{119{,}25}{219{,}25} = 2{,}7195\ \mathrm{V}
+$$
+
+$V_o = 2{,}7195 - 2{,}5 = 0{,}2195\ \mathrm{V}$.
+
+A 100 °C:
+
+$$
+V_x = 5 \cdot \frac{138{,}5}{238{,}5} = 2{,}9036\ \mathrm{V}
+$$
+
+$V_o = 0{,}4036\ \mathrm{V}$.
+
+**No es lineal.** Si lo fuera, al doblar la temperatura se doblaría la salida: $2 \cdot 0{,}2195 = 0{,}439\ \mathrm{V}$. Sale 0,4036 V, un 8 % menos. La resistencia de la sonda sí es lineal, pero está también en el denominador del divisor.
+
+**4.** Para que 0,4036 V pasen a 3,3 V:
+
+$$
+G = \frac{3{,}3}{0{,}4036} = 8{,}18
+$$
+
+Conviene amplificar porque la señal es pequeña frente al margen del ADC. Sin amplificar usaría solo el 12 % de los códigos y la resolución en temperatura sería peor; además, el ruido que se añada después pesaría más.
+
+**5.** Frente al termistor, la RTD tiene **menor sensibilidad** (cambios pequeños de resistencia) y es **más cara y más lenta**. También necesita fuente de corriente o puente.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=10">T3, pp. 10-12, 100 y 106</a>; <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=46">T1, p. 46</a>. Método: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-3-sensores-actuadores/#wheatstone">puente de Wheatstone</a>.</p>
+
+<h3 id="e3-2">E3.2 · Termistor NTC linealizado</h3>
+
+Todas las temperaturas van **en kelvin**: $T_0 = 298{,}15\ \mathrm{K}$.
+
+**1.** Con $R = R_0\, e^{\beta(1/T - 1/T_0)}$:
+
+<div class="table-scroll">
+
+| T | T (K) | Exponente | R |
+| --- | --- | --- | --- |
+| 0 °C | 273,15 | +1,0744 | 29,28 kΩ |
+| 30 °C | 303,15 | −0,1936 | 8,24 kΩ |
+| 60 °C | 333,15 | −1,2333 | 2,91 kΩ |
+
+</div>
+
+Por ejemplo, a 30 °C:
+
+$$
+3500 \cdot \left(\frac{1}{303{,}15} - \frac{1}{298{,}15}\right) = -0{,}1936
+$$
+
+$R = 10\ \mathrm{k\Omega} \cdot e^{-0{,}1936} = 8{,}24\ \mathrm{k\Omega}$.
+
+**2.** Con $T_c = 303{,}15\ \mathrm{K}$, $2T_c = 606{,}3$:
+
+$$
+R_1 = \frac{3500 - 606{,}3}{3500 + 606{,}3} \cdot 8{,}24\ \mathrm{k\Omega} = 0{,}7047 \cdot 8{,}24\ \mathrm{k\Omega}
+$$
+
+$R_1 = 5{,}81\ \mathrm{k\Omega}$.
+
+**3.** La salida está en bornes de $R_1$:
+
+$$
+V_A = V_i \frac{R_1}{R_1 + R_{\mathrm{NTC}}}
+$$
+
+- 0 °C: $3{,}3 \cdot 5{,}81 / 35{,}09 = 0{,}546\ \mathrm{V}$.
+- 30 °C: $3{,}3 \cdot 5{,}81 / 14{,}05 = 1{,}364\ \mathrm{V}$.
+- 60 °C: $3{,}3 \cdot 5{,}81 / 8{,}72 = 2{,}197\ \mathrm{V}$.
+
+De 0 a 30 °C sube 0,818 V y de 30 a 60 °C, 0,833 V. Los dos tramos son casi iguales: la respuesta es **aproximadamente lineal**, aunque la resistencia de la NTC cambie diez veces. La salida sube con la temperatura porque la NTC baja y deja más tensión en $R_1$.
+
+**4.** Fórmula de la pendiente en $T_c$, con $\beta^2 / (4T_c^2) = 33{,}33$:
+
+$$
+S_{T_c} = \frac{V_i}{\beta}\left(\frac{\beta^2}{4T_c^2} - 1\right) = \frac{3{,}3}{3500} \cdot 32{,}33
+$$
+
+$S_{T_c} = 0{,}0305\ \mathrm{V/K} = 30{,}5\ \mathrm{mV/^\circ C}$. Un grado kelvin y un grado Celsius son el mismo incremento.
+
+Para comprobarlo, con la recta: $1{,}364 - 30 \cdot 0{,}0305 = 0{,}45\ \mathrm{V}$ a 0 °C, frente a 0,546 V reales. Lejos de $T_c$ la linealización se separa unos 3 °C.
+
+**5.** **Autocalentamiento**: la corriente que atraviesa el termistor disipa potencia ($I^2 R$) y lo calienta, así que mide una temperatura mayor que la real. **Razonamiento** para reducirlo: limitar la corriente (tensión de alimentación baja o resistencias altas) o alimentar el divisor solo en el momento de medir.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=102">T3, pp. 100-103</a>. Método: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-3-sensores-actuadores/#problemas">problemas tipo</a>.</p>
+
+<h3 id="e3-3">E3.3 · Nivel de un depósito por ultrasonidos</h3>
+
+**1.** Con la temperatura en °C, como en la diapositiva:
+
+$$
+v_s = 331\sqrt{1 + \frac{30}{273}} = 331 \cdot 1{,}0535 = 348{,}7\ \mathrm{m/s}
+$$
+
+**2.** El eco recorre la distancia dos veces (ida y vuelta):
+
+$$
+d = \frac{v_s\, t}{2} = \frac{348{,}7 \cdot 0{,}006}{2} = 1{,}046\ \mathrm{m}
+$$
+
+El sensor está en la tapa, así que mide el aire que queda sobre el líquido. Nivel: $2{,}0 - 1{,}046 = 0{,}954\ \mathrm{m}$.
+
+**3.** A 20 °C supone $v_s = 331\sqrt{1 + 20/273} = 342{,}9\ \mathrm{m/s}$:
+
+- $d = 342{,}9 \cdot 0{,}003 = 1{,}029\ \mathrm{m}$.
+- Nivel calculado: $2{,}0 - 1{,}029 = 0{,}971\ \mathrm{m}$.
+
+Error: $0{,}971 - 0{,}954 = 0{,}017\ \mathrm{m}$. Marca **1,7 cm de más**, un 1,8 % del nivel real. Al suponer el sonido más lento, cree que la superficie está más cerca.
+
+**4.** No mide a menos de 25 cm del sensor. **Nivel máximo**: $2{,}0 - 0{,}25 = 1{,}75\ \mathrm{m}$. **Tiempo de eco mínimo**:
+
+$$
+t = \frac{2 \cdot 0{,}25}{348{,}7} = 1{,}43\ \mathrm{ms}
+$$
+
+**5.** **Razonamiento**: la espuma refleja mal el sonido; parte se absorbe o se dispersa y el eco puede volver de la espuma en lugar del líquido. Una opción de las diapositivas es el **sensor resistivo de boya**: la boya flota en el líquido y mueve un potenciómetro, sin depender de lo que haya por encima. Otra es un **capacitivo**, que detecta a través de algunos materiales, por ejemplo desde fuera de un depósito no metálico.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=89">T3, pp. 21, 84, 89, 91, 95 y 96</a>. Método: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-3-sensores-actuadores/#problemas">problemas tipo</a>.</p>
+
+<h3 id="e3-4">E3.4 · Encoder incremental</h3>
+
+**1.** Resolución, con la fórmula de la diapositiva:
+
+$$
+R = \frac{\pi D}{2 a_r} = \frac{\pi \cdot 40}{2 \cdot 0{,}5} = 125{,}7
+$$
+
+Se redondea hacia abajo: **125 ranuras**. Cada ranura con su hueco ocupa $2a_r = 1\ \mathrm{mm}$ del perímetro.
+
+Resolución angular: $360° / 125 = 2{,}88°$.
+
+**2.** 1500 rpm son $1500 / 60 = 25$ vueltas por segundo. Cada vuelta da 125 pulsos por canal:
+
+$$
+f = 25 \cdot 125 = 3125\ \mathrm{Hz}
+$$
+
+**3.** Los canales A y B son dos señales cuadradas de 3125 Hz desfasadas **¼ de ranura** (un cuarto de periodo). En un sentido, A va adelantada respecto a B; en el otro, B va adelantada respecto a A. **Dibujo**: dos cronogramas, uno con el flanco de subida de A antes que el de B y otro al revés.
+
+El microcontrolador mira el nivel de B en cada flanco de subida de A: en un sentido de giro lo encuentra siempre bajo y en el otro, siempre alto.
+
+**4.** Hacen falta $n$ bandas con $2^n \ge 125$: $2^6 = 64$ no llega y $2^7 = 128$ sí, así que son **7 bandas**.
+
+<div class="table-scroll">
+
+| Posición | Binario | Gray (7 bits) |
+| --- | --- | --- |
+| 5 | 0000101 | 0000111 |
+| 6 | 0000110 | 0000101 |
+
+</div>
+
+Para pasar a Gray, el bit más alto se copia y cada uno de los demás es el XOR con el bit binario anterior. De 5 a 6 cambian **dos bits en binario** y **solo uno en Gray**. Si las bandas no están perfectamente alineadas, en binario podría leerse durante la transición una posición que no es ni 5 ni 6 (por ejemplo 4 o 7); en Gray, solo 5 o 6.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=37">T3, pp. 37-39</a>. Método: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-3-sensores-actuadores/#problemas">problemas tipo</a>.</p>

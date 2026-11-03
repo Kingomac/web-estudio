@@ -10,5 +10,9 @@ export const components: Record<string, { title: string; file: string }> = {
   'protocolos.lorawan-recorrido': { title: 'Recorrido de un mensaje LoRaWAN y sus claves', file: 'src/components/lectura/LorawanRecorrido.astro' },
   'protocolos.lpwan-cronogramas': { title: 'Cronogramas de clases LoRaWAN y de PSM/eDRX', file: 'src/components/lectura/LpwanCronogramas.astro' },
   'protocolos.lorawan-trama': { title: 'Campos de una trama LoRaWAN', file: 'src/components/lectura/LorawanTrama.astro' },
+  'dispositivos.puente-wheatstone': { title: 'Puente de Wheatstone como dos divisores', file: 'src/components/lectura/PuenteWheatstone.astro' },
+  'dispositivos.figuras-radio': { title: 'Figuras del tema 6: enlace, antenas y polarización', file: 'src/components/lectura/FigurasRadio.astro' },
+  'dispositivos.diagrama-radiacion': { title: 'Diagrama de radiación, directividad y anchos de haz', file: 'src/components/lectura/DiagramaRadiacion.astro' },
+  'dispositivos.amplificadores': { title: 'Montajes con el operacional ideal', file: 'src/components/lectura/Amplificadores.astro' },
 };
 export const workshops: Record<string, string> = { 'protocolos.ndp': 'protocolos.ndp' };

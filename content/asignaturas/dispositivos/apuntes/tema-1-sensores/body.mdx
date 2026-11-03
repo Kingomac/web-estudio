@@ -1,3 +1,5 @@
+import Amplificadores from '../../../../../src/components/lectura/Amplificadores.astro';
+
 <h2 id="examen">Qué cae y cómo usar estos apuntes</h2>
 
 En el examen hay **una cuestión y un problema de cada tema**, parecidos a los del boletín. El PDF del bloque 1 contiene los temas 1, 2 y 3 y comparten un único boletín, titulado «Ejercicios Tema 1». Aquí está el tema 1 (pp. 1-97) con los **ejercicios 1, 3, 4, 5 y 6** del boletín: curva de calibración, amplificador operacional, errores de un sensor, conversión A/D y acondicionamiento. El ejercicio 2 (puente de Wheatstone) está en los [apuntes del tema 3](/web-estudio/asignaturas/dispositivos/apuntes/tema-3-sensores-actuadores/#wheatstone). Ningún ejercicio del boletín trata los buses del tema 2.
@@ -31,38 +33,203 @@ Cada apartado tiene la fórmula, los pasos y el ejercicio del boletín resuelto.
 
 <p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=10">T1, pp. 10, 14 y 17</a>.</p>
 
-<h2 id="amplificadores">Amplificador operacional ideal</h2>
+<h2 id="amplificadores">Amplificadores operacionales: cómo se resuelven</h2>
 
-Hipótesis: $V_- = V_+$ (cortocircuito virtual) e $I_- = I_+ = 0$.
+Los ejercicios de amplificadores del examen piden casi siempre lo mismo:
 
-<div class="table-scroll">
+- **Calcular $V_o$** en un circuito dado, a veces con dos fuentes (boletín, ejercicio 3).
+- **Decir si el operacional puede dar esa tensión** con su alimentación, es decir, comprobar la saturación.
+- **Diseñar una resistencia** para conseguir una ganancia (no inversor del E1.3, $R_g$ del amplificador de instrumentación).
+- **Calcular el efecto del modo común** a partir del CMRR.
 
-| Montaje | Salida |
-| --- | --- |
-| Inversor | $V_o = -\dfrac{R_2}{R_1}\, V_i$ |
-| No inversor | $V_o = \left(1 + \dfrac{R_2}{R_1}\right) V_i$ |
-| Diferencial | $V_o = -\dfrac{R_2}{R_1}\, V_1 + \left(1 + \dfrac{R_2}{R_1}\right) \dfrac{R_4}{R_3 + R_4}\, V_2$ |
-| Diferencial simétrico ($R_1 = R_3$, $R_2 = R_4$) | $V_o = \dfrac{R_2}{R_1}\, (V_2 - V_1)$ |
-| Instrumentación ($R_2 = R_3$) | $G = 1 + \dfrac{2 R_1}{R_g}$ |
+Todos se resuelven con dos reglas y el mismo método. Abajo tienes los cuatro montajes de las diapositivas en un esquema que puedes modificar.
 
-</div>
+<h3 id="amp-ideal">Las dos reglas del operacional ideal</h3>
 
-**Receta con dos fuentes: superposición.** Anula una fuente, calcula su contribución con la fórmula del inversor o del no inversor y suma. Comprueba al final que $V_o$ cabe dentro de la alimentación.
+El operacional ideal tiene ganancia infinita, resistencia de entrada infinita y resistencia de salida nula. De ahí salen las dos reglas que se usan en todos los ejercicios:
 
-**Boletín, ejercicio 3.** La fuente de 3 V fija directamente $V_+ = 3\ \mathrm{V}$; la resistencia de 3 kΩ en paralelo no cambia esa tensión.
+1. **Cortocircuito virtual**: $V^- = V^+$. Las dos entradas están a la misma tensión, aunque no estén unidas.
+2. **No entra corriente** en el operacional: $I^- = I^+ = 0$. Toda la corriente que llega a un nudo de entrada sigue por las resistencias.
+
+Estas reglas valen porque la salida está **realimentada** a la entrada inversora (por $R_2$). Así es en todos los montajes del tema.
+
+<Amplificadores />
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=50">T1, p. 50</a>.</p>
+
+<h3 id="amp-metodo">El método, paso a paso</h3>
+
+1. **Identifica el montaje**: por qué entrada llega cada señal y qué hay conectado a la entrada $+$.
+2. **Calcula $V^+$**: es 0 si está a masa, la tensión de la fuente si llega directamente o un divisor si llega a través de resistencias.
+3. **Aplica el cortocircuito virtual**: $V^- = V^+$.
+4. **Iguala corrientes en el nudo $-$**: la que llega por $R_1$ es la misma que sale por $R_2$, porque no entra nada en el operacional.
+5. **Despeja $V_o$**.
+6. **Con dos fuentes, usa superposición**: anula una fuente (sustitúyela por masa), calcula la salida con la otra y suma las dos contribuciones.
+7. **Comprueba la saturación**: $V_o$ no puede salir de la alimentación.
+
+<h3 id="amp-inversor">Inversor</h3>
+
+La señal entra por $R_1$ a la entrada $-$; la entrada $+$ está a masa.
+
+- $V^+ = 0$, así que $V^- = 0$.
+- Corriente por $R_1$: $I_1 = \dfrac{V_i - 0}{R_1}$. Corriente por $R_2$: $I_2 = \dfrac{0 - V_o}{R_2}$.
+- Como no entra corriente, $I_1 = I_2$:
 
 $$
-\begin{aligned}
-V_o &= -\frac{5\,\mathrm{k}}{10\,\mathrm{k}} \cdot 5 + \left(1 + \frac{5\,\mathrm{k}}{10\,\mathrm{k}}\right) \cdot 3 \\
-    &= -2{,}5 + 4{,}5 = 2\ \mathrm{V}
-\end{aligned}
+V_o = -\frac{R_2}{R_1}\, V_i
 $$
 
-**Sí puede darla**: 2 V está muy lejos de ±15 V.
+El signo menos indica que **invierte** la señal: si $V_i$ es positiva, $V_o$ sale negativa. Ejemplo: con $R_1 = 10\ \mathrm{k\Omega}$, $R_2 = 100\ \mathrm{k\Omega}$ y $V_i = 0{,}2\ \mathrm{V}$, la salida es $V_o = -10 \cdot 0{,}2 = -2\ \mathrm{V}$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=51">T1, p. 51</a>.</p>
+
+<h3 id="amp-no-inversor">No inversor</h3>
+
+La señal entra directamente por la entrada $+$; $R_1$ va de la entrada $-$ a masa.
+
+- $V^+ = V_i$, así que $V^- = V_i$.
+- $R_1$ y $R_2$ forman un divisor de la salida: $V^- = V_o \dfrac{R_1}{R_1 + R_2}$.
+- Igualando y despejando:
+
+$$
+V_o = \left(1 + \frac{R_2}{R_1}\right) V_i
+$$
+
+No invierte y su ganancia es **al menos 1**.
+
+**Diseño (E1.3, apartado 4).** Para una ganancia de 6,25 con $R_1 = 10\ \mathrm{k\Omega}$:
+
+$$
+1 + \frac{R_2}{R_1} = 6{,}25 \;\Rightarrow\; R_2 = 5{,}25 \cdot 10\ \mathrm{k\Omega} = 52{,}5\ \mathrm{k\Omega}
+$$
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=52">T1, p. 52</a>.</p>
+
+<h3 id="amp-diferencial">Diferencial: superposición</h3>
+
+Tiene dos entradas: $V_1$ entra por $R_1$ a la entrada $-$, y $V_2$ llega a la entrada $+$ a través del divisor $R_3$-$R_4$. Las diapositivas lo resuelven por **superposición**, $V_o = A_1 V_1 + A_2 V_2$:
+
+- **Solo $V_1$** ($V_2 = 0$, así que $V^+ = 0$): es un inversor, $A_1 = -\dfrac{R_2}{R_1}$.
+- **Solo $V_2$** ($V_1 = 0$, así que $R_1$ queda a masa): la entrada $+$ recibe $V^+ = V_2 \dfrac{R_4}{R_3 + R_4}$ y el circuito es un no inversor que la amplifica por $1 + \dfrac{R_2}{R_1}$.
+
+Sumando las dos contribuciones:
+
+$$
+V_o = -\frac{R_2}{R_1} V_1 + \left(1 + \frac{R_2}{R_1}\right) \frac{R_4}{R_3 + R_4}\, V_2
+$$
+
+**Caso simétrico** ($R_1 = R_3$ y $R_2 = R_4$): la fórmula se simplifica y el circuito amplifica solo la diferencia.
+
+$$
+V_o = \frac{R_2}{R_1}\,(V_2 - V_1)
+$$
+
+**Ejemplo (E1.4, apartado 1)**: $R_1 = 10\ \mathrm{k\Omega}$, $R_2 = 100\ \mathrm{k\Omega}$, $V_1 = 1{,}2\ \mathrm{V}$ y $V_2 = 1{,}5\ \mathrm{V}$. La salida es $V_o = 10 \cdot 0{,}3 = 3\ \mathrm{V}$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=58">T1, pp. 58-61</a>.</p>
+
+<h3 id="amp-boletin">Boletín de los temas 1-3, ejercicio 3</h3>
+
+Circuito: una fuente de 5 V entra por 10 kΩ a la entrada $-$, la realimentación es de 5 kΩ y una fuente de 3 V va **directamente** a la entrada $+$, con una resistencia de 3 kΩ a masa en paralelo.
+
+**1. Tensión en $+$.** La fuente de 3 V está conectada directamente a la entrada, así que fija $V^+ = 3\ \mathrm{V}$. La resistencia de 3 kΩ está en paralelo con una fuente ideal: por ella circula corriente, pero no cambia la tensión del nudo. En la fórmula del diferencial equivale a $R_3 = 0$, que da $V^+ = V_2$.
+
+**2. Contribución de la fuente de 5 V** (la de 3 V anulada): inversor.
+
+$$
+-\frac{5\ \mathrm{k\Omega}}{10\ \mathrm{k\Omega}} \cdot 5\ \mathrm{V} = -2{,}5\ \mathrm{V}
+$$
+
+**3. Contribución de la fuente de 3 V** (la de 5 V anulada, 10 kΩ a masa): no inversor.
+
+$$
+\left(1 + \frac{5\ \mathrm{k\Omega}}{10\ \mathrm{k\Omega}}\right) \cdot 3\ \mathrm{V} = 1{,}5 \cdot 3 = 4{,}5\ \mathrm{V}
+$$
+
+**4. Suma**: $V_o = -2{,}5 + 4{,}5 = 2\ \mathrm{V}$.
+
+**5. ¿Puede darla?** **Sí**: 2 V está muy lejos de ±15 V.
 
 [Practicar el ejercicio 3](/web-estudio/asignaturas/dispositivos/ejercicios/t1-ej3-amplificador/).
 
-<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=50">T1, pp. 50-52, 58-61 y 64</a>.</p>
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/boletin-temas-1-3.pdf#page=2">boletín de los temas 1-3, p. 2</a>; <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=51">T1, pp. 51-52</a>.</p>
+
+<h3 id="amp-saturacion">¿Puede dar esa tensión? La saturación</h3>
+
+Las fórmulas suponen un operacional ideal sin límites, pero **la salida no puede superar la tensión de alimentación**. Si el cálculo da más, el operacional **satura**: se queda pegado a la alimentación (en uno real, algo por debajo) y la salida deja de ser proporcional a la entrada.
+
+**Ejemplo (E1.4, apartado 2)**: el mismo diferencial con $V_2 = 3\ \mathrm{V}$ daría $V_o = 10 \cdot 1{,}8 = 18\ \mathrm{V}$. Alimentado a ±15 V, **no puede**: satura en torno a +15 V.
+
+Por eso se comprueba al final de cada ejercicio, aunque el enunciado no lo pida. Si satura, hay que bajar la ganancia.
+
+<h3 id="amp-modo-comun">Modo común y CMRR</h3>
+
+El operacional responde a dos cosas:
+
+- La **diferencia** entre sus entradas, $V_d$ (modo diferencial), con ganancia $A_d$.
+- Su **valor común**, $V_c$ (modo común, lo que comparten las dos), con ganancia $A_c$.
+
+$$
+V_o = A_d V_d + A_c V_c
+$$
+
+Se quiere $A_d$ grande y $A_c \to 0$. El factor de mérito es el **factor de rechazo del modo común**:
+
+$$
+\mathrm{CMRR} = \frac{A_d}{A_c}
+$$
+
+Si es infinito, el modo común no afecta a la salida.
+
+**Receta para el error por modo común**:
+
+1. Calcula $A_c = A_d / \mathrm{CMRR}$. Si te dan el CMRR en dB, pásalo a cociente: $\mathrm{CMRR} = 10^{\,\mathrm{dB}/20}$, de modo que 100 dB son $10^5$. Esta conversión es la general de los decibelios en tensión; las diapositivas no la incluyen.
+2. Salida útil: $A_d V_d$. Salida por modo común: $A_c V_c$.
+3. Error relativo: la segunda dividida entre la primera.
+
+**Ejemplo (E1.4, apartado 4)**: 2 mV diferenciales sobre 2,5 V de modo común, con $A_d = 51$ y CMRR de $10^5$.
+
+- Salida útil: $51 \cdot 2\ \mathrm{mV} = 102\ \mathrm{mV}$.
+- $A_c = 51 / 10^5 = 5{,}1 \cdot 10^{-4}$, así que el modo común da $5{,}1 \cdot 10^{-4} \cdot 2{,}5 = 1{,}275\ \mathrm{mV}$.
+- Error: $1{,}275 / 102 = 1{,}25\ \%$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=53">T1, pp. 53-56</a>.</p>
+
+<h3 id="amp-instrumentacion">Amplificador de instrumentación</h3>
+
+Sirve para amplificar señales diferenciales de **µV** que llegan sobre **voltios** de modo común; es el caso de la salida de un puente de Wheatstone. Tiene **tres operacionales**:
+
+- **Primera etapa**: dos operacionales de entrada, unidos por $R_g$ y con $R_1$ en cada realimentación. Da la ganancia.
+- **Segunda etapa**: un diferencial con $R_2$ y $R_3$, que resta las dos salidas y elimina el modo común.
+
+$$
+V_o = \frac{R_3}{R_2}\left(1 + \frac{2R_1}{R_g}\right)(V_{i+} - V_{i-})
+$$
+
+Los integrados (INA118) tienen la segunda etapa de **ganancia unidad** ($R_2 = R_3$), así que la ganancia se fija con una sola resistencia, $R_g$:
+
+$$
+G = 1 + \frac{2R_1}{R_g}
+$$
+
+La exactitud de la ganancia y el CMRR dependen de que $R_2$ y $R_3$ sean iguales.
+
+**Diseño (E1.4, apartado 3)**: para $G = 51$ con $R_1 = 25\ \mathrm{k\Omega}$, despeja $R_g$:
+
+$$
+R_g = \frac{2R_1}{G - 1} = \frac{50\ \mathrm{k\Omega}}{50} = 1\ \mathrm{k\Omega}
+$$
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=62">T1, pp. 62-64</a>.</p>
+
+<h3 id="amp-errores">Errores típicos</h3>
+
+- **Olvidar el signo del inversor.** La contribución de una señal que entra por la entrada $-$ lleva signo menos.
+- **Usar la ganancia del inversor para la entrada $+$.** Lo que entra por $+$ se amplifica por $1 + R_2/R_1$, no por $R_2/R_1$.
+- **Olvidar el divisor $R_3$-$R_4$.** En el diferencial, lo que se amplifica es $V^+$, no $V_2$, salvo que $V_2$ llegue directamente a la entrada.
+- **Dejarse engañar por una resistencia en paralelo con una fuente ideal.** No cambia la tensión del nudo (los 3 kΩ del boletín).
+- **No comprobar la saturación.** Si $V_o$ supera la alimentación, el resultado real es otro.
+- **Usar mal las unidades.** Pasa los kΩ a la misma unidad en el cociente y da los milivoltios como mV.
 
 <h2 id="acondicionamiento">Acondicionamiento: Vo = G·Vs + D</h2>
 
