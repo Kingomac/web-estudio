@@ -1,0 +1,688 @@
+<p class="lead">Las preguntas de desarrollo valen el 35 % de la nota final, más que los problemas (20 %). Esta hoja reúne, tema a tema, toda la teoría de las diapositivas que se puede preguntar como cuestión, redactada como respuesta de examen. Las fórmulas solo aparecen cuando forman parte de la explicación; para resolver problemas están los apuntes de cada tema y el formulario.</p>
+
+<h2 id="como-responder">Cómo responder una cuestión</h2>
+
+Las únicas cuestiones de referencia son las cinco del boletín de los temas 4 y 5 y, para el tema 6, la parte conceptual del problema 1 de su boletín. Piden **explicar** (PGOOD, efectos Thompson y Peltier), **enumerar y ordenar** (fuentes de energía), **dibujar un modelo** (célula fotovoltaica) o **comparar en una tabla** (rectificadores). Del tema 6 sabemos además que el problema será el balance de enlace con Friis: la cuestión saldrá del resto del tema (parámetros de antena, polarización, decibelios, espectro).
+
+Una respuesta completa tiene casi siempre las mismas piezas:
+
+1. **Definición** en una frase, con las palabras de las diapositivas.
+2. **Principio o funcionamiento**: qué ocurre físicamente o paso a paso.
+3. **Esquema o fórmula**, si existe: un dibujo con sus etiquetas puntúa.
+4. **Ventajas, inconvenientes y aplicaciones**, o la comparación con la alternativa.
+5. Un **número de orden de magnitud** (rango, tensión típica, velocidad) cuando lo hay.
+
+<p class="callout">Muchas diapositivas son listas de ventajas y desventajas. Aquí están todas; si te falta tiempo, aprende primero las tablas comparativas: sirven para varias preguntas a la vez.</p>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/boletin-temas-4-5.pdf#page=1">boletín de los temas 4 y 5, p. 1</a>; <a href="/web-estudio/materiales/dispositivos/boletin-tema-6.pdf#page=1">boletín del tema 6, p. 1</a>.</p>
+
+<h2 id="t1">Tema 1 · Sensores: caracterización, acondicionamiento y conversión A/D</h2>
+
+<h3 id="t1-nodo">Partes de un nodo IoT y de un sistema de medida</h3>
+
+Magnitud física → **sensor** → **acondicionamiento** → **ADC** → **MCU** → transmisión (Wi-Fi, LoRa, BLE…). El sensor (también llamado transductor o captador) recibe la variable a medir y produce una señal eléctrica (tensión o corriente). El acondicionamiento adapta esa señal: **amplifica** y **filtra**. Hay que caracterizar el sensor para saber si sirve para una aplicación.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=6">T1, pp. 6-8 y 45</a>.</p>
+
+<h3 id="t1-estatica">Caracterización estática: la curva de calibración</h3>
+
+Se hace en **régimen permanente**, con la entrada ya estable. La curva de calibración (función de transferencia) relaciona entrada X y salida Y.
+
+<div class="table-scroll">
+
+| Parámetro | Definición |
+| --- | --- |
+| Campo de medida (rango) | Intervalo admisible de la entrada $[X_{\min}, X_{\max}]$. |
+| Alcance o fondo de escala | $S = X_{\max} - X_{\min}$, en unidades de entrada. |
+| FSO | Diferencia entre la salida máxima y la mínima, en unidades de salida. |
+| Sensibilidad | Pendiente de la curva en cada punto. Interesa grande (mucho FSO con poco alcance) y constante (sistema lineal). |
+| No linealidad | Máxima diferencia entre la curva y la recta ajustada por mínimos cuadrados; también en % del FSO. |
+| Zona muerta | Tramo de sensibilidad nula: la entrada cambia y la salida no. También molestan los máximos y mínimos. |
+| Histéresis | La curva cambia según el sentido en que varía la entrada. |
+| Saturación | Pérdida de sensibilidad cerca de los extremos del campo de medida. |
+| Resolución | Cambio mínimo de entrada que produce un cambio detectable en la salida. |
+| Umbral | Valor más bajo de la entrada al que reacciona el sensor. |
+| Intervalo de confianza | Valores entre los que está el valor medido con una probabilidad dada. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=9">T1, pp. 9-24</a>.</p>
+
+<h3 id="t1-exactitud">Repetibilidad, reproducibilidad, precisión, veracidad y exactitud</h3>
+
+- **Repetibilidad**: diferencia entre medidas del mismo valor tomadas en tiempos cercanos, con el mismo equipo y por la misma persona.
+- **Reproducibilidad**: lo mismo, pero en tiempos no próximos, con equipos distintos y por personas distintas. Ambas se cuantifican con la desviación estándar.
+- **Precisión**: para la misma entrada, salidas parecidas (poca dispersión).
+- **Veracidad**: la **media** de varias medidas coincide con el valor real.
+- **Exactitud**: agrupa precisión y veracidad. Un equipo puede ser preciso y no veraz (todas las medidas juntas pero desplazadas).
+
+**Errores.** Absoluto $\lvert X_m - X_r \rvert$; relativo, dividido por el valor real; referido al fondo de escala, dividido por el alcance. **±1 % FS no es ±1 % de la lectura**: el error sobre fondo de escala es un valor fijo, así que en lecturas pequeñas supone un error relativo mucho mayor. Ejemplo de las diapositivas: 1 °C de error es el 2,7 % a 37 °C en un termómetro clínico y el 0,5 % a 200 °C en un horno.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=25">T1, pp. 25-32</a>.</p>
+
+<h3 id="t1-derivas">Derivas y calibración</h3>
+
+Las condiciones ambientales y el paso del tiempo cambian el comportamiento estático: son las **derivas**, sobre todo **térmicas** (temperatura) y **temporales** (envejecimiento). Pueden **desplazar** la recta de calibración (error de cero) o **cambiar su pendiente** (error de ganancia).
+
+- **Calibración a un punto**: se aplica el valor más bajo del campo de medida y se ajusta la salida al mínimo del FSO. Corrige el desplazamiento.
+- **Calibración a dos puntos**: si la deriva afecta a la ganancia, primero se ajusta el cero y después la ganancia con una entrada patrón. Tras ella solo queda la no linealidad.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=33">T1, pp. 33-35</a>.</p>
+
+<h3 id="t1-dinamica">Caracterización dinámica</h3>
+
+Evalúa la **rapidez** de la respuesta y cómo pasa la salida del valor inicial al final.
+
+- **Dominio de la frecuencia** (diagrama de Bode): un sistema es rápido si responde a frecuencias de entrada altas. **Ancho de banda**: intervalo de frecuencias en que funciona correctamente; se suele tomar hasta una caída de **3 dB** respecto a la zona plana (frecuencia de corte $f_c$).
+- **Dominio del tiempo**: respuesta a un **escalón** (sistemas de primer y segundo orden). Parámetro crítico: el **tiempo de establecimiento**, lo que tarda en entrar en una banda del 5 % o del 1 % del valor final.
+- Están relacionados: un sistema rápido tiene **ancho de banda grande y tiempo de establecimiento pequeño**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=36">T1, pp. 36-42</a>.</p>
+
+<h3 id="t1-ruido">Ruido y por qué amplificar</h3>
+
+El **ruido** es una perturbación no deseada que interfiere en la señal medida. Puede ser **interno** (lo generan los propios dispositivos, por ejemplo por calentamiento) o **externo** (fuentes ajenas), y **aleatorio** (ruido térmico) o con estructura identificable (la red eléctrica). Se mide con la relación señal-ruido $\mathrm{SNR} = 10 \log (P_S / P_N)$.
+
+**Por qué amplificar**: la señal del sensor suele ser pequeña y el ruido le afecta mucho. La amplificación adapta su amplitud al rango de la siguiente etapa y hace que el ruido que se añada después pese menos. El amplificador aplica una ganancia y un desplazamiento: $V_o = G V_s + D$. Después suele venir el **filtrado**, que adapta el ancho de banda y bloquea las frecuencias indeseadas: paso bajo, paso alto, paso banda y banda eliminada, pasivos (RC) o activos (con operacional).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=43">T1, pp. 43-48 y 67-68</a>.</p>
+
+<h3 id="t1-ao">Amplificador operacional, CMRR y amplificador de instrumentación</h3>
+
+**Operacional ideal**: ganancia infinita (cortocircuito virtual, $V_- = V_+$), resistencia de entrada infinita ($I_- = I_+ = 0$) y resistencia de salida nula.
+
+**Modo diferencial y modo común.** El operacional responde a la diferencia de las entradas ($A_d$) y a su valor común ($A_c$). Se quiere $A_d$ grande y $A_c \to 0$. El factor de mérito es el **CMRR** $= A_d / A_c$: si es infinito, el modo común no afecta a la salida. En el diferencial simétrico ideal, $A_c = 0$ y CMRR infinito.
+
+**Amplificador de instrumentación**: debe amplificar señales diferenciales de **µV** y rechazar modo común de **voltios**. Se hace con **tres operacionales**: dos de entrada, que dan la ganancia, y un diferencial de salida. La exactitud de la ganancia y el CMRR dependen de que $R_2$ y $R_3$ sean iguales; los integrados (como el INA118) tienen ganancia unidad en la segunda etapa y fijan la ganancia con una sola resistencia: $G = 1 + 2R_1/R_g$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=50">T1, pp. 50, 53-56 y 61-66</a>.</p>
+
+<h3 id="t1-adc">Conversión A/D: muestreo, cuantificación y codificación</h3>
+
+1. **Muestreo**: la señal continua se convierte en una secuencia de muestras tomadas cada periodo $T$ ($f_s = 1/T$). **Teorema de Nyquist**: una señal de banda limitada se puede reconstruir si $f_s \geq 2 f_{\max}$.
+2. **Cuantificación**: la amplitud continua pasa a un conjunto discreto de valores. La diferencia entre señal cuantificada y original es el **error de cuantificación**; en un cuantificador uniforme su máximo es $\pm h/2$, siendo $h$ el intervalo de cuantificación (margen de entrada que no cambia la salida).
+3. **Codificación**: se asigna un código a cada estado; en sistemas digitales, binario (directo o BCD).
+
+Con $n$ bits hay $2^n$ estados; la resolución es $1/(N-1) \approx 1/N$ y el peso del bit menos significativo es el **LSB**. Los microcontroladores suelen **multiplexar** varias entradas analógicas sobre un único ADC.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=74">T1, pp. 74-89 y 97</a>.</p>
+
+<h3 id="t1-adc-caracteristicas">Características y errores de un convertidor A/D</h3>
+
+<div class="table-scroll">
+
+| Tipo | Concepto | Definición |
+| --- | --- | --- |
+| Estática | Resolución | Variación de entrada necesaria para cambiar la salida: $\mathrm{FS}/(2^n - 1)$. |
+| Estática | Margen de entrada | Valores de entrada para los que produce códigos (p. ej., 0-10 V). |
+| Estática | Ganancia | Pendiente de la recta que une los puntos medios del primer y último peldaño. |
+| Estática | Exactitud absoluta | Diferencia entre el código obtenido y el esperado. |
+| Estática | Exactitud | La misma diferencia, tras eliminar los errores de cero y de ganancia. |
+| Dinámica | Tiempo de conversión | Lo que tarda en hacer una conversión. |
+| Dinámica | Throughput rate | Máxima frecuencia a la que da salidas estables en conversiones consecutivas. |
+| Error | No monotonicidad | Al subir la entrada más de 1 LSB, el código no aumenta. |
+| Error | Cero (offset) | Desplazamiento horizontal de la curva: la transición 00…0 → 00…1 no ocurre a ½ LSB. |
+| Error | Ganancia | Diferencia entre los puntos de ganancia nominal y real, una vez corregido el cero. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-1-sensores.pdf#page=91">T1, pp. 91-96</a>.</p>
+
+<h2 id="t2">Tema 2 · Comunicación: UART, I²C y SPI</h2>
+
+<h3 id="t2-conceptos">Serie frente a paralelo; síncrona frente a asíncrona</h3>
+
+- **Paralela**: se envían todos los bits a la vez, uno por línea.
+- **Serie**: la información se trocea y se envía bit a bit por una línea.
+- **Síncrona**: un reloj (CLK) marca cuándo leer cada bit (I²C, SPI).
+- **Asíncrona**: no hay reloj compartido; emisor y receptor acuerdan la velocidad (UART).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=1">T2, pp. 1-3</a>.</p>
+
+<h3 id="t2-uart">UART</h3>
+
+Interfaz serie **asíncrona** de dos cables, **TX** y **RX**, punto a punto; TX puede enviar en cualquier instante. Ambos extremos deben configurar lo mismo: **velocidad** (bps), **bits de datos**, **paridad** y **bits de parada**, con un bit de inicio delante. Ejemplo: **9600 8N1**. Como no hay reloj, la velocidad indica cuánto dura cada bit (a 9600 bps, 104 µs) y el receptor lee cada bit en su centro (52 µs después del flanco). Usos: GPS, sensores de CO₂, módems.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=5">T2, pp. 4-7</a>.</p>
+
+<h3 id="t2-i2c">I²C: funcionamiento</h3>
+
+Bus estándar **síncrono de dos hilos** (TWI): **SDA** (datos) y **SCL** (reloj), con resistencias de pull-up. Pensado para periféricos de baja velocidad a poca distancia (en la misma PCB), admite **varios maestros y esclavos** y muchos dispositivos en el mismo canal; cada esclavo tiene una **dirección única** de 7 o 10 bits.
+
+Secuencia de una comunicación:
+
+1. **START**: el maestro baja SDA mientras SCL está alta.
+2. **Dirección** del esclavo (7 o 10 bits) y bit **R/W** (0: el maestro escribe; 1: el esclavo envía al maestro).
+3. El esclavo con esa dirección responde **ACK**.
+4. **Tramas de datos** de 8 bits, cada una seguida de ACK/NACK.
+5. **STOP**: el maestro sube SDA mientras SCL está alta.
+
+**Modos**: estándar 100 kbps, rápido 400 kbps, alta velocidad 3,5 Mbps (los tres bidireccionales) y ultrarrápido 5 Mbps (unidireccional).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=9">T2, pp. 9-21</a>.</p>
+
+<h3 id="t2-arbitraje">I²C: arbitraje, ventajas y aplicaciones</h3>
+
+**Arbitraje**: si dos maestros empiezan a la vez, hay que garantizar que solo uno use el bus. Cada maestro comprueba la línea mientras transmite: el nivel bajo domina, así que si un maestro envía un 1 y lee un 0, **ha perdido el arbitraje**, deja de transmitir y espera al STOP. Ejemplo: M1 envía 0x68 (1101000) y M2 0x60 (1100000); coinciden los tres primeros bits y en el cuarto M1 envía 1 y M2 0, así que pierde M1.
+
+<div class="table-scroll">
+
+| Ventajas | Desventajas |
+| --- | --- |
+| Varios maestros y esclavos | Half-duplex |
+| Solo dos cables | Se complica al aumentar el número de dispositivos |
+| Confirma cada transmisión (ACK) | |
+
+</div>
+
+Aplicaciones: redes de sensores, comunicación entre microcontroladores y pantallas OLED o LCD pequeñas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=22">T2, pp. 22-26</a>.</p>
+
+<h3 id="t2-spi">SPI</h3>
+
+Interfaz serie **síncrona de cuatro cables** creada por Motorola en los ochenta, más rápida que I²C y UART y **full-duplex**. Un **maestro** y uno o más esclavos.
+
+- **CS** (o SS): selecciona el esclavo; activa a nivel bajo. No hay direcciones: una línea CS por esclavo.
+- **SCLK**: reloj generado por el maestro, en el rango de MHz; los esclavos no necesitan reloj propio.
+- **MOSI** (SDO): datos del maestro al esclavo, normalmente en bytes, MSB o LSB primero.
+- **MISO** (SDI): datos del esclavo al maestro. Puede no usarse (una pantalla solo recibe). El maestro debe saber cuántos ciclos de reloj generar para que el esclavo envíe todo.
+
+Secuencia: el maestro baja CS, arranca el reloj, envía por MOSI y recibe por MISO a la vez, y sube CS al terminar. SPI define la señalización pero **no una trama de alto nivel**: comandos, longitud y formato dependen del dispositivo.
+
+**Modos**: CPOL fija el nivel del reloj en reposo (0 bajo, 1 alto) y CPHA el flanco de muestreo (0 el primero, *leading*; 1 el segundo, *trailing*). Hay cuatro modos (0-3) y maestro y esclavo deben usar el mismo.
+
+<div class="table-scroll">
+
+| Ventajas | Desventajas |
+| --- | --- |
+| Alta velocidad | Cuatro cables (y una CS más por esclavo) |
+| Tamaño de envío flexible | Distancias cortas |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=28">T2, pp. 28-47</a>.</p>
+
+<h3 id="t2-comparativa">Comparativa de los tres buses</h3>
+
+<div class="table-scroll">
+
+| | UART | I²C | SPI |
+| --- | --- | --- | --- |
+| Sincronización | Asíncrona | Síncrona | Síncrona |
+| Líneas | 2 (TX, RX) | 2 (SDA, SCL) | 3 + CS |
+| Full-duplex | Sí | No | Sí |
+| Direccionamiento | No | Sí | Mediante CS |
+| Varios dispositivos | Limitado (punto a punto) | Muy bueno | Sí, pero aumentan las CS |
+| Velocidad | Baja-media | Media | Alta |
+| Pull-up | No | Sí | No |
+| Complejidad | Baja | Media | Baja-media |
+| Uso típico | GPS, CO₂, módems | Sensores ambientales | Sensores rápidos, memorias, pantallas |
+
+</div>
+
+Los tres son de **distancia corta**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-2-comunicacion.pdf#page=48">T2, pp. 4 y 48</a>.</p>
+
+<h2 id="t3">Tema 3 · Sensores por principio de transducción y actuadores</h2>
+
+<h3 id="t3-clasificacion">Clasificación de sensores y grado IP</h3>
+
+<div class="table-scroll">
+
+| Criterio | Tipos |
+| --- | --- |
+| Funcionamiento | **Pasivos**: requieren alimentación. **Activos**: la propia magnitud aporta la energía (piezoeléctrico, termoeléctrico); suelen necesitar amplificador. (Así lo definen las diapositivas.) |
+| Señal | **Analógicos** (0-10 V, 1-5 V, ±10 V, 4-20 mA…), **digitales** (señal codificada) y **temporales** (la información está en un tiempo, como el ultrasonidos). |
+| Rango | **De medida** (dan el valor) y **todo/nada** (solo si se supera un umbral: detectores de proximidad, presostatos). |
+| Integración | **Discretos** (acondicionamiento con componentes separados), **integrados** (sensor y acondicionador en un chip) e **inteligentes** (comunicación, cálculo, autocalibración, autodiagnóstico). |
+
+</div>
+
+**Grado IPXX**: la primera cifra es la protección contra sólidos (0 nada… 5 protegido contra el polvo, 6 estanco al polvo) y la segunda contra el agua (0 nada… 4 salpicaduras, 5 chorros, 6 chorros fuertes, 7 inmersión eventual, 8 inmersión prolongada).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=1">T3, pp. 1, 3, 4 y 7</a>.</p>
+
+<h3 id="t3-transduccion">Principios de transducción</h3>
+
+<div class="table-scroll">
+
+| Principio | Cómo funciona | Ventajas | Inconvenientes y aplicaciones |
+| --- | --- | --- | --- |
+| **Piezorresistivo** | La deformación mueve los átomos y cambia la **resistividad**; lineal para deformaciones pequeñas ($R = \rho L / A$). Se mide con puente de Wheatstone. | Sencillo | Depende de la temperatura. Galgas, presión. |
+| **Resistivo** | Cambia la resistencia por la **geometría** (volumen), no la resistividad. | | Potenciómetros. |
+| **Capacitivo** | Cambia la capacidad $C = \varepsilon_0 \varepsilon_r A / d$ (área de solape o distancia). Proximidad (sensor-objeto) o inercial (estructura móvil frente a fija). | Bajo consumo, poca dependencia térmica, alta sensibilidad. Señal nula en equilibrio; la señal diferencial da el sentido; lineal en torno al equilibrio. | Circuito de lectura especializado, fabricado junto al sensor; le afectan humedad y polvo. Presión, micrófonos, nivel, táctiles, acelerómetros. |
+| **Piezoeléctrico** | Ciertos materiales generan carga al ser presionados. Modelo: fuente con la sensibilidad por la fuerza. | Dureza, bajo consumo | Depende de la temperatura; no compatible con CMOS estándar. Vibraciones y fuerzas dinámicas (origen militar, SONAR). |
+| **Ultrasonidos** | Sonido de más de 20 kHz; un piezoeléctrico convierte la energía mecánica de la onda en eléctrica. Parte de la onda se refleja, parte se transmite y parte se absorbe. | | Necesita emisor y receptor. Imagen médica, sonar, detección de fallos en metales. |
+| **Efecto Hall** | Una corriente en un campo magnético sufre una fuerza transversal que crea una tensión $V_H$ proporcional a $I$ y $B$. | Inmune a suciedad, agua y polvo | Le afectan campos externos; se calienta por la corriente. Posición, velocidad, cierre de puertas, cinturones. |
+| **Faraday (inductivo)** | Un flujo variable induce $V = -N\, d\Phi/dt$; un objeto ferroso cambia la inductancia. | | No sirve con dieléctricos; consume más que el capacitivo; lectura especializada. |
+| **Térmico** | Joule (calor $I^2 R t$) y relaciones de Thomson: Seebeck, Peltier y Thomson. | | Termopares. |
+| **Fotoeléctrico** | Un fotón con energía suficiente arranca un electrón del material. | | Desplazamientos, deformación, fuerza, presión. |
+| **Químico-eléctrico** | Una reacción química genera una señal eléctrica. | | Muy sensible a la temperatura. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=8">T3, pp. 8-10, 13-15, 17-19, 21-23 y 26-32</a>.</p>
+
+<h3 id="t3-posicion">Posición, velocidad y aceleración</h3>
+
+- **Potenciómetro**: convierte una posición lineal o angular en un cambio de resistencia.
+- **Encoder óptico**: emisor de luz, receptor (fotodiodo o fototransistor) y un disco ranurado acoplado al eje. Al girar se genera una señal alterna cuya **frecuencia da la velocidad**.
+  - **Incremental**: al menos dos pares emisor-receptor desfasados **¼ de ranura**, que dan el **sentido de giro**; a veces una ranura extra marca la vuelta completa.
+  - **Absoluto**: bandas concéntricas en **código Gray**, cada una con su par emisor-receptor; da la **posición** directamente. En Gray solo cambia un bit entre posiciones consecutivas.
+- **Encoder magnético**: usa un sensor Hall, con imán móvil (en el eje) o imán fijo (con disco ranurado en medio).
+- **Tacogenerador**: reluctancia variable; un eje que gira en el campo de un imán induce en una bobina una tensión **analógica** proporcional a la velocidad (a diferencia del encoder, que es digital). Sensible a vibraciones y a velocidades bajas.
+- **GPS**: segmentos espacial (satélites), de control y de usuario; la posición se obtiene por triangulación con varios satélites. Error de centímetros en uso militar y topográfico y de metros en uso civil.
+- **Acelerómetros**: miden inclinación o vibración; piezorresistivos, piezoeléctricos o **capacitivos MEMS**, más fáciles de montar y con acondicionamiento sencillo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=34">T3, pp. 34-47</a>.</p>
+
+<h3 id="t3-luz">Luz, color y visión</h3>
+
+- **Fototransistor**: deja pasar corriente según la luz que incide en la base; indica presencia o ausencia de un haz.
+- **Fotodiodo**: se polariza en **inversa**: en oscuridad la corriente es muy pequeña y con luz aumenta mucho. En directa, la luz apenas influye.
+- **LDR** (CdS, CdSe sobre cerámica): su resistencia baja con la luz, $R = R_0 (L_0/L)^{\alpha}$ con $\alpha$ entre 0,5 y 0,8. Iluminación automática, presencia, pantallas. Se lee con un divisor de tensión.
+- **Color**: un objeto tiene el color de las longitudes de onda que refleja. **Con filtros**: tres fotodiodos con filtro rojo, verde y azul. **Con fuente fija**: el sensor ilumina con un LED de cada color y mide la luz reflejada; se calibra con una medida de negro y otra de blanco para eliminar la luz ambiente.
+- **Visión**: **CCD** (carga por efecto fotoeléctrico que se transfiere como tensión y se digitaliza) y **CMOS**, preferidos porque usan tecnología CMOS estándar.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=50">T3, pp. 50-65</a>.</p>
+
+<h3 id="t3-proximidad">Nivel y proximidad</h3>
+
+Con contacto: finales de carrera y microrruptores. Sin contacto:
+
+<div class="table-scroll">
+
+| Sensor | Principio | Ventajas | Desventajas |
+| --- | --- | --- | --- |
+| **Óptico de barrera** | Emisor y receptor enfrentados; el objeto corta el haz. | Robusto a la suciedad | Más cableado; hay que alinear. |
+| **Óptico réflex** | Emisor y receptor en la misma carcasa; el haz se refleja. | Un solo equipo | |
+| **Inductivo** | Bobina de un oscilador LC; un metal cerca **detiene la oscilación**. Rectificador y filtro, comparador y etapa de salida. Detecta mejor los ferromagnéticos (aumentan la inductancia) que el cobre o el aluminio (la reducen). 0-60 mm. | Sin contacto ni desgaste; rápido; larga vida; insensible a polvo y humedad | Solo metales; le afectan campos externos; poca distancia. |
+| **Capacitivo** | El objeto, con constante dieléctrica distinta del aire, cambia la capacidad y **hace oscilar** el circuito. Más fácil cuanto mayor sea el objeto, su constante dieléctrica o su cercanía. | Metales y no metales; detecta a través de algunos materiales; rápido; larga vida | Sensible al ambiente; poco alcance; requiere ajuste. |
+| **Reed** | Dos lengüetas que se cierran ante un campo magnético. | Barato, bajo consumo | Alarmas, nivel, recuento. |
+| **Hall** | El imán (móvil o fijo con objeto ferromagnético) cambia $V_H$; lleva amplificador y comparador. | Acondicionamiento más sencillo que el inductivo | Alineación del campo; conmutación lenta. |
+| **Ultrasonidos** | **Barrera** (todo/nada) o **eco** (mide el tiempo de ida y vuelta para la distancia). La velocidad del sonido depende de temperatura, medio y humedad. | Gran rango; muchos materiales; objetos transparentes; poco sensible al polvo | Superficies inclinadas, lento, caro, **zona ciega**. |
+| **Resistivo (boya)** | La boya mueve un potenciómetro. | | |
+
+</div>
+
+Los **inductivos y capacitivos** pueden ser **enrasables** (el cuerpo metálico rodea la bobina o el condensador y evita la dispersión lateral del campo) o **no enrasables** (sin apantallar). Los **táctiles capacitivos** detectan el cambio de capacidad que produce el cuerpo humano.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=66">T3, pp. 66-70, 74-77, 79-84, 86, 88-91, 95-96 y 98</a>.</p>
+
+<h3 id="t3-temperatura">Temperatura y humedad</h3>
+
+<div class="table-scroll">
+
+| Sensor | Principio | Ventajas | Desventajas |
+| --- | --- | --- | --- |
+| **Termistor** | Semiconductor: la resistencia baja (**NTC**) o sube (**PTC**) con T, de forma exponencial. | Salida elevada, rápido, alta sensibilidad, fácil | No lineal, rango limitado, necesita fuente de corriente, autocalentamiento |
+| **Termopar** | Dos conductores unidos con las uniones a distinta T (Seebeck): $\Delta V = \alpha\, \Delta T$. | Sencillo, barato, **amplio rango** | No lineal, salida baja, poca estabilidad y sensibilidad |
+| **RTD** (Pt100) | Metal: $R = R_0(1 + \alpha T)$; se mide con puente de Wheatstone. | Alta estabilidad y precisión | Caro, lento, fuente de corriente, cambios pequeños de R, puente |
+| **Circuito integrado** (LM35, TMP36, BME280) | | Lineal, salida elevada, barato | Rango limitado (< 250 °C), alimentación, lento, autocalentamiento |
+| **Pirómetro** | Sin contacto: todo cuerpo por encima de 0 K emite radiación térmica ($P = \sigma T^4$). | Temperaturas muy altas | Los **PIR** detectan movimiento. |
+
+</div>
+
+**Humedad absoluta**: masa de agua por volumen (kg/m³). **Relativa**: % respecto a la que tendría el aire saturado. Sensores: **de deformación** (fibras sintéticas que cambian de longitud y mueven una galga), **de contacto** (dos electrodos; el material cierra el circuito; salida digital con umbral) y **digitales de humedad y temperatura** (HIH6130 por I²C, BME280).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=100">T3, pp. 100-101, 104, 106 y 110-114</a>.</p>
+
+<h3 id="t3-fuerza">Fuerza, deformación y presión</h3>
+
+- **Galgas extensiométricas**: la resistencia de un metal o semiconductor cambia al deformarse. Se pegan al material y se miden con **puente de Wheatstone**; les afecta la temperatura (deformaciones térmicas).
+- **FSR y Flexiforce**: su resistencia baja con la **fuerza** en la zona circular (de MΩ en reposo a kΩ). Polímero con capa conductora y tinta sensible a la presión.
+- **Sensor flex**: carbono sobre sustrato flexible; la resistencia cambia con la flexión (movimiento de dedos).
+- **Piezoeléctricos de fuerza**: más compactos que los piezorresistivos.
+- **Presión**: un **diafragma** transductor con galgas, reluctancia variable, piezoeléctrico o capacitivo. **Bourdon**: un tubo curvado tiende a enderezarse al aumentar la presión.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=116">T3, pp. 116 y 118-122</a>.</p>
+
+<h3 id="t3-actuadores">Actuadores</h3>
+
+Un **actuador** convierte una señal eléctrica en una salida, normalmente mecánica, que actúa sobre el sistema controlado.
+
+<div class="table-scroll">
+
+| Tipo | Energía | Ventajas | Desventajas |
+| --- | --- | --- | --- |
+| Neumático | Aire comprimido | Barato, rápido, sencillo, robusto | Instalación especial; ruidoso |
+| Hidráulico | Fluido a presión (aceite) | Mucha carga; estable con cargas estáticas | Mantenimiento complicado, caro, sucio, lento |
+| Eléctrico | Energía eléctrica | Preciso, fiable, silencioso, control e instalación sencillos | Potencia limitada |
+
+</div>
+
+Los eléctricos se dividen en **preaccionamientos** (relés y contactores) y **accionamientos** (motores). **Relé**: interruptor controlado eléctricamente. Sin corriente en la bobina, el pivote no activa el circuito secundario; con corriente, la bobina actúa como electroimán, mueve el pivote y conmuta los contactos que alimentan la carga. **Motor**: un conductor con corriente dentro de un campo magnético se desplaza perpendicularmente a él; en una espira, un lado sube y el otro baja, y la espira gira.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-3-sensores-actuadores.pdf#page=124">T3, pp. 124-128 y 131</a>.</p>
+
+<h2 id="t4">Tema 4 · Alimentación de nodos IoT de bajo consumo</h2>
+
+<h3 id="t4-arquitectura">Arquitectura de alimentación (dibujo típico)</h3>
+
+**Con energy harvesting**: generador (ac o dc; de 10 µA a 100 mA y de 30 mV a 20 V) → **rectificador** ac-dc o convertidor de baja energía → condensador (1 µF-1 mF) → **convertidor dc-dc** reductor o elevador → **almacén** de alta energía (supercondensador de 0,5-10 F o batería de 100 mAh-1 Ah) → **interruptor electrónico gobernado por PGOOD** → nodo IoT a 3,3 V.
+
+**Con pila o batería**: batería → convertidor reductor o elevador → interruptor con PGOOD → condensador de filtrado y estabilización → nodo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=3">T4, pp. 3-4</a>.</p>
+
+<h3 id="t4-pgood">PGOOD (cuestión 1 del boletín)</h3>
+
+PGOOD (*power good*) es la salida de un **supervisor de tensión** que vigila el condensador de almacenamiento. Mientras el condensador se carga, PGOOD está desactivado y el interruptor mantiene el nodo **desconectado**. Cuando la tensión alcanza el umbral superior (p. ej., 3,3 V), PGOOD se activa, cierra el interruptor y el nodo funciona consumiendo la energía almacenada. Cuando la tensión cae al umbral inferior, se desactiva y el ciclo se repite. Evita que el nodo arranque con energía insuficiente. El circuito es un **comparador con histéresis** frente a una referencia: el LTC2935 elige sus umbrales de *reset* y *power-fail* con las patillas S2, S1 y S0. En la placa DC2042 de prácticas, PGOOD se observa con el osciloscopio junto a la tensión del nodo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=42">T4, pp. 3, 42 y 44</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=41">T5, p. 41</a>.</p>
+
+<h3 id="t4-fuentes">Fuentes de energía: ordenarlas (cuestión 2 del boletín)</h3>
+
+Densidad de potencia de la tabla 1.1 (µW/cm²): **solar exterior** 15 000 a pleno sol (150 nublado) > **zapatos** 330 > **vibraciones** 200 > **gradiente térmico** 15 con 10 °C > **variación diaria de temperatura** 10 > **ruido acústico** 0,96 a 100 dB. La tabla 1.2 da otro orden según el escenario: luz exterior 10 mW/cm², gradiente térmico industrial 1-10 mW/cm², vibración industrial 100 µW/cm², luz interior 10 µW/cm² y RF (Wi-Fi 1, GSM 0,1 µW/cm²).
+
+<div class="table-scroll">
+
+| Fuente | Salida eléctrica | Circuito adaptador |
+| --- | --- | --- |
+| **Fotovoltaica** | Continua; ~0,5-0,7 V por célula, se asocian | Módulo solar + dc-dc **reductor** |
+| **Piezoeléctrica** | **Alterna**, tensión de voltios y corriente de µA | Transductor + **rectificador** (LTC3588, reductor) |
+| **Termoeléctrica** (Peltier) | Continua de **muy baja tensión** (mV) | Módulo Peltier + dc-dc **elevador** (LTC3108) |
+| **Electrodinámica** | Alterna | Bobina + imán + rectificador + dc-dc |
+| **Radiofrecuencia** | Alterna, muy débil | Antena + **multiplicador de tensión** |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=5">T4, pp. 5-9 y 42-43</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=3">T5, p. 3</a>.</p>
+
+<h3 id="t4-termo">Termoelectricidad: Joule, Seebeck, Peltier y Thompson (cuestión 5 del boletín)</h3>
+
+- **Joule**: la corriente en un conductor produce calor, $Q = i^2 r$. Es **irreversible**: se produce calor sea cual sea el sentido de la corriente.
+- **Seebeck** (1821): en un circuito de dos conductores distintos con las uniones a $T_1$ y $T_2$ circula una corriente proporcional a la diferencia; en circuito abierto aparece $V = (S_a - S_b)(T_2 - T_1)$. Es la **suma de Thompson y Peltier**.
+- **Peltier** (1834): al calentar la unión de dos metales distintos (un **termopar**) aparece una tensión $V = (P_a - P_b)(T_2 - T_1)$, de mV.
+- **Thompson** (Lord Kelvin, 1854): un conductor **homogéneo** con dos puntos a distinta temperatura y recorrido por corriente absorbe o libera calor, $Q = \pm\, i\, dT/dl$. Se **absorbe** si la corriente va del punto frío al caliente (flujos térmico y eléctrico opuestos) y se **libera** si va del caliente al frío (mismo sentido). Explicación: al calentar un extremo, los electrones se difunden hacia la zona fría y crean un campo eléctrico (µV).
+- Peltier y Thompson son **reversibles**, a diferencia de Joule.
+
+**Leyes del termopar**: (1) **metales homogéneos**: la f.e.m. en un metal homogéneo es nula; (2) **metales intermedios**: un tercer metal en serie no altera la f.e.m. si sus dos uniones están a la misma temperatura; (3) **temperaturas intermedias**: la f.e.m. entre $T_3 = T_1 + T_2$ y $T_0$ es la suma de las f.e.m. entre $T_1$ y $T_0$ y entre $T_2$ y $T_0$.
+
+**Termopares comerciales**: tipos J, K, N, T, R, S y B según materiales y rango (el K, de −200 a 1250 °C con unos 40 µV/°C). **Módulos Peltier**: los semiconductores tienen mejor efecto termoeléctrico que los metales, así que se ponen muchos pares P-N en serie (termopila) para subir la tensión; el inconveniente es que la alta conductividad térmica del silicio dificulta mantener un salto de temperatura grande. Son **reversibles**: con tensión aplicada calientan una cara y enfrían la otra.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=10">T4, pp. 10-22</a>.</p>
+
+<h3 id="t4-piezo">Piezoelectricidad</h3>
+
+Descubierta por Jacques y Pierre **Curie** en 1880: ciertas sustancias generan cargas eléctricas al deformarse por una fuerza. Materiales naturales (**cuarzo**, turmalina, sal de Rochelle) y sintéticos (**titanato de bario**, **PZT**). Es **reversible**: como sensor o generador mide fuerza, aceleración o presión y aprovecha esfuerzos mecánicos; como actuador se deforma con tensión. Los generadores suelen ser láminas en **viga en voladizo**. Modelo del generador: fuente de corriente sinusoidal en paralelo con la capacidad $C_p$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=24">T4, pp. 8 y 24-25</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=5">T5, p. 5</a>.</p>
+
+<h3 id="t4-foto">Efecto fotoeléctrico y célula solar</h3>
+
+En una **unión P-N** los electrones pasan por difusión de N a P y los huecos de P a N, y se forma una barrera de potencial. Si la radiación supera la anchura de la **banda prohibida**, genera pares electrón-hueco que el campo de la unión separa: electrones a N y huecos a P. Aparece un potencial medible.
+
+La célula es una unión P-N con una **rejilla metálica** en la cara iluminada. Hay dos corrientes: la fotogenerada $I_L$ y la del diodo, opuesta; en circuito abierto son iguales y la tensión es máxima ($V_{\mathrm{OC}}$).
+
+**Modelo eléctrico** (dibujarlo): fuente de corriente $I_L$ en paralelo con un **diodo** y una resistencia $R_p$, y una resistencia $R_s$ en serie con la salida.
+
+$$
+I = I_L - I_0 \left[\exp\frac{e (V + I R_s)}{K T_C} - 1\right] - \frac{V + I R_s}{R_p}
+$$
+
+Parámetros: corriente de cortocircuito $I_{\mathrm{SC}}$, tensión de circuito abierto $V_{\mathrm{OC}}$, punto de máxima potencia ($I_M$, $V_M$, $P_M = I_M V_M$), **factor de forma** $FF = P_M / (I_{\mathrm{SC}} V_{\mathrm{OC}})$ y rendimiento $\eta = P_M / (S\, G)$, con S el área y G la irradiancia.
+
+<div class="table-scroll">
+
+| Célula | Rendimiento en laboratorio | Rendimiento directo | Rasgos |
+| --- | --- | --- | --- |
+| Monocristalina | 24 % | 15-18 % | Azul homogéneo; silicio puro (Czochralsky) dopado con boro |
+| Policristalina | 19-20 % | 12-14 % | Cristales de distintos azules; menos fases de cristalización |
+| Amorfa | 16 % | < 10 % | Marrón homogéneo; lámina delgada sobre vidrio o plástico |
+
+</div>
+
+Las monocristalinas comerciales (ANYSOLAR) responden de 300 a 1100 nm, sirven en interior y exterior y su rendimiento no se degrada con el tiempo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=28">T4, pp. 9, 28-30 y 32-33</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=36">T5, p. 36</a>.</p>
+
+<h3 id="t4-almacenamiento">Almacenamiento de energía</h3>
+
+<div class="table-scroll">
+
+| Dispositivo | Capacidad | Valoración |
+| --- | --- | --- |
+| Condensador de tántalo | 10 µF-1 mF | Adecuado, pero de poca capacidad |
+| Condensador electrolítico | 10 µF-47 mF | Poco adecuado para bajo consumo: fuga del orden de mA (~4 mA) y ESR alta (~10 Ω) |
+| Supercondensador | 0,1-1200 F | Alta capacidad, **baja ESR y baja autodescarga** |
+| Pilas y baterías | mAh | Necesitan circuitos que controlen tensiones peligrosas |
+
+</div>
+
+**Convertidores de muy baja potencia**: pasan de mV y µA a niveles útiles (mA y 1,8-5 V). Al elegirlos se mira la **tensión mínima de entrada**, la **corriente de salida**, si tienen **PGOOD** configurable, el **rendimiento y la corriente de fuga** y las **curvas de tiempo de carga**. Ejemplos: **LTC3108**, elevador para tensiones de entrada muy bajas (termoeléctrico); **LTC3588**, reductor para corrientes de entrada muy bajas (piezoeléctrico); **LTC2935**, supervisor.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=34">T4, pp. 34-35, 38 y 42-44</a>.</p>
+
+<h2 id="t5">Tema 5 · Sistemas de energy harvesting</h2>
+
+<h3 id="t5-caracteristicas">Qué es y qué lo caracteriza</h3>
+
+Captar energía del ambiente con un **transductor que funciona como generador** (RF, piezoeléctrico, electrodinámico, termoeléctrico, fotovoltaico). Características:
+
+- **No funciona de forma continua**: la energía disponible no es constante, por eso necesita **almacenamiento**.
+- Genera **corrientes y tensiones reducidas**.
+- Necesita un **circuito adaptador** según el tipo (ver la tabla de [fuentes](#t4-fuentes)).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=3">T5, p. 3</a>.</p>
+
+<h3 id="t5-rectificadores">Rectificadores para el generador piezoeléctrico (cuestión 4 del boletín)</h3>
+
+El esfuerzo mecánico mueve cargas: corriente $i_p = I_p \operatorname{sen}(\omega t)$. Además el dispositivo es un **condensador** $C_p$ (dos placas grandes muy próximas con dieléctrico). Equivalente: fuente de corriente en paralelo con $C_p$, o fuente de tensión $V_p = I_p / (\omega C_p)$ en serie con $C_p$.
+
+<div class="table-scroll">
+
+| Método | Funcionamiento | Tensión de salida | Potencia máxima |
+| --- | --- | --- | --- |
+| **Medio puente** (doblador) | Parte de cada ciclo se pierde cargando $C_p$ hasta $V_{\mathrm{REC}}$ antes de que conduzca el diodo. | $2V_p$ en vacío; $V_p$ en el MPP | $C_p f V_p^2$ |
+| **Onda completa** | Mientras $C_p$ pasa de $-V_{\mathrm{REC}}$ a $+V_{\mathrm{REC}}$ y viceversa no llega energía a la salida. | $V_p$ en vacío; $V_p/2$ en el MPP | $C_p f V_p^2$ |
+| **Con interruptor** | Un interruptor en paralelo descarga $C_p$ a 0 V en cada paso por cero: solo se carga de 0 a $\pm V_{\mathrm{REC}}$. | $V_p$ en el MPP | $2 C_p f V_p^2$ (el doble) |
+| **SSHI** | Interruptor y bobina: el circuito LC **invierte** la tensión de $C_p$ de $+V_{\mathrm{REC}}$ a $-V_{\mathrm{REC}}$ en medio periodo de resonancia; los diodos impiden que vuelva. | | $4 C_p f V_p^2$ (el cuádruple) |
+
+</div>
+
+El interruptor y el SSHI necesitan un **circuito de control** que complica el diseño y consume energía, que hay que descontar. En el SSHI el tiempo de inversión, $\pi \sqrt{L C_p}$, debe ser mucho menor que el periodo de vibración.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=5">T5, pp. 5-8, 10-11 y 13-19</a>.</p>
+
+<h3 id="t5-peltier">Modelo de una célula Peltier</h3>
+
+Se divide en una parte **eléctrica** y otra **térmica**. Entre la cara caliente ($T_H$) y la fría ($T_L$) hay una resistencia térmica $R_T$. Conservación de la energía: el trabajo es el calor absorbido del foco caliente menos el cedido al frío, $W = Q_H - Q_L$; el proceso es reversible. Resultado eléctrico: una fuente Seebeck en serie con la resistencia eléctrica, $V = S_E\, \Delta T - I R_E$. Los parámetros ($R_E$, $S_E$, $R_T$) se sacan de las curvas de la hoja de características.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=20">T5, pp. 20-22 y 29</a>.</p>
+
+<h3 id="t5-practica">Práctica fotovoltaica con la DC2042</h3>
+
+Módulo fotovoltaico → elevador LTC3108 → condensador de almacenamiento (22 mF) → ESP32. Con el osciloscopio se ven **PGOOD** y $V_{\mathrm{MCU}}$: la tensión sube mientras se carga, PGOOD se activa, el ESP32 trabaja y descarga el condensador, y PGOOD cae. El rendimiento del convertidor se mide como potencia de salida entre potencia de entrada (66 % en el ejemplo).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=41">T5, p. 41</a>.</p>
+
+<h2 id="t6">Tema 6 · Comunicación inalámbrica: espectro, antenas y enlace</h2>
+
+<p class="callout">Del tema 6, Friis y el balance de enlace serán el problema. La cuestión saldrá de lo demás: los conceptos del problema 1 del boletín (directividad, ganancia, PIRE y PRA, potencias de la cadena, VSWR, diagrama, HPBW y FNBW) y el resto de definiciones de esta sección.</p>
+
+<h3 id="t6-db">Representaciones logarítmicas</h3>
+
+Comparan magnitudes del mismo tipo; son **adimensionales y relativas**. Se usan porque convierten productos y cocientes en sumas y restas, simplifican la notación y nuestros sentidos responden de forma logarítmica. $A = K \log (x_2 / x_1)$ con $K = 10$ para **potencias** y $K = 20$ para **campos, tensiones y corrientes**. Si A es positivo es **ganancia**; si es negativo, **pérdida** (sistemas distribuidos, como un trayecto radio) o **atenuación** (sistemas concentrados, como un filtro). Si $x_1$ es una referencia fija, es un **nivel absoluto**: dBm (1 mW), dBW (1 W), dBµV, dBµV/m… El **RSSI** mide el nivel de señal recibida (0 dB-RSSI = 0 dBm).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=5">T6.1, pp. 5-7</a>.</p>
+
+<h3 id="t6-espectro">Frecuencia, espectro y bandas</h3>
+
+Toda señal es una suma de señales periódicas (Fourier); transmitir «a 868 MHz» significa que solo son significativas las componentes cercanas a esa frecuencia. La **longitud de onda** es $\lambda = c/f$ (1 GHz → 30 cm). El **espectro electromagnético** va de las ondas radioeléctricas a infrarrojo, visible (400-700 nm), ultravioleta, rayos X y gamma. **Ondas radioeléctricas**: ondas electromagnéticas que se propagan **sin guía artificial** por debajo de **3000 GHz**. **Radiocomunicación**: telecomunicación por ondas radioeléctricas.
+
+Bandas de la UIT: … VHF 30-300 MHz, **UHF 300 MHz-3 GHz**, **SHF 3-30 GHz**, **EHF 30-300 GHz** (milimétricas) y THF 300-3000 GHz (submilimétricas). LoRa usa 433, 868 (Europa) y 915 MHz sin licencia; 5G, 700 MHz y 3,5 GHz, y después 26 y 28 GHz.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=9">T6.1, pp. 9-14</a>.</p>
+
+<h3 id="t6-gestion">Gestión del espectro: UIT y CNAF</h3>
+
+- **Atribución** de bandas a servicios: la hace la **UIT-R** en las Conferencias de Radiocomunicaciones y se recoge en el Reglamento de Radiocomunicaciones.
+- **Adjudicación** a servicios concretos en países concretos.
+- **Asignación** de frecuencias a estaciones: la hace la Administración de cada país.
+
+La **UIT** es el organismo de la ONU para las TIC; la **UIT-R** gestiona el espectro y las órbitas de satélites para evitar interferencias perjudiciales y elabora recomendaciones. El **CNAF** (Cuadro Nacional de Atribución de Frecuencias) asigna el uso de cada banda en España de 8,3 kHz a 3000 GHz y se actualiza por la UIT, la CEPT y el ETSI, la ley y las necesidades del sector; la versión vigente es de 2021. Modalidades de uso:
+
+<div class="table-scroll">
+
+| Uso | Significado |
+| --- | --- |
+| **Común** (C) | Sin autorización previa, con las condiciones de las notas UN: **baja potencia** (generalmente < 10 mW), equipos homologados; no debe interferir ni tiene protección frente a interferencias. Wi-Fi a 2,4 y 5 GHz, RFID, ICM, dispositivos de corto alcance, PMR446, banda ciudadana CB-27. |
+| **Privativo** (P) | Explotación exclusiva o por pocos usuarios; requiere **título habilitante**: autorización individual (autoprestación), autorización general (operadores), concesión (servicios a terceros) o afectación demanial (Administraciones). |
+| **Especial** (E) | Bandas compartidas sin límite de usuarios: radioaficionados, comunicaciones móviles en aviones y barcos. |
+| Reservado (R) / Mixto (M) | Reservado al Estado / mezcla de P y R. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-1-espectro.pdf#page=14">T6.1, pp. 14-16 y 18-21</a>.</p>
+
+<h3 id="t6-antena">La antena y sus zonas de campo</h3>
+
+La antena es la **transición** entre la línea o guía y el espacio libre: optimiza el paso de la energía para radiar la máxima potencia con la corriente de la línea. La onda electromagnética transporta la energía; su variación temporal, la información.
+
+<div class="table-scroll">
+
+| Zona | Distancia | Rasgos |
+| --- | --- | --- |
+| Campo cercano reactivo | $r < 0{,}62\sqrt{D^3/\lambda}$ | |
+| Campo cercano radiante (Fresnel) | Hasta $2D^2/\lambda$ | Sin relación sencilla entre E y H, que no son ortogonales; no tiene sentido hablar de dirección de propagación ni de diagrama; depende de la construcción y del entorno. |
+| **Campo lejano** (Fraunhofer) | $r > 2D^2/\lambda$ | La antena solo influye en la variación angular (diagrama). Onda **localmente plana**, propagación radial; **E ⊥ H ⊥ dirección**, relacionados por $\eta_0 = 120\pi\ \Omega$. El campo cae como $1/r$ y la potencia como $1/r^2$. Velocidad c; la fase crece con βr. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=5">T6.2, pp. 5-7 y 9</a>.</p>
+
+<h3 id="t6-polarizacion">Polarización</h3>
+
+Figura que describe **el extremo del vector campo eléctrico**, al pasar el tiempo, en un punto fijo y en el plano perpendicular a la propagación: **lineal** (una recta), **circular** (circunferencia) o **elíptica**, y estas dos **a derechas o a izquierdas** según el sentido de giro respecto al avance. Ninguna antena es perfecta: radia la componente deseada (**copolar**) y una ortogonal indeseada (**contrapolar** o cruzada): la de la circular a derechas es la circular a izquierdas, y la de la lineal horizontal, la vertical.
+
+**Factor de pérdidas de polarización (plf)**: potencia recibida con la polarización real frente a la que se recibiría con polarización adaptada.
+
+<div class="table-scroll">
+
+| Onda y antena | plf |
+| --- | --- |
+| Lineal-lineal a un ángulo α | $\cos^2 \alpha$ |
+| Lineal-circular | 0,5 |
+| Circulares del mismo sentido | 1 |
+| Circulares de sentido contrario | 0 |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=10">T6.2, pp. 10, 32 y 35</a>.</p>
+
+<h3 id="t6-impedancia">Impedancia, adaptación y cadena de potencias</h3>
+
+La **impedancia de antena** es $Z_A = R_A + jX_A$; si $X_A \approx 0$ la antena es **resonante**. $R_A = R_\Omega + R_{\mathrm{rad}}$: la resistencia de **pérdidas** y la de **radiación** (ficticia: potencia radiada entre la corriente eficaz al cuadrado).
+
+Si la antena y el generador o la línea no tienen la misma impedancia, parte de la potencia **se refleja**: coeficiente de reflexión $\Gamma$, **pérdida de retorno** $20 \log \lvert\Gamma\rvert$, **ROE o VSWR** $= (1 + \lvert\Gamma\rvert)/(1 - \lvert\Gamma\rvert)$. Se suele admitir VSWR ≤ 2 (pérdida de retorno −9,5 dB, un 12 % de potencia reflejada). Como la resistencia de radiación varía con la frecuencia y la del cable no, la antena **solo está adaptada en un margen de frecuencias**. Los coaxiales suelen ser de 50 Ω (75 Ω en TV); las guías tienen una frecuencia mínima de funcionamiento.
+
+**Cadena de potencias del transmisor** (la del problema 1):
+
+1. $p_t$, **disponible**: la que se entregaría con adaptación de impedancias.
+2. $p_{\mathrm{at}} = p_t (1 - \lvert\Gamma\rvert^2)$, **entregada a la antena**: resta la desadaptación.
+3. $p_{\mathrm{rad}} = \eta_t\, p_{\mathrm{at}}$, **radiada**: resta las pérdidas óhmicas; $\eta_t = R_{\mathrm{rad}} / (R_{\mathrm{rad}} + R_\Omega)$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=12">T6.2, pp. 12-15</a>.</p>
+
+<h3 id="t6-parametros">Parámetros de radiación</h3>
+
+- **Densidad de potencia** $s$ (W/m²): potencia por unidad de superficie normal a la propagación; $s = e_{\mathrm{ef}}^2 / \eta_0$.
+- **Intensidad de radiación** $u = s\, r^2$ (W/sr): potencia por unidad de ángulo sólido. Un estereorradián es el ángulo sólido que subtiende un área $r^2$ de la esfera.
+- **Ganancia directiva** $d(\theta,\varphi)$: intensidad en una dirección entre la intensidad **media**, que es la de la **antena isotrópica** (radia igual en todas direcciones). Cumple la normalización $\iint d \operatorname{sen}\theta\, d\theta\, d\varphi = 4\pi$. La **directividad** es su valor máximo.
+- **Ganancia de potencia** $g = \eta_t\, d$: a diferencia de la directiva, **incluye las pérdidas óhmicas**, por eso es la que se usa en la práctica. También se define respecto al dipolo λ/2 (dBd = dBi − 2,15) o a la antena vertical corta (dBv = dBi − 4,77). Si no se dice otra cosa, se refiere a la dirección de máxima radiación.
+- **PIRE**: potencia que habría que entregar a una **antena isotrópica** para producir el mismo campo en esa dirección: $\mathrm{pire} = p_{\mathrm{at}}\, g = p_{\mathrm{rad}}\, d$.
+- **PRA**: la misma idea con un **dipolo λ/2** apuntando con su máximo: $\mathrm{pire} = 1{,}64\, \mathrm{pra}$ (PRA = PIRE − 2,15 dB).
+- **PRAVC**: con una **antena vertical corta**: $\mathrm{pire} = 3\, \mathrm{pravc}$ (PRAVC = PIRE − 4,77 dB).
+- **Ancho de banda**: margen de frecuencias en que los parámetros (impedancia, ancho de haz, directividad, lóbulos) cumplen las especificaciones. En antenas de **banda estrecha** (lineales) se da en % de la frecuencia de resonancia y se diseñan por impedancia; en las de **banda ancha** (apertura), como cociente $f_{\max}/f_{\min}$ (2:1 una octava, 10:1 una década) y se diseñan por diagrama.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=17">T6.2, pp. 17-19 y 30-32</a>.</p>
+
+<h3 id="t6-diagrama">Diagrama de radiación</h3>
+
+Representación de las propiedades de radiación según la dirección, **a distancia fija**, de campo o de potencia. Se dibuja en 3D (perspectiva, curvas de nivel) o en **cortes** de los planos principales: el **plano E** lo forman la dirección de máxima radiación y el campo eléctrico, y el **plano H**, esa dirección y el campo magnético; son perpendiculares. Los cortes se representan en **polares** (mejor idea de la distribución en el espacio) o **cartesianas** (más detalle en antenas muy directivas). Puede ser absoluto o **normalizado** al máximo; en dB el máximo es 0 dB y los diagramas de campo y potencia **coinciden**.
+
+- **Lóbulo principal**: el que contiene la dirección de máxima radiación. **Secundarios**: los demás; **laterales**, los adyacentes al principal; **trasero**, el de sentido opuesto al principal.
+- **HPBW**: ancho de haz entre los puntos de potencia mitad (−3 dB). **FNBW**: entre los primeros nulos. También a −10 dB.
+- **SLL** (NLPS): relación entre el mayor lóbulo secundario y el principal.
+- **FBR** (relación delante-atrás): entre el lóbulo principal y el trasero.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=20">T6.2, pp. 20-25</a>.</p>
+
+<h3 id="t6-tipos">Tipos de antena</h3>
+
+<div class="table-scroll">
+
+| | Lineales | De apertura |
+| --- | --- | --- |
+| Qué son | Línea de transmisión abierta excitada en un extremo | Radian a través de una superficie (apertura) |
+| Diagrama | **Omnidireccional**, lóbulos laterales poco importantes | **Directivo**, lóbulos laterales importantes |
+| Ganancia | Baja | Alta; crece con el área en $\lambda^2$ y la eficiencia de apertura |
+| Impedancia | Hasta 100 Ω (como los cables) | Elevada (como las guías) |
+| Banda | Estrecha | Ancha |
+| Frecuencias y usos | Bajas: radiodifusión, TV, radioaficionados, móviles | Altas: satélite, radioenlaces, radar, radioastronomía |
+| Ejemplos | Dipolo, monopolo (con plano de tierra, en coches y móviles) | Bocinas, reflectores, lentes |
+
+</div>
+
+<div class="table-scroll">
+
+| Antena lineal | Ganancia máxima | Resistencia de radiación |
+| --- | --- | --- |
+| Dipolo corto ($l \ll \lambda$) | 1,5 (1,76 dBi) | $80\pi^2 (l/\lambda)^2$ |
+| Dipolo λ/2 | 1,64 (2,15 dBi) | 73 Ω |
+| Antena vertical corta ($h \ll \lambda$) | 3 (4,77 dBi) | $40\pi^2 (h/\lambda)^2$ |
+
+</div>
+
+Cerca del suelo, que se comporta como buen conductor, la resistencia de radiación y la ganancia se **duplican**. Las **agrupaciones** combinan varios elementos para cumplir especificaciones que uno solo no alcanza.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=26">T6.2, pp. 26-27 y 29</a>.</p>
+
+<h3 id="t6-receptora">La antena como receptora</h3>
+
+La onda incidente induce corrientes en el conductor que aparecen como potencia en sus terminales. Por **reciprocidad**, los parámetros en recepción son los mismos que en transmisión (impedancia, ganancia, diagrama). Además:
+
+- **Potencia disponible** $p_{\mathrm{ar}}$: la que se entregaría con adaptación; la entregada al receptor es $p_r = p_{\mathrm{ar}} (1 - \lvert\Gamma_r\rvert^2)$.
+- **Longitud efectiva**: tensión en circuito abierto entre el campo incidente, con polarización adaptada.
+- **Área equivalente**: potencia disponible entre la densidad de potencia incidente, con polarización adaptada: $A_{\mathrm{eq}} = \lambda^2 g / (4\pi)$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-2-antenas.pdf#page=33">T6.2, pp. 33-36</a>.</p>
+
+<h3 id="t6-perdidas">Definiciones de pérdidas del enlace</h3>
+
+El **balance de enlace** relaciona la potencia entregada al receptor con la disponible en el transmisor y todas las pérdidas y ganancias del trayecto (Friis). Las definiciones también pueden preguntarse:
+
+<div class="table-scroll">
+
+| Pérdida | Entre… |
+| --- | --- |
+| **Total** $L_l$ | Potencia disponible del transmisor y potencia entregada al receptor (todo incluido). |
+| **Del sistema** $L_s$ | Potencia entregada a la antena transmisora y disponible en la receptora: $L_s = L_l - L_{tc} - L_{rc}$ (sin desadaptaciones). |
+| **De transmisión** $L$ | Potencia radiada y la disponible en recepción sin pérdidas de RF: $L = L_s - L_{at} - L_{ar}$. |
+| **Básica de transmisión** $L_b$ | La de transmisión con **antenas isotrópicas** de la misma polarización y el mismo trayecto: $L_b = L_{bf} + A_e - \mathrm{PLF}$. |
+| **Básica en espacio libre** $L_{bf}$ | Con antenas isotrópicas en un medio homogéneo, isótropo e ilimitado: $20 \log (4\pi r / \lambda)$. |
+| **Relativa al espacio libre** $L_m$ | $L_b - L_{bf}$: absorción (gases, lluvia, ionosfera), difracción, dispersión, desacoplos de polarización, reflexiones. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-6-3-balance-enlace.pdf#page=2">T6.3, pp. 2-4 y 6-7</a>.</p>
+
+<h2 id="repaso">Repaso final: preguntas que debes saber contestar</h2>
+
+<div class="table-scroll">
+
+| Tema | Preguntas |
+| --- | --- |
+| 1 | Define 5 parámetros de la curva de calibración. Precisión, veracidad y exactitud. ¿±1 % FS es ±1 % de la lectura? Derivas y calibración a uno y dos puntos. Caracterización dinámica. ¿Por qué amplificar? CMRR y amplificador de instrumentación. Muestreo, cuantificación y Nyquist. Errores de un ADC. |
+| 2 | Serie/paralelo, síncrona/asíncrona. Configuración de la UART. Trama de I²C y arbitraje. Señales y modos de SPI. Tabla comparativa. |
+| 3 | Clasificación de sensores y código IP. Cada principio de transducción con ventajas e inconvenientes. Encoder incremental frente a absoluto. Inductivo frente a capacitivo. Ultrasonidos. Termistor, termopar y RTD. Actuadores y relé. |
+| 4 | Arquitectura con PGOOD. Fuentes ordenadas con su convertidor. Joule, Seebeck, Peltier y Thompson; leyes del termopar. Efecto fotoeléctrico y modelo de la célula. Almacenamiento. |
+| 5 | Características del energy harvesting. Tabla de rectificadores piezoeléctricos y por qué mejoran el interruptor y el SSHI. Modelo de la célula Peltier. |
+| 6 | dB y niveles. Bandas, UIT y usos del CNAF. Campo lejano. Polarización y plf. Impedancia, VSWR y cadena de potencias. Directividad frente a ganancia. PIRE, PRA y PRAVC. Diagrama, HPBW, FNBW, SLL y FBR. Lineales frente a apertura. Área equivalente. Definiciones de pérdidas. |
+
+</div>
+
+Para practicar con preguntas cerradas, usa el [test de cuestiones del examen](/web-estudio/asignaturas/dispositivos/tests/cuestiones-examen/).

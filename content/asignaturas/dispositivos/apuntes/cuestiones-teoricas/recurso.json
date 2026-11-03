@@ -1,0 +1,83 @@
+{
+  "kind": "apuntes",
+  "id": "dispositivos.apuntes.cuestiones-teoricas",
+  "subjectId": "dispositivos",
+  "slug": "cuestiones-teoricas",
+  "title": "Cuestiones teóricas: la teoría de los seis temas",
+  "description": "Toda la teoría que puede caer como pregunta de desarrollo (35 % de la nota), tema a tema, con respuestas modelo listas para escribir.",
+  "scope": "Teoría de los seis temas sin los problemas numéricos. Tema 1 completo (pp. 6-97), tema 2 completo, tema 3 completo, tema 4 completo, tema 5 (pp. 3-31, 36 y 41), tema 6.1 (pp. 5-21), tema 6.2 (pp. 2-36, sin apéndice) y tema 6.3 (pp. 2-7). Referencias de estilo: las cuestiones del boletín de los temas 4 y 5 y el problema 1 del boletín del tema 6.",
+  "tagIds": [
+    "dispositivos.tags.sensores",
+    "dispositivos.tags.buses",
+    "dispositivos.tags.transduccion",
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen"
+  ],
+  "order": 6,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "dispositivos.materiales.tema-1-sensores",
+      "pdfPages": [6, 8, 9, 10, 14, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 32, 33, 34, 35, 36, 38, 40, 41, 42, 43, 44, 46, 48, 50, 55, 62, 64, 67, 68, 74, 76, 78, 82, 84, 85, 89, 91, 92, 93, 94, 96, 97],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-2-comunicacion",
+      "pdfPages": [1, 2, 3, 5, 6, 7, 9, 10, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 35, 36, 38, 39, 40, 42, 44, 45, 47, 48],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-3-sensores-actuadores",
+      "pdfPages": [1, 3, 4, 7, 8, 9, 10, 13, 14, 15, 17, 18, 19, 21, 22, 23, 26, 27, 28, 29, 30, 31, 32, 34, 36, 37, 38, 39, 41, 42, 43, 45, 46, 47, 50, 52, 54, 56, 57, 61, 63, 64, 65, 66, 67, 69, 70, 74, 75, 76, 77, 79, 80, 81, 82, 84, 86, 88, 89, 90, 91, 95, 96, 98, 100, 101, 104, 106, 110, 111, 112, 113, 114, 116, 118, 119, 120, 121, 122, 124, 125, 126, 128, 131],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 28, 29, 30, 32, 33, 34, 35, 38, 42, 43, 44],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [3, 5, 6, 7, 8, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 22, 29, 36, 41],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-1-espectro",
+      "pdfPages": [5, 6, 7, 9, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [5, 6, 7, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-3-balance-enlace",
+      "pdfPages": [2, 3, 4, 6, 7],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "dispositivos.materiales.boletin-temas-4-5",
+      "pdfPages": [1],
+      "label": "Cuestiones 1-5, modelo de pregunta"
+    },
+    {
+      "materialId": "dispositivos.materiales.boletin-tema-6",
+      "pdfPages": [1],
+      "label": "Problema 1, modelo de pregunta de antenas"
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.apuntes.tema-1-sensores",
+    "dispositivos.apuntes.tema-2-comunicacion",
+    "dispositivos.apuntes.tema-3-sensores-actuadores",
+    "dispositivos.apuntes.temas-4-5-alimentacion",
+    "dispositivos.apuntes.tema-6-enlace-radio",
+    "dispositivos.resumenes.formulario-examen",
+    "dispositivos.tests.cuestiones-examen"
+  ]
+}
