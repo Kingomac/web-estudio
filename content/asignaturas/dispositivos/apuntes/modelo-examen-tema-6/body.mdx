@@ -1,0 +1,114 @@
+<p class="lead">Boletín para resolver en papel, sin soluciones. Imita el examen: una cuestión de desarrollo y un problema del tema 6. Como el problema del examen será de la **fórmula de Friis**, todos los problemas son balances de enlace, algunos combinados con el diagrama de radiación, la polarización o la desadaptación.</p>
+
+<div class="callout">
+
+**Cómo usarlo**
+
+1. Estudia primero los apuntes del tema 6 y el formulario.
+2. Haz el **simulacro** de abajo sin mirar nada, salvo la calculadora.
+3. Responde en folios aparte e indica el código de cada pregunta (C6.3, E6.1…). Escribe los pasos y las unidades, no solo el resultado. Trabaja en dB y di siempre si una magnitud es lineal o logarítmica.
+4. Después resuelve el resto.
+
+</div>
+
+<p class="no-print">Cuando termines, compara con las <a href="/web-estudio/asignaturas/dispositivos/apuntes/soluciones-modelo-examen-tema-6/">soluciones explicadas</a>.</p>
+
+<h2 id="simulacro">Simulacro: tema 6</h2>
+
+<div class="table-scroll">
+
+| Simulacro | Cuestión | Problema |
+| --- | --- | --- |
+| Primero | C6.3 | E6.1 |
+| Segundo | C6.6 | E6.3 |
+| Tercero | C6.9 | E6.5 |
+
+</div>
+
+E6.2, E6.4 y E6.6 sirven de repaso: combinan Friis con el diagrama de radiación, la potencia necesaria en transmisión y la frecuencia.
+
+<h2 id="datos">Datos y notas para todos los problemas</h2>
+
+- Velocidad de la luz: $c = 3 \cdot 10^8\ \mathrm{m/s}$. Impedancia del vacío: $\eta_0 = 120\pi\ \Omega$.
+- Las letras minúsculas son magnitudes lineales y las mayúsculas, en dB ($P$ en dBm o dBW, $G$ y $D$ en dBi).
+- Salvo que se diga otra cosa, hay condiciones de espacio libre ($a_e = 1$) y adaptación de polarización ($\mathrm{plf} = 1$).
+- Dipolo en λ/2, con máximo de 1,64 (2,15 dBi) en $\theta = 90^\circ$:
+
+$$
+d(\theta) = 1{,}64 \left[\frac{\cos\left(\frac{\pi}{2}\cos\theta\right)}{\operatorname{sen}\theta}\right]^2
+$$
+
+<h2 id="cuestiones">Cuestiones</h2>
+
+**C6.1.** Explica qué es una representación logarítmica y por qué se usa en telecomunicaciones. Diferencia ganancia, pérdida y atenuación. Define dB, dBm, dBW, dBi y dBd. Expresa 1 W, 25 mW y 1 pW en dBm y en dBW, y una ganancia de 8 en dBi y en dBd.
+
+**C6.2.** Describe las tres zonas de campo alrededor de una antena y las distancias que las separan. Enumera las propiedades del campo lejano. Una antena de 30 cm de tamaño máximo trabaja a 2,4 GHz: ¿a partir de qué distancia se puede aplicar la fórmula de Friis?
+
+**C6.3.** Dibuja el modelo circuital de una antena transmisora. Define resistencia de radiación, resistencia de pérdidas, eficiencia, coeficiente de reflexión, VSWR y pérdidas por desadaptación. Explica la cadena $p_t \to p_{\mathrm{at}} \to p_{\mathrm{rad}}$ y calcula qué fracción de la potencia disponible se radia si la VSWR es 2 y la eficiencia es del 80 %.
+
+**C6.4.** Define ganancia directiva, directividad y ganancia de potencia, y escribe la condición de normalización. Define PIRE, PRA y PRAVC y la relación entre ellas en dB. ¿Por qué una antena con más ganancia no «crea» potencia?
+
+**C6.5.** Explica qué es un diagrama de radiación y sus formas de representación (3D, cortes, polar y cartesiana, absoluto y normalizado). Define planos E y H, lóbulos principal, secundario, lateral y trasero, HPBW, FNBW, SLL y FBR. Dibuja un diagrama polar y marca todos ellos.
+
+**C6.6.** Define la polarización de una onda y sus tipos. ¿Qué es la componente contrapolar? Define el factor de pérdidas de polarización y da su valor, lineal y en dB, para: dos antenas lineales a 0°, 45°, 60° y 90°; lineal frente a circular; circulares del mismo sentido y de sentidos opuestos.
+
+**C6.7.** Compara las antenas lineales y las de apertura: características, aplicaciones y ejemplos. Haz una tabla con la ganancia máxima (lineal y en dBi), la ganancia en función de θ y la resistencia de radiación del dipolo corto, del dipolo en λ/2 y de la antena vertical corta.
+
+**C6.8.** Define longitud efectiva y área equivalente de una antena receptora. ¿Por qué los parámetros de una antena son los mismos en transmisión y en recepción? Calcula el área equivalente de un dipolo en λ/2 a 868 MHz y a 2,4 GHz y explica qué consecuencia tiene para el alcance.
+
+**C6.9.** Escribe la fórmula de Friis en lineal y explica cada término. Define la pérdida total, la pérdida del sistema, la pérdida de transmisión, la pérdida básica de transmisión y la pérdida básica en espacio libre, y escribe cómo se relacionan en dB. Haz un dibujo del enlace que muestre entre qué puntos se mide cada una.
+
+**C6.10.** Explica la gestión del espectro: atribución, adjudicación y asignación, y quién hace cada una. ¿Qué es el CNAF? Explica las modalidades de uso común, privativo y especial con un ejemplo de cada una. ¿En qué banda (nombre y número) están 868 MHz y 5,8 GHz?
+
+<h2 id="problemas">Problemas</h2>
+
+**E6.1. Cobertura de un nodo en 2,45 GHz.** Un nodo IoT transmite a 2,45 GHz con una PIRE de 0 dBm. La antena receptora tiene una ganancia de 2 dBi y la VSWR en recepción es 1,5. El receptor necesita una potencia entregada de −95 dBm.
+
+1. Calcula la longitud de onda y las pérdidas por desadaptación en recepción.
+2. Calcula la pérdida básica de transmisión en espacio libre máxima y la distancia de cobertura.
+3. Una pared introduce una atenuación adicional de 8 dB. ¿Cuál es ahora la distancia de cobertura?
+4. ¿Cuánto hay que aumentar la PIRE (en dB y en mW) para recuperar la distancia del apartado 2?
+5. Sin la pared, ¿qué potencia recibe el receptor a 200 m? ¿Qué margen tiene sobre los −95 dBm?
+
+**E6.2. Potencia necesaria para un enlace Wi-Fi.** Un punto de acceso Wi-Fi a 2,4 GHz debe dar servicio a un nodo situado a 100 m, con una pared intermedia que atenúa 12 dB. El nodo tiene una antena de 3 dBi, una VSWR de 1,5 y una sensibilidad de −80 dBm, y se quiere un margen de 10 dB. La antena del punto de acceso es un dipolo en λ/2 orientado hacia el nodo y su VSWR es 2.
+
+1. Calcula la pérdida básica de transmisión en espacio libre y la pérdida básica de transmisión.
+2. Calcula la PIRE mínima, en dBm y en mW.
+3. Calcula la potencia que hay que entregar a la antena transmisora y la potencia disponible del transmisor. Supón la antena sin pérdidas óhmicas.
+4. Compara la PIRE con los 10 mW que el tema da como valor habitual del uso común. ¿Qué podrías cambiar en el enlace para reducirla?
+
+**E6.3. Polarización y orientación en un enlace a 915 MHz.** Un transmisor radia una PIRE de 10 dBm hacia un receptor situado a 1 km, en espacio libre. El receptor tiene un dipolo en λ/2 adaptado y una sensibilidad de −90 dBm.
+
+1. Calcula la potencia recibida si el dipolo receptor apunta su máximo hacia el transmisor y está alineado con la polarización lineal de la onda. ¿Cuál es la distancia máxima del enlace?
+2. El dipolo receptor se inclina 60° respecto a la polarización de la onda, en el plano perpendicular a la dirección de propagación. Calcula el plf, la nueva potencia recibida y la nueva distancia máxima.
+3. Repite el apartado 2 si el transmisor radia con polarización circular.
+4. Con la polarización alineada, el transmisor queda a $\theta = 60^\circ$ del eje del dipolo receptor. Calcula la ganancia del dipolo en esa dirección y la potencia recibida.
+5. Explica por qué cada 6 dB de pérdidas adicionales reducen a la mitad la distancia en espacio libre.
+
+**E6.4. Diagrama de radiación y enlace.** Una antena transmisora tiene una ganancia directiva $d(\theta, \varphi) = K \cos^4\theta$ para $0 \le \theta \le \pi/2$ y nula en el semiespacio inferior. Su eficiencia es del 80 % y recibe una potencia de 10 mW. La frecuencia es 2,45 GHz y el receptor, con una antena de 6 dBi adaptada, está a 50 m en la dirección $\theta = 30^\circ$.
+
+Nota: $\displaystyle\int \cos^4\theta \operatorname{sen}\theta\, d\theta = -\frac{\cos^5\theta}{5}$.
+
+1. Calcula $K$, la directividad en dBi y la potencia radiada.
+2. ¿Cuál es la dirección de máxima radiación? Calcula el HPBW.
+3. Calcula la ganancia de potencia y la PIRE en la dirección del receptor.
+4. Calcula la densidad de potencia y el valor eficaz del campo eléctrico en el receptor.
+5. Calcula el área equivalente de la antena receptora y la potencia disponible a partir de la densidad de potencia.
+6. Comprueba el resultado anterior con la fórmula de Friis en dB.
+
+**E6.5. Balance completo de un radioenlace.** Un radioenlace a 5,8 GHz une dos puntos separados 2 km con dos antenas parabólicas iguales, de directividad 24 dBi y eficiencia del 90 %. El transmisor tiene una potencia disponible de 20 dBm y las VSWR en transmisión y en recepción son 1,3. La lluvia introduce una atenuación adicional de 4 dB y las polarizaciones lineales de las antenas forman un ángulo de 20°.
+
+1. Calcula $L_{\mathrm{tc}}$, $L_{\mathrm{rc}}$, $L_{\mathrm{at}}$, $L_{\mathrm{ar}}$ y el PLF en dB.
+2. Calcula la pérdida básica en espacio libre $L_{\mathrm{bf}}$ y la pérdida básica de transmisión $L_b$.
+3. Calcula la pérdida de transmisión $L$, la pérdida del sistema $L_s$ y la pérdida total $L_l$.
+4. Calcula la PIRE y la potencia entregada al receptor.
+5. Si la sensibilidad del receptor es de −75 dBm, ¿qué margen queda? ¿Qué atenuación por lluvia podría soportar el enlace?
+
+**E6.6. Elección de la banda.** Se compara un enlace a 868 MHz con otro a 2,4 GHz, ambos en espacio libre, con una PIRE de 14 dBm y un receptor de sensibilidad −120 dBm.
+
+1. Con un dipolo en λ/2 en recepción en las dos bandas, calcula la distancia máxima de cada enlace. ¿Cuántos dB de diferencia hay en $L_{\mathrm{bf}}$ a la misma distancia?
+2. Calcula el área equivalente del dipolo en cada banda. Usa este resultado para explicar la diferencia del apartado anterior.
+3. Ahora la antena receptora tiene un área equivalente fija de 0,01 m² en las dos bandas. Calcula su ganancia en dBi y la distancia máxima en cada banda. ¿Qué conclusión sacas?
+4. ¿Qué modalidad de uso del CNAF corresponde a un nodo LoRa en 868 MHz y qué limitaciones impone?
+
+<p class="no-print">Para estudiar antes: <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-6-desde-cero/">tema 6 desde cero</a>, <a href="/web-estudio/asignaturas/dispositivos/apuntes/tema-6-enlace-radio/">apuntes para resolver el boletín</a>, <a href="/web-estudio/asignaturas/dispositivos/resumenes/formulario-examen/">formulario</a> y <a href="/web-estudio/materiales/dispositivos/boletin-tema-6.pdf#page=1">boletín original del tema 6</a>.</p>

@@ -1,0 +1,36 @@
+{
+  "kind": "apuntes",
+  "id": "dispositivos.apuntes.soluciones-modelo-examen-temas-4-5",
+  "subjectId": "dispositivos",
+  "slug": "soluciones-modelo-examen-temas-4-5",
+  "title": "Soluciones del modelo de examen · Temas 4 y 5",
+  "description": "Soluciones explicadas de las cuestiones y los ejercicios del modelo de examen de los temas 4 y 5, paso a paso y con la página de la diapositiva que respalda cada fórmula.",
+  "scope": "Las 14 cuestiones (C4.1-C5.6) y los 8 ejercicios (E4.1-E5.4) del modelo de examen de los temas 4 y 5. Tema 4: sistemas de alimentación, efectos termoeléctrico, piezoeléctrico y fotoeléctrico, almacenamiento y conversión (pp. 3-44). Tema 5: métodos de energy harvesting, rectificadores piezoeléctricos, SSHI, modelo Peltier y ejemplo fotovoltaico (pp. 3-41).",
+  "tagIds": [
+    "dispositivos.tags.alimentacion",
+    "dispositivos.tags.energy-harvesting",
+    "dispositivos.tags.examen",
+    "dispositivos.tags.boletines"
+  ],
+  "order": 22,
+  "body": "body.mdx",
+  "printIntent": "screen",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "dispositivos.materiales.tema-4-alimentacion",
+      "pdfPages": [3, 4, 5, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 28, 29, 30, 31, 34, 35, 38, 39, 40, 41, 42, 43, 44],
+      "label": "Fórmulas y teoría del tema 4"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-5-energy-harvesting",
+      "pdfPages": [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 32, 34, 40, 41],
+      "label": "Fórmulas y ejemplos del tema 5"
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.apuntes.modelo-examen-temas-4-5",
+    "dispositivos.apuntes.temas-4-5-alimentacion",
+    "dispositivos.resumenes.formulario-examen"
+  ]
+}

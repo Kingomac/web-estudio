@@ -1,0 +1,568 @@
+<p class="lead">Soluciones explicadas del <a href="/web-estudio/asignaturas/dispositivos/apuntes/modelo-examen-temas-4-5/">modelo de examen de los temas 4 y 5</a>. En los ejercicios están todos los pasos y la razón de cada uno. En las cuestiones, lo que debe contener tu respuesta; las recetas están en los <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/">apuntes de los temas 4 y 5</a>.</p>
+
+<div class="callout">
+
+**Antes de mirar**
+
+Intenta cada pregunta en papel y compara después. Si tu resultado no coincide, busca el primer paso en el que te separas: casi siempre es una unidad (mA·ms frente a C, mF frente a F) o confundir carga con energía.
+
+Los apartados marcados como **razonamiento** no están escritos en las diapositivas: son deducciones a partir de ellas que conviene justificar en el examen.
+
+</div>
+
+<h2 id="tema-4">Tema 4 · Alimentación para nodos IoT de bajo consumo</h2>
+
+<h3 id="c4-1">C4.1 · Diagramas de bloques</h3>
+
+**Con energy harvesting**: generador → rectificador (si la salida es alterna) → capacitor de baja energía → convertidor dc-dc (reductor o elevador) → almacén de alta energía → interruptor gobernado por **PGOOD** → nodo IoT.
+
+- **Generador o transductor**: convierte la energía del entorno en eléctrica, alterna o continua. Rango típico: 10 µA-100 mA y 30 mV-20 V.
+- **Rectificador**: pasa la alterna a continua. Lo sigue un capacitor de baja energía de 1 µF a 1 mF.
+- **Convertidor dc-dc**: adapta la tensión a la del nodo (VCC = 3,3 V).
+- **Almacén de alta energía**: supercondensador de 0,5 a 10 F o batería recargable de 100 mAh a 1 Ah. Hace falta porque la energía del entorno no llega de forma continua.
+- **Supervisor e interruptor**: solo conectan el nodo cuando la tensión es adecuada.
+
+**Con pila**: pila o batería → convertidor dc-dc → capacitor de filtrado y estabilización → interruptor con PGOOD → nodo. No hay generador ni rectificador.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=3">T4, pp. 3-4</a>.</p>
+
+<h3 id="c4-2">C4.2 · Señal PGOOD</h3>
+
+- **Función**: PGOOD indica que la tensión del almacenamiento es suficiente. Cuando se activa, cierra el interruptor que alimenta al nodo; cuando se desactiva, lo desconecta mientras el condensador se recarga. Así el nodo no arranca con una tensión insuficiente ni consume la energía mientras se carga.
+- **Circuito**: un **supervisor de tensión** (por ejemplo, el LTC2935) compara la tensión con dos umbrales configurables (patillas S2, S1 y S0) y maneja un transistor que hace de interruptor.
+
+**Dibujo**: la tensión del condensador sube en rampa hasta 3,3 V mientras PGOOD está a 0. Al llegar a 3,3 V, PGOOD pasa a 1 y la tensión baja rápidamente mientras el nodo consume. Al llegar a 2,8 V, PGOOD vuelve a 0 y empieza otra rampa de carga. Resultado: un diente de sierra entre 2,8 y 3,3 V y PGOOD como pulsos durante las bajadas.
+
+**Razonamiento** sobre la histéresis: con un único umbral, el interruptor conectaría y desconectaría continuamente alrededor de ese valor. El nodo no tendría tiempo de completar ninguna tarea y la conmutación gastaría energía. Los dos umbrales fijan cuánta energía se entrega en cada ciclo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=3">T4, pp. 3, 42 y 44</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=41">T5, p. 41</a>.</p>
+
+<h3 id="c4-3">C4.3 · Efectos termoeléctricos</h3>
+
+- **Joule**: un conductor recorrido por una corriente produce calor, $Q = i^2 r$. Es **irreversible**: siempre se produce calor, sea cual sea el sentido de la corriente.
+- **Thompson**: un conductor **homogéneo** con dos puntos a distinta temperatura absorbe o libera calor cuando lo recorre una corriente, $Q = \pm\, i\, dT/dl$. Si los flujos térmico y eléctrico son opuestos, absorbe; si van en el mismo sentido, libera.
+- **Peltier**: al calentar la unión de **dos metales distintos** (termopar) aparece una tensión entre los extremos libres, $V = (P_a - P_b)(T_2 - T_1)$, del orden de mV.
+- **Seebeck**: en un circuito de dos conductores con las uniones a distinta temperatura aparece una tensión $V = (S_a - S_b)(T_2 - T_1)$. Es la **suma** de los efectos Thompson y Peltier.
+
+Thompson y Peltier son **reversibles**, a diferencia de Joule.
+
+**Semiconductores**: presentan un efecto termoeléctrico mejor que los metales, y se integran muchos pares p-n en serie (termopila) para obtener más tensión. El inconveniente es que la alta conductividad térmica del silicio dificulta mantener un salto de temperatura grande.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=10">T4, pp. 10-16 y 21</a>.</p>
+
+<h3 id="c4-4">C4.4 · Leyes del efecto termoeléctrico</h3>
+
+1. **Metales homogéneos**: la f.e.m. producida en un metal homogéneo es siempre nula, por muchas temperaturas intermedias que recorra. Dibujo: un hilo de un solo metal que pasa por $T_0, T_1, T_2…$ y vuelve a $T_0$; las contribuciones se cancelan.
+2. **Metales intermedios**: la f.e.m. de un termopar no cambia al introducir un tercer metal en serie si las dos nuevas uniones están a la **misma temperatura**. Dibujo: un metal c intercalado con sus dos uniones a $T_2$; $V_t = (S_a - S_b)(T_1 - T_0)$.
+3. **Temperaturas intermedias**: la f.e.m. con las uniones a $T_3 = T_1 + T_2$ y $T_0$ es la suma de las f.e.m. con las uniones a $T_1, T_0$ y a $T_2, T_0$.
+
+**Cables de cobre**: el cobre actúa como metal intermedio. Si las dos uniones termopar-cobre están a la misma temperatura (en el mismo bloque de bornes), sus tensiones se cancelan y la lectura no cambia.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=17">T4, pp. 17-19</a>.</p>
+
+<h3 id="c4-5">C4.5 · Efecto piezoeléctrico</h3>
+
+- **Definición**: ciertas sustancias generan cargas eléctricas al someterlas a una fuerza que las deforma. Lo descubrieron Jacques y Pierre Curie en 1880.
+- **Materiales**: naturales (cuarzo, turmalina) y sintéticos (titanato de bario, titanato-circonato de plomo, PZT).
+- **Uso**: como sensor o generador mide fuerza, aceleración y presión, o capta energía de esos esfuerzos mecánicos. Es **reversible**: aplicando una tensión se deforma y actúa como actuador.
+- **Modelo como generador**: fuente de corriente $i_p = I_p \operatorname{sen}(\omega t)$ en paralelo con la capacidad $C_p$ de sus dos placas conductoras separadas por el dieléctrico. Su equivalente serie es una fuente de tensión de amplitud $V_p = I_p / (\omega C_p)$ en serie con $C_p$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=24">T4, pp. 24-25</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=5">T5, p. 5</a>.</p>
+
+<h3 id="c4-6">C4.6 · Célula solar</h3>
+
+- **Efecto fotoeléctrico**: en una unión p-n hay una barrera de potencial. La radiación con energía mayor que la banda prohibida genera pares electrón-hueco; el campo de la unión lleva los electrones a la zona n y los huecos a la p, y aparece una tensión medible.
+- **Estructura**: una unión p-n con un contacto metálico en forma de rejilla en la cara iluminada.
+- **Característica I-V**: corriente casi constante ($I_{\mathrm{SC}} \approx I_L$) hasta que el diodo empieza a conducir y cae bruscamente hasta $V_{\mathrm{OC}}$. El **punto de máxima potencia** ($V_M$, $I_M$) está en el codo.
+- **Circuito equivalente**: fuente de corriente $I_L$ en paralelo con un diodo:
+
+$$
+I = I_L - I_0 \left(e^{eV/kT} - 1\right)
+$$
+
+En circuito abierto, toda la corriente $I_L$ circula por el diodo y la tensión es máxima.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=28">T4, pp. 28-31</a>.</p>
+
+<h3 id="c4-7">C4.7 · Dispositivos de almacenamiento</h3>
+
+<div class="table-scroll">
+
+| Dispositivo | Capacidad | ESR | Fuga | Valoración |
+| --- | --- | --- | --- | --- |
+| Tántalo | 10 µF-1 mF | ~1,3 Ω | ~6 µA | Adecuado, pero de poca capacidad |
+| Electrolítico | 10 µF-47 mF | ~10 Ω | ~4 mA | Poco adecuado |
+| Supercondensador | 0,1-1200 F | ~2 Ω | ~3 µA | Mucha capacidad, poca ESR y poca autodescarga |
+| Batería o pila | 100 mAh-1 Ah | — | — | Mucha más energía; necesita circuitos que controlen la tensión |
+
+</div>
+
+Los valores de ESR y fuga son los de los ejemplos de la diapositiva 38.
+
+- **Electrolíticos**: su fuga de miliamperios es mayor que lo que entrega un generador de energy harvesting; se descargarían solos.
+- **Batería frente a supercondensador** (**razonamiento**): la batería conviene cuando el nodo debe funcionar mucho tiempo sin aporte del entorno, porque almacena mucha más energía. El supercondensador soporta muchísimos más ciclos de carga y picos de corriente, y basta cuando la energía llega con frecuencia.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=34">T4, pp. 3 y 34-38</a>.</p>
+
+<h3 id="c4-8">C4.8 · Convertidores de muy baja potencia</h3>
+
+Convierten niveles de mV y µA en niveles útiles (mA y 1,8-5 V). Hay que tener en cuenta:
+
+- la tensión mínima de entrada a la que funciona;
+- la corriente de salida;
+- si tiene salida PGOOD configurable;
+- el rendimiento y la corriente de fuga (autodescarga de la capacidad de salida);
+- las curvas de tiempo de carga de la capacidad de salida.
+
+**LTC3108**: convertidor **elevador** para tensiones de entrada muy bajas, como las de un módulo Peltier (TEG). **LTC3588**: convertidor **reductor** para corrientes de entrada muy bajas, como las de un generador piezoeléctrico.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=42">T4, pp. 42-43</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=3">T5, p. 3</a>.</p>
+
+<h3 id="e4-1">E4.1 · Capacidad para alimentar un nodo IoT</h3>
+
+**1.** Carga de cada acción, $q = I\, t$ (con mA y ms sale en µC):
+
+$$
+\begin{aligned}
+q_{\text{activa}} &= 10 \cdot 4 + 5 \cdot 2 + 50 \cdot 8 + 20 \cdot 6 + 150 \cdot 35 \\
+&= 40 + 10 + 400 + 120 + 5250 = 5820\ \mathrm{\mu C}
+\end{aligned}
+$$
+
+La parte activa dura 0,235 s y es despreciable frente a los 900 s del periodo:
+
+$$
+q_{\text{sleep}} = 5\ \mathrm{\mu A} \cdot 900\ \mathrm{s} = 4{,}5\ \mathrm{mC}
+$$
+
+$Q = 5{,}82 + 4{,}5 = 10{,}32\ \mathrm{mC}$. Con la tensión media $V_m = (3{,}3 + 2{,}9)/2 = 3{,}1\ \mathrm{V}$:
+
+$$
+E = V_m\, Q = 3{,}1 \cdot 10{,}32\ \mathrm{mC} = 32{,}0\ \mathrm{mJ}
+$$
+
+El modo sleep supone el $4{,}5 / 10{,}32 = 44\ \%$: aunque la corriente es mínima, dura casi todo el periodo.
+
+**2.** Capacidad:
+
+$$
+C = \frac{2E}{V_{\max}^2 - V_{\min}^2} = \frac{2 \cdot 0{,}032}{3{,}3^2 - 2{,}9^2} = \frac{0{,}064}{2{,}48} = 25{,}8\ \mathrm{mF}
+$$
+
+Por carga sale lo mismo: $C = Q / \Delta V = 10{,}32\ \mathrm{mC} / 0{,}4\ \mathrm{V} = 25{,}8\ \mathrm{mF}$.
+
+Se elige el valor superior: un **supercondensador de 47 mF** (como el ADCM-S05R5SA473WB de la diapositiva 38). Un electrolítico de esa capacidad tendría una fuga de miliamperios, mayor que todo el consumo medio del nodo.
+
+**3.** La parte activa saca 5,82 mC:
+
+$$
+\Delta V = \frac{5{,}82\ \mathrm{mC}}{47\ \mathrm{mF}} = 0{,}124\ \mathrm{V} \;\Rightarrow\; V = 3{,}3 - 0{,}124 = 3{,}18\ \mathrm{V}
+$$
+
+Después, el sleep baja otros $4{,}5 / 47 = 0{,}096\ \mathrm{V}$, hasta 3,08 V: no llega a 2,9 V.
+
+**4.** Capacidad de la pila en culombios: $0{,}220\ \mathrm{A} \cdot 3600\ \mathrm{s} = 792\ \mathrm{C}$.
+
+$$
+\text{ciclos} = \frac{792}{0{,}01032} = 76\,744 \qquad t = 76\,744 \cdot 900\ \mathrm{s} = 6{,}9 \cdot 10^7\ \mathrm{s}
+$$
+
+Son unos **799 días, 2,2 años**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=39">T4, pp. 34, 38 y 39-41</a>. Mismo método que el <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/#capacidad">ejemplo 4.1 y el ejercicio 1 del boletín</a>.</p>
+
+<h3 id="e4-2">E4.2 · Célula fotovoltaica</h3>
+
+**1.** Fuente de corriente $I_L$ hacia arriba, diodo en paralelo con el ánodo en el terminal positivo, y la carga entre los terminales. La curva I-V es plana en $I_L$ y cae bruscamente cerca de $V_{\mathrm{OC}}$ (como en C4.6).
+
+**2.** $I_L = 0{,}00025 \cdot 800 = 0{,}2\ \mathrm{A}$. En cortocircuito $V = 0$, el diodo no conduce y $I_{\mathrm{SC}} = I_L = 200\ \mathrm{mA}$.
+
+**3.** En circuito abierto $I = 0$:
+
+$$
+I_0 = \frac{I_L}{e^{V_{\mathrm{OC}}/V_T} - 1} = \frac{0{,}2}{e^{0{,}62/0{,}02585} - 1} = \frac{0{,}2}{2{,}61 \cdot 10^{10}} = 7{,}67 \cdot 10^{-12}\ \mathrm{A}
+$$
+
+**4.** $I = 0{,}2 - 7{,}67 \cdot 10^{-12} \left(e^{V/0{,}02585} - 1\right)$ y $P = V I$:
+
+<div class="table-scroll">
+
+| V | I | P |
+| --- | --- | --- |
+| 0,50 V | 198,1 mA | 99,0 mW |
+| 0,52 V | 195,8 mA | 101,8 mW |
+| 0,55 V | 186,7 mA | 102,7 mW |
+
+</div>
+
+De las tres, **0,55 V** es la más cercana al punto de máxima potencia. Probando más valores, el máximo está hacia 0,54 V (103,1 mW).
+
+**5.** Con 200 W/m², $I_L = 0{,}05\ \mathrm{A}$:
+
+$$
+V_{\mathrm{OC}} = V_T \ln\left(\frac{I_L}{I_0} + 1\right) = 0{,}02585 \ln\left(\frac{0{,}05}{7{,}67 \cdot 10^{-12}}\right) = 0{,}584\ \mathrm{V}
+$$
+
+La corriente es proporcional a la irradiancia (cae a la cuarta parte), mientras que la tensión depende de su logaritmo: solo baja 36 mV. **Varía mucho más la corriente.**
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=29">T4, pp. 29-31</a>. Mismo modelo que la <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/#fotovoltaica">cuestión 3 del boletín</a>.</p>
+
+<h3 id="e4-3">E4.3 · Termopar y termopila</h3>
+
+**1.** $V = S (T_c - T_f)$:
+
+$$
+T_c = 25 + \frac{2{,}05\ \mathrm{mV}}{51{,}5\ \mathrm{\mu V/^\circ C}} = 25 + 39{,}8 = 64{,}8\ ^\circ\mathrm{C}
+$$
+
+**2.** **No cambia**: es la ley de los **metales intermedios**. Las dos uniones nuevas (hierro-cobre y constantán-cobre) están a la misma temperatura y sus tensiones se cancelan.
+
+**3.** $V = 51{,}5\ \mathrm{\mu V/^\circ C} \cdot 120 = 6{,}18\ \mathrm{mV}$. Con la ley de las temperaturas intermedias, $120 = 95 + 25$:
+
+$$
+V(95, 0) + V(25, 0) = 4{,}89 + 1{,}29 = 6{,}18\ \mathrm{mV}
+$$
+
+**4.** Los 127 pares están en serie y sus tensiones se suman:
+
+$$
+V_{\mathrm{OC}} = 127 \cdot 200\ \mathrm{\mu V/K} \cdot 10\ \mathrm{K} = 0{,}254\ \mathrm{V}
+$$
+
+$$
+P_{\max} = \frac{V_{\mathrm{OC}}^2}{4R} = \frac{0{,}254^2}{4 \cdot 2} = 8{,}06\ \mathrm{mW}
+$$
+
+**5.** Un convertidor dc-dc **elevador** (como el LTC3108), porque 0,25 V es muy inferior a 3,3 V. El salto de temperatura lo limita la **alta conductividad térmica** del semiconductor: el calor pasa de una cara a la otra e iguala sus temperaturas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=16">T4, pp. 16-21 y 42</a>; <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=3">T5, p. 3</a>.</p>
+
+<h3 id="e4-4">E4.4 · Elección del almacenamiento</h3>
+
+**1.** $E = \tfrac{1}{2} C \left(3{,}3^2 - 2{,}5^2\right) = \tfrac{1}{2} C \cdot 4{,}64$:
+
+- Electrolítico: $\tfrac{1}{2} \cdot 0{,}022 \cdot 4{,}64 = 51\ \mathrm{mJ}$.
+- Supercondensador: $\tfrac{1}{2} \cdot 0{,}1 \cdot 4{,}64 = 232\ \mathrm{mJ}$.
+
+**2.** Con corriente constante, $t = C\, \Delta V / I$:
+
+- Electrolítico: $t = 0{,}022 \cdot 0{,}5 / 0{,}004 = 2{,}75\ \mathrm{s}$.
+- Supercondensador: $t = 0{,}1 \cdot 0{,}5 / (3 \cdot 10^{-6}) = 16\,667\ \mathrm{s} \approx 4{,}6\ \mathrm{h}$.
+
+**3.** Supercondensador: $t = E/P = 0{,}232 / 0{,}001 = 232\ \mathrm{s}$ (unos 4 minutos). Su fuga, $3\ \mathrm{\mu A} \cdot 3\ \mathrm{V} \approx 9\ \mathrm{\mu W}$, es despreciable.
+
+Electrolítico: la fuga consume unos $4\ \mathrm{mA} \cdot 3\ \mathrm{V} = 12\ \mathrm{mW}$, más que el milivatio que entrega el generador. Dicho de otra forma, 1 mW a 3 V son 0,33 mA, menos que los 4 mA de fuga. **Nunca llegaría a 3,3 V.**
+
+**4.** **Razonamiento**: la ESR (limita la corriente de pico y produce caídas de tensión en la transmisión), la tensión nominal (debe superar 3,3 V; 5,5 V en los supercondensadores de la diapositiva), la corriente de pico máxima y la energía almacenada.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=38">T4, pp. 34, 38 y 39</a>.</p>
+
+<h2 id="tema-5">Tema 5 · Sistemas de energy harvesting</h2>
+
+<h3 id="c5-1">C5.1 · Métodos de energy harvesting</h3>
+
+<div class="table-scroll">
+
+| Método | Transductor y circuito adaptador |
+| --- | --- |
+| Radiofrecuencia | Antena y multiplicador de tensión |
+| Piezoelectricidad | Transductor piezoeléctrico y rectificador |
+| Electrodinámica | Bobina e imán, rectificador y convertidor dc-dc |
+| Termoelectricidad | Módulo Peltier y convertidor dc-dc elevador |
+| Fotovoltaica | Módulo solar y convertidor dc-dc reductor |
+
+</div>
+
+**Características comunes**: no funcionan de forma continua, porque la energía disponible no es constante; generan corrientes o tensiones reducidas; necesitan un circuito adaptador. Por la primera, todos necesitan un **almacenamiento** que acumule la energía hasta que hay suficiente para una tarea del nodo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=3">T5, p. 3</a>.</p>
+
+<h3 id="c5-2">C5.2 · Rectificador de medio puente</h3>
+
+**Esquema**: fuente $i_p$ en paralelo con $C_p$; el diodo D2 en paralelo con el generador y D1 en serie hacia $C_{\mathrm{REC}}$ y la carga $R_L$.
+
+- **t1-t2**: D1 y D2 en corte. La corriente positiva carga $C_p$ hasta que $V_{pz}$ alcanza $V_{\mathrm{REC}}$.
+- **t2-t3**: D1 conduce. La tensión de $C_p$ es casi constante y la corriente pasa a $C_{\mathrm{REC}}$ y $R_L$ hasta que se hace negativa.
+- **t3-t4**: los dos diodos en corte. $C_{\mathrm{REC}}$ mantiene la tensión de la carga y la corriente negativa descarga $C_p$.
+- **t4-t5**: D2 conduce hasta que empieza otro ciclo.
+
+**Doblador**: en vacío la salida alcanza $2V_p = 2 I_p / (\omega C_p)$, el doble de la amplitud de la fuente de Thévenin.
+
+**Potencia**: $P = V_{\mathrm{REC}}\, f\, C_p \left(2V_p - V_{\mathrm{REC}}\right)$. Derivando e igualando a cero, el máximo está en $V_{\mathrm{REC}} = V_p$, con $P_{\max} = C_p f V_p^2$ y una carga óptima $R = 1/(f C_p)$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=5">T5, pp. 5-10</a>.</p>
+
+<h3 id="c5-3">C5.3 · Comparación de rectificadores</h3>
+
+<div class="table-scroll">
+
+| Rectificador | Carga útil por ciclo | $V_{\mathrm{REC}}$ óptima | Potencia máxima |
+| --- | --- | --- | --- |
+| Medio puente | $C_p (2V_p - V_{\mathrm{REC}})$ | $V_p$ | $C_p f V_p^2$ |
+| Onda completa | $4 V_p C_p - 4 C_p V_{\mathrm{REC}}$ | $V_p/2$ | $C_p f V_p^2$ |
+| Onda completa con interruptor | $4 V_p C_p - 2 C_p V_{\mathrm{REC}}$ | $V_p$ | $2 C_p f V_p^2$ |
+| SSHI (interruptor y bobina) | $4 V_p C_p$ | — | $4 C_p f V_p^2$ |
+
+</div>
+
+En los de onda completa, la carga total disponible en un periodo es $4 V_p C_p$. Lo que se resta es la carga que se gasta en cargar $C_p$: de $-V_{\mathrm{REC}}$ a $+V_{\mathrm{REC}}$ y viceversa sin interruptor ($2 \cdot 2 C_p V_{\mathrm{REC}}$), solo de 0 a $\pm V_{\mathrm{REC}}$ con interruptor y prácticamente nada con el SSHI. En todos, $P = Q_{\text{útil}}\, f\, V_{\mathrm{REC}}$.
+
+**Por qué duplica el interruptor**: mientras $C_p$ se carga no se entrega energía a la salida. El interruptor descarga $C_p$ a 0 V en cada paso por cero de la corriente, de modo que solo hay que cargarla de 0 a $\pm V_{\mathrm{REC}}$ y no desde el valor opuesto: se pierde la mitad de carga.
+
+**Inconveniente**: hace falta un circuito de control que complica la solución y consume energía; hay que descontarla para obtener el rendimiento real.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=11">T5, pp. 9-16 y 19</a>.</p>
+
+<h3 id="c5-4">C5.4 · Modelo del módulo Peltier</h3>
+
+**Eléctrico**: fuente $S_E (T_H - T_L)$ en serie con $R_E$:
+
+$$
+V = S_E (T_H - T_L) - I R_E
+$$
+
+**Térmico** (circuito con «corrientes» de calor): fuentes $I T_H S_E$ y $\tfrac{1}{2} I^2 R_E$ en el nodo $T_H$, $\tfrac{1}{2} I^2 R_E$ e $I T_L S_E$ en el nodo $T_L$, y la resistencia térmica $R_T$ entre ambos:
+
+$$
+\begin{aligned}
+Q_H &= I T_H S_E - \tfrac{1}{2} I^2 R_E + \frac{T_H - T_L}{R_T} \\
+Q_L &= I T_L S_E + \tfrac{1}{2} I^2 R_E + \frac{T_H - T_L}{R_T}
+\end{aligned}
+$$
+
+**Parámetros con la hoja de características**:
+
+1. $R_E$: punto sin salto térmico, $R_E = V/I$.
+2. $S_E$: dos puntos con la misma corriente y distinto salto, $S_E = \Delta V / \Delta T$.
+3. $R_T$: potencia máxima bombeada $P_M$ y salto máximo $\Delta T_M$, $R_T = \Delta T_M / P_M$.
+4. $R_{E1}$ y $T_L S_T$: ajuste de segundo grado sin término constante de $P_M = I T_L S_T - \tfrac{1}{2} I^2 R_{E1}$.
+
+**Dos resistencias**: la $R_{E1}$ del ajuste térmico no coincide con la $R_E$ eléctrica. $R_{E1}$ es la parte interior de la célula y $R_{E2} = R_E - R_{E1}$, la de las conexiones. En el modelo térmico se usa $R_{E1}$ (y $S_T$); en el eléctrico, $R_{E1} + R_{E2}$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=20">T5, pp. 20-30</a>.</p>
+
+<h3 id="c5-5">C5.5 · Medidas en el ejemplo fotovoltaico</h3>
+
+**Dibujo**: la tensión del microcontrolador (canal 2) es un diente de sierra. Sube lentamente mientras se carga la capacidad y baja rápidamente mientras el ESP32 trabaja. PGOOD (canal 1) está a nivel alto solo durante las bajadas.
+
+**Cálculos**:
+
+1. Carga entregada en cada descarga: $\Delta Q = C\, \Delta V$, con el $\Delta V$ medido en el osciloscopio.
+2. Corriente media de carga: $\bar{I} = \Delta Q / \Delta t$, con el tiempo de carga del ciclo.
+3. Potencia de salida del convertidor: $P_{\text{salida}} = V\, \bar{I}$.
+4. Potencia de entrada: tensión por corriente del módulo, medidas con el polímetro a la entrada del convertidor.
+5. Rendimiento: $\eta = P_{\text{salida}} / P_{\text{entrada}} \cdot 100$. En el ejemplo de las diapositivas sale del 66 %.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=32">T5, pp. 32 y 40-41</a>.</p>
+
+<h3 id="c5-6">C5.6 · SSHI</h3>
+
+- **Funcionamiento**: cuando la tensión del piezo es $V_{\mathrm{REC}}$, la señal CTRL1 cierra S1 y $C_p$ se descarga sobre la bobina L1. La corriente sigue un seno y la tensión un coseno: cuando la corriente vuelve a cero, toda la energía ha vuelto al condensador con la **polaridad invertida** ($-V_{\mathrm{REC}}$). El diodo D1 solo deja pasar corriente positiva. La otra rama (L2, D6, S2) hace lo mismo de $-V_{\mathrm{REC}}$ a $+V_{\mathrm{REC}}$.
+- **Duración**: medio periodo de la oscilación LC, $t = \pi \sqrt{L C_p}$. Con 0,5 H y 100 nF, $t = 0{,}7\ \mathrm{ms}$.
+- **Condición**: $t \ll T$, mucho menor que el periodo de la vibración, para un buen rendimiento.
+- **Onda cuadrada**: **sí** puede serlo. Aunque la señal siga activa tras el transitorio, el diodo bloquea la corriente, que se extingue al llegar a cero.
+
+Resultado: prácticamente toda la carga va a la salida y la potencia es cuatro veces la del rectificador simple, a costa de complicar el circuito.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=16">T5, pp. 16-19</a>.</p>
+
+<h3 id="e5-1">E5.1 · Generador piezoeléctrico y rectificadores</h3>
+
+**1.** $\omega = 2\pi \cdot 20 = 125{,}7\ \mathrm{rad/s}$.
+
+$$
+V_p = \frac{I_p}{\omega C_p} = \frac{100 \cdot 10^{-6}}{125{,}7 \cdot 100 \cdot 10^{-9}} = 7{,}96\ \mathrm{V}
+$$
+
+$$
+\lvert Z_c \rvert = \frac{1}{\omega C_p} = 79{,}6\ \mathrm{k\Omega}
+$$
+
+El equivalente Thévenin es una fuente senoidal de 7,96 V de pico y 20 Hz en serie con 100 nF.
+
+**2.** Medio puente:
+
+- En vacío: $2V_p = 15{,}9\ \mathrm{V}$.
+- Máxima potencia con $V_{\mathrm{REC}} = V_p = 7{,}96\ \mathrm{V}$.
+- $P_{\max} = C_p f V_p^2 = 100 \cdot 10^{-9} \cdot 20 \cdot 7{,}96^2 = 126{,}7\ \mathrm{\mu W}$.
+- Carga óptima: $R = \dfrac{1}{f C_p} = \dfrac{1}{20 \cdot 100 \cdot 10^{-9}} = 500\ \mathrm{k\Omega}$.
+
+Comprobación: $V^2/R = 7{,}96^2 / 500\ \mathrm{k\Omega} = 126{,}7\ \mathrm{\mu W}$.
+
+**3.** Onda completa: máxima potencia con $V_{\mathrm{REC}} = V_p/2 = 3{,}98\ \mathrm{V}$ y la misma $P_{\max} = 126{,}7\ \mathrm{\mu W}$.
+
+**4.**
+
+<div class="table-scroll">
+
+| Rectificador | Potencia máxima |
+| --- | --- |
+| Medio puente | $C_p f V_p^2 = 126{,}7\ \mathrm{\mu W}$ |
+| Onda completa | $C_p f V_p^2 = 126{,}7\ \mathrm{\mu W}$ |
+| Con interruptor | $2 C_p f V_p^2 = 253\ \mathrm{\mu W}$ |
+| SSHI | $4 C_p f V_p^2 = 507\ \mathrm{\mu W}$ |
+
+</div>
+
+**5.**
+
+$$
+t = \pi \sqrt{L C_p} = \pi \sqrt{0{,}5 \cdot 100 \cdot 10^{-9}} = 0{,}70\ \mathrm{ms}
+$$
+
+El periodo es $T = 1/20 = 50\ \mathrm{ms}$: la inversión dura el 1,4 % del periodo. Se cumple $t \ll T$ y la bobina es **adecuada**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=5">T5, pp. 5, 9-12, 15, 18-19</a>. Mismo método que el <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/#piezo">ejercicio 3 y la cuestión 4 del boletín</a>.</p>
+
+<h3 id="e5-2">E5.2 · Cadena de energy harvesting termoeléctrica</h3>
+
+**1.**
+
+$$
+V_{\mathrm{OC}} = S_E\, \Delta T = 0{,}0254 \cdot 5 = 0{,}127\ \mathrm{V}
+$$
+
+Con la resistencia de entrada adaptada:
+
+$$
+P_{\mathrm{in}} = \frac{V_{\mathrm{OC}}^2}{4 R_E} = \frac{0{,}127^2}{4 \cdot 2{,}39} = 1{,}69\ \mathrm{mW}
+$$
+
+El convertidor es **elevador**: sube 0,13 V (la mitad, 63 mV, en bornes con la carga adaptada) hasta 3,3 V.
+
+**2.** $P_{\mathrm{out}} = 0{,}5 \cdot 1{,}69 = 0{,}84\ \mathrm{mW}$.
+
+**3.**
+
+$$
+C = \frac{I\, t}{\Delta V} = \frac{0{,}025 \cdot 1{,}5}{3{,}3 - 2{,}9} = \frac{0{,}0375}{0{,}4} = 93{,}8\ \mathrm{mF}
+$$
+
+Se elige un **supercondensador de 0,1 F**.
+
+**4.** Como en el boletín, la energía del ciclo es la del condensador entre los dos umbrales:
+
+$$
+E = \tfrac{1}{2} \cdot 0{,}1 \cdot \left(3{,}3^2 - 2{,}9^2\right) = \tfrac{1}{2} \cdot 0{,}1 \cdot 2{,}48 = 0{,}124\ \mathrm{J}
+$$
+
+Calculada con el consumo, $V_m I t = 3{,}1 \cdot 0{,}025 \cdot 1{,}5 = 0{,}116\ \mathrm{J}$: es algo menor porque se eligió una C mayor que la necesaria.
+
+**5.**
+
+$$
+t = \frac{E}{P_{\mathrm{out}}} = \frac{0{,}124}{0{,}000844} = 147\ \mathrm{s}
+$$
+
+El nodo puede repetir sus tareas cada $147 + 1{,}5 \approx 148{,}5\ \mathrm{s}$, unos 2,5 minutos.
+
+**6.** Hace falta $P_{\mathrm{out}} = 0{,}124 / 30 = 4{,}13\ \mathrm{mW}$, es decir, $P_{\mathrm{in}} = 8{,}27\ \mathrm{mW}$:
+
+$$
+V_{\mathrm{OC}} = \sqrt{4 R_E P_{\mathrm{in}}} = \sqrt{4 \cdot 2{,}39 \cdot 0{,}00827} = 0{,}281\ \mathrm{V}
+$$
+
+$$
+\Delta T = \frac{0{,}281}{0{,}0254} = 11{,}1\ \mathrm{K}
+$$
+
+Atajo: la potencia crece con $\Delta T^2$, así que $\Delta T = 5 \sqrt{147/30} = 11{,}1\ \mathrm{K}$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=22">T5, pp. 3, 22 y 24-25</a>; <a href="/web-estudio/materiales/dispositivos/tema-4-alimentacion.pdf#page=39">T4, pp. 3, 39 y 42</a>. Mismo método que el <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/#harvesting">ejercicio 2 del boletín</a>.</p>
+
+<h3 id="e5-3">E5.3 · Modelo de un módulo Peltier</h3>
+
+**1.** Los mismos modelos que en la cuestión C5.4.
+
+**2.** En el punto A no hay salto térmico y toda la tensión cae en la resistencia:
+
+$$
+R_E = \frac{12{,}6}{6} = 2{,}1\ \Omega
+$$
+
+De A a B solo cambia el salto térmico:
+
+$$
+S_E = \frac{\Delta V}{\Delta T} = \frac{13{,}9 - 12{,}6}{50 - 0} = 0{,}026\ \mathrm{V/K}
+$$
+
+**3.**
+
+$$
+R_T = \frac{\Delta T_M}{P_M} = \frac{66}{39{,}6} = 1{,}67\ \mathrm{K/W}
+$$
+
+**4.** Con $a = T_L S_T$:
+
+$$
+\begin{aligned}
+3a - \tfrac{1}{2} \cdot 9\, R_{E1} &= 27{,}9 \\
+6a - \tfrac{1}{2} \cdot 36\, R_{E1} &= 39{,}6
+\end{aligned}
+$$
+
+Multiplicando la primera por 2: $6a - 9 R_{E1} = 55{,}8$. Restando la segunda: $9 R_{E1} = 16{,}2$, así que $R_{E1} = 1{,}8\ \Omega$ y $a = (27{,}9 + 8{,}1)/3 = 12$.
+
+Resultado: $T_L S_T = 12\ \mathrm{W/A}$ y $R_{E1} = 1{,}8\ \Omega$. Por tanto, $R_{E2} = 2{,}1 - 1{,}8 = 0{,}3\ \Omega$: es la resistencia de las **conexiones**, exterior a la célula.
+
+**5.**
+
+$$
+V_{\mathrm{OC}} = 0{,}026 \cdot 8 = 0{,}208\ \mathrm{V}
+\qquad
+P_{\max} = \frac{0{,}208^2}{4 \cdot 2{,}1} = 5{,}15\ \mathrm{mW}
+$$
+
+Como generador se usa la $R_E$ total (2,1 Ω), porque la corriente atraviesa también las conexiones.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=24">T5, pp. 22 y 24-30</a>. Mismo método que el ejemplo del CP60333 y el <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/#peltier">ejercicio 5 del boletín</a>.</p>
+
+<h3 id="e5-4">E5.4 · Medidas en un sistema fotovoltaico</h3>
+
+**1.** Diente de sierra entre 2,45 y 3,30 V con periodo de 40 s: subida de 39,3 s y bajada de 0,7 s. PGOOD está a 1 durante los 0,7 s de bajada y a 0 el resto.
+
+**2.** $P_{\mathrm{in}} = 1{,}8\ \mathrm{V} \cdot 1{,}4\ \mathrm{mA} = 2{,}52\ \mathrm{mW}$.
+
+**3.**
+
+$$
+\Delta Q = C\, \Delta V = 23{,}5\ \mathrm{mF} \cdot 0{,}85\ \mathrm{V} = 19{,}98\ \mathrm{mC}
+$$
+
+$$
+I_{\mathrm{ESP32}} \approx \frac{19{,}98\ \mathrm{mC}}{0{,}7\ \mathrm{s}} = 28{,}5\ \mathrm{mA}
+$$
+
+Se desprecia lo que el convertidor aporta durante esos 0,7 s. El resultado es coherente con los 30 mA medidos en el ejemplo de las diapositivas.
+
+**4.** La carga se repone en $40 - 0{,}7 = 39{,}3\ \mathrm{s}$:
+
+$$
+\bar{I} = \frac{19{,}98\ \mathrm{mC}}{39{,}3\ \mathrm{s}} = 0{,}508\ \mathrm{mA}
+$$
+
+$$
+P_{\mathrm{out}} = \frac{3{,}30 + 2{,}45}{2} \cdot 0{,}508\ \mathrm{mA} = 2{,}875 \cdot 0{,}508 = 1{,}46\ \mathrm{mW}
+$$
+
+**5.**
+
+$$
+\eta = \frac{1{,}46}{2{,}52} \cdot 100 = 58\ \%
+$$
+
+$$
+E = \tfrac{1}{2} \cdot 0{,}0235 \cdot \left(3{,}30^2 - 2{,}45^2\right) = 57{,}4\ \mathrm{mJ}
+$$
+
+Comprobación: $V_m\, \Delta Q = 2{,}875 \cdot 19{,}98\ \mathrm{mC} = 57{,}4\ \mathrm{mJ}$.
+
+**6.** El módulo entrega 2,52 mW con un rendimiento del 20 %: recibe $2{,}52 / 0{,}2 = 12{,}6\ \mathrm{mW}$ de luz. Área: $4 \cdot 6{,}59 \cdot 5{,}28 = 139{,}2\ \mathrm{mm^2} = 1{,}392 \cdot 10^{-4}\ \mathrm{m^2}$.
+
+$$
+I_{\mathrm{rad}} = \frac{0{,}0126}{1{,}392 \cdot 10^{-4}} = 90{,}5\ \mathrm{W/m^2}
+$$
+
+Se supone que el convertidor hace trabajar al módulo en el punto de máxima potencia.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/dispositivos/tema-5-energy-harvesting.pdf#page=32">T5, pp. 32, 34 y 40-41</a>. Mismo método que el <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/#harvesting">ejercicio 4 del boletín</a>.</p>

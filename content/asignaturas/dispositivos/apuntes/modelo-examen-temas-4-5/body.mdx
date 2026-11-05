@@ -1,0 +1,156 @@
+<p class="lead">Boletín para resolver en papel, sin soluciones. Imita el examen: una cuestión de desarrollo y un ejercicio de cada tema, con enunciados parecidos a los del boletín de los temas 4 y 5. Hay más material del que cabe en un examen para que puedas repetir el simulacro con otra combinación.</p>
+
+<div class="callout">
+
+**Cómo usarlo**
+
+1. Estudia primero los apuntes de los temas 4 y 5 y el formulario.
+2. Haz el **simulacro** de abajo sin mirar nada, salvo la calculadora.
+3. Responde en folios aparte e indica el código de cada pregunta (C4.2, E5.1…). Escribe los pasos y las unidades, no solo el resultado.
+4. Después resuelve el resto, tema a tema.
+
+</div>
+
+<p class="no-print">Cuando termines, compara con las <a href="/web-estudio/asignaturas/dispositivos/apuntes/soluciones-modelo-examen-temas-4-5/">soluciones explicadas</a>.</p>
+
+<h2 id="simulacro">Simulacro: temas 4 y 5</h2>
+
+Una cuestión y un ejercicio de cada tema:
+
+<div class="table-scroll">
+
+| Tema | Cuestión | Ejercicio |
+| --- | --- | --- |
+| 4 · Alimentación para nodos IoT de bajo consumo | C4.2 | E4.1 |
+| 5 · Sistemas de energy harvesting | C5.3 | E5.2 |
+
+</div>
+
+Segundo simulacro, otro día: C4.6 + E4.2 y C5.4 + E5.1. Tercero: C4.7 + E4.4 y C5.5 + E5.4.
+
+<h2 id="tema-4">Tema 4 · Alimentación para nodos IoT de bajo consumo</h2>
+
+<h3 id="t4-cuestiones">Cuestiones</h3>
+
+**C4.1.** Dibuja el diagrama de bloques de un nodo IoT alimentado por energy harvesting y el de uno alimentado por una pila. Explica la función de cada bloque (generador, rectificador, convertidor dc-dc, almacenamiento, supervisor e interruptor) e indica los órdenes de magnitud típicos de tensión, corriente y capacidad de almacenamiento.
+
+**C4.2.** Explica la funcionalidad de la señal PGOOD en un sistema de energy harvesting y describe el circuito que la genera. Dibuja, para dos ciclos, la tensión del condensador de almacenamiento y la señal PGOOD si los umbrales son 3,3 V y 2,8 V. ¿Qué ocurriría sin histéresis?
+
+**C4.3.** Explica los efectos Joule, Thompson, Peltier y Seebeck. Indica cuáles son reversibles y qué relación hay entre ellos. ¿Por qué se usan semiconductores, y no metales, para construir un módulo Peltier?
+
+**C4.4.** Enuncia las tres leyes del efecto termoeléctrico con un dibujo de cada una. ¿Por qué la segunda ley permite conectar un termopar a un instrumento con cables de cobre sin alterar la medida?
+
+**C4.5.** ¿Qué es el efecto piezoeléctrico? Cita materiales naturales y sintéticos que lo presentan. ¿Qué magnitudes puede medir un transductor piezoeléctrico y por qué se dice que es reversible? Dibuja su modelo eléctrico como generador.
+
+**C4.6.** Explica el efecto fotoeléctrico en una unión p-n y la estructura de una célula solar. Dibuja la característica I-V iluminada y marca $I_{\mathrm{SC}}$, $V_{\mathrm{OC}}$ y el punto de máxima potencia. Dibuja el circuito equivalente de la célula y escribe su ecuación.
+
+**C4.7.** Compara como almacenamiento para un nodo de bajo consumo un condensador de tántalo, uno electrolítico, un supercondensador y una batería: rango de capacidad, ESR y corriente de fuga. ¿Por qué los electrolíticos son poco adecuados? ¿Cuándo elegirías una batería en lugar de un supercondensador?
+
+**C4.8.** ¿Qué características hay que tener en cuenta al elegir un convertidor de muy baja potencia? Compara el LTC3108 y el LTC3588: qué tipo de convertidor es cada uno y para qué generador está pensado.
+
+<h3 id="t4-ejercicios">Ejercicios</h3>
+
+**E4.1. Capacidad para alimentar un nodo IoT.** Un nodo IoT trabaja entre 3,3 y 2,9 V y realiza las siguientes tareas:
+
+- Normalmente está en modo de bajo consumo (sleep): 5 µA.
+- Un temporizador lo despierta cada 15 minutos.
+- Cuando se despierta realiza estas acciones:
+  - a1: inicialización, 10 ms y 4 mA;
+  - a2: conexión del periférico y configuración, 5 ms y 2 mA;
+  - a3: acción del periférico, 50 ms y 8 mA;
+  - a4: procesado, 20 ms y 6 mA;
+  - a5: transmisión de los datos, 150 ms y 35 mA.
+
+1. Calcula la carga y la energía consumidas en un periodo de 15 minutos. ¿Qué parte se debe al modo sleep?
+2. Calcula la capacidad necesaria. Elige un valor comercial y el tipo de condensador.
+3. Con el valor elegido, calcula la tensión del condensador al terminar la parte activa del ciclo.
+4. Si el nodo se alimenta con una pila de 220 mAh, ¿cuántos ciclos y cuánto tiempo dura? Supón que la pila soporta el pico de corriente.
+
+**E4.2. Célula fotovoltaica.** Una célula solar se modela como una fuente de corriente $I_L$ en paralelo con un diodo ideal: $I = I_L - I_0 \left(e^{V/V_T} - 1\right)$, con $V_T = 25{,}85\ \mathrm{mV}$. La corriente fotogenerada es $I_L = 0{,}00025 \cdot I_{\mathrm{rad}}$ (A), donde $I_{\mathrm{rad}}$ es la irradiancia en W/m². Con 800 W/m², la tensión de circuito abierto es de 0,62 V.
+
+1. Dibuja el circuito equivalente y la característica I-V.
+2. Calcula $I_L$ y la corriente de cortocircuito con 800 W/m².
+3. Calcula la corriente de saturación $I_0$ del diodo.
+4. Calcula la corriente y la potencia entregadas con 0,50 V, 0,52 V y 0,55 V. ¿Cuál de las tres se acerca más al punto de máxima potencia?
+5. Calcula $V_{\mathrm{OC}}$ con 200 W/m². ¿Varía más la corriente o la tensión de la célula con la irradiancia?
+
+**E4.3. Termopar y termopila.**
+
+1. Un termopar tipo J (sensibilidad 51,5 µV/°C) tiene la unión fría a 25 °C y entrega 2,05 mV. Suponiendo sensibilidad constante, ¿a qué temperatura está la unión caliente?
+2. El termopar se conecta al instrumento con cables de cobre y las dos nuevas uniones están a 25 °C. ¿Cambia la lectura? ¿Qué ley lo justifica?
+3. ¿Qué tensión daría el mismo termopar con la unión caliente a 120 °C y la fría a 0 °C? Comprueba el resultado con la ley de las temperaturas intermedias.
+4. Una termopila tiene 127 pares p-n en serie con un coeficiente de Seebeck de 200 µV/K por par y una resistencia interna de 2 Ω. Con un salto de 10 K, calcula la tensión en circuito abierto y la potencia máxima que entrega a una carga adaptada.
+5. ¿Qué tipo de convertidor dc-dc necesita la termopila para cargar un condensador a 3,3 V? ¿Qué limita el salto de temperatura que se consigue mantener?
+
+**E4.4. Elección del almacenamiento.** Un nodo necesita disponer de la energía que entrega un condensador al bajar de 3,3 V a 2,5 V. Se comparan un electrolítico de 22 mF, cuya corriente de fuga es de unos 4 mA, y un supercondensador de 0,1 F con una fuga de 3 µA.
+
+1. Calcula la energía útil que almacena cada uno entre 3,3 y 2,5 V.
+2. Si no hay consumo, ¿cuánto tarda cada uno en descargarse de 3,3 a 2,8 V solo por la fuga? Supón corriente de fuga constante.
+3. El generador entrega 1 mW al condensador. ¿Cuánto tarda en cargar el supercondensador de 2,5 a 3,3 V? ¿Llegaría a cargar el electrolítico? Justifica la respuesta comparando potencias.
+4. ¿Qué otros parámetros de la hoja de características comprobarías y por qué?
+
+<h2 id="tema-5">Tema 5 · Sistemas de energy harvesting</h2>
+
+<h3 id="t5-cuestiones">Cuestiones</h3>
+
+**C5.1.** Enumera cinco métodos de energy harvesting y el circuito adaptador que necesita cada uno. ¿Qué características comunes tienen estos sistemas y por qué todos necesitan un almacenamiento?
+
+**C5.2.** Dibuja un generador piezoeléctrico con un rectificador de medio puente. Explica qué ocurre en cada intervalo de un periodo (qué diodos conducen y qué pasa con $C_p$). ¿Por qué se dice que es un doblador? ¿Cuál es la tensión de salida en vacío y cuál la de máxima potencia?
+
+**C5.3.** Compara los cuatro rectificadores estudiados para generadores piezoeléctricos (medio puente, onda completa, onda completa con interruptor y SSHI): esquema simplificado, carga que se pierde en cada ciclo y potencia máxima. ¿Por qué un interruptor duplica la potencia? ¿Cuál es el inconveniente?
+
+**C5.4.** Dibuja los modelos eléctrico y térmico de un módulo Peltier y explica cada parámetro. Explica cómo se obtienen $R_E$, $S_E$, $R_T$ y $R_{E1}$ a partir de las curvas de la hoja de características. ¿Por qué hay dos resistencias eléctricas?
+
+**C5.5.** En el ejemplo de laboratorio con un módulo fotovoltaico, la placa DC2042 y un ESP32, se miden PGOOD y la tensión de alimentación del microcontrolador. Dibuja ambas señales y explica cómo se obtienen de las medidas la corriente media de carga, la potencia de salida del convertidor y su rendimiento.
+
+**C5.6.** Explica el funcionamiento del SSHI: cómo invierte la tensión de $C_p$, cuánto dura la inversión y qué condición debe cumplir esa duración. ¿Puede la señal de control ser una onda cuadrada? ¿Por qué?
+
+<h3 id="t5-ejercicios">Ejercicios</h3>
+
+**E5.1. Generador piezoeléctrico y rectificadores.** El generador piezoeléctrico de la figura del boletín (fuente de corriente $i_p = I_p \operatorname{sen}(\omega t)$ en paralelo con $C_p$) tiene $I_p = 100\ \mathrm{\mu A}$, $f = 20\ \mathrm{Hz}$ y $C_p = 100\ \mathrm{nF}$.
+
+1. Obtén su equivalente Thévenin: amplitud de la fuente de tensión y módulo de la impedancia.
+2. Con un rectificador de medio puente, calcula la tensión de salida en vacío, la tensión de máxima potencia, la potencia máxima y la resistencia de carga óptima.
+3. Repite el cálculo de la tensión de máxima potencia y la potencia máxima con un rectificador de onda completa.
+4. Haz una tabla con la potencia máxima de los cuatro rectificadores estudiados.
+5. En el SSHI se usa una bobina de 0,5 H. Calcula cuánto dura la inversión de la tensión de $C_p$ y compárala con el periodo. ¿Es adecuado el valor de la bobina?
+
+**E5.2. Cadena de energy harvesting termoeléctrica.** Un módulo Peltier con coeficiente de Seebeck $S_E = 0{,}0254\ \mathrm{V/K}$ y resistencia eléctrica $R_E = 2{,}39\ \Omega$ alimenta un convertidor dc-dc cuya resistencia de entrada se adapta a la del módulo. El salto de temperatura es de 5 K y el rendimiento del convertidor es del 50 %. La salida carga un condensador C que alimenta un nodo IoT mediante un interruptor controlado por PGOOD, con umbrales de 3,3 V y 2,9 V. El nodo consume 25 mA durante 1,5 s.
+
+1. Calcula la tensión de circuito abierto del módulo y la potencia de entrada al convertidor. ¿De qué tipo es el convertidor?
+2. Calcula la potencia de salida del convertidor.
+3. Calcula la capacidad necesaria. Elige un valor comercial y el tipo de condensador.
+4. Con el valor elegido, calcula la energía que consume el nodo en un ciclo de descarga.
+5. Calcula el tiempo de carga del condensador y el periodo con el que el nodo puede ejecutar sus tareas.
+6. ¿Qué salto de temperatura haría falta para que el tiempo de carga fuera de 30 s?
+
+**E5.3. Modelo de un módulo Peltier.** De las curvas de la hoja de características de un módulo Peltier, con $T_H = 27\ ^\circ\mathrm{C}$, se leen estos puntos:
+
+<div class="table-scroll">
+
+| Punto | Datos |
+| --- | --- |
+| A | Sin salto de temperatura, $I = 6\ \mathrm{A}$ y $V = 12{,}6\ \mathrm{V}$ |
+| B | Con $\Delta T = 50\ \mathrm{K}$ e $I = 6\ \mathrm{A}$, $V = 13{,}9\ \mathrm{V}$ |
+| C | Potencia máxima bombeada sin salto de temperatura con 6 A: 39,6 W |
+| D | Salto máximo de temperatura: 66 K |
+| Ajuste | Potencia máxima bombeada sin salto: 27,9 W con 3 A y 39,6 W con 6 A |
+
+</div>
+
+1. Dibuja los modelos eléctrico y térmico.
+2. Calcula la resistencia eléctrica total $R_E$ y el coeficiente de Seebeck $S_E$.
+3. Calcula la resistencia térmica $R_T$.
+4. Con los dos puntos del ajuste y $P_M = I\, T_L S_T - \tfrac{1}{2} I^2 R_{E1}$, calcula $T_L S_T$ y $R_{E1}$. ¿Cuánto vale $R_{E2}$ y qué representa?
+5. Usado como generador con un salto de 8 K, calcula la tensión en circuito abierto y la potencia máxima que entrega a una carga adaptada.
+
+**E5.4. Medidas en un sistema fotovoltaico.** Un módulo fotovoltaico carga, a través de un convertidor dc-dc, una capacidad total de 23,5 mF que alimenta un ESP32 controlado por PGOOD. Con el polímetro, a la entrada del convertidor se miden 1,8 V y 1,4 mA. En el osciloscopio se observa que la tensión del microcontrolador cae de 3,30 V a 2,45 V durante los 0,7 s en que PGOOD está activa, y que el ciclo completo se repite cada 40 s.
+
+1. Dibuja PGOOD y la tensión del microcontrolador durante dos ciclos, con los valores medidos.
+2. Calcula la potencia de entrada al convertidor.
+3. Calcula la carga que entrega el condensador en cada descarga y la corriente media que consume el ESP32 mientras está activo.
+4. Calcula la corriente media de carga y la potencia de salida del convertidor. Toma como tensión la media de los umbrales.
+5. Calcula el rendimiento del convertidor y la energía que consume el ESP32 en cada ciclo.
+6. Si el módulo tiene 4 células de 6,59 × 5,28 mm con un rendimiento del 20 %, ¿qué irradiancia recibe?
+
+<p class="no-print">Para estudiar antes: <a href="/web-estudio/asignaturas/dispositivos/apuntes/temas-4-5-alimentacion/">apuntes de los temas 4 y 5</a>, <a href="/web-estudio/asignaturas/dispositivos/resumenes/formulario-examen/">formulario</a> y <a href="/web-estudio/materiales/dispositivos/boletin-temas-4-5.pdf#page=1">boletín original de los temas 4 y 5</a>.</p>

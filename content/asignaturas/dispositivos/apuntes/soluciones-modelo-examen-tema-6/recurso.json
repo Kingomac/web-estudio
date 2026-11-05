@@ -1,0 +1,41 @@
+{
+  "kind": "apuntes",
+  "id": "dispositivos.apuntes.soluciones-modelo-examen-tema-6",
+  "subjectId": "dispositivos",
+  "slug": "soluciones-modelo-examen-tema-6",
+  "title": "Soluciones del modelo de examen · Tema 6",
+  "description": "Soluciones explicadas de las cuestiones y los problemas de Friis del modelo de examen del tema 6, paso a paso y con la página de la diapositiva que respalda cada fórmula.",
+  "scope": "Las 10 cuestiones (C6.1-C6.10) y los 6 problemas de balance de enlace (E6.1-E6.6) del modelo de examen del tema 6. T6.1: decibelios, bandas y CNAF (pp. 5-7, 11, 13-20). T6.2: parámetros de antena en transmisión y recepción (pp. 6-36). T6.3: fórmula de Friis y pérdidas de transmisión (pp. 2-7).",
+  "tagIds": [
+    "dispositivos.tags.comunicacion-inalambrica",
+    "dispositivos.tags.examen",
+    "dispositivos.tags.boletines"
+  ],
+  "order": 32,
+  "body": "body.mdx",
+  "printIntent": "screen",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "dispositivos.materiales.tema-6-1-espectro",
+      "pdfPages": [5, 6, 7, 9, 11, 13, 14, 15, 16, 18, 19, 20],
+      "label": "Decibelios, bandas y CNAF"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-2-antenas",
+      "pdfPages": [6, 7, 10, 11, 12, 13, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36],
+      "label": "Parámetros de antena"
+    },
+    {
+      "materialId": "dispositivos.materiales.tema-6-3-balance-enlace",
+      "pdfPages": [2, 3, 4, 5, 6, 7],
+      "label": "Fórmula de Friis y pérdidas de transmisión"
+    }
+  ],
+  "relatedResourceIds": [
+    "dispositivos.apuntes.modelo-examen-tema-6",
+    "dispositivos.apuntes.tema-6-enlace-radio",
+    "dispositivos.apuntes.tema-6-desde-cero",
+    "dispositivos.resumenes.formulario-examen"
+  ]
+}
