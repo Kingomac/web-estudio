@@ -10,7 +10,7 @@
     "protocolos.tags.lpwan",
     "protocolos.tags.examen-final"
   ],
-  "order": 190,
+  "order": 50,
   "groups": [
     {
       "id": "lpwan-y-tecnologias",

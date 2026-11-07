@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
-  "order": 121,
+  "order": 230,
   "mode": "form",
   "prompt": "Fuente fe80::ff:fe00:5. No se usa contexto. El receptor no puede deducir el IID de la cabecera de enlace, pero sí usar el patrón 0000:00ff:fe00:XXXX. Escoge la codificación más compacta del tema.",
   "explanation": "SAC=0 utiliza el prefijo link-local. SAM=10 representa el patrón de IID con 16 bits finales explícitos: 0x0005.",

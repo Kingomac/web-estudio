@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.repaso"
   ],
-  "order": 30,
+  "order": 60,
   "groups": [
     {
       "id": "direcciones",

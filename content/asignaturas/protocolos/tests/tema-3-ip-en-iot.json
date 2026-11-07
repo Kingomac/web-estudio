@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.examen-final"
   ],
-  "order": 170,
+  "order": 30,
   "aliases": [
     "/asignaturas/protocolos/tests/ndp-predice-flujo/"
   ],

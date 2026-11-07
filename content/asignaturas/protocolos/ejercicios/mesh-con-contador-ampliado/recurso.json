@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 233,
+  "order": 433,
   "mode": "form",
   "prompt": "Se muestra una cabecera Mesh con direcciones cortas. El nibble Hops Left vale 0xf y activa un octeto Deep Hops Left.",
   "explanation": "El nibble f es un indicador, no un contador de quince saltos. Si el decremento llega a cero, el nodo no reenvía.",

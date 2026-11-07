@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 207,
+  "order": 407,
   "mode": "form",
   "prompt": "Dirección: 2001:db8:1234:abcf::9/60. Calcula el bloque al que pertenece.",
   "explanation": "Los primeros 15 dígitos hexadecimales de la dirección son la red. Las /64 van desde abc0 hasta abcf.",

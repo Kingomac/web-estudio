@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
-  "order": 143,
+  "order": 270,
   "mode": "form",
   "prompt": "Un FRAGN tiene datagram_offset=12. Calcula su posición en bytes respecto al datagrama IPv6 sin comprimir e indica la longitud de la cabecera FRAGN.",
   "explanation": "12×8=96 bytes desde el inicio del datagrama original. FRAGN ocupa 5 bytes; FRAG1 ocupa 4.",

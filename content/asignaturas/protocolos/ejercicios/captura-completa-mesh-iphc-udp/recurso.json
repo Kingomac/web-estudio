@@ -11,7 +11,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 236,
+  "order": 436,
   "mode": "form",
   "prompt": "Carga MAC 6LoWPAN completa, sin fragmentación: B(0x5678) recibe de A(0x1234), y reenviará hacia C(0xabcd). Se muestra desde Mesh hasta los cuatro bytes de aplicación. Los campos Mesh están representados en el orden de octetos del RFC, no como una cabecera MAC 802.15.4 cruda.",
   "explanation": "El checksum se ha calculado para el IPv6 reconstruido y el payload de este ejemplo. 15 bytes de carga MAC representan un datagrama IPv6 de 52 bytes; cinco de esos quince son Mesh. B reduce Hops Left, conserva HL=64 y no sustituye los extremos Mesh.",

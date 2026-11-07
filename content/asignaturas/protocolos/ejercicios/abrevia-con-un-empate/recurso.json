@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 201,
+  "order": 401,
   "mode": "form",
   "prompt": "Normaliza 2001:0db8:0000:0000:0001:0000:0000:000a según RFC 5952.",
   "explanation": "Queda 2001:db8:0:0:1:0:0:a. En el empate, sustituye el primer bloque 0:0 por ::. Usa minúsculas.",

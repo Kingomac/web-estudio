@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 228,
+  "order": 428,
   "mode": "form",
   "prompt": "Se muestra solo NHC UDP con sus campos en línea. El checksum es un valor de ejercicio: no se valida su suma al no mostrar direcciones ni payload. A continuación llegarían 12 bytes de aplicación.",
   "explanation": "P=00 obliga a leer dos bytes por puerto. UDP Length se deduce, no aparece en el volcado.",

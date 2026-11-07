@@ -13,7 +13,7 @@
     "protocolos.tags.aplicacion",
     "protocolos.tags.parcial-1"
   ],
-  "order": 130,
+  "order": 100,
   "groups": [
     {
       "id": "redes-iot-y-lln",

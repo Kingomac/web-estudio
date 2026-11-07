@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.ipv6"
   ],
-  "order": 102,
+  "order": 130,
   "mode": "form",
   "prompt": "Dirección IEEE 802.15.4: 11:22:33:44:55:66:77:88. Forma la link-local por el procedimiento del tema.",
   "explanation": "El IID modificado es 1322:3344:5566:7788. Con el prefijo link-local resulta fe80::1322:3344:5566:7788.",

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 206,
+  "order": 406,
   "mode": "form",
   "prompt": "Bloque asignado: 2001:db8:1234:ab00::/56. Asigna /64 consecutivos desde el índice 0.",
   "explanation": "Conserva ab y cambia el último byte de 00 a ff. No confundas el índice decimal 171 con el hexadecimal 0171.",

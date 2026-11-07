@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 208,
+  "order": 408,
   "mode": "form",
   "prompt": "Dirección: 2001:db8:1234:5678:abcd:1111:2222:3333/73. Se trata de cálculo de prefijos; no presupone SLAAC en ese /73.",
   "explanation": "abcd = 1010101111001101. Conserva 101010111 y sustituye los últimos siete bits por ceros: 1010101110000000 = ab80.",

@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.ipv6"
   ],
-  "order": 104,
+  "order": 160,
   "mode": "form",
   "prompt": "IPv6 objetivo: fe80::1322:33ff:fe44:5566. Calcula el grupo solicited-node y su MAC multicast Ethernet.",
   "explanation": "Los últimos 24 bits son 44:55:66: grupo ff02::1:ff44:5566. Sus últimos 32 bits son ff:44:55:66; MAC 33:33:ff:44:55:66.",

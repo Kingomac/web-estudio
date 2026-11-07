@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
-  "order": 140,
+  "order": 200,
   "mode": "form",
   "prompt": "Usa exactamente el ejemplo del profesor: trama 127 bytes, cabecera MAC 23, seguridad 21 y FCS 2. Después descuenta IPv6 (40) y UDP (8), sin comprimir.",
   "explanation": "127−23−21−2=81 bytes. Después, 81−40−8=33 bytes. Son los tamaños del ejemplo, no un valor fijo de toda trama.",

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 217,
+  "order": 417,
   "mode": "form",
   "prompt": "La base IPv6 anuncia Payload Length=28 y Next Header=0. En el offset 40 aparecen estos ocho bytes de Hop-by-Hop. Después hay UDP y 12 bytes de aplicación. El volcado comienza en el offset local 0 de la extensión.",
   "explanation": "Los 28 bytes de carga IPv6 incluyen la extensión de 8 bytes. Un Hdr Ext Len de cero no significa una extensión de cero bytes.",

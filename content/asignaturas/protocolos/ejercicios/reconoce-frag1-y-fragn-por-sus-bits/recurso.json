@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 235,
+  "order": 435,
   "mode": "form",
   "prompt": "El volcado muestra dos cabeceras de fragmentación 6LoWPAN consecutivas solo para compararlas: los primeros cuatro bytes son FRAG1; los cinco siguientes son FRAGN de otra trama del mismo datagrama. Se omiten las cargas.",
   "explanation": "No interpretes c1 como un tamaño completo. FRAGN no repite IPHC: transporta la porción del datagrama que corresponde a su offset.",

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 219,
+  "order": 419,
   "mode": "form",
   "prompt": "Una captura desde el inicio de IPv6 conserva 52 bytes. La base de 40 bytes anuncia Payload Length=20, Next Header=17 y no hay extensiones. Se conservan los 8 bytes UDP y 4 bytes de aplicación.",
   "explanation": "La aplicación anunciada ocupa 12 bytes, de los que solo ves cuatro. Antes de acusar al emisor, comprueba el límite de captura.",

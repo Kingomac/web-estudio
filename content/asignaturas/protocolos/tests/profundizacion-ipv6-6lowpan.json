@@ -11,7 +11,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 140,
+  "order": 70,
   "groups": [
     {
       "id": "direcciones-e-iid",

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 204,
+  "order": 404,
   "mode": "form",
   "prompt": "La dirección IEEE 802.15.4 extendida es 00:12:4b:00:01:ab:cd:ef. Deriva el IID usado para compresión sin estado.",
   "explanation": "La dirección ya contiene ocho octetos. 00 XOR 02 = 02; el resto se conserva.",

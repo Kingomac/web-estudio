@@ -11,7 +11,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 237,
+  "order": 437,
   "mode": "form",
   "prompt": "Captura R(0x0002) → D(0x0003), sin Mesh. Contexto 0=2001:db8:7::/64. A(0x0001) originó los datos y R ya ha decrementado Hop Limit. Se muestra toda la carga MAC 6LoWPAN.",
   "explanation": "IPHC y campos ocupan 5 bytes; NHC y campos, 4. La longitud comprimida total es 13 bytes, frente a 52 del IPv6 original.",

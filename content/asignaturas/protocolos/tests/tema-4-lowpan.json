@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.examen-final"
   ],
-  "order": 180,
+  "order": 40,
   "aliases": [
     "/asignaturas/protocolos/tests/tema-4-segunda-parte/"
   ],

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 203,
+  "order": 403,
   "mode": "form",
   "prompt": "Para este ejercicio se exige EUI-64 modificado. MAC Ethernet 00:1a:2b:3c:4d:5e y prefijo 2001:db8:42:7::/64. Este método no es obligatorio para todos los hosts actuales.",
   "explanation": "00:1a:2b:ff:fe:3c:4d:5e tiene 64 bits. La máscara U/L es 02, no 01. El IID es 02:1a:2b:ff:fe:3c:4d:5e.",

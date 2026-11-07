@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 223,
+  "order": 423,
   "mode": "form",
   "prompt": "Se muestran IPHC y todos sus campos IPv6 en línea; no el payload ICMPv6. El paquete no lleva Mesh.",
   "explanation": "Tras IPHC viene Next Header; HLIM=10 no consume octeto adicional. El orden en línea es origen y después destino.",

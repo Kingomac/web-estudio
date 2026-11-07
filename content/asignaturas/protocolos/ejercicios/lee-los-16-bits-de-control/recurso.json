@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 221,
+  "order": 421,
   "mode": "form",
   "prompt": "Se muestran los dos bytes de IPHC, sin campos siguientes. Identifica todos los campos. La estructura es 011 | TF | NH | HLIM / CID | SAC | SAM | M | DAC | DAM.",
   "explanation": "7e = 011 | 11 | 1 | 10. 33 = 0 | 0 | 11 | 0 | 0 | 11. NH=1 no significa necesariamente UDP.",

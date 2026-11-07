@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.ipv6"
   ],
-  "order": 40,
+  "order": 100,
   "mode": "form",
   "prompt": "Una dirección IPv6 tiene ocho grupos de 16 bits. Calcula su tamaño completo.",
   "explanation": "8 × 16 = 128 bits. Como cada byte contiene 8 bits, 128 ÷ 8 = 16 bytes.",

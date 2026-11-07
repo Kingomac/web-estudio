@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 218,
+  "order": 418,
   "mode": "form",
   "prompt": "Se muestra solo una extensión Fragment de IPv6, no una cabecera FRAGN de 6LoWPAN. El paquete tiene Next Header=44 en su cabecera base.",
   "explanation": "0019 = 0000000000011 | 00 | 1. Este no es el primer fragmento: sus datos no empiezan con la cabecera UDP aunque Next Header sea 17.",

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 200,
+  "order": 400,
   "mode": "form",
   "prompt": "Expande 2001:db8:0:7::a:5. Escribe los ocho hextetos con cuatro cifras cada uno.",
   "explanation": "Escribe 2001, db8, 0, 7, a y 5: seis grupos. Inserta dos grupos 0000 entre 7 y a y completa cada grupo hasta cuatro cifras.",

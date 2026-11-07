@@ -13,7 +13,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.parcial-1"
   ],
-  "order": 100,
+  "order": 120,
   "groups": [
     {
       "id": "tema-1-introduccion",

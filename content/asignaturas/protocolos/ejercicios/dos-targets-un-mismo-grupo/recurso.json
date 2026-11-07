@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 211,
+  "order": 411,
   "mode": "form",
   "prompt": "A = 2001:db8:1::12:3456; B = 2001:db8:2:9:abcd:ef00:ab12:3456. Responde sí o no cuando corresponda.",
   "explanation": "Pertenecer al mismo grupo multicast no implica tener la misma dirección unicast. Un NS contiene el Target de 128 bits, además de su destino IPv6 multicast.",

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 214,
+  "order": 414,
   "mode": "form",
   "prompt": "A tiene 2001:db8:1::10/64; el destino de datos es 2001:db8:2::20. A usa el router fe80::a:1234. Su MAC no está en caché. Supón NDP convencional en Ethernet.",
   "explanation": "La dirección MAC sirve para entregar al siguiente salto; la dirección IPv6 de datos identifica el destino final. No se envía un NS local para averiguar la MAC de un host remoto.",

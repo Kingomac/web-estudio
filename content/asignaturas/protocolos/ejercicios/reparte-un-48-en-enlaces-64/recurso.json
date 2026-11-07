@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 205,
+  "order": 405,
   "mode": "form",
   "prompt": "Dispones de 2001:db8:5a00::/48. Numera las subredes /64 desde cero.",
   "explanation": "El cuarto hexteto es el identificador de subred de 16 bits. No restes dos subredes por una regla heredada de IPv4.",

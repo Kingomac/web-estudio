@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 229,
+  "order": 429,
   "mode": "form",
   "prompt": "Se muestra solo NHC UDP con sus campos en línea. El checksum es un valor de ejercicio: no se valida su suma al no mostrar direcciones ni payload. Interpreta el modo y reconstruye ambos puertos en hexadecimal.",
   "explanation": "No añadas f0b0 en el modo de ocho bits. 9a bc ocupa el checksum.",

@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 213,
+  "order": 413,
   "mode": "form",
   "prompt": "Un host prueba la dirección tentativa 2001:db8:7::beef. Aplica NDP convencional en Ethernet y el procedimiento de DAD.",
   "explanation": "El Target es 2001:db8:7::beef, no el router. La MAC Ethernet destino sería 33:33:ff:00:be:ef. No confundas NS con NA (136).",

@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 226,
+  "order": 426,
   "mode": "form",
   "prompt": "El destino es ff02::1. Origen link-local deducible del enlace. Traffic Class=0, Flow Label=0, Next Header=58 explícito y Hop Limit=255. Usa la forma sin estado más corta.",
   "explanation": "7b = 011|11|0|11; 3b = 0|0|11|1|0|11. DAM=11 transporta un byte en este caso, no cero.",

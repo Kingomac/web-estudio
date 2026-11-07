@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 225,
+  "order": 425,
   "mode": "form",
   "prompt": "Cabecera IPv6 comprimida completa antes de NHC: 76 33 ab. En este ejercicio no necesitas reconstruir direcciones; céntrate en TF.",
   "explanation": "ab = 10|101011; recoloca como 101011|10. Copiar directamente ab al Traffic Class daría un valor distinto.",

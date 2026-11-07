@@ -10,7 +10,7 @@
     "protocolos.tags.intro",
     "protocolos.tags.examen-final"
   ],
-  "order": 150,
+  "order": 10,
   "groups": [
     {
       "id": "caracteristicas",

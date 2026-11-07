@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 232,
+  "order": 432,
   "mode": "form",
   "prompt": "Trayecto A(0x1234) → B(0x5678) → C(0xabcd). Observas en B la cabecera Mesh recibida desde A. El Hop Limit IPv6 de datos es 64. B reenvía por debajo de IPv6.",
   "explanation": "Al salir de B la MAC origen es 5678 y la MAC destino abcd. Mesh sigue conservando Originator=1234 y Final=abcd.",

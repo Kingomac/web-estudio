@@ -11,7 +11,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 239,
+  "order": 439,
   "mode": "form",
   "prompt": "Datagrama IPv6 original de 200 bytes: 40 IPv6 + 8 UDP + 152 aplicación. Las cabeceras IPv6+UDP se comprimen a 6 bytes. Cada trama admite 81 bytes de carga MAC. No hay Mesh ni seguridad adicional dentro de esos 81 bytes. Usa FRAG1=4 bytes y FRAGN=5; maximiza cada fragmento no final respetando la alineación de 8 bytes del datagrama original.",
   "explanation": "FRAG1 consume 4+6+64=74 bytes de carga MAC. FRAGN 2 consume 5+72=77 y FRAGN 3 consume 5+16=21. En mesh-under básico reensambla el extremo de la malla. En route-over básico cada router reensambla antes de procesar IPv6; aquí no se modelan optimizaciones de reenvío de fragmentos.",

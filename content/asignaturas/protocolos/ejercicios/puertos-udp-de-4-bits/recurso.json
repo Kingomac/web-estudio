@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
-  "order": 141,
+  "order": 250,
   "mode": "form",
   "prompt": "Ejercicio con valores dentro del rango de la tabla: origen 0xf0b3 y destino 0xf0ba. Usa P=11 y conserva el checksum (2 bytes). Calcula los bits de puertos y el total de NHC UDP: 1 byte de NHC + puertos + checksum.",
   "explanation": "4+4=8 bits de puertos, es decir, 1 byte. Total: 1+1+2=4 bytes. Los nibbles transmitidos son 3 y a.",

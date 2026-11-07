@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 234,
+  "order": 434,
   "mode": "form",
   "prompt": "A(0x0001) → R(0x0002) → D(0x0003). Los extremos IPv6 son 2001:db8:7::ff:fe00:1 y 2001:db8:7::ff:fe00:3. Contexto 0=2001:db8:7::/64, TC=FL=0 y NH=1. R enruta IPv6, sin Mesh, sin cambio de direcciones. A envía HL=64. Elige el modo más corto válido en cada enlace.",
   "explanation": "A→R usa 7e 76 00 03 (4 bytes). R→D usa 7c 67 3f 00 01 (5 bytes). UDP se cuenta aparte.",

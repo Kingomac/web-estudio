@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 210,
+  "order": 410,
   "mode": "form",
   "prompt": "Target IPv6: 2001:db8:4:7:1234:5678:9abc:def0. Es una resolución de vecino en Ethernet.",
   "explanation": "El sufijo no es 9abc:def0 completo: solicited-node conserva únicamente 24 bits. Para Ethernet, los 32 bits bajos de ff02::1:ffbc:def0 son ff:bc:de:f0.",

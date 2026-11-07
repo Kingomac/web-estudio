@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
-  "order": 120,
+  "order": 220,
   "mode": "form",
   "prompt": "Traffic Class=0, Flow Label=0 y Hop Limit=64. La siguiente cabecera se comprime mediante LOWPAN_NHC. Indica los bits TF, NH y HLIM.",
   "explanation": "TF=11 porque TC y FL son cero; NH=1 activa NHC; HLIM=10 codifica 64. No se envían bytes adicionales para esos campos.",

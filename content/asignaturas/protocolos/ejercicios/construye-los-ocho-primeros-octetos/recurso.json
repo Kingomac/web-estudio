@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 220,
+  "order": 420,
   "mode": "form",
   "prompt": "Escribe la cabecera base inicial para: Version=6; Traffic Class=0x2e; Flow Label=0xabcde; Payload Length=32; Next Header=58 (ICMPv6); Hop Limit=255.",
   "explanation": "La primera palabra de 32 bits es 62eabcde. 32 = 0x0020; 58 = 0x3a; 255 = 0xff.",

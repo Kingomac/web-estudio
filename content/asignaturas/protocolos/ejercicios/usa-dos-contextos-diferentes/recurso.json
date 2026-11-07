@@ -10,7 +10,7 @@
     "protocolos.tags.lowpan",
     "protocolos.tags.complementario"
   ],
-  "order": 224,
+  "order": 424,
   "mode": "form",
   "prompt": "Cabecera comprimida IPv6 completa antes de NHC. Contexto 3 = 2001:db8:10::/64; contexto 5 = 2001:db8:20::/64. Origen corto del enlace 0x1234. Ambos contextos están disponibles y son válidos.",
   "explanation": "7c = 011|11|1|00; f6 = 1|1|11|0|1|10. No uses 0x35 como Hop Limit.",

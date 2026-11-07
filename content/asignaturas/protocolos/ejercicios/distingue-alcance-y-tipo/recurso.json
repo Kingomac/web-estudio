@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 202,
+  "order": 402,
   "mode": "form",
   "prompt": "Clasifica cada dirección. Usa: link-local, ULA, multicast, loopback o no especificada.",
   "explanation": "No deduzcas que dos direcciones comparten enlace solo por pertenecer a una misma clase. Una dirección de documentación 2001:db8::/32 tampoco implica conectividad pública.",

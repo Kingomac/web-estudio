@@ -9,7 +9,7 @@
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
-  "order": 124,
+  "order": 240,
   "mode": "form",
   "prompt": "Destino IPv6 ff02::1, sin contexto para el multicast. Utiliza el patrón ff02::00GG de la tabla y determina M, DAC, DAM y los bits transmitidos.",
   "explanation": "M=1, DAC=0 y DAM=11. Solo se envía el último byte 0x01; el resto se reconstruye como ff02::00GG.",

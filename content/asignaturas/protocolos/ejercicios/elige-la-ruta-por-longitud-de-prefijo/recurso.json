@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 209,
+  "order": 409,
   "mode": "form",
   "prompt": "Tabla: ::/0 → R0; 2001:db8:1200::/40 → R1; 2001:db8:1234::/48 → R2; 2001:db8:1234:ab00::/56 → R3. No hay otras rutas ni empates.",
   "explanation": "La ruta por defecto cubre cualquier destino, pero solo gana si no hay coincidencia más específica. Un /40 termina dentro del tercer hexteto.",

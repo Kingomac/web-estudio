@@ -10,7 +10,7 @@
     "protocolos.tags.ipv6",
     "protocolos.tags.complementario"
   ],
-  "order": 212,
+  "order": 412,
   "mode": "form",
   "prompt": "Usa el mapeo Ethernet de IPv6 multicast para estas direcciones. No se pide el direccionamiento MAC de IEEE 802.15.4.",
   "explanation": "El scope IPv6 se pierde en el mapeo a Ethernet. 33:33 no es un prefijo de direcciones IEEE 802.15.4.",
