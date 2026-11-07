@@ -5,7 +5,7 @@
   "slug": "tema-4-lowpan",
   "title": "Tema 4 · Redes LoWPAN",
   "description": "Tecnologías, 6LoWPAN (IPHC, NHC, fragmentación, mesh-under, route-over y 6LFF), 6lo, NDP optimizado, Thread con MLE y Wi-SUN FAN con RPL.",
-  "scope": "Tema 4 completo según la edición vigente del 22/10/2026 (89 páginas). Para el primer parcial solo entraba hasta la página 37; el examen final incluye todo. Dos recuadros marcados como complementarios añaden detalles de los RFC 6775 y 6206.",
+  "scope": "Tema 4 completo según la edición vigente del 22/10/2026 (89 páginas). Para el primer parcial solo entraba hasta la página 37; el examen final incluye todo. Dos recuadros marcados como complementarios añaden detalles de los RFC 6775 y 6206, y la tabla de campos del DIO explica su significado según el RFC 6550.",
   "tagIds": [
     "protocolos.tags.lowpan"
   ],
@@ -117,6 +117,10 @@
     {
       "title": "RFC 6206 · The Trickle Algorithm",
       "url": "https://www.rfc-editor.org/rfc/rfc6206.html"
+    },
+    {
+      "title": "RFC 6550 · RPL: IPv6 Routing Protocol for Low-Power and Lossy Networks",
+      "url": "https://www.rfc-editor.org/rfc/rfc6550.html"
     }
   ]
 }

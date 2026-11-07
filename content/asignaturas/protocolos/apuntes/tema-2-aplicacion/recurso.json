@@ -75,5 +75,11 @@
   ],
   "relatedResourceIds": [
     "protocolos.tests.tema-2-aplicacion"
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 7252 · The Constrained Application Protocol (CoAP)",
+      "url": "https://www.rfc-editor.org/rfc/rfc7252.html"
+    }
   ]
 }
