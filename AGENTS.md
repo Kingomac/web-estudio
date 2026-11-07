@@ -9,6 +9,7 @@ El usuario indica en su prompt una ruta de su PC y un objetivo de estudio. El ag
 - Lee y comprueba el material antes de redactar. Cita páginas físicas reales, contadas desde 1. Nunca inventes citas, explicaciones o guías para superar la validación.
 - Reutiliza IDs y tags existentes. No reutilices el ID de una pregunta para otra distinta. Consulta `content:impact` antes de cambiar recursos compartidos.
 - Cada alternativa necesita una explicación. Los tests guardan una selección explícita de preguntas.
+- Asigna `order` según el criterio de «Orden» de `docs/autoria.md` (temario por tema y página, repasos, parcial, final y complementario), sin empates dentro de una lista.
 - Declara en `componentIds` los componentes de una lectura; las relaciones inversas se calculan solas.
 - Antes de planificar por fechas, ejecuta `bun run calendar:sync` y consulta `calendar:query`. Una consulta vacía no demuestra ausencia de entregas (ver `docs/autoria.md`).
 

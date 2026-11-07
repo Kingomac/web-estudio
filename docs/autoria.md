@@ -47,6 +47,15 @@ Los esquemas están en `src/schemas/content.ts`; `content:check` añade las regl
 
 **Alcance y tags.** `scope` es obligatorio en recursos y delimita qué cubren («Temas 1–3 y tema 4 hasta la página 37»). Los tags son de tipo `topic` o `study`; clasifican, no expresan dependencias. Los tags de tema de un test deben ser la unión de los de sus preguntas.
 
+**Orden.** Cada listado de una asignatura (apuntes, resúmenes, materiales, ejercicios, tests) se ordena por `order` y, si hay empate, por título. Por eso dos recursos de la misma lista nunca comparten `order`. Antes de asignarlo, consulta los valores que ya existen en esa lista y coloca el recurso donde le corresponde:
+
+1. Primero el temario, por tema (1, 2, 3…) y, dentro de cada tema, por la página del original en que se apoya. Varias ediciones de un mismo material van por fecha.
+2. Después los repasos y la profundización (apuntes como `ipv6-y-vecinos`, tests de repaso).
+3. Después la preparación del parcial (cuestionarios y tests de estilo Moovi, simulacros) y por último la del examen final (modelos de examen y simulacro).
+4. Al final el material complementario (tag `complementario`, como el taller), con su orden interno de bloques.
+
+Deja huecos de 10 entre valores para poder insertar sin renumerar. Si no queda hueco, renumera esa lista entera con el mismo criterio: `order` solo afecta al orden de la lista, no a IDs, rutas ni referencias. El orden de las preguntas dentro de un test y el de las opciones se baraja siempre; `order` no lo controla.
+
 **Citas.** `sources` y `originalReferences` usan `materialId` y `pdfPages`, páginas físicas desde 1 incluida la portada. La validación rechaza páginas fuera del PDF. `externalReferences` (título y URL https) añade fuentes complementarias, como RFC, que se muestran aparte; nunca sustituyen a una página que sí respalda la afirmación. Las relaciones opcionales son `readingReferences` (lectura y ancla) y `relatedResourceIds`.
 
 **Lecturas.** Carpeta con `recurso.json` y exactamente un `body.mdx` o `body.astro`. El cuerpo no lleva metadatos, `html`, `head` ni `h1`; usa `h2`/`h3`. Los apartados citados tienen `id` explícito, que se conserva al retitular. `printIntent` es `paper` o `screen`; ambos deben imprimirse bien. Los visuales incluyen explicación estática y teclado; los laboratorios interactivos no se imprimen, así que lo imprescindible debe estar también en el texto. Se declaran en `componentIds` (registro en `src/lib/registro.ts`; talleres también en `src/lib/talleres.ts`). La comprobación solo detecta la importación directa de un componente registrado.
