@@ -26,7 +26,7 @@
     {
       "id": "mesh-local-prefix-64-ula",
       "text": "Mesh-Local Prefix /64 ULA, fijado por el Leader, + IID aleatorio de 64 bits.",
-      "explanation": "Es lo que indica la p. 63."
+      "explanation": "El Leader fija un Mesh-Local Prefix /64 ULA y cada nodo le añade un IID aleatorio de 64 bits; por eso el ML-EID no depende de la topología."
     },
     {
       "id": "prefijo-link-local-fe80-64",

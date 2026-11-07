@@ -25,7 +25,7 @@
   "readingReferences": [
     {
       "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
-      "anchor": "ndp-slaac"
+      "anchor": "dad-detectar-direcciones-duplicadas"
     }
   ],
   "options": [

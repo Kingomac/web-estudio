@@ -26,7 +26,7 @@
     {
       "id": "directamente-en-el-6lbr-aunque",
       "text": "Directamente en el 6LBR, aunque haya varios saltos radio.",
-      "explanation": "Último punto de la p. 53."
+      "explanation": "En mesh-under no hay 6LR y todos los hosts están a un salto IP del 6LBR, así que se registran directamente en él aunque el NS cruce varios saltos radio."
     },
     {
       "id": "en-el-6lr-mas-cercano",

@@ -26,7 +26,7 @@
     {
       "id": "es-opcional-solo-si-hace",
       "text": "Es opcional: solo si hace falta realizar DAD.",
-      "explanation": "La tabla de la p. 51 lo indica así."
+      "explanation": "Un 6LR solo registra su dirección si hace falta DAD; quien registra siempre su dirección en uno o varios routers es el host."
     },
     {
       "id": "es-obligatorio-y-se-hace",

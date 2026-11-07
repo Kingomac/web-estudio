@@ -7,12 +7,13 @@
   ],
   "type": "single",
   "prompt": "A envía datos a C, que está en otra red. ¿Qué MAC busca A?",
-  "explanation": "Para llegar a C, A necesita la MAC de R, su siguiente salto. El paquete conserva la IPv6 destino de C.",
+  "explanation": "Para llegar a C, A necesita la MAC del router de siguiente salto que indica su ruta. La trama va a esa MAC, pero el paquete conserva la IPv6 destino de C.",
   "originalReferences": [
     {
       "materialId": "protocolos.materiales.tema-3-ip-en-iot",
       "pdfPages": [
         8,
+        22,
         39
       ]
     }
@@ -26,14 +27,14 @@
   "readingReferences": [
     {
       "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
-      "anchor": "ndp-slaac"
+      "anchor": "resolucion-de-un-vecino"
     }
   ],
   "options": [
     {
       "id": "mac-c",
       "text": "La MAC de C",
-      "explanation": "C no está en el enlace de A: su MAC no sirve para entregar la trama en el enlace 1."
+      "explanation": "C no está en el enlace de A: su MAC no sirve para entregar la trama en el enlace de A, y A no puede resolverla con NDP."
     },
     {
       "id": "mac-switch",
@@ -43,7 +44,7 @@
     {
       "id": "mac-router",
       "text": "La MAC del router siguiente salto",
-      "explanation": "La ruta elige R como siguiente salto, así que A resuelve con NS/NA la MAC de R y conserva C como destino IPv6."
+      "explanation": "La ruta elige al router como siguiente salto, así que A resuelve con NS/NA la MAC del router y conserva C como destino IPv6."
     }
   ],
   "answer": "mac-router"

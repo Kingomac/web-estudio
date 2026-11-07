@@ -26,7 +26,7 @@
     {
       "id": "lo-procesa-instala-las-rutas",
       "text": "Lo procesa, instala las rutas y genera nuevos DAO hacia sus padres.",
-      "explanation": "Proceso storing de la p. 81."
+      "explanation": "En storing, cada padre procesa el DAO, instala rutas hacia sus descendientes y genera sus propios DAO hacia sus padres."
     },
     {
       "id": "lo-reenvia-sin-procesarlo-hacia",

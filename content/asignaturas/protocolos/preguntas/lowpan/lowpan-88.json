@@ -26,7 +26,7 @@
     {
       "id": "802-15-4-0x0800-0x0c00",
       "text": "802.15.4: 0x0800 → 0x0C00; Mesh: 0x0400 → 0x0C05.",
-      "explanation": "Es el salto 2 de la p. 70."
+      "explanation": "En el salto B → C la trama 802.15.4 lleva los RLOC16 del emisor (0x0800) y del receptor (0x0C00); la cabecera Mesh conserva el origen 0x0400 y el destino final 0x0C05."
     },
     {
       "id": "802-15-4-0x0400-0x0c05",

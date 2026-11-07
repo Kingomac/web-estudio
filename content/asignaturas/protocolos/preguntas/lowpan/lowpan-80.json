@@ -26,7 +26,7 @@
     {
       "id": "llegar-al-leader-actual-sin",
       "text": "Llegar al Leader actual sin conocer su RLOC.",
-      "explanation": "Es la anycast del Leader de la p. 63."
+      "explanation": "Mesh-Local Prefix + 0000:00ff:fe00:fc00 es la anycast del Leader: permite dirigirse al Leader actual sin conocer su RLOC16."
     },
     {
       "id": "enviar-address-query-a-todos",

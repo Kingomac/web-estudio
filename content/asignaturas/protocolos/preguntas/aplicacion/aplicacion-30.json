@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué expresa Remaining Length en un mensaje MQTT?",
+  "prompt": "¿Qué expresa el campo Longitud (1–4 bytes) de la cabecera fija de un mensaje MQTT?",
   "explanation": "Ocupa de 1 a 4 bytes, con bit de continuación; la cabecera fija total ocupa de 2 a 5 bytes.",
   "originalReferences": [
     {
@@ -31,7 +31,7 @@
     {
       "id": "el-tamano-completo-del-paquete",
       "text": "El tamaño completo del paquete, incluida la cabecera fija.",
-      "explanation": "No incluye la cabecera fija, que contiene al propio campo."
+      "explanation": "No incluye la cabecera fija (2–5 bytes), que es donde va el propio campo Longitud."
     },
     {
       "id": "solo-el-tamano-del-payload",

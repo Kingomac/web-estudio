@@ -25,22 +25,22 @@
     {
       "id": "repetidor-fisico-que-solo-amplifica",
       "text": "Repetidor físico que solo amplifica la señal y no interviene en los protocolos.",
-      "explanation": "La exposición de datos mediante una interfaz IP implica más que repetir señales."
+      "explanation": "Un repetidor solo extiende el alcance radio dentro de la red de acceso (como los nodos intermedios de un árbol); no conecta con Internet ni adapta datos no IP a una interfaz IP."
     },
     {
       "id": "pasarela-entre-la-red-de",
       "text": "Pasarela entre la red de acceso y la troncal, adaptando la comunicación de los sensores.",
-      "explanation": "Identifica la interconexión y la adaptación necesarias en el escenario."
+      "explanation": "Correcta: la pasarela une la red de acceso de los dispositivos con la red troncal hacia la aplicación y, si los sensores no son IP (conectividad híbrida), adapta su comunicación a la red IP."
     },
     {
       "id": "bridge-transparente-que-hace-que",
       "text": "Bridge transparente que hace que cualquier router de Internet entienda las tramas originales.",
-      "explanation": "Un bridge no convierte por sí mismo un protocolo no IP en un servicio accesible por Internet."
+      "explanation": "Un bridge reenvía tramas sin cambiarlas; los routers de Internet no entienden tramas no IP, por eso hace falta una pasarela que adapte la comunicación."
     },
     {
       "id": "servidor-dns-cuya-funcion-principal",
       "text": "Servidor DNS cuya función principal es asignar una dirección MAC a cada medida.",
-      "explanation": "DNS relaciona nombres y registros; no asigna direcciones MAC a medidas."
+      "explanation": "DNS traduce nombres a direcciones IP y no asigna direcciones MAC; además no es el equipo que une la red de acceso con la troncal."
     }
   ],
   "answer": "pasarela-entre-la-red-de"

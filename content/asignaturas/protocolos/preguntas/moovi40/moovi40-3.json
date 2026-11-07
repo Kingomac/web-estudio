@@ -25,22 +25,22 @@
     {
       "id": "red-troncal-de-alta-capacidad",
       "text": "Red troncal de alta capacidad, porque toda comunicación IoT necesita una tasa elevada.",
-      "explanation": "Doce bytes por hora no justifican exigir una tasa de datos elevada."
+      "explanation": "Doce bytes por hora no requieren tasa elevada, y la red troncal une la pasarela con la nube: el sensor no se conecta directamente a ella."
     },
     {
       "id": "malla-lowpan-aunque-no-haya",
       "text": "Malla LoWPAN, aunque no haya nodos que puedan realizar los saltos intermedios.",
-      "explanation": "Una malla requiere nodos que proporcionen los caminos de varios saltos."
+      "explanation": "La malla LoWPAN extiende su cobertura de 10–100 m con nodos intermedios; sin nodos que hagan los saltos no llega a varios kilómetros."
     },
     {
       "id": "lpwan-por-su-gran-cobertura",
       "text": "LPWAN, por su gran cobertura y su adecuación a tráfico pequeño y espaciado.",
-      "explanation": "Relaciona cobertura, frecuencia de envío y cantidad de datos."
+      "explanation": "Correcta: una LPWAN en estrella alcanza hasta ~5 km urbanos y ~15 km rurales en un solo salto, con tasas muy bajas adecuadas a 12 bytes por hora."
     },
     {
       "id": "lowpan-de-corto-alcance-porque",
       "text": "LoWPAN de corto alcance, porque un paquete pequeño aumenta por sí solo el alcance a kilómetros.",
-      "explanation": "Reducir el tamaño del paquete no transforma una radio de corto alcance en una de gran cobertura."
+      "explanation": "El alcance depende de la tecnología radio, no del tamaño del paquete: una LoWPAN cubre 10–100 m por salto."
     }
   ],
   "answer": "lpwan-por-su-gran-cobertura"

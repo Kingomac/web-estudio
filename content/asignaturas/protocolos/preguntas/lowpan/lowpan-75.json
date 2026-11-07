@@ -26,7 +26,7 @@
     {
       "id": "solicita-la-promocion-y-el",
       "text": "Solicita la promoción y el Leader la acepta y le asigna un Router ID.",
-      "explanation": "Recuadro «REED → Router» de la p. 60."
+      "explanation": "El REED solicita la promoción según las necesidades de la red; el Leader, que gestiona los Router ID, la acepta y le asigna uno."
     },
     {
       "id": "se-asigna-el-mismo-un",

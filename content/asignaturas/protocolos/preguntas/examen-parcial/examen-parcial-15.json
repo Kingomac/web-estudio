@@ -7,7 +7,7 @@
   ],
   "type": "single",
   "prompt": "¿Qué dirección IPv6 se utiliza como destino en el mensaje NS durante el mecanismo DAD en una red Ethernet?",
-  "explanation": "En DAD el nodo envía un NS preguntando por la dirección que quiere usar, con fuente ::. Como en cualquier NS de resolución, el destino es el grupo solicited-node de la dirección objetivo (FF02::1:FF00:0/104 + sus 24 últimos bits): solo un posible duplicado está suscrito a él.",
+  "explanation": "En DAD el nodo envía un NS preguntando por la dirección que quiere usar, con fuente ::. Como en cualquier NS de resolución, el destino es el grupo solicited-node de la dirección objetivo (FF02::1:FF00:0/104 + sus 24 últimos bits): solo lo escuchan los nodos con alguna dirección que termine en esos 24 bits, y únicamente respondería quien ya tuviera la dirección completa.",
   "originalReferences": [
     {
       "materialId": "protocolos.materiales.tema-3-ip-en-iot",
@@ -48,7 +48,7 @@
     {
       "id": "la-direccion-multicast-solicited-node",
       "text": "La dirección multicast solicited-node correspondiente",
-      "explanation": "El NS de DAD va al solicited-node de la dirección tentativa."
+      "explanation": "El NS de DAD va al solicited-node de la dirección tentativa, como cualquier NS de resolución."
     }
   ],
   "answer": "la-direccion-multicast-solicited-node"

@@ -25,22 +25,22 @@
     {
       "id": "utilizar-tasas-reducidas-para-mensajes",
       "text": "Utilizar tasas reducidas para mensajes pequeños y espaciados.",
-      "explanation": "Las tasas bajas y el tráfico espaciado encajan con el uso estudiado."
+      "explanation": "Sí encaja: las LLN tienen tasas bajas (low-rate), que se ajustan a mensajes pequeños enviados a grandes intervalos."
     },
     {
       "id": "disponer-de-capacidad-de-canal",
       "text": "Disponer de capacidad de canal elevada y abundante para tráfico continuo.",
-      "explanation": "Es la propiedad que no corresponde al perfil de LLN planteado."
+      "explanation": "Es la propiedad que no encaja: bajo consumo y enlaces con pérdidas llevan a tasas bajas, no a un canal abundante para tráfico continuo."
     },
     {
       "id": "trabajar-con-un-presupuesto-energetico",
       "text": "Trabajar con un presupuesto energético limitado.",
-      "explanation": "La limitación energética es precisamente uno de los motivos para usar estas redes."
+      "explanation": "Sí encaja: «Low-power» se refiere al bajo consumo necesario para alargar la duración de las baterías."
     },
     {
       "id": "sufrir-perdidas-variables-por-interferen",
       "text": "Sufrir pérdidas variables por interferencias del entorno radio.",
-      "explanation": "La variabilidad y las pérdidas corresponden al término Lossy."
+      "explanation": "Sí encaja: «Lossy» indica interferencias y variabilidad por entornos radio adversos."
     }
   ],
   "answer": "disponer-de-capacidad-de-canal"

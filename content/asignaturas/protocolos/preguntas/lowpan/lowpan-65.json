@@ -26,7 +26,7 @@
     {
       "id": "no-soporta-multicast",
       "text": "No soporta multicast.",
-      "explanation": "La p. 49 lo da como una de las dos razones esenciales."
+      "explanation": "IEEE 802.15.4 no soporta multicast y los nodos pueden dormir: por eso RFC 6775 sustituye los NS multicast por el registro y los RA periódicos por RS."
     },
     {
       "id": "sus-tramas-tienen-1280-bytes",

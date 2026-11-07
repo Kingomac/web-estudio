@@ -26,7 +26,7 @@
     {
       "id": "el-protocolo-de-encaminamiento-por",
       "text": "El protocolo de encaminamiento, por ejemplo RPL.",
-      "explanation": "Es la fila «Rutas» de la p. 51."
+      "explanation": "Un 6LR no elige rutas con NDP: sus rutas y siguientes saltos los decide el protocolo de encaminamiento, como RPL."
     },
     {
       "id": "ndp-eligiendo-un-router-por",

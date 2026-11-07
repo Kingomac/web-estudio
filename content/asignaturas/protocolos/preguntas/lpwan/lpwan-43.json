@@ -40,9 +40,9 @@
       "explanation": "Incluye frm_payload y, si hay decoder, decoded_payload."
     },
     {
-      "id": "ninguna-los-dos-van-descifrados",
-      "text": "Ninguna: los dos van descifrados.",
-      "explanation": "El NS no puede descifrar."
+      "id": "no-se-diferencian-los-dos-van",
+      "text": "No se diferencian: los dos van descifrados.",
+      "explanation": "El NS no tiene AppSKey: entrega el frm_payload todavía cifrado y lo descifra el AS."
     }
   ],
   "answer": "el-de-nsas-sigue-cifrado"

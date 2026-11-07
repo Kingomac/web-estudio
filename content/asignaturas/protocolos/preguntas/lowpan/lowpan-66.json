@@ -26,7 +26,7 @@
     {
       "id": "en-broadcast-mac-0xffff-con",
       "text": "En broadcast MAC 0xffff, con SLLAO.",
-      "explanation": "Es lo que indica la p. 50."
+      "explanation": "802.15.4 no tiene multicast, así que el RS a ff02::2 viaja en broadcast MAC 0xffff y lleva la SLLAO con la dirección de enlace del emisor."
     },
     {
       "id": "a-la-mac-multicast-33",

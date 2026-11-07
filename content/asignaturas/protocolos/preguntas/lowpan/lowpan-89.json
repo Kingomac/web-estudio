@@ -26,7 +26,7 @@
     {
       "id": "rul-no-ejecuta-rpl-ral",
       "text": "RUL no ejecuta RPL; RAL participa en RPL sin ofrecerse como router.",
-      "explanation": "Definiciones de la p. 74."
+      "explanation": "RUL (RPL-Unaware Leaf) no ejecuta RPL; RAL (RPL-Aware Leaf) participa en RPL, pero no se ofrece como router. Ninguna hoja reenvía tráfico ajeno."
     },
     {
       "id": "rul-reenvia-trafico-ajeno-y",

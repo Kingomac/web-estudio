@@ -26,7 +26,7 @@
     {
       "id": "con-dio-unicast-los-ral",
       "text": "Con DIO unicast; los RAL anuncian Rank infinito.",
-      "explanation": "Fila DIS de la p. 79."
+      "explanation": "Un DIS pide información del DODAG y los vecinos responden con DIO unicast; un RAL anuncia Rank infinito porque no se ofrece como padre."
     },
     {
       "id": "con-dao-ack",

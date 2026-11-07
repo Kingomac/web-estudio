@@ -26,7 +26,7 @@
     {
       "id": "un-nodo-que-actua-como",
       "text": "Un nodo que actúa como host o, si es FFD, como bridge en mesh-under.",
-      "explanation": "Es la definición de la p. 31."
+      "explanation": "El 6LN es cualquier nodo que actúa como host o, si es un FFD, como bridge que reenvía en mesh-under; enrutar IPv6 queda para el 6LR."
     },
     {
       "id": "un-router-ipv6-que-enruta",

@@ -12,6 +12,7 @@
     {
       "materialId": "protocolos.materiales.tema-1-introduccion",
       "pdfPages": [
+        2,
         10
       ]
     }
@@ -25,22 +26,22 @@
     {
       "id": "los-enlaces-mantienen-una-calidad",
       "text": "Los enlaces mantienen una calidad alta y estable, por lo que las pérdidas pueden despreciarse.",
-      "explanation": "Es la inferencia incorrecta: contradice la parte Lossy de LLN."
+      "explanation": "Es la conclusión no justificada: «Lossy» indica precisamente que el enlace sufre interferencias y variabilidad por entornos radio adversos (SNR baja), así que las pérdidas no pueden despreciarse."
     },
     {
       "id": "los-nodos-tienen-restricciones-energetic",
       "text": "Los nodos tienen restricciones energéticas que condicionan sus comunicaciones.",
-      "explanation": "El presupuesto energético limitado es una característica del perfil estudiado."
+      "explanation": "Sí está justificada: «Low-power» se refiere al bajo consumo que necesitan los nodos para alargar la duración de sus baterías."
     },
     {
       "id": "las-interferencias-pueden-hacer-variar",
       "text": "Las interferencias pueden hacer variar la probabilidad de entrega de los paquetes.",
-      "explanation": "La variabilidad de los enlaces radio es coherente con una LLN."
+      "explanation": "Sí está justificada: es exactamente lo que significa «Lossy», rendimiento variable por interferencias y entornos radio adversos."
     },
     {
       "id": "conviene-reducir-el-trafico-de",
       "text": "Conviene reducir el tráfico de control para limitar el consumo de radio.",
-      "explanation": "Reducir transmisiones y recepciones ayuda a ahorrar energía."
+      "explanation": "Sí está justificada: como las comunicaciones son lo que más consume, transmitir menos control ahorra batería en nodos Low-power."
     }
   ],
   "answer": "los-enlaces-mantienen-una-calidad"

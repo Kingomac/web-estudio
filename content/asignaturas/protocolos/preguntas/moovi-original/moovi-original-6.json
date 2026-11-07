@@ -31,27 +31,27 @@
     {
       "id": "baja-tasa-de-transmision",
       "text": "Baja tasa de transmisión",
-      "explanation": "Las tasas reducidas sí encajan con el perfil LLN del temario."
+      "explanation": "Sí es característica: bajo consumo y enlaces con pérdidas hacen que las LLN tengan tasas bajas (low-rate)."
     },
     {
       "id": "elevadas-tasas-de-perdidas-de",
       "text": "Elevadas tasas de pérdidas de paquetes",
-      "explanation": "Los enlaces con pérdidas son parte del perfil Lossy."
+      "explanation": "Sí es característica: es el significado de «Lossy», enlaces con interferencias y variabilidad."
     },
     {
       "id": "valor-bajo-de-snr",
       "text": "Valor bajo de SNR",
-      "explanation": "Una relación señal/ruido baja encaja con enlaces de calidad limitada."
+      "explanation": "Sí es característica: el tema asocia los entornos radio adversos de las LLN a valores bajos de SNR."
     },
     {
       "id": "bajo-consumo-energetico",
       "text": "Bajo consumo energético",
-      "explanation": "El bajo consumo corresponde a Low-power."
+      "explanation": "Sí es característica: es el significado de «Low-power», bajo consumo para alargar la batería."
     },
     {
       "id": "elevada-capacidad-de-canal",
       "text": "Elevada capacidad de canal",
-      "explanation": "Una capacidad elevada no encaja con el perfil descrito."
+      "explanation": "Es la que NO corresponde: con SNR baja y requisitos de bajo consumo, las LLN ofrecen tasas bajas, no una capacidad de canal elevada."
     }
   ],
   "answer": "elevada-capacidad-de-canal"

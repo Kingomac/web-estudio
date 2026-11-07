@@ -35,7 +35,7 @@
     {
       "id": "clase-1-asociada-a-dispositivos",
       "text": "Clase 1, asociada a dispositivos RFD sin esa capacidad completa.",
-      "explanation": "La clase 1 tiene una pila reducida y corresponde a RFD, que no actúa como nodo de reenvío."
+      "explanation": "La clase 1 solo implementa una pila IP reducida (RFD); la diapositiva reserva la pila completa y el papel de nodo intermedio de reenvío a la clase 2."
     },
     {
       "id": "cualquier-clase-porque-el-reenvio",

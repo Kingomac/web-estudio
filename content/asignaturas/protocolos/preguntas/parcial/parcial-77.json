@@ -35,12 +35,12 @@
     {
       "id": "o-2-mbit-s-y-127",
       "text": "2 Mbit/s y 127 bytes.",
-      "explanation": "~2 Mbit/s es el máximo de algunas LoWPAN, no la tasa de 802.15.4 a 2,4 GHz."
+      "explanation": "2 Mbit/s es una de las tasas de BLE; IEEE 802.15.4 a 2,4 GHz ofrece 250 kbit/s."
     },
     {
       "id": "o-50-kbit-s-y-1500",
       "text": "50 kbit/s y 1500 bytes.",
-      "explanation": "50 kbit/s es el máximo de LPWAN y 1500 bytes la MTU de Ethernet."
+      "explanation": "Ni la tasa ni el tamaño son los de 802.15.4 a 2,4 GHz: 1500 bytes es la MTU de Ethernet y la trama 802.15.4 no pasa de 127 bytes."
     }
   ],
   "answer": "o-250-kbit-s-y-127"

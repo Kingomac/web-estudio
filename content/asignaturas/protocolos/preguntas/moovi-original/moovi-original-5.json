@@ -31,22 +31,22 @@
     {
       "id": "reenvia-tramas-ieee-802-16",
       "text": "Reenvía tramas IEEE 802.16.4",
-      "explanation": "La designación IEEE 802.16.4 del original no corresponde al enlace 802.15.4 estudiado."
+      "explanation": "Errata del original: la tecnología de las LoWPAN es IEEE 802.15.4. Aun corregida, reenviar tramas de la red de acceso no define a la pasarela; puede hacerlo cualquier nodo intermedio."
     },
     {
       "id": "interconecta-la-red-de-acceso",
       "text": "Interconecta la red de acceso y la red troncal",
-      "explanation": "Es la función arquitectónica que caracteriza a la pasarela."
+      "explanation": "Correcta: la pasarela es el punto donde la red de acceso de los dispositivos se une con la red troncal hacia la aplicación en la nube."
     },
     {
       "id": "reenvia-mensajes-no-ip-a",
       "text": "Reenvía mensajes no IP a través de Internet",
-      "explanation": "Los mensajes no IP necesitan adaptación para circular por Internet."
+      "explanation": "Internet solo transporta IP: los mensajes no IP de los dispositivos deben adaptarse en la pasarela; no se reenvían tal cual por Internet."
     },
     {
       "id": "reenvia-paquetes-ip",
       "text": "Reenvía paquetes IP",
-      "explanation": "Puede hacerlo, pero esa función no define por sí sola una pasarela."
+      "explanation": "Cualquier router reenvía paquetes IP; es algo que la pasarela puede hacer, pero no lo que la caracteriza en la arquitectura acceso/troncal."
     }
   ],
   "answer": "interconecta-la-red-de-acceso"

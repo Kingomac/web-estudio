@@ -26,7 +26,7 @@
     {
       "id": "instancia-rpl-rank-del-emisor",
       "text": "Instancia RPL, Rank del emisor y sentido, en la cabecera Hop-by-Hop.",
-      "explanation": "Es lo que indica la p. 85."
+      "explanation": "La RPI es una opción Hop-by-Hop que lleva la instancia RPL, el Rank del emisor del salto y el sentido, para detectar inconsistencias y bucles."
     },
     {
       "id": "la-lista-de-direcciones-intermedias",

@@ -26,7 +26,7 @@
     {
       "id": "2",
       "text": "2.",
-      "explanation": "Valor de la p. 66 para calidad razonable."
+      "explanation": "La escala de Thread por RSSI es 1 para calidad buena, 2 para razonable, 4 para pobre e ∞ para un RSSI desconocido o casi nulo."
     },
     {
       "id": "1",

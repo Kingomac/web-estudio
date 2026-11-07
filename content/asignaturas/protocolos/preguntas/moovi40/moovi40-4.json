@@ -25,22 +25,22 @@
     {
       "id": "conservar-el-arbol-y-anadir",
       "text": "Conservar el árbol y añadir más direcciones IPv6 a cada sensor.",
-      "explanation": "Más direcciones no crean enlaces ni rutas físicas alternativas."
+      "explanation": "Más direcciones IPv6 no crean enlaces radio ni rutas físicas alternativas: los sensores seguirían dependiendo del único repetidor."
     },
     {
       "id": "conservar-el-arbol-y-aumentar",
       "text": "Conservar el árbol y aumentar solo la memoria del servidor remoto.",
-      "explanation": "La memoria del servidor no restablece el enlace de acceso perdido."
+      "explanation": "El servidor remoto está al otro lado de la red troncal; su memoria no restablece el enlace perdido en la red de acceso."
     },
     {
       "id": "cambiar-los-identificadores-de-los",
       "text": "Cambiar los identificadores de los sensores sin cambiar los enlaces.",
-      "explanation": "Los identificadores distinguen nodos, pero no sustituyen conectividad."
+      "explanation": "Los identificadores distinguen nodos, pero no añaden caminos: el árbol sigue teniendo un único camino hacia la raíz."
     },
     {
       "id": "una-malla-con-otro-camino",
       "text": "Una malla con otro camino utilizable y nodos capaces de reenviar por él.",
-      "explanation": "Añade una alternativa real al repetidor averiado."
+      "explanation": "Correcta: la malla es una mejora del árbol con caminos redundantes para mejorar la fiabilidad; si cae un repetidor, otro nodo puede reenviar."
     }
   ],
   "answer": "una-malla-con-otro-camino"

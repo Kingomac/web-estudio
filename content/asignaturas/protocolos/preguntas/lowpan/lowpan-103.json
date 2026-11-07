@@ -26,7 +26,7 @@
     {
       "id": "porque-codificar-rpi-y-srh",
       "text": "Porque codificar RPI y SRH con LOWPAN_NHC no las comprime realmente.",
-      "explanation": "Último punto de la p. 86."
+      "explanation": "Codificar RPI y SRH con LOWPAN_NHC no reduce realmente su tamaño; RFC 8138 definió el dispatch 6LoRH para comprimirlas."
     },
     {
       "id": "para-sustituir-la-fragmentacion-frag1",

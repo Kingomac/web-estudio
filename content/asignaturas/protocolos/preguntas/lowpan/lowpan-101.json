@@ -26,7 +26,7 @@
     {
       "id": "0-para-hop-by-hop",
       "text": "0 para Hop-by-Hop y 1 para SRH.",
-      "explanation": "Valores de la p. 86."
+      "explanation": "En el octeto NHC de extensión, EID = 0 identifica la Hop-by-Hop (con la RPI) y EID = 1 el Routing Header (SRH)."
     },
     {
       "id": "1-para-hop-by-hop",

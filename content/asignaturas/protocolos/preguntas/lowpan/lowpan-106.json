@@ -26,7 +26,7 @@
     {
       "id": "thread-mle-mesh-under-wi",
       "text": "Thread: MLE, mesh-under. Wi-SUN FAN: RPL, route-over.",
-      "explanation": "Fila «Encaminamiento» de la p. 89."
+      "explanation": "Thread encamina con MLE y reenvía mesh-under con la cabecera Mesh; Wi-SUN FAN encamina con RPL en route-over."
     },
     {
       "id": "thread-rpl-route-over-wi",

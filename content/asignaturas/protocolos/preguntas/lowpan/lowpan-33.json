@@ -36,7 +36,7 @@
     {
       "id": "solo-el-prefijo-ipv6-del",
       "text": "Solo el prefijo IPv6 del border router y su versión.",
-      "explanation": "El prefijo y la versión del border router los aporta ABRO en el RA."
+      "explanation": "El prefijo viaja en la PIO del RA, y la identidad del 6LBR y la versión de esa información en ABRO; nada de eso forma parte de ARO."
     },
     {
       "id": "el-vector-de-costes-hacia",

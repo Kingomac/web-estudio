@@ -26,7 +26,7 @@
     {
       "id": "udp-con-puerto-19788-en",
       "text": "UDP con puerto 19788 en origen y destino y Hop Limit 255.",
-      "explanation": "Cabecera de la p. 65; la p. 64 indica UDP sobre IPv6 de ámbito de enlace."
+      "explanation": "MLE va en UDP sobre IPv6 con origen y destino 19788 y Hop Limit 255, entre vecinos y con direcciones de ámbito de enlace."
     },
     {
       "id": "icmpv6-tipo-155",

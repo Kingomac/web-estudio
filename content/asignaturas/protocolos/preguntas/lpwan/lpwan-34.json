@@ -15,6 +15,7 @@
         34,
         35,
         40,
+        45,
         49,
         51
       ]
@@ -43,9 +44,9 @@
       "explanation": "Valida el MIC con NwkSKey, pero entrega el FRMPayload aún cifrado."
     },
     {
-      "id": "cualquier-gateway-que-reciba-el",
-      "text": "Cualquier gateway que reciba el mensaje.",
-      "explanation": "Ningún gateway tiene claves de sesión."
+      "id": "un-gateway-con-basics-station",
+      "text": "Un gateway con LoRa Basics Station, que separa los campos de la trama.",
+      "explanation": "Basics Station envía los campos por separado, pero el FRMPayload sigue cifrado (p. 45): el gateway no tiene AppSKey."
     }
   ],
   "answer": "el-application-server"

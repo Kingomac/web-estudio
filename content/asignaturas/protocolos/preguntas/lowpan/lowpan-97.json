@@ -26,7 +26,7 @@
     {
       "id": "a-r-a-b-l",
       "text": "A → R → A → B → L.",
-      "explanation": "Ejemplo de la p. 83."
+      "explanation": "En non-storing A no tiene rutas hacia sus descendientes: sube el paquete a R por su padre preferido, y R lo baja con encaminamiento de fuente por A y B hasta L."
     },
     {
       "id": "a-b-l",

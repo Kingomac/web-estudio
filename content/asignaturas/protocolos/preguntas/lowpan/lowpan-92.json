@@ -26,7 +26,7 @@
     {
       "id": "genera-su-propio-dio-con",
       "text": "Genera su propio DIO con su Rank; no reenvía el recibido sin cambios.",
-      "explanation": "Nota de la p. 76."
+      "explanation": "Cada router calcula su propio Rank y emite su DIO, temporizado por Trickle; el DIO recibido no se reenvía sin cambios."
     },
     {
       "id": "lo-reenvia-sin-cambios-a",

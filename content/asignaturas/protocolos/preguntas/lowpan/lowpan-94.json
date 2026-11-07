@@ -26,7 +26,7 @@
     {
       "id": "target-destino-alcanzable-transit-padre",
       "text": "Target: destino alcanzable; Transit: padre para alcanzarlo.",
-      "explanation": "Definición de la p. 81, ilustrada en la p. 82."
+      "explanation": "Target es la dirección IPv6 o prefijo alcanzable, y Transit, la dirección del padre o padres a través de los que se alcanza."
     },
     {
       "id": "target-padre-preferido-transit-destino",

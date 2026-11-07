@@ -31,7 +31,7 @@
     {
       "id": "con",
       "text": "CON.",
-      "explanation": "Una petición CON a un grupo obligaría a confirmar a cada miembro; el esquema usa NON."
+      "explanation": "El esquema no usa CON: la petición GET a ff02::1 lleva T = NON y cada dispositivo contesta con su propio mensaje NON, sin ACK."
     },
     {
       "id": "ack",

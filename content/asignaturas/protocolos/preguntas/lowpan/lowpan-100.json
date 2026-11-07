@@ -26,7 +26,7 @@
     {
       "id": "en-los-datagramas-descendentes-de",
       "text": "En los datagramas descendentes de non-storing, que ya llevan SRH.",
-      "explanation": "Último punto de la p. 85."
+      "explanation": "Los datagramas descendentes de non-storing ya llevan la SRH con el camino fijado por la raíz, así que pueden omitir la RPI."
     },
     {
       "id": "en-todos-los-datagramas-entre",

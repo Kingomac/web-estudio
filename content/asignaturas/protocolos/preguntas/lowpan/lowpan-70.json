@@ -26,7 +26,7 @@
     {
       "id": "la-correspondencia-ipv6enlace-del-host",
       "text": "La correspondencia IPv6–enlace del host, con su EUI-64 y el tiempo de validez.",
-      "explanation": "Es lo que indica la p. 52."
+      "explanation": "Al aceptar el registro, el router guarda la correspondencia entre la IPv6 y la dirección de enlace del host, junto con su EUI-64 y el tiempo de validez."
     },
     {
       "id": "solo-el-prefijo-anunciado-y",

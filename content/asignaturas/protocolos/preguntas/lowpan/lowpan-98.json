@@ -26,7 +26,7 @@
     {
       "id": "cuantos-bytes-se-suprimen-de",
       "text": "Cuántos bytes se suprimen de las direcciones intermedias.",
-      "explanation": "Texto de la p. 84."
+      "explanation": "CmprI indica cuántos bytes iniciales, normalmente del prefijo, se suprimen de cada dirección intermedia de la SRH."
     },
     {
       "id": "cuantos-bytes-se-suprimen-de-2",

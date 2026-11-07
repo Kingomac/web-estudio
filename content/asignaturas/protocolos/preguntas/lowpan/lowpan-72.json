@@ -26,7 +26,7 @@
     {
       "id": "los-6lr-guardan-la-informacion",
       "text": "Los 6LR guardan la información del RA del 6LBR y la anuncian en sus propios RA.",
-      "explanation": "Es la distribución multisalto de la p. 54."
+      "explanation": "Cada 6LR almacena PIO y contextos del RA del 6LBR y los anuncia en sus propios RA, periódicos o en respuesta a RS, hasta alcanzar a todos los hosts."
     },
     {
       "id": "cada-host-la-consulta-al",

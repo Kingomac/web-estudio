@@ -26,7 +26,7 @@
     {
       "id": "a-un-router-ffn-con",
       "text": "A un router FFN con soporte LFN o al propio border router.",
-      "explanation": "Es lo que indica la p. 87."
+      "explanation": "Un LFN se conecta a un padre con soporte para LFN, que puede ser un router FFN o el propio border router."
     },
     {
       "id": "solo-a-otro-lfn",

@@ -7,12 +7,13 @@
   ],
   "type": "single",
   "prompt": "En CoAP sobre UDP, un cliente envía una petición CON con Message ID 0x3401 y Token 0xa7. Recibe un ACK vacío y después una respuesta separada. ¿Qué campo permite asociar esa respuesta con la petición?",
-  "explanation": "Token relaciona petición y respuesta; Message ID se emplea para fiabilidad, detección de duplicados y asociación de mensajes con sus ACK. Un ACK vacío confirma la recepción del mensaje, y la respuesta de aplicación puede llegar por separado con otro Message ID.",
+  "explanation": "En CoAP, el Message ID se usa para la fiabilidad y los duplicados, y el Token relaciona la petición con su respuesta. En una respuesta no piggybacked, el ACK vacío confirma la recepción de la petición y la respuesta llega después en otro mensaje, que lleva el mismo Token (0x21 en el esquema del tema).",
   "originalReferences": [
     {
       "materialId": "protocolos.materiales.nivel-de-aplicacion",
       "pdfPages": [
-        39
+        39,
+        40
       ]
     }
   ],
@@ -24,13 +25,13 @@
   "options": [
     {
       "id": "el-token-0xa7-aunque-la",
-      "text": "El Token 0xa7, aunque la respuesta separada utilice otro Message ID.",
-      "explanation": "Utiliza el identificador diseñado para correlacionar petición y respuesta."
+      "text": "El Token 0xa7, que el servidor repite en la respuesta.",
+      "explanation": "El Token es el campo que relaciona cada respuesta con su petición; por eso la respuesta separada lleva el mismo Token 0xa7."
     },
     {
       "id": "el-message-id-0x3401-que",
       "text": "El Message ID 0x3401, que toda respuesta separada debe conservar.",
-      "explanation": "Confunde la confirmación de un mensaje con la correlación de la respuesta separada."
+      "explanation": "El Message ID sirve para la fiabilidad y la detección de duplicados, es decir, para emparejar un mensaje con su ACK. Asociar la respuesta con la petición es la función del Token."
     },
     {
       "id": "el-codigo-de-respuesta-porque",

@@ -26,7 +26,7 @@
     {
       "id": "256-igual-a-minhoprankincrease",
       "text": "256, igual a MinHopRankIncrease.",
-      "explanation": "Paso 1 de la p. 75."
+      "explanation": "En Wi-SUN FAN el Rank inicial de la raíz es MinHopRankIncrease, que vale 256."
     },
     {
       "id": "0",

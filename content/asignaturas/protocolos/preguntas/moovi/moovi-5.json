@@ -25,22 +25,22 @@
     {
       "id": "interconectar-la-red-de-acceso",
       "text": "Interconectar la red de acceso de los sensores con la red troncal.",
-      "explanation": "Es el punto de interconexión mostrado en la arquitectura del tema."
+      "explanation": "Correcta: la red de acceso termina en la pasarela o border router y la red troncal la comunica con la aplicación en la nube a través de Internet."
     },
     {
       "id": "actuar-necesariamente-como-servidor-dns",
       "text": "Actuar necesariamente como servidor DNS autoritativo de Internet.",
-      "explanation": "Ofrecer DNS no es una condición necesaria para ser pasarela IoT."
+      "explanation": "DNS no aparece en la arquitectura del tema; la pasarela se define por su posición entre acceso y troncal, no por servir nombres."
     },
     {
       "id": "sustituir-la-red-troncal-reenviando",
       "text": "Sustituir la red troncal reenviando únicamente tramas dentro de la LLN.",
-      "explanation": "El reenvío únicamente local no proporciona la interconexión con la troncal."
+      "explanation": "Si solo reenviara dentro de la LLN, actuaría como repetidor de la red de acceso; la pasarela es justamente la que conecta con la troncal."
     },
     {
       "id": "transportar-tramas-no-ip-sin",
       "text": "Transportar tramas no IP sin adaptación por cualquier router de Internet.",
-      "explanation": "Los routers IP de Internet no transportan directamente cualquier trama no IP sin adaptación."
+      "explanation": "La troncal es IP: los datos de dispositivos no IP necesitan adaptarse en la pasarela antes de cruzar Internet."
     }
   ],
   "answer": "interconectar-la-red-de-acceso"

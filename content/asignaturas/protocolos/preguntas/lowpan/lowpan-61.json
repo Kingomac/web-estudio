@@ -26,7 +26,7 @@
     {
       "id": "zigbee-usa-su-propia-capa",
       "text": "Zigbee usa su propia capa de red, no la cabecera Mesh de 6LoWPAN.",
-      "explanation": "Es lo que indica la p. 43 para distinguirlo de Thread."
+      "explanation": "Thread usa la cabecera Mesh de 6LoWPAN con su propio encaminamiento; Zigbee, en cambio, tiene su propia capa de red y no usa esa cabecera."
     },
     {
       "id": "zigbee-usa-la-cabecera-mesh",
