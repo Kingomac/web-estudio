@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-54",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo nuevo debe darse de alta en una plataforma IoT a través de su API HTTP. ¿Qué método corresponde según los ejemplos del tema?",
+  "explanation": "Los ejemplos del tema asocian GET con obtener una medida, PUT con actualizar el estado de un dispositivo, POST con crear un nuevo dispositivo y DELETE con eliminarlo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "metodos-mensajes-y-respuestas"
+    }
+  ],
+  "options": [
+    {
+      "id": "post",
+      "text": "POST.",
+      "explanation": "POST crea un nuevo dispositivo."
+    },
+    {
+      "id": "put",
+      "text": "PUT.",
+      "explanation": "PUT actualiza el estado de un dispositivo que ya existe."
+    },
+    {
+      "id": "get",
+      "text": "GET.",
+      "explanation": "GET obtiene una medida; no crea nada."
+    },
+    {
+      "id": "delete",
+      "text": "DELETE.",
+      "explanation": "DELETE elimina un dispositivo."
+    }
+  ],
+  "answer": "post"
+}

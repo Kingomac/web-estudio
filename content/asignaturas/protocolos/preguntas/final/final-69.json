@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.final-69",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una captura muestra los 8 primeros bytes de una cabecera IPv6, sin cabeceras de extensión:\n`60 00 00 00 00 14 11 40`\nLa cabecera UDP ocupa 8 bytes. ¿Qué información se deduce?",
+  "explanation": "Tras Version (6), Traffic Class y Flow Label (todos a 0 en los 4 primeros bytes), vienen Payload Length = 0x0014 = 20 bytes, Next Header = 0x11 = 17 (UDP) y Hop Limit = 0x40 = 64. El datagrama mide 40 + 20 = 60 bytes y, descontando la cabecera UDP de 8 bytes, quedan 12 bytes de aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "cabecera-ipv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "60-udp-12",
+      "text": "60 bytes en total; UDP con 12 bytes de aplicación; Hop Limit 64.",
+      "explanation": "Interpreta los tres campos en hexadecimal y descuenta las dos cabeceras."
+    },
+    {
+      "id": "udp-20",
+      "text": "60 bytes en total; UDP con 20 bytes de aplicación; Hop Limit 64.",
+      "explanation": "Payload Length incluye la cabecera UDP: los datos de aplicación son 20 − 8 = 12."
+    },
+    {
+      "id": "hl-40",
+      "text": "60 bytes en total; UDP con 12 bytes de aplicación; Hop Limit 40.",
+      "explanation": "0x40 en hexadecimal es 64 en decimal."
+    },
+    {
+      "id": "decimal-14",
+      "text": "54 bytes en total; UDP con 6 bytes de aplicación; Hop Limit 64.",
+      "explanation": "Lee 0x0014 como 14 decimal; en hexadecimal vale 20."
+    },
+    {
+      "id": "20-total",
+      "text": "20 bytes en total; UDP sin datos de aplicación; Hop Limit 64.",
+      "explanation": "Payload Length no incluye los 40 bytes de la cabecera IPv6."
+    }
+  ],
+  "answer": "60-udp-12"
+}

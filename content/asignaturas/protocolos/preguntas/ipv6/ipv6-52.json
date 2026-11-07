@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ipv6-52",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo IEEE 802.15.4 usa la dirección corta de 16 bits 0x0a1b en una PAN cuyo PAN ID es 0x0000. ¿Qué dirección link-local automática le corresponde según el tema?",
+  "explanation": "Para direcciones cortas, el IID tiene la estructura PAN_ID : 00FF : FE00 : dirección_corta. Con PAN ID 0 queda 0000:00ff:fe00:0a1b y la link-local es fe80::ff:fe00:a1b. Según el RFC 4944, el bit U/L de este IID queda a cero (no se pone a 1). Este IID no garantiza unicidad global.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15,
+        16,
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "construccion-de-iid-eui-64-y-alternativas"
+    }
+  ],
+  "options": [
+    {
+      "id": "pan-00ff-fe00-corta",
+      "text": "fe80::ff:fe00:a1b",
+      "explanation": "Sigue la estructura PAN_ID:00FF:FE00:corta con el bit U/L a cero, como el ejemplo FE80::FF:FE00:1122."
+    },
+    {
+      "id": "ul-a-uno",
+      "text": "fe80::200:ff:fe00:a1b",
+      "explanation": "Pone a 1 el bit U/L; para direcciones cortas el RFC 4944 establece que quede a cero."
+    },
+    {
+      "id": "solo-corta",
+      "text": "fe80::a1b",
+      "explanation": "Omite la parte 00FF:FE00 que el tema usa para formar el IID de 64 bits a partir de la dirección corta."
+    },
+    {
+      "id": "no-puede",
+      "text": "Ninguna: una dirección corta no es un EUI-64 y no permite formar una link-local.",
+      "explanation": "El tema muestra cómo se construye; lo que no garantiza es la unicidad global."
+    }
+  ],
+  "answer": "pan-00ff-fe00-corta"
+}

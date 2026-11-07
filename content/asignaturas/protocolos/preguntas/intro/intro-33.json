@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué significa Wio y qué fabricante lo ofrece según el tema?",
+  "explanation": "Wio (Wireless Input Output) es una línea de productos IoT modulares de Seeed Studio que integra conectividad inalámbrica con MCUs y es compatible con Grove.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "dispositivos-modulares"
+    }
+  ],
+  "options": [
+    {
+      "id": "wireless-input-output-seeed",
+      "text": "Wireless Input Output, de Seeed Studio.",
+      "explanation": "Correcta: nombre y fabricante tal como los da el tema."
+    },
+    {
+      "id": "wireless-input-output-rak",
+      "text": "Wireless Input Output, de RAK.",
+      "explanation": "RAK fabrica WisBlock; Wio es de Seeed Studio."
+    },
+    {
+      "id": "wired-input-output-seeed",
+      "text": "Wired Input Output, de Seeed Studio, sin conectividad inalámbrica.",
+      "explanation": "Wio es «Wireless» e integra Wi-Fi, Bluetooth o LoRa."
+    },
+    {
+      "id": "wisblock-io",
+      "text": "Es el nombre de los módulos WisBlock IO de RAK.",
+      "explanation": "WisBlock IO es una familia de WisBlock; Wio es una línea distinta de Seeed Studio."
+    }
+  ],
+  "answer": "wireless-input-output-seeed"
+}

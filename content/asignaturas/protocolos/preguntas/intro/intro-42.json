@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-42",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En una nave industrial, algunos sensores quedan fuera del radio de propagación de la pasarela, pero otros nodos sí la alcanzan. Sin añadir caminos redundantes, ¿qué topología permite conectarlos a todos?",
+  "explanation": "La topología de árbol amplía la cobertura haciendo que nodos intermedios actúen como repetidores, formando un árbol multisalto con raíz en la pasarela. La malla añadiría además caminos redundantes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "topologias"
+    }
+  ],
+  "options": [
+    {
+      "id": "arbol-multisalto",
+      "text": "Árbol multisalto con raíz en la pasarela, con nodos intermedios como repetidores.",
+      "explanation": "Correcta: es la topología pensada para ampliar la cobertura a nodos fuera del radio de la pasarela."
+    },
+    {
+      "id": "estrella",
+      "text": "Estrella, con todos los sensores comunicándose directamente con la pasarela.",
+      "explanation": "La estrella exige que todos los nodos estén dentro del radio de la pasarela, que aquí no se cumple."
+    },
+    {
+      "id": "malla",
+      "text": "Malla, porque es la única que permite varios saltos.",
+      "explanation": "El árbol ya es multisalto; la malla añade caminos redundantes, que el enunciado descarta."
+    },
+    {
+      "id": "estrella-con-mas-memoria",
+      "text": "Estrella, aumentando la memoria de la pasarela.",
+      "explanation": "La memoria de la pasarela no cambia el radio de propagación de los sensores."
+    }
+  ],
+  "answer": "arbol-multisalto"
+}

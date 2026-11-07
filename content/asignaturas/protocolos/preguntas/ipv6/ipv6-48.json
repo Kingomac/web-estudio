@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-48",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un datagrama IPv6 sin cabeceras de extensión tiene Payload Length = 32 y Next Header = 58. ¿Qué tamaño total tiene y qué transporta?",
+  "explanation": "Payload Length cuenta solo los bytes que siguen a la cabecera básica, de tamaño constante 40 bytes: 40 + 32 = 72 bytes. Next Header = 58 identifica ICMPv6 (6 sería TCP y 17 UDP).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "cabecera-ipv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "72-icmpv6",
+      "text": "72 bytes; un mensaje ICMPv6.",
+      "explanation": "Suma la cabecera fija de 40 bytes a los 32 de carga e interpreta bien el 58."
+    },
+    {
+      "id": "32-icmpv6",
+      "text": "32 bytes; un mensaje ICMPv6.",
+      "explanation": "Payload Length no incluye la cabecera IPv6 de 40 bytes, así que el total es mayor."
+    },
+    {
+      "id": "72-udp",
+      "text": "72 bytes; un segmento UDP.",
+      "explanation": "El tamaño es correcto, pero UDP se indica con Next Header 17; 58 es ICMPv6."
+    },
+    {
+      "id": "52-icmpv6",
+      "text": "52 bytes; un mensaje ICMPv6.",
+      "explanation": "Suma una cabecera de 20 bytes, que es el tamaño mínimo de la cabecera IPv4, no el de IPv6."
+    }
+  ],
+  "answer": "72-icmpv6"
+}

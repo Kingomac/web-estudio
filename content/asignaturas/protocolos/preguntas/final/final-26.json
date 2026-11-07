@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una plataforma envía este mensaje:\n`POST /livestreaming-app/webhooks/donations HTTP/1.1`\n`Host: livestreaming-app.example.com`\n`Content-Type: application/json`\n`{\"event\": \"donation.success\", \"data\": {\"username\": \"YourBiggestFan\", \"amount\": 10}}`\n¿Cuál de estas afirmaciones sobre el intercambio es FALSA?",
+  "explanation": "Es un webhook: al ocurrir el evento, la plataforma envía un HTTP POST al endpoint configurado con un payload que describe el evento, y la aplicación responde 200 OK si lo procesa bien. Lo inicia el emisor del evento, no el receptor, así que no hay sondeo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        28,
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "webhook"
+    }
+  ],
+  "options": [
+    {
+      "id": "sondeo-del-receptor",
+      "text": "La aplicación receptora obtuvo el evento consultando periódicamente a la plataforma con este POST.",
+      "explanation": "Es falsa: el POST lo envía la plataforma al ocurrir el evento; los webhooks eliminan el sondeo."
+    },
+    {
+      "id": "endpoint",
+      "text": "El endpoint configurado es `/livestreaming-app/webhooks/donations` en `livestreaming-app.example.com`.",
+      "explanation": "Es verdadera: es la URL a la que se envía el webhook."
+    },
+    {
+      "id": "payload",
+      "text": "El payload JSON describe el evento que activó el webhook y sus datos.",
+      "explanation": "Es verdadera: `donation.success` con usuario e importe."
+    },
+    {
+      "id": "200-ok",
+      "text": "Si la receptora lo procesa correctamente, contesta `200 OK`.",
+      "explanation": "Es verdadera según el tema."
+    }
+  ],
+  "answer": "sondeo-del-receptor"
+}

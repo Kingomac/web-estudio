@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-45",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo envía por Ethernet un NS de resolución que incluye la opción con su dirección MAC (T = 1, L = 1). No hay cabeceras de extensión. Con el formato de NS del tema, ¿qué valen Payload Length y el tamaño total del datagrama IPv6?",
+  "explanation": "El mensaje NS ocupa 4 bytes de Tipo, Código y Checksum, 4 bytes de Reservado/Flags, 16 de la dirección objetivo y 8 de la opción (1 de tipo, 1 de longitud y 6 de MAC; L = 1 equivale a 48 bits de MAC en Ethernet): 32 bytes. Payload Length cuenta lo que sigue a la cabecera básica: 32. El datagrama completo suma los 40 bytes de cabecera: 72.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14,
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "cabecera-ipv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "32-72",
+      "text": "Payload Length = 32; total 72 bytes.",
+      "explanation": "Suma bien los campos del NS y añade la cabecera fija de 40 bytes solo al total."
+    },
+    {
+      "id": "72-72",
+      "text": "Payload Length = 72; total 72 bytes.",
+      "explanation": "Payload Length no incluye los 40 bytes de la cabecera IPv6."
+    },
+    {
+      "id": "24-64",
+      "text": "Payload Length = 24; total 64 bytes.",
+      "explanation": "Omite los 8 bytes de la opción con la dirección MAC."
+    },
+    {
+      "id": "30-70",
+      "text": "Payload Length = 30; total 70 bytes.",
+      "explanation": "Cuenta solo los 6 bytes de MAC de la opción y olvida sus campos de tipo y longitud."
+    }
+  ],
+  "answer": "32-72"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-81",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Terminado el intercambio OTAA, ¿qué clave de sesión queda disponible en la plataforma para cada servidor?",
+  "explanation": "El dispositivo y el Join Server derivan NwkSKey y AppSKey; en la plataforma, NwkSKey queda para el Network Server y AppSKey para el Application Server.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        32,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "nwkskey-para-el-network-server-y-appskey",
+      "text": "NwkSKey para el Network Server y AppSKey para el Application Server.",
+      "explanation": "P. 33 y recuadro de la p. 32."
+    },
+    {
+      "id": "appskey-para-el-network-server-y-nwkskey",
+      "text": "AppSKey para el Network Server y NwkSKey para el Application Server.",
+      "explanation": "Están invertidas."
+    },
+    {
+      "id": "appkey-para-ambos-servidores",
+      "text": "AppKey para ambos servidores.",
+      "explanation": "AppKey es la clave raíz; las de sesión se derivan de ella."
+    },
+    {
+      "id": "las-dos-para-el-gateway-que-descifra-los",
+      "text": "Las dos para el gateway, que descifra los mensajes.",
+      "explanation": "El gateway no tiene claves: solo reenvía."
+    }
+  ],
+  "answer": "nwkskey-para-el-network-server-y-appskey"
+}

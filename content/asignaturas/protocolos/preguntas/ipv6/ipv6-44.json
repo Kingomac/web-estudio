@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-44",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB de un router solo contiene la ruta directa (G=0) 2001:db8:1::/64 por g0/0. El administrador añade una ruta para 2001:db8:9::/64 con G=1 y gateway 2001:db8:7::1. ¿Qué ocurre según el tema?",
+  "explanation": "Una ruta indirecta (G=1) indica en el campo Gateway la IP del router de siguiente salto, que debe estar a un salto: tiene que existir en la FIB una ruta directa (G=0) para su prefijo. Aquí no hay ruta directa para 2001:db8:7::/64, así que la ruta indirecta no se instala hasta que exista.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8,
+        23
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "subred-bridge-router-y-tablas-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-se-instala",
+      "text": "No se instala, porque no hay una ruta directa (G=0) hacia el prefijo del gateway 2001:db8:7::1.",
+      "explanation": "El next-hop de una ruta G=1 debe ser alcanzable directamente por alguna ruta G=0."
+    },
+    {
+      "id": "se-instala-g0",
+      "text": "Se instala como ruta directa (G=0) por g0/0, la única interfaz con IPv6.",
+      "explanation": "Indicar un gateway hace la ruta indirecta (G=1); además g0/0 no está en la subred del gateway."
+    },
+    {
+      "id": "ns-por-todas",
+      "text": "Se instala, y el router envía NS por todas sus interfaces hasta encontrar al gateway.",
+      "explanation": "NDP resuelve vecinos de un enlace conocido; no sirve para localizar en qué interfaz está un gateway sin ruta directa."
+    },
+    {
+      "id": "por-defecto",
+      "text": "Se instala y los paquetes hacia el gateway se envían por la ruta por defecto.",
+      "explanation": "La FIB del enunciado no tiene ruta por defecto, y el tema exige una ruta directa para el next-hop."
+    }
+  ],
+  "answer": "no-se-instala"
+}

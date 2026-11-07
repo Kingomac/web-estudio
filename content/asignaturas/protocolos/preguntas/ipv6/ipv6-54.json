@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-54",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En la interfaz f0/0 de un router se ejecuta `ipv6 address 2001:db8:5::1/64`. ¿Qué entradas genera este comando en la salida de `show ipv6 route`?",
+  "explanation": "El tema explica que un comando ipv6 address da lugar a una entrada L (local), que relaciona la interfaz con la dirección configurada (/128), y a una entrada C (connected) para la subred conectada, que es una ruta directa (G=0) por esa interfaz. En la captura del tema aparecen, por ejemplo, L 2000:0:0:2::1/128 y C 2000:0:0:2::/64.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        19,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "l-128-c-64",
+      "text": "L 2001:db8:5::1/128 y C 2001:db8:5::/64, ambas por f0/0.",
+      "explanation": "La L identifica la dirección propia y la C la subred conectada."
+    },
+    {
+      "id": "intercambiadas",
+      "text": "L 2001:db8:5::/64 y C 2001:db8:5::1/128.",
+      "explanation": "Intercambia los papeles: la entrada local es la dirección /128 y la conectada es la subred /64."
+    },
+    {
+      "id": "estatica",
+      "text": "S 2001:db8:5::/64 vía 2001:db8:5::1.",
+      "explanation": "Las entradas S proceden de comandos ipv6 route, no de ipv6 address."
+    },
+    {
+      "id": "solo-c",
+      "text": "Solo C 2001:db8:5::1/64.",
+      "explanation": "Falta la entrada L, y la entrada C se muestra con el prefijo de subred, no con la dirección de la interfaz."
+    }
+  ],
+  "answer": "l-128-c-64"
+}

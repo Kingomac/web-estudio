@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-120",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En un DODAG RPL non-storing, A es hijo de la raíz R, B es hijo de A, C es hijo de B y L es una hoja conectada a C. A envía una petición a L y L le responde. ¿Qué caminos siguen la petición y la respuesta?",
+  "explanation": "En non-storing, A no tiene rutas hacia sus descendientes: la petición sube a R, que añade la SRH y la baja por A, B y C. La respuesta no lleva SRH, así que cada router la sube por su padre preferido; al ser A un antecesor, llega a él sin pasar por la raíz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        80,
+        83
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "reenvio-en-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcto",
+      "text": "Petición A → R → A → B → C → L; respuesta L → C → B → A.",
+      "explanation": "Las bajadas usan encaminamiento de fuente desde la raíz y las subidas siguen a los padres preferidos."
+    },
+    {
+      "id": "storing",
+      "text": "Petición A → B → C → L; respuesta L → C → B → A.",
+      "explanation": "Es el comportamiento en storing, donde A tiene rutas a sus descendientes."
+    },
+    {
+      "id": "respuesta-por-raiz",
+      "text": "Petición A → R → A → B → C → L; respuesta L → C → B → A → R → A.",
+      "explanation": "La respuesta asciende por los padres y A, el destino, está en ese camino: no hace falta llegar a la raíz."
+    },
+    {
+      "id": "respuesta-srh",
+      "text": "Petición A → R → A → B → C → L; respuesta con la misma SRH invertida, L → C → B → A → R.",
+      "explanation": "Las respuestas usan la ruta ascendente por defecto aunque la petición llevara SRH, y su destino es A."
+    }
+  ],
+  "answer": "correcto"
+}

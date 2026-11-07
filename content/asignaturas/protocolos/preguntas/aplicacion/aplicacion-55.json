@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-55",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un gateway envía una petición y recibe `505 HTTP Version Not Supported`. ¿Cómo clasifica el tema esta respuesta?",
+  "explanation": "Los códigos 5xx son errores del servidor; el tema pone 505 HTTP Version Not Supported como ejemplo. Los 4xx son errores del cliente (400, 404), los 3xx redirecciones (301, 304) y los 1xx información.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "metodos-mensajes-y-respuestas"
+    }
+  ],
+  "options": [
+    {
+      "id": "error-del-servidor",
+      "text": "Error del servidor.",
+      "explanation": "505 pertenece a la familia 5xx, errores del servidor."
+    },
+    {
+      "id": "error-del-cliente",
+      "text": "Error del cliente, porque la versión la eligió el cliente.",
+      "explanation": "Aunque la versión la elija el cliente, la clase la da el primer dígito: 5xx es error del servidor."
+    },
+    {
+      "id": "redireccion",
+      "text": "Redirección.",
+      "explanation": "Las redirecciones son 3xx, como 301 o 304."
+    },
+    {
+      "id": "informacion",
+      "text": "Información.",
+      "explanation": "Las respuestas informativas son 1xx."
+    }
+  ],
+  "answer": "error-del-servidor"
+}

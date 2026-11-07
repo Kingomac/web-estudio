@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lpwan-75",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un uplink se transmitió en 867,9 MHz con DR2. Para responderle, el NS envía al gateway Basics Station un dnmsg con `RX1DR: 2`, `RX1Freq: 867900000`, `RX2DR: 0` y `RX2Freq: 869525000`. ¿Qué se deduce?",
+  "explanation": "RX1 repite la frecuencia del uplink y su DR vale DR_uplink − RX1DROffset; como RX1DR = DR2 = DR del uplink, el offset es 0. RX2 usa los valores típicos de EU868.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30,
+        45,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "rx1droffset-vale-0-y-rx2-usa-los-valores",
+      "text": "RX1DROffset vale 0, y RX2 usa los valores típicos DR0 a 869,525 MHz.",
+      "explanation": "Pp. 30 y 59."
+    },
+    {
+      "id": "rx1droffset-vale-2-porque-coincide-con",
+      "text": "RX1DROffset vale 2, porque coincide con RX1DR.",
+      "explanation": "RX1DR es el resultado de la resta, no el offset."
+    },
+    {
+      "id": "rx2-usa-la-misma-frecuencia-que-el",
+      "text": "RX2 usa la misma frecuencia que el uplink.",
+      "explanation": "Esa es la regla de RX1; RX2 va a 869,525 MHz."
+    },
+    {
+      "id": "el-nodo-es-de-clase-c-porque-se-indican",
+      "text": "El nodo es de clase C, porque se indican dos ventanas.",
+      "explanation": "RX1 y RX2 existen en todas las clases; la clase A es obligatoria."
+    }
+  ],
+  "answer": "rx1droffset-vale-0-y-rx2-usa-los-valores"
+}

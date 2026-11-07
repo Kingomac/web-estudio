@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-73",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cada cuánto envían los gateways las tramas beacon que sincronizan a los dispositivos de clase B?",
+  "explanation": "Los gateways envían beacons cada 128 segundos; con ellos los dispositivos de clase B abren sus ping slots.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "cada-128-segundos",
+      "text": "Cada 128 segundos.",
+      "explanation": "Figura de la clase B, p. 30."
+    },
+    {
+      "id": "cada-segundo-como-rx1",
+      "text": "Cada segundo, como RX1.",
+      "explanation": "RX1 se abre ≈1 s después de un uplink; no es un beacon."
+    },
+    {
+      "id": "cada-2-segundos-como-rx2",
+      "text": "Cada 2 segundos, como RX2.",
+      "explanation": "RX2 se abre ≈2 s después de un uplink."
+    },
+    {
+      "id": "cada-36-segundos",
+      "text": "Cada 36 segundos.",
+      "explanation": "36 s es el tiempo de transmisión por hora que permite el duty cycle del 1 %."
+    }
+  ],
+  "answer": "cada-128-segundos"
+}

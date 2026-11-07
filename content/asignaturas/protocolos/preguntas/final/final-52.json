@@ -1,0 +1,55 @@
+{
+  "id": "protocolos.preguntas.final-52",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host con MAC 00:00:00:22:22:22 recibe este RA:\n`SRC IP: fe80::200:ff:fedd:dddd   DEST IP: ff02::1`\n`Flags: M=0, O=1`\n`PREFIX: 2001:1234:a:b::/64   MTU: 1500`\nUsa IID EUI-64 modificado. ¿Cómo queda configurado?",
+  "explanation": "M = 0: el host concatena el prefijo con su IID EUI-64 modificado (00 → 02 al invertir U/L, FF:FE en medio): 2001:1234:a:b:200:ff:fe22:2222. O = 1: la otra información, como los servidores DNS, debe obtenerse por DHCPv6. El default gateway es la IP origen del RA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15,
+        32,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "flags-que-no-debes-confundir"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "Dirección 2001:1234:a:b:200:ff:fe22:2222; gateway fe80::200:ff:fedd:dddd; DNS por DHCPv6.",
+      "explanation": "Aplica EUI-64, M = 0, O = 1 y el origen del RA."
+    },
+    {
+      "id": "sin-ul",
+      "text": "Dirección 2001:1234:a:b::ff:fe22:2222; gateway fe80::200:ff:fedd:dddd; DNS por DHCPv6.",
+      "explanation": "Falta invertir el bit U/L: el primer octeto 00 pasa a 02."
+    },
+    {
+      "id": "gw-prefijo",
+      "text": "Dirección 2001:1234:a:b:200:ff:fe22:2222; gateway 2001:1234:a:b::1; DNS en el propio RA.",
+      "explanation": "El gateway es la link-local origen del RA, y con O = 1 los DNS se piden por DHCPv6."
+    },
+    {
+      "id": "dhcp-direccion",
+      "text": "Dirección asignada por DHCPv6; gateway fe80::200:ff:fedd:dddd; DNS por DHCPv6.",
+      "explanation": "Obtener la dirección por DHCPv6 corresponde a M = 1."
+    },
+    {
+      "id": "dns-ra",
+      "text": "Dirección 2001:1234:a:b:200:ff:fe22:2222; gateway fe80::200:ff:fedd:dddd; DNS en el propio RA.",
+      "explanation": "Que el RA envíe la otra información corresponde a O = 0."
+    }
+  ],
+  "answer": "correcta"
+}

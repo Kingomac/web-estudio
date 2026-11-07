@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-77",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo del tema, H1 (fe80::200:ff:fe11:1111, MAC 00:00:00:11:11:11) envía un NS para resolver fe80::200:ff:fe44:4444. ¿Qué IPv6 destino y MAC destino lleva el NA de respuesta?",
+  "explanation": "El NS va al solicited-node del objetivo (ff02::1:ff44:4444, MAC 33:33:ff:44:44:44) e incluye la MAC de H1 (T = 1). El nodo que tiene la dirección objetivo responde a la fuente: el NA es unicast, con IPv6 destino fe80::200:ff:fe11:1111 y MAC destino 00:00:00:11:11:11, e incluye su propia MAC como objetivo (T = 2).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        39,
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "resolucion-de-un-vecino"
+    }
+  ],
+  "options": [
+    {
+      "id": "unicast-a-h1",
+      "text": "IPv6 fe80::200:ff:fe11:1111; MAC 00:00:00:11:11:11.",
+      "explanation": "El NA responde directamente a la fuente del NS, cuya MAC conoce por la opción T = 1."
+    },
+    {
+      "id": "all-nodes",
+      "text": "IPv6 ff02::1; MAC 33:33:00:00:00:01.",
+      "explanation": "A all-nodes se envía el NA no solicitado tras DAD, no la respuesta a una resolución."
+    },
+    {
+      "id": "solicited-h1",
+      "text": "IPv6 ff02::1:ff11:1111; MAC 33:33:ff:11:11:11.",
+      "explanation": "La respuesta no necesita multicast: el NS ya trae la MAC del solicitante."
+    },
+    {
+      "id": "propias",
+      "text": "IPv6 fe80::200:ff:fe44:4444; MAC 00:00:00:44:44:44.",
+      "explanation": "Son las direcciones del propio nodo que responde: su origen, no su destino."
+    }
+  ],
+  "answer": "unicast-a-h1"
+}

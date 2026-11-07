@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un analizador captura un mensaje CoAP que empieza por los bytes `52 01 7D 34 A1 B2 B4 74 65 6D 70`. ¿Qué es?",
+  "explanation": "0x52 = 01 01 0010: versión 1, tipo 1 (NON) y token de 2 bytes. 0x01 = 0.01 (GET). Message ID 0x7D34. Token 0xA1B2. 0xB4: opción de tipo 11 (Uri-Path, como en el ejemplo del tema) con longitud 4, seguida de `temp`.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39,
+        41,
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "get-non-token-a1b2",
+      "text": "Una petición GET non-confirmable, con Message ID 0x7D34 y token 0xA1B2, que pide el recurso `temp`.",
+      "explanation": "Decodifica bien todos los campos."
+    },
+    {
+      "id": "get-con-token-a1b2",
+      "text": "Una petición GET confirmable, con Message ID 0x7D34 y token 0xA1B2, que pide el recurso `temp`.",
+      "explanation": "El tipo es 01 (NON); CON es 00, lo que daría un primer byte 0x42."
+    },
+    {
+      "id": "get-non-mid-017d",
+      "text": "Una petición GET non-confirmable, con Message ID 0x017D y token 0x34A1.",
+      "explanation": "No separa el byte de código (0x01) del Message ID, que ocupa los dos bytes siguientes."
+    },
+    {
+      "id": "respuesta-exito",
+      "text": "Una respuesta de éxito non-confirmable con token 0xA1B2.",
+      "explanation": "El código 0x01 es 0.01, una petición GET; las respuestas de éxito son 2.xx."
+    }
+  ],
+  "answer": "get-non-token-a1b2"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-63",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En la salida de `show ipv6 route` aparece la línea:\n`S   2000::/62 [1/0]`\n`     via FE80::1, FastEthernet1/0`\n¿Qué representa?",
+  "explanation": "La S indica una ruta estática creada con ipv6 route. En las rutas indirectas (G=1) se muestra solo la IP del router de siguiente salto, salvo si es una link-local: entonces se muestra también la interfaz, porque fe80::/64 no identifica por sí solo el enlace. Las rutas directas (G=0) muestran solo la interfaz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        25,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "estatica-indirecta-ll",
+      "text": "Una ruta estática indirecta (G=1) con next-hop link-local; por eso aparece también la interfaz.",
+      "explanation": "Combina la letra S con la regla de visualización de las rutas con next-hop link-local."
+    },
+    {
+      "id": "conectada",
+      "text": "La subred conectada de FastEthernet1/0, creada al configurar su dirección.",
+      "explanation": "Las subredes conectadas aparecen con C, no con S."
+    },
+    {
+      "id": "estatica-directa",
+      "text": "Una ruta estática directa (G=0) que solo indica la interfaz de salida.",
+      "explanation": "Las rutas directas se muestran solo con la interfaz; aquí hay un next-hop FE80::1."
+    },
+    {
+      "id": "ospf",
+      "text": "Una ruta aprendida por un protocolo de routing con métrica 0.",
+      "explanation": "Las rutas dinámicas llevan la inicial del protocolo, por ejemplo O para OSPF."
+    }
+  ],
+  "answer": "estatica-indirecta-ll"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.final-63",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Las subredes 2001:db8:0:6::/64, 2001:db8:0:7::/64, 2001:db8:0:8::/64 y 2001:db8:0:9::/64 comparten siguiente salto. ¿Cuál es el menor conjunto de rutas que las cubre exactamente, sin añadir destinos?",
+  "explanation": "Son contiguas, pero no forman un bloque alineado de cuatro: un /62 empieza en múltiplos de 4 (4–7 u 8–b). Sí hay dos pares alineados: 6–7 (0110, 0111) y 8–9 (1000, 1001), cada uno un /63. Hacen falta dos rutas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "agregacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "dos-63",
+      "text": "Dos: 2001:db8:0:6::/63 y 2001:db8:0:8::/63.",
+      "explanation": "Cada par está alineado y comparte siguiente salto."
+    },
+    {
+      "id": "un-62",
+      "text": "Una: 2001:db8:0:6::/62.",
+      "explanation": "Un /62 no puede empezar en 6: el bloque alineado sería 4–7."
+    },
+    {
+      "id": "un-60",
+      "text": "Una: 2001:db8::/60.",
+      "explanation": "Las cubre, pero añade doce subredes (0–5 y a–f)."
+    },
+    {
+      "id": "dos-62",
+      "text": "Dos: 2001:db8:0:4::/62 y 2001:db8:0:8::/62.",
+      "explanation": "Añaden 4, 5, a y b, que no están en el conjunto."
+    },
+    {
+      "id": "tres",
+      "text": "Tres: 2001:db8:0:6::/64, 2001:db8:0:7::/64 y 2001:db8:0:8::/63.",
+      "explanation": "Es exacto, pero no mínimo: 6 y 7 forman un /63 alineado."
+    }
+  ],
+  "answer": "dos-63"
+}

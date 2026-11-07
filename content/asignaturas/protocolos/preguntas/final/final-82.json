@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.final-82",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera LOWPAN_IPHC empieza por los bytes 68 33 (sin byte de contexto). ¿Cuántos bytes de campos IPv6 van en línea a continuación?",
+  "explanation": "0x68 = 011 01 0 00: TF = 01 (ECN + pad + Flow Label, 3 bytes), NH = 0 (Next Header en línea, 1 byte) y HLIM = 00 (Hop Limit en línea, 1 byte). 0x33 = 0 0 11 0 0 11: CID = 0, SAC = 0 y SAM = 11, M = 0, DAC = 0 y DAM = 11, sin bits de dirección. Total: 3 + 1 + 1 = 5 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        19,
+        20,
+        21,
+        23,
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "metodo-para-resolver-ejercicios-iphc"
+    }
+  ],
+  "options": [
+    {
+      "id": "5-bytes",
+      "text": "5 bytes.",
+      "explanation": "3 de TF = 01, 1 de Next Header y 1 de Hop Limit; las direcciones se deducen de la MAC."
+    },
+    {
+      "id": "3-bytes",
+      "text": "3 bytes.",
+      "explanation": "Interpreta TF = 01 como 1 byte, que es lo que ocupa TF = 10."
+    },
+    {
+      "id": "6-bytes",
+      "text": "6 bytes.",
+      "explanation": "Cuenta 4 bytes para Traffic Class y Flow Label, que es TF = 00."
+    },
+    {
+      "id": "4-bytes",
+      "text": "4 bytes.",
+      "explanation": "Olvida uno de los campos de 1 byte: con NH = 0 va el Next Header y con HLIM = 00 el Hop Limit."
+    }
+  ],
+  "answer": "5-bytes"
+}

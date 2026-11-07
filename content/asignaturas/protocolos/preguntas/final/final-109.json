@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-109",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un host BLE (RFC 7668) envía a su 6LBR, el dispositivo central de la estrella, un datagrama IPv6 de 400 bytes que no cabe en una sola unidad del enlace. ¿Qué hace la adaptación?",
+  "explanation": "IPv6 sobre BLE usa los formatos de compresión de RFC 6282, pero no las cabeceras de fragmentación de 6LoWPAN: la segmentación y el reensamblado los hace L2CAP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        47
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "de-6lowpan-a-6lo-y-el-caso-ble"
+    }
+  ],
+  "options": [
+    {
+      "id": "iphc-l2cap",
+      "text": "Comprime la cabecera con IPHC y deja la segmentación a L2CAP, sin FRAG1/FRAGN.",
+      "explanation": "Combina los dos mecanismos que RFC 7668 toma o sustituye."
+    },
+    {
+      "id": "iphc-frag",
+      "text": "Comprime con IPHC y añade FRAG1/FRAGN con datagram_tag, como en 802.15.4.",
+      "explanation": "BLE no usa las cabeceras de fragmentación de 6LoWPAN."
+    },
+    {
+      "id": "sin-comprimir",
+      "text": "Envía IPv6 sin comprimir, porque RFC 6282 es exclusivo de 802.15.4.",
+      "explanation": "RFC 7668 reutiliza RFC 6282, adaptando la reconstrucción de direcciones."
+    },
+    {
+      "id": "mesh",
+      "text": "Añade una cabecera Mesh para que el 6LBR reenvíe los segmentos.",
+      "explanation": "El modelo es una estrella; no hay reenvío mesh-under."
+    }
+  ],
+  "answer": "iphc-l2cap"
+}

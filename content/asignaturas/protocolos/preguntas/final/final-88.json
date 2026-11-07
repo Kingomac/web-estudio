@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-88",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Esta traza describe la incorporación de un host a una 6LoWPAN route-over con DAD multisalto:\n1. Host → ff02::2: RS con SLLAO, en broadcast MAC 0xffff.\n2. 6LR → host: RA unicast con PIO, 6CO y ABRO.\n3. Host → multicast solicited-node de su dirección: NS con ARO y SLLAO.\n4. 6LR → 6LBR: DAR; 6LBR → 6LR: DAC.\n5. 6LR → host: NA unicast con ARO.\n¿Qué paso es incorrecto?",
+  "explanation": "El registro de RFC 6775 se hace con un NS unicast al router; usar la multicast solicited-node es justo lo que se evita, y 802.15.4 no soporta multicast. Los demás pasos coinciden con el tema.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        50,
+        51,
+        52,
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "registro-ns-na-con-aro"
+    }
+  ],
+  "options": [
+    {
+      "id": "paso-3",
+      "text": "El paso 3: el NS de registro se envía en unicast al router, no a la multicast solicited-node.",
+      "explanation": "Es el error: el registro sustituye a los NS multicast."
+    },
+    {
+      "id": "paso-1",
+      "text": "El paso 1: el RS debe ir a ff02::1a.",
+      "explanation": "ff02::1a es all-RPL-nodes; el RS va a all-routers, ff02::2, en broadcast MAC."
+    },
+    {
+      "id": "paso-2",
+      "text": "El paso 2: el RA de respuesta debe ser multicast a ff02::1.",
+      "explanation": "El router responde al RS con un RA unicast."
+    },
+    {
+      "id": "paso-4",
+      "text": "El paso 4: el DAR lo envía el host directamente al 6LBR.",
+      "explanation": "En route-over el DAR lo envía el 6LR que recibió el registro; el host solo habla con su router."
+    }
+  ],
+  "answer": "paso-3"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-62",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación envía por WebSocket un vídeo que se genera en directo, sin conocer de antemano su longitud total. ¿Qué permite el protocolo?",
+  "explanation": "Los mensajes de datos (texto UTF-8 o binarios) pueden enviarse fragmentados en varios frames, lo que es útil cuando no se conoce a priori la longitud y permite enviar los datos según van estando disponibles. Los que no se pueden fragmentar son los mensajes de control.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "websocket"
+    }
+  ],
+  "options": [
+    {
+      "id": "binario-fragmentado",
+      "text": "Enviarlo como mensaje de datos binarios fragmentado en varios frames, según vaya estando disponible.",
+      "explanation": "Es justo el caso de uso de la fragmentación que describe el tema."
+    },
+    {
+      "id": "esperar-longitud",
+      "text": "Nada: debe esperar a conocer la longitud, porque los mensajes de datos no se fragmentan.",
+      "explanation": "Son los mensajes de control los que no se fragmentan; los de datos sí."
+    },
+    {
+      "id": "mensajes-ping",
+      "text": "Enviarlo dentro de mensajes Ping.",
+      "explanation": "Ping es un mensaje de control para keepalive; no transporta datos de la aplicación y no se fragmenta."
+    },
+    {
+      "id": "solo-texto",
+      "text": "Enviarlo obligatoriamente como cadena de texto UTF-8.",
+      "explanation": "WebSocket admite también datos binarios como vídeo, audio o imágenes."
+    }
+  ],
+  "answer": "binario-fragmentado"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-42",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Según el RFC 4919 citado en el tema, ¿cuál de las siguientes afirmaciones **NO** es una ventaja de una arquitectura basada en nodos IP?",
+  "explanation": "El tema recoge dos ventajas de los nodos IP (identificación con IP y puerto, y comunicación extremo a extremo por la infraestructura existente) y dos de IPv6 frente a IPv4 (más direcciones y SLAAC). La comunicación extremo a extremo sin pasarelas de traducción exige que los protocolos de aplicación sean compatibles: no elimina ese requisito.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "por-que-usar-ip-en-los-nodos-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "elimina-compatibilidad-aplicacion",
+      "text": "Permite que dos extremos se entiendan aunque usen protocolos de aplicación incompatibles.",
+      "explanation": "Es la afirmación falsa: el tema precisa que se evitan pasarelas de traducción «siempre que los protocolos de aplicación sean compatibles»."
+    },
+    {
+      "id": "ip-y-puerto",
+      "text": "La dirección IP y el puerto identifican a la aplicación del nodo como extremo de comunicación.",
+      "explanation": "Es la primera ventaja que recoge el tema: identificación y acceso mediante mecanismos estándar."
+    },
+    {
+      "id": "infraestructura-existente",
+      "text": "Permite reutilizar la infraestructura y los protocolos IP existentes sin pasarelas de traducción específicas.",
+      "explanation": "Es la segunda ventaja de los nodos IP según el RFC 4919."
+    },
+    {
+      "id": "slaac",
+      "text": "Con IPv6, los nodos pueden autoconfigurar su dirección a partir de lo que anuncian los routers, sin servidor DHCP.",
+      "explanation": "Es una de las dos ventajas de IPv6 frente a IPv4 que destaca el tema (SLAAC)."
+    }
+  ],
+  "answer": "elimina-compatibilidad-aplicacion"
+}

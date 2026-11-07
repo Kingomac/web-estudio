@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-53",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En un router Cisco cuya interfaz g0/0 tiene la MAC 00:1b:2c:3d:4e:5f se ejecuta:\n`interface g0/0`\n`ipv6 address 2001:db8:a:1::/64 eui-64`\n¿Qué dirección global queda configurada en la interfaz?",
+  "explanation": "Con la opción eui-64, IOS completa el prefijo /64 con el IID EUI-64 modificado de la MAC de la interfaz: se inserta FF:FE entre el tercer y el cuarto octeto y se invierte el bit U/L (00 → 02). IID 021b:2cff:fe3d:4e5f → 2001:db8:a:1:21b:2cff:fe3d:4e5f. El comando, además, habilita IPv6 en la interfaz (que forma su link-local) y crea la ruta directa del /64.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15,
+        19
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "global-eui64",
+      "text": "2001:db8:a:1:21b:2cff:fe3d:4e5f",
+      "explanation": "Concatena el prefijo con el IID EUI-64 modificado, con U/L invertido."
+    },
+    {
+      "id": "sin-invertir",
+      "text": "2001:db8:a:1:1b:2cff:fe3d:4e5f",
+      "explanation": "Inserta FF:FE pero no invierte el bit U/L: el primer octeto debería pasar de 00 a 02."
+    },
+    {
+      "id": "link-local",
+      "text": "fe80::21b:2cff:fe3d:4e5f",
+      "explanation": "Esta es la link-local automática de la interfaz, no la dirección global que configura el comando."
+    },
+    {
+      "id": "iid-1",
+      "text": "2001:db8:a:1::1",
+      "explanation": "Con eui-64 el IID no se elige manualmente: se deriva de la MAC."
+    }
+  ],
+  "answer": "global-eui64"
+}

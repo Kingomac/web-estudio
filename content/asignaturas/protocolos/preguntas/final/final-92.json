@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-92",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "La raíz de un DODAG non-storing envía un datagrama UDP descendente que lleva SRH y no lleva RPI. Quiere comprimir la cabecera UDP con LOWPAN_NHC. ¿Qué cadena de cabeceras comprimidas es válida?",
+  "explanation": "Si hay extensiones entre IPv6 y UDP y se quiere comprimir UDP con NHC, la cadena NHC debe ser continua: IPHC (NH = 1) → NHC de extensión (EID = 1, SRH; NH = 1) → NHC UDP → datos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        84,
+        85,
+        86
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "iphc-eid1-udp",
+      "text": "IPHC (NH = 1) → NHC de extensión con EID = 1 (NH = 1) → NHC UDP → datos.",
+      "explanation": "EID = 1 identifica la SRH y la cadena NHC no se interrumpe."
+    },
+    {
+      "id": "srh-sin-comprimir",
+      "text": "IPHC (NH = 0, Next Header 43) → SRH sin comprimir → NHC UDP → datos.",
+      "explanation": "Romper la cadena con una extensión sin NHC impide comprimir UDP con NHC."
+    },
+    {
+      "id": "udp-antes",
+      "text": "IPHC (NH = 1) → NHC UDP → NHC de extensión con EID = 1 → datos.",
+      "explanation": "La extensión va entre IPv6 y UDP; UDP es la última cabecera."
+    },
+    {
+      "id": "eid7",
+      "text": "IPHC (NH = 1) → NHC de extensión con EID = 7 (NH = 1) → NHC UDP → datos.",
+      "explanation": "EID = 7 es IPv6 encapsulado; la SRH es EID = 1."
+    }
+  ],
+  "answer": "iphc-eid1-udp"
+}

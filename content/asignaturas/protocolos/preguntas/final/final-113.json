@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-113",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una trama contiene la cabecera de fragmentación E1 90 12 34 1A. ¿Qué tamaño tiene el datagrama y en qué byte del datagrama sin comprimir empieza este fragmento?",
+  "explanation": "0xE1 = 11100 001: FRAGN; datagram_size son los 3 bits restantes más el byte 0x90: 001 1001 0000 = 400. datagram_tag = 0x1234. datagram_offset = 0x1A = 26 unidades de 8 bytes = byte 208.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragmentacion-y-reensamblado"
+    }
+  ],
+  "options": [
+    {
+      "id": "400-208",
+      "text": "400 bytes; empieza en el byte 208.",
+      "explanation": "Une los 11 bits de tamaño y multiplica el offset por 8."
+    },
+    {
+      "id": "400-26",
+      "text": "400 bytes; empieza en el byte 26.",
+      "explanation": "26 es el valor del campo; la posición es 26 · 8."
+    },
+    {
+      "id": "144-208",
+      "text": "144 bytes; empieza en el byte 208.",
+      "explanation": "Toma solo el byte 0x90 como tamaño; datagram_size tiene 11 bits e incluye los 3 últimos del primer byte."
+    },
+    {
+      "id": "400-104",
+      "text": "400 bytes; empieza en el byte 104.",
+      "explanation": "Multiplica el offset por 4; la unidad es de 8 bytes."
+    }
+  ],
+  "answer": "400-208"
+}

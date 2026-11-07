@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-59",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué necesita WebSocket de HTTP y sobre qué transporte funciona?",
+  "explanation": "WebSocket requiere HTTP 1.1 (o superior) para el handshake inicial y funciona sobre TCP (puerto 80) o TLS/TCP (puerto 443). Una vez establecido, deja de usarse HTTP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        23,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "websocket"
+    }
+  ],
+  "options": [
+    {
+      "id": "http11-handshake-tcp",
+      "text": "HTTP 1.1 o superior para el handshake inicial; TCP (80) o TLS/TCP (443).",
+      "explanation": "Coincide con lo que indica el tema."
+    },
+    {
+      "id": "http10-udp",
+      "text": "HTTP/1.0 para el handshake; UDP (5683).",
+      "explanation": "WebSocket exige al menos HTTP 1.1, y 5683 es el puerto de CoAP sobre UDP."
+    },
+    {
+      "id": "http-en-cada-mensaje",
+      "text": "Una petición HTTP por cada mensaje; TCP (80).",
+      "explanation": "HTTP solo se usa en el handshake; después los datos viajan en frames WebSocket."
+    },
+    {
+      "id": "sin-http-tcp-1883",
+      "text": "No usa HTTP; TCP (1883).",
+      "explanation": "Necesita el handshake HTTP, y 1883 es el puerto de MQTT."
+    }
+  ],
+  "answer": "http11-handshake-tcp"
+}

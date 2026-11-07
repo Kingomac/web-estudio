@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-80",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo necesita comprobar activamente que su router de siguiente salto sigue siendo alcanzable y no dispone de confirmaciones de las capas superiores. ¿Qué hace NUD?",
+  "explanation": "NUD comprueba la alcanzabilidad de los vecinos a los que se envían paquetes, incluido el router. Si no hay confirmaciones de capas superiores, envía un NS unicast al vecino y espera un NA solicitado. Si las comprobaciones fallan, deja de considerarlo válido y puede elegir otro router, si existe.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        42
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "nud-comprobar-alcanzabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "ns-unicast",
+      "text": "Envía un NS unicast al router y espera un NA solicitado; si falla, puede elegir otro router.",
+      "explanation": "Es la comprobación activa que describe el tema."
+    },
+    {
+      "id": "ns-multicast-dad",
+      "text": "Envía un NS con origen :: al solicited-node del router, como en DAD.",
+      "explanation": "El origen :: se usa en DAD para comprobar duplicados, no para comprobar la alcanzabilidad de un vecino."
+    },
+    {
+      "id": "rs-borrar",
+      "text": "Envía un RS a ff02::2 y borra todas las entradas de su caché.",
+      "explanation": "NUD comprueba vecinos concretos; no borra la caché ni sustituye el descubrimiento de routers."
+    },
+    {
+      "id": "stale-borrar",
+      "text": "Marca la entrada como STALE y deja de usarla hasta recibir un RA periódico.",
+      "explanation": "Una entrada STALE puede seguir utilizándose mientras se inicia la comprobación."
+    }
+  ],
+  "answer": "ns-unicast"
+}

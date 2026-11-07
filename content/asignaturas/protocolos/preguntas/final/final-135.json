@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-135",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre un dispositivo LoRaWAN de clase B es correcta?",
+  "explanation": "La clase B mantiene RX1 y RX2 tras cada uplink y añade ping slots: instantes periódicos conocidos por el NS, sincronizados con beacons que envían los gateways cada 128 s. Así recibe downlinks sin uplink previo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30,
+        57,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "ademas-de-rx1-y-rx2-abre-ping-slots-que",
+      "text": "Además de RX1 y RX2, abre ping slots que el NS conoce, sincronizados por beacons de los gateways cada 128 s.",
+      "explanation": "P. 30; el NS programa el envío en la siguiente ventana (p. 57)."
+    },
+    {
+      "id": "sustituye-rx1-y-rx2-por-ping-slots",
+      "text": "Sustituye RX1 y RX2 por ping slots, sincronizados por beacons cada 128 s.",
+      "explanation": "No los sustituye: la clase B parte de la A."
+    },
+    {
+      "id": "abre-ping-slots-elegidos-por-el-propio",
+      "text": "Abre ping slots elegidos por el propio nodo, que el NS descubre al recibir un uplink.",
+      "explanation": "Son instantes periódicos conocidos por el NS gracias a la sincronización."
+    },
+    {
+      "id": "escucha-casi-continuamente-en-rxc-salvo",
+      "text": "Escucha casi continuamente en RXC, salvo al transmitir.",
+      "explanation": "Esa es la clase C."
+    }
+  ],
+  "answer": "ademas-de-rx1-y-rx2-abre-ping-slots-que"
+}

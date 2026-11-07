@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lpwan-51",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una distribuidora eléctrica quiere una red de contadores en la que cada contador pueda reenviar el tráfico de sus vecinos hasta un border router, con IPv6 en los nodos. ¿Qué tecnología y protocolos propone el tema?",
+  "explanation": "Wi-SUN FAN es una red mallada IPv6 multisalto que utiliza 6LoWPAN y RPL, orientada a redes de suministros y ciudades inteligentes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        4,
+        5,
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "tecnologias-y-arquitecturas"
+    }
+  ],
+  "options": [
+    {
+      "id": "wi-sun-fan-con-6lowpan-y-rpl",
+      "text": "Wi-SUN FAN, con 6LoWPAN y RPL.",
+      "explanation": "P. 4 y fila «Conectividad IP del nodo» de la p. 61: IPv6 con adaptación 6LoWPAN."
+    },
+    {
+      "id": "lorawan-con-schc",
+      "text": "LoRaWAN, con SCHC.",
+      "explanation": "LoRaWAN tiene topología nodo → gateway → NS/AS, sin reenvío entre nodos; SCHC es su vía opcional hacia IPv6."
+    },
+    {
+      "id": "nb-iot-en-modo-nidd",
+      "text": "NB-IoT en modo NIDD.",
+      "explanation": "Cada nodo habla directamente con la estación base, y NIDD precisamente prescinde de IP."
+    },
+    {
+      "id": "lte-m-en-modo-ip",
+      "text": "LTE-M en modo IP.",
+      "explanation": "Tampoco forma malla: el dispositivo se conecta directamente a la red celular."
+    }
+  ],
+  "answer": "wi-sun-fan-con-6lowpan-y-rpl"
+}

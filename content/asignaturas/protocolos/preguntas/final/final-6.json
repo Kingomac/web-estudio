@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.final-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se quiere usar, sin adaptar, un mecanismo de descubrimiento de vecinos basado en multicast en una red IEEE 802.15.4 de nodos de clase 1 que duermen buena parte del tiempo. ¿Qué valoración es coherente con el temario?",
+  "explanation": "El tema 1 recoge que a los nodos limitados pueden faltarles servicios de nivel 2 como la conectividad completa y el broadcast/multicast, y que deben optimizar energía y ancho de banda. El tema 3 añade que en IEEE 802.15.4 el multicast se transporta por broadcast y obliga a recibir y procesar mensajes a nodos que no los necesitan, y que los nodos dormidos pueden perder anuncios.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    },
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "problematico-multicast-y-energia",
+      "text": "Es problemático: estos nodos pueden carecer de broadcast/multicast eficiente y deben optimizar energía y ancho de banda; además, los nodos dormidos pueden perder los anuncios.",
+      "explanation": "Correcta: une la definición de nodo limitado del tema 1 con las dificultades de NDP del tema 3."
+    },
+    {
+      "id": "sin-problema-clase-1-ffd",
+      "text": "No hay problema: los nodos de clase 1 son FFD y ejecutan una pila IP completa.",
+      "explanation": "Invierte la correspondencia: la clase 1 es RFD con pila IP reducida; FFD y pila completa son la clase 2."
+    },
+    {
+      "id": "solo-afecta-a-clase-0",
+      "text": "Solo afectaría a la clase 0; en las clases 1 y 2 el nivel 2 siempre ofrece multicast completo.",
+      "explanation": "La definición de nodo limitado no limita la posible falta de multicast a la clase 0; y en 802.15.4 el multicast va por broadcast."
+    },
+    {
+      "id": "multicast-ahorra-energia",
+      "text": "Es la opción más eficiente: un solo mensaje multicast llega a todos sin coste para los nodos que no lo necesitan.",
+      "explanation": "En 802.15.4 el broadcast obliga a recibir y procesar el mensaje también a quien no lo necesita, lo que consume energía."
+    }
+  ],
+  "answer": "problematico-multicast-y-energia"
+}

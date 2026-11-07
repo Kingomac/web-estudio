@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Unos sensores LoRa envían sus medidas a una pasarela situada en un tejado, que las reenvía por fibra a una aplicación en la nube. ¿Qué clasificación de los tramos es correcta?",
+  "explanation": "La red de acceso comunica los dispositivos con la pasarela o border router (casi siempre una LLN); la red troncal comunica la pasarela con la aplicación en la nube a través de Internet.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "acceso-y-troncal"
+    }
+  ],
+  "options": [
+    {
+      "id": "sensor-pasarela-acceso",
+      "text": "Sensores–pasarela: red de acceso; pasarela–nube: red troncal.",
+      "explanation": "Correcta: es la división de la arquitectura del tema."
+    },
+    {
+      "id": "sensor-pasarela-troncal",
+      "text": "Sensores–pasarela: red troncal; pasarela–nube: red de acceso.",
+      "explanation": "Invierte los tramos: la troncal es la que va por Internet hasta la aplicación."
+    },
+    {
+      "id": "todo-acceso",
+      "text": "Ambos tramos son red de acceso, porque transportan datos de sensores.",
+      "explanation": "El tramo pasarela–nube discurre sobre Internet: es red troncal."
+    },
+    {
+      "id": "troncal-por-alcance",
+      "text": "Sensores–pasarela es troncal porque LoRa cubre varios kilómetros.",
+      "explanation": "El alcance no define el tramo: la comunicación entre dispositivos y pasarela es acceso aunque cubra kilómetros."
+    }
+  ],
+  "answer": "sensor-pasarela-acceso"
+}

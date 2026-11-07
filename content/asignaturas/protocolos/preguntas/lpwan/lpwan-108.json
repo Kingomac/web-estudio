@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-108",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo recibe un downlink con un comando MAC en FOpts y datos de aplicación con FPort = 3. Tras verificar el MIC y el contador, ¿qué hace?",
+  "explanation": "Los comandos de FOpts van sin cifrar y se procesan directamente; los datos de aplicación se descifran con AppSKey y se entregan a la aplicación del nodo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "procesa-fopts-tal-cual-y-descifra-el",
+      "text": "Procesa FOpts tal cual y descifra el FRMPayload con AppSKey para su aplicación.",
+      "explanation": "P. 57."
+    },
+    {
+      "id": "descifra-fopts-con-nwkskey-y-el",
+      "text": "Descifra FOpts con NwkSKey y el FRMPayload con AppSKey.",
+      "explanation": "FOpts va sin cifrar."
+    },
+    {
+      "id": "descifra-el-frmpayload-con-nwkskey",
+      "text": "Descifra el FRMPayload con NwkSKey.",
+      "explanation": "Solo se usa NwkSKey cuando FPort = 0."
+    },
+    {
+      "id": "entrega-fopts-y-frmpayload-a-su",
+      "text": "Entrega FOpts y FRMPayload a su aplicación sin procesarlos.",
+      "explanation": "Los comandos MAC los procesa la capa MAC, no la aplicación."
+    }
+  ],
+  "answer": "procesa-fopts-tal-cual-y-descifra-el"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-86",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un mensaje MQTT PUBLISH lleva 200 bytes entre cabecera variable y payload. ¿Cuántos bytes ocupa su cabecera fija?",
+  "explanation": "La cabecera fija tiene 1 byte con el tipo y los flags, y un campo Longitud de 1 a 4 bytes. En cada byte de Longitud el bit más significativo indica continuación, así que solo 7 bits llevan valor: 1 byte llega hasta 127 y 2 bytes hasta 16 383. Para 200 hacen falta 2 bytes de Longitud: 1 + 2 = 3 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mensajes-basicos-y-formato"
+    }
+  ],
+  "options": [
+    {
+      "id": "tres",
+      "text": "3 bytes.",
+      "explanation": "1 byte de tipo y flags + 2 bytes de Longitud."
+    },
+    {
+      "id": "dos",
+      "text": "2 bytes.",
+      "explanation": "Un solo byte de Longitud bastaría si los 8 bits llevaran valor (hasta 255), pero el bit más significativo es de continuación."
+    },
+    {
+      "id": "cuatro",
+      "text": "4 bytes.",
+      "explanation": "3 bytes de Longitud solo hacen falta por encima de 16 383."
+    },
+    {
+      "id": "doscientos-dos",
+      "text": "202 bytes.",
+      "explanation": "Confunde la cabecera fija con el mensaje completo; los 200 bytes no forman parte de la cabecera fija."
+    }
+  ],
+  "answer": "tres"
+}

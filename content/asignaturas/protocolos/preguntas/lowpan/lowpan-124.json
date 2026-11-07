@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-124",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En un DODAG RPL, A es hijo de la raíz R, y B y D son routers hijos de A. B envía un paquete unicast a D. Si la red funciona en modo non-storing, ¿qué camino sigue?",
+  "explanation": "En non-storing, A no guarda rutas hacia sus descendientes: sin SRH, el paquete sube por el padre preferido hasta R, que añade la SRH y lo baja por A hasta D. En storing, A lo habría reenviado directamente a D.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        80,
+        83
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "reenvio-en-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "b-a-r-a-d",
+      "text": "B → A → R → A → D.",
+      "explanation": "El paquete sube hasta la raíz, la única que conoce la topología, y baja con encaminamiento de fuente."
+    },
+    {
+      "id": "b-a-d",
+      "text": "B → A → D.",
+      "explanation": "Es el camino en storing, en el que A tiene rutas hacia sus descendientes."
+    },
+    {
+      "id": "b-r-d",
+      "text": "B → R → D.",
+      "explanation": "B envía por su padre preferido A, y la raíz baja el paquete con la SRH por A, el padre de D: el camino sigue las ramas del árbol."
+    },
+    {
+      "id": "b-d",
+      "text": "B → D directamente, por ser hermanos.",
+      "explanation": "Un router non-storing sin SRH que no envía a una de sus hojas usa la ruta ascendente por su padre preferido; D es un router, no una hoja de B."
+    }
+  ],
+  "answer": "b-a-r-a-d"
+}

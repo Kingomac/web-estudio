@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-65",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes funciones **NO** se realiza mediante mensajes ICMPv6 según el tema?",
+  "explanation": "ICMPv6 (Next Header 58) notifica errores como en IPv4, pero además integra la configuración automática de direcciones (RS/RA), la resolución de direcciones MAC (NS/NA, que en IPv4 hace ARP) y transporta los mensajes del protocolo de routing RPL. La resolución de nombres .local corresponde a mDNS, que va sobre UDP 5353.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        29,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "icmpv6-slaac-y-dhcpv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "mdns",
+      "text": "Resolver nombres .local en la red local sin servidor DNS.",
+      "explanation": "Es la función de mDNS, que usa UDP en el puerto 5353, no ICMPv6."
+    },
+    {
+      "id": "resolucion-mac",
+      "text": "Resolver la dirección MAC de un vecino, lo que en IPv4 hace ARP.",
+      "explanation": "En IPv6 esta función se integra en ICMPv6 mediante NS/NA."
+    },
+    {
+      "id": "autoconfiguracion",
+      "text": "Configurar automáticamente las direcciones IPv6 de los nodos.",
+      "explanation": "Los RS/RA que permiten SLAAC son mensajes ICMPv6."
+    },
+    {
+      "id": "rpl",
+      "text": "Transportar los mensajes del protocolo de routing RPL en redes 6LoWPAN.",
+      "explanation": "El tema indica que RPL usa ICMPv6 para sus mensajes."
+    }
+  ],
+  "answer": "mdns"
+}

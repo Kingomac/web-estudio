@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-87",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un 6LR con 6LFF debe reenviar a la vez 12 datagramas fragmentados. La red usa direcciones de enlace cortas de 16 bits y datagram_tag de 16 bits. ¿Cuánta memoria ocupa su tabla VRB?",
+  "explanation": "Cada entrada guarda dirección del salto anterior, tag entrante, dirección del siguiente salto y tag saliente: 2 + 2 + 2 + 2 = 8 bytes. 12 · 8 = 96 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragment-forwarding-6lff-y-vrb"
+    }
+  ],
+  "options": [
+    {
+      "id": "96",
+      "text": "96 bytes.",
+      "explanation": "Ocho bytes por entrada con direcciones cortas."
+    },
+    {
+      "id": "240",
+      "text": "240 bytes.",
+      "explanation": "Usa los 20 bytes por entrada del tema, que suponen direcciones de 64 bits; aquí son de 16."
+    },
+    {
+      "id": "48",
+      "text": "48 bytes.",
+      "explanation": "Cuenta solo una dirección y una etiqueta por entrada; la entrada guarda la pareja entrante y la saliente."
+    },
+    {
+      "id": "72",
+      "text": "72 bytes.",
+      "explanation": "Olvida una de las dos etiquetas: cada entrada guarda tag entrante y tag saliente."
+    }
+  ],
+  "answer": "96"
+}

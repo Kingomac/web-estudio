@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-83",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre la arquitectura de protocolos de LoRaWAN es correcta?",
+  "explanation": "LoRaWAN no usa IP: tiene una arquitectura propia de la LoRa Alliance y no impone formato a los datos de aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        34,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "arquitectura-de-protocolos"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-usa-ip-ni-impone-un-formato-a-los",
+      "text": "No usa IP ni impone un formato a los datos de aplicación.",
+      "explanation": "P. 34: la interpretación depende del dispositivo y la aplicación."
+    },
+    {
+      "id": "usa-ipv6-con-6lowpan-entre-el-nodo-y-el",
+      "text": "Usa IPv6 con 6LoWPAN entre el nodo y el gateway.",
+      "explanation": "Eso se parece a Wi-SUN FAN; entre nodo y gateway hay PHY LoRa y MAC LoRaWAN."
+    },
+    {
+      "id": "obliga-a-codificar-los-datos-de",
+      "text": "Obliga a codificar los datos de aplicación en JSON.",
+      "explanation": "JSON se usa entre gateway, servidores y aplicación; el nodo envía binario."
+    },
+    {
+      "id": "el-gateway-ejecuta-la-capa-mac-y-valida",
+      "text": "El gateway ejecuta la capa MAC y valida el MIC.",
+      "explanation": "El gateway solo reenvía la trama; el MIC lo valida el NS (p. 35)."
+    }
+  ],
+  "answer": "no-usa-ip-ni-impone-un-formato-a-los"
+}

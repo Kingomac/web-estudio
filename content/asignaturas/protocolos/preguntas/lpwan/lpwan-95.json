@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-95",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué componente del Network Server recibe los mensajes del gateway y los interpreta según el tipo de forwarder?",
+  "explanation": "En el NS hay una componente denominada Gateway Server que recibe e interpreta los mensajes según el forwarder.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-gateway-server",
+      "text": "El Gateway Server.",
+      "explanation": "Último punto de la p. 41."
+    },
+    {
+      "id": "el-join-server",
+      "text": "El Join Server.",
+      "explanation": "Valida los Join-request y deriva las claves de sesión."
+    },
+    {
+      "id": "packet-broker",
+      "text": "Packet Broker.",
+      "explanation": "Intercambia mensajes entre redes distintas."
+    },
+    {
+      "id": "el-application-server",
+      "text": "El Application Server.",
+      "explanation": "Recibe del NS el FRMPayload, después del procesado MAC."
+    }
+  ],
+  "answer": "el-gateway-server"
+}

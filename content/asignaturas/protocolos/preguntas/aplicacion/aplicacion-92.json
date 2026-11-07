@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-92",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sensor registra al conectarse un LWT con contenido `offline` en el topic `sensores/7/estado`, marcado para retenerse. Su conexión cae de forma inesperada. Un rato después, un cliente nuevo se suscribe a `sensores/7/estado`. ¿Qué recibe?",
+  "explanation": "Ante la desconexión inesperada, el broker publica el LWT. Como estaba marcado para retenerse, queda como mensaje retenido del topic, y el broker se lo envía inmediatamente a cualquier suscriptor nuevo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        57,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "last-will-and-testament-lwt"
+    }
+  ],
+  "options": [
+    {
+      "id": "offline",
+      "text": "`offline`, porque el broker publicó el LWT retenido y lo entrega a los nuevos suscriptores.",
+      "explanation": "Combina el LWT (publicado tras la caída) con la retención (entrega inmediata a nuevos suscriptores)."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: el LWT solo llega a quienes estaban suscritos en el momento de la caída.",
+      "explanation": "Sería así sin retención, pero el LWT se marcó para retenerse."
+    },
+    {
+      "id": "eliminado",
+      "text": "Nada, porque el broker elimina el LWT al cerrarse la conexión.",
+      "explanation": "El broker solo lo elimina si el cliente se desconecta voluntariamente con DISCONNECT."
+    },
+    {
+      "id": "ultima-medida",
+      "text": "La última temperatura publicada por el sensor.",
+      "explanation": "La temperatura se publicaría en otro topic; aquí el último retenido de `sensores/7/estado` es el LWT."
+    }
+  ],
+  "answer": "offline"
+}

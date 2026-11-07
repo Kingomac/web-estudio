@@ -1,0 +1,56 @@
+{
+  "id": "protocolos.preguntas.final-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "El gateway HTTP–CoAP de un despliegue actúa como proxy con caché. Recibe de un sensor una respuesta 2.05 Content con la opción `Max-Age: 60` (segundos). 30 s después un cliente HTTP pide el mismo recurso, y otro lo pide 90 s después de la respuesta. ¿Qué puede hacer el proxy?",
+  "explanation": "Max-Age indica el tiempo máximo que la respuesta puede estar en caché. A los 30 s la copia sigue vigente y el proxy responde desde su caché, sin cargar al sensor. A los 90 s se ha superado ese tiempo y debe volver a consultar al sensor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        20,
+        37,
+        43
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 7252 · The Constrained Application Protocol (CoAP)",
+      "url": "https://www.rfc-editor.org/rfc/rfc7252"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "cache-y-luego-sensor",
+      "text": "Responder desde caché a los 30 s y volver a consultar al sensor a los 90 s.",
+      "explanation": "Aplica Max-Age como tiempo máximo en caché."
+    },
+    {
+      "id": "siempre-cache",
+      "text": "Responder desde caché en ambos casos, porque Max-Age se mide en minutos.",
+      "explanation": "El enunciado indica que son segundos (el ejemplo del tema usa 3600, una hora); a los 90 s la copia ha caducado."
+    },
+    {
+      "id": "siempre-sensor",
+      "text": "Consultar siempre al sensor, porque las respuestas CoAP no se pueden guardar en caché.",
+      "explanation": "Max-Age existe precisamente para limitar el tiempo en caché de una respuesta CoAP."
+    },
+    {
+      "id": "max-age-uri",
+      "text": "Usar Max-Age para encontrar el recurso en el sensor, como Uri-Path.",
+      "explanation": "La ruta del recurso va en Uri-Path; Max-Age es un tiempo de validez."
+    }
+  ],
+  "answer": "cache-y-luego-sensor"
+}

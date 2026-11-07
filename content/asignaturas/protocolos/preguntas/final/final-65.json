@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-65",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo con MAC 00:00:00:33:33:33 ya ha validado con DAD su link-local fe80::200:ff:fe33:3333. Recibe un RA con el prefijo 2001:1234:a:b::/64 y forma por SLAAC la dirección 2001:1234:a:b:200:ff:fe33:3333. ¿Cómo es el NS que envía antes de usarla normalmente?",
+  "explanation": "El arranque aplica DAD también a la nueva dirección global. El NS de DAD usa como origen la dirección sin especificar (::), lleva como objetivo la dirección comprobada y va a su grupo solicited-node. Como la global comparte IID con la link-local, ambos grupos coinciden: ff02::1:ff33:3333 (MAC 33:33:ff:33:33:33).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21,
+        39,
+        41,
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dad-detectar-direcciones-duplicadas"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "Origen ::; destino ff02::1:ff33:3333, el mismo grupo que en el DAD de la link-local; objetivo la dirección global.",
+      "explanation": "Repite DAD con la dirección nueva como objetivo."
+    },
+    {
+      "id": "origen-ll",
+      "text": "Origen la link-local ya validada; destino ff02::1:ff33:3333; objetivo la dirección global.",
+      "explanation": "En DAD la fuente es ::/128, aunque el nodo ya tenga otra dirección válida."
+    },
+    {
+      "id": "sin-dad",
+      "text": "No envía ninguno: la global comparte IID con la link-local ya comprobada.",
+      "explanation": "El arranque del tema aplica DAD a la nueva dirección antes de usarla."
+    },
+    {
+      "id": "all-nodes",
+      "text": "Origen ::; destino ff02::1; objetivo la dirección global.",
+      "explanation": "A ff02::1 se envía el NA no solicitado tras DAD; el NS va al solicited-node."
+    }
+  ],
+  "answer": "correcta"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente envía `CON [0x4d46] GET /humidity (token 0x22)` y recibe los bytes `61 84 4D 46 22 FF 4E 6F 74 20 46 6F 75 6E 64` (el payload es `Not Found`). ¿Qué ha recibido?",
+  "explanation": "0x61 = 01 10 0001: versión 1, tipo 2 (ACK), token de 1 byte. 0x84 = 100 00100: código 4.04. Message ID 0x4D46, igual que la petición, y token 0x22. Tras 0xFF viene el payload. Es una respuesta piggybacked: el ACK lleva la respuesta 4.04 (error del cliente), como en el ejemplo de la página 39.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39,
+        41,
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "piggybacked-404",
+      "text": "Una respuesta piggybacked 4.04: un ACK con el Message ID y el token de la petición que lleva el error y un payload.",
+      "explanation": "Tipo ACK, código 4.04, mismo Message ID y token."
+    },
+    {
+      "id": "ack-vacio",
+      "text": "Un ACK vacío; la respuesta llegará después por separado.",
+      "explanation": "Un ACK vacío no lleva código de respuesta ni payload; este lleva 4.04 y datos."
+    },
+    {
+      "id": "con-404",
+      "text": "Una respuesta 4.04 en un mensaje CON que la aplicación debe asentir.",
+      "explanation": "El tipo es 2 (ACK); un CON con token de 1 byte empezaría por 0x41."
+    },
+    {
+      "id": "rst",
+      "text": "Un RST, porque el servidor no pudo procesar la petición.",
+      "explanation": "RST es el tipo 3 (primer byte 0x71); aquí el servidor procesó la petición y responde que el recurso no existe."
+    }
+  ],
+  "answer": "piggybacked-404"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-137",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un uplink tiene un PHYPayload de 30 bytes y su FCtrl indica 5 bytes de FOpts. ¿Cuántos bytes de datos de aplicación lleva y cuántos caracteres ocupará el campo FRMPayload en un JSON de Basics Station?",
+  "explanation": "Cabeceras y MIC: MHDR 1 + DevAddr 4 + FCtrl 1 + FCnt 2 + FOpts 5 + FPort 1 + MIC 4 = 18 bytes. FRMPayload = 30 − 18 = 12 bytes, que Basics Station representa en hexadecimal: 24 caracteres.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "12-bytes-24-caracteres-hexadecimales",
+      "text": "12 bytes, 24 caracteres hexadecimales.",
+      "explanation": "Pp. 39 y 45."
+    },
+    {
+      "id": "17-bytes-34-caracteres-hexadecimales",
+      "text": "17 bytes, 34 caracteres hexadecimales.",
+      "explanation": "Olvida restar los 5 bytes de FOpts."
+    },
+    {
+      "id": "12-bytes-16-caracteres",
+      "text": "12 bytes, 16 caracteres.",
+      "explanation": "16 caracteres sería en Base64; Basics Station usa hexadecimal para el FRMPayload."
+    },
+    {
+      "id": "8-bytes-16-caracteres-hexadecimales",
+      "text": "8 bytes, 16 caracteres hexadecimales.",
+      "explanation": "Resta dos veces el MIC."
+    }
+  ],
+  "answer": "12-bytes-24-caracteres-hexadecimales"
+}

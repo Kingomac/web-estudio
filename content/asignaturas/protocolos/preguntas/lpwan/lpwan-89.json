@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-89",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una trama captada por un gateway tiene MHDR = 0x00. ¿Qué es?",
+  "explanation": "Según la p. 39: 0x00 Join-request, 0x20 Join-accept, 0x40/0x80 uplink sin/con confirmación y 0x60/0xA0 downlink sin/con confirmación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-join-request",
+      "text": "Un Join-request.",
+      "explanation": "P. 39."
+    },
+    {
+      "id": "un-join-accept",
+      "text": "Un Join-accept.",
+      "explanation": "Sería 0x20."
+    },
+    {
+      "id": "un-uplink-de-datos-sin-confirmacion",
+      "text": "Un uplink de datos sin confirmación.",
+      "explanation": "Sería 0x40."
+    },
+    {
+      "id": "un-downlink-de-datos-sin-confirmacion",
+      "text": "Un downlink de datos sin confirmación.",
+      "explanation": "Sería 0x60."
+    }
+  ],
+  "answer": "un-join-request"
+}

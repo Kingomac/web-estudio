@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-108",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una trama IEEE 802.15.4 de 127 bytes, sin seguridad, usa una cabecera MAC de 9 bytes y FCS. Lleva un fragmento intermedio de un datagrama en mesh-under, con cabecera Mesh de direcciones cortas (Hops Left ≤ 14). ¿Cuántos bytes del datagrama puede transportar esa trama como máximo?",
+  "explanation": "127 − 9 − 2 = 116 bytes para 6LoWPAN. Cabecera Mesh corta: 1 + 2 + 2 = 5 bytes. FRAGN: 5 bytes. 116 − 5 − 5 = 106 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        14,
+        28,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tamanos-y-sobrecarga"
+    }
+  ],
+  "options": [
+    {
+      "id": "106",
+      "text": "106 bytes.",
+      "explanation": "Descuenta MHR, FCS, Mesh corta y FRAGN."
+    },
+    {
+      "id": "107",
+      "text": "107 bytes.",
+      "explanation": "Usa 4 bytes de fragmentación, que son los de FRAG1; un fragmento intermedio lleva FRAGN, de 5."
+    },
+    {
+      "id": "111",
+      "text": "111 bytes.",
+      "explanation": "Olvida la cabecera Mesh, necesaria en mesh-under multisalto."
+    },
+    {
+      "id": "108",
+      "text": "108 bytes.",
+      "explanation": "Olvida el FCS de 2 bytes."
+    }
+  ],
+  "answer": "106"
+}

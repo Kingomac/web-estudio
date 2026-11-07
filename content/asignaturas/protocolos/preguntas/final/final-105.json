@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-105",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un router RPL N se incorpora a la red y envía un DIS. Le responden con DIO unicast el router A (Rank 512) y la hoja RAL L, que anuncia Rank infinito. ¿Qué hace N?",
+  "explanation": "Los RAL anuncian Rank infinito al responder a un DIS porque no se ofrecen como routers. N elige a A, calcula su Rank (mayor que 512) y emite su propio DIO a ff02::1a; los DIO recibidos no se reenvían sin cambios.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        75,
+        76,
+        79
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mensajes-de-control"
+    }
+  ],
+  "options": [
+    {
+      "id": "elige-a-dio-propio",
+      "text": "Elige a A como padre, calcula un Rank mayor que 512 y envía su propio DIO a ff02::1a.",
+      "explanation": "L no puede ser padre y cada router anuncia su propio DIO."
+    },
+    {
+      "id": "elige-l",
+      "text": "Puede elegir a L como padre si su enlace tiene mejor ETX.",
+      "explanation": "Con Rank infinito, L no se ofrece como padre aunque el enlace sea bueno."
+    },
+    {
+      "id": "reenvia-dio",
+      "text": "Elige a A y reenvía sin cambios el DIO de A a sus vecinos.",
+      "explanation": "Cada router genera su propio DIO con su Rank; el DIO recibido no se reenvía."
+    },
+    {
+      "id": "dao-ack",
+      "text": "Elige a A y le confirma el DIO con un DAO-ACK.",
+      "explanation": "DAO-ACK confirma un DAO, no un DIO."
+    }
+  ],
+  "answer": "elige-a-dio-propio"
+}

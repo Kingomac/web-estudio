@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un nodo de una LPWAN transmite a 1 kbps, el extremo superior de la tasa típica que da el tema, y envía lecturas de 50 bytes. Por la calidad del enlace, cada lectura se transmite de media dos veces. Sin contar cabeceras, ¿cuánto tiempo de transmisión gasta por lectura y qué parte del término LLN explica las repeticiones?",
+  "explanation": "50 bytes = 400 bits; con dos transmisiones, 800 bits; a 1 000 bit/s, 0,8 s. Las repeticiones se deben a que el enlace sufre interferencias y variabilidad (SNR baja), que es lo que significa «Lossy».",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10,
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lln-bajo-consumo-y-perdidas"
+    }
+  ],
+  "options": [
+    {
+      "id": "0-8-s-lossy",
+      "text": "0,8 s; lo explica «Lossy».",
+      "explanation": "Correcta: 2 × 50 × 8 = 800 bits y 800 / 1 000 bit/s = 0,8 s; las pérdidas son el rasgo Lossy."
+    },
+    {
+      "id": "0-4-s-lossy",
+      "text": "0,4 s; lo explica «Lossy».",
+      "explanation": "Olvida la segunda transmisión: 400 bits son una sola copia."
+    },
+    {
+      "id": "0-1-s-lossy",
+      "text": "0,1 s; lo explica «Lossy».",
+      "explanation": "No pasa bytes a bits: 100 bytes / 1 000 = 0,1."
+    },
+    {
+      "id": "0-8-s-low-power",
+      "text": "0,8 s; lo explica «Low-power».",
+      "explanation": "El cálculo es correcto, pero Low-power se refiere al requisito de bajo consumo; las pérdidas del enlace son Lossy."
+    }
+  ],
+  "answer": "0-8-s-lossy"
+}

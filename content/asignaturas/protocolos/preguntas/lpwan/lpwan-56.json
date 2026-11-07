@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-56",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un mismo cliente tiene dos equipos NB-IoT: un sensor que mide cada hora y puede posponer cualquier orden, y una válvula que debe recibir órdenes con un retardo acotado. ¿Qué mecanismo de ahorro encaja mejor con cada uno?",
+  "explanation": "PSM es adecuado para sensores con medidas esporádicas que pueden posponer la recepción; eDRX mantiene oportunidades periódicas de recibir órdenes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "psm-y-edrx"
+    }
+  ],
+  "options": [
+    {
+      "id": "psm-para-el-sensor-y-edrx-para-la",
+      "text": "PSM para el sensor y eDRX para la válvula.",
+      "explanation": "P. 12: PSM no escucha durante el reposo; eDRX conserva ventanas periódicas de paging."
+    },
+    {
+      "id": "edrx-para-el-sensor-y-psm-para-la",
+      "text": "eDRX para el sensor y PSM para la válvula.",
+      "explanation": "Está invertido: en PSM la válvula no podría recibir órdenes hasta despertar por sí misma."
+    },
+    {
+      "id": "psm-para-los-dos-porque-la-red-puede",
+      "text": "PSM para los dos, porque la red puede despertarlos con paging.",
+      "explanation": "En PSM la red no puede despertar al dispositivo."
+    },
+    {
+      "id": "ninguno-psm-y-edrx-solo-existen-en-lte-m",
+      "text": "Ninguno: PSM y eDRX solo existen en LTE-M.",
+      "explanation": "El tema los presenta como mecanismos de NB-IoT y LTE-M."
+    }
+  ],
+  "answer": "psm-para-el-sensor-y-edrx-para-la"
+}

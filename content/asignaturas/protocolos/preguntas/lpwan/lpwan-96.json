@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lpwan-96",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En el JSON Basics Station de un uplink aparecen `\"MHdr\": 128`, `\"FPort\": 5` y `\"DR\": 2`. ¿Qué se deduce?",
+  "explanation": "128 = 0x80: uplink de datos con confirmación. DR2 en EU868 es SF10 con 125 kHz, coherente con el `\"datr\": \"SF10BW125\"` del UDP forwarder en la misma página.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        28,
+        39,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "uplink-de-datos-con-confirmacion",
+      "text": "Uplink de datos con confirmación, transmitido con SF10 y 125 kHz.",
+      "explanation": "Pp. 39 y 28."
+    },
+    {
+      "id": "uplink-de-datos-sin-confirmacion",
+      "text": "Uplink de datos sin confirmación, transmitido con SF10 y 125 kHz.",
+      "explanation": "Sin confirmación el MHDR sería 0x40 (64)."
+    },
+    {
+      "id": "downlink-de-datos-con-confirmacion",
+      "text": "Downlink de datos con confirmación, transmitido con SF10 y 125 kHz.",
+      "explanation": "Un downlink confirmado sería 0xA0 (160)."
+    },
+    {
+      "id": "uplink-de-datos-con-confirmacion-2",
+      "text": "Uplink de datos con confirmación, transmitido con SF2.",
+      "explanation": "El DR no es el SF: DR2 corresponde a SF10."
+    }
+  ],
+  "answer": "uplink-de-datos-con-confirmacion"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones sobre MCU y MPU es correcta según el tema?",
+  "explanation": "La MCU es un SoC con CPU, RAM, ROM y E/S, capaz de trabajar sola e incluso sin SO. La MPU, base de los ordenadores, solo contiene la CPU, necesita periféricos adicionales y requiere un SO.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        3
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "microcontrolador-y-microprocesador"
+    }
+  ],
+  "options": [
+    {
+      "id": "mpu-solo-cpu-perifericos-y-so",
+      "text": "La MPU solo contiene la CPU, necesita periféricos adicionales y requiere un sistema operativo.",
+      "explanation": "Correcta: es la diferencia que marca el tema; por eso la MPU es la base de los ordenadores y no del nodo IoT típico."
+    },
+    {
+      "id": "mcu-necesita-memoria-externa-y-so",
+      "text": "La MCU necesita memoria externa y un sistema operativo para funcionar.",
+      "explanation": "Describe la MPU: la MCU integra RAM y ROM y puede operar incluso sin SO."
+    },
+    {
+      "id": "mpu-integra-ram-rom-y-es-en-soc",
+      "text": "La MPU integra RAM, ROM y puertos de E/S en un System on Chip.",
+      "explanation": "Es la definición de la MCU, no de la MPU."
+    },
+    {
+      "id": "mcu-nunca-integra-comunicaciones",
+      "text": "La MCU nunca puede integrar hardware de comunicaciones en el mismo chip.",
+      "explanation": "El tema indica lo contrario: el chip de la MCU puede integrar WiFi, Bluetooth o LoRa."
+    }
+  ],
+  "answer": "mpu-solo-cpu-perifericos-y-so"
+}

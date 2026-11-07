@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-65",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Quién define OPC UA y para qué ámbito?",
+  "explanation": "OPC UA está definida por la OPC Foundation para la Industria 4.0 y el IIoT. SOAP es un estándar del W3C, MQTT es un estándar OASIS y WebSocket está estandarizado por el IETF y el WHATWG.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "opc-foundation",
+      "text": "La OPC Foundation, para la Industria 4.0 y el IIoT.",
+      "explanation": "Es lo que indica el tema."
+    },
+    {
+      "id": "w3c",
+      "text": "El W3C, para el intercambio de documentos web.",
+      "explanation": "El W3C es el organismo de SOAP, no de OPC UA."
+    },
+    {
+      "id": "oasis",
+      "text": "OASIS, como protocolo de publicación/suscripción para sensores.",
+      "explanation": "OASIS estandariza MQTT, no OPC UA, que es cliente/servidor."
+    },
+    {
+      "id": "ietf",
+      "text": "El IETF, como protocolo ligero para dispositivos limitados.",
+      "explanation": "Esa descripción encaja con CoAP (RFC 7252); OPC UA es de la OPC Foundation."
+    }
+  ],
+  "answer": "opc-foundation"
+}

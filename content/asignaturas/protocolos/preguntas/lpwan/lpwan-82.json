@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-82",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Para qué sirve el DevNonce que incluye el Join-request?",
+  "explanation": "Es un valor que permite distinguir los distintos intentos de activación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "para-distinguir-los-intentos-de",
+      "text": "Para distinguir los intentos de activación.",
+      "explanation": "P. 33."
+    },
+    {
+      "id": "para-numerar-las-tramas-de-datos-de-la",
+      "text": "Para numerar las tramas de datos de la sesión.",
+      "explanation": "Eso lo hace FCnt."
+    },
+    {
+      "id": "para-identificar-al-join-server",
+      "text": "Para identificar al Join Server.",
+      "explanation": "Eso lo hace JoinEUI."
+    },
+    {
+      "id": "para-cifrar-el-join-request",
+      "text": "Para cifrar el Join-request.",
+      "explanation": "El Join-request no va cifrado; lleva un MIC calculado con AppKey."
+    }
+  ],
+  "answer": "para-distinguir-los-intentos-de"
+}

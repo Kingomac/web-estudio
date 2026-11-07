@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-58",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo NB-IoT usa la tarjeta de 5 MB de Movistar de la p. 16 (1,20 €/mes y 0,27 € por MB extra). Un mes consume 7 MB. ¿Cuánto cuesta ese mes, sin contar el alta?",
+  "explanation": "Se paga la cuota y solo los MB que exceden el plan: 1,20 + 2 × 0,27 = 1,74 €.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-frente-a-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "1-74",
+      "text": "1,74 €.",
+      "explanation": "1,20 € de cuota más 2 MB extra × 0,27 €."
+    },
+    {
+      "id": "1-20",
+      "text": "1,20 €.",
+      "explanation": "Olvida los 2 MB que exceden el plan."
+    },
+    {
+      "id": "3-09",
+      "text": "3,09 €.",
+      "explanation": "Cobra los 7 MB como extra (7 × 0,27) además de la cuota; los 5 primeros ya están incluidos."
+    },
+    {
+      "id": "1-47",
+      "text": "1,47 €.",
+      "explanation": "Cobra un solo MB extra; el exceso es de 2 MB."
+    }
+  ],
+  "answer": "1-74"
+}

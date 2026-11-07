@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-131",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones sobre la comparativa final de tecnologías LPWAN NO es correcta?",
+  "explanation": "En LoRaWAN la arquitectura es nodo → gateway → NS/AS; «nodo → estación base → red del operador» es la de NB-IoT y LTE-M.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "comparativa"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-lorawan-la-arquitectura-es-nodo",
+      "text": "En LoRaWAN la arquitectura es nodo → estación base → red del operador.",
+      "explanation": "Es la fila de las celulares; LoRaWAN usa gateways y NS/AS."
+    },
+    {
+      "id": "lorawan-habitualmente-no-usa-ip-pero",
+      "text": "LoRaWAN habitualmente no usa IP, pero puede llevar IPv6 mediante SCHC.",
+      "explanation": "Correcta: fila «Conectividad IP del nodo»."
+    },
+    {
+      "id": "nb-iot-y-lte-m-ofrecen-ipv4-ipv6-y",
+      "text": "NB-IoT y LTE-M ofrecen IPv4/IPv6 y también opciones no IP, según el servicio.",
+      "explanation": "Correcta: el modo NIDD es la opción no IP."
+    },
+    {
+      "id": "wi-sun-fan-usa-ipv6-con-adaptacion",
+      "text": "Wi-SUN FAN usa IPv6 con adaptación 6LoWPAN en una malla multisalto.",
+      "explanation": "Correcta: fila «Arquitectura» y «Conectividad IP»."
+    }
+  ],
+  "answer": "en-lorawan-la-arquitectura-es-nodo"
+}

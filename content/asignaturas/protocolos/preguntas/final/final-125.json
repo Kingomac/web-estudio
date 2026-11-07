@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-125",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo de clase C acaba de terminar de transmitir un uplink. Con los valores típicos de EU868, ¿cómo escucha durante los segundos siguientes?",
+  "explanation": "Tras el uplink, la clase C pasa por RXC → RX1 (≈ +1 s) → RXC → RX2 (≈ +2 s) → RXC hasta el siguiente uplink. RXC usa típicamente 869,525 MHz y DR0; RX1 usa la frecuencia del uplink y DR_uplink − RX1DROffset.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "rxc-en-869-525-mhz-rx1-a-1-s-en-la",
+      "text": "RXC en 869,525 MHz, RX1 a ≈1 s en la frecuencia del uplink, de nuevo RXC, RX2 a ≈2 s y RXC hasta el siguiente uplink.",
+      "explanation": "Figura de la clase C de la p. 30."
+    },
+    {
+      "id": "solo-rxc-en-869-525-mhz-la-clase-c-no",
+      "text": "Solo RXC en 869,525 MHz: la clase C no abre RX1 ni RX2.",
+      "explanation": "La clase C también abre RX1 y RX2; RXC ocupa el resto del tiempo."
+    },
+    {
+      "id": "rx1-a-1-s-y-rx2-a-2-s-y-despues-duerme",
+      "text": "RX1 a ≈1 s y RX2 a ≈2 s, y después duerme hasta el siguiente uplink.",
+      "explanation": "Ese es el comportamiento de la clase A."
+    },
+    {
+      "id": "rxc-en-la-frecuencia-del-uplink",
+      "text": "RXC en la frecuencia del uplink, interrumpida por ping slots cada 128 s.",
+      "explanation": "RXC usa típicamente 869,525 MHz, y los ping slots y los beacons cada 128 s son de la clase B."
+    }
+  ],
+  "answer": "rxc-en-869-525-mhz-rx1-a-1-s-en-la"
+}

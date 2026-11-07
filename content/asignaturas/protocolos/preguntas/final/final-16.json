@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un panel de control en el navegador debe mostrar las medidas que el servidor recibe cada segundo, sin que el navegador las pida una a una, y enviar órdenes al servidor por el mismo canal. ¿Qué mecanismo encaja con el tema?",
+  "explanation": "WebSocket mantiene una comunicación bidireccional interactiva sobre una conexión persistente: el servidor envía datos sin que el cliente los solicite y el cliente también puede enviar en cualquier momento. Los webhooks son unidireccionales y adecuados para notificaciones esporádicas; el pipelining y HTTP/2 siguen necesitando una petición por cada respuesta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        16,
+        23,
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "websockets-y-webhooks"
+    }
+  ],
+  "options": [
+    {
+      "id": "websocket",
+      "text": "Un WebSocket.",
+      "explanation": "Es bidireccional, persistente y evita el sondeo."
+    },
+    {
+      "id": "webhook",
+      "text": "Un webhook hacia el navegador.",
+      "explanation": "Los webhooks son unidireccionales y pensados para notificaciones esporádicas; aquí hay datos cada segundo y órdenes en sentido contrario."
+    },
+    {
+      "id": "pipelining",
+      "text": "Peticiones GET con pipelining de HTTP/1.1.",
+      "explanation": "El pipelining solo evita esperar entre peticiones; el navegador seguiría sondeando con un GET por medida."
+    },
+    {
+      "id": "http2",
+      "text": "HTTP/2, porque el servidor puede responder en cualquier orden.",
+      "explanation": "Responder en cualquier orden evita el bloqueo HOL, pero cada respuesta sigue necesitando su petición."
+    }
+  ],
+  "answer": "websocket"
+}

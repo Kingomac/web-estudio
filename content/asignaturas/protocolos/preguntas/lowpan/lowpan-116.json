@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-116",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En una 6LoWPAN route-over con DAD multisalto, un host envía a su 6LR un NS con ARO para registrar una dirección que otro host ya registró en otra zona de la red. ¿Qué ocurre?",
+  "explanation": "La caché del 6LR local no basta para detectar duplicados en toda la LoWPAN: el 6LR consulta al 6LBR con DAR (ICMPv6 157), el 6LBR comprueba su tabla y responde con DAC (158), y el 6LR contesta al host con un NA cuyo ARO indica el resultado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        52,
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "paso-3-detectar-duplicados-cuando-corresponda"
+    }
+  ],
+  "options": [
+    {
+      "id": "dar-dac-na-duplicada",
+      "text": "El 6LR envía un DAR al 6LBR, recibe un DAC que indica duplicado y responde al host con un NA cuyo Status de ARO señala la dirección duplicada.",
+      "explanation": "Es la secuencia del DAD multisalto: el 6LBR mantiene la tabla de toda la LoWPAN."
+    },
+    {
+      "id": "acepta-cache-local",
+      "text": "El 6LR acepta el registro porque la dirección no está en su caché de vecinos.",
+      "explanation": "En route-over la caché del router local no basta para detectar duplicados en toda la LoWPAN; para eso existe el DAD multisalto."
+    },
+    {
+      "id": "6lbr-responde-host",
+      "text": "El 6LBR responde directamente al host con un NA que rechaza el registro.",
+      "explanation": "El 6LBR contesta al 6LR con DAC; quien responde al host con el NA y ARO es el 6LR."
+    },
+    {
+      "id": "ns-multicast",
+      "text": "El 6LR hace un DAD tradicional con NS multicast a la dirección solicited-node.",
+      "explanation": "RFC 6775 no realiza el DAD tradicional; además IEEE 802.15.4 no soporta multicast."
+    }
+  ],
+  "answer": "dar-dac-na-duplicada"
+}

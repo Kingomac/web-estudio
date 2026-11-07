@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.aplicacion-96",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué característica comparten CoAP y MQTT según el tema?",
+  "explanation": "Ambos codifican sus mensajes como secuencias binarias pequeñas que caben en una única trama del nivel de enlace, lo que los hace adecuados para 6LoWPAN/IEEE 802.15.4. En cambio, CoAP es cliente/servidor sobre UDP y MQTT es publicación/suscripción sobre TCP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14,
+        36,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "comparacion-final-y-datos-para-memorizar"
+    }
+  ],
+  "options": [
+    {
+      "id": "binarios-una-trama",
+      "text": "Mensajes binarios pequeños que caben en una única trama del nivel de enlace.",
+      "explanation": "El tema lo dice de ambos, a diferencia de los mensajes ASCII de HTTP/1.x."
+    },
+    {
+      "id": "broker",
+      "text": "Ambos usan un broker para distribuir los datos.",
+      "explanation": "Solo MQTT usa broker; CoAP es cliente/servidor."
+    },
+    {
+      "id": "udp",
+      "text": "Ambos van por defecto sobre UDP.",
+      "explanation": "MQTT va sobre TCP; su variante sobre UDP es MQTT-SN."
+    },
+    {
+      "id": "ascii",
+      "text": "Ambos codifican los mensajes en caracteres ASCII, como HTTP/1.x.",
+      "explanation": "Los dos usan codificación binaria."
+    }
+  ],
+  "answer": "binarios-una-trama"
+}

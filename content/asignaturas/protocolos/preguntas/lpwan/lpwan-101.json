@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-101",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En una aplicación de TTS hay un decoder para toda la aplicación y uno de los dispositivos tiene, además, su propio decoder. ¿Cuál se aplica a ese dispositivo?",
+  "explanation": "El decoder del dispositivo tiene prioridad sobre el de la aplicación; los demás dispositivos heredan el de la aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "payload-decoder"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-del-dispositivo-que-tiene-prioridad",
+      "text": "El del dispositivo, que tiene prioridad.",
+      "explanation": "P. 52."
+    },
+    {
+      "id": "el-de-la-aplicacion-que-se-aplica",
+      "text": "El de la aplicación, que se aplica siempre a todos.",
+      "explanation": "Solo se aplica a los que heredan esa configuración."
+    },
+    {
+      "id": "los-dos-uno-detras-de-otro",
+      "text": "Los dos, uno detrás de otro.",
+      "explanation": "El tema no prevé encadenarlos."
+    },
+    {
+      "id": "ninguno-tts-da-un-error-por-conflicto",
+      "text": "Ninguno: TTS da un error por conflicto.",
+      "explanation": "No hay conflicto: está definida la prioridad."
+    }
+  ],
+  "answer": "el-del-dispositivo-que-tiene-prioridad"
+}

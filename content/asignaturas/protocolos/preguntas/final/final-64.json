@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-64",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una captura en la subred de PC1 muestra, por orden: (1) RS de PC1; (2) RA del router con M = 1 y O = 1; (3) SOLICIT de PC1; (4) ADVERTISE del servidor; (5) REQUEST de PC1; (6) REPLY del servidor. ¿Qué afirmación es correcta?",
+  "explanation": "El RA con M = 1 y O = 1 indica al host que obtenga su dirección y la otra información mediante DHCPv6. Es en el REPLY (6) donde el servidor entrega la dirección y demás información; el ADVERTISE solo anuncia que hay un servidor. Los mensajes 3–6 son DHCPv6 sobre UDP (cliente 546, servidor 547), y el default gateway se toma de la dirección origen del RA (2).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        30,
+        35,
+        36
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dhcpv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "reply-y-ra",
+      "text": "La dirección llega en el REPLY (6), y el default gateway es la dirección origen del mensaje 2.",
+      "explanation": "Separa la asignación por DHCPv6 del gateway aprendido por RA."
+    },
+    {
+      "id": "advertise",
+      "text": "El ADVERTISE (4) asigna la dirección y el REQUEST (5) la confirma ante el router.",
+      "explanation": "ADVERTISE solo anuncia un servidor; REQUEST pide la configuración al servidor, no al router."
+    },
+    {
+      "id": "gw-reply",
+      "text": "La dirección llega en el REPLY (6), y el default gateway es la dirección origen de ese REPLY.",
+      "explanation": "El servidor DHCPv6 no es el gateway: el tema lo toma del origen del RA."
+    },
+    {
+      "id": "icmpv6",
+      "text": "Los mensajes 3–6 son ICMPv6 con tipos 133 a 136, igual que RS, RA, NS y NA.",
+      "explanation": "Los mensajes DHCPv6 van sobre UDP, puertos 546 y 547; 133–136 son los tipos de NDP."
+    }
+  ],
+  "answer": "reply-y-ra"
+}

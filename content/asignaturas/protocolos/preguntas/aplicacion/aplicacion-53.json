@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-53",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sensor responde a `GET /device101/temperature HTTP/1.1` con `Content-Type: text/plain` y el cuerpo `21.75 C`. ¿Qué valor debe llevar la cabecera `Content-Length`?",
+  "explanation": "Content-Length indica el tamaño del cuerpo en bytes. En el ejemplo del tema, el cuerpo `18.6 C` lleva Content-Length: 6. El cuerpo `21.75 C` tiene 7 caracteres ASCII (incluido el espacio), así que ocupa 7 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14,
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "metodos-mensajes-y-respuestas"
+    }
+  ],
+  "options": [
+    {
+      "id": "siete",
+      "text": "7.",
+      "explanation": "Cuenta los 7 caracteres ASCII de `21.75 C`, espacio incluido."
+    },
+    {
+      "id": "seis",
+      "text": "6.",
+      "explanation": "Es el valor del ejemplo del tema para `18.6 C`; este cuerpo tiene un carácter más."
+    },
+    {
+      "id": "cinco",
+      "text": "5.",
+      "explanation": "Solo cuenta el número `21.75` y olvida el espacio y la unidad, que también forman parte del cuerpo."
+    },
+    {
+      "id": "longitud-de-todo-el-mensaje",
+      "text": "La longitud de todo el mensaje, cabeceras incluidas.",
+      "explanation": "Content-Length mide solo el cuerpo: en el ejemplo vale 6 aunque las cabeceras ocupen mucho más."
+    }
+  ],
+  "answer": "siete"
+}

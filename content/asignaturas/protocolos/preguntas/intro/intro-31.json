@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En la lista de bloques de un dispositivo IoT modular, ¿cuál de estos componentes es un actuador?",
+  "explanation": "El tema incluye entre los actuadores motores, relés, contactores, electroválvulas, bombas y LEDs.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "dispositivos-modulares"
+    }
+  ],
+  "options": [
+    {
+      "id": "bomba",
+      "text": "Una bomba.",
+      "explanation": "Correcta: las bombas aparecen en el bloque de actuadores, junto a electroválvulas y contactores."
+    },
+    {
+      "id": "acelerometro",
+      "text": "Un acelerómetro.",
+      "explanation": "Mide movimiento: pertenece al bloque de sensores."
+    },
+    {
+      "id": "tarjeta-sd",
+      "text": "Una tarjeta SD.",
+      "explanation": "Pertenece al módulo de almacenamiento."
+    },
+    {
+      "id": "cargador-solar",
+      "text": "Un cargador solar.",
+      "explanation": "Pertenece al módulo de energía."
+    }
+  ],
+  "answer": "bomba"
+}

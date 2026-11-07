@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-63",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una empresa quiere ofrecer un servicio comercial sobre LoRaWAN con The Things Stack, pero sin administrar servidores. ¿Qué modalidad encaja?",
+  "explanation": "TTS Cloud es un servicio alojado y gestionado por The Things Industries para operar una red sin administrar los servidores.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        23
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "the-things-stack-cloud",
+      "text": "The Things Stack Cloud.",
+      "explanation": "Tabla de la p. 23."
+    },
+    {
+      "id": "sandbox-ttn",
+      "text": "Sandbox / TTN.",
+      "explanation": "Es comunitaria, para aprendizaje y proyectos no comerciales, sin garantías de disponibilidad ni soporte."
+    },
+    {
+      "id": "open-source",
+      "text": "Open Source.",
+      "explanation": "Exige instalar y gestionar el servidor uno mismo."
+    },
+    {
+      "id": "enterprise",
+      "text": "Enterprise.",
+      "explanation": "Se instala en infraestructura propia, con licencia comercial."
+    }
+  ],
+  "answer": "the-things-stack-cloud"
+}

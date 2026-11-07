@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-101",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En una 6LoWPAN route-over, el 6LR R recibe un datagrama para el host H, que tiene registrada su dirección en R. ¿Cómo obtiene R la dirección de enlace de H para la trama del último salto?",
+  "explanation": "Como en el ejemplo route-over, el router necesita la correspondencia IPv6–enlace del siguiente salto. En 6LoWPAN ND esa correspondencia la crea el registro: el NS con ARO y SLLAO de H deja la entrada en la caché de vecinos de R, sin NS multicast.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        37,
+        49,
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "registro-ns-na-con-aro"
+    }
+  ],
+  "options": [
+    {
+      "id": "cache-por-registro",
+      "text": "De su caché de vecinos, donde el registro NS con ARO y SLLAO de H dejó la correspondencia IPv6–enlace.",
+      "explanation": "El registro sustituye la resolución multicast."
+    },
+    {
+      "id": "ns-multicast",
+      "text": "Con un NS multicast al grupo solicited-node de H, como en el NDP clásico.",
+      "explanation": "RFC 6775 evita esos NS multicast, y 802.15.4 no soporta multicast."
+    },
+    {
+      "id": "dar",
+      "text": "Con un DAR al 6LBR, que guarda las direcciones de enlace de todos los hosts.",
+      "explanation": "DAR/DAC sirven para el DAD multisalto, no para resolver la dirección de enlace del siguiente salto."
+    },
+    {
+      "id": "mesh",
+      "text": "De la cabecera Mesh del datagrama, que lleva la MAC final de H.",
+      "explanation": "La cabecera Mesh es de mesh-under; en route-over cada salto es IP y no se usa."
+    }
+  ],
+  "answer": "cache-por-registro"
+}

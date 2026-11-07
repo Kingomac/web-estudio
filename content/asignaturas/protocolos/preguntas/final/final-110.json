@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-110",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo usa en sus tramas la dirección corta 0x0007, pero su dirección global es 2001:db8::211:22ff:fe33:4455. El contexto 0 es 2001:db8::/64 y CID = 0. Al enviar un datagrama desde esa dirección, ¿cómo se comprime el origen con la máxima compresión correcta?",
+  "explanation": "El prefijo sale del contexto 0: SAC = 1. El IID 0211:22ff:fe33:4455 no se deduce de la MAC corta (daría 0:ff:fe00:7) ni tiene la forma 0:ff:fe00:XXXX, así que va completo: SAM = 01, 64 bits en línea.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        22,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccion-fuente-sac-y-sam"
+    }
+  ],
+  "options": [
+    {
+      "id": "sac1-sam01",
+      "text": "SAC = 1 y SAM = 01, con los 64 bits del IID en línea.",
+      "explanation": "El contexto ahorra el prefijo y el IID no es deducible."
+    },
+    {
+      "id": "sac1-sam11",
+      "text": "SAC = 1 y SAM = 11, sin bits en línea.",
+      "explanation": "Con la MAC corta 0x0007 se reconstruiría 2001:db8::ff:fe00:7, que no es la dirección del nodo."
+    },
+    {
+      "id": "sac1-sam10",
+      "text": "SAC = 1 y SAM = 10, con los 16 bits 0x4455 en línea.",
+      "explanation": "SAM = 10 reconstruye el IID 0:ff:fe00:4455, distinto del real."
+    },
+    {
+      "id": "sac0-sam01",
+      "text": "SAC = 0 y SAM = 01, con los 64 bits del IID en línea.",
+      "explanation": "SAC = 0 supone el prefijo fe80::/64; la dirección es global."
+    }
+  ],
+  "answer": "sac1-sam01"
+}

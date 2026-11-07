@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un campus combina contadores LoRaWAN repartidos por las calles y sensores Thread dentro de un edificio. ¿Qué descripción de ambas redes es correcta en todos sus detalles según el tema?",
+  "explanation": "La infografía clasifica Thread como LoWPAN y LoRaWAN como LPWAN. Una LoWPAN usa estrella y malla, ofrece IP extremo a extremo en sus soluciones estándar y cubre 10–100 m. Una LPWAN usa estrella, tiene conectividad híbrida (dispositivos no IP, troncal IP) y alcanza hasta ~5 km urbanos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13,
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "thread-lowpan-lorawan-lpwan",
+      "text": "Thread: LoWPAN en estrella o malla, IP extremo a extremo, 10–100 m. LoRaWAN: LPWAN en estrella, dispositivos no IP y troncal IP, hasta ~5 km en ciudad.",
+      "explanation": "Correcta: todas las características coinciden con las pp. 13–14."
+    },
+    {
+      "id": "thread-lpwan",
+      "text": "Thread: LPWAN en malla, IP extremo a extremo, 10–100 m. LoRaWAN: LPWAN en estrella, dispositivos no IP y troncal IP, hasta ~5 km en ciudad.",
+      "explanation": "Clasifica mal Thread: la infografía lo sitúa entre las LoWPAN, junto a Zigbee y 6LoWPAN."
+    },
+    {
+      "id": "lorawan-malla-ip",
+      "text": "Thread: LoWPAN en estrella o malla, IP extremo a extremo, 10–100 m. LoRaWAN: LPWAN en malla, IP extremo a extremo, hasta ~5 km en ciudad.",
+      "explanation": "Atribuye a la LPWAN rasgos de LoWPAN: su topología es en estrella y su conectividad, híbrida."
+    },
+    {
+      "id": "thread-5-km",
+      "text": "Thread: LoWPAN en estrella o malla, IP extremo a extremo, hasta ~5 km en ciudad. LoRaWAN: LPWAN en estrella, dispositivos no IP y troncal IP, hasta ~15 km rurales.",
+      "explanation": "Un solo detalle falso: los ~5 km urbanos son de las LPWAN; una LoWPAN cubre 10–100 m por salto."
+    }
+  ],
+  "answer": "thread-lowpan-lorawan-lpwan"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-41",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un sensor IoT con pila IPv4 está detrás del router de una instalación que hace NAT. Una aplicación externa en Internet necesita **iniciar** la comunicación con el sensor. ¿Qué hace falta según el esquema de arquitectura con nodos IP del tema?",
+  "explanation": "En la arquitectura con nodos IP, el nodo se identifica con su IP y su puerto. Si hay NAT, la dirección privada del sensor no es alcanzable desde fuera: para que el exterior inicie la comunicación hay que redirigir un puerto del router hacia el sensor. IPv6 evita esta necesidad porque su espacio de direcciones hace innecesario el NAT por escasez.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        2,
+        3
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "por-que-usar-ip-en-los-nodos-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "redireccion-de-puertos",
+      "text": "Configurar en el router una redirección de puertos hacia la IP y el puerto del sensor.",
+      "explanation": "El tema lo indica en el propio esquema: con NAT, la comunicación iniciada desde el exterior requiere redirección de puertos."
+    },
+    {
+      "id": "gateway-de-identificadores",
+      "text": "Sustituir el router por un gateway que relacione el identificador del sensor con sus datos.",
+      "explanation": "Ese gateway es propio de la arquitectura con nodos no IP; aquí el sensor ya habla IP y solo falta atravesar el NAT."
+    },
+    {
+      "id": "nada-extremo-a-extremo",
+      "text": "Nada: al tener pila IP, el sensor siempre es alcanzable extremo a extremo desde Internet.",
+      "explanation": "Con NAT la dirección del sensor es privada; sin redirección, una conexión entrante no sabe a qué nodo interno dirigirse."
+    },
+    {
+      "id": "ndp-en-internet",
+      "text": "Que la aplicación externa resuelva con NDP la MAC del sensor antes de conectar.",
+      "explanation": "NDP funciona solo entre vecinos del mismo enlace; no sirve desde Internet ni atraviesa el NAT."
+    }
+  ],
+  "answer": "redireccion-de-puertos"
+}

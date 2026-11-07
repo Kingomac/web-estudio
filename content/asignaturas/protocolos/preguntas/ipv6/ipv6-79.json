@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-79",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo termina el DAD de una dirección nueva sin recibir ninguna respuesta. Según el tema, ¿qué envía a continuación?",
+  "explanation": "Si no hay respuesta, la dirección no está duplicada: el nodo se la queda y, para notificarlo, envía un NA no solicitado a all-nodes (ff02::1) con la nueva IP y su MAC. Así el resto de nodos pueden actualizar sus cachés.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dad-detectar-direcciones-duplicadas"
+    }
+  ],
+  "options": [
+    {
+      "id": "na-no-solicitado",
+      "text": "Un NA no solicitado a ff02::1 con la nueva dirección y su MAC.",
+      "explanation": "Permite que los demás nodos actualicen sus cachés de vecinos."
+    },
+    {
+      "id": "na-all-routers",
+      "text": "Un NA solicitado a ff02::2 para que los routers registren la dirección.",
+      "explanation": "El anuncio va a all-nodes y no es solicitado: nadie ha preguntado."
+    },
+    {
+      "id": "segundo-ns",
+      "text": "Otro NS con la nueva dirección como origen dirigido a su solicited-node.",
+      "explanation": "Tras DAD no se repite la comprobación; el nodo anuncia su dirección con un NA."
+    },
+    {
+      "id": "nada",
+      "text": "Nada: los demás nodos ya conocen la dirección por el NS de DAD.",
+      "explanation": "El NS de DAD usa fuente :: y solo pregunta por la dirección; el tema indica un NA posterior para notificarla."
+    }
+  ],
+  "answer": "na-no-solicitado"
+}

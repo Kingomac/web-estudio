@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-56",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En la petición `GET /device101/temperature HTTP/1.1` del tema, ¿qué cabecera indica que el cliente quiere mantener abierta la conexión TCP para más peticiones?",
+  "explanation": "`Connection: keep-alive` pide una conexión persistente. `Host` identifica el servidor, `User-Agent` el software cliente y `Upgrade` se usa para cambiar de protocolo, como en el handshake de WebSocket.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "metodos-mensajes-y-respuestas"
+    }
+  ],
+  "options": [
+    {
+      "id": "connection-keep-alive",
+      "text": "`Connection: keep-alive`",
+      "explanation": "Es la cabecera de la conexión persistente, presente tanto en la petición como en la respuesta del ejemplo."
+    },
+    {
+      "id": "host",
+      "text": "`Host: www.muiot.uvigo.es`",
+      "explanation": "Host indica el servidor al que va dirigida la petición, no la persistencia."
+    },
+    {
+      "id": "user-agent",
+      "text": "`User-Agent: PXO Sensor`",
+      "explanation": "User-Agent identifica al cliente que hace la petición."
+    },
+    {
+      "id": "upgrade",
+      "text": "`Upgrade: websocket`",
+      "explanation": "Upgrade solicita cambiar de protocolo (handshake WebSocket); no aparece en esta petición."
+    }
+  ],
+  "answer": "connection-keep-alive"
+}

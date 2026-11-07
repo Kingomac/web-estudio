@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-60",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿En qué se basan los mecanismos de seguridad integrados en LoRaWAN?",
+  "explanation": "LoRaWAN incorpora autenticación, protección de la integridad y cifrado de los datos de aplicación mediante mecanismos basados en AES-128.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "beneficios-y-tipos-de-red"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-aes-128-para-autenticacion-integridad",
+      "text": "En AES-128, para autenticación, integridad y cifrado de los datos de aplicación.",
+      "explanation": "«Seguridad integrada», p. 20."
+    },
+    {
+      "id": "en-tls-extremo-a-extremo-entre-el-nodo-y",
+      "text": "En TLS extremo a extremo entre el nodo y la aplicación final.",
+      "explanation": "TLS aparece en el tramo gateway-NS con Basics Station (p. 41), no entre nodo y aplicación."
+    },
+    {
+      "id": "en-la-sim-o-esim-del-dispositivo",
+      "text": "En la SIM o eSIM del dispositivo.",
+      "explanation": "La identificación por SIM o eSIM es de NB-IoT y LTE-M (p. 8)."
+    },
+    {
+      "id": "en-ninguno-lorawan-deja-toda-la",
+      "text": "En ninguno: LoRaWAN deja toda la seguridad a la aplicación.",
+      "explanation": "La seguridad está integrada en el protocolo."
+    }
+  ],
+  "answer": "en-aes-128-para-autenticacion-integridad"
+}

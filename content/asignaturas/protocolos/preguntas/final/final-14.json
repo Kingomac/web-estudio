@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente sin ninguna conexión previa necesita 5 recursos del mismo servidor. El RTT es de 20 ms y los tiempos de transmisión y proceso son despreciables. ¿Cuánto tarda en obtenerlos (i) con HTTP/1.0 y una conexión TCP nueva para cada recurso y (ii) con HTTP/1.1, conexión persistente y pipelining?",
+  "explanation": "(i) Cada recurso necesita su handshake TCP más la petición/respuesta: 2·RTT × 5 = 10 RTT = 200 ms. (ii) Un único handshake (1 RTT) y, con pipelining, las 5 peticiones se envían seguidas y sus respuestas llegan en 1 RTT más: 2 RTT = 40 ms.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        15,
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "transporte-y-versiones"
+    }
+  ],
+  "options": [
+    {
+      "id": "200-y-40",
+      "text": "(i) 200 ms; (ii) 40 ms.",
+      "explanation": "10 RTT frente a 2 RTT."
+    },
+    {
+      "id": "200-y-120",
+      "text": "(i) 200 ms; (ii) 120 ms.",
+      "explanation": "120 ms (1 + 5 RTT) sería una conexión persistente sin pipelining, esperando cada respuesta."
+    },
+    {
+      "id": "100-y-20",
+      "text": "(i) 100 ms; (ii) 20 ms.",
+      "explanation": "Olvida el handshake TCP: cada conexión nueva añade un RTT antes de la petición."
+    },
+    {
+      "id": "120-y-40",
+      "text": "(i) 120 ms; (ii) 40 ms.",
+      "explanation": "Calcula (i) como si la conexión fuese persistente; en el caso (i) cada recurso abre una conexión nueva y paga 2·RTT."
+    }
+  ],
+  "answer": "200-y-40"
+}

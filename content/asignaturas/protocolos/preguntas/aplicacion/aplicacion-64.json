@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-64",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones sobre webhooks y WebSockets NO es correcta?",
+  "explanation": "Webhooks y WebSockets eliminan la necesidad de sondeo. WebSocket mantiene una comunicación bidireccional sobre una conexión persistente; el webhook es más simple, adecuado para comunicaciones unidireccionales y notificaciones esporádicas, y envía un HTTP POST cada vez que ocurre el evento.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        23,
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "websockets-y-webhooks"
+    }
+  ],
+  "options": [
+    {
+      "id": "webhook-conexion-persistente",
+      "text": "El webhook mantiene una conexión persistente abierta con el receptor para enviarle los eventos.",
+      "explanation": "Es falsa: el webhook envía un HTTP POST al endpoint solo cuando ocurre el evento, sin conexión permanente."
+    },
+    {
+      "id": "ambos-evitan-sondeo",
+      "text": "Ambos eliminan la necesidad de sondeo.",
+      "explanation": "Es correcta: el tema lo dice expresamente."
+    },
+    {
+      "id": "webhook-unidireccional",
+      "text": "El webhook es más simple y adecuado para comunicaciones unidireccionales.",
+      "explanation": "Es correcta: así lo contrapone el tema a WebSocket."
+    },
+    {
+      "id": "websocket-bidireccional",
+      "text": "WebSocket permite que el servidor envíe datos al cliente sin que este los pida.",
+      "explanation": "Es correcta: es la ventaja principal de WebSocket."
+    }
+  ],
+  "answer": "webhook-conexion-persistente"
+}

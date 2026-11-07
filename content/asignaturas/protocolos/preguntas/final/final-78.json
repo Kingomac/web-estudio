@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-78",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación tenía configurada la URI coap://[2001:db8:10::25]:5683/s/1 de un sensor anunciado por DNS-SD como Invernadero._coap._udp.edificio.example. Tras una actualización, el sensor cambió de dirección IPv6 y de puerto. ¿Qué habría evitado reconfigurar la aplicación?",
+  "explanation": "Ni la dirección ni el puerto son estables. El nombre de instancia DNS-SD sí lo es: su registro SRV indica en cada momento el host y el puerto, y el AAAA de ese host da la dirección IPv6. Un nombre de host solo resuelve direcciones (no el puerto), y un identificador persistente reconoce al dispositivo pero no indica cómo acceder a él.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        47,
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dns-sd-descubrir-servicios"
+    }
+  ],
+  "options": [
+    {
+      "id": "instancia-srv",
+      "text": "Guardar el nombre de instancia y resolver en cada uso su SRV (host y puerto) y el AAAA de ese host.",
+      "explanation": "SRV cubre el cambio de puerto y AAAA el de dirección."
+    },
+    {
+      "id": "hostname",
+      "text": "Guardar el nombre de host del sensor y resolver su AAAA en cada uso.",
+      "explanation": "Resolvería la nueva dirección, pero no el nuevo puerto."
+    },
+    {
+      "id": "uuid",
+      "text": "Guardar el UUID del sensor, que no cambia con la dirección.",
+      "explanation": "El identificador persistente reconoce al dispositivo, pero no indica por sí solo cómo acceder a él."
+    },
+    {
+      "id": "mac-ndp",
+      "text": "Guardar la MAC del sensor y obtener su IPv6 con NDP.",
+      "explanation": "NDP obtiene la MAC a partir de la IPv6 de un vecino del enlace, no al revés, y no da el puerto."
+    }
+  ],
+  "answer": "instancia-srv"
+}

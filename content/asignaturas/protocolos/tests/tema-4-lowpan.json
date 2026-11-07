@@ -4,103 +4,217 @@
   "subjectId": "protocolos",
   "slug": "tema-4-lowpan",
   "title": "Test · Redes LoWPAN",
-  "description": "56 preguntas sobre tecnologías, compresión, fragmentación, reenvío, NDP optimizado, Thread y RPL.",
-  "scope": "Tema 4 completo (edición del 22/10, 89 páginas), incluidas las partes posteriores a la página 37 que no entraban en el primer parcial. Las preguntas lowpan-35 y lowpan-56 son complementarias (RFC 6775 y 6206). Para la segunda parte completa, usa el test «Tema 4 desde la página 38».",
+  "description": "124 preguntas sobre todo el tema 4: tecnologías LoWPAN, cabecera IEEE 802.15.4, compresión IPHC/NHC, fragmentación, mesh-under y route-over, 6LFF/VRB, 6Lo, NDP optimizado, Thread y RPL en Wi-SUN FAN.",
+  "scope": "Tema 4 completo: Redes LoWPAN (material protocolos.materiales.tema-4-lowpan-2026-10-22, edición del 22/10, páginas 1-89; 89 páginas). Solo preguntas apoyadas en el PDF: las complementarias basadas únicamente en RFC quedan fuera.",
   "tagIds": [
-    "protocolos.tags.lowpan"
+    "protocolos.tags.lowpan",
+    "protocolos.tags.examen-final"
   ],
   "order": 180,
+  "aliases": [
+    "/asignaturas/protocolos/tests/tema-4-segunda-parte/"
+  ],
   "groups": [
     {
-      "id": "tecnologias",
-      "title": "Tecnologías",
+      "id": "introduccion-y-tecnologias",
+      "title": "Introducción: taxonomía y tecnologías (p. 3–10)",
       "questionIds": [
-        "protocolos.preguntas.lowpan-1",
-        "protocolos.preguntas.lowpan-2",
-        "protocolos.preguntas.lowpan-3",
+        "protocolos.preguntas.parcial-76",
+        "protocolos.preguntas.lowpan-107",
+        "protocolos.preguntas.parcial-79",
+        "protocolos.preguntas.parcial-77",
         "protocolos.preguntas.lowpan-4",
-        "protocolos.preguntas.lowpan-5"
+        "protocolos.preguntas.parcial-78",
+        "protocolos.preguntas.lowpan-5",
+        "protocolos.preguntas.lowpan-108"
       ]
     },
     {
-      "id": "compresion-y-fragmentacion",
-      "title": "Compresión y fragmentación",
+      "id": "6lowpan-trama-y-mtu",
+      "title": "6LoWPAN: objetivos, cabecera MAC y MTU (p. 12–15)",
       "questionIds": [
-        "protocolos.preguntas.lowpan-6",
-        "protocolos.preguntas.lowpan-7",
-        "protocolos.preguntas.lowpan-8",
-        "protocolos.preguntas.lowpan-9",
-        "protocolos.preguntas.lowpan-10",
+        "protocolos.preguntas.parcial-80",
+        "protocolos.preguntas.lowpan-125",
+        "protocolos.preguntas.lowpan-109",
+        "protocolos.preguntas.parcial-81",
+        "protocolos.preguntas.moovi40-22"
+      ]
+    },
+    {
+      "id": "pila-de-cabeceras",
+      "title": "Pila de cabeceras y dispatch (p. 16–17)",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-2",
+        "protocolos.preguntas.moovi-9",
+        "protocolos.preguntas.moovi40-21",
+        "protocolos.preguntas.lowpan-110"
+      ]
+    },
+    {
+      "id": "compresion-iphc-y-nhc",
+      "title": "Compresión LOWPAN_IPHC y LOWPAN_NHC (p. 18–27)",
+      "questionIds": [
+        "protocolos.preguntas.parcial-82",
         "protocolos.preguntas.lowpan-11",
-        "protocolos.preguntas.lowpan-12",
-        "protocolos.preguntas.lowpan-13",
-        "protocolos.preguntas.lowpan-14",
-        "protocolos.preguntas.lowpan-15",
-        "protocolos.preguntas.lowpan-16",
-        "protocolos.preguntas.lowpan-17",
-        "protocolos.preguntas.lowpan-18",
-        "protocolos.preguntas.lowpan-19",
-        "protocolos.preguntas.lowpan-20",
-        "protocolos.preguntas.lowpan-21"
+        "protocolos.preguntas.moovi40-26",
+        "protocolos.preguntas.parcial-86",
+        "protocolos.preguntas.parcial-87",
+        "protocolos.preguntas.examen-parcial-19",
+        "protocolos.preguntas.parcial-88",
+        "protocolos.preguntas.moovi40-24",
+        "protocolos.preguntas.moovi40-23",
+        "protocolos.preguntas.moovi40-25",
+        "protocolos.preguntas.lowpan-111",
+        "protocolos.preguntas.lowpan-112",
+        "protocolos.preguntas.examen-parcial-17",
+        "protocolos.preguntas.moovi40-27",
+        "protocolos.preguntas.parcial-91"
       ]
     },
     {
-      "id": "reenvio",
-      "title": "Reenvío",
+      "id": "fragmentacion",
+      "title": "Fragmentación y reensamblado (p. 28–29)",
       "questionIds": [
-        "protocolos.preguntas.lowpan-22",
-        "protocolos.preguntas.lowpan-23",
-        "protocolos.preguntas.lowpan-24",
-        "protocolos.preguntas.lowpan-25",
-        "protocolos.preguntas.lowpan-26",
+        "protocolos.preguntas.parcial-92",
+        "protocolos.preguntas.parcial-93",
+        "protocolos.preguntas.lowpan-113",
+        "protocolos.preguntas.moovi40-29",
+        "protocolos.preguntas.moovi-11",
+        "protocolos.preguntas.moovi40-28"
+      ]
+    },
+    {
+      "id": "mesh-under-y-route-over",
+      "title": "Mesh-under y route-over (p. 30–37)",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-11",
+        "protocolos.preguntas.examen-parcial-16",
+        "protocolos.preguntas.lowpan-62",
+        "protocolos.preguntas.parcial-98",
+        "protocolos.preguntas.parcial-97",
+        "protocolos.preguntas.examen-parcial-3",
+        "protocolos.preguntas.moovi40-30",
+        "protocolos.preguntas.moovi-10",
+        "protocolos.preguntas.parcial-100"
+      ]
+    },
+    {
+      "id": "6lff-y-vrb",
+      "title": "Reenvío de fragmentos 6LFF, VRB y resumen de modos (p. 38–43)",
+      "questionIds": [
         "protocolos.preguntas.lowpan-27",
-        "protocolos.preguntas.lowpan-28",
-        "protocolos.preguntas.lowpan-29"
+        "protocolos.preguntas.lowpan-60",
+        "protocolos.preguntas.lowpan-57",
+        "protocolos.preguntas.lowpan-114",
+        "protocolos.preguntas.lowpan-58",
+        "protocolos.preguntas.lowpan-59",
+        "protocolos.preguntas.lowpan-61"
+      ]
+    },
+    {
+      "id": "6lo-y-ble",
+      "title": "6Lo e IPv6 sobre BLE (p. 45–47)",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-63",
+        "protocolos.preguntas.lowpan-29",
+        "protocolos.preguntas.lowpan-115"
       ]
     },
     {
       "id": "ndp-optimizado",
-      "title": "NDP optimizado",
+      "title": "NDP para 6LoWPAN (p. 49–56)",
       "questionIds": [
+        "protocolos.preguntas.lowpan-65",
         "protocolos.preguntas.lowpan-30",
+        "protocolos.preguntas.lowpan-66",
         "protocolos.preguntas.lowpan-31",
         "protocolos.preguntas.lowpan-32",
+        "protocolos.preguntas.lowpan-67",
+        "protocolos.preguntas.lowpan-68",
         "protocolos.preguntas.lowpan-33",
-        "protocolos.preguntas.lowpan-34",
-        "protocolos.preguntas.lowpan-35",
+        "protocolos.preguntas.lowpan-70",
+        "protocolos.preguntas.lowpan-69",
         "protocolos.preguntas.lowpan-36",
-        "protocolos.preguntas.lowpan-37"
+        "protocolos.preguntas.lowpan-116",
+        "protocolos.preguntas.lowpan-71",
+        "protocolos.preguntas.lowpan-72",
+        "protocolos.preguntas.lowpan-73",
+        "protocolos.preguntas.lowpan-74",
+        "protocolos.preguntas.lowpan-37",
+        "protocolos.preguntas.lowpan-117"
       ]
     },
     {
       "id": "thread",
-      "title": "Thread",
+      "title": "Thread: organización, direcciones, MLE y reenvío (p. 58–72)",
       "questionIds": [
         "protocolos.preguntas.lowpan-38",
-        "protocolos.preguntas.lowpan-39",
+        "protocolos.preguntas.lowpan-75",
+        "protocolos.preguntas.lowpan-76",
         "protocolos.preguntas.lowpan-40",
-        "protocolos.preguntas.lowpan-41",
-        "protocolos.preguntas.lowpan-42",
+        "protocolos.preguntas.lowpan-77",
+        "protocolos.preguntas.lowpan-78",
         "protocolos.preguntas.lowpan-43",
+        "protocolos.preguntas.lowpan-79",
+        "protocolos.preguntas.lowpan-80",
         "protocolos.preguntas.lowpan-44",
-        "protocolos.preguntas.lowpan-45"
+        "protocolos.preguntas.lowpan-81",
+        "protocolos.preguntas.lowpan-84",
+        "protocolos.preguntas.lowpan-85",
+        "protocolos.preguntas.lowpan-86",
+        "protocolos.preguntas.lowpan-45",
+        "protocolos.preguntas.lowpan-88",
+        "protocolos.preguntas.lowpan-118",
+        "protocolos.preguntas.lowpan-123"
       ]
     },
     {
-      "id": "wi-sun-y-rpl",
-      "title": "Wi-SUN y RPL",
+      "id": "rpl-dodag-y-rank",
+      "title": "RPL: DODAG, Rank y mensajes de control (p. 74–79)",
       "questionIds": [
-        "protocolos.preguntas.lowpan-46",
+        "protocolos.preguntas.lowpan-89",
         "protocolos.preguntas.lowpan-47",
+        "protocolos.preguntas.lowpan-90",
+        "protocolos.preguntas.lowpan-91",
+        "protocolos.preguntas.lowpan-92",
         "protocolos.preguntas.lowpan-48",
         "protocolos.preguntas.lowpan-49",
         "protocolos.preguntas.lowpan-50",
+        "protocolos.preguntas.lowpan-119",
+        "protocolos.preguntas.lowpan-120",
         "protocolos.preguntas.lowpan-51",
-        "protocolos.preguntas.lowpan-52",
+        "protocolos.preguntas.lowpan-93",
+        "protocolos.preguntas.lowpan-52"
+      ]
+    },
+    {
+      "id": "rpl-rutas-y-cabeceras",
+      "title": "RPL: rutas descendentes, reenvío y cabeceras (p. 80–86)",
+      "questionIds": [
         "protocolos.preguntas.lowpan-53",
-        "protocolos.preguntas.lowpan-54",
+        "protocolos.preguntas.lowpan-94",
+        "protocolos.preguntas.lowpan-95",
+        "protocolos.preguntas.lowpan-96",
+        "protocolos.preguntas.lowpan-121",
+        "protocolos.preguntas.lowpan-97",
+        "protocolos.preguntas.lowpan-124",
         "protocolos.preguntas.lowpan-55",
-        "protocolos.preguntas.lowpan-56"
+        "protocolos.preguntas.lowpan-98",
+        "protocolos.preguntas.lowpan-122",
+        "protocolos.preguntas.lowpan-99",
+        "protocolos.preguntas.lowpan-100",
+        "protocolos.preguntas.lowpan-101",
+        "protocolos.preguntas.lowpan-102",
+        "protocolos.preguntas.lowpan-103"
+      ]
+    },
+    {
+      "id": "wi-sun-fan",
+      "title": "Wi-SUN FAN y comparación con Thread (p. 87–89)",
+      "questionIds": [
+        "protocolos.preguntas.lowpan-46",
+        "protocolos.preguntas.lowpan-105",
+        "protocolos.preguntas.lowpan-106"
       ]
     }
   ]

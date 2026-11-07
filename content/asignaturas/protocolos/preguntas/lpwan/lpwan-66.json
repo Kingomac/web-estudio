@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-66",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En la tabla de Data Rates de EU868, ¿qué distingue a DR6 de DR5?",
+  "explanation": "Ambos usan SF7, pero DR5 trabaja con 125 kHz (~5,47 kbps) y DR6 con 250 kHz (~11 kbps).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "mismo-sf7-pero-dr6-usa-250-khz-y-alcanza",
+      "text": "Mismo SF7, pero DR6 usa 250 kHz y alcanza ~11 kbps.",
+      "explanation": "P. 28: el DR depende del SF y del ancho de banda."
+    },
+    {
+      "id": "dr6-usa-sf6-con-125-khz",
+      "text": "DR6 usa SF6 con 125 kHz.",
+      "explanation": "La tabla no tiene SF6; DR6 conserva SF7."
+    },
+    {
+      "id": "dr6-usa-modulacion-fsk-a-50-kbps",
+      "text": "DR6 usa modulación FSK a 50 kbps.",
+      "explanation": "Esa es DR7."
+    },
+    {
+      "id": "dr6-usa-sf8-con-125-khz",
+      "text": "DR6 usa SF8 con 125 kHz.",
+      "explanation": "SF8 con 125 kHz es DR4."
+    }
+  ],
+  "answer": "mismo-sf7-pero-dr6-usa-250-khz-y-alcanza"
+}

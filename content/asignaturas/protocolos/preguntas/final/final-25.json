@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones sobre las versiones de HTTP es correcta?",
+  "explanation": "HTTP/2 usa framing binario sobre TCP y permite al servidor enviar las respuestas en cualquier orden, lo que evita el bloqueo HOL. HTTP/1.1 aporta el pipelining (peticiones sin esperar respuesta) y HTTP/3 cambia TCP por QUIC/UDP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14,
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "transporte-y-versiones"
+    }
+  ],
+  "options": [
+    {
+      "id": "http2-tcp-cualquier-orden",
+      "text": "HTTP/2 sigue sobre TCP, pero el servidor puede enviar las respuestas en cualquier orden y así evita el bloqueo HOL.",
+      "explanation": "Es lo que dice el tema de HTTP/2."
+    },
+    {
+      "id": "pipelining-evita-hol",
+      "text": "El pipelining de HTTP/1.1 evita el bloqueo HOL porque el cliente no espera a cada respuesta.",
+      "explanation": "El pipelining evita esperar para enviar peticiones, pero las respuestas siguen en orden; evitar el HOL es lo que aporta HTTP/2."
+    },
+    {
+      "id": "http3-primer-binario",
+      "text": "HTTP/3 es la primera versión con framing binario.",
+      "explanation": "HTTP/2 ya usa framing binario."
+    },
+    {
+      "id": "http2-quic",
+      "text": "HTTP/2 sustituye TCP por QUIC/UDP.",
+      "explanation": "Eso es HTTP/3."
+    }
+  ],
+  "answer": "http2-tcp-cualquier-orden"
+}

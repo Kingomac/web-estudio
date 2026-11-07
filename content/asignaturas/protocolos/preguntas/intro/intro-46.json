@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-46",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Qué cobertura orientativa da el tema para una LPWAN desplegada en entorno rural?",
+  "explanation": "El tema indica una cobertura de hasta ~5 km en entorno urbano y ~15 km en rural para las LPWAN; las LoWPAN cubren 10–100 m.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "hasta-15-km",
+      "text": "Hasta unos 15 km.",
+      "explanation": "Correcta: es la cifra del tema para entorno rural."
+    },
+    {
+      "id": "hasta-5-km",
+      "text": "Hasta unos 5 km.",
+      "explanation": "Es la cifra del tema para entorno urbano, no rural."
+    },
+    {
+      "id": "10-100-m",
+      "text": "Entre 10 y 100 m.",
+      "explanation": "Es la cobertura de una LoWPAN."
+    },
+    {
+      "id": "hasta-50-km",
+      "text": "Hasta unos 50 km.",
+      "explanation": "Confunde la cobertura con la tasa máxima de 50 kbps; el tema da ~15 km en rural."
+    }
+  ],
+  "answer": "hasta-15-km"
+}

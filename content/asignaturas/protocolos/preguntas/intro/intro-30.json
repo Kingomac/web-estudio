@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-30",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un sensor modular debe conservar sus medidas durante días si se queda sin cobertura. ¿Qué módulo de los descritos en el tema hay que añadir?",
+  "explanation": "El tema incluye un módulo de almacenamiento (SD, flash, etc.) entre los bloques combinables de un dispositivo modular.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "dispositivos-modulares"
+    }
+  ],
+  "options": [
+    {
+      "id": "almacenamiento-sd-flash",
+      "text": "Un módulo de almacenamiento SD o flash.",
+      "explanation": "Correcta: es el bloque destinado a guardar datos."
+    },
+    {
+      "id": "modulo-rfid-nfc",
+      "text": "Un módulo de comunicación RFID/NFC.",
+      "explanation": "Es otra tecnología de comunicación; no guarda las medidas mientras falta cobertura."
+    },
+    {
+      "id": "modulo-de-energia",
+      "text": "Un módulo de energía con batería y cargador.",
+      "explanation": "Mantiene el nodo encendido, pero no almacena datos."
+    },
+    {
+      "id": "rele-actuador",
+      "text": "Un relé del bloque de actuadores.",
+      "explanation": "Un relé enciende o apaga dispositivos; no almacena información."
+    }
+  ],
+  "answer": "almacenamiento-sd-flash"
+}

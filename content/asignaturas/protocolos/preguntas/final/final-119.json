@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-119",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En Wi-SUN FAN, el router N oye directamente a la raíz R (Rank 256) con ETX 4 y al router A (Rank 512) con ETX 1,5. Con MRHOF, ¿qué padre preferido elige y qué Rank calcula?",
+  "explanation": "Coste(N, R) = 256 + 128 · 4 = 768; Coste(N, A) = 512 + 128 · 1,5 = 704. Elige A, aunque la raíz sea vecina, y Rank = 512 + max(256, 192) = 768.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        77,
+        78
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mrhof-y-etx-calculo-del-material"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-768",
+      "text": "Padre A; Rank 768.",
+      "explanation": "El enlace malo con la raíz encarece esa opción; el incremento del Rank nunca baja de 256."
+    },
+    {
+      "id": "r-768",
+      "text": "Padre R; Rank 768, porque la raíz siempre es la mejor opción.",
+      "explanation": "Vía R el coste es 768, mayor que los 704 vía A."
+    },
+    {
+      "id": "a-704",
+      "text": "Padre A; Rank 704.",
+      "explanation": "704 es el coste vía A; el Rank suma max(256, 128 · ETX), y aquí gana 256."
+    },
+    {
+      "id": "r-512",
+      "text": "Padre R; Rank 512.",
+      "explanation": "Ignora el ETX 4 del enlace con la raíz: el Rank vía R sería 256 + 512 = 768 y su coste es mayor."
+    }
+  ],
+  "answer": "a-768"
+}

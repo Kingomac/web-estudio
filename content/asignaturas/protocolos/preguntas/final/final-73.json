@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.final-73",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB de un router contiene dos entradas `3001:db8:a::/48` (una vía R1 y otra vía R2) y `3001:db8:a:8000::/49 vía R3`. No hay ruta por defecto. ¿Qué ocurre con los paquetes dirigidos a 3001:db8:a:7fff::1 y a 3001:db8:b::1?",
+  "explanation": "El /49 fija el primer bit del cuarto grupo a 1 (8000–ffff); 7fff empieza por 0, así que no coincide. Quedan las dos /48 de igual longitud, entre las que se reparte el tráfico (multipath). 3001:db8:b::1 no coincide con ninguna ruta y no hay ruta por defecto: el router lo descarta y envía al origen un ICMPv6 Destination Unreachable.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "longest-prefix-match-lpm"
+    }
+  ],
+  "options": [
+    {
+      "id": "multipath-icmp",
+      "text": "El primero se reparte entre R1 y R2; el segundo se descarta y se envía Destination Unreachable al origen.",
+      "explanation": "Combina multipath, el bit del /49 y la falta de ruta."
+    },
+    {
+      "id": "r3-icmp",
+      "text": "El primero va por R3; el segundo se descarta y se envía Destination Unreachable al origen.",
+      "explanation": "7fff tiene el primer bit a 0: no está en 3001:db8:a:8000::/49."
+    },
+    {
+      "id": "r1-icmp",
+      "text": "El primero va solo por R1, la primera entrada; el segundo se descarta y se envía Destination Unreachable al origen.",
+      "explanation": "Con dos coincidencias de igual longitud, el tráfico se reparte."
+    },
+    {
+      "id": "multipath-cercano",
+      "text": "El primero se reparte entre R1 y R2; el segundo va por R1, la ruta numéricamente más próxima.",
+      "explanation": "Sin coincidencia de prefijo ni ruta por defecto no hay reenvío posible."
+    },
+    {
+      "id": "multipath-silencio",
+      "text": "El primero se reparte entre R1 y R2; el segundo se descarta sin notificar al origen.",
+      "explanation": "El tema indica que el router envía un ICMPv6 Destination Unreachable al origen."
+    }
+  ],
+  "answer": "multipath-icmp"
+}

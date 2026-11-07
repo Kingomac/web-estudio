@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-90",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "El router Thread A tiene tres vecinos. El enlace A–B tiene calidad buena; el A–C, razonable, y el A–D, un RSSI casi nulo. Para llegar al router F, B anuncia coste 4, C anuncia coste 2 y D anuncia coste 1. ¿Qué ruta elige A?",
+  "explanation": "Costes de enlace por RSSI: buena 1, razonable 2, casi nulo ∞. Vía B: 1 + 4 = 5; vía C: 2 + 2 = 4; vía D: ∞. A elige C con coste 4.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        66,
+        67
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "calculo-y-actualizacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "c-4",
+      "text": "Siguiente salto C, coste 4.",
+      "explanation": "Suma el coste del enlace por RSSI al anunciado y elige el menor."
+    },
+    {
+      "id": "b-5",
+      "text": "Siguiente salto B, coste 5.",
+      "explanation": "Elige el enlace de mejor calidad sin sumar el coste anunciado por el vecino."
+    },
+    {
+      "id": "c-3",
+      "text": "Siguiente salto C, coste 3.",
+      "explanation": "Asigna coste 1 a la calidad razonable; ese valor es de la calidad buena."
+    },
+    {
+      "id": "d-2",
+      "text": "Siguiente salto D, coste 2.",
+      "explanation": "Un RSSI casi nulo da coste ∞: D no sirve como siguiente salto."
+    }
+  ],
+  "answer": "c-4"
+}

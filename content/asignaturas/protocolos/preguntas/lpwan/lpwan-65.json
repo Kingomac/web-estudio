@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-65",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En la red Helium, ¿cómo se paga el uso de la red y qué elemento encamina los mensajes hacia el servidor LoRaWAN correspondiente?",
+  "explanation": "El uso se paga con Data Credits, directamente o a través de un proveedor, y el Helium Packet Router encamina los mensajes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "con-data-credits-los-encamina-el-helium",
+      "text": "Con Data Credits; los encamina el Helium Packet Router.",
+      "explanation": "P. 26."
+    },
+    {
+      "id": "con-una-suscripcion-por-sim-los-encamina",
+      "text": "Con una suscripción por SIM; los encamina Packet Broker.",
+      "explanation": "Las SIM son de las celulares y Packet Broker es el mecanismo de TTN y TTS."
+    },
+    {
+      "id": "es-gratuito-con-uso-justo-de-30-s",
+      "text": "Es gratuito con uso justo de 30 s diarios; los encamina el Gateway Server.",
+      "explanation": "Esa política es de TTN Sandbox."
+    },
+    {
+      "id": "con-una-licencia-enterprise-los-encamina",
+      "text": "Con una licencia Enterprise; los encamina ChirpStack.",
+      "explanation": "La licencia Enterprise es una modalidad de TTS."
+    }
+  ],
+  "answer": "con-data-credits-los-encamina-el-helium"
+}

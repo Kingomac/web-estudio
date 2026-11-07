@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-42",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "12 sensores envían 5 mensajes MQTT-SN cada uno al gateway. ¿Cuántos mensajes MQTT envía al broker un gateway transparente?",
+  "explanation": "En un gateway transparente, cada mensaje MQTT-SN genera un mensaje MQTT: 12 × 5 = 60. Un gateway agregador, en cambio, combinaría varios mensajes MQTT-SN en un único mensaje MQTT y enviaría menos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mqtt-sn"
+    }
+  ],
+  "options": [
+    {
+      "id": "sesenta",
+      "text": "60.",
+      "explanation": "Uno por cada mensaje MQTT-SN: 12 × 5."
+    },
+    {
+      "id": "doce",
+      "text": "12.",
+      "explanation": "Supone un mensaje por sensor, agregando sus 5 mensajes; eso sería un agregador."
+    },
+    {
+      "id": "uno",
+      "text": "1.",
+      "explanation": "Agregaría todo en un solo mensaje, que es el comportamiento extremo de un agregador, no de uno transparente."
+    },
+    {
+      "id": "cinco",
+      "text": "5.",
+      "explanation": "Cuenta los mensajes de un solo sensor."
+    }
+  ],
+  "answer": "sesenta"
+}

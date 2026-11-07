@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-74",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router de borde tiene `ipv6 route 2001:db8:40::/48 2001:db8:f::2`, la misma ruta para 2001:db8:41::/48 y 2001:db8:42::/48, `ipv6 route ::/0 s0/0` y `ipv6 route 2001:db8:40::/46 Null0`. ¿Qué ocurre con los paquetes dirigidos a 2001:db8:41:5::1 y a 2001:db8:43::1?",
+  "explanation": "El /46 abarca 2001:db8:40:: a 2001:db8:43:ffff:… (tercer grupo de 0x40 a 0x43). Para 2001:db8:41:5::1 coinciden el /48, el /46 y ::/0: gana el /48, vía 2001:db8:f::2. Para 2001:db8:43::1 no hay /48; coinciden el /46 hacia Null0 y ::/0, y gana el /46: el paquete se descarta en lugar de salir por la ruta por defecto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22,
+        24,
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "El primero va a 2001:db8:f::2; el segundo se descarta en Null0.",
+      "explanation": "LPM elige el /48 en el primer caso y la ruta sumidero en el segundo."
+    },
+    {
+      "id": "ambos-null",
+      "text": "Los dos se descartan en Null0, porque el /46 los cubre a ambos.",
+      "explanation": "Para el primero existe un /48 coincidente, más largo que el /46."
+    },
+    {
+      "id": "segundo-defecto",
+      "text": "El primero va a 2001:db8:f::2; el segundo sale por s0/0, porque Null0 solo se usa sin ruta por defecto.",
+      "explanation": "El /46 hacia Null0 es más específico que ::/0 y gana."
+    },
+    {
+      "id": "fuera-46",
+      "text": "El primero va a 2001:db8:f::2; el segundo sale por s0/0, porque 0x43 queda fuera del /46.",
+      "explanation": "Un /46 libera 2 bits del tercer grupo: incluye de 0x40 a 0x43."
+    }
+  ],
+  "answer": "correcta"
+}

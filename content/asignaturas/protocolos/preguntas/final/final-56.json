@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-56",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo de asignación del tema, APNIC tiene 2400::/12, el ISP 2401:1111::/32 y una red cliente 2401:1111:abcd::/48. Un host de esa red usa 2401:1111:abcd:12:21a:2bff:fe3c:4d5e. ¿Qué descripción de esta dirección es correcta?",
+  "explanation": "El LIR asigna al cliente el prefijo de red /48 (2401:1111:abcd::/48). Los 16 bits siguientes son el ID de subred (0x0012), que da la subred 2401:1111:abcd:12::/64. Los 64 bits finales son el IID: 021a:2bff:fe3c:4d5e contiene ff:fe en medio y el primer octeto 02, que es el 00 de la MAC con el bit U/L invertido. La MAC es 00:1a:2b:3c:4d:5e.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        10,
+        11,
+        12,
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "globales-link-local-y-ula"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "Red cliente 2401:1111:abcd::/48, ID de subred 0x0012 e IID EUI-64 modificado de la MAC 00:1a:2b:3c:4d:5e.",
+      "explanation": "Separa 48 + 16 + 64 bits y deshace la inversión del bit U/L."
+    },
+    {
+      "id": "mac-02",
+      "text": "Red cliente 2401:1111:abcd::/48, ID de subred 0x0012 e IID EUI-64 modificado de la MAC 02:1a:2b:3c:4d:5e.",
+      "explanation": "El 02 del IID ya incluye la inversión del bit U/L: la MAC original empieza por 00."
+    },
+    {
+      "id": "subred-abcd",
+      "text": "Red cliente 2401:1111::/32, ID de subred 0xabcd e IID EUI-64 modificado de la MAC 00:1a:2b:3c:4d:5e.",
+      "explanation": "El /32 es el prefijo del LIR; el cliente recibe un /48 y su ID de subred es el cuarto grupo, 0x0012."
+    },
+    {
+      "id": "subred-12-64-bits",
+      "text": "Red cliente 2401:1111:abcd::/48, ID de subred 0x0012:021a e IID 2bff:fe3c:4d5e.",
+      "explanation": "El ID de subred tiene 16 bits y el IID 64; aquí el IID se quedaría en 48 bits."
+    }
+  ],
+  "answer": "correcta"
+}

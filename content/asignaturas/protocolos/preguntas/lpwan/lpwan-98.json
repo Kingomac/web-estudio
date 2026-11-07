@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-98",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En TTS/TTN, ¿cómo obtiene el NS el identificador de la aplicación a la que debe entregar un uplink?",
+  "explanation": "El identificador de la aplicación debe ser único en cada red LoRaWAN; el NS lo obtiene a partir del DevAddr del nodo y se lo envía al AS.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "network-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-partir-del-devaddr-del-nodo",
+      "text": "A partir del DevAddr del nodo.",
+      "explanation": "P. 46."
+    },
+    {
+      "id": "a-partir-del-fport",
+      "text": "A partir del FPort.",
+      "explanation": "FPort indica cómo interpretar el contenido dentro de un dispositivo."
+    },
+    {
+      "id": "del-decoded-payload",
+      "text": "Del decoded_payload.",
+      "explanation": "Lo genera el AS, después de recibir el mensaje."
+    },
+    {
+      "id": "del-gateway-eui-del-gateway-receptor",
+      "text": "Del Gateway EUI del gateway receptor.",
+      "explanation": "Identifica al gateway, no a la aplicación."
+    }
+  ],
+  "answer": "a-partir-del-devaddr-del-nodo"
+}

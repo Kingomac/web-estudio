@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ipv6-47",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un LIR (ISP) ha recibido de su RIR el prefijo 2001:db8::/32. Según el reparto actual descrito en el tema, ¿qué prefijo es coherente para asignar a una red cliente?",
+  "explanation": "Los RIR asignan actualmente prefijos /32 a los LIR, y estos asignan a sus clientes prefijos más largos contenidos en los suyos, actualmente /48. Con ese /48 (prefijo de red), el cliente numera sus subredes con los 16 bits de ID de subred hasta llegar a /64.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "globales-link-local-y-ula"
+    }
+  ],
+  "options": [
+    {
+      "id": "cliente-48",
+      "text": "2001:db8:abcd::/48",
+      "explanation": "Es un /48 contenido en el /32 del LIR, como indica el tema para las redes cliente."
+    },
+    {
+      "id": "subred-64",
+      "text": "2001:db8:abcd:1::/64",
+      "explanation": "Un /64 es el prefijo de una sola subred; el tema indica que al cliente se le asigna un /48 para que numere sus subredes."
+    },
+    {
+      "id": "mas-corto",
+      "text": "2001::/16",
+      "explanation": "Es más corto que el /32 del LIR y no está contenido en él: el LIR no puede asignarlo."
+    },
+    {
+      "id": "fuera-del-bloque",
+      "text": "2001:db9:abcd::/48",
+      "explanation": "Tiene longitud /48, pero db9 no pertenece a 2001:db8::/32."
+    }
+  ],
+  "answer": "cliente-48"
+}

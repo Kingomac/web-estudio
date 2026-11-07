@@ -1,0 +1,56 @@
+{
+  "id": "protocolos.preguntas.final-115",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un datagrama sale de S con Hop Limit 64 y recorre tres saltos radio, S → X → Y → D. ¿Con qué Hop Limit llega a D en mesh-under y en route-over?",
+  "explanation": "En mesh-under los tres saltos radio forman un único enlace IPv6: X e Y reenvían en 6LoWPAN sin actuar como routers y el Hop Limit no cambia (lo que se decrementa es Hops Left, en la cabecera Mesh). En route-over X e Y son routers IPv6 y cada uno decrementa el Hop Limit: llega con 62.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        32,
+        35,
+        36
+      ]
+    },
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mesh-under-frente-a-route-over"
+    }
+  ],
+  "options": [
+    {
+      "id": "64-62",
+      "text": "Mesh-under: 64; route-over: 62.",
+      "explanation": "Solo los routers IPv6 decrementan el Hop Limit."
+    },
+    {
+      "id": "62-62",
+      "text": "Mesh-under: 62; route-over: 62.",
+      "explanation": "En mesh-under los intermedios no son routers IPv6; decrementan Hops Left, no el Hop Limit."
+    },
+    {
+      "id": "64-64",
+      "text": "Mesh-under: 64; route-over: 64.",
+      "explanation": "En route-over cada 6LR intermedio es un salto IP."
+    },
+    {
+      "id": "64-61",
+      "text": "Mesh-under: 64; route-over: 61.",
+      "explanation": "Cuenta también a S; solo decrementan los dos routers intermedios."
+    }
+  ],
+  "answer": "64-62"
+}

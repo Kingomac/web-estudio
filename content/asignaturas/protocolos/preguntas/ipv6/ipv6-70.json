@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-70",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host recibe un RA con M = 0 y O = 1. ¿Qué debe hacer según el tema?",
+  "explanation": "M = 0: la dirección se construye por SLAAC con el prefijo del RA y el IID. O = 1: la otra información de configuración, como los servidores DNS, debe obtenerse mediante DHCPv6. En ambos casos el gateway es el origen del RA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "flags-que-no-debes-confundir"
+    }
+  ],
+  "options": [
+    {
+      "id": "slaac-mas-dhcpv6-otros",
+      "text": "Construir su dirección con SLAAC y obtener otra información, como los DNS, mediante DHCPv6.",
+      "explanation": "Combina correctamente el significado de cada flag."
+    },
+    {
+      "id": "todo-dhcpv6",
+      "text": "Obtener mediante DHCPv6 tanto la dirección como los servidores DNS.",
+      "explanation": "Eso correspondería a M = 1 y O = 1."
+    },
+    {
+      "id": "todo-ra",
+      "text": "Tomar del RA el prefijo y también los servidores DNS, sin usar DHCPv6.",
+      "explanation": "Eso corresponde a O = 0."
+    },
+    {
+      "id": "direccion-dhcpv6-dns-ra",
+      "text": "Obtener su dirección por DHCPv6 y los servidores DNS del RA.",
+      "explanation": "Invierte el significado de los flags: es el caso M = 1 y O = 0."
+    }
+  ],
+  "answer": "slaac-mas-dhcpv6-otros"
+}

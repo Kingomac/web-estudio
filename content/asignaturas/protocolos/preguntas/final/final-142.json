@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-142",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un medidor de vibraciones fijo, en una nave industrial con buena cobertura, envía cada hora un bloque de datos de varios cientos de kilobytes y la aplicación necesita poca latencia en las órdenes. ¿Qué tecnología celular encaja mejor?",
+  "explanation": "Aunque el equipo es estático, su perfil de tráfico (mayores volúmenes de datos) y la necesidad de baja latencia corresponden a LTE-M. NB-IoT está pensada para mensajes pequeños y poco frecuentes, con latencia mayor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        7,
+        14,
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-frente-a-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "lte-m-por-su-mayor-tasa-hasta-1-mbit-s-y",
+      "text": "LTE-M, por su mayor tasa (hasta ~1 Mbit/s) y su menor latencia.",
+      "explanation": "Filas «Ancho de banda», «Latencia» y «Perfil de tráfico» de la p. 14."
+    },
+    {
+      "id": "nb-iot-porque-el-medidor-es-estatico",
+      "text": "NB-IoT, porque el medidor es estático.",
+      "explanation": "Ser estático no basta: el volumen de datos y la latencia apuntan a LTE-M."
+    },
+    {
+      "id": "nb-iot-por-su-latencia-casi-en-tiempo",
+      "text": "NB-IoT, por su latencia casi en tiempo real.",
+      "explanation": "La latencia baja es de LTE-M; NB-IoT tolera esperas de segundos."
+    },
+    {
+      "id": "lte-m-porque-es-la-unica-que-penetra-en",
+      "text": "LTE-M, porque es la única que penetra en interiores.",
+      "explanation": "La penetración alta en interiores es de NB-IoT; LTE-M la tiene moderada."
+    }
+  ],
+  "answer": "lte-m-por-su-mayor-tasa-hasta-1-mbit-s-y"
+}

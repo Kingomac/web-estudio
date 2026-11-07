@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una planta conecta sus PLC a un servidor OPC UA en la red local y quiere la máxima eficiencia. Además, un panel web debe recibir esos datos integrándose con la plataforma web corporativa. ¿Qué combinación es la que describe el tema?",
+  "explanation": "La codificación binaria es la eficiente y lo habitual es enviarla directamente sobre UA nativo (TCP 4840). Para integrarse con plataformas web, los datos binarios pueden ir sobre HTTPS/WebSockets. La XML es legible pero ineficiente, y SOAP/HTTP para datos binarios está obsoleto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31,
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "binario-ua-y-https-ws",
+      "text": "Binario sobre UA nativo en la planta y binario sobre HTTPS/WebSockets para el panel web.",
+      "explanation": "Eficiencia en la planta e integración web, como indica el tema."
+    },
+    {
+      "id": "xml-planta",
+      "text": "XML sobre SOAP/HTTPS en la planta y binario sobre HTTPS/WebSockets para el panel web.",
+      "explanation": "La codificación XML es ineficiente; no cumple el requisito de máxima eficiencia."
+    },
+    {
+      "id": "binario-soap",
+      "text": "Binario sobre SOAP/HTTP en la planta, el mecanismo habitual, y XML para el panel web.",
+      "explanation": "Binario sobre SOAP/HTTP es la opción obsoleta; lo habitual es UA nativo."
+    },
+    {
+      "id": "xml-ua-nativo",
+      "text": "Binario sobre UA nativo en la planta y XML sobre UA nativo para el panel web.",
+      "explanation": "En la pila del tema, XML va con SOAP sobre HTTP/HTTPS, y para la web se usa HTTPS/WebSockets."
+    }
+  ],
+  "answer": "binario-ua-y-https-ws"
+}

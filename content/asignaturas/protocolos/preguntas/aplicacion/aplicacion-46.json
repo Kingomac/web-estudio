@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-46",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un proxy guarda la última respuesta a `GET /sensor/7/temperatura` y se la entrega a otros clientes sin volver a consultar al sensor. ¿Qué principio REST se está aprovechando?",
+  "explanation": "REST contempla el uso de cachés: las respuestas pueden almacenarse en la caché de clientes o proxies, lo que reduce el consumo de recursos de red y la carga del servidor original.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        10,
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "cliente-servidor-y-rest"
+    }
+  ],
+  "options": [
+    {
+      "id": "uso-de-caches",
+      "text": "El uso de cachés.",
+      "explanation": "Guardar respuestas en un proxy para reutilizarlas es exactamente el uso de cachés que permite REST."
+    },
+    {
+      "id": "comunicacion-sin-estado",
+      "text": "La comunicación sin estado.",
+      "explanation": "Sin estado significa que cada petición lleva toda la información para procesarla; no trata de guardar respuestas."
+    },
+    {
+      "id": "codigo-bajo-demanda",
+      "text": "El código bajo demanda.",
+      "explanation": "El código bajo demanda consiste en que el servidor envíe scripts al cliente, no en almacenar respuestas."
+    },
+    {
+      "id": "separacion-cliente-servidor",
+      "text": "La separación cliente/servidor.",
+      "explanation": "Esta separación permite que cliente y servidor evolucionen por separado; no implica reutilizar respuestas."
+    }
+  ],
+  "answer": "uso-de-caches"
+}

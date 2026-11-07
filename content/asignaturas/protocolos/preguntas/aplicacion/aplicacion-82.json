@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-82",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación envía `GET` (T = NON) con Uri-Path `temperature` a `ff02::1`. Hay tres dispositivos y uno de ellos no tiene ese recurso. ¿Qué recibe la aplicación según el esquema del tema?",
+  "explanation": "En el esquema multicast cada dispositivo responde por separado con un mensaje NON: los que tienen el recurso envían 2.05 Content con su medida y el que no lo tiene envía 4.04 Not Found.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "multicast-y-observe"
+    }
+  ],
+  "options": [
+    {
+      "id": "dos-205-y-un-404",
+      "text": "Dos respuestas 2.05 Content con la medida y una 4.04 Not Found, todas NON y por separado.",
+      "explanation": "Es lo que muestra el esquema."
+    },
+    {
+      "id": "un-ack-agregado",
+      "text": "Un único ACK que agrega las tres respuestas.",
+      "explanation": "La petición es NON, así que no hay ACK, y cada dispositivo responde por su cuenta."
+    },
+    {
+      "id": "solo-dos",
+      "text": "Solo dos respuestas: el dispositivo sin el recurso no contesta.",
+      "explanation": "En el esquema, el dispositivo sin el recurso contesta con 4.04 Not Found."
+    },
+    {
+      "id": "tres-ack-piggybacked",
+      "text": "Tres ACK con la respuesta piggybacked.",
+      "explanation": "Piggybacked exige una petición CON; la petición multicast del esquema es NON."
+    }
+  ],
+  "answer": "dos-205-y-un-404"
+}

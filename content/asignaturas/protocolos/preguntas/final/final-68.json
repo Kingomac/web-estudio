@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-68",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una organización recibe 2001:db8:4c00::/48 y numera sus subredes /64 en orden desde la 0. ¿Cuál es el prefijo de la subred número 300 (en decimal)?",
+  "explanation": "Con un /48, el ID de subred son los 16 bits del cuarto grupo, que admiten 65 536 subredes. El número 300 en decimal es 0x012c en hexadecimal, así que la subred es 2001:db8:4c00:12c::/64.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        10,
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "globales-link-local-y-ula"
+    }
+  ],
+  "options": [
+    {
+      "id": "12c",
+      "text": "2001:db8:4c00:12c::/64",
+      "explanation": "Convierte 300 a hexadecimal (0x12c) y lo coloca en el ID de subred."
+    },
+    {
+      "id": "300",
+      "text": "2001:db8:4c00:300::/64",
+      "explanation": "Escribe el número decimal como si fuera hexadecimal: 0x300 es la subred 768."
+    },
+    {
+      "id": "c12",
+      "text": "2001:db8:4c00:c12::/64",
+      "explanation": "Invierte el orden de las cifras hexadecimales de 0x12c."
+    },
+    {
+      "id": "no-cabe",
+      "text": "No existe: un /48 solo permite 256 subredes /64.",
+      "explanation": "Entre /48 y /64 hay 16 bits: 65 536 subredes; 256 corresponderían a un /56."
+    }
+  ],
+  "answer": "12c"
+}

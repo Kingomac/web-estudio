@@ -4,75 +4,246 @@
   "subjectId": "protocolos",
   "slug": "tema-3-ip-en-iot",
   "title": "Test · IP en IoT",
-  "description": "40 preguntas sobre rutas, direcciones IPv6, configuración, NDP y descubrimiento.",
-  "scope": "Tema 3 completo (55 páginas).",
+  "description": "135 preguntas sobre arquitectura IP en IoT, direcciones IPv6, cabecera, EUI-64, multicast, rutas y agregación, ICMPv6, SLAAC, DHCPv6, NDP y descubrimiento de servicios y recursos.",
+  "scope": "Tema 3 completo: IP en IoT (material protocolos.materiales.tema-3-ip-en-iot, páginas 1-55; 55 páginas). Solo preguntas apoyadas en el PDF: las complementarias basadas únicamente en RFC quedan fuera.",
   "tagIds": [
-    "protocolos.tags.ipv6"
+    "protocolos.tags.ipv6",
+    "protocolos.tags.examen-final"
   ],
   "order": 170,
+  "aliases": [
+    "/asignaturas/protocolos/tests/ndp-predice-flujo/"
+  ],
   "groups": [
     {
-      "id": "arquitectura-y-rutas",
-      "title": "Arquitectura y rutas",
+      "id": "arquitectura",
+      "title": "Arquitectura IoT y ventajas de IP (pp. 2–4)",
       "questionIds": [
         "protocolos.preguntas.ipv6-1",
+        "protocolos.preguntas.ipv6-41",
+        "protocolos.preguntas.parcial-46",
+        "protocolos.preguntas.ipv6-42",
         "protocolos.preguntas.ipv6-2",
+        "protocolos.preguntas.ipv6-43"
+      ]
+    },
+    {
+      "id": "subredes-y-fib",
+      "title": "Subredes, bridges, routers y FIB (pp. 6–8)",
+      "questionIds": [
         "protocolos.preguntas.ipv6-3",
+        "protocolos.preguntas.parcial-47",
         "protocolos.preguntas.ipv6-4",
         "protocolos.preguntas.ipv6-5",
-        "protocolos.preguntas.ipv6-6",
-        "protocolos.preguntas.ipv6-7",
-        "protocolos.preguntas.ipv6-8",
-        "protocolos.preguntas.ipv6-9"
+        "protocolos.preguntas.ipv6-44"
       ]
     },
     {
       "id": "direcciones",
-      "title": "Direcciones",
+      "title": "Direcciones IPv6: notación, tipos y asignación (pp. 9–13)",
       "questionIds": [
         "protocolos.preguntas.ipv6-10",
         "protocolos.preguntas.ipv6-11",
+        "protocolos.preguntas.parcial-49",
+        "protocolos.preguntas.ipv6-45",
         "protocolos.preguntas.ipv6-12",
-        "protocolos.preguntas.ipv6-13",
+        "protocolos.preguntas.tipos-ipv6",
+        "protocolos.preguntas.parcial-50",
+        "protocolos.preguntas.ipv6-46",
+        "protocolos.preguntas.ipv6-47",
         "protocolos.preguntas.ipv6-14",
-        "protocolos.preguntas.ipv6-15",
-        "protocolos.preguntas.ipv6-16",
-        "protocolos.preguntas.ipv6-17",
-        "protocolos.preguntas.ipv6-18",
-        "protocolos.preguntas.ipv6-19",
-        "protocolos.preguntas.ipv6-20",
-        "protocolos.preguntas.ipv6-21",
-        "protocolos.preguntas.ipv6-22"
+        "protocolos.preguntas.parcial-51",
+        "protocolos.preguntas.moovi40-12",
+        "protocolos.preguntas.ipv6-15"
       ]
     },
     {
-      "id": "configuracion-y-ndp",
-      "title": "Configuración y NDP",
+      "id": "cabecera",
+      "title": "Cabecera IPv6 (p. 14)",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-16",
+        "protocolos.preguntas.ipv6-49",
+        "protocolos.preguntas.ipv6-17",
+        "protocolos.preguntas.parcial-52",
+        "protocolos.preguntas.ipv6-48",
+        "protocolos.preguntas.parcial-53"
+      ]
+    },
+    {
+      "id": "eui64-link-local-ula",
+      "title": "EUI-64, link-local y ULA (pp. 15–18)",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-18",
+        "protocolos.preguntas.parcial-54",
+        "protocolos.preguntas.moovi40-14",
+        "protocolos.preguntas.ipv6-50",
+        "protocolos.preguntas.ipv6-51",
+        "protocolos.preguntas.ipv6-52",
+        "protocolos.preguntas.ipv6-19",
+        "protocolos.preguntas.parcial-55",
+        "protocolos.preguntas.ipv6-20",
+        "protocolos.preguntas.parcial-56",
+        "protocolos.preguntas.ipv6-55"
+      ]
+    },
+    {
+      "id": "configuracion-cisco",
+      "title": "Configuración manual en Cisco IOS (p. 19)",
       "questionIds": [
         "protocolos.preguntas.ipv6-23",
-        "protocolos.preguntas.ipv6-24",
-        "protocolos.preguntas.ipv6-25",
-        "protocolos.preguntas.ipv6-26",
-        "protocolos.preguntas.ipv6-27",
-        "protocolos.preguntas.ipv6-28",
-        "protocolos.preguntas.ipv6-29",
-        "protocolos.preguntas.ipv6-30",
-        "protocolos.preguntas.ipv6-31",
-        "protocolos.preguntas.ipv6-32",
-        "protocolos.preguntas.ipv6-33"
+        "protocolos.preguntas.ipv6-53",
+        "protocolos.preguntas.ipv6-54"
       ]
     },
     {
-      "id": "descubrimiento",
-      "title": "Descubrimiento",
+      "id": "multicast",
+      "title": "Multicast, solicited-node y MAC multicast (pp. 20–21 y 37)",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-21",
+        "protocolos.preguntas.ipv6-56",
+        "protocolos.preguntas.ipv6-22",
+        "protocolos.preguntas.parcial-57",
+        "protocolos.preguntas.moovi-original-16",
+        "protocolos.preguntas.ipv6-29",
+        "protocolos.preguntas.moovi-1",
+        "protocolos.preguntas.parcial-58",
+        "protocolos.preguntas.ipv6-57",
+        "protocolos.preguntas.ipv6-58"
+      ]
+    },
+    {
+      "id": "lpm",
+      "title": "Reenvío por longest prefix match (p. 22)",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-20",
+        "protocolos.preguntas.moovi40-5",
+        "protocolos.preguntas.examen-parcial-7",
+        "protocolos.preguntas.moovi-original-3",
+        "protocolos.preguntas.moovi-original-13",
+        "protocolos.preguntas.examen-parcial-21",
+        "protocolos.preguntas.ipv6-59",
+        "protocolos.preguntas.moovi40-13"
+      ]
+    },
+    {
+      "id": "rutas-estaticas",
+      "title": "Rutas estáticas, next-hop link-local y show ipv6 route (pp. 23–25 y 27)",
+      "questionIds": [
+        "protocolos.preguntas.moovi-original-14",
+        "protocolos.preguntas.examen-parcial-5",
+        "protocolos.preguntas.ipv6-60",
+        "protocolos.preguntas.ipv6-61",
+        "protocolos.preguntas.moovi40-11",
+        "protocolos.preguntas.ipv6-62",
+        "protocolos.preguntas.ipv6-9",
+        "protocolos.preguntas.ipv6-63"
+      ]
+    },
+    {
+      "id": "agregacion",
+      "title": "Agregación de rutas (p. 26)",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-8",
+        "protocolos.preguntas.parcial-60",
+        "protocolos.preguntas.examen-parcial-30",
+        "protocolos.preguntas.examen-parcial-10",
+        "protocolos.preguntas.moovi-original-2",
+        "protocolos.preguntas.moovi40-8",
+        "protocolos.preguntas.ipv6-64"
+      ]
+    },
+    {
+      "id": "icmpv6-slaac-dhcpv6",
+      "title": "ICMPv6, SLAAC y DHCPv6 (pp. 29–36)",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-65",
+        "protocolos.preguntas.ipv6-66",
+        "protocolos.preguntas.ipv6-24",
+        "protocolos.preguntas.parcial-62",
+        "protocolos.preguntas.ipv6-67",
+        "protocolos.preguntas.ipv6-68",
+        "protocolos.preguntas.ipv6-69",
+        "protocolos.preguntas.ipv6-70",
+        "protocolos.preguntas.ipv6-71",
+        "protocolos.preguntas.parcial-64",
+        "protocolos.preguntas.moovi40-20",
+        "protocolos.preguntas.ipv6-73",
+        "protocolos.preguntas.parcial-68",
+        "protocolos.preguntas.ipv6-74",
+        "protocolos.preguntas.parcial-63",
+        "protocolos.preguntas.parcial-69",
+        "protocolos.preguntas.ipv6-72"
+      ]
+    },
+    {
+      "id": "ndp-resolucion",
+      "title": "NDP: resolución de vecinos (pp. 38–40)",
+      "questionIds": [
+        "protocolos.preguntas.ipv6-75",
+        "protocolos.preguntas.ipv6-76",
+        "protocolos.preguntas.ipv6-30",
+        "protocolos.preguntas.intercambio-ndp",
+        "protocolos.preguntas.parcial-66",
+        "protocolos.preguntas.ndp-flujo-2",
+        "protocolos.preguntas.moovi40-16",
+        "protocolos.preguntas.examen-parcial-25",
+        "protocolos.preguntas.moovi-original-12",
+        "protocolos.preguntas.ipv6-77"
+      ]
+    },
+    {
+      "id": "dad-nud-arranque",
+      "title": "DAD, NUD, arranque y NDP en redes limitadas (pp. 41–44)",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-15",
+        "protocolos.preguntas.moovi40-19",
+        "protocolos.preguntas.ipv6-78",
+        "protocolos.preguntas.ndp-flujo-4",
+        "protocolos.preguntas.ipv6-79",
+        "protocolos.preguntas.parcial-67",
+        "protocolos.preguntas.ipv6-80",
+        "protocolos.preguntas.ipv6-81",
+        "protocolos.preguntas.ipv6-33",
+        "protocolos.preguntas.ipv6-82"
+      ]
+    },
+    {
+      "id": "identificacion",
+      "title": "Direcciones, nombres, identificadores y URI (pp. 46–48)",
       "questionIds": [
         "protocolos.preguntas.ipv6-34",
-        "protocolos.preguntas.ipv6-35",
-        "protocolos.preguntas.ipv6-36",
-        "protocolos.preguntas.ipv6-37",
+        "protocolos.preguntas.parcial-70",
+        "protocolos.preguntas.ipv6-83",
+        "protocolos.preguntas.ipv6-36"
+      ]
+    },
+    {
+      "id": "dns-sd-mdns",
+      "title": "DNS-SD, mDNS y Zeroconf (pp. 49–52)",
+      "questionIds": [
+        "protocolos.preguntas.parcial-71",
+        "protocolos.preguntas.ipv6-84",
+        "protocolos.preguntas.parcial-72",
+        "protocolos.preguntas.examen-parcial-24",
+        "protocolos.preguntas.moovi40-33",
+        "protocolos.preguntas.examen-parcial-23",
+        "protocolos.preguntas.moovi40-34",
         "protocolos.preguntas.ipv6-38",
+        "protocolos.preguntas.ipv6-85",
+        "protocolos.preguntas.ipv6-86",
+        "protocolos.preguntas.ipv6-87"
+      ]
+    },
+    {
+      "id": "coap-rd",
+      "title": "Descubrimiento de recursos CoAP y Resource Directory (pp. 53–55)",
+      "questionIds": [
+        "protocolos.preguntas.parcial-74",
         "protocolos.preguntas.ipv6-39",
-        "protocolos.preguntas.ipv6-40"
+        "protocolos.preguntas.examen-parcial-9",
+        "protocolos.preguntas.moovi-original-19",
+        "protocolos.preguntas.ipv6-40",
+        "protocolos.preguntas.parcial-75"
       ]
     }
   ]

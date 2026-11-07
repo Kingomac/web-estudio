@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-91",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿En qué mensaje registra un cliente MQTT su Last Will and Testament y qué indica en él?",
+  "explanation": "El cliente indica en el mensaje CONNECT el topic del LWT, su contenido, su nivel QoS y si debe retenerse. El broker lo guarda sin publicarlo mientras la conexión siga activa.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "last-will-and-testament-lwt"
+    }
+  ],
+  "options": [
+    {
+      "id": "connect",
+      "text": "En CONNECT: topic, contenido, QoS y si debe retenerse.",
+      "explanation": "Es lo que describe el tema."
+    },
+    {
+      "id": "disconnect",
+      "text": "En DISCONNECT, justo antes de desconectarse.",
+      "explanation": "Con DISCONNECT el broker elimina el LWT sin publicarlo; el testamento se registra al conectarse."
+    },
+    {
+      "id": "publish-retain",
+      "text": "En un PUBLISH con el flag de retención.",
+      "explanation": "Un PUBLISH retenido guarda el último valor de un topic; no es un testamento."
+    },
+    {
+      "id": "subscribe",
+      "text": "En SUBSCRIBE, junto al topic de estado.",
+      "explanation": "SUBSCRIBE sirve para recibir publicaciones, no para registrar un mensaje propio."
+    }
+  ],
+  "answer": "connect"
+}

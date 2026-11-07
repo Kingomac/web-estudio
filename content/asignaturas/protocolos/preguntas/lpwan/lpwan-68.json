@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-68",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un sensor fijo transmite con DR0 y el Network Server observa que sus uplinks llegan con una SNR alta y estable. ¿Qué puede pedirle mediante ADR?",
+  "explanation": "Con buena calidad de enlace, ADR puede aumentar el DR (menor SF, más tasa y menos airtime) o reducir la potencia para ahorrar energía. Lo pide el NS con LinkADRReq.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        27,
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "que-suba-el-dr-o-baje-la-potencia-con-un",
+      "text": "Que suba el DR o baje la potencia, con un LinkADRReq.",
+      "explanation": "P. 27; el dispositivo responde con LinkADRAns."
+    },
+    {
+      "id": "que-pase-a-sf12-para-ganar-alcance",
+      "text": "Que pase a SF12 para ganar alcance.",
+      "explanation": "DR0 ya es SF12, y con buena SNR no hace falta más alcance."
+    },
+    {
+      "id": "que-cambie-a-la-clase-c",
+      "text": "Que cambie a la clase C.",
+      "explanation": "La clase no la ajusta ADR, que solo toca DR y potencia."
+    },
+    {
+      "id": "que-repita-la-activacion-otaa-con-un",
+      "text": "Que repita la activación OTAA con un nuevo Join-request.",
+      "explanation": "ADR no tiene nada que ver con la activación."
+    }
+  ],
+  "answer": "que-suba-el-dr-o-baje-la-potencia-con-un"
+}

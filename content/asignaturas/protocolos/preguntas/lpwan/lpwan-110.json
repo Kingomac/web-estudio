@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-110",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Según la comparativa final, ¿qué condiciona la recepción de órdenes en cada tecnología?",
+  "explanation": "Celulares: PSM y eDRX. LoRaWAN: la clase A, B o C y la capacidad de downlink. Wi-SUN FAN: es bidireccional mediante la malla y depende del reposo de los nodos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "comparativa"
+    }
+  ],
+  "options": [
+    {
+      "id": "celulares-psm-y-edrx-lorawan-la-clase-y",
+      "text": "Celulares: PSM y eDRX; LoRaWAN: la clase y la capacidad de downlink; Wi-SUN FAN: el reposo de los nodos de la malla.",
+      "explanation": "Fila «Recepción de órdenes» de la p. 61."
+    },
+    {
+      "id": "celulares-la-clase-a-b-o-c-lorawan-psm-y",
+      "text": "Celulares: la clase A, B o C; LoRaWAN: PSM y eDRX.",
+      "explanation": "Intercambia los mecanismos de ambas familias."
+    },
+    {
+      "id": "las-tres-reciben-ordenes-en-cualquier",
+      "text": "Las tres reciben órdenes en cualquier momento, porque todas son bidireccionales.",
+      "explanation": "Todas limitan la disponibilidad para ahorrar energía."
+    },
+    {
+      "id": "lorawan-no-puede-recibir-ordenes-solo",
+      "text": "LoRaWAN no puede recibir órdenes; solo envía uplinks.",
+      "explanation": "Recibe downlinks según su clase."
+    }
+  ],
+  "answer": "celulares-psm-y-edrx-lorawan-la-clase-y"
+}

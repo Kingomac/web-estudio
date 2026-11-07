@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estos elementos NO pertenece al bloque de gestión de energía de la arquitectura típica de un nodo IoT?",
+  "explanation": "La gestión de energía incluye baterías, paneles solares, cargadores, reguladores de voltaje y modos de bajo consumo como Deep Sleep. La antena forma parte del módulo de comunicaciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "bloques-funcionales"
+    }
+  ],
+  "options": [
+    {
+      "id": "antena-lora-nb-iot",
+      "text": "La antena del módulo LoRa o NB-IoT.",
+      "explanation": "Es el que NO pertenece: la antena va con el módulo de comunicaciones."
+    },
+    {
+      "id": "regulador-de-voltaje",
+      "text": "Un regulador de voltaje.",
+      "explanation": "Sí pertenece: los reguladores de voltaje aparecen en la gestión de energía."
+    },
+    {
+      "id": "panel-solar-y-cargador",
+      "text": "Un panel solar con su cargador.",
+      "explanation": "Sí pertenece: el panel solar es el mecanismo de recarga que cita el tema para baterías recargables."
+    },
+    {
+      "id": "modo-deep-sleep",
+      "text": "El modo de bajo consumo Deep Sleep.",
+      "explanation": "Sí pertenece: Deep Sleep figura como modo de bajo consumo dentro de la gestión de energía."
+    }
+  ],
+  "answer": "antena-lora-nb-iot"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-140",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo recibe un downlink con MHDR 0xA0, FPort = 0 y 5 bytes de FRMPayload. ¿Qué hace?",
+  "explanation": "MHDR 0xA0 es un downlink confirmado. Con FPort = 0, el FRMPayload contiene comandos MAC del NS cifrados con NwkSKey: el nodo los descifra con NwkSKey y los procesa (no van a la aplicación) y, al ser confirmado, activa el bit ACK en su siguiente uplink.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        56,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "descifra-los-comandos-mac-con-nwkskey",
+      "text": "Descifra los comandos MAC con NwkSKey, los procesa y activa el bit ACK en su siguiente uplink.",
+      "explanation": "Pp. 39, 56 y 57."
+    },
+    {
+      "id": "descifra-los-datos-con-appskey-los",
+      "text": "Descifra los datos con AppSKey, los entrega a su aplicación y activa el ACK.",
+      "explanation": "Con FPort = 0 no son datos de aplicación."
+    },
+    {
+      "id": "descifra-los-comandos-mac-con-nwkskey-y",
+      "text": "Descifra los comandos MAC con NwkSKey y los procesa; no confirma nada porque es un downlink sin confirmación.",
+      "explanation": "0xA0 es un downlink confirmado; sin confirmación sería 0x60."
+    },
+    {
+      "id": "procesa-los-comandos-sin-descifrarlos",
+      "text": "Procesa los comandos sin descifrarlos, porque los comandos MAC van en claro.",
+      "explanation": "Solo van en claro en FOpts; en el FRMPayload con FPort = 0 van cifrados con NwkSKey."
+    }
+  ],
+  "answer": "descifra-los-comandos-mac-con-nwkskey"
+}

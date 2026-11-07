@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En una red IEEE 802.15.4 hay tres modelos de nodo: X (8 KB de RAM, 64 KB de ROM), Y (32 KB de RAM, 192 KB de ROM) y Z (128 KB de RAM, 1 MB de ROM). ¿Qué asignación de papeles es coherente con la clasificación del tema?",
+  "explanation": "X es clase 0 (menos de 10 KB y 100 KB): no puede implementar una pila IP. Y supera la clase 0 sin llegar a la 2: clase 1, pila IP reducida, RFD. Z supera 50 KB y 250 KB: clase 2, FFD, pila IP completa, encaminamiento ligero y reenvío para otros nodos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    }
+  ],
+  "options": [
+    {
+      "id": "x-sin-ip-y-rfd-z-ffd",
+      "text": "X: sensor sin pila IP; Y: RFD con pila IP reducida; Z: FFD con pila completa que reenvía tráfico de otros nodos.",
+      "explanation": "Correcta: corresponde a las clases 0, 1 y 2 respectivamente."
+    },
+    {
+      "id": "x-rfd-y-ffd",
+      "text": "X: RFD con pila IP reducida; Y: FFD que reenvía; Z: FFD que reenvía.",
+      "explanation": "Desplaza las clases un puesto: X es clase 0, sin pila IP, e Y es clase 1 (RFD), no FFD."
+    },
+    {
+      "id": "y-ffd-z-rfd",
+      "text": "X: sensor sin pila IP; Y: FFD que reenvía; Z: RFD con pila IP reducida.",
+      "explanation": "Invierte la correspondencia: RFD es la clase 1 (Y) y FFD la clase 2 (Z)."
+    },
+    {
+      "id": "todos-ip-reducida",
+      "text": "Los tres: RFD con pila IP reducida, porque todos tienen menos de 1 MB de RAM.",
+      "explanation": "La clasificación usa los umbrales de 10/100 KB y 50/250 KB, no 1 MB; X no tiene pila IP y Z es clase 2."
+    }
+  ],
+  "answer": "x-sin-ip-y-rfd-z-ffd"
+}

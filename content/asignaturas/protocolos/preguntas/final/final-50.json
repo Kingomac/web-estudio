@@ -1,0 +1,55 @@
+{
+  "id": "protocolos.preguntas.final-50",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router tiene 2001:db8:1::1/64 en su interfaz Ethernet g0/1 (multipunto) y IPv6 habilitado en la interfaz serie punto a punto s0/0. Según el tema, ¿cuál de estos comandos **NO** es correcto?",
+  "explanation": "Una ruta con next-hop link-local necesita indicar también la interfaz, porque fe80::/64 no identifica de forma única la interfaz del router vecino. ipv6 route 2001:db8:9::/48 fe80::1 omite la interfaz. Las demás formas son válidas: next-hop link-local con interfaz, interfaz punto a punto sola, next-hop global alcanzable por una ruta directa, y ruta sumidero a Null0.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23,
+        24,
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "ll-sin-interfaz",
+      "text": "ipv6 route 2001:db8:9::/48 fe80::1",
+      "explanation": "Falta la interfaz que identifica en qué enlace está fe80::1."
+    },
+    {
+      "id": "ll-con-interfaz",
+      "text": "ipv6 route ::/0 g0/1 fe80::1",
+      "explanation": "Next-hop link-local acompañado de su interfaz: es la forma del ejemplo del tema."
+    },
+    {
+      "id": "serie",
+      "text": "ipv6 route 2001:db8:9::/48 s0/0",
+      "explanation": "En una interfaz punto a punto basta indicar la interfaz: ruta directa G=0."
+    },
+    {
+      "id": "global",
+      "text": "ipv6 route 2001:db8:9::/48 2001:db8:1::2",
+      "explanation": "2001:db8:1::2 está en la subred de g0/1, que tiene ruta directa: la ruta G=1 se instala."
+    },
+    {
+      "id": "null0",
+      "text": "ipv6 route 2001:db8:9::/48 Null0",
+      "explanation": "Es una ruta sumidero válida: descarta el tráfico de ese prefijo."
+    }
+  ],
+  "answer": "ll-sin-interfaz"
+}

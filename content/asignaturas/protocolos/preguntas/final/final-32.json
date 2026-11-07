@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una instalación usa MQTT para dos flujos: (a) telemetría de temperatura cada 2 s, donde perder alguna lectura no importa y prima la mínima sobrecarga; (b) órdenes de cobro, que no pueden perderse ni ejecutarse dos veces. ¿Qué niveles QoS encajan?",
+  "explanation": "QoS 0 (at most once) no tiene confirmación MQTT y es el más ligero: vale para (a). QoS 1 garantiza la entrega pero los suscriptores pueden recibir duplicados. QoS 2 (exactly once) evita duplicados con una publicación en dos pasos, a costa de más sobrecarga y latencia: es el adecuado para (b).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        51,
+        52,
+        55,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "calidad-de-servicio-qos"
+    }
+  ],
+  "options": [
+    {
+      "id": "qos0-y-qos2",
+      "text": "QoS 0 para (a) y QoS 2 para (b).",
+      "explanation": "Mínima sobrecarga para la telemetría y entrega sin duplicados para los cobros."
+    },
+    {
+      "id": "qos0-y-qos1",
+      "text": "QoS 0 para (a) y QoS 1 para (b).",
+      "explanation": "QoS 1 garantiza la entrega, pero puede duplicar: un cobro podría ejecutarse dos veces."
+    },
+    {
+      "id": "qos2-y-qos0",
+      "text": "QoS 2 para (a) y QoS 0 para (b).",
+      "explanation": "Invierte los flujos: los cobros podrían perderse y la telemetría cargaría con la mayor sobrecarga."
+    },
+    {
+      "id": "qos0-ambos",
+      "text": "QoS 0 para ambos, porque TCP ya garantiza la entrega.",
+      "explanation": "El publicador confía en TCP, pero la conexión puede caerse y el mensaje perderse."
+    }
+  ],
+  "answer": "qos0-y-qos2"
+}

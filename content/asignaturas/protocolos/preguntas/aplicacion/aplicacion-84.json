@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-84",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servidor CoAP mantiene la lista de observadores de un recurso. ¿Qué identifica cada entrada de esa lista?",
+  "explanation": "El servidor guarda una entrada por cada pareja cliente/token y envía a cada una las respuestas con el valor actualizado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "multicast-y-observe"
+    }
+  ],
+  "options": [
+    {
+      "id": "cliente-token",
+      "text": "La pareja cliente/token.",
+      "explanation": "Es lo que indica el tema: una entrada por cliente/token."
+    },
+    {
+      "id": "topic",
+      "text": "El topic al que se ha suscrito el cliente.",
+      "explanation": "Los topics son de MQTT; CoAP observa recursos identificados por su URI."
+    },
+    {
+      "id": "message-id",
+      "text": "El Message ID de la petición original.",
+      "explanation": "El Message ID sirve para fiabilidad y duplicados; la asociación con la petición la hace el token."
+    },
+    {
+      "id": "broker",
+      "text": "La dirección del broker que reenvía las notificaciones.",
+      "explanation": "En CoAP Observe no hay broker: el servidor notifica directamente al cliente."
+    }
+  ],
+  "answer": "cliente-token"
+}

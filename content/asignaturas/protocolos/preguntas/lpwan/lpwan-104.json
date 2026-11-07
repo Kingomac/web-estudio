@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-104",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Al registrar en TTN un end device que se activa por OTAA, ¿qué datos del dispositivo hay que introducir?",
+  "explanation": "Además de un device_ID único, la región EU_863_870 y el plan de frecuencias, OTAA necesita DevEUI, JoinEUI (AppEUI) y AppKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "pasos-en-ttn"
+    }
+  ],
+  "options": [
+    {
+      "id": "deveui-joineui-appeui-y-appkey",
+      "text": "DevEUI, JoinEUI (AppEUI) y AppKey.",
+      "explanation": "Paso 3 de la p. 54."
+    },
+    {
+      "id": "devaddr-nwkskey-y-appskey",
+      "text": "DevAddr, NwkSKey y AppSKey.",
+      "explanation": "Son los datos de una activación ABP."
+    },
+    {
+      "id": "el-gateway-eui-y-la-direccion-del-ns",
+      "text": "El Gateway EUI y la dirección del NS.",
+      "explanation": "Son datos del registro del gateway (paso 1)."
+    },
+    {
+      "id": "solo-el-deveui-el-resto-lo-genera-ttn",
+      "text": "Solo el DevEUI; el resto lo genera TTN.",
+      "explanation": "AppKey es la clave raíz que comparten dispositivo y Join Server."
+    }
+  ],
+  "answer": "deveui-joineui-appeui-y-appkey"
+}

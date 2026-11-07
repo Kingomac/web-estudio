@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-37",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Según la definición de nodo limitado que recoge el tema, ¿qué se convierte en requisito primordial de diseño?",
+  "explanation": "Los límites estrictos de potencia, memoria y CPU hacen que la optimización del uso de la energía y del ancho de banda de la red sea requisito primordial de diseño.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    }
+  ],
+  "options": [
+    {
+      "id": "optimizar-energia-y-ancho-de-banda",
+      "text": "Optimizar el uso de la energía y del ancho de banda de la red.",
+      "explanation": "Correcta: es la consecuencia que el tema extrae de los límites de los nodos."
+    },
+    {
+      "id": "maximizar-la-tasa",
+      "text": "Maximizar la tasa de transmisión para enviar los datos cuanto antes.",
+      "explanation": "El tema plantea tasas bajas; lo primordial es optimizar energía y ancho de banda, no maximizar la tasa."
+    },
+    {
+      "id": "pila-ip-completa-en-todos",
+      "text": "Garantizar una pila IP completa en todos los nodos.",
+      "explanation": "La clase 0 no puede implementar pila IP y la clase 1 la tiene reducida; no es un requisito general."
+    },
+    {
+      "id": "radio-siempre-activa",
+      "text": "Mantener la radio siempre activa para no perder mensajes.",
+      "explanation": "La radio es lo que más consume; mantenerla siempre activa va contra la optimización de la energía."
+    }
+  ],
+  "answer": "optimizar-energia-y-ancho-de-banda"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-123",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un sensor está registrado en la red LoRaWAN privada de una empresa, pero hoy está fuera de su cobertura y solo lo oye un gateway de TTN. Ambas redes tienen Packet Broker habilitado y sus políticas permiten el intercambio en los dos sentidos. El sensor envía un uplink confirmado. ¿Qué ocurre?",
+  "explanation": "El gateway de TTN recibe el uplink y Packet Broker lo encamina hacia la red donde está registrado el dispositivo; allí su NS lo valida y procesa. Si las políticas lo autorizan, el downlink de confirmación puede salir por el gateway de TTN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        24,
+        25,
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "packet-broker-lleva-el-uplink-al-ns-de",
+      "text": "Packet Broker lleva el uplink al NS de la red privada, y el ACK puede volver por el gateway de TTN.",
+      "explanation": "Pp. 24-25: el sensor usa la cobertura de TTN y sigue gestionado por su red privada; los downlinks también pueden ir por gateways de otra red."
+    },
+    {
+      "id": "el-uplink-llega-a-la-red-privada-pero-el",
+      "text": "El uplink llega a la red privada, pero el ACK nunca puede salir por un gateway de otra red.",
+      "explanation": "Casi correcta, pero la p. 24 permite enviar downlinks por gateways de otras redes cuando las políticas lo autorizan."
+    },
+    {
+      "id": "el-ns-de-ttn-valida-el-mic-descifra-el",
+      "text": "El NS de TTN valida el MIC, descifra el payload y lo reenvía a la red privada.",
+      "explanation": "TTN no tiene las claves de sesión del dispositivo: solo lo encamina; quien valida el MIC es el NS de la red de registro."
+    },
+    {
+      "id": "hay-que-registrar-el-sensor-tambien-en",
+      "text": "Hay que registrar el sensor también en TTN para que su gateway acepte el mensaje.",
+      "explanation": "Con Packet Broker el dispositivo sigue registrado solo en su red."
+    }
+  ],
+  "answer": "packet-broker-lleva-el-uplink-al-ns-de"
+}

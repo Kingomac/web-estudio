@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-117",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En una 6LoWPAN mesh-under, el 6LBR anuncia 2001:11::/64 en una PIO con A = 1, y los IID se forman como 0000:00ff:fe00:XXXX a partir de la dirección corta. Un host con dirección corta 0x00A7 se incorpora. ¿Qué dirección configura y cómo la registra?",
+  "explanation": "SLAAC con el prefijo anunciado y el IID de la dirección corta da 2001:11::ff:fe00:a7. En mesh-under el host está a un salto IP del 6LBR y registra su dirección directamente en él con un NS unicast con ARO (EUI-64 y Registration Lifetime), que el 6LBR confirma con un NA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        52,
+        53,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "distribucion-de-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "ff-fe00-a7-6lbr",
+      "text": "2001:11::ff:fe00:a7, registrada directamente en el 6LBR con un NS unicast con ARO.",
+      "explanation": "Forma bien el IID y aplica el registro de mesh-under."
+    },
+    {
+      "id": "sin-patron",
+      "text": "2001:11::a7, registrada directamente en el 6LBR con un NS unicast con ARO.",
+      "explanation": "Falta el patrón 00ff:fe00 del IID derivado de la dirección corta."
+    },
+    {
+      "id": "6lr-dar",
+      "text": "2001:11::ff:fe00:a7, registrada en el 6LR más cercano, que consulta al 6LBR con DAR.",
+      "explanation": "En mesh-under no hay 6LR; DAR/DAC son del DAD multisalto en route-over."
+    },
+    {
+      "id": "dad-tradicional",
+      "text": "2001:11::ff:fe00:a7, tras un DAD tradicional con NS multicast.",
+      "explanation": "RFC 6775 no realiza el DAD tradicional."
+    }
+  ],
+  "answer": "ff-fe00-a7-6lbr"
+}

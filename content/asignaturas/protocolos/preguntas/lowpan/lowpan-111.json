@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-111",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Se quiere comprimir con IPHC (M=1, DAC=0) el destino multicast ff02::1:2 con la máxima compresión que lo reconstruya exactamente. ¿Qué DAM se usa y cuántos bits van en línea?",
+  "explanation": "ff02::1:2 = ff02:0:0:0:0:0:0001:0002. No encaja en ff02::00GG (DAM=11), porque el grupo tiene bits no nulos fuera del último byte, pero sí en ffFS::00GG:GGGG (DAM=10): se envían FS = 02 y los 24 bits del grupo, 32 bits en total.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccion-destino-m-dac-y-dam"
+    }
+  ],
+  "options": [
+    {
+      "id": "dam-10-32-bits",
+      "text": "DAM=10, con 32 bits en línea.",
+      "explanation": "Es la forma más corta que reconstruye ff02::1:2: ffFS::00GG:GGGG con FS = 02 y GG:GGGG = 01:0002."
+    },
+    {
+      "id": "dam-11-8-bits",
+      "text": "DAM=11, con 8 bits en línea.",
+      "explanation": "DAM=11 solo reconstruye ff02::00GG; con el byte 0x02 se obtendría ff02::2 y se perdería el 1 del grupo."
+    },
+    {
+      "id": "dam-01-48-bits",
+      "text": "DAM=01, con 48 bits en línea.",
+      "explanation": "ffFS::00GG:GGGG:GGGG también representa la dirección, pero envía 16 bits más de lo necesario."
+    },
+    {
+      "id": "dam-00-128-bits",
+      "text": "DAM=00, con 128 bits en línea.",
+      "explanation": "Enviar la dirección completa es correcto pero no comprime nada."
+    }
+  ],
+  "answer": "dam-10-32-bits"
+}

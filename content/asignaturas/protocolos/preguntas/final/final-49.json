@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.final-49",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB contiene:\n`2001:db8:a000::/35  vía R1`\n`2001:db8:8000::/33  vía R2`\n`2001:db8::/32       vía R3`\n`::/0                vía R4`\n¿Qué siguiente salto se usa para 2001:db8:c123::1?",
+  "explanation": "El tercer grupo del destino es c123 = 1100 0001 0010 0011. El /33 fija solo el primer bit de ese grupo (1 en 8000): coincide. El /35 fija los tres primeros (101 en a000), y el destino tiene 110: no coincide. Entre /33, /32 y /0, gana el /33: R2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "longest-prefix-match-lpm"
+    }
+  ],
+  "options": [
+    {
+      "id": "r2",
+      "text": "R2",
+      "explanation": "El /33 es la coincidencia más larga."
+    },
+    {
+      "id": "r1",
+      "text": "R1",
+      "explanation": "a000 y c123 son parecidos, pero sus tres primeros bits difieren (101 frente a 110)."
+    },
+    {
+      "id": "r3",
+      "text": "R3",
+      "explanation": "El /32 coincide, pero el /33 también y es más largo."
+    },
+    {
+      "id": "r4",
+      "text": "R4",
+      "explanation": "La ruta por defecto solo se usa sin coincidencias más específicas."
+    },
+    {
+      "id": "r1-r2",
+      "text": "Se reparte entre R1 y R2.",
+      "explanation": "El reparto solo se produce entre coincidencias de igual longitud, y el /35 ni siquiera coincide."
+    }
+  ],
+  "answer": "r2"
+}

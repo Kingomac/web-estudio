@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-60",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router tiene la dirección 2001:db8:1::1/64 en su interfaz Ethernet g0/1, un enlace multipunto en el que están R2 (2001:db8:1::2) y otros equipos. ¿Qué comando crea correctamente una ruta por defecto a través de R2?",
+  "explanation": "Si el next-hop está en una interfaz multipunto hay que indicar su IP, a partir de la cual se obtiene su MAC; indicar solo la interfaz vale para enlaces punto a punto. La ruta es indirecta (G=1) y se instala si hay una ruta directa para 2001:db8:1::2, que crea la dirección configurada en g0/1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "ip-next-hop",
+      "text": "ipv6 route ::/0 2001:db8:1::2",
+      "explanation": "Indica la IP del router siguiente salto, necesaria en un enlace multipunto."
+    },
+    {
+      "id": "solo-interfaz",
+      "text": "ipv6 route ::/0 g0/1",
+      "explanation": "Indicar solo la interfaz sirve en enlaces punto a punto; en uno multipunto no identifica a qué vecino enviar la trama."
+    },
+    {
+      "id": "null0",
+      "text": "ipv6 route ::/0 Null0",
+      "explanation": "Null0 crea una ruta sumidero: descartaría todo el tráfico sin otra ruta."
+    },
+    {
+      "id": "orden-invertido",
+      "text": "ipv6 route 2001:db8:1::2/128 ::/0",
+      "explanation": "La sintaxis es ipv6 route prefijo/longitud seguido de la interfaz o del next-hop; aquí están invertidos."
+    }
+  ],
+  "answer": "ip-next-hop"
+}

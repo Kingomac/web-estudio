@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-44",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host tiene la dirección 2001:db8:a::b:0:c. ¿Pertenece a la subred 2001:db8:a::/64 y, si es así, cuál es su identificador de interfaz?",
+  "explanation": "La dirección tiene seis grupos explícitos (2001, db8, a, b, 0, c), así que :: sustituye a dos grupos nulos: 2001:0db8:000a:0000:0000:000b:0000:000c. Los 64 primeros bits son 2001:db8:a:0, que coinciden con el prefijo 2001:db8:a::/64. El IID son los 64 bits restantes: 0000:000b:0000:000c.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9,
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "direcciones-ipv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "si-0-b-0-c",
+      "text": "Sí; su IID es 0000:000b:0000:000c.",
+      "explanation": "Expande :: con los dos grupos que faltan y separa 64 + 64 bits."
+    },
+    {
+      "id": "si-b-0-c-0",
+      "text": "Sí; su IID es 000b:0000:000c:0000.",
+      "explanation": "Supone que :: solo sustituye a un grupo, lo que desplaza el IID y deja la dirección con siete grupos."
+    },
+    {
+      "id": "no-cuarto-b",
+      "text": "No: su cuarto grupo es b, así que pertenece a 2001:db8:a:b::/64.",
+      "explanation": "El grupo b está detrás de los dos grupos nulos que representa ::; el cuarto grupo es 0."
+    },
+    {
+      "id": "si-0-0-b-c",
+      "text": "Sí; su IID es 0000:0000:000b:000c.",
+      "explanation": "Pierde el grupo nulo explícito entre b y c y coloca un cero de más delante."
+    }
+  ],
+  "answer": "si-0-b-0-c"
+}

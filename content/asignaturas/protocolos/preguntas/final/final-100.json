@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-100",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo mesh-under origina una trama con direcciones de 64 bits en la cabecera Mesh y quiere permitir hasta 20 saltos restantes. ¿Cuántos bytes ocupa la cabecera Mesh?",
+  "explanation": "Hops Left tiene 4 bits y el valor 1111 indica que el contador va en el byte Deep Hops Left (hasta 255). Con 20 saltos hace falta: 1 + 1 + 8 + 8 = 18 bytes (V = F = 0 para 64 bits).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "cabecera-mesh"
+    }
+  ],
+  "options": [
+    {
+      "id": "18",
+      "text": "18 bytes.",
+      "explanation": "Primer byte, Deep Hops Left y dos direcciones de 8 bytes."
+    },
+    {
+      "id": "17",
+      "text": "17 bytes.",
+      "explanation": "Olvida Deep Hops Left: 20 no cabe en los 4 bits de Hops Left."
+    },
+    {
+      "id": "6",
+      "text": "6 bytes.",
+      "explanation": "Usa direcciones de 16 bits; aquí son de 64."
+    },
+    {
+      "id": "34",
+      "text": "34 bytes.",
+      "explanation": "Cuenta direcciones de 16 bytes, como las IPv6; la cabecera Mesh lleva direcciones de enlace de 8 bytes."
+    }
+  ],
+  "answer": "18"
+}

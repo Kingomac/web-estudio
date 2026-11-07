@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-50",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pareja de tecnologías LPWAN está estandarizada por 3GPP y usa espectro licenciado del operador?",
+  "explanation": "NB-IoT y LTE-M son las LPWAN celulares de 3GPP; LoRaWAN y Wi-SUN FAN trabajan en bandas sub-GHz de uso libre.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        4,
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "tecnologias-y-arquitecturas"
+    }
+  ],
+  "options": [
+    {
+      "id": "nb-iot-y-lte-m",
+      "text": "NB-IoT y LTE-M.",
+      "explanation": "Columna de tecnologías celulares de la p. 4; la p. 7 indica que usan espectro licenciado."
+    },
+    {
+      "id": "lorawan-y-wi-sun-fan",
+      "text": "LoRaWAN y Wi-SUN FAN.",
+      "explanation": "Son las tecnologías en bandas de uso libre sub-GHz, sujetas a regulación (p. 4)."
+    },
+    {
+      "id": "lorawan-y-nb-iot",
+      "text": "LoRaWAN y NB-IoT.",
+      "explanation": "Mezcla una tecnología de banda libre (LoRaWAN, de la LoRa Alliance) con una celular."
+    },
+    {
+      "id": "wi-sun-fan-y-lte-m",
+      "text": "Wi-SUN FAN y LTE-M.",
+      "explanation": "Wi-SUN FAN es una malla IPv6 en banda libre, no una tecnología 3GPP."
+    }
+  ],
+  "answer": "nb-iot-y-lte-m"
+}

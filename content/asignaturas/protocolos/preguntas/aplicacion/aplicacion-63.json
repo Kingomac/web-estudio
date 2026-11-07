@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-63",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una plataforma envía a `/livestreaming-app/webhooks/donations` un `POST` con el cuerpo JSON `{\"event\": \"donation.success\", ...}`. ¿Qué responde la aplicación receptora si procesa el webhook correctamente?",
+  "explanation": "Tras procesar el webhook, la aplicación responde con 200 OK si la operación se realizó correctamente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "webhook"
+    }
+  ],
+  "options": [
+    {
+      "id": "200-ok",
+      "text": "`200 OK`.",
+      "explanation": "Es la respuesta que indica el tema para un webhook procesado correctamente."
+    },
+    {
+      "id": "101-switching",
+      "text": "`101 Switching Protocols`.",
+      "explanation": "101 acepta el cambio a WebSocket; un webhook no cambia de protocolo."
+    },
+    {
+      "id": "304-not-modified",
+      "text": "`304 Not Modified`.",
+      "explanation": "304 responde a peticiones condicionales para validar una caché."
+    },
+    {
+      "id": "pong",
+      "text": "Un frame Pong.",
+      "explanation": "Pong es la respuesta a un Ping dentro de un WebSocket, no a una petición HTTP."
+    }
+  ],
+  "answer": "200-ok"
+}

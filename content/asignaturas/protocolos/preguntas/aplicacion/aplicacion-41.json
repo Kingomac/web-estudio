@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-41",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una red de sensores IEEE 802.15.4 transporta datagramas IPv6 gracias a 6LoWPAN, que comprime cabeceras y fragmenta datagramas. ¿Dónde sitúa el tema esta función dentro de la arquitectura de red?",
+  "explanation": "El tema describe una capa de adaptación opcional, situada entre la capa de red y la de enlace, que comprime cabeceras y fragmenta datagramas; su ejemplo es 6LoWPAN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "funcion-de-las-capas-y-modelos-de-comunicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-transporte-junto-a-tcp-y-udp",
+      "text": "En la capa de transporte, junto a TCP, UDP y QUIC.",
+      "explanation": "La capa de transporte entrega los datos a la aplicación destino; la compresión y la fragmentación de datagramas IPv6 ocurren por debajo de la capa de red."
+    },
+    {
+      "id": "adaptacion-entre-red-y-enlace",
+      "text": "En una capa de adaptación opcional, entre la capa de red y la de enlace.",
+      "explanation": "Es la capa de adaptación que el tema coloca entre red y enlace, con 6LoWPAN como ejemplo."
+    },
+    {
+      "id": "en-aplicacion-como-formato-de-datos",
+      "text": "En la capa de aplicación, como un formato de intercambio de datos.",
+      "explanation": "Los formatos de intercambio de la capa de aplicación son XML, JSON o SOAP; 6LoWPAN no representa datos de la aplicación."
+    },
+    {
+      "id": "en-la-capa-fisica-por-depender-de-la-radio",
+      "text": "En la capa física, porque depende del medio radio.",
+      "explanation": "La capa física solo mueve bits por el medio; no comprime cabeceras ni fragmenta datagramas."
+    }
+  ],
+  "answer": "adaptacion-entre-red-y-enlace"
+}

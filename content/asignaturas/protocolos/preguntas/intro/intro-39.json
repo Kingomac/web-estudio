@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Según el tema, ¿por qué las LLN tienen además tasas de transmisión bajas (low-rate)?",
+  "explanation": "El tema concluye que, por ambas razones (bajo consumo y enlaces con pérdidas y SNR baja), las redes tendrán tasas bajas, lo que encaja con mensajes pequeños enviados a grandes intervalos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lln-bajo-consumo-y-perdidas"
+    }
+  ],
+  "options": [
+    {
+      "id": "por-bajo-consumo-y-snr-baja",
+      "text": "Por los requisitos de bajo consumo y por los entornos radio adversos con SNR baja.",
+      "explanation": "Correcta: son las dos razones (Low-power y Lossy) de las que el tema deriva el low-rate."
+    },
+    {
+      "id": "por-la-red-troncal",
+      "text": "Porque la red troncal sobre Internet limita la tasa de toda la red.",
+      "explanation": "La troncal une la pasarela con la nube; el tema atribuye la tasa baja a la red inalámbrica de acceso."
+    },
+    {
+      "id": "por-la-topologia-en-estrella",
+      "text": "Porque la topología en estrella impide superar unos pocos kbps.",
+      "explanation": "La topología no es la causa: las LoWPAN, también en estrella, llegan hasta ~2 Mbps."
+    },
+    {
+      "id": "por-la-clase-2",
+      "text": "Porque los nodos de clase 2 no pueden procesar tasas altas.",
+      "explanation": "La clase 2 es la de más recursos; la tasa baja se debe al consumo y al entorno radio."
+    }
+  ],
+  "answer": "por-bajo-consumo-y-snr-baja"
+}

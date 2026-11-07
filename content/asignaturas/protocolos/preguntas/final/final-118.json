@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-118",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Tras un Parent Request y las respuestas recibidas, un dispositivo Thread envía Child ID Request al router con RLOC16 0x2400, que lo acepta como su hijo 7. ¿Qué Router ID tiene el padre y qué RLOC16 recibe el hijo en Address16 de Child ID Response?",
+  "explanation": "0x2400 = 0010 01|00 0000 0000: los 6 bits altos dan Router ID 9 y el Child ID es 0 (router). El padre gestiona los localizadores de sus hijos: el hijo 7 recibe 9 · 1024 + 7 = 0x2407.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        61,
+        64,
+        65
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direcciones-y-localizadores"
+    }
+  ],
+  "options": [
+    {
+      "id": "9-2407",
+      "text": "Router ID 9; el padre asigna al hijo 0x2407.",
+      "explanation": "Separa los 6 bits de Router ID de los 10 de Child ID."
+    },
+    {
+      "id": "36-2407",
+      "text": "Router ID 36; el padre asigna al hijo 0x2407.",
+      "explanation": "Toma el byte alto 0x24 como Router ID; este ocupa solo los 6 bits más altos."
+    },
+    {
+      "id": "9-0907",
+      "text": "Router ID 9; el padre asigna al hijo 0x0907.",
+      "explanation": "No desplaza el Router ID 10 bits: el RLOC16 del hijo conserva los bits altos del padre."
+    },
+    {
+      "id": "9-2407-leader",
+      "text": "Router ID 9; el Leader asigna al hijo 0x2407.",
+      "explanation": "El Leader gestiona los Router ID de los routers; los RLOC16 de los hijos los gestiona su padre."
+    }
+  ],
+  "answer": "9-2407"
+}

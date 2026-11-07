@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-79",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una vivienda tiene bombillas Zigbee conectadas a un hub, y otra, sensores Thread conectados a un border router. ¿Qué afirmación describe correctamente cómo llega cada red a Internet?",
+  "explanation": "La taxonomía separa topología y disponibilidad de IPv6: con nodos no IPv6 (Zigbee) el equipo central es una pasarela hacia Internet; con nodos IPv6 (Thread, sobre 6LoWPAN) es un border router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        3,
+        8,
+        9,
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tecnologias-y-clasificacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "zigbee-gateway-thread-br",
+      "text": "En Zigbee el hub actúa como pasarela (gateway) porque los nodos no usan IP; en Thread los nodos tienen IPv6 y el equipo de frontera es un border router.",
+      "explanation": "Aplica el segundo criterio de la taxonomía: sin IPv6, gateway; con IPv6, border router."
+    },
+    {
+      "id": "ambas-traduccion",
+      "text": "Ambas necesitan una pasarela de traducción, porque IEEE 802.15.4 no puede transportar IPv6.",
+      "explanation": "6LoWPAN es precisamente la capa de adaptación que lleva IPv6 sobre 802.15.4; Thread no necesita traducción."
+    },
+    {
+      "id": "zigbee-mesh-thread-no-ip",
+      "text": "Zigbee usa la cabecera Mesh de 6LoWPAN y Thread tiene su propia capa de red no IP.",
+      "explanation": "Lo invierte: Thread usa la cabecera Mesh de 6LoWPAN y Zigbee su propia capa de red no IP."
+    },
+    {
+      "id": "thread-rpl",
+      "text": "El border router Thread es la raíz de un DODAG RPL que encamina a los sensores.",
+      "explanation": "RPL es el encaminamiento de Wi-SUN FAN; Thread usa su propio vector de distancias con MLE."
+    }
+  ],
+  "answer": "zigbee-gateway-thread-br"
+}

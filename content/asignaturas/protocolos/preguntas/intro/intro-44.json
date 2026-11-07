@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-44",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un nodo LPWAN envía una carga útil de 30 bytes a 0,25 kbps, el extremo inferior de la tasa típica que da el tema. Sin contar cabeceras, ¿cuánto dura aproximadamente la transmisión?",
+  "explanation": "30 bytes = 240 bits. A 0,25 kbps = 250 bit/s: 240 / 250 = 0,96 s.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "0-96-s",
+      "text": "Unos 0,96 s.",
+      "explanation": "Correcta: 30 × 8 = 240 bits y 240 / 250 bit/s = 0,96 s."
+    },
+    {
+      "id": "0-12-s",
+      "text": "Unos 0,12 s.",
+      "explanation": "Olvida pasar bytes a bits: 30 / 250 = 0,12 s."
+    },
+    {
+      "id": "4-8-ms",
+      "text": "Unos 4,8 ms.",
+      "explanation": "Usa la tasa máxima de 50 kbps (240 / 50 000), no la típica de 0,25 kbps."
+    },
+    {
+      "id": "120-us",
+      "text": "Unos 120 µs.",
+      "explanation": "Usa ~2 Mbps, la tasa máxima de las LoWPAN, no la de una LPWAN."
+    }
+  ],
+  "answer": "0-96-s"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-69",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host recibe un RA con M = 0 y O = 0 que incluye el prefijo 2001:db8:c:1::/64. Según el esquema de flags del tema, ¿cómo completa su configuración?",
+  "explanation": "Con M = 0 el host construye su dirección concatenando el prefijo del RA con su IID (SLAAC). Con O = 0 el RA envía también otra información, como los servidores DNS. El default gateway es la IP origen del RA, la link-local del router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "flags-que-no-debes-confundir"
+    }
+  ],
+  "options": [
+    {
+      "id": "todo-por-ra",
+      "text": "Forma su dirección con SLAAC, toma la otra información (como DNS) del RA y usa como gateway la link-local origen del RA.",
+      "explanation": "Aplica M = 0 y O = 0 tal como los describe el tema."
+    },
+    {
+      "id": "dns-por-dhcpv6",
+      "text": "Forma su dirección con SLAAC, pero debe pedir los servidores DNS a un servidor DHCPv6.",
+      "explanation": "Pedir la otra información por DHCPv6 corresponde a O = 1."
+    },
+    {
+      "id": "direccion-por-dhcpv6",
+      "text": "Pide su dirección a un servidor DHCPv6 y toma del RA los servidores DNS.",
+      "explanation": "Obtener la dirección por DHCPv6 corresponde a M = 1."
+    },
+    {
+      "id": "gateway-del-prefijo",
+      "text": "Forma su dirección con SLAAC y toma como gateway 2001:db8:c:1::1, la primera dirección del prefijo.",
+      "explanation": "El gateway es la dirección origen del RA (la link-local del router), no una dirección deducida del prefijo."
+    }
+  ],
+  "answer": "todo-por-ra"
+}

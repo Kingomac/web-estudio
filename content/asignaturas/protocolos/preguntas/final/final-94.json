@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-94",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una trama IEEE 802.15.4 de 127 bytes lleva direcciones extendidas de origen y destino con Compresión PAN ID = 1, una cabecera auxiliar de seguridad de 14 bytes y FCS. ¿Cuántos bytes quedan para la capa 6LoWPAN?",
+  "explanation": "MHR = 2 + 1 + 2 (un PAN ID) + 8 + 8 = 21 bytes. 127 − 21 − 14 − 2 = 90 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        14,
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tamanos-y-sobrecarga"
+    }
+  ],
+  "options": [
+    {
+      "id": "90",
+      "text": "90 bytes.",
+      "explanation": "Cuenta un solo PAN ID, la seguridad y el FCS."
+    },
+    {
+      "id": "92",
+      "text": "92 bytes.",
+      "explanation": "Olvida el FCS, que ocupa 2 bytes al final de la trama."
+    },
+    {
+      "id": "88",
+      "text": "88 bytes.",
+      "explanation": "Cuenta los dos PAN ID (23 bytes de cabecera), pero Compresión PAN ID = 1 omite el de origen."
+    },
+    {
+      "id": "81",
+      "text": "81 bytes.",
+      "explanation": "Es el caso peor del tema, con dos PAN ID y 21 bytes de seguridad; aquí la seguridad ocupa 14."
+    }
+  ],
+  "answer": "90"
+}

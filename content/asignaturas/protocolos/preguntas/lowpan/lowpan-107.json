@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-107",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un fabricante compara BLE y Bluetooth Mesh para sus productos. ¿Qué afirmación sobre estas tecnologías es correcta según el tema?",
+  "explanation": "BLE se pensó para estrella con una pasarela central y sus nodos no suelen usar IPv6; Bluetooth Mesh añade una malla sobre la radio BLE sin IPv6 nativo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        4,
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tecnologias-y-clasificacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "bluetooth-mesh-inundacion-sin-ipv6",
+      "text": "Bluetooth Mesh usa la radio de BLE y distribuye los mensajes por inundación controlada, sin IPv6 nativo.",
+      "explanation": "Bluetooth Mesh reutiliza la radio y los mecanismos de BLE, añade red, seguridad y modelos de aplicación, y reparte los mensajes por inundación controlada u, opcionalmente, reenvío dirigido."
+    },
+    {
+      "id": "ble-malla-ipv6",
+      "text": "BLE se diseñó para topología en malla y sus nodos usan IPv6 en los despliegues habituales.",
+      "explanation": "Es al revés: BLE se diseñó para estrella, con un dispositivo central (a menudo un smartphone) como pasarela, y en sus despliegues habituales los nodos no usan IPv6."
+    },
+    {
+      "id": "bluetooth-mesh-sobre-802-15-4",
+      "text": "Bluetooth Mesh se construye sobre IEEE 802.15.4, igual que Zigbee y Thread.",
+      "explanation": "Sobre IEEE 802.15.4 están Zigbee, Thread y Wi-SUN FAN; Bluetooth Mesh usa la radio de BLE."
+    },
+    {
+      "id": "ble-250-kbit",
+      "text": "BLE transmite a 250 kbit/s fijos, la misma tasa física que IEEE 802.15.4 a 2,4 GHz.",
+      "explanation": "250 kbit/s es la tasa de 802.15.4 a 2,4 GHz; BLE admite 1 y 2 Mbit/s y modos de mayor alcance a 125 y 500 kbit/s."
+    }
+  ],
+  "answer": "bluetooth-mesh-inundacion-sin-ipv6"
+}

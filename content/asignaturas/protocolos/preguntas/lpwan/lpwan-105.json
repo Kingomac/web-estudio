@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-105",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El NS quiere conocer el nivel de batería y la calidad del enlace de un nodo. ¿Qué comando MAC envía?",
+  "explanation": "DevStatusReq pide el estado de batería y la calidad del enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "devstatusreq",
+      "text": "DevStatusReq.",
+      "explanation": "P. 56."
+    },
+    {
+      "id": "linkadrreq",
+      "text": "LinkADRReq.",
+      "explanation": "Ajusta DR, potencia y canales."
+    },
+    {
+      "id": "rxparamsetupreq",
+      "text": "RXParamSetupReq.",
+      "explanation": "Cambia los parámetros de recepción."
+    },
+    {
+      "id": "dutycyclereq",
+      "text": "DutyCycleReq.",
+      "explanation": "Aplica dinámicamente una restricción de duty cycle."
+    }
+  ],
+  "answer": "devstatusreq"
+}

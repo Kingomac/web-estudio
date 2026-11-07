@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-67",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB del router R contiene `2001:db8:a::/64 G=0 g0/0` y `2001:db8::/32 G=1 gateway 2001:db8:a::1`. Llega un paquete para 2001:db8:a::25, cuya MAC R no conoce. ¿Qué valores lleva el NS que envía R?",
+  "explanation": "Coinciden las dos rutas; por longest prefix match gana la /64, que es directa (G=0): el destino está en el enlace de g0/0 y se le entrega directamente. Por eso R resuelve la MAC del propio destino: Target 2001:db8:a::25 y destino IPv6 su solicited-node, ff02::1:ff00:25 (24 últimos bits 00:00:25).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8,
+        21,
+        22,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "subred-bridge-router-y-tablas-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "directa",
+      "text": "Target 2001:db8:a::25; destino ff02::1:ff00:25; por g0/0.",
+      "explanation": "Con una ruta G=0 se resuelve la MAC del destino final."
+    },
+    {
+      "id": "via-gateway",
+      "text": "Target 2001:db8:a::1; destino ff02::1:ff00:1; por g0/0.",
+      "explanation": "Usa la ruta /32, menos específica; la /64 directa gana y no hace falta gateway."
+    },
+    {
+      "id": "intercambiados",
+      "text": "Target ff02::1:ff00:25; destino 2001:db8:a::25; por g0/0.",
+      "explanation": "Intercambia los campos: Target lleva la unicast que se resuelve y el destino es el grupo solicited-node."
+    },
+    {
+      "id": "all-nodes",
+      "text": "Target 2001:db8:a::25; destino ff02::1; por g0/0.",
+      "explanation": "El NS de resolución no va a all-nodes, sino al solicited-node del objetivo."
+    }
+  ],
+  "answer": "directa"
+}

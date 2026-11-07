@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-72",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente envía una consulta mDNS a ff02::fb desde su link-local. ¿Qué descripción de ese paquete es correcta?",
+  "explanation": "ff02::fb empieza por FF (multicast), sus flags valen 0 (T = 0: grupo permanente asignado por IANA) y su ámbito es 2 (link-local), así que no atraviesa routers. En Ethernet se mapea a 33:33 + 32 últimos bits: 33:33:00:00:00:fb. mDNS usa UDP en el puerto 5353.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        20,
+        37,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "mdns-y-zeroconf"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "MAC destino 33:33:00:00:00:fb; grupo permanente de ámbito link-local; UDP 5353.",
+      "explanation": "Interpreta flags y ámbito y aplica el mapeo de 32 bits."
+    },
+    {
+      "id": "mac-solicited",
+      "text": "MAC destino 33:33:ff:00:00:fb; grupo permanente de ámbito link-local; UDP 5353.",
+      "explanation": "El octeto ff aparece en las MAC de grupos solicited-node; aquí los 32 últimos bits son 00:00:00:fb."
+    },
+    {
+      "id": "temporal",
+      "text": "MAC destino 33:33:00:00:00:fb; grupo temporal (T=1) de ámbito link-local; UDP 5353.",
+      "explanation": "En ff02 los flags valen 0: T = 0, grupo permanente."
+    },
+    {
+      "id": "atraviesa",
+      "text": "MAC destino 33:33:00:00:00:fb; grupo de ámbito global que los routers reenvían si Hop Limit > 1; UDP 5353.",
+      "explanation": "El ámbito 2 es link-local: el mDNS no sale del enlace sea cual sea el Hop Limit."
+    }
+  ],
+  "answer": "correcta"
+}

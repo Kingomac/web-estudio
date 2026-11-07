@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-28",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Una estación de riego modular se instalará a la intemperie, expuesta a lluvia y polvo. ¿Qué bloque atiende ese requisito según el tema?",
+  "explanation": "Entre los bloques de un dispositivo modular, la caja o carcasa protege el conjunto y el tema la califica de imprescindible por su estanqueidad (IP65/IP67).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "dispositivos-modulares"
+    }
+  ],
+  "options": [
+    {
+      "id": "caja-estanca-ip65-ip67",
+      "text": "La caja o carcasa, con estanqueidad IP65/IP67.",
+      "explanation": "Correcta: es el bloque de protección; el tema exige estanqueidad IP65/IP67."
+    },
+    {
+      "id": "placa-base",
+      "text": "La placa base, que conecta y alimenta los módulos.",
+      "explanation": "La placa base da conexión y alimentación, no protección frente al agua o el polvo."
+    },
+    {
+      "id": "modulo-de-almacenamiento",
+      "text": "El módulo de almacenamiento SD o flash.",
+      "explanation": "Guarda datos; no protege el dispositivo del entorno."
+    },
+    {
+      "id": "modulo-de-energia",
+      "text": "El módulo de energía con batería y panel solar.",
+      "explanation": "Alimenta el dispositivo, pero la estanqueidad corresponde a la carcasa."
+    }
+  ],
+  "answer": "caja-estanca-ip65-ip67"
+}

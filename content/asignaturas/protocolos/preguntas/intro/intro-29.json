@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En un dispositivo IoT modular, ¿qué función asigna el tema a la placa base?",
+  "explanation": "La placa base proporciona la conexión y la alimentación del resto de módulos (MCU, comunicación, sensores, actuadores, energía, almacenamiento).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "dispositivos-modulares"
+    }
+  ],
+  "options": [
+    {
+      "id": "conexion-y-alimentacion",
+      "text": "Conectar y alimentar el resto de módulos.",
+      "explanation": "Correcta: es la definición del tema para la placa base."
+    },
+    {
+      "id": "ejecutar-el-programa",
+      "text": "Ejecutar el programa de la aplicación.",
+      "explanation": "Ejecutar el programa es tarea de la MCU, que es un módulo distinto."
+    },
+    {
+      "id": "guardar-las-medidas",
+      "text": "Guardar las medidas en memoria no volátil.",
+      "explanation": "Eso corresponde al módulo de almacenamiento (SD, flash)."
+    },
+    {
+      "id": "transmitir-por-radio",
+      "text": "Transmitir los datos por LoRa, NB-IoT o BLE.",
+      "explanation": "Eso corresponde al módulo de comunicación."
+    }
+  ],
+  "answer": "conexion-y-alimentacion"
+}

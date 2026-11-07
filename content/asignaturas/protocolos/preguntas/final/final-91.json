@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-91",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En Wi-SUN FAN (MRHOF con ETX), un router X tiene tres padres candidatos: P1 (Rank 768, ETX 1), P2 (Rank 512, ETX 2) y P3 (Rank 640, ETX 1,25). ¿Qué padre preferido elige, qué Rank calcula y qué otro candidato puede conservar como alternativo sin ajustar ese Rank?",
+  "explanation": "Costes: P1 = 768 + 128 = 896; P2 = 512 + 256 = 768; P3 = 640 + 160 = 800. Elige P2 y Rank = 512 + max(256, 256) = 768. Un padre alternativo debe tener Rank menor que el del hijo: P3 (640) sí; P1 (768) no.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        75,
+        77
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mrhof-y-etx-calculo-del-material"
+    }
+  ],
+  "options": [
+    {
+      "id": "p2-768-p3",
+      "text": "Padre P2, Rank 768; puede conservar P3.",
+      "explanation": "Menor coste vía P2, y solo P3 tiene un Rank estrictamente menor que 768."
+    },
+    {
+      "id": "p2-768-p1-p3",
+      "text": "Padre P2, Rank 768; puede conservar P1 y P3.",
+      "explanation": "P1 tiene Rank 768, igual que el de X; el hijo debe tener mayor Rank que todos sus padres."
+    },
+    {
+      "id": "p3-800-p2",
+      "text": "Padre P3, Rank 800; puede conservar P2.",
+      "explanation": "800 es el coste vía P3, que no es el menor, y además el Rank no coincide con el coste."
+    },
+    {
+      "id": "p1-896",
+      "text": "Padre P1, Rank 896, porque su enlace tiene el mejor ETX.",
+      "explanation": "El mejor ETX no basta: el coste suma el Rank del padre, y vía P1 es el mayor (896)."
+    }
+  ],
+  "answer": "p2-768-p3"
+}

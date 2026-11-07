@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Traza confirmable non-piggybacked del tema:\n`CON [0x4d45] GET /temperature (token 0x21)` →\n`ACK [0x4d45]` ←\n…\n`CON [0x4d45] 2.05 Content (token 0x21) \"20.1 C\"` ←\n`ACK [0x4d45]` →\n¿Por qué envía la aplicación el último ACK?",
+  "explanation": "La respuesta separada llega en un mensaje confirmable (CON), y en el modo confirmable el receptor debe asentirlo con un ACK; si no, el dispositivo la retransmitiría. El primer ACK, vacío, solo confirmaba la recepción de la petición.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38,
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "tipos-de-mensaje-y-fiabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "asentir-el-con",
+      "text": "Porque la respuesta llegó en un mensaje CON y todo mensaje confirmable debe asentirse.",
+      "explanation": "Si el dispositivo no recibe ese ACK, retransmitirá la respuesta."
+    },
+    {
+      "id": "siguiente-valor",
+      "text": "Para pedir al dispositivo el siguiente valor del recurso.",
+      "explanation": "Pedir valores futuros es la función de Observe; un ACK no es una petición."
+    },
+    {
+      "id": "primer-ack-perdido",
+      "text": "Porque el primer ACK se perdió y hay que repetirlo.",
+      "explanation": "El primer ACK llegó: era el ACK vacío que confirmaba la petición."
+    },
+    {
+      "id": "piggybacked",
+      "text": "Porque es una respuesta piggybacked y el ACK lleva los datos.",
+      "explanation": "En la respuesta piggybacked los datos viajan en el ACK del dispositivo; aquí la respuesta es separada y el último ACK no lleva datos."
+    }
+  ],
+  "answer": "asentir-el-con"
+}

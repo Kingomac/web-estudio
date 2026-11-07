@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Una cámara de vigilancia conectada a la red eléctrica envía vídeo a la nube. ¿Qué valoración es coherente con el tema?",
+  "explanation": "El tema admite que Wi-Fi y 4G/5G pueden usarse en nodos conectados a la red eléctrica; las LLN se diseñan para nodos limitados en CPU, memoria y batería.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lln-bajo-consumo-y-perdidas"
+    }
+  ],
+  "options": [
+    {
+      "id": "puede-usar-wifi-o-4g-5g",
+      "text": "Puede usar Wi-Fi o 4G/5G, porque no depende de una batería; las LLN están pensadas para nodos limitados.",
+      "explanation": "Correcta: el tema reserva las tecnologías específicas (LLN) para nodos limitados y admite Wi-Fi o 4G/5G con alimentación de red."
+    },
+    {
+      "id": "debe-usar-lpwan",
+      "text": "Debe usar una LPWAN, porque cualquier dispositivo IoT requiere una LLN.",
+      "explanation": "Las LPWAN tienen tasas típicas de 0,25–1 kbps, insuficientes para vídeo, y el tema no obliga a usar LLN en nodos con alimentación de red."
+    },
+    {
+      "id": "debe-usar-lowpan-por-cobertura",
+      "text": "Debe usar una LoWPAN para tener cobertura de varios kilómetros.",
+      "explanation": "La LoWPAN cubre 10–100 m; los kilómetros corresponden a las LPWAN."
+    },
+    {
+      "id": "no-puede-ser-iot",
+      "text": "No puede formar parte de un sistema IoT porque no usa una LLN.",
+      "explanation": "El tema no excluye del IoT a los nodos que usan Wi-Fi o 4G/5G; solo dice que los nodos limitados necesitan tecnologías específicas."
+    }
+  ],
+  "answer": "puede-usar-wifi-o-4g-5g"
+}

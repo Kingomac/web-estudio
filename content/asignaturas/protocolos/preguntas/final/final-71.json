@@ -1,0 +1,57 @@
+{
+  "id": "protocolos.preguntas.final-71",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router muestra con `show ipv6 route`:\n`S  ::/0 [1/0]  via ::, Serial2/0`\n`S  2000::/62 [1/0]  via FE80::1, FastEthernet1/0`\n`C  2000:0:0:2::/64 [0/0]  via ::, FastEthernet0/0`\n`L  2000:0:0:2::1/128 [0/0]  via ::, FastEthernet0/0`\n`S  3000::/64 [1/0]  via 2000:0:0:2::100`\n¿Cómo reenvía los paquetes dirigidos a 2000:0:0:1::5 y a 3000::7?",
+  "explanation": "2000:0:0:1::5 coincide con 2000::/62 (cuarto grupo de 0 a 3) y con ::/0; gana el /62, que va al next-hop link-local FE80::1 por FastEthernet1/0. 3000::7 coincide con 3000::/64, cuyo next-hop global 2000:0:0:2::100 se alcanza por la ruta conectada 2000:0:0:2::/64, es decir, por FastEthernet0/0. Por eso esa ruta muestra solo la IP: la interfaz se deduce de la ruta directa.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22,
+        23,
+        25,
+        26,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "El primero a FE80::1 por Fa1/0; el segundo a 2000:0:0:2::100 por Fa0/0.",
+      "explanation": "Aplica LPM a cada destino y resuelve la interfaz del next-hop global con la ruta C."
+    },
+    {
+      "id": "primero-conectada",
+      "text": "El primero directamente por Fa0/0; el segundo a 2000:0:0:2::100 por Fa0/0.",
+      "explanation": "La ruta conectada es 2000:0:0:2::/64 y no contiene 2000:0:0:1::5."
+    },
+    {
+      "id": "segundo-defecto",
+      "text": "El primero a FE80::1 por Fa1/0; el segundo por Serial2/0, porque su ruta no indica interfaz.",
+      "explanation": "La ruta 3000::/64 es válida: su next-hop se alcanza por la ruta conectada de Fa0/0."
+    },
+    {
+      "id": "primero-defecto",
+      "text": "El primero por Serial2/0, porque 2000::/62 no incluye el grupo 1; el segundo a 2000:0:0:2::100 por Fa0/0.",
+      "explanation": "Un /62 libera 2 bits del cuarto grupo: abarca de 2000:0:0:0:: a 2000:0:0:3::."
+    },
+    {
+      "id": "segundo-directo",
+      "text": "El primero a FE80::1 por Fa1/0; el segundo directamente a 3000::7 por Fa0/0.",
+      "explanation": "La ruta a 3000::/64 es indirecta: la trama va al router 2000:0:0:2::100, no a 3000::7."
+    }
+  ],
+  "answer": "correcta"
+}

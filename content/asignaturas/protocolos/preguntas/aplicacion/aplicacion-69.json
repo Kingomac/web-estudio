@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-69",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes afirmaciones sobre SOAP es correcta?",
+  "explanation": "SOAP es un estándar del W3C basado en XML para intercambiar información estructurada entre aplicaciones heterogéneas. Puede ir sobre cualquier protocolo de transporte, aunque habitualmente se usa HTTP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "w3c-xml-cualquier-transporte",
+      "text": "Es un estándar W3C basado en XML que puede ir sobre cualquier protocolo de transporte, habitualmente HTTP.",
+      "explanation": "Coincide con la definición del tema."
+    },
+    {
+      "id": "binario-oasis",
+      "text": "Es un formato binario de OASIS pensado para MQTT.",
+      "explanation": "SOAP usa XML y es del W3C; OASIS es el organismo de MQTT."
+    },
+    {
+      "id": "solo-http",
+      "text": "Solo puede transportarse sobre HTTP.",
+      "explanation": "HTTP es lo habitual, pero el tema dice que puede ir sobre cualquier protocolo de transporte."
+    },
+    {
+      "id": "json",
+      "text": "Codifica los mensajes en JSON con Envelope como objeto raíz.",
+      "explanation": "Envelope es el elemento raíz, pero de un documento XML, no JSON."
+    }
+  ],
+  "answer": "w3c-xml-cualquier-transporte"
+}

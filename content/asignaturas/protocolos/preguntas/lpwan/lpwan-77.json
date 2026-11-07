@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-77",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué identificador de 64 bits suele asignar el fabricante y cuál de 32 bits aparece en las tramas de datos de la sesión?",
+  "explanation": "DevEUI es el identificador único global de 64 bits; DevAddr es la dirección de 32 bits usada en las tramas de la sesión.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        31
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "activacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "deveui-64-bits-y-devaddr-32-bits",
+      "text": "DevEUI (64 bits) y DevAddr (32 bits).",
+      "explanation": "P. 31."
+    },
+    {
+      "id": "devaddr-64-bits-y-deveui-32-bits",
+      "text": "DevAddr (64 bits) y DevEUI (32 bits).",
+      "explanation": "Están invertidos."
+    },
+    {
+      "id": "joineui-64-bits-y-devnonce-32-bits",
+      "text": "JoinEUI (64 bits) y DevNonce (32 bits).",
+      "explanation": "JoinEUI identifica al Join Server y DevNonce distingue intentos de activación."
+    },
+    {
+      "id": "appkey-64-bits-y-appskey-32-bits",
+      "text": "AppKey (64 bits) y AppSKey (32 bits).",
+      "explanation": "Son claves, no identificadores."
+    }
+  ],
+  "answer": "deveui-64-bits-y-devaddr-32-bits"
+}

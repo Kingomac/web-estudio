@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-59",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router tiene `ipv6 address 2001:db8:1::1/64` en g0/0 y `ipv6 address 2001:db8:2::1/64` en g0/1, y `show ipv6 route` muestra las dos entradas C y las dos L. Los hosts de cada subred hacen ping a la dirección del router en su enlace, pero los de una subred no alcanzan a los de la otra. ¿Cuál es la causa más probable según el tema?",
+  "explanation": "ipv6 address habilita IPv6 en cada interfaz y crea sus rutas directas, por eso aparecen las entradas C y L y el router responde en cada enlace. Pero para reenviar entre interfaces debe ejecutarse además ipv6 unicast-routing. No hacen falta rutas estáticas: las dos subredes están conectadas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        19,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "unicast-routing",
+      "text": "Falta el comando global ipv6 unicast-routing.",
+      "explanation": "Sin él, el router no reenvía IPv6 entre interfaces."
+    },
+    {
+      "id": "rutas-estaticas",
+      "text": "Faltan rutas estáticas ipv6 route para cada subred.",
+      "explanation": "Las entradas C ya son rutas directas hacia las dos subredes."
+    },
+    {
+      "id": "ipv6-enable",
+      "text": "Falta ipv6 enable en cada interfaz.",
+      "explanation": "ipv6 address ya habilita la interfaz; las entradas C lo confirman."
+    },
+    {
+      "id": "link-local",
+      "text": "Falta configurar una dirección link-local manual en cada interfaz.",
+      "explanation": "Al habilitarse la interfaz se forma su link-local automática, y no es lo que impide el reenvío."
+    }
+  ],
+  "answer": "unicast-routing"
+}

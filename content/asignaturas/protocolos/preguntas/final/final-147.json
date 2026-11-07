@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-147",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un analizador de radio captura, en este orden, tramas de un mismo dispositivo recién encendido con MHDR 0x00, 0x20, 0x80 y 0x60. ¿Qué secuencia describe?",
+  "explanation": "0x00 Join-request, 0x20 Join-accept, 0x80 uplink de datos confirmado y 0x60 downlink de datos no confirmado, que puede llevar el bit ACK que confirma el uplink.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        33,
+        39,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "join-request-join-accept-uplink",
+      "text": "Join-request, Join-accept, uplink confirmado y downlink no confirmado.",
+      "explanation": "Valores de la p. 39."
+    },
+    {
+      "id": "join-accept-join-request-uplink",
+      "text": "Join-accept, Join-request, uplink confirmado y downlink confirmado.",
+      "explanation": "0x00 es el Join-request y 0xA0 sería el downlink confirmado."
+    },
+    {
+      "id": "join-request-join-accept-uplink-no",
+      "text": "Join-request, Join-accept, uplink no confirmado y downlink confirmado.",
+      "explanation": "0x80 es uplink confirmado (sin confirmación, 0x40) y 0x60 es downlink no confirmado."
+    },
+    {
+      "id": "join-request-join-accept-downlink",
+      "text": "Join-request, Join-accept, downlink confirmado y uplink no confirmado.",
+      "explanation": "Confunde el sentido: 0x80 es uplink y 0x60 downlink."
+    }
+  ],
+  "answer": "join-request-join-accept-uplink"
+}

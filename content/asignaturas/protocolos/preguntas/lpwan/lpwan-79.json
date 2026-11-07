@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-79",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué identifica JoinEUI (antiguamente llamado AppEUI)?",
+  "explanation": "JoinEUI identifica al Join Server; AppKey es la clave raíz secreta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "al-join-server",
+      "text": "Al Join Server.",
+      "explanation": "P. 33."
+    },
+    {
+      "id": "a-la-aplicacion-del-application-server",
+      "text": "A la aplicación del Application Server.",
+      "explanation": "El antiguo nombre AppEUI induce a esta confusión; el identificador de la aplicación es otro (p. 46)."
+    },
+    {
+      "id": "al-dispositivo",
+      "text": "Al dispositivo.",
+      "explanation": "Eso es DevEUI."
+    },
+    {
+      "id": "a-la-sesion-activa-en-las-tramas-de",
+      "text": "A la sesión activa en las tramas de datos.",
+      "explanation": "Eso es DevAddr."
+    }
+  ],
+  "answer": "al-join-server"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-33",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sensor envía una lectura con CoAP sobre UDP, IPv6, 6LoWPAN e IEEE 802.15.4. ¿Qué asignación de funciones es correcta en todos sus detalles?",
+  "explanation": "Según el tema: la capa de aplicación (CoAP) define cómo se solicitan y entregan los datos (formato y orden de los mensajes); el transporte (UDP) entrega los datos a la aplicación destino; la red (IPv6) hace llegar el datagrama al nodo destino; la adaptación (6LoWPAN) comprime cabeceras y fragmenta datagramas; y el enlace (IEEE 802.15.4) hace llegar la trama al siguiente nodo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        5,
+        6
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "funcion-de-las-capas-y-modelos-de-comunicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "todo-correcto",
+      "text": "CoAP: formato y orden de los mensajes; UDP: entrega a la aplicación destino; 6LoWPAN: compresión de cabeceras y fragmentación; IEEE 802.15.4: entrega de la trama al siguiente nodo.",
+      "explanation": "Cada protocolo tiene la función de su capa."
+    },
+    {
+      "id": "udp-nodo-destino",
+      "text": "CoAP: formato y orden de los mensajes; UDP: hacer llegar el datagrama al nodo destino; 6LoWPAN: compresión de cabeceras y fragmentación; IEEE 802.15.4: entrega de la trama al siguiente nodo.",
+      "explanation": "Hacer llegar el datagrama al nodo destino es función de la red (IPv6); UDP entrega los datos a la aplicación destino."
+    },
+    {
+      "id": "6lowpan-encaminamiento",
+      "text": "CoAP: formato y orden de los mensajes; UDP: entrega a la aplicación destino; 6LoWPAN: encaminamiento hasta el nodo destino; IEEE 802.15.4: entrega de la trama al siguiente nodo.",
+      "explanation": "6LoWPAN es la capa de adaptación: comprime y fragmenta; el encaminamiento es de la capa de red."
+    },
+    {
+      "id": "802154-bits",
+      "text": "CoAP: formato y orden de los mensajes; UDP: entrega a la aplicación destino; 6LoWPAN: compresión de cabeceras y fragmentación; IEEE 802.15.4: representación de los datos.",
+      "explanation": "La representación de los datos es de la capa de aplicación; IEEE 802.15.4 es un enlace."
+    }
+  ],
+  "answer": "todo-correcto"
+}

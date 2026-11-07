@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Según la definición de nodo limitado del RFC 7228 que recoge el tema, además de los límites de potencia, memoria y CPU, ¿qué puede faltarle a estos nodos?",
+  "explanation": "El tema añade que en los nodos limitados pueden faltar servicios de nivel 2 como la conectividad completa y la capacidad broadcast/multicast.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    }
+  ],
+  "options": [
+    {
+      "id": "conectividad-completa-y-broadcast",
+      "text": "Servicios de nivel 2 como la conectividad completa y la capacidad broadcast/multicast.",
+      "explanation": "Correcta: es lo que añade la definición del tema."
+    },
+    {
+      "id": "direccion-mac",
+      "text": "Una dirección de enlace, por lo que no pueden identificarse en la red.",
+      "explanation": "El tema no dice que falte la dirección de enlace; lo que puede faltar es la conectividad completa y el broadcast/multicast."
+    },
+    {
+      "id": "cifrado-de-aplicacion",
+      "text": "El cifrado en la capa de aplicación.",
+      "explanation": "No es un servicio de nivel 2 ni aparece en la definición del tema."
+    },
+    {
+      "id": "acceso-a-la-red-troncal",
+      "text": "La red troncal entre la pasarela y la nube.",
+      "explanation": "La red troncal es parte de la arquitectura, no un recurso del nodo; la definición habla de servicios de nivel 2."
+    }
+  ],
+  "answer": "conectividad-completa-y-broadcast"
+}

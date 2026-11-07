@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-78",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué valor tiene el primer byte de la cabecera de una petición CoAP confirmable con un token de 1 byte?",
+  "explanation": "El primer byte contiene Versión (2 bits) = 1 → 01, Tipo (2 bits) = 0 (CON) → 00 y Longitud del token (4 bits) = 1 → 0001. Resultado: 0100 0001 = 0x41.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        41,
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "0x41",
+      "text": "0x41.",
+      "explanation": "01 (versión 1) · 00 (CON) · 0001 (TKL = 1)."
+    },
+    {
+      "id": "0x61",
+      "text": "0x61.",
+      "explanation": "Codifica el tipo 2 (ACK): 01 10 0001; es el primer byte de la respuesta piggybacked del ejemplo."
+    },
+    {
+      "id": "0x51",
+      "text": "0x51.",
+      "explanation": "Codifica el tipo 1 (NON): 01 01 0001."
+    },
+    {
+      "id": "0x01",
+      "text": "0x01.",
+      "explanation": "Olvida la versión, que vale 1 y ocupa los 2 bits más significativos."
+    }
+  ],
+  "answer": "0x41"
+}

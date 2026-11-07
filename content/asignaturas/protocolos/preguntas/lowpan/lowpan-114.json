@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-114",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En 6LFF, la tabla VRB del nodo G contiene estas entradas (salto anterior, tag entrante → siguiente salto, tag saliente): (B, 7 → H, 17), (D, 3 → H, 8) y (F, 3 → H, 11). Llega desde F un fragmento posterior con datagram_tag 3. ¿Cómo lo reenvía G?",
+  "explanation": "La entrada VRB se busca con la dirección de enlace del salto anterior y la etiqueta entrante: (F, 3) lleva a H con la etiqueta 11. Así G distingue dos datagramas que llegan con la misma etiqueta 3 desde D y desde F.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        40,
+        42
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragment-forwarding-6lff-y-vrb"
+    }
+  ],
+  "options": [
+    {
+      "id": "h-tag-11",
+      "text": "A H con datagram_tag 11.",
+      "explanation": "La pareja (F, 3) identifica la entrada; G reescribe la etiqueta con la saliente 11."
+    },
+    {
+      "id": "h-tag-3",
+      "text": "A H con datagram_tag 3, la misma que recibió.",
+      "explanation": "Conservar la etiqueta mezclaría en H este datagrama con el que llega de D, que también usaba 3: por eso VRB asigna etiquetas salientes distintas."
+    },
+    {
+      "id": "h-tag-8",
+      "text": "A H con datagram_tag 8.",
+      "explanation": "8 es la etiqueta saliente del datagrama que llega de D; buscar solo por la etiqueta 3 confunde los dos datagramas."
+    },
+    {
+      "id": "reensambla-antes",
+      "text": "Lo retiene hasta reensamblar el datagrama completo y después lo refragmenta.",
+      "explanation": "Reensamblar en cada salto es lo que 6LFF evita: el fragmento se reenvía de inmediato con la entrada VRB."
+    }
+  ],
+  "answer": "h-tag-11"
+}

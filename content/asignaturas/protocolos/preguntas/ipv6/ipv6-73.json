@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-73",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia esencial hay entre la configuración con DHCPv6 y SLAAC?",
+  "explanation": "DHCPv6 es el mecanismo con estado: requiere un servidor que mantiene información de las direcciones asignadas. SLAAC es sin estado: el nodo construye su dirección con el prefijo anunciado por el router y su IID, sin servidor DHCP, y es el más usado en IoT. En ambos casos el gateway sale del RA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        31,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "icmpv6-slaac-y-dhcpv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "con-y-sin-estado",
+      "text": "DHCPv6 requiere un servidor que guarda el estado de las direcciones asignadas; SLAAC no necesita servidor.",
+      "explanation": "Es la distinción con estado / sin estado del tema."
+    },
+    {
+      "id": "slaac-necesita-servidor",
+      "text": "SLAAC requiere un servidor en la subred y DHCPv6 no.",
+      "explanation": "Es al revés: SLAAC no necesita servidor DHCP."
+    },
+    {
+      "id": "dhcpv6-sin-ra",
+      "text": "DHCPv6 funciona sin mensajes RA, mientras que SLAAC los necesita.",
+      "explanation": "DHCPv6 opera de forma conjunta con los RA: el flag M lo activa y el gateway se toma del RA."
+    },
+    {
+      "id": "slaac-solo-link-local",
+      "text": "SLAAC solo forma direcciones link-local; las globales exigen DHCPv6.",
+      "explanation": "SLAAC forma direcciones globales o ULA con el prefijo del RA."
+    }
+  ],
+  "answer": "con-y-sin-estado"
+}

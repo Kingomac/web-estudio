@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-85",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "La aplicación del nodo entrega a la capa MAC sus datos junto con un valor FPort. ¿Para qué sirve ese valor?",
+  "explanation": "FPort identifica el puerto lógico asociado al contenido y la aplicación final lo usa para saber cómo interpretarlo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        38,
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "indica-el-puerto-logico-del-contenido",
+      "text": "Indica el puerto lógico del contenido, para saber cómo interpretarlo.",
+      "explanation": "P. 38."
+    },
+    {
+      "id": "identifica-el-modelo-del-dispositivo",
+      "text": "Identifica el modelo del dispositivo.",
+      "explanation": "La p. 52 lo niega: distingue tipos de mensaje, no el modelo."
+    },
+    {
+      "id": "es-el-numero-de-secuencia-para-detectar",
+      "text": "Es el número de secuencia para detectar copias.",
+      "explanation": "Eso es FCnt."
+    },
+    {
+      "id": "indica-que-gateway-debe-usar-el-downlink",
+      "text": "Indica qué gateway debe usar el downlink.",
+      "explanation": "El gateway lo elige el NS."
+    }
+  ],
+  "answer": "indica-el-puerto-logico-del-contenido"
+}

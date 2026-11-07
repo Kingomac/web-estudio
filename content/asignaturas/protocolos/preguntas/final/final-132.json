@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-132",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo NB-IoT consume 3 MB al mes y debe funcionar 10 años. Con los precios de la p. 16 —Movistar: SIM de 1 MB a 0,85 €/mes con excedente de 0,85 €/MB, SIM de 5 MB a 1,20 €/mes, alta de 55 €; 1NCE: 13 € de pago único por 500 MB durante 10 años—, ¿qué opción es la más barata y cubre el consumo?",
+  "explanation": "En 10 años consume 3 × 120 = 360 MB, que caben en los 500 MB de 1NCE: 13 € en total. Con Movistar, la SIM de 5 MB cuesta 1,20 × 120 = 144 € más el alta, y la de 1 MB 0,85 + 2 × 0,85 = 2,55 €/mes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-frente-a-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "1nce-13-en-total-porque-360-mb-caben-en",
+      "text": "1NCE: 13 € en total, porque 360 MB caben en sus 500 MB.",
+      "explanation": "3 MB × 120 meses = 360 MB."
+    },
+    {
+      "id": "movistar-5-mb-porque-1nce-no-alcanza",
+      "text": "Movistar 5 MB, porque 1NCE no alcanza para 10 años de consumo.",
+      "explanation": "Solo se usarían 360 de los 500 MB."
+    },
+    {
+      "id": "movistar-1-mb-porque-su-cuota-de-0-85",
+      "text": "Movistar 1 MB, porque su cuota de 0,85 €/mes es la más baja.",
+      "explanation": "Olvida el excedente: 2 MB extra al mes elevan la cuota a 2,55 €/mes."
+    },
+    {
+      "id": "1nce-pero-solo-los-primeros-500-mb",
+      "text": "1NCE, pero solo los primeros 500 MB mensuales; después hay que pagar excedente.",
+      "explanation": "Los 500 MB son para los 10 años, no mensuales; aun así, alcanzan."
+    }
+  ],
+  "answer": "1nce-13-en-total-porque-360-mb-caben-en"
+}

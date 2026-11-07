@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-83",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un sensor se identifica como sensor-025, tiene el nombre sensor25.edificio.example y la dirección 2001:db8:10::25. Su dirección puede cambiar. ¿Qué debe guardar la aplicación para no tener que reconfigurarse y cómo obtiene la IPv6 actual?",
+  "explanation": "Un nombre de host permite referirse al nodo sin incorporar su dirección IP a la configuración de la aplicación; DNS permite obtener las direcciones asociadas al nombre mediante registros AAAA. El identificador persistente reconoce al dispositivo, pero no indica por sí solo cómo acceder a él.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        47
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "direcciones-nombres-e-identificadores"
+    }
+  ],
+  "options": [
+    {
+      "id": "nombre-aaaa",
+      "text": "El nombre de host, y obtener la IPv6 consultando su registro AAAA en DNS.",
+      "explanation": "Separa el nombre, estable para la aplicación, de la dirección, que se resuelve."
+    },
+    {
+      "id": "identificador",
+      "text": "El identificador sensor-025, del que puede deducirse la IPv6.",
+      "explanation": "El identificador persistente no indica cómo acceder: hay que asociarlo con una dirección u otro mecanismo."
+    },
+    {
+      "id": "direccion",
+      "text": "La dirección 2001:db8:10::25, que identifica al dispositivo aunque cambie de red.",
+      "explanation": "La dirección es justo lo que cambia; guardarla obliga a reconfigurar."
+    },
+    {
+      "id": "ndp",
+      "text": "El nombre de host, y obtener la IPv6 con un NS de NDP.",
+      "explanation": "NDP resuelve direcciones de enlace de vecinos; no resuelve nombres de host."
+    }
+  ],
+  "answer": "nombre-aaaa"
+}

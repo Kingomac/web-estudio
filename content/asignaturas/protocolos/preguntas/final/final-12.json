@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Una LLN en árbol tiene la raíz en la pasarela. El nodo A alcanza la pasarela directamente, B solo alcanza a A y C solo alcanza a B. ¿Qué afirmación es correcta?",
+  "explanation": "En estrella, la eficiencia energética viene de que los nodos encienden la radio solo cuando tienen algo que transmitir. En un árbol, los nodos intermedios actúan como repetidores del tráfico de los demás. Como el árbol no tiene caminos redundantes, la caída de un repetidor aísla a los nodos que cuelgan de él; esa redundancia es la mejora que aporta la malla.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "topologias"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-y-b-repiten-a-aisla",
+      "text": "A y B repiten el tráfico de otros, así que no les basta con encender la radio cuando tienen algo propio que enviar; si A cae, B y C quedan aislados.",
+      "explanation": "Correcta: identifica los repetidores, pierde la ventaja energética de la estrella y señala la falta de redundancia del árbol."
+    },
+    {
+      "id": "solo-c-repite",
+      "text": "Solo C repite tráfico, por ser el nodo más alejado de la pasarela; si A cae, B y C quedan aislados.",
+      "explanation": "C es una hoja: nadie depende de él. Los repetidores son A (para B y C) y B (para C)."
+    },
+    {
+      "id": "multisalto-da-redundancia",
+      "text": "A y B repiten el tráfico de otros; si A cae, B y C siguen conectados porque el árbol es multisalto.",
+      "explanation": "Multisalto no implica redundancia: el árbol tiene un solo camino hacia la raíz. Los caminos alternativos son la mejora de la malla."
+    },
+    {
+      "id": "todos-como-estrella",
+      "text": "A, B y C pueden comportarse como en una estrella, porque todos acaban en la pasarela.",
+      "explanation": "En estrella todos están dentro del radio de la pasarela; aquí B y C no lo están y dependen de repetidores."
+    }
+  ],
+  "answer": "a-y-b-repiten-a-aisla"
+}

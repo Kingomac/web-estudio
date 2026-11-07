@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-103",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "La aplicación final pide encender un actuador LoRaWAN. ¿Qué hace el Application Server con esa orden?",
+  "explanation": "El AS codifica la orden al formato del dispositivo, cifra el payload con AppSKey y lo entrega al NS con la identificación del dispositivo, FPort y las opciones de envío.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        51,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "application-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-codifica-la-cifra-con-appskey-y-la",
+      "text": "La codifica, la cifra con AppSKey y la entrega al NS para que programe su transmisión.",
+      "explanation": "Pp. 51 y 57."
+    },
+    {
+      "id": "la-cifra-con-nwkskey-y-la-envia",
+      "text": "La cifra con NwkSKey y la envía directamente al gateway.",
+      "explanation": "El AS no tiene NwkSKey ni habla con los gateways."
+    },
+    {
+      "id": "la-coloca-en-fopts-y-calcula-el-mic",
+      "text": "La coloca en FOpts y calcula el MIC.",
+      "explanation": "FOpts y el MIC son cosa del NS."
+    },
+    {
+      "id": "la-envia-con-fport-0-para-que-el-nodo-la",
+      "text": "La envía con FPort = 0 para que el nodo la trate como comando MAC.",
+      "explanation": "FPort = 0 es para comandos MAC del NS; los de aplicación usan FPort ≠ 0."
+    }
+  ],
+  "answer": "la-codifica-la-cifra-con-appskey-y-la"
+}

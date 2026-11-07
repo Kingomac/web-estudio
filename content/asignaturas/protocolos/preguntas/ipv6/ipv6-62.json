@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-62",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un administrador configura la misma dirección `FE80::1 link-local` en todas las interfaces de un router. ¿Qué afirmación es correcta?",
+  "explanation": "Una link-local solo debe ser única dentro de su enlace. El tema indica que es habitual y aconsejable usar las link-local de los routers como next-hop e incluso configurar la misma en todas sus interfaces, porque cada una es única en su subred. Los demás routers la usan como next-hop indicando también su interfaz de salida.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        17,
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "valido-unica-por-subred",
+      "text": "Es válido y habitual: cada FE80::1 es única en su subred, y los vecinos la usan como next-hop junto con su interfaz.",
+      "explanation": "Coincide con la recomendación del tema."
+    },
+    {
+      "id": "duplicada",
+      "text": "No es válido: DAD detectará la dirección como duplicada entre las interfaces del router.",
+      "explanation": "DAD comprueba la unicidad en cada enlace; dos interfaces en enlaces distintos no comparten subred."
+    },
+    {
+      "id": "solo-eui64",
+      "text": "No es posible: las link-local solo se forman automáticamente con EUI-64.",
+      "explanation": "El tema muestra que pueden configurarse link-local adicionales con ipv6 address … link-local."
+    },
+    {
+      "id": "next-hop-global",
+      "text": "Es válido, pero obliga a que las rutas de los vecinos usen como next-hop una dirección global.",
+      "explanation": "Al contrario: el tema aconseja usar como next-hop las link-local de los routers."
+    }
+  ],
+  "answer": "valido-unica-por-subred"
+}

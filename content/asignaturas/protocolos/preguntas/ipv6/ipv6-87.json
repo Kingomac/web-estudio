@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-87",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Según el tema, ¿qué mecanismos engloba Zeroconf en el caso de IPv6?",
+  "explanation": "Zeroconf es un conjunto de técnicas para crear automáticamente una red IP sin configuración ni servidores especiales. En IPv6 engloba la configuración automática de red (SLAAC) y la resolución local de nombres y el descubrimiento de servicios (mDNS y DNS-SD). Avahi y Bonjour lo implementan.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "mdns-y-zeroconf"
+    }
+  ],
+  "options": [
+    {
+      "id": "slaac-mdns-dnssd",
+      "text": "SLAAC, mDNS y DNS-SD; implementaciones como Avahi y Bonjour.",
+      "explanation": "Es la definición del tema."
+    },
+    {
+      "id": "dhcpv6-dns",
+      "text": "DHCPv6 y servidores DNS unicast configurados por el administrador.",
+      "explanation": "Zeroconf busca precisamente evitar servidores especiales y configuración manual."
+    },
+    {
+      "id": "ndp-rpl",
+      "text": "NDP, RPL y la compresión 6LoWPAN.",
+      "explanation": "Son mecanismos de vecindad, routing y adaptación, no el conjunto Zeroconf que describe el tema."
+    },
+    {
+      "id": "coap-rd",
+      "text": "CoAP, CoRE Link Format y Resource Directory.",
+      "explanation": "Son mecanismos de descubrimiento de recursos CoAP, no de configuración automática de red."
+    }
+  ],
+  "answer": "slaac-mdns-dnssd"
+}

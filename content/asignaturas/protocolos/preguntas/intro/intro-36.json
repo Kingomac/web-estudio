@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se comparan tres nodos: A (4 KB de RAM, 48 KB de ROM), B (64 KB de RAM, 512 KB de ROM) y C (24 KB de RAM, 192 KB de ROM). ¿Cuál puede ejecutar una pila IP completa y actuar como nodo intermedio de reenvío?",
+  "explanation": "Solo la clase 2 (más de 50 KB de RAM y más de 250 KB de ROM) ejecuta una pila IP completa y puede actuar como nodo de reenvío. A es clase 0, C es clase 1 y B es clase 2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    }
+  ],
+  "options": [
+    {
+      "id": "solo-b",
+      "text": "Solo B.",
+      "explanation": "Correcta: B supera 50 KB de RAM y 250 KB de ROM, así que es clase 2 (FFD)."
+    },
+    {
+      "id": "b-y-c",
+      "text": "B y C.",
+      "explanation": "C (24 KB, 192 KB) no llega a los umbrales de la clase 2: es clase 1, con pila IP reducida."
+    },
+    {
+      "id": "solo-c",
+      "text": "Solo C.",
+      "explanation": "C es clase 1; la pila completa y el reenvío corresponden a la clase 2."
+    },
+    {
+      "id": "a-b-y-c",
+      "text": "A, B y C, porque todos tienen memoria suficiente para IP.",
+      "explanation": "A (4 KB, 48 KB) es clase 0 y no puede implementar una pila IP."
+    }
+  ],
+  "answer": "solo-b"
+}

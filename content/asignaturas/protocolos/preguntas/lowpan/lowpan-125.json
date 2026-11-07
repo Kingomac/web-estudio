@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-125",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas funciones NO forma parte de los cuatro aspectos principales de la capa de adaptación 6LoWPAN?",
+  "explanation": "6LoWPAN se centra en la compresión de cabeceras, la fragmentación y el reensamblado, la autoconfiguración IPv6 y el reenvío y encaminamiento multisalto en malla. No traduce protocolos: precisamente lleva IPv6 hasta los nodos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "para-que-sirve-6lowpan"
+    }
+  ],
+  "options": [
+    {
+      "id": "traduccion-no-ip",
+      "text": "Traducir los paquetes IPv6 a un protocolo de red no IP en cada nodo.",
+      "explanation": "Es la que no forma parte: 6LoWPAN adapta IPv6 a 802.15.4 sin traducirlo a otra pila."
+    },
+    {
+      "id": "compresion",
+      "text": "Eliminar campos de las cabeceras IPv6 y UDP deducibles de la trama o de un contexto compartido.",
+      "explanation": "Es la compresión de cabeceras, primer aspecto del tema."
+    },
+    {
+      "id": "fragmentacion",
+      "text": "Fragmentar los paquetes IPv6 en varias tramas y reensamblarlos para entregarlos en el siguiente salto IPv6.",
+      "explanation": "Es la fragmentación y el reensamblado, segundo aspecto."
+    },
+    {
+      "id": "autoconfiguracion",
+      "text": "Ofrecer mecanismos adaptados para que los dispositivos obtengan automáticamente su configuración IPv6.",
+      "explanation": "Es la autoconfiguración IPv6, tercer aspecto."
+    }
+  ],
+  "answer": "traduccion-no-ip"
+}

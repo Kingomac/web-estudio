@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.final-61",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB contiene:\n`2001:db8:1:28::/61  vía R2`\n`2001:db8:1:20::/60  vía R1`\n`2001:db8:1::/48     vía R3`\n`::/0                vía R4`\n¿Qué siguiente salto se usa para 2001:db8:1:2f::1 y cuál para 2001:db8:1:27::1?",
+  "explanation": "El /60 deja libres los 4 últimos bits del cuarto grupo: abarca de 0x20 a 0x2f. El /61 deja libres 3: abarca de 0x28 a 0x2f. 0x2f está en ambos y gana el /61 (R2). 0x27 = 0010 0111 está en el /60 pero no en el /61 (su bit 61 es 0): R1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "longest-prefix-match-lpm"
+    }
+  ],
+  "options": [
+    {
+      "id": "r2-r1",
+      "text": "R2 para el primero y R1 para el segundo.",
+      "explanation": "Delimita bien los rangos 20–2f y 28–2f."
+    },
+    {
+      "id": "r1-r1",
+      "text": "R1 para los dos.",
+      "explanation": "El primero coincide también con el /61, que es más largo."
+    },
+    {
+      "id": "r2-r2",
+      "text": "R2 para los dos.",
+      "explanation": "0x27 queda fuera del /61, que empieza en 0x28."
+    },
+    {
+      "id": "r2-r3",
+      "text": "R2 para el primero y R3 para el segundo.",
+      "explanation": "0x27 sí pertenece al /60 (de 0x20 a 0x2f)."
+    },
+    {
+      "id": "r1-r3",
+      "text": "R1 para el primero y R3 para el segundo.",
+      "explanation": "Ignora el /61 para 0x2f y saca 0x27 del /60."
+    }
+  ],
+  "answer": "r2-r1"
+}

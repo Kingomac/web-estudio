@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.final-51",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Ocho subredes, de 2001:db8:0:18::/64 a 2001:db8:0:1f::/64, se alcanzan por el mismo siguiente salto. ¿Qué ruta única las resume exactamente, sin añadir destinos?",
+  "explanation": "0x18 = 0000 0000 0001 1000 y 0x1f = 0000 0000 0001 1111 comparten los 13 primeros bits del cuarto grupo: 48 + 13 = 61. El bloque está alineado (0x18 es múltiplo de 8): 2001:db8:0:18::/61 abarca exactamente de 18 a 1f.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "agregacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "18-61",
+      "text": "2001:db8:0:18::/61",
+      "explanation": "Ocho /64 alineados se resumen liberando 3 bits."
+    },
+    {
+      "id": "10-61",
+      "text": "2001:db8:0:10::/61",
+      "explanation": "Ese /61 abarca de 10 a 17, otro bloque."
+    },
+    {
+      "id": "10-60",
+      "text": "2001:db8:0:10::/60",
+      "explanation": "Las cubre, pero añade las ocho subredes de 10 a 17."
+    },
+    {
+      "id": "18-62",
+      "text": "2001:db8:0:18::/62",
+      "explanation": "Un /62 solo agrupa cuatro /64: de 18 a 1b."
+    },
+    {
+      "id": "18-60",
+      "text": "2001:db8:0:18::/60",
+      "explanation": "No está alineado: un /60 empieza en múltiplos de 16, así que este prefijo equivale a 2001:db8:0:10::/60."
+    }
+  ],
+  "answer": "18-61"
+}

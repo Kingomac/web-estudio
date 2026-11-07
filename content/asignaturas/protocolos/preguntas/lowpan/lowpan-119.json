@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-119",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En un DODAG de Wi-SUN FAN (MRHOF con ETX), el router E tiene dos padres candidatos: A, con Rank 512 y ETX(E, A) = 2,5, y B, con Rank 640 y ETX(E, B) = 1. ¿Qué padre preferido elige E y qué Rank anuncia?",
+  "explanation": "Coste(E, A) = 512 + 128 · 2,5 = 832; Coste(E, B) = 640 + 128 · 1 = 768. Elige B, el de menor coste, y Rank(E) = 640 + max(256, 128 · 1) = 896.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        77,
+        78
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mrhof-y-etx-calculo-del-material"
+    }
+  ],
+  "options": [
+    {
+      "id": "b-896",
+      "text": "Padre B y Rank 896.",
+      "explanation": "El coste vía B (768) es menor que vía A (832), y el Rank suma al de B el máximo entre 256 y 128 · ETX."
+    },
+    {
+      "id": "a-768",
+      "text": "Padre A y Rank 768.",
+      "explanation": "Elige el padre de menor Rank sin sumar 128 · ETX; con un enlace de ETX 2,5, A sale más caro."
+    },
+    {
+      "id": "b-768",
+      "text": "Padre B y Rank 768.",
+      "explanation": "768 es el coste del camino vía B, no el Rank: el incremento del Rank es max(256, 128 · ETX), que aquí vale 256."
+    },
+    {
+      "id": "a-832",
+      "text": "Padre A y Rank 832.",
+      "explanation": "832 es el coste vía A, que es el mayor de los dos; además, el Rank no coincide con el coste."
+    }
+  ],
+  "answer": "b-896"
+}

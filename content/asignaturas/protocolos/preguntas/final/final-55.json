@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-55",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "El host A (2001:db8:1::a) envía un paquete al host B (2001:db8:2::b). Entre ambos hay un switch Ethernet S, en la subred de A, y el router R, que une las dos subredes. A ya conoce la MAC de R. ¿Qué describe correctamente lo que consulta cada equipo?",
+  "explanation": "B está en otra subred, así que A envía la trama a la MAC de R, conservando como IPv6 destino la de B. El switch es un bridge: reenvía por su tabla de pares (MAC destino, interfaz de salida), aquí con la MAC de R. R es un router: busca en su FIB el prefijo de la IP destino para decidir el enlace de salida y, en ese enlace, resuelve con NDP la MAC de B si no la tiene en caché.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        6,
+        7,
+        8,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "subred-bridge-router-y-tablas-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "s-mac-r-fib",
+      "text": "S busca la MAC de R en su tabla (MAC destino, interfaz); R busca el prefijo de 2001:db8:2::b en su FIB y obtiene la MAC de B con NDP.",
+      "explanation": "Cada equipo usa la dirección de su nivel: MAC en el bridge, IP en el router."
+    },
+    {
+      "id": "s-mac-b",
+      "text": "S busca la MAC de B en su tabla (MAC destino, interfaz); R solo cambia la MAC origen de la trama.",
+      "explanation": "A no puede poner la MAC de B, que está en otro enlace: la trama va dirigida a R, y R decide el reenvío por IP."
+    },
+    {
+      "id": "s-fib",
+      "text": "S busca el prefijo 2001:db8:2::/64 en su FIB para elegir el puerto; R resuelve la MAC de B con NDP.",
+      "explanation": "Un bridge no consulta prefijos IP: su tabla relaciona MAC destino con interfaz."
+    },
+    {
+      "id": "r-mac",
+      "text": "S busca la MAC de R en su tabla; R busca la MAC de B en su FIB, que guarda pares (MAC destino, interfaz).",
+      "explanation": "La FIB de un router contiene prefijos con enlace de salida o siguiente salto; los pares MAC-interfaz son de los bridges y la relación IPv6-MAC está en la caché de vecinos."
+    }
+  ],
+  "answer": "s-mac-r-fib"
+}

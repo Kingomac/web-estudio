@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.ipv6-46",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes direcciones es una dirección IPv6 **unicast global**?",
+  "explanation": "IANA asigna las direcciones unicast globales del macrobloque 2000::/3, cuyos tres primeros bits son 001: cualquier dirección que empiece por 2xxx o 3xxx. 2a02 empieza por 0010 en binario, así que pertenece a 2000::/3. Las demás son ULA (fd00::/8), link-local (fe80::/64) y multicast (ff00::/8).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        10,
+        17,
+        18,
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "globales-link-local-y-ula"
+    }
+  ],
+  "options": [
+    {
+      "id": "global-2a02",
+      "text": "2a02:9000:12::25",
+      "explanation": "2a02 tiene los tres primeros bits 001: está dentro de 2000::/3, el bloque de unicast globales."
+    },
+    {
+      "id": "ula-fd",
+      "text": "fd12:3456:789a::25",
+      "explanation": "Empieza por fd: es una ULA, para comunicaciones internas y no encaminable en Internet."
+    },
+    {
+      "id": "link-local-fe80",
+      "text": "fe80::25",
+      "explanation": "Pertenece a fe80::/64: es una link-local, con ámbito limitado al enlace."
+    },
+    {
+      "id": "multicast-ff02",
+      "text": "ff02::1:ff00:25",
+      "explanation": "Empieza por ff: es multicast (en concreto un grupo solicited-node), no unicast."
+    }
+  ],
+  "answer": "global-2a02"
+}

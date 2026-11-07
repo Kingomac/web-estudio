@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-95",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Tras la cabecera MAC, una trama 6LoWPAN contiene 41 60 00 00 00 00 10 11 40 … ¿Qué viene a continuación del primer byte?",
+  "explanation": "0x41 = 01 000001 es el dispatch de un paquete IPv6 sin comprimir. Lo que sigue es la cabecera IPv6 de 40 bytes: 0x6 (versión 6), Payload Length 0x0010, Next Header 0x11 (UDP) y Hop Limit 0x40 (64).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "apilamiento-y-dispatch"
+    }
+  ],
+  "options": [
+    {
+      "id": "ipv6-sin-comprimir",
+      "text": "Una cabecera IPv6 sin comprimir: versión 6, Next Header 17 (UDP) y Hop Limit 64.",
+      "explanation": "El dispatch 01000001 indica IPv6 sin comprimir."
+    },
+    {
+      "id": "iphc",
+      "text": "Una cabecera LOWPAN_IPHC, porque 0x41 empieza por 01.",
+      "explanation": "IPHC empieza por 011 (0x60–0x7F); 0x41 empieza por 010."
+    },
+    {
+      "id": "mesh",
+      "text": "Una cabecera Mesh con direcciones cortas.",
+      "explanation": "La cabecera Mesh empieza por 10 (0x80–0xBF)."
+    },
+    {
+      "id": "nalp",
+      "text": "Nada de 6LoWPAN: es un paquete NALP.",
+      "explanation": "NALP empieza por 00; 0x41 empieza por 01."
+    }
+  ],
+  "answer": "ipv6-sin-comprimir"
+}

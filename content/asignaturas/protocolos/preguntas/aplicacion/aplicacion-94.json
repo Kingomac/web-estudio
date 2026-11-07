@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-94",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué cambia MQTT-SN respecto a MQTT?",
+  "explanation": "MQTT-SN es MQTT sobre UDP con un nuevo formato de mensajes más pequeños. Un gateway traduce los mensajes MQTT-SN a MQTT, ya sea de forma transparente (uno a uno) o como agregador.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mqtt-sn"
+    }
+  ],
+  "options": [
+    {
+      "id": "udp-formato-reducido",
+      "text": "Funciona sobre UDP y usa un formato de mensajes más pequeño, con un gateway hacia MQTT.",
+      "explanation": "Es lo que describe el tema."
+    },
+    {
+      "id": "tls-8883",
+      "text": "Funciona sobre TLS/TCP en el puerto 8883.",
+      "explanation": "TLS/TCP 8883 es MQTT protegido, no MQTT-SN."
+    },
+    {
+      "id": "sin-gateway",
+      "text": "Usa el mismo formato que MQTT y no necesita gateway.",
+      "explanation": "MQTT-SN tiene su propio formato y necesita un gateway para traducirlo a MQTT."
+    },
+    {
+      "id": "sin-broker",
+      "text": "Sustituye el broker por la opción Observe de CoAP.",
+      "explanation": "MQTT-SN sigue siendo publicación/suscripción con broker MQTT detrás del gateway."
+    }
+  ],
+  "answer": "udp-formato-reducido"
+}

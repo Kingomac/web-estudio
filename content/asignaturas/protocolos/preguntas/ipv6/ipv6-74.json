@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-74",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En una red 6LoWPAN, ¿qué ventaja tiene mantener IID basados en EUI-64 en lugar de IID opacos?",
+  "explanation": "Los IID opacos (RFC 7217) evitan revelar la MAC y dificultan el seguimiento, pero el tema señala que en IoT el uso de IID basados en EUI-64 en 6LoWPAN mejora la compresión de las cabeceras IPv6: el IID puede omitirse y reconstruirse en el receptor a partir de la dirección de enlace.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "iid-opacos-y-temporales"
+    }
+  ],
+  "options": [
+    {
+      "id": "compresion",
+      "text": "Permite omitir el IID en la cabecera comprimida y reconstruirlo en el receptor.",
+      "explanation": "Es la ventaja que destaca el tema para 6LoWPAN."
+    },
+    {
+      "id": "privacidad",
+      "text": "Oculta la MAC y dificulta el seguimiento del dispositivo.",
+      "explanation": "Esa es la ventaja de los IID opacos; un IID EUI-64 deja ver la MAC."
+    },
+    {
+      "id": "renovacion",
+      "text": "Se renueva periódicamente, como las direcciones temporales.",
+      "explanation": "La renovación periódica es propia de las direcciones temporales (RFC 8981), no de EUI-64."
+    },
+    {
+      "id": "obligatorio",
+      "text": "Es obligatorio: los routers Cisco no aceptan vecinos con IID opacos.",
+      "explanation": "El uso de IID opacos depende de la implementación; nada impide a un router comunicarse con vecinos que los usen."
+    }
+  ],
+  "answer": "compresion"
+}

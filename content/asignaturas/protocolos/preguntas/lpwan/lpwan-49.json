@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-49",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un ayuntamiento estudia qué servicios llevar sobre una LPWAN. ¿Cuál de estas aplicaciones encaja PEOR con este tipo de red?",
+  "explanation": "Las LPWAN están pensadas para intercambiar pequeñas cantidades de datos de forma esporádica y aceptan una tasa y una frecuencia de envío limitadas. Un flujo de vídeo continuo es justo lo contrario.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        2,
+        3
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "que-es-una-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "una-camara-de-videovigilancia-que",
+      "text": "Una cámara de videovigilancia que transmite vídeo de forma continua.",
+      "explanation": "Necesita una tasa alta y transmisión constante, justo las dos cosas que una LPWAN sacrifica (p. 2)."
+    },
+    {
+      "id": "un-sensor-de-llenado-de-contenedores-que",
+      "text": "Un sensor de llenado de contenedores que envía unas pocas medidas al día.",
+      "explanation": "Es uno de los ejemplos de ciudad inteligente de la p. 3: pocos datos y esporádicos."
+    },
+    {
+      "id": "la-lectura-remota-de-contadores-de-agua",
+      "text": "La lectura remota de contadores de agua una vez al día.",
+      "explanation": "Aparece entre las aplicaciones de suministros de la p. 3."
+    },
+    {
+      "id": "un-sensor-del-nivel-de-un-rio-que-envia",
+      "text": "Un sensor del nivel de un río que envía una medida cada quince minutos.",
+      "explanation": "Seguimiento de niveles de ríos (p. 3), con el mismo perfil que el sensor agrícola de la p. 2."
+    }
+  ],
+  "answer": "una-camara-de-videovigilancia-que"
+}

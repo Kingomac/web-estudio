@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-66",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué pareja de mensaje ICMPv6 y número de tipo es correcta?",
+  "explanation": "Los tipos básicos que cita el tema son Destination Unreachable (1), Packet Too Big (2), Time Exceeded (3) y Echo Request/Reply (128/129). Los de NDP son RS (133), RA (134), NS (135) y NA (136).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        29,
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "icmpv6-slaac-y-dhcpv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "echo-128",
+      "text": "Echo Request: 128.",
+      "explanation": "Echo Request es 128 y Echo Reply 129."
+    },
+    {
+      "id": "unreachable-3",
+      "text": "Destination Unreachable: 3.",
+      "explanation": "Destination Unreachable es 1; el 3 es Time Exceeded."
+    },
+    {
+      "id": "too-big-1",
+      "text": "Packet Too Big: 1.",
+      "explanation": "Packet Too Big es 2; el 1 es Destination Unreachable."
+    },
+    {
+      "id": "ns-133",
+      "text": "Neighbor Solicitation: 133.",
+      "explanation": "133 es Router Solicitation; NS es 135."
+    }
+  ],
+  "answer": "echo-128"
+}

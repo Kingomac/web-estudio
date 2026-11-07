@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-24",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un proxy guarda la respuesta a `GET /device101/temperature` recibida a las 08:03:12 (`Last-Modified: 08:00:01`). A las 08:07:45 un cliente pide el mismo recurso y el proxy envía la petición con `If-Modified-Since: 08:03:12`. El sensor actualizó la medida a las 08:05:00. ¿Qué ocurre?",
+  "explanation": "La petición condicional solo obtiene 304 Not Modified si el recurso no ha cambiado desde la fecha indicada. Como cambió a las 08:05:00, el servidor envía el recurso actualizado y el proxy lo entrega al cliente y renueva su copia. El proxy solo devuelve su copia directamente si el dato no ha cambiado.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        17,
+        20,
+        21
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "cookies-y-proxies"
+    }
+  ],
+  "options": [
+    {
+      "id": "recibe-dato-nuevo",
+      "text": "El servidor no responde 304, sino que envía la medida actualizada, que el proxy entrega y guarda en caché.",
+      "explanation": "El recurso cambió después de la fecha de If-Modified-Since."
+    },
+    {
+      "id": "304",
+      "text": "El servidor responde 304 Not Modified, porque Last-Modified (08:00:01) es anterior a If-Modified-Since.",
+      "explanation": "Compara con el Last-Modified antiguo de la copia; lo que cuenta es si el recurso cambió después de las 08:03:12, y cambió a las 08:05:00."
+    },
+    {
+      "id": "sin-consultar",
+      "text": "El proxy entrega su copia sin esperar respuesta, porque la petición es condicional.",
+      "explanation": "La petición condicional sirve para preguntar al servidor; el proxy necesita su respuesta para saber si la copia sigue valiendo."
+    },
+    {
+      "id": "301",
+      "text": "El servidor responde 301 Moved Permanently para que el proxy busque la nueva versión.",
+      "explanation": "301 indica que el recurso se ha trasladado a otra URI, no que su contenido haya cambiado."
+    }
+  ],
+  "answer": "recibe-dato-nuevo"
+}

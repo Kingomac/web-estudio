@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-57",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes NO es una ventaja de un proxy server según el tema?",
+  "explanation": "El tema cita como ventajas del proxy la reducción de los tiempos de acceso a los datos, la reducción de la carga en los servidores originales y el acceso anónimo a los recursos. Enviar datos al cliente sin petición previa es lo que aporta WebSocket.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "cookies-y-proxies"
+    }
+  ],
+  "options": [
+    {
+      "id": "envio-sin-peticion",
+      "text": "Permite que el servidor envíe datos al cliente sin que este los solicite.",
+      "explanation": "Esa es la ventaja de WebSocket; el proxy solo responde a peticiones de los clientes."
+    },
+    {
+      "id": "reduce-tiempos",
+      "text": "Reduce los tiempos de acceso a los datos.",
+      "explanation": "Es una ventaja citada: devuelve de inmediato la copia en caché si el dato no ha cambiado."
+    },
+    {
+      "id": "reduce-carga",
+      "text": "Reduce la carga en los servidores originales.",
+      "explanation": "Es una ventaja citada: las peticiones atendidas desde caché no llegan al servidor original."
+    },
+    {
+      "id": "acceso-anonimo",
+      "text": "Permite el acceso anónimo a los recursos.",
+      "explanation": "Es una ventaja citada: el proxy hace de intermediario entre clientes y servidores."
+    }
+  ],
+  "answer": "envio-sin-peticion"
+}

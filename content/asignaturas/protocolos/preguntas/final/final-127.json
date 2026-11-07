@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-127",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un uplink no confirmado lleva 3 bytes de comandos MAC en FOpts, FPort = 2 y 10 bytes de datos de aplicación. Un gateway con UDP Packet Forwarder lo reenvía y pone el PHYPayload en `rxpk.data`. ¿Cuántos caracteres tiene ese campo?",
+  "explanation": "PHYPayload = MHDR 1 + DevAddr 4 + FCtrl 1 + FCnt 2 + FOpts 3 + FPort 1 + FRMPayload 10 + MIC 4 = 26 bytes. En Base64: 8 bloques completos de 3 bytes y uno de 2 bytes → 9 × 4 = 36 caracteres, el último con un «=».",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        36,
+        39,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "json-y-base64"
+    }
+  ],
+  "options": [
+    {
+      "id": "36-terminando-en-un",
+      "text": "36, terminando en un «=».",
+      "explanation": "26 bytes: 26 = 8 × 3 + 2."
+    },
+    {
+      "id": "32-terminando-en-un",
+      "text": "32, terminando en un «=».",
+      "explanation": "Olvida los 3 bytes de FOpts (23 bytes)."
+    },
+    {
+      "id": "36-sin-relleno",
+      "text": "36, sin relleno.",
+      "explanation": "Sería el caso de 27 bytes, múltiplo de 3."
+    },
+    {
+      "id": "52",
+      "text": "52.",
+      "explanation": "Son los caracteres en hexadecimal; el UDP forwarder usa Base64 (p. 45)."
+    }
+  ],
+  "answer": "36-terminando-en-un"
+}

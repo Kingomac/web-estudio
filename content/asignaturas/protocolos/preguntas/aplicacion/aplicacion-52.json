@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-52",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente envía tres peticiones seguidas al mismo servidor. La primera necesita una consulta lenta al sensor y las otras dos se pueden responder enseguida. ¿Con qué versión puede el servidor enviar antes las dos respuestas rápidas?",
+  "explanation": "En HTTP/2.0 el servidor puede enviar las respuestas en cualquier orden, lo que evita el bloqueo HOL (head-of-line). Con el pipelining de HTTP/1.1 las peticiones se envían sin esperar, pero las respuestas siguen el orden de las peticiones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "transporte-y-versiones"
+    }
+  ],
+  "options": [
+    {
+      "id": "http-2",
+      "text": "HTTP/2.0.",
+      "explanation": "Permite responder en cualquier orden y así evita el bloqueo HOL."
+    },
+    {
+      "id": "http-11-pipelining",
+      "text": "HTTP/1.1 con pipelining.",
+      "explanation": "El pipelining permite enviar varias peticiones sin esperar, pero la respuesta lenta bloquea a las siguientes (bloqueo HOL)."
+    },
+    {
+      "id": "http-10",
+      "text": "HTTP/1.0.",
+      "explanation": "En HTTP/1.0 el cliente ni siquiera puede enviar la segunda petición hasta recibir la primera respuesta."
+    },
+    {
+      "id": "ninguna",
+      "text": "Ninguna: en HTTP las respuestas siempre llegan en el orden de las peticiones.",
+      "explanation": "HTTP/2.0 rompe precisamente esa restricción."
+    }
+  ],
+  "answer": "http-2"
+}

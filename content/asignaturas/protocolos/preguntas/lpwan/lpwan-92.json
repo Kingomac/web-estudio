@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-92",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un administrador bloquea en el cortafuegos el tráfico UDP saliente hacia el puerto 1700. ¿Qué forma de conectar el gateway con el NS deja de funcionar?",
+  "explanation": "El Semtech UDP Packet Forwarder usa UDP, por defecto en el puerto 1700; LoRa Basics Station usa JSON sobre WebSocket con TLS (WSS).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-semtech-udp-packet-forwarder",
+      "text": "El Semtech UDP Packet Forwarder.",
+      "explanation": "P. 41."
+    },
+    {
+      "id": "lora-basics-station",
+      "text": "LoRa Basics Station.",
+      "explanation": "No usa UDP 1700 sino WebSocket seguro (en la p. 43, wss://…:8887)."
+    },
+    {
+      "id": "las-dos-porque-ambas-usan-udp-1700",
+      "text": "Las dos, porque ambas usan UDP 1700.",
+      "explanation": "Solo el UDP Packet Forwarder lo usa."
+    },
+    {
+      "id": "ninguna-porque-el-gateway-habla-con-el",
+      "text": "Ninguna, porque el gateway habla con el NS por radio LoRa.",
+      "explanation": "El gateway reenvía al NS mediante conectividad IP."
+    }
+  ],
+  "answer": "el-semtech-udp-packet-forwarder"
+}

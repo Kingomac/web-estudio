@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-75",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué campo aparece en un mensaje NA pero **no** en un NS?",
+  "explanation": "NS (tipo 135) y NA (tipo 136) comparten Tipo, Código (0), Checksum y Dirección objetivo, además de la opción de dirección de enlace. Solo el NA lleva los flags R (Router) y S (Solicited).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "resolucion-de-direcciones-y-ndp"
+    }
+  ],
+  "options": [
+    {
+      "id": "flags-r-s",
+      "text": "Los flags R (Router) y S (Solicited).",
+      "explanation": "El tema los indica como «Flags (sólo en NA)»."
+    },
+    {
+      "id": "objetivo",
+      "text": "La dirección IPv6 objetivo de 128 bits.",
+      "explanation": "Ambos mensajes la llevan: el NS pregunta por ella y el NA la repite."
+    },
+    {
+      "id": "codigo",
+      "text": "Un código distinto de cero.",
+      "explanation": "El código es cero en ambos tipos."
+    },
+    {
+      "id": "checksum",
+      "text": "El checksum de 16 bits.",
+      "explanation": "Ambos mensajes ICMPv6 llevan checksum."
+    }
+  ],
+  "answer": "flags-r-s"
+}

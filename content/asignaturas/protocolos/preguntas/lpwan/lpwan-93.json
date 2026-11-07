@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-93",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un gateway con Semtech UDP Packet Forwarder debe conectarse a un servidor ChirpStack. ¿Qué hace falta?",
+  "explanation": "TTS soporta directamente el UDP Packet Forwarder, pero ChirpStack requiere un intermediario: ChirpStack Gateway Bridge.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "chirpstack-gateway-bridge-como",
+      "text": "ChirpStack Gateway Bridge como intermediario.",
+      "explanation": "P. 41."
+    },
+    {
+      "id": "nada-chirpstack-lo-soporta-directamente",
+      "text": "Nada: ChirpStack lo soporta directamente.",
+      "explanation": "Eso vale para TTS, no para ChirpStack."
+    },
+    {
+      "id": "packet-broker",
+      "text": "Packet Broker.",
+      "explanation": "Packet Broker intercambia mensajes entre redes LoRaWAN, no traduce el forwarder."
+    },
+    {
+      "id": "un-join-server-dedicado",
+      "text": "Un Join Server dedicado.",
+      "explanation": "El Join Server participa en la activación OTAA, no en el transporte gateway-NS."
+    }
+  ],
+  "answer": "chirpstack-gateway-bridge-como"
+}

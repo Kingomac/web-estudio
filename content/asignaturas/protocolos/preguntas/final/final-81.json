@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-81",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Tras la cabecera MAC de una trama mesh-under aparecen los bytes B5 00 05 00 01 C1 … ¿Qué contienen?",
+  "explanation": "0xB5 = 10 1 1 0101: tipo Mesh (10), V = 1 y F = 1 (originador y destino final de 16 bits) y Hops Left = 5. Siguen 00 05 (originador) y 00 01 (destino final). 0xC1 = 11000 001 es el dispatch de FRAG1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        17,
+        28,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "cabecera-mesh"
+    }
+  ],
+  "options": [
+    {
+      "id": "mesh-cortas-frag1",
+      "text": "Cabecera Mesh con originador 0x0005, destino final 0x0001 y 5 saltos restantes, seguida de una cabecera FRAG1.",
+      "explanation": "Decodifica bien los bits V, F y Hops Left y el dispatch 11000 del siguiente byte."
+    },
+    {
+      "id": "mesh-largas",
+      "text": "Cabecera Mesh con originador y destino final de 64 bits, porque V = F = 1.",
+      "explanation": "V = 1 y F = 1 indican direcciones de 16 bits; 0 sería 64 bits."
+    },
+    {
+      "id": "mesh-cortas-fragn",
+      "text": "Cabecera Mesh con originador 0x0005, destino final 0x0001 y 5 saltos restantes, seguida de una cabecera FRAGN.",
+      "explanation": "0xC1 empieza por 11000, que es FRAG1; FRAGN empieza por 11100."
+    },
+    {
+      "id": "fragn-iphc",
+      "text": "Cabecera FRAGN seguida de una cabecera LOWPAN_IPHC.",
+      "explanation": "0xB5 empieza por 10, el tipo Mesh; FRAGN empezaría por 11100."
+    }
+  ],
+  "answer": "mesh-cortas-frag1"
+}

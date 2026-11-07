@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-45",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de los principios de diseño REST que recoge el tema es opcional?",
+  "explanation": "El tema enumera separación cliente/servidor, comunicación sin estado, uso de cachés, arquitectura en capas y código bajo demanda; solo este último aparece marcado como opcional.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "cliente-servidor-y-rest"
+    }
+  ],
+  "options": [
+    {
+      "id": "codigo-bajo-demanda",
+      "text": "El código bajo demanda: el servidor extiende la funcionalidad del cliente enviándole scripts.",
+      "explanation": "Es el único principio que el tema marca como opcional."
+    },
+    {
+      "id": "comunicacion-sin-estado",
+      "text": "La comunicación sin estado.",
+      "explanation": "Es un principio básico de REST: cada petición contiene toda la información necesaria para procesarla."
+    },
+    {
+      "id": "separacion-cliente-servidor",
+      "text": "La separación entre la funcionalidad del cliente y la del servidor.",
+      "explanation": "Es el primer principio REST del tema: ambos se comunican por una interfaz bien definida y evolucionan por separado."
+    },
+    {
+      "id": "arquitectura-en-capas",
+      "text": "La arquitectura en capas jerárquicas.",
+      "explanation": "Figura entre los principios REST sin la marca de opcional."
+    }
+  ],
+  "answer": "codigo-bajo-demanda"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-78",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo se activa por ABP. ¿Qué hay que preconfigurar, tanto en el dispositivo como en la plataforma?",
+  "explanation": "En ABP la dirección y las claves de sesión se preconfiguran en ambos extremos, sin intercambio de activación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        31,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "activacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "devaddr-nwkskey-y-appskey",
+      "text": "DevAddr, NwkSKey y AppSKey.",
+      "explanation": "P. 31."
+    },
+    {
+      "id": "deveui-joineui-y-appkey-para-enviar-un",
+      "text": "DevEUI, JoinEUI y AppKey, para enviar un Join-request.",
+      "explanation": "Eso es lo que se configura en OTAA."
+    },
+    {
+      "id": "solo-el-deveui-las-claves-llegan-en-el",
+      "text": "Solo el DevEUI; las claves llegan en el Join-accept.",
+      "explanation": "ABP no tiene Join-accept, y ni siquiera en OTAA viajan las claves de sesión."
+    },
+    {
+      "id": "solo-la-appkey-el-join-server-deriva-el",
+      "text": "Solo la AppKey; el Join Server deriva el resto.",
+      "explanation": "Describe OTAA, no ABP."
+    }
+  ],
+  "answer": "devaddr-nwkskey-y-appskey"
+}

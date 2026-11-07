@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-143",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones sobre los beneficios de LoRaWAN NO es correcta?",
+  "explanation": "Las bandas de uso libre evitan la licencia de espectro, pero en EU868 imponen un duty cycle (1 % en la subbanda de 868-868,6 MHz).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        20,
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "beneficios-y-tipos-de-red"
+    }
+  ],
+  "options": [
+    {
+      "id": "al-usar-bandas-de-uso-libre-no-hay",
+      "text": "Al usar bandas de uso libre no hay límite al tiempo que un nodo puede transmitir.",
+      "explanation": "Falsa: en EU868 hay duty cycle (p. 29)."
+    },
+    {
+      "id": "en-una-red-propia-no-hay-que-contratar",
+      "text": "En una red propia no hay que contratar una suscripción por dispositivo con un operador.",
+      "explanation": "Correcta: «Control de costes», p. 20."
+    },
+    {
+      "id": "la-lora-alliance-mantiene-la",
+      "text": "La LoRa Alliance mantiene la especificación con un programa de certificación.",
+      "explanation": "Correcta: «Especificación abierta e interoperabilidad»."
+    },
+    {
+      "id": "permite-usar-redes-publicas-o",
+      "text": "Permite usar redes públicas o comunitarias, o desplegar una red privada.",
+      "explanation": "Correcta: «Flexibilidad de despliegue»."
+    }
+  ],
+  "answer": "al-usar-bandas-de-uso-libre-no-hay"
+}

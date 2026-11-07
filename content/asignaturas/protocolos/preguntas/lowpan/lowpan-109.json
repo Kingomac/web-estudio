@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-109",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una trama IEEE 802.15.4 sin seguridad lleva dirección destino corta (16 bits), dirección origen extendida (64 bits) y Compresión PAN ID = 1. ¿Cuántos bytes ocupa su cabecera MAC (MHR)?",
+  "explanation": "MHR = Control de trama (2) + Secuencia (1) + PAN ID destino (2) + destino corto (2) + origen extendido (8) = 15 bytes. Con Compresión PAN ID = 1 se omite el PAN ID de origen, y el FCS va al final de la trama, fuera de la cabecera.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccionamiento-mac-y-cabecera"
+    }
+  ],
+  "options": [
+    {
+      "id": "15-bytes",
+      "text": "15 bytes.",
+      "explanation": "2 + 1 + 2 + 2 + 8 = 15: un solo PAN ID por la compresión y el FCS fuera de la cabecera."
+    },
+    {
+      "id": "17-bytes",
+      "text": "17 bytes.",
+      "explanation": "Sale de añadir 2 bytes que no forman parte de esta cabecera: el PAN ID de origen, omitido por Compresión PAN ID = 1, o el FCS, que va al final de la trama."
+    },
+    {
+      "id": "23-bytes",
+      "text": "23 bytes.",
+      "explanation": "23 bytes es el máximo sin seguridad, con dos direcciones extendidas y dos PAN ID."
+    },
+    {
+      "id": "9-bytes",
+      "text": "9 bytes.",
+      "explanation": "9 bytes corresponde a dos direcciones cortas y un PAN ID; aquí el origen es extendido y ocupa 8 bytes."
+    }
+  ],
+  "answer": "15-bytes"
+}

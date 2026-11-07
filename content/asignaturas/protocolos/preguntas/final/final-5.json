@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un integrador fabricará 500 nodos de batería con un firmware sencillo sin sistema operativo, y quiere poder cambiar en el futuro la radio LoRa por NB-IoT sin rediseñar el resto del nodo. ¿Qué elección es coherente con el tema?",
+  "explanation": "La MCU integra CPU, RAM, ROM y E/S en un SoC y puede operar sin SO; la MPU solo contiene la CPU, necesita periféricos y requiere un SO. Un dispositivo modular separa el módulo de comunicación (LoRa, NB-IoT…) en un bloque que se reemplaza sin soldar.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        3,
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "microcontrolador-y-microprocesador"
+    }
+  ],
+  "options": [
+    {
+      "id": "mcu-y-modulo-de-comunicacion",
+      "text": "Una MCU, que puede funcionar sin SO, en un diseño modular con el módulo de comunicación como bloque reemplazable.",
+      "explanation": "Correcta: cumple ambos requisitos con los conceptos del tema."
+    },
+    {
+      "id": "mpu-sin-so",
+      "text": "Una MPU, porque integra la memoria y la E/S y puede prescindir del SO, en un diseño modular.",
+      "explanation": "Atribuye a la MPU las propiedades de la MCU: la MPU solo contiene la CPU y requiere un SO."
+    },
+    {
+      "id": "mcu-con-radio-integrada",
+      "text": "Una MCU con la radio LoRa integrada en el mismo chip, porque así se cambia la radio sin soldar.",
+      "explanation": "La MCU puede integrar la radio, pero entonces no se sustituye por NB-IoT sin cambiar el chip; la sustitución la facilita un módulo de comunicación separado."
+    },
+    {
+      "id": "mcu-integrada-inseparable",
+      "text": "Una MCU en una placa con todos los bloques integrados de forma inseparable, para abaratar los 500 nodos.",
+      "explanation": "Abaratar es razonable, pero un diseño inseparable impide cambiar solo la radio, que era el segundo requisito."
+    }
+  ],
+  "answer": "mcu-y-modulo-de-comunicacion"
+}

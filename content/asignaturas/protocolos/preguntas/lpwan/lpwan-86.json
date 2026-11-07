@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-86",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un uplink de datos sin FOpts tiene un PHYPayload de 27 bytes. ¿Cuántos bytes ocupa su FRMPayload?",
+  "explanation": "MHDR (1) + DevAddr (4) + FCtrl (1) + FCnt (2) + FOpts (0) + FPort (1) + MIC (4) = 13 bytes; 27 − 13 = 14. Coincide con los 28 caracteres hexadecimales del FRMPayload de la p. 45.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "14",
+      "text": "14.",
+      "explanation": "27 menos los 13 bytes de cabeceras, FPort y MIC."
+    },
+    {
+      "id": "18",
+      "text": "18.",
+      "explanation": "Olvida restar el MIC de 4 bytes."
+    },
+    {
+      "id": "22",
+      "text": "22.",
+      "explanation": "Solo resta MHDR y MIC: olvida la Frame Header y FPort."
+    },
+    {
+      "id": "13",
+      "text": "13.",
+      "explanation": "Es lo que ocupa todo lo demás, no el FRMPayload."
+    }
+  ],
+  "answer": "14"
+}

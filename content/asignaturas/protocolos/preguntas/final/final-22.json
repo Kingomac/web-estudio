@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servidor MQTT v5 está suscrito a `servicios/termostato`. El cliente c42 se suscribe a `clientes/c42/resp` y publica en `servicios/termostato` una petición con response topic `clientes/c42/resp` y correlation data `0x07`. ¿Cómo envía el servidor la respuesta?",
+  "explanation": "El servidor publica la respuesta en el response topic indicado en la petición e incluye el mismo correlation data que la petición original, para que el cliente la asocie.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "peticion-respuesta-en-mqtt-5"
+    }
+  ],
+  "options": [
+    {
+      "id": "resp-0x07",
+      "text": "Publica en `clientes/c42/resp` con correlation data `0x07`.",
+      "explanation": "Usa el topic privado del cliente y conserva el dato de correlación."
+    },
+    {
+      "id": "termostato-0x07",
+      "text": "Publica en `servicios/termostato` con correlation data `0x07`.",
+      "explanation": "Ese es el topic público del servidor; la respuesta va al response topic del cliente."
+    },
+    {
+      "id": "resp-nuevo",
+      "text": "Publica en `clientes/c42/resp` con un correlation data nuevo generado por el servidor.",
+      "explanation": "La respuesta debe llevar el mismo correlation data de la petición; uno nuevo impediría asociarlas."
+    },
+    {
+      "id": "puback",
+      "text": "Contesta con un PUBACK que incluye la respuesta.",
+      "explanation": "PUBACK confirma una publicación QoS 1; la respuesta es una publicación en el response topic."
+    }
+  ],
+  "answer": "resp-0x07"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-64",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué ocurre con Packet Broker y la visibilidad de los gateways propios en TTS Sandbox (TTN)?",
+  "explanation": "En TTS puede habilitarse Packet Broker y configurarse la visibilidad de los gateways, pero en Sandbox ambas cosas son obligatorias.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        24,
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "son-obligatorias",
+      "text": "Son obligatorias.",
+      "explanation": "Último punto de la p. 24."
+    },
+    {
+      "id": "estan-desactivadas-para-proteger-la-red",
+      "text": "Están desactivadas para proteger la red comunitaria.",
+      "explanation": "Es lo contrario: TTN comparte cobertura a través de Packet Broker."
+    },
+    {
+      "id": "son-opcionales-y-se-activan-en-el-panel",
+      "text": "Son opcionales y se activan en el panel de red.",
+      "explanation": "Eso vale para TTS en general, no para Sandbox."
+    },
+    {
+      "id": "solo-se-usan-para-mensajes-descendentes",
+      "text": "Solo se usan para mensajes descendentes.",
+      "explanation": "Packet Broker encamina sobre todo uplinks y también downlinks si las políticas lo autorizan."
+    }
+  ],
+  "answer": "son-obligatorias"
+}

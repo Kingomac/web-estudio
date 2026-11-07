@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-49",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué versiones de HTTP usan framing binario según el tema?",
+  "explanation": "Los mensajes HTTP/1.x se codifican con caracteres ASCII; HTTP/2 y HTTP/3 usan framing binario para optimizar el envío.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "transporte-y-versiones"
+    }
+  ],
+  "options": [
+    {
+      "id": "http2-y-http3",
+      "text": "HTTP/2 y HTTP/3.",
+      "explanation": "El tema indica que ambas usan framing binario."
+    },
+    {
+      "id": "http10-y-http11",
+      "text": "HTTP/1.0 y HTTP/1.1.",
+      "explanation": "HTTP/1.x codifica los mensajes en caracteres ASCII."
+    },
+    {
+      "id": "todas-las-versiones",
+      "text": "Todas, porque HTTP va sobre TCP.",
+      "explanation": "El transporte no determina la codificación: HTTP/1.x es texto ASCII sobre TCP."
+    },
+    {
+      "id": "solo-http3",
+      "text": "Solo HTTP/3, porque es la única que usa UDP.",
+      "explanation": "HTTP/2 también usa framing binario aunque vaya sobre TCP."
+    }
+  ],
+  "answer": "http2-y-http3"
+}

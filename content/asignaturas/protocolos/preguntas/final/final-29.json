@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-29",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servidor CoAP recibe una petición CON con Message ID 0x1234 y token 0x05 y contesta con un ACK piggybacked, que se pierde. El cliente retransmite la petición. ¿Qué campo permite al servidor reconocer que es la misma petición repetida?",
+  "explanation": "El Message ID sirve para la fiabilidad y la detección de duplicados: la retransmisión conserva 0x1234. El token relaciona petición y respuesta, el código indica el método y DUP es un flag de MQTT, no de CoAP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "tipos-de-mensaje-y-fiabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "message-id",
+      "text": "El Message ID 0x1234.",
+      "explanation": "Es el campo para fiabilidad y duplicados."
+    },
+    {
+      "id": "token",
+      "text": "El token 0x05.",
+      "explanation": "El token asocia respuestas con peticiones; detectar duplicados es la función del Message ID."
+    },
+    {
+      "id": "codigo",
+      "text": "El código 0.01 de la petición.",
+      "explanation": "El código indica el método (GET); muchas peticiones distintas comparten el mismo código."
+    },
+    {
+      "id": "dup",
+      "text": "El flag DUP=1 de la retransmisión.",
+      "explanation": "DUP es un flag de la cabecera fija de MQTT; CoAP no lo tiene."
+    }
+  ],
+  "answer": "message-id"
+}

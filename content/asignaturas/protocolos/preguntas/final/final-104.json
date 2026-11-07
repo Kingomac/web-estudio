@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-104",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo final Thread cambia de padre y pasa de RLOC16 0x0402 a 0x1002. ¿Qué deben hacer los nodos que le envían tráfico desde la malla?",
+  "explanation": "El ML-EID (Mesh-Local Prefix + IID aleatorio) no depende de la topología y se mantiene. Lo que cambia es la correspondencia ML-EID → RLOC16, que Thread resuelve con Address Query / Address Notification para encaminar hacia el nuevo padre.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        63,
+        69
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccionamiento-ipv6-en-thread"
+    }
+  ],
+  "options": [
+    {
+      "id": "ml-eid-rloc-nuevo",
+      "text": "Seguir usando su ML-EID; lo que cambia es la correspondencia ML-EID → RLOC16, que se obtiene con Address Query / Address Notification.",
+      "explanation": "El identificador es estable y el localizador refleja la nueva posición."
+    },
+    {
+      "id": "ml-eid-nuevo",
+      "text": "Aprender su nuevo ML-EID, porque incluye el Router ID de su padre.",
+      "explanation": "El ML-EID usa un IID aleatorio; es el RLOC16 el que contiene el Router ID."
+    },
+    {
+      "id": "anycast-leader",
+      "text": "Enviarle el tráfico a la anycast del Leader, que lo reenvía a cualquier nodo.",
+      "explanation": "Esa anycast sirve para llegar al Leader actual, no para alcanzar otros nodos."
+    },
+    {
+      "id": "link-local",
+      "text": "Usar su dirección link-local, válida en toda la partición.",
+      "explanation": "La link-local tiene ámbito de enlace y se usa en los mensajes MLE entre vecinos."
+    }
+  ],
+  "answer": "ml-eid-rloc-nuevo"
+}

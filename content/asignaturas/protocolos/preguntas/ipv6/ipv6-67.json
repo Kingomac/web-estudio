@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ipv6-67",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router con link-local fe80::200:ff:fedd:dddd envía su RA periódico por un enlace Ethernet. ¿Qué IPv6 destino y qué MAC destino lleva?",
+  "explanation": "Los RA periódicos se envían al grupo all-nodes ff02::1, con la link-local del router como origen. En Ethernet, la MAC multicast es 33:33 seguido de los últimos 32 bits de la IPv6 multicast: 33:33:00:00:00:01, como en la captura del tema.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32,
+        33,
+        37
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "slaac-configuracion-sin-servidor-dhcp"
+    }
+  ],
+  "options": [
+    {
+      "id": "all-nodes",
+      "text": "IPv6 ff02::1; MAC 33:33:00:00:00:01.",
+      "explanation": "RA periódico a all-nodes, con su MAC multicast correspondiente."
+    },
+    {
+      "id": "all-routers",
+      "text": "IPv6 ff02::2; MAC 33:33:00:00:00:02.",
+      "explanation": "ff02::2 es el destino de los RS que envían los hosts, no de los RA."
+    },
+    {
+      "id": "broadcast",
+      "text": "IPv6 ff02::1; MAC ff:ff:ff:ff:ff:ff.",
+      "explanation": "IPv6 no usa broadcast: el grupo ff02::1 se mapea a 33:33:00:00:00:01."
+    },
+    {
+      "id": "solicited-node",
+      "text": "IPv6 ff02::1:ffdd:dddd; MAC 33:33:ff:dd:dd:dd.",
+      "explanation": "Es el solicited-node del propio router, usado para resolver su dirección, no para anunciarse."
+    }
+  ],
+  "answer": "all-nodes"
+}

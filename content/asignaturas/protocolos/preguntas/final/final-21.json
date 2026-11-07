@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un mensaje MQTT tiene 20 000 bytes entre cabecera variable y payload. ¿Cuántos bytes ocupa el mensaje completo?",
+  "explanation": "El campo Longitud (1–4 bytes) usa 7 bits por byte, porque el bit más significativo indica continuación: 1 byte llega a 127, 2 bytes a 16 383 y 3 bytes a 2 097 151. Para 20 000 hacen falta 3 bytes de Longitud. Cabecera fija: 1 byte (tipo y flags) + 3 = 4 bytes. Total: 20 004.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mensajes-basicos-y-formato"
+    }
+  ],
+  "options": [
+    {
+      "id": "20004",
+      "text": "20 004 bytes.",
+      "explanation": "1 + 3 bytes de cabecera fija + 20 000."
+    },
+    {
+      "id": "20003",
+      "text": "20 003 bytes.",
+      "explanation": "Supone que 2 bytes de Longitud llegan a 65 535; con 7 bits útiles por byte solo llegan a 16 383."
+    },
+    {
+      "id": "20005",
+      "text": "20 005 bytes.",
+      "explanation": "Usa siempre 4 bytes de Longitud; el campo crece solo lo necesario."
+    },
+    {
+      "id": "20000",
+      "text": "20 000 bytes.",
+      "explanation": "Olvida la cabecera fija; la Longitud no la incluye."
+    }
+  ],
+  "answer": "20004"
+}

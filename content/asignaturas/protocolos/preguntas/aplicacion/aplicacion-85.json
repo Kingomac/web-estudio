@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-85",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes afirmaciones sobre MQTT NO es correcta?",
+  "explanation": "MQTT fue diseñado por IBM en 1999, es un estándar OASIS abierto y recomendación ISO (ISO/IEC 20922) y admite escenarios petición/respuesta desde MQTT v5. El RFC 7252 es el estándar de CoAP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        36,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mqtt"
+    }
+  ],
+  "options": [
+    {
+      "id": "rfc-7252",
+      "text": "Está estandarizado por el IETF en el RFC 7252.",
+      "explanation": "Es falsa: el RFC 7252 es CoAP; MQTT es estándar OASIS y recomendación ISO."
+    },
+    {
+      "id": "ibm-1999",
+      "text": "Fue diseñado por IBM en 1999 para dispositivos de recursos limitados.",
+      "explanation": "Es correcta: así lo presenta el tema."
+    },
+    {
+      "id": "oasis-iso",
+      "text": "Es un estándar OASIS abierto y recomendación ISO/IEC 20922.",
+      "explanation": "Es correcta."
+    },
+    {
+      "id": "v5-peticion-respuesta",
+      "text": "Desde MQTT v5 admite escenarios petición/respuesta.",
+      "explanation": "Es correcta: usa response topic y correlation data."
+    }
+  ],
+  "answer": "rfc-7252"
+}

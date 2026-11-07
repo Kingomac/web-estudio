@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-150",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El NS quiere cambiar los parámetros con que un nodo abre su segunda ventana de recepción (RX2). ¿Qué comando usa y cómo viaja?",
+  "explanation": "RXParamSetupReq cambia los parámetros de recepción. Como todo comando MAC generado en el NS, viaja en FOpts sin cifrar o en el FRMPayload con FPort = 0 cifrado con NwkSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "rxparamsetupreq-del-ns-en-fopts-o-en",
+      "text": "RXParamSetupReq, del NS: en FOpts o en FRMPayload con FPort = 0 cifrado con NwkSKey.",
+      "explanation": "P. 56."
+    },
+    {
+      "id": "rxparamsetupreq-del-as-con-fport-0-y",
+      "text": "RXParamSetupReq, del AS: con FPort ≠ 0 y cifrado con AppSKey.",
+      "explanation": "Así viajan los comandos de aplicación, no los MAC."
+    },
+    {
+      "id": "linkadrreq-del-ns-en-fopts-o-en",
+      "text": "LinkADRReq, del NS: en FOpts o en FRMPayload con FPort = 0.",
+      "explanation": "LinkADRReq ajusta DR, potencia y canales, no los parámetros de recepción."
+    },
+    {
+      "id": "dutycyclereq-del-ns-en-fopts",
+      "text": "DutyCycleReq, del NS: en FOpts.",
+      "explanation": "Limita dinámicamente el duty cycle del nodo."
+    }
+  ],
+  "answer": "rxparamsetupreq-del-ns-en-fopts-o-en"
+}

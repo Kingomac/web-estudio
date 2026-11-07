@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.lowpan-112",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo envía un datagrama UDP de un solo salto, sin fragmentar. Origen: fe80:: con el IID derivado de la MAC origen de la trama; destino: ff02::1; Traffic Class y Flow Label a 0; Hop Limit 255; UDP se comprime con LOWPAN_NHC y no hay contexto. ¿Cuántos bytes ocupa LOWPAN_IPHC con sus campos en línea, sin contar NHC?",
+  "explanation": "Base IPHC 2 bytes con CID=0, TF=11, NH=1 y HLIM=11 (nada en línea); SAC=0 y SAM=11 (0 bits, el IID sale de la MAC); M=1, DAC=0 y DAM=11 (1 byte, el grupo 01 de ff02::1). Total: 3 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        19,
+        20,
+        21,
+        23,
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "metodo-para-resolver-ejercicios-iphc"
+    }
+  ],
+  "options": [
+    {
+      "id": "3-bytes",
+      "text": "3 bytes.",
+      "explanation": "2 bytes de base más el byte de grupo multicast; los demás campos se deducen o valen lo que fijan los códigos."
+    },
+    {
+      "id": "2-bytes",
+      "text": "2 bytes.",
+      "explanation": "Olvida el byte en línea del destino: DAM=11 con M=1 envía 8 bits (el 01 de ff02::1)."
+    },
+    {
+      "id": "4-bytes",
+      "text": "4 bytes.",
+      "explanation": "Añade un byte que no hace falta: sin contexto no hay byte SCI/DCI, y Hop Limit 255 se codifica con HLIM=11 sin enviarlo."
+    },
+    {
+      "id": "18-bytes",
+      "text": "18 bytes.",
+      "explanation": "Envía los 128 bits del destino (DAM=00), cuando ff02::1 cabe en la forma ff02::00GG."
+    }
+  ],
+  "answer": "3-bytes"
+}

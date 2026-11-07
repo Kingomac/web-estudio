@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-44",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué diferencia de sincronía señala el tema entre el modelo cliente/servidor y el de publicación/suscripción?",
+  "explanation": "Cliente/servidor es una comunicación síncrona iniciada por el cliente: cada petición genera una respuesta. Publicación/suscripción es asíncrona: el broker almacena temporalmente los datos publicados y, en algún momento, los hace llegar a los suscriptores.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        9,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "publicacion-suscripcion"
+    }
+  ],
+  "options": [
+    {
+      "id": "sincrono-frente-a-asincrono",
+      "text": "Cliente/servidor es síncrono e iniciado por el cliente; publicación/suscripción es asíncrono, con el broker almacenando temporalmente los datos.",
+      "explanation": "Es la contraposición que hace el tema entre ambos modelos."
+    },
+    {
+      "id": "asincrono-frente-a-sincrono",
+      "text": "Cliente/servidor es asíncrono porque el servidor envía datos sin petición; publicación/suscripción es síncrono.",
+      "explanation": "Invierte los modelos: en cliente/servidor el cliente inicia cada intercambio y recibe una respuesta."
+    },
+    {
+      "id": "ambos-sincronos",
+      "text": "Ambos son síncronos, porque cada publicación genera una respuesta del suscriptor.",
+      "explanation": "Los suscriptores no responden a cada publicación: el broker les notifica los datos cuando los tiene."
+    },
+    {
+      "id": "ambos-asincronos",
+      "text": "Ambos son asíncronos, porque los dos necesitan un broker intermedio.",
+      "explanation": "El modelo cliente/servidor no usa broker: el cliente se comunica directamente con el servidor."
+    }
+  ],
+  "answer": "sincrono-frente-a-asincrono"
+}

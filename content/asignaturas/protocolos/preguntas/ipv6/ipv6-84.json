@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-84",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se quieren descubrir los servidores CoAP del dominio lab.example mediante DNS-SD. ¿Qué nombre debe consultarse con un registro PTR?",
+  "explanation": "En DNS-SD la consulta PTR se hace a <Servicio>.<Dominio>. La parte <Servicio> son dos etiquetas: «_» seguido del nombre del servicio y «_tcp» o «_udp». Para CoAP: _coap._udp.lab.example. La respuesta da nombres de instancia del tipo <Instancia>._coap._udp.lab.example.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dns-sd-descubrir-servicios"
+    }
+  ],
+  "options": [
+    {
+      "id": "coap-udp",
+      "text": "_coap._udp.lab.example",
+      "explanation": "Sigue la estructura _servicio._transporte.dominio."
+    },
+    {
+      "id": "sin-guiones",
+      "text": "coap.udp.lab.example",
+      "explanation": "Faltan los guiones bajos que distinguen las etiquetas de servicio y de transporte."
+    },
+    {
+      "id": "invertido",
+      "text": "_udp._coap.lab.example",
+      "explanation": "El orden es primero el servicio y después el transporte."
+    },
+    {
+      "id": "instancia",
+      "text": "Sala1._coap._udp.lab.example",
+      "explanation": "Es el nombre de una instancia; se obtiene como respuesta al PTR y se consulta después con SRV y TXT."
+    }
+  ],
+  "answer": "coap-udp"
+}

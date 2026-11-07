@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-64",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router D conoce 2001:db8:0:4::/64 y 2001:db8:0:5::/64 a través de R1, y 2001:db8:0:6::/64 y 2001:db8:0:7::/64 a través de R2. ¿Qué agregación es correcta?",
+  "explanation": "Para agrupar rutas, deben tener el mismo next-hop y formar un bloque contiguo y alineado. 4–5 y 6–7 son pares alineados (/63) con un único next-hop cada uno. Las cuatro forman un /62 alineado (4–7), pero no pueden resumirse en él porque tienen next-hops distintos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "agregacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "dos-63",
+      "text": "2001:db8:0:4::/63 vía R1 y 2001:db8:0:6::/63 vía R2.",
+      "explanation": "Cada par es contiguo, alineado y comparte next-hop."
+    },
+    {
+      "id": "un-62",
+      "text": "2001:db8:0:4::/62 vía R1, que cubre las cuatro subredes.",
+      "explanation": "El bloque está alineado, pero 6 y 7 se alcanzan por R2: el resumen cambiaría su reenvío."
+    },
+    {
+      "id": "5-6",
+      "text": "2001:db8:0:5::/63 vía R1, que agrupa 5 y 6.",
+      "explanation": "5 y 6 no forman un /63 alineado y además tienen next-hops distintos."
+    },
+    {
+      "id": "ninguna",
+      "text": "Ninguna: solo se pueden agregar rutas que compartan los mismos 62 primeros bits.",
+      "explanation": "Dos /64 que solo difieren en el último bit del prefijo forman un /63 agregable."
+    }
+  ],
+  "answer": "dos-63"
+}

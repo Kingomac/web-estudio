@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-117",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un paquete va del host 2001:11::ff:fe00:5 al 6LBR 2001:11::ff:fe00:1 por el recorrido radio 5 → 3 → 1 en route-over. El contexto 0 (2001:11::/64) permite SAC = DAC = 1 y las direcciones de enlace son cortas. En el salto 3 → 1, ¿cómo se comprimen las direcciones?",
+  "explanation": "En route-over la trama del salto 3 → 1 lleva las MAC 3 y 1. El IID del destino (1) coincide con la MAC destino: DAM=11. El del origen (5) no sale de la MAC origen (3), pero tiene la forma 0:ff:fe00:XXXX: SAM=10, con los 16 bits 0x0005 en línea.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "ejemplo-de-compresion-segun-el-modo-de-entrega"
+    }
+  ],
+  "options": [
+    {
+      "id": "sam-10-dam-11",
+      "text": "SAM=10 y DAM=11, con los 16 bits 0x0005 del origen en línea.",
+      "explanation": "Es la fila 3 → 1 de la tabla del ejemplo."
+    },
+    {
+      "id": "sam-11-dam-10",
+      "text": "SAM=11 y DAM=10, con los 16 bits 0x0001 del destino en línea.",
+      "explanation": "Es la compresión del primer salto, 5 → 3, en el que el origen coincide con la MAC origen y el destino no."
+    },
+    {
+      "id": "sam-11-dam-11",
+      "text": "SAM=11 y DAM=11, sin bits de dirección en línea.",
+      "explanation": "Eso vale en mesh-under, donde la cabecera Mesh conserva los extremos 5 y 1; en route-over la MAC origen de este salto es 3."
+    },
+    {
+      "id": "sam-01-dam-11",
+      "text": "SAM=01 y DAM=11, con los 64 bits del IID del origen en línea.",
+      "explanation": "Reconstruye bien la dirección, pero envía 48 bits de más: el IID 0:ff:fe00:5 permite enviar solo 16 bits."
+    }
+  ],
+  "answer": "sam-10-dam-11"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-57",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas operaciones remotas es una actualización de firmware (FOTA) y no una simple configuración remota?",
+  "explanation": "La p. 13 separa la configuración remota (intervalo de envío, umbrales, activar o desactivar funciones) de FOTA (corregir errores, aplicar parches de seguridad, añadir funciones).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "ota"
+    }
+  ],
+  "options": [
+    {
+      "id": "aplicar-un-parche-de-seguridad-al",
+      "text": "Aplicar un parche de seguridad al software del dispositivo.",
+      "explanation": "Es uno de los ejemplos de FOTA de la p. 13."
+    },
+    {
+      "id": "cambiar-el-intervalo-de-envio-de-medidas",
+      "text": "Cambiar el intervalo de envío de medidas de 15 a 30 minutos.",
+      "explanation": "Es configuración remota de un parámetro."
+    },
+    {
+      "id": "modificar-el-umbral-de-una-alarma",
+      "text": "Modificar el umbral de una alarma.",
+      "explanation": "También es configuración remota."
+    },
+    {
+      "id": "desactivar-una-funcion-ya-existente",
+      "text": "Desactivar una función ya existente.",
+      "explanation": "Activar y desactivar funciones es configuración remota; FOTA incorpora funciones nuevas."
+    }
+  ],
+  "answer": "aplicar-un-parche-de-seguridad-al"
+}

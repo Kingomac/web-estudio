@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-122",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo NB-IoT transmite a las 10:00. Después permanece accesible con eDRX, con ventanas de escucha a las 10:05, 10:10, 10:15… hasta las 10:30, y entonces entra en PSM hasta su siguiente transmisión programada a las 11:00. La aplicación le envía una orden a las 10:12 y otra a las 10:40. ¿Cuándo puede recibir cada una?",
+  "explanation": "Con eDRX la entrega espera a la siguiente ventana de escucha (10:15). En PSM la red no puede despertar al dispositivo: la segunda orden tiene que esperar a que despierte por sí mismo, para transmitir a las 11:00 o antes si le toca actualizar el registro (TAU).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        11,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "psm-y-edrx"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-primera-a-las-10-15-la-segunda-no",
+      "text": "La primera a las 10:15; la segunda, no antes de que el dispositivo despierte por sí mismo (a las 11:00 o en un TAU anterior).",
+      "explanation": "P. 12: combinación de eDRX tras transmitir y PSM después."
+    },
+    {
+      "id": "la-primera-a-las-10-12-y-la-segunda-a",
+      "text": "La primera a las 10:12 y la segunda a las 10:40, porque el registro en la red se conserva.",
+      "explanation": "Conservar el registro no significa escuchar: en eDRX hay que esperar a la ventana y en PSM la radio está apagada."
+    },
+    {
+      "id": "la-primera-a-las-10-15-y-la-segunda-a",
+      "text": "La primera a las 10:15 y la segunda a las 10:45, en la siguiente ventana eDRX.",
+      "explanation": "A partir de las 10:30 ya no hay ventanas eDRX: el dispositivo está en PSM."
+    },
+    {
+      "id": "la-primera-a-las-10-15-para-la-segunda",
+      "text": "La primera a las 10:15; para la segunda la red lo despierta con un aviso de paging a las 10:40.",
+      "explanation": "El paging es la escucha de eDRX; durante PSM la red no puede despertarlo."
+    }
+  ],
+  "answer": "la-primera-a-las-10-15-la-segunda-no"
+}

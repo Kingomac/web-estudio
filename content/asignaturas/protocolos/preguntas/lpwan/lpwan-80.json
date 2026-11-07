@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-80",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué contiene el Join-accept de OTAA y cómo viaja?",
+  "explanation": "Contiene DevAddr, parámetros de red y datos para derivar las claves; va cifrado y protegido con AppKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        32,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "devaddr-parametros-de-red-y-datos-para",
+      "text": "DevAddr, parámetros de red y datos para derivar las claves, cifrado con AppKey.",
+      "explanation": "P. 33 y paso 3 de la p. 32."
+    },
+    {
+      "id": "nwkskey-y-appskey-cifradas-con-appkey",
+      "text": "NwkSKey y AppSKey cifradas con AppKey.",
+      "explanation": "Las claves de sesión no se envían por radio: se derivan en ambos extremos."
+    },
+    {
+      "id": "deveui-joineui-y-devnonce-sin-cifrar-con",
+      "text": "DevEUI, JoinEUI y DevNonce sin cifrar, con un MIC.",
+      "explanation": "Ese es el contenido del Join-request."
+    },
+    {
+      "id": "una-appkey-nueva-para-la-sesion",
+      "text": "Una AppKey nueva para la sesión.",
+      "explanation": "AppKey es la clave raíz preprovisionada y no viaja por radio."
+    }
+  ],
+  "answer": "devaddr-parametros-de-red-y-datos-para"
+}

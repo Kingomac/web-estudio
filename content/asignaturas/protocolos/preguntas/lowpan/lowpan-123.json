@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-123",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Sobre el reenvío de paquetes por la malla Thread, ¿cuál de estas afirmaciones NO es correcta?",
+  "explanation": "Para destinos internos se encamina hacia el Router ID del RLOC16 destino sin pasar por el border router; solo el tráfico hacia redes externas sale por un border router que anuncie una ruta adecuada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        69
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "entrega-de-un-paquete"
+    }
+  ],
+  "options": [
+    {
+      "id": "trafico-interno-border-router",
+      "text": "Todo el tráfico entre dos nodos de la malla debe atravesar un border router.",
+      "explanation": "Es la falsa: el tráfico interno no necesita atravesar el border router; solo se elige uno para destinos externos."
+    },
+    {
+      "id": "mtd-delegan",
+      "text": "Los MTD delegan en su padre la resolución de ML-EID a RLOC16.",
+      "explanation": "Es correcta: Address Query/Notification la hacen los FTD, y los MTD la delegan en su padre."
+    },
+    {
+      "id": "hops-left",
+      "text": "El campo Hops Left de la cabecera Mesh se decrementa durante el recorrido.",
+      "explanation": "Es correcta: origen y destino final de la cabecera Mesh se conservan y Hops Left se decrementa."
+    },
+    {
+      "id": "router-id-destino",
+      "text": "Cada router consulta el Router ID del RLOC16 destino en su tabla para elegir el siguiente salto.",
+      "explanation": "Es correcta: la tabla, mantenida con MLE, da el siguiente salto hacia el router destino o el padre del destino."
+    }
+  ],
+  "answer": "trafico-interno-border-router"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "protocolos.preguntas.final-43",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB del router R contiene:\n`2001:db8:a::/64   G=0  g0/0`\n`2001:db8:b::/64   G=0  g0/1`\n`2001:db8:50::/48  G=1  gateway 2001:db8:b::7`\n`::/0              G=1  gateway 2001:db8:a::1`\nLlega un paquete para 2001:db8:50:3::9 y la caché de vecinos de R está vacía. ¿Por qué interfaz sale y a qué destino IPv6 envía R el NS previo?",
+  "explanation": "Por longest prefix match gana 2001:db8:50::/48 (la ruta por defecto también coincide, pero es menos específica). Es una ruta G=1: el paquete va al router de siguiente salto 2001:db8:b::7, que debe alcanzarse por una ruta G=0; esa ruta es 2001:db8:b::/64 por g0/1. R resuelve entonces la MAC del gateway (no la del destino final) con un NS a su solicited-node: ff02::1:ff00:7.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        8,
+        21,
+        22,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "subred-bridge-router-y-tablas-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "g01-gateway",
+      "text": "Por g0/1; NS a ff02::1:ff00:7 para resolver 2001:db8:b::7.",
+      "explanation": "Combina LPM, la ruta G=0 hacia el gateway y la resolución del siguiente salto."
+    },
+    {
+      "id": "g01-destino",
+      "text": "Por g0/1; NS a ff02::1:ff00:9 para resolver 2001:db8:50:3::9.",
+      "explanation": "El destino final no está en el enlace de g0/1: con G=1 se resuelve la MAC del gateway, no la del destino."
+    },
+    {
+      "id": "g00-defecto",
+      "text": "Por g0/0; NS a ff02::1:ff00:1 para resolver 2001:db8:a::1.",
+      "explanation": "La ruta por defecto solo se usaría si no hubiera una coincidencia más específica, y el /48 lo es."
+    },
+    {
+      "id": "g01-unicast",
+      "text": "Por g0/1; NS a 2001:db8:b::7, la dirección del gateway.",
+      "explanation": "Con la caché vacía no se conoce su MAC: el NS de resolución va a su grupo solicited-node."
+    },
+    {
+      "id": "g00-gateway",
+      "text": "Por g0/0; NS a ff02::1:ff00:7 para resolver 2001:db8:b::7.",
+      "explanation": "La interfaz la decide la ruta G=0 del prefijo del gateway, 2001:db8:b::/64, que sale por g0/1."
+    }
+  ],
+  "answer": "g01-gateway"
+}

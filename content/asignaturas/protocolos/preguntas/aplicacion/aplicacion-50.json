@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-50",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación lee por HTTP tres veces seguidas la temperatura de un dispositivo. El RTT es de 40 ms, los tiempos de transmisión y proceso son despreciables y al principio no hay conexión TCP abierta. ¿Cuánto tardan las tres lecturas con conexión persistente y sin ella?",
+  "explanation": "Cada lectura con una conexión nueva cuesta 2·RTT (handshake TCP + petición/respuesta). Con conexión persistente solo la primera paga el handshake: 2 + 1 + 1 = 4 RTT = 160 ms. Sin persistencia: 3 × 2 RTT = 6 RTT = 240 ms.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "transporte-y-versiones"
+    }
+  ],
+  "options": [
+    {
+      "id": "160-persistente-240-no-persistente",
+      "text": "160 ms con conexión persistente y 240 ms sin ella.",
+      "explanation": "Persistente: 2 RTT + 1 RTT + 1 RTT = 160 ms. No persistente: 2 RTT por lectura, 240 ms."
+    },
+    {
+      "id": "240-en-ambos-casos",
+      "text": "240 ms en ambos casos.",
+      "explanation": "Supone que la conexión persistente repite el handshake en cada lectura, que es justo lo que evita."
+    },
+    {
+      "id": "120-persistente-240-no-persistente",
+      "text": "120 ms con conexión persistente y 240 ms sin ella.",
+      "explanation": "Olvida que la primera lectura también necesita establecer la conexión TCP (2 RTT)."
+    },
+    {
+      "id": "240-persistente-160-no-persistente",
+      "text": "240 ms con conexión persistente y 160 ms sin ella.",
+      "explanation": "Invierte los casos: sin persistencia cada lectura paga su propio handshake."
+    }
+  ],
+  "answer": "160-persistente-240-no-persistente"
+}

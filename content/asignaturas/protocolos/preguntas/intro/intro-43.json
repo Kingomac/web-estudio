@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-43",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes NO es una característica de las LoWPAN según el tema?",
+  "explanation": "Las LoWPAN usan estrella y malla centradas en pasarela o border router, ofrecen conectividad IP extremo a extremo en sus soluciones estándar, cubren 10–100 m (ampliables con malla) y alcanzan de cientos de kbps a ~2 Mbps. La conectividad híbrida es propia de las LPWAN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "conectividad-hibrida",
+      "text": "Conectividad híbrida: dispositivos no IP y red troncal IP.",
+      "explanation": "Es la que NO corresponde: la conectividad híbrida es una característica de las LPWAN."
+    },
+    {
+      "id": "estrella-y-malla",
+      "text": "Topología en estrella y malla, centrada en pasarela o border router.",
+      "explanation": "Sí es característica de las LoWPAN."
+    },
+    {
+      "id": "ip-extremo-a-extremo",
+      "text": "Las soluciones estándar ofrecen conectividad IP extremo a extremo.",
+      "explanation": "Sí es característica de las LoWPAN."
+    },
+    {
+      "id": "cobertura-10-100-m",
+      "text": "Cobertura de 10–100 m, que puede extenderse de forma significativa con la malla.",
+      "explanation": "Sí es característica de las LoWPAN."
+    }
+  ],
+  "answer": "conectividad-hibrida"
+}

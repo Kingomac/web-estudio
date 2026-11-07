@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-45",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se planifica una LPWAN para los contadores de un polígono industrial. ¿Qué topología y qué tipo de conectividad describe el tema para este tipo de red?",
+  "explanation": "Las LPWAN usan topología en estrella y conectividad híbrida: dispositivos no IP y red troncal IP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "estrella-hibrida",
+      "text": "Estrella, con dispositivos no IP y red troncal IP.",
+      "explanation": "Correcta: es la descripción del tema para las LPWAN."
+    },
+    {
+      "id": "malla-ip-extremo-a-extremo",
+      "text": "Estrella y malla, con IP extremo a extremo.",
+      "explanation": "Describe las LoWPAN, no las LPWAN."
+    },
+    {
+      "id": "estrella-ip-extremo-a-extremo",
+      "text": "Estrella, con IP extremo a extremo hasta cada contador.",
+      "explanation": "La topología es correcta, pero en LPWAN los dispositivos no son IP: la conectividad es híbrida."
+    },
+    {
+      "id": "arbol-no-ip",
+      "text": "Árbol multisalto, con dispositivos no IP.",
+      "explanation": "La conectividad es correcta, pero la LPWAN alcanza la pasarela en un salto: su topología es en estrella."
+    }
+  ],
+  "answer": "estrella-hibrida"
+}

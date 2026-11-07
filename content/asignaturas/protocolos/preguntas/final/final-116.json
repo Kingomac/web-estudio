@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-116",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué el mecanismo 6LFF (RFC 8930) se plantea para route-over y no aporta nada en mesh-under?",
+  "explanation": "6LFF evita que cada router route-over reensamble y refragmente el datagrama. En mesh-under ese problema no existe: los nodos intermedios ya reenvían cada fragmento en 6LoWPAN con la cabecera Mesh y solo reensambla el destino final.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        32,
+        36,
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragment-forwarding-6lff-y-vrb"
+    }
+  ],
+  "options": [
+    {
+      "id": "ya-sin-reensamblado",
+      "text": "Porque en mesh-under los intermedios ya reenvían cada fragmento sin reensamblar; solo reensambla el destino final.",
+      "explanation": "El problema que resuelve 6LFF es propio del route-over básico."
+    },
+    {
+      "id": "no-fragmenta",
+      "text": "Porque mesh-under no fragmenta: la cabecera Mesh sustituye a FRAG1 y FRAGN.",
+      "explanation": "Mesh y Fragmentation pueden ir juntas, en el orden M–F–C."
+    },
+    {
+      "id": "ipv6-completa",
+      "text": "Porque en mesh-under cada fragmento lleva la cabecera IPv6 completa.",
+      "explanation": "Solo el primer fragmento lleva la cabecera IPv6, en cualquier modo."
+    },
+    {
+      "id": "reensambla-cada-salto",
+      "text": "Porque mesh-under reensambla en cada salto y 6LFF no puede evitarlo.",
+      "explanation": "Lo invierte: el reensamblado por salto es del route-over básico."
+    }
+  ],
+  "answer": "ya-sin-reensamblado"
+}

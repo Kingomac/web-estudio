@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-111",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Según la comparativa final, ¿por qué el consumo de Wi-SUN FAN no se resume como «muy bajo», a diferencia de los nodos LoRaWAN de clase A?",
+  "explanation": "En Wi-SUN FAN los encaminadores de la malla están habitualmente alimentados; hay nodos de bajo consumo en FAN 1.1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "comparativa"
+    }
+  ],
+  "options": [
+    {
+      "id": "porque-los-encaminadores-de-la-malla",
+      "text": "Porque los encaminadores de la malla suelen estar alimentados; los nodos de bajo consumo llegan con FAN 1.1.",
+      "explanation": "Fila «Consumo» de la p. 61."
+    },
+    {
+      "id": "porque-usa-espectro-licenciado-del",
+      "text": "Porque usa espectro licenciado del operador.",
+      "explanation": "Wi-SUN FAN usa bandas sin licencia, principalmente sub-GHz."
+    },
+    {
+      "id": "porque-depende-de-psm-y-edrx",
+      "text": "Porque depende de PSM y eDRX.",
+      "explanation": "Eso es de las tecnologías celulares."
+    },
+    {
+      "id": "porque-sus-nodos-transmiten-con-fsk-a-50",
+      "text": "Porque sus nodos transmiten con FSK a 50 kbps.",
+      "explanation": "Es DR7 de LoRaWAN; la tabla no habla de eso para Wi-SUN."
+    }
+  ],
+  "answer": "porque-los-encaminadores-de-la-malla"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.intro-25",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un fabricante elige un chip que reúne CPU, RAM, ROM, puertos de E/S y además la radio LoRa. ¿Qué valoración es correcta?",
+  "explanation": "El tema define la MCU como un SoC con CPU, RAM, ROM y E/S, y añade que en ocasiones el chip también integra hardware de comunicaciones (WiFi, Bluetooth, LoRa).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        3,
+        4
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "microcontrolador-y-microprocesador"
+    }
+  ],
+  "options": [
+    {
+      "id": "sigue-siendo-una-mcu",
+      "text": "Sigue siendo una MCU: el chip puede integrar también hardware de comunicaciones.",
+      "explanation": "Correcta: integrar la radio no cambia la naturaleza de MCU; el tema lo menciona expresamente."
+    },
+    {
+      "id": "pasa-a-ser-una-mpu",
+      "text": "Pasa a ser una MPU, porque incluye un periférico de comunicaciones.",
+      "explanation": "La MPU se caracteriza por contener solo la CPU y necesitar periféricos externos; aquí todo está integrado."
+    },
+    {
+      "id": "necesita-obligatoriamente-un-so",
+      "text": "Necesita obligatoriamente un sistema operativo para usar la radio.",
+      "explanation": "La MCU puede operar sin SO según la complejidad del proyecto; integrar la radio no lo cambia."
+    },
+    {
+      "id": "ya-no-puede-conectar-sensores",
+      "text": "Ya no puede conectar sensores, porque los puertos de E/S quedan ocupados por la radio.",
+      "explanation": "Los puertos de E/S siguen sirviendo para sensores y actuadores; la radio integrada no los anula."
+    }
+  ],
+  "answer": "sigue-siendo-una-mcu"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-128",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En el uplink Basics Station de la p. 45 aparece `\"DevAddr\": 670869799` y en el JSON que el NS entrega al AS (p. 50) aparece `\"dev_addr\": \"27FCA927\"`. ¿Qué se deduce?",
+  "explanation": "0x27FCA927 = 670 869 799: es la misma dirección de 32 bits, representada en decimal por Basics Station y en hexadecimal por TTS. Es la DevAddr de la sesión, no el identificador global DevEUI (que en la p. 50 es 2CF7F1C064900BC4).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        31,
+        45,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway-y-network-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "es-la-misma-devaddr-de-32-bits-en",
+      "text": "Es la misma DevAddr de 32 bits, en decimal en un JSON y en hexadecimal en el otro.",
+      "explanation": "Conversión directa; la DevAddr ocupa 4 bytes (pp. 31 y 39)."
+    },
+    {
+      "id": "son-dos-dispositivos-distintos-que",
+      "text": "Son dos dispositivos distintos que comparten aplicación.",
+      "explanation": "El resto del mensaje (FCnt 13, FPort 5) coincide: es el mismo uplink."
+    },
+    {
+      "id": "670869799-es-el-deveui-y-27fca927-la",
+      "text": "670869799 es el DevEUI y 27FCA927 la DevAddr que asignó el NS al eliminar duplicados.",
+      "explanation": "El DevEUI es de 64 bits y aparece aparte como dev_eui; el NS no asigna direcciones al deduplicar."
+    },
+    {
+      "id": "el-ns-ha-cifrado-la-devaddr-con-nwkskey",
+      "text": "El NS ha cifrado la DevAddr con NwkSKey antes de entregarla al AS.",
+      "explanation": "La DevAddr no se cifra: viaja en claro en la Frame Header."
+    }
+  ],
+  "answer": "es-la-misma-devaddr-de-32-bits-en"
+}

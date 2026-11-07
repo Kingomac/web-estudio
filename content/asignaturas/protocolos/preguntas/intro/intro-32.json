@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.intro-32",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones sobre el sistema WisBlock es correcta?",
+  "explanation": "WisBlock, de RAK, es la arquitectura más modular: sus módulos (Base, Core, IO, Sensor) se apilan atornillados con conectores de 24 pines. Grove, con conectores de 4 pines, es el ecosistema de Seeed Studio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        6,
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "dispositivos-modulares"
+    }
+  ],
+  "options": [
+    {
+      "id": "rak-apilable-24-pines",
+      "text": "Es de RAK y sus módulos se apilan atornillados mediante conectores de 24 pines.",
+      "explanation": "Correcta: así lo describe el tema, que lo presenta como la arquitectura más modular."
+    },
+    {
+      "id": "seeed-grove-4-pines",
+      "text": "Es de Seeed Studio y usa conectores Grove de 4 pines.",
+      "explanation": "Confunde WisBlock con Wio/Grove: Seeed Studio y 4 pines corresponden a Grove."
+    },
+    {
+      "id": "exige-soldar-sensores",
+      "text": "Exige soldar cada sensor a la placa base.",
+      "explanation": "Los dispositivos modulares se conectan sin soldar; en WisBlock los módulos se acoplan atornillados."
+    },
+    {
+      "id": "mcu-fija-sin-core",
+      "text": "Integra una MCU fija en la placa base, sin módulos Core intercambiables.",
+      "explanation": "WisBlock permite integrar diferentes MCUs como módulos WisBlock Core."
+    }
+  ],
+  "answer": "rak-apilable-24-pines"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-80",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una trama IEEE 802.15.4 de 127 bytes, sin seguridad, lleva direcciones cortas de origen y destino y un único PAN ID (cabecera MAC de 9 bytes) y FCS. Dentro van LOWPAN_IPHC con sus campos en línea (3 bytes) y LOWPAN_NHC de UDP con puertos y checksum (4 bytes), sin Mesh ni fragmentación. ¿Cuántos bytes de datos de aplicación caben como máximo?",
+  "explanation": "127 − 9 (MHR) − 2 (FCS) = 116 bytes para 6LoWPAN; 116 − 3 (IPHC) − 4 (NHC UDP) = 109 bytes de aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        14,
+        15,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tamanos-y-sobrecarga"
+    }
+  ],
+  "options": [
+    {
+      "id": "109",
+      "text": "109 bytes.",
+      "explanation": "Descuenta cabecera MAC, FCS y las dos cabeceras comprimidas."
+    },
+    {
+      "id": "111",
+      "text": "111 bytes.",
+      "explanation": "Olvida el FCS de 2 bytes, que va al final de la trama y también ocupa parte de los 127."
+    },
+    {
+      "id": "68",
+      "text": "68 bytes.",
+      "explanation": "Descuenta las cabeceras IPv6 y UDP sin comprimir (48 bytes) en lugar de los 7 bytes comprimidos."
+    },
+    {
+      "id": "113",
+      "text": "113 bytes.",
+      "explanation": "Olvida los 4 bytes de LOWPAN_NHC de UDP."
+    }
+  ],
+  "answer": "109"
+}

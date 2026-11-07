@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-61",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una cooperativa agrícola instala sus propios gateways en sus fincas, contrata los servidores LoRaWAN en la nube y quiere decidir ella misma la cobertura. ¿Qué tipo de red LoRaWAN es?",
+  "explanation": "En una red privada la organización despliega los gateways para sus dispositivos, con servidores propios o contratados en la nube, y controla cobertura y gestión.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "beneficios-y-tipos-de-red"
+    }
+  ],
+  "options": [
+    {
+      "id": "una-red-privada",
+      "text": "Una red privada.",
+      "explanation": "P. 21: los servidores pueden ser propios o contratados en la nube."
+    },
+    {
+      "id": "una-red-publica-comercial",
+      "text": "Una red pública comercial.",
+      "explanation": "En ella es un operador quien despliega la infraestructura y la cooperativa solo registraría sus dispositivos."
+    },
+    {
+      "id": "una-red-comunitaria",
+      "text": "Una red comunitaria.",
+      "explanation": "En ella los gateways se comparten con otros usuarios a través de una plataforma común, como TTN o Helium."
+    },
+    {
+      "id": "una-red-nb-iot",
+      "text": "Una red NB-IoT.",
+      "explanation": "NB-IoT no usa gateways de cliente: depende de la red del operador."
+    }
+  ],
+  "answer": "una-red-privada"
+}

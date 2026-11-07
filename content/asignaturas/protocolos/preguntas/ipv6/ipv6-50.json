@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ipv6-50",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo Ethernet usa la MAC **administrada localmente** 02:00:00:00:00:05. ¿Qué dirección link-local automática obtiene con el IID EUI-64 modificado?",
+  "explanation": "Se inserta FF:FE entre el tercer y el cuarto octeto: 02:00:00:FF:FE:00:00:05. Después se invierte el bit U/L (segundo bit menos significativo del primer octeto): 02 → 00. El IID queda 0000:00ff:fe00:0005 y la link-local es fe80::ff:fe00:5. Por eso se invierte el bit: las MAC administradas localmente (U/L = 1) dan direcciones más sencillas, con más ceros agrupables.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15,
+        16,
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "desde-una-mac-de-48-bits"
+    }
+  ],
+  "options": [
+    {
+      "id": "fe80-ff-fe00-5",
+      "text": "fe80::ff:fe00:5",
+      "explanation": "Inserta FF:FE e invierte U/L, que pasa de 1 a 0 y deja el primer octeto a 00."
+    },
+    {
+      "id": "sin-invertir",
+      "text": "fe80::200:ff:fe00:5",
+      "explanation": "Inserta FF:FE pero no invierte el bit U/L: el primer octeto seguiría siendo 02."
+    },
+    {
+      "id": "sin-fffe",
+      "text": "fe80::5",
+      "explanation": "Omite tanto la inserción de FF:FE como el resto del IID de 64 bits."
+    },
+    {
+      "id": "bit-equivocado",
+      "text": "fe80::600:ff:fe00:5",
+      "explanation": "Activa otro bit del primer octeto en lugar de invertir U/L; 02 XOR 02 = 00, no 06."
+    }
+  ],
+  "answer": "fe80-ff-fe00-5"
+}

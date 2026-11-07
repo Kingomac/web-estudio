@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-103",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un actuador Thread a pilas debe dormir casi siempre, pero recibir órdenes con poca latencia sin tener que despertar para preguntar a su padre: ambos acuerdan ventanas periódicas de recepción. ¿Qué tipo de dispositivo es?",
+  "explanation": "El SSED (Synchronized Sleepy End Device) duerme y recibe en ventanas sincronizadas con su padre. El SED, en cambio, despierta y sondea al padre para recoger los mensajes almacenados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        58,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "roles-y-dispositivos"
+    }
+  ],
+  "options": [
+    {
+      "id": "ssed",
+      "text": "Un SSED.",
+      "explanation": "Recibe en ventanas sincronizadas con el padre, sin sondear."
+    },
+    {
+      "id": "sed",
+      "text": "Un SED.",
+      "explanation": "El SED también duerme, pero recoge sus mensajes sondeando al padre al despertar."
+    },
+    {
+      "id": "med",
+      "text": "Un MED.",
+      "explanation": "El MED mantiene el receptor activo, así que no ahorraría la energía que se pide."
+    },
+    {
+      "id": "reed",
+      "text": "Un REED.",
+      "explanation": "Un REED es un FTD que puede promocionar a router; no está pensado para dormir."
+    }
+  ],
+  "answer": "ssed"
+}

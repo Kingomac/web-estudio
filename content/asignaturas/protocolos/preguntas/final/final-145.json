@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-145",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué mecanismo de NB-IoT y LTE-M se parece más a la clase B de LoRaWAN en la forma de ofrecer oportunidades de recepción?",
+  "explanation": "La clase B abre ventanas periódicas programadas (ping slots) para recibir sin esperar a un uplink propio; eDRX alterna reposo con ventanas periódicas de escucha (paging). PSM, en cambio, no escucha durante el reposo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        12,
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "edrx-que-alterna-el-reposo-con-ventanas",
+      "text": "eDRX, que alterna el reposo con ventanas periódicas de escucha.",
+      "explanation": "Pp. 12 y 30."
+    },
+    {
+      "id": "psm-en-el-que-el-dispositivo-conserva-su",
+      "text": "PSM, en el que el dispositivo conserva su registro.",
+      "explanation": "En PSM no hay escucha: se parece más a esperar a que el dispositivo transmita, como en la clase A."
+    },
+    {
+      "id": "el-handover-entre-celdas-de-lte-m",
+      "text": "El handover entre celdas de LTE-M.",
+      "explanation": "Trata la movilidad, no las oportunidades de recepción."
+    },
+    {
+      "id": "el-modo-nidd",
+      "text": "El modo NIDD.",
+      "explanation": "Trata el formato de los datos (sin IP), no cuándo se puede recibir."
+    }
+  ],
+  "answer": "edrx-que-alterna-el-reposo-con-ventanas"
+}

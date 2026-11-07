@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-74",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo de clase A envía un uplink en 868,3 MHz con DR4 (SF8). El Network Server tiene configurado RX1DROffset = 1. ¿Con qué frecuencia y Data Rate se abre RX1?",
+  "explanation": "RX1 usa la misma frecuencia que el uplink y DR = DR_uplink − RX1DROffset = 4 − 1 = DR3, es decir, SF9 con 125 kHz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        28,
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "868-3-mhz-y-dr3-sf9",
+      "text": "868,3 MHz y DR3 (SF9).",
+      "explanation": "Definición de RX1, p. 30, y tabla de la p. 28."
+    },
+    {
+      "id": "869-525-mhz-y-dr0-sf12",
+      "text": "869,525 MHz y DR0 (SF12).",
+      "explanation": "Son los valores típicos de RX2."
+    },
+    {
+      "id": "868-3-mhz-y-dr5-sf7",
+      "text": "868,3 MHz y DR5 (SF7).",
+      "explanation": "Suma el offset en lugar de restarlo."
+    },
+    {
+      "id": "869-525-mhz-y-dr3-sf9",
+      "text": "869,525 MHz y DR3 (SF9).",
+      "explanation": "El DR es correcto, pero RX1 no cambia de frecuencia."
+    }
+  ],
+  "answer": "868-3-mhz-y-dr3-sf9"
+}

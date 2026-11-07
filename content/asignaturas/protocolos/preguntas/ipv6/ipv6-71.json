@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ipv6-71",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En el intercambio DHCPv6 del tema, el router envía un RA con M = 1 y O = 1. ¿Qué hace a continuación el host?",
+  "explanation": "Con M = 1 la dirección debe obtenerse mediante DHCPv6, y con O = 1 también la otra información. El cliente realiza el intercambio con el servidor DHCPv6 (Solicit, Advertise, Request, Reply), pero el default gateway lo sigue tomando de la dirección fuente del RA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        32,
+        35,
+        36
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dhcpv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "dhcpv6-y-gateway-ra",
+      "text": "Obtiene la dirección y la otra información mediante DHCPv6, y toma como default gateway la dirección origen del RA.",
+      "explanation": "Así lo muestra el paso 3 del intercambio: el gateway viene del RA."
+    },
+    {
+      "id": "gateway-dhcpv6",
+      "text": "Obtiene la dirección, los DNS y el default gateway del servidor DHCPv6.",
+      "explanation": "En el mecanismo presentado el gateway no lo proporciona DHCPv6, sino el RA."
+    },
+    {
+      "id": "slaac-mas-dhcpv6",
+      "text": "Forma su dirección con SLAAC y solo pide a DHCPv6 los servidores DNS.",
+      "explanation": "Eso correspondería a M = 0 y O = 1."
+    },
+    {
+      "id": "ignora-ra",
+      "text": "Descarta el RA y repite el RS hasta recibir un RA con M = 0.",
+      "explanation": "M = 1 es una indicación válida del administrador: hay que usar DHCPv6."
+    }
+  ],
+  "answer": "dhcpv6-y-gateway-ra"
+}

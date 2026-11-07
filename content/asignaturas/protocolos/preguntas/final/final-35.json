@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente HTTP del núcleo pide `GET /device999/temperature` a través del gateway HTTP–CoAP del tema. El gateway traduce la petición a CoAP y el dispositivo no tiene ese recurso. ¿Qué pareja de respuestas encaja?",
+  "explanation": "El dispositivo responde 4.04 Not Found (clase 4, error del cliente), como en los esquemas del tema. El gateway traduce esa respuesta a HTTP: 404 Not Found, también de la familia 4xx de errores del cliente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        18,
+        37,
+        39,
+        45
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "coap"
+    }
+  ],
+  "options": [
+    {
+      "id": "404-y-4-04",
+      "text": "CoAP 4.04 Not Found del dispositivo al gateway y HTTP 404 Not Found del gateway al cliente.",
+      "explanation": "Ambos son errores del cliente: el recurso pedido no existe."
+    },
+    {
+      "id": "5-04-y-505",
+      "text": "CoAP 5.04 y HTTP 505, porque el fallo está en el servidor.",
+      "explanation": "Pedir un recurso inexistente es un error del cliente (clase 4), no del servidor."
+    },
+    {
+      "id": "0-04-y-404",
+      "text": "CoAP 0.04 y HTTP 404 Not Found.",
+      "explanation": "0.04 es el código de la petición DELETE, no una respuesta."
+    },
+    {
+      "id": "4-04-y-301",
+      "text": "CoAP 4.04 y HTTP 301 Moved Permanently, porque el gateway redirige al dispositivo.",
+      "explanation": "301 indica que el recurso se ha trasladado a otra URI; el gateway traduce el error, no redirige."
+    }
+  ],
+  "answer": "404-y-4-04"
+}

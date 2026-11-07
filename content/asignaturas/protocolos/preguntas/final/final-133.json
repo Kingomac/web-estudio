@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-133",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un fabricante vende un sensor que «usa LoRa» pero envía tramas propias a un receptor suyo, sin LoRaWAN. Respecto a un sensor LoRaWAN, ¿qué pierde?",
+  "explanation": "LoRa es la tecnología de transmisión radio (alcance, bajo consumo, bandas sub-GHz); LoRaWAN es el protocolo de red que define cómo se accede a la red, cómo se intercambian los mensajes y cómo se protegen, con gateways, NS y AS e interoperabilidad certificada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        18,
+        20,
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "lora-y-lorawan"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-acceso-a-redes-lorawan-el-intercambio",
+      "text": "El acceso a redes LoRaWAN, el intercambio de mensajes normalizado y su seguridad (claves de sesión, MIC).",
+      "explanation": "P. 18 y p. 20: eso lo define LoRaWAN, no LoRa."
+    },
+    {
+      "id": "el-alcance-de-varios-kilometros",
+      "text": "El alcance de varios kilómetros.",
+      "explanation": "El alcance lo da la modulación LoRa, que conserva."
+    },
+    {
+      "id": "el-uso-de-la-banda-de-868-mhz",
+      "text": "El uso de la banda de 868 MHz.",
+      "explanation": "La banda es propia de la radio LoRa en Europa."
+    },
+    {
+      "id": "la-posibilidad-de-elegir-el-spreading",
+      "text": "La posibilidad de elegir el Spreading Factor.",
+      "explanation": "El SF es un parámetro de la modulación LoRa."
+    }
+  ],
+  "answer": "el-acceso-a-redes-lorawan-el-intercambio"
+}

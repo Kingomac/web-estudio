@@ -1,0 +1,59 @@
+{
+  "id": "protocolos.preguntas.final-75",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Desde el router R se alcanzan las redes 2001:db8:a8::/48 a 2001:db8:af::/48 (ocho /48 consecutivas) a través del router vecino fe80::9, conectado a la interfaz Ethernet g0/2 de R. ¿Qué comando instala una única ruta agregada, exacta y de la mayor longitud posible?",
+  "explanation": "Los terceros grupos van de 0x00a8 (0000 0000 1010 1000) a 0x00af (… 1010 1111): comparten 13 bits, así que el prefijo es 32 + 13 = 45, y a8 es múltiplo de 8 (alineado). Como el next-hop es link-local, hay que indicar también la interfaz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        25,
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "agregacion-de-rutas"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcto",
+      "text": "ipv6 route 2001:db8:a8::/45 g0/2 fe80::9",
+      "explanation": "Bloque alineado de ocho /48, con interfaz y next-hop link-local."
+    },
+    {
+      "id": "sin-interfaz",
+      "text": "ipv6 route 2001:db8:a8::/45 fe80::9",
+      "explanation": "El prefijo es correcto, pero un next-hop link-local necesita la interfaz."
+    },
+    {
+      "id": "46",
+      "text": "ipv6 route 2001:db8:a8::/46 g0/2 fe80::9",
+      "explanation": "Un /46 solo cubre cuatro /48 (a8–ab)."
+    },
+    {
+      "id": "44",
+      "text": "ipv6 route 2001:db8:a0::/44 g0/2 fe80::9",
+      "explanation": "Las cubre, pero añade a0–a7: no es exacta ni la más larga."
+    },
+    {
+      "id": "solo-interfaz",
+      "text": "ipv6 route 2001:db8:a8::/45 g0/2",
+      "explanation": "En una interfaz multipunto hay que indicar el router siguiente salto."
+    },
+    {
+      "id": "a800",
+      "text": "ipv6 route 2001:db8:a800::/37 g0/2 fe80::9",
+      "explanation": "Escribe a8 como a800: el tercer grupo de las redes es 00a8, no a800."
+    }
+  ],
+  "answer": "correcto"
+}

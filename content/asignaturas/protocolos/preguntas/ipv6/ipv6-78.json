@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-78",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Durante el DAD de su dirección tentativa 2001:db8:8::4a, un nodo recibe un NA solicitado cuya dirección objetivo es 2001:db8:8::4a. ¿Qué significa?",
+  "explanation": "En DAD el nodo pregunta por la dirección obtenida con un NS de fuente ::/128. Si la dirección está duplicada, el nodo que ya la tiene responde con un NA solicitado, como en una resolución. Recibirlo indica, por tanto, que la dirección está en uso y no puede quedársela.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dad-detectar-direcciones-duplicadas"
+    }
+  ],
+  "options": [
+    {
+      "id": "duplicada",
+      "text": "Que otro nodo ya usa esa dirección: está duplicada y no debe utilizarla.",
+      "explanation": "Solo el propietario de la dirección responde al NS de DAD."
+    },
+    {
+      "id": "confirmacion",
+      "text": "Que la dirección está libre y queda confirmada por el router.",
+      "explanation": "No existe un NA que confirme una dirección libre: la ausencia de respuesta es lo que indica que no hay duplicado."
+    },
+    {
+      "id": "anunciar",
+      "text": "Que debe enviar a continuación un NA no solicitado a ff02::1 con esa dirección.",
+      "explanation": "Ese anuncio se envía cuando DAD termina sin respuesta, no cuando se detecta un duplicado."
+    },
+    {
+      "id": "cache",
+      "text": "Que debe guardar la MAC del NA en su caché y usar la dirección normalmente.",
+      "explanation": "El NA revela que la dirección pertenece a otro nodo; usarla provocaría un conflicto."
+    }
+  ],
+  "answer": "duplicada"
+}

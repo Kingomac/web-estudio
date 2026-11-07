@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-87",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Qué indicadores (flags) lleva la cabecera fija de un mensaje MQTT, además del tipo de mensaje?",
+  "explanation": "La cabecera fija tiene el tipo de mensaje (4 bits: CONNECT, PUBLISH, SUBSCRIBE…), los flags de duplicado, QoS (2 bits) y retención, y la Longitud de la cabecera variable y los datos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mensajes-basicos-y-formato"
+    }
+  ],
+  "options": [
+    {
+      "id": "dup-qos-retain",
+      "text": "Duplicado, QoS (2 bits) y retención.",
+      "explanation": "Son los flags que enumera el tema."
+    },
+    {
+      "id": "token-message-id",
+      "text": "Token y Message ID.",
+      "explanation": "Son campos de la cabecera CoAP."
+    },
+    {
+      "id": "con-non",
+      "text": "Confirmable o non-confirmable.",
+      "explanation": "Es el tipo de mensaje de CoAP; en MQTT la fiabilidad la da el nivel QoS."
+    },
+    {
+      "id": "response-correlation",
+      "text": "Response topic y correlation data.",
+      "explanation": "Son datos de la petición en MQTT v5, no flags de la cabecera fija."
+    }
+  ],
+  "answer": "dup-qos-retain"
+}

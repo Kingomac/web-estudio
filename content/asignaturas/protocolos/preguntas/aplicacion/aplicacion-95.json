@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.aplicacion-95",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas parejas protocolo–transporte es INCORRECTA según el tema?",
+  "explanation": "CoAP va sobre UDP 5683, MQTT sobre TCP 1883 y WebSocket sobre TCP 80 (o TLS/TCP 443). OPC UA usa el puerto 4840 pero sobre TCP, no sobre UDP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        23,
+        31,
+        36,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "comparacion-final-y-datos-para-memorizar"
+    }
+  ],
+  "options": [
+    {
+      "id": "opc-ua-udp",
+      "text": "OPC UA – UDP 4840.",
+      "explanation": "Es incorrecta: OPC UA usa el puerto 4840 sobre TCP."
+    },
+    {
+      "id": "coap-udp",
+      "text": "CoAP – UDP 5683.",
+      "explanation": "Es correcta."
+    },
+    {
+      "id": "mqtt-tcp",
+      "text": "MQTT – TCP 1883.",
+      "explanation": "Es correcta."
+    },
+    {
+      "id": "websocket-tcp",
+      "text": "WebSocket – TCP 80.",
+      "explanation": "Es correcta; con TLS usa el 443."
+    }
+  ],
+  "answer": "opc-ua-udp"
+}

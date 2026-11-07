@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-72",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre los tres canales LoRaWAN obligatorios de EU868 es correcta?",
+  "explanation": "Los tres pertenecen a la subbanda de 868-868,6 MHz, cuyo duty cycle del 1 % se aplica dentro de esa subbanda: 36 s por hora en total.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "estan-en-la-misma-subbanda-y-comparten",
+      "text": "Están en la misma subbanda y comparten su límite del 1 %, 36 s por hora.",
+      "explanation": "P. 29."
+    },
+    {
+      "id": "cada-canal-tiene-su-propio-1-asi-que-un",
+      "text": "Cada canal tiene su propio 1 %, así que un nodo dispone de 108 s por hora.",
+      "explanation": "La restricción se aplica a la subbanda, no a cada canal."
+    },
+    {
+      "id": "no-tienen-limitacion-porque-son-bandas",
+      "text": "No tienen limitación porque son bandas de uso libre.",
+      "explanation": "Precisamente en EU868 las bandas libres llevan duty cycle."
+    },
+    {
+      "id": "estan-en-869-525-mhz",
+      "text": "Están en 869,525 MHz.",
+      "explanation": "Es la frecuencia típica de RX2, fuera de 868-868,6 MHz."
+    }
+  ],
+  "answer": "estan-en-la-misma-subbanda-y-comparten"
+}

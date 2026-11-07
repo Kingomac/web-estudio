@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-139",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación final propia se integra con TTS mediante webhooks: debe recibir los uplinks y además enviar órdenes a los nodos. Según el tema, ¿qué tiene que configurar?",
+  "explanation": "Con webhooks la aplicación expone un endpoint HTTP para recibir los mensajes y usa la API de TTS para enviar órdenes, con la autenticación necesaria. La alternativa es MQTT, con temas de suscripción y publicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "application-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-endpoint-http-para-recibir-los",
+      "text": "Un endpoint HTTP para recibir los webhooks y acceso a la API de TTS para enviar órdenes, con autenticación.",
+      "explanation": "P. 46."
+    },
+    {
+      "id": "solo-el-endpoint-http-las-ordenes-se",
+      "text": "Solo el endpoint HTTP: las órdenes se envían en la respuesta a cada webhook.",
+      "explanation": "El tema separa la recepción por webhook del envío de órdenes por la API."
+    },
+    {
+      "id": "una-suscripcion-mqtt-a-los-temas-de",
+      "text": "Una suscripción MQTT a los temas de uplink; los webhooks solo sirven para downlinks.",
+      "explanation": "Mezcla las dos integraciones: con webhooks los uplinks llegan al endpoint HTTP."
+    },
+    {
+      "id": "un-udp-packet-forwarder-apuntando-al",
+      "text": "Un UDP Packet Forwarder apuntando al puerto 1700 del AS.",
+      "explanation": "Es la conexión entre gateway y NS."
+    }
+  ],
+  "answer": "un-endpoint-http-para-recibir-los"
+}

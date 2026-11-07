@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-102",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Sobre 6Lo y sus adaptaciones, ¿cuál de estas afirmaciones NO es correcta?",
+  "explanation": "El tema advierte que el soporte nativo de IPv6 reduce la necesidad de pasarelas de traducción, pero la interoperabilidad de las aplicaciones requiere también protocolos y modelos de datos compatibles.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        45,
+        46,
+        47
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "de-6lowpan-a-6lo-y-el-caso-ble"
+    }
+  ],
+  "options": [
+    {
+      "id": "ipv6-basta",
+      "text": "Con IPv6 nativo, las aplicaciones de redes 6Lo distintas interoperan sin necesidad de protocolos ni modelos de datos comunes.",
+      "explanation": "Es la falsa: IPv6 da conectividad, pero las aplicaciones necesitan además protocolos y modelos compatibles."
+    },
+    {
+      "id": "reutiliza",
+      "text": "Cada adaptación reutiliza los mecanismos de 6LoWPAN que necesita y los ajusta a su tecnología de enlace.",
+      "explanation": "Es correcta: así resume el tema el enfoque de 6lo."
+    },
+    {
+      "id": "tecnologias",
+      "text": "El grupo 6lo se creó en 2013 y ha publicado adaptaciones para Z-Wave, BLE, DECT-ULE, PLC y NFC.",
+      "explanation": "Es correcta: es la lista de normas del tema."
+    },
+    {
+      "id": "ble-l2cap",
+      "text": "IPv6 sobre BLE comprime con RFC 6282, pero segmenta con L2CAP en lugar de con FRAG1/FRAGN.",
+      "explanation": "Es correcta: así lo indica RFC 7668 en el tema."
+    }
+  ],
+  "answer": "ipv6-basta"
+}

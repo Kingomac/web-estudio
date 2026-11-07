@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-86",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una bombilla Matter recién instalada envía un anuncio mDNS no solicitado (QR = 1) a ff02::fb, UDP 5353, con:\n`PTR _matterc._udp.local → DD200C20D25AE5F7._matterc._udp.local`\n`SRV DD200C20D25AE5F7._matterc._udp.local → B75AFB458ECD.local · puerto 5540`\n`AAAA B75AFB458ECD.local → fe80::45`\n¿Qué afirmación es correcta?",
+  "explanation": "Un nodo puede anunciar sus servicios con una respuesta mDNS no solicitada que incluye PTR, SRV, TXT y AAAA. El commissioner del mismo enlace la recibe sin haber preguntado y obtiene lo necesario para contactar la bombilla: UDP (por _udp) al puerto 5540 de fe80::45. Al ser multicast de ámbito de enlace, el anuncio no atraviesa routers.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        50,
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "mdns-y-zeroconf"
+    }
+  ],
+  "options": [
+    {
+      "id": "commissioner-descubre",
+      "text": "El commissioner del mismo enlace descubre la bombilla sin enviar ninguna consulta y puede contactarla por UDP en el puerto 5540 de fe80::45.",
+      "explanation": "Es el uso de la respuesta no solicitada en el commissioning de Matter."
+    },
+    {
+      "id": "necesita-consulta",
+      "text": "El commissioner debe enviar antes una consulta PTR, porque mDNS solo admite respuestas a consultas.",
+      "explanation": "El tema indica que un nodo puede anunciarse con una respuesta mDNS no solicitada."
+    },
+    {
+      "id": "otras-subredes",
+      "text": "El anuncio llega también a los commissioners de otras subredes a través de los routers.",
+      "explanation": "ff02::fb es multicast de ámbito de enlace: no atraviesa routers."
+    },
+    {
+      "id": "puerto-5353",
+      "text": "La incorporación se realiza en el puerto 5353, por el que se envió el anuncio.",
+      "explanation": "5353 es el puerto de mDNS; el servicio de incorporación está en el puerto 5540 del SRV."
+    }
+  ],
+  "answer": "commissioner-descubre"
+}

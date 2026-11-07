@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-66",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una red tiene 300 sensores CoAP que pasan la mayor parte del tiempo dormidos. Un cliente necesita localizar los recursos con rt=\"temperature-c\" y leerlos. ¿Qué diseño es coherente con el tema?",
+  "explanation": "El descubrimiento directo (GET a /.well-known/core en cada nodo) es costoso con muchos nodos y difícil con nodos dormidos. Es mejor un Resource Directory: los nodos registran sus enlaces y descripciones y los renuevan; el cliente consulta el directorio y después accede al recurso. La presencia de un registro no garantiza que el nodo esté accesible en ese instante. DNS-SD descubre instancias de servicios, no recursos con un rt.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49,
+        53,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "descubrimiento-de-recursos-coap-y-directorio"
+    }
+  ],
+  "options": [
+    {
+      "id": "rd",
+      "text": "Los sensores registran y renuevan sus enlaces en un RD; el cliente consulta el RD y después pide el recurso a cada sensor, que puede no responder si está dormido.",
+      "explanation": "Es el uso del directorio que describe el tema, con su limitación."
+    },
+    {
+      "id": "directo",
+      "text": "El cliente envía periódicamente GET /.well-known/core a los 300 sensores y usa los enlaces recibidos.",
+      "explanation": "Es el descubrimiento directo, que el tema considera costoso con muchos nodos y difícil si duermen."
+    },
+    {
+      "id": "dns-sd-rt",
+      "text": "El cliente consulta por DNS-SD el PTR _temperature-c._udp del dominio para obtener los recursos.",
+      "explanation": "DNS-SD descubre instancias de un tipo de servicio; rt es un atributo de CoRE Link Format."
+    },
+    {
+      "id": "rd-valor",
+      "text": "Los sensores se registran en un RD, que devuelve al cliente la medida actual en nombre del sensor dormido.",
+      "explanation": "El RD almacena enlaces y descripciones; el valor se pide después al propio recurso."
+    }
+  ],
+  "answer": "rd"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-76",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo responde por Ethernet con un NA a un NS de resolución. ¿Qué opción de dirección de enlace incluye y con qué valores?",
+  "explanation": "La opción de dirección de enlace va en formato TLV. Tipo 1 lleva la MAC fuente (se usa en el NS) y Tipo 2 la MAC objetivo (en el NA de respuesta). La longitud se mide en unidades de 8 bytes: 1 para una MAC Ethernet/WiFi de 48 bits; en IEEE 802.15.4 sería 1 (dirección de 16 bits) o 2 (de 64 bits).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        38,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "resolucion-de-un-vecino"
+    }
+  ],
+  "options": [
+    {
+      "id": "t2-l1",
+      "text": "Tipo 2 (MAC objetivo), Longitud 1, con su MAC de 48 bits.",
+      "explanation": "El NA lleva la MAC objetivo (T = 2) y una MAC Ethernet ocupa una unidad."
+    },
+    {
+      "id": "t1-l1",
+      "text": "Tipo 1 (MAC fuente), Longitud 1, con su MAC de 48 bits.",
+      "explanation": "T = 1 es la opción que incluye el solicitante en el NS."
+    },
+    {
+      "id": "t2-l6",
+      "text": "Tipo 2 (MAC objetivo), Longitud 6, porque la MAC ocupa 6 bytes.",
+      "explanation": "La longitud no se expresa en bytes: para Ethernet vale 1."
+    },
+    {
+      "id": "t2-l2",
+      "text": "Tipo 2 (MAC objetivo), Longitud 2, con su MAC de 64 bits.",
+      "explanation": "Longitud 2 corresponde a direcciones IEEE 802.15.4 de 64 bits, no a Ethernet."
+    }
+  ],
+  "answer": "t2-l1"
+}

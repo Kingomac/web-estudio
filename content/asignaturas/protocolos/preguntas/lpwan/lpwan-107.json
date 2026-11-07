@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-107",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El NS tiene un downlink pendiente para tres nodos: uno de clase A, otro de clase B y otro de clase C. ¿Cuándo programa cada envío?",
+  "explanation": "Clase A: tras su siguiente uplink (RX1/RX2). Clase B: en la siguiente ventana de recepción (ping slot). Clase C: en cuanto sea posible.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-tras-su-proximo-uplink-b-en-su",
+      "text": "A tras su próximo uplink, B en su siguiente ping slot y C en cuanto sea posible.",
+      "explanation": "P. 57."
+    },
+    {
+      "id": "a-en-su-siguiente-ping-slot-b-tras-su",
+      "text": "A en su siguiente ping slot, B tras su próximo uplink y C en cuanto sea posible.",
+      "explanation": "Confunde A y B: los ping slots son de la clase B."
+    },
+    {
+      "id": "los-tres-en-cuanto-sea-posible-porque",
+      "text": "Los tres en cuanto sea posible, porque todos escuchan en RX2.",
+      "explanation": "RX2 solo se abre tras un uplink, y en clase A no hay otra oportunidad."
+    },
+    {
+      "id": "los-tres-tras-su-proximo-uplink-porque",
+      "text": "Los tres tras su próximo uplink, porque solo la clase A es obligatoria.",
+      "explanation": "Que la A sea obligatoria no impide a B y C recibir sin uplink previo."
+    }
+  ],
+  "answer": "a-tras-su-proximo-uplink-b-en-su"
+}

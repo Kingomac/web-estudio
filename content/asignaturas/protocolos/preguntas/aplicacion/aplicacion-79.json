@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-79",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "La petición del ejemplo es un GET confirmable con token de 1 byte (0x20), una única opción Uri-Path con valor `temperature` (un byte con tipo y longitud, más 11 bytes de valor) y sin payload. ¿Cuántos bytes ocupa el mensaje CoAP?",
+  "explanation": "Cabecera fija de 4 bytes (versión 2 bits, tipo 2, longitud del token 4, código 8 y Message ID 16: 32 bits) + 1 byte de token + 1 byte de tipo/longitud de la opción + 11 bytes de `temperature` = 17 bytes. Sin payload no se añade el byte 0xFF que lo precede.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        41,
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "diecisiete",
+      "text": "17 bytes.",
+      "explanation": "4 + 1 + 1 + 11 = 17."
+    },
+    {
+      "id": "dieciseis",
+      "text": "16 bytes.",
+      "explanation": "Olvida el byte del token (TKL = 1)."
+    },
+    {
+      "id": "dieciocho",
+      "text": "18 bytes.",
+      "explanation": "Añade el byte 0xFF, que solo se incluye cuando hay payload."
+    },
+    {
+      "id": "quince",
+      "text": "15 bytes.",
+      "explanation": "Cuenta una cabecera fija de 2 bytes; con el código y el Message ID son 4."
+    }
+  ],
+  "answer": "diecisiete"
+}

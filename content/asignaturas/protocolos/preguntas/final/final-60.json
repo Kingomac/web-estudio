@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-60",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Por un enlace Ethernet circula una trama con MAC destino 33:33:ff:44:55:66. ¿Cuál de los siguientes mensajes **NO** puede viajar en ella?",
+  "explanation": "33:33:ff:44:55:66 es la MAC de ff02::1:ff44:5566 (33:33 + 32 últimos bits), el grupo solicited-node de toda dirección que termine en los 24 bits 44:55:66. Eso cumplen fe80::1322:33ff:fe44:5566, fd00::a44:5566 (…0a44:5566) y 2001:db8:7::ab44:5566. En cambio, 2001:db8::4455:66 termina en …4455:0066: sus 24 últimos bits son 55:00:66, y su NS iría a ff02::1:ff55:66 (MAC 33:33:ff:55:00:66).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21,
+        37,
+        39,
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "multicast-solicited-node-y-direccion-mac-multicast"
+    }
+  ],
+  "options": [
+    {
+      "id": "4455-66",
+      "text": "Un NS para resolver 2001:db8::4455:66.",
+      "explanation": "Sus 24 últimos bits son 55:00:66, no 44:55:66."
+    },
+    {
+      "id": "link-local",
+      "text": "Un NS para resolver fe80::1322:33ff:fe44:5566.",
+      "explanation": "Termina en 44:55:66: su solicited-node es ff02::1:ff44:5566."
+    },
+    {
+      "id": "dad-ula",
+      "text": "El NS del DAD de la dirección tentativa fd00::a44:5566.",
+      "explanation": "El DAD también se dirige al solicited-node de la dirección comprobada, que termina en 44:55:66."
+    },
+    {
+      "id": "global",
+      "text": "Un NS para resolver 2001:db8:7::ab44:5566.",
+      "explanation": "Solo cuentan los 24 últimos bits, 44:55:66; el ab queda fuera."
+    }
+  ],
+  "answer": "4455-66"
+}

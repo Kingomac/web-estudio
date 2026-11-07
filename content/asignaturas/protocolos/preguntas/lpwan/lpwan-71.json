@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-71",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo pasa de DR5 a DR0 sin cambiar el tamaño de sus mensajes. ¿Qué ocurre con el número máximo de mensajes por hora que le permite el duty cycle?",
+  "explanation": "Un DR menor implica más airtime para el mismo mensaje; como el duty cycle limita el tiempo de transmisión, caben menos mensajes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        27,
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "disminuye-porque-cada-mensaje-ocupa-mas",
+      "text": "Disminuye, porque cada mensaje ocupa más airtime.",
+      "explanation": "P. 29: «un menor DR suele implicar más airtime»."
+    },
+    {
+      "id": "aumenta-porque-dr0-tiene-mas-alcance",
+      "text": "Aumenta, porque DR0 tiene más alcance.",
+      "explanation": "Más alcance no da más tiempo de transmisión permitido."
+    },
+    {
+      "id": "no-cambia-porque-el-duty-cycle-limita-el",
+      "text": "No cambia, porque el duty cycle limita el número de mensajes.",
+      "explanation": "Limita la proporción de tiempo de transmisión, no el número de mensajes."
+    },
+    {
+      "id": "no-cambia-porque-el-airtime-solo-depende",
+      "text": "No cambia, porque el airtime solo depende del tamaño del mensaje.",
+      "explanation": "También depende del DR."
+    }
+  ],
+  "answer": "disminuye-porque-cada-mensaje-ocupa-mas"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-122",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "La raíz RPL añade una SRH (Routing Type 3) con n = 3 direcciones: dos intermedias y la final. Usa CmprI = 14 y CmprE = 15. ¿Cuántos bytes ocupa el campo Addresses, sin contar el relleno?",
+  "explanation": "CmprI indica los bytes suprimidos de cada dirección intermedia y CmprE los de la final: 2 · (16 − 14) + (16 − 15) = 4 + 1 = 5 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        84
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "5-bytes",
+      "text": "5 bytes.",
+      "explanation": "Cada intermedia ocupa 2 bytes y la final 1."
+    },
+    {
+      "id": "48-bytes",
+      "text": "48 bytes.",
+      "explanation": "Son las tres direcciones completas de 16 bytes; CmprI y CmprE indican bytes suprimidos."
+    },
+    {
+      "id": "6-bytes",
+      "text": "6 bytes.",
+      "explanation": "Aplica CmprI también a la dirección final; para ella se usa CmprE = 15."
+    },
+    {
+      "id": "3-bytes",
+      "text": "3 bytes.",
+      "explanation": "Aplica CmprE = 15 a las tres direcciones; las intermedias usan CmprI = 14 y conservan 2 bytes."
+    }
+  ],
+  "answer": "5-bytes"
+}

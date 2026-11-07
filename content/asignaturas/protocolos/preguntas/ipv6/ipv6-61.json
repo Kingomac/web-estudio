@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-61",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un router tiene `ipv6 route ::/0 s1/0` y `ipv6 route 3000::/64 Null0`. ¿Qué ocurre con un paquete dirigido a 3000::25?",
+  "explanation": "El destino coincide con ::/0 y con 3000::/64. Por longest prefix match gana la /64, que es una ruta sumidero hacia Null0: el paquete se descarta. Así se evita que el tráfico de ese prefijo siga la ruta por defecto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22,
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "descarta",
+      "text": "Se descarta, porque la ruta sumidero /64 es más específica que la ruta por defecto.",
+      "explanation": "LPM elige 3000::/64 y su salida es Null0."
+    },
+    {
+      "id": "por-defecto",
+      "text": "Se reenvía por s1/0, porque Null0 no es una interfaz real.",
+      "explanation": "La ruta por defecto solo se usa si no hay una coincidencia más específica, y aquí la hay."
+    },
+    {
+      "id": "entrega-directa",
+      "text": "Se entrega directamente a 3000::25, porque Null0 actúa como ruta conectada.",
+      "explanation": "Null0 no conecta con ninguna subred: es un sumidero que descarta lo que recibe."
+    },
+    {
+      "id": "multipath",
+      "text": "Se reparte entre s1/0 y Null0.",
+      "explanation": "El reparto multipath solo ocurre entre coincidencias de igual longitud; /0 y /64 no lo son."
+    }
+  ],
+  "answer": "descarta"
+}

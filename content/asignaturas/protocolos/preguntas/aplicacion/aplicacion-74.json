@@ -1,0 +1,54 @@
+{
+  "id": "protocolos.preguntas.aplicacion-74",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente CoAP envía una petición CON en t = 0 y nunca recibe ACK. Si la primera espera es de 2 s y, como indica el tema, el tiempo entre reintentos se duplica, ¿en qué instante sale el último reenvío?",
+  "explanation": "Las esperas son 2, 4, 8 y 16 s antes de cada uno de los 4 reenvíos, que salen en t = 2, 6, 14 y 30 s. Es un modelo simplificado: el RFC 7252 además aleatoriza la espera inicial.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 7252 · The Constrained Application Protocol (CoAP)",
+      "url": "https://www.rfc-editor.org/rfc/rfc7252"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "tipos-de-mensaje-y-fiabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "treinta",
+      "text": "En t = 30 s.",
+      "explanation": "2 + 4 + 8 + 16 = 30 s."
+    },
+    {
+      "id": "dieciseis",
+      "text": "En t = 16 s.",
+      "explanation": "16 s es solo la última espera; hay que sumar las anteriores."
+    },
+    {
+      "id": "sesenta-y-dos",
+      "text": "En t = 62 s.",
+      "explanation": "Suma una quinta espera de 32 s, pero solo hay 4 reenvíos."
+    },
+    {
+      "id": "ocho",
+      "text": "En t = 8 s.",
+      "explanation": "Corresponde a sumar esperas constantes de 2 s; el tiempo entre reintentos se duplica."
+    }
+  ],
+  "answer": "treinta"
+}

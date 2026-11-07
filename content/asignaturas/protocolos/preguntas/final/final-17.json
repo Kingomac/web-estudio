@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente OPC UA intercambia datos con la codificación XML. ¿Por qué pila de protocolos viajan sus mensajes según el tema?",
+  "explanation": "En OPC UA, los mensajes XML se codifican con SOAP y se envían sobre HTTP o HTTPS (sobre TCP). Los datos binarios van habitualmente sobre UA nativo, o sobre HTTPS/WebSockets para integrarse en plataformas web.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31,
+        32,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "xml-soap-http",
+      "text": "XML codificado con SOAP, sobre HTTP o HTTPS.",
+      "explanation": "Es la pila del tema para los mensajes XML."
+    },
+    {
+      "id": "xml-ua-nativo",
+      "text": "XML directamente sobre UA nativo, en TCP 4840.",
+      "explanation": "UA nativo es el mecanismo habitual de la codificación binaria, no de la XML."
+    },
+    {
+      "id": "xml-websockets",
+      "text": "XML sobre HTTPS/WebSockets.",
+      "explanation": "HTTPS/WebSockets aparece para los datos binarios cuando hay que integrarse con plataformas web."
+    },
+    {
+      "id": "xml-soap-udp",
+      "text": "XML codificado con SOAP, sobre UDP.",
+      "explanation": "OPC UA va sobre TCP, HTTP o HTTPS; la pila del tema no incluye UDP."
+    }
+  ],
+  "answer": "xml-soap-http"
+}

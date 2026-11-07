@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-98",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera LOWPAN_NHC de UDP empieza por los bytes F3 5A. ¿Qué indica?",
+  "explanation": "0xF3 = 11110 0 11: identificador UDP, C = 0 (checksum presente, 2 bytes) y P = 11 (4 bits por puerto, prefijo 0xF0B). 0x5A da los nibbles de origen (5) y destino (A): 0xF0B5 → 0xF0BA, y después siguen los 2 bytes de checksum.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "compresion-de-cabeceras-siguientes-lowpan-nhc"
+    }
+  ],
+  "options": [
+    {
+      "id": "f0b5-f0ba-checksum",
+      "text": "Puertos 0xF0B5 → 0xF0BA, seguidos de 2 bytes de checksum.",
+      "explanation": "C = 0 deja el checksum en línea y P = 11 reconstruye ambos puertos con 4 bits cada uno."
+    },
+    {
+      "id": "sin-checksum",
+      "text": "Puertos 0xF0B5 → 0xF0BA, con el checksum omitido y reconstruido.",
+      "explanation": "C = 0 significa checksum presente; omitirlo es C = 1."
+    },
+    {
+      "id": "un-puerto-8-bits",
+      "text": "Un único puerto de 8 bits, 0xF05A, con el otro puerto completo a continuación.",
+      "explanation": "Eso sería P = 01 o P = 10; con P = 11 los dos puertos van en 4 bits cada uno."
+    },
+    {
+      "id": "invertidos",
+      "text": "Puertos 0xF0BA → 0xF0B5, seguidos de 2 bytes de checksum.",
+      "explanation": "Los campos en línea van en el orden de la cabecera: primero el puerto origen (5) y luego el destino (A)."
+    }
+  ],
+  "answer": "f0b5-f0ba-checksum"
+}

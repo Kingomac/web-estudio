@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lowpan-118",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En una red Thread, el router C es el padre de un SED cuyo RLOC16 es 0x0C05. Por la malla llega a C un paquete con destino Mesh 0x0C05 mientras el SED tiene apagado el receptor. ¿Qué hace C?",
+  "explanation": "El padre realiza la última entrega a sus hijos. Si el hijo está dormido, conserva temporalmente el mensaje hasta que pueda recibirlo; el SED lo recoge al despertar y sondear a su padre.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        58,
+        60,
+        69
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "entrega-de-un-paquete"
+    }
+  ],
+  "options": [
+    {
+      "id": "almacena-hasta-sondeo",
+      "text": "Lo guarda temporalmente y se lo entrega cuando el SED despierta y le sondea.",
+      "explanation": "Es la función del router padre con hijos dormidos."
+    },
+    {
+      "id": "descarta",
+      "text": "Lo descarta, porque un dispositivo dormido no forma parte de la partición.",
+      "explanation": "El SED sigue siendo hijo de C; el padre almacena sus mensajes en lugar de descartarlos."
+    },
+    {
+      "id": "reenvia-leader",
+      "text": "Lo reenvía al Leader para que lo entregue cuando el SED despierte.",
+      "explanation": "El Leader coordina la partición, pero la última entrega la hace siempre el padre del dispositivo final."
+    },
+    {
+      "id": "broadcast",
+      "text": "Lo retransmite en broadcast cada poco tiempo hasta que el SED lo confirme.",
+      "explanation": "Retransmitir hacia un receptor apagado gasta energía y canal; el padre espera a que el hijo le sondee."
+    }
+  ],
+  "answer": "almacena-hasta-sondeo"
+}

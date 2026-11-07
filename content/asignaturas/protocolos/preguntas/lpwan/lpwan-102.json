@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-102",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Con el decoder de la p. 53, llega un uplink con FPort 2 y bytes `64 64 28` (hexadecimal). ¿Qué devuelve?",
+  "explanation": "Con FPort 2: luminosidad = msg[0] = 0x64 = 100; aceleración = msg[1] / 100 = 100 / 100 = 1; batería = msg[2] = 0x28 = 40.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "payload-decoder"
+    }
+  ],
+  "options": [
+    {
+      "id": "luminosidad-100-aceleracion-1-y-bateria",
+      "text": "Luminosidad 100, aceleración 1 y batería 40.",
+      "explanation": "Ejemplo de la p. 53."
+    },
+    {
+      "id": "luminosidad-100-aceleracion-100-y",
+      "text": "Luminosidad 100, aceleración 100 y batería 40.",
+      "explanation": "Olvida dividir la aceleración entre 100."
+    },
+    {
+      "id": "temperatura-100-humedad-40-y-alarma",
+      "text": "Temperatura 100, humedad 40 y alarma inactiva.",
+      "explanation": "Aplica la rama de FPort 1."
+    },
+    {
+      "id": "luminosidad-64-aceleracion-0-64-y",
+      "text": "Luminosidad 64, aceleración 0,64 y batería 28.",
+      "explanation": "Toma los valores hexadecimales como si fueran decimales."
+    }
+  ],
+  "answer": "luminosidad-100-aceleracion-1-y-bateria"
+}

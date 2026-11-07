@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ipv6-51",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo IEEE 802.15.4 tiene la dirección extendida de 64 bits 00:12:4b:00:0a:0b:0c:0d. ¿Qué dirección link-local automática obtiene?",
+  "explanation": "Una dirección 802.15.4 de 64 bits ya es un EUI-64: no se inserta FF:FE. Para obtener el EUI-64 modificado solo se invierte el bit U/L del primer octeto (00 → 02), y se concatena con fe80::/64: fe80::212:4b00:a0b:c0d. Es el mismo procedimiento que el ejemplo del tema 11:22:… → FE80::1322:….",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15,
+        16,
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "construccion-de-iid-eui-64-y-alternativas"
+    }
+  ],
+  "options": [
+    {
+      "id": "invertir-ul",
+      "text": "fe80::212:4b00:a0b:c0d",
+      "explanation": "Conserva los 64 bits e invierte solo el bit U/L del primer octeto."
+    },
+    {
+      "id": "sin-invertir",
+      "text": "fe80::12:4b00:a0b:c0d",
+      "explanation": "Usa el EUI-64 tal cual; IPv6 utiliza el EUI-64 modificado, con el bit U/L invertido."
+    },
+    {
+      "id": "inserta-fffe",
+      "text": "fe80::212:4bff:fe00:a0b",
+      "explanation": "FF:FE solo se inserta para ampliar una MAC de 48 bits; aquí se pierden los dos últimos octetos."
+    },
+    {
+      "id": "bit-equivocado",
+      "text": "fe80::1012:4b00:a0b:c0d",
+      "explanation": "Invierte el bit 0x10, no el bit U/L (0x02), del primer octeto."
+    }
+  ],
+  "answer": "invertir-ul"
+}

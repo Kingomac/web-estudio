@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-59",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La FIB de un router contiene dos entradas 2001:db8:40::/48, una vía R1 y otra vía R2, y además 2001:db8::/32 vía R3. ¿Cómo se reenvía el tráfico hacia 2001:db8:40:7::1?",
+  "explanation": "El destino coincide con las tres entradas. Por longest prefix match se descarta el /32, y entre las dos coincidencias de igual longitud (/48) el tema indica que el tráfico se reparte entre ellas (multipath).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "longest-prefix-match-lpm"
+    }
+  ],
+  "options": [
+    {
+      "id": "multipath",
+      "text": "Se reparte entre R1 y R2, porque ambas /48 coinciden con la misma longitud.",
+      "explanation": "Con varias coincidencias de igual longitud máxima se usa multipath."
+    },
+    {
+      "id": "solo-r1",
+      "text": "Solo por R1, porque es la primera entrada de la tabla.",
+      "explanation": "El orden de las entradas no decide el reenvío; con igual longitud se reparte el tráfico."
+    },
+    {
+      "id": "r3",
+      "text": "Por R3, porque el /32 es la ruta que cubre más destinos.",
+      "explanation": "LPM elige la coincidencia de prefijo más largo, no la más amplia."
+    },
+    {
+      "id": "descarta",
+      "text": "Se descarta con un ICMPv6 Destination Unreachable por ser una ruta ambigua.",
+      "explanation": "Ese error solo se envía cuando no hay ninguna coincidencia ni ruta por defecto."
+    }
+  ],
+  "answer": "multipath"
+}

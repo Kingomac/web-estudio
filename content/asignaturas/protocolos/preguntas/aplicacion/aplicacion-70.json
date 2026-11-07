@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-70",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servicio SOAP recibe `getProductInfo` con un `productId` que no puede procesar. ¿Qué elemento del mensaje SOAP sirve para informar de ese error?",
+  "explanation": "Fault es un elemento opcional con información sobre los errores producidos durante el procesado del mensaje. Envelope es la raíz, Header es un encabezado opcional sobre cómo procesar el mensaje y Body contiene el mensaje.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        33,
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "fault",
+      "text": "Fault.",
+      "explanation": "Es el elemento previsto para los errores de procesado."
+    },
+    {
+      "id": "header",
+      "text": "Header.",
+      "explanation": "Header indica cómo debe procesarse el mensaje, no los errores ocurridos."
+    },
+    {
+      "id": "envelope",
+      "text": "Un segundo Envelope.",
+      "explanation": "Envelope es el elemento raíz que identifica el mensaje; hay uno por mensaje."
+    },
+    {
+      "id": "result-vacio",
+      "text": "Un `getProductInfoResult` vacío.",
+      "explanation": "Una respuesta vacía no explica el error; para eso existe Fault."
+    }
+  ],
+  "answer": "fault"
+}

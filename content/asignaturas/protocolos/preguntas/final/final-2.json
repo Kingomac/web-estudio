@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un proveedor ofrece un nodo IEEE 802.15.4 con 48 KB de RAM y 512 KB de ROM y lo anuncia como apto para ser nodo intermedio de reenvío en un árbol. Según la clasificación del RFC 7228 que presenta el tema, ¿qué valoración es correcta?",
+  "explanation": "La clase 2 exige más de 50 KB de RAM **y** más de 250 KB de ROM. Con 48 KB de RAM no la alcanza, aunque su ROM sí supere el umbral. Supera la clase 0 (menos de 10 KB y 100 KB), así que es clase 1: pila IP reducida, RFD en IEEE 802.15.4. El tema atribuye el encaminamiento ligero y el reenvío a la clase 2 (FFD).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-1-por-la-ram",
+      "text": "Es clase 1 (RFD): la ROM supera 250 KB, pero la RAM no llega a 50 KB, así que no reúne las condiciones de la clase 2 que reenvía.",
+      "explanation": "Correcta: deben cumplirse los dos umbrales de la clase 2 y la RAM falla por 2 KB."
+    },
+    {
+      "id": "clase-2-por-la-rom",
+      "text": "Es clase 2 (FFD): basta con que la ROM supere 250 KB para ejecutar una pila IP completa.",
+      "explanation": "Error típico: la clase 2 exige más de 50 KB de RAM y más de 250 KB de ROM a la vez."
+    },
+    {
+      "id": "clase-0-por-la-ram",
+      "text": "Es clase 0: al no llegar a 50 KB de RAM no puede implementar una pila IP.",
+      "explanation": "La clase 0 está por debajo de 10 KB de RAM y 100 KB de ROM; 48 KB y 512 KB quedan muy por encima."
+    },
+    {
+      "id": "clase-2-por-superar-clase-0",
+      "text": "Es clase 2 (FFD): supera los 10 KB de RAM y los 100 KB de ROM de la clase 0.",
+      "explanation": "Superar los límites de la clase 0 solo lo saca de ella; para la clase 2 hacen falta más de 50 KB de RAM."
+    }
+  ],
+  "answer": "clase-1-por-la-ram"
+}

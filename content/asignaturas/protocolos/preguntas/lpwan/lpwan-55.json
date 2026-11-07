@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-55",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un actuador LTE-M usa eDRX. La aplicación le envía una orden justo después de que acabe una de sus ventanas de escucha. ¿Qué ocurre?",
+  "explanation": "Con eDRX el dispositivo alterna reposo con ventanas periódicas de escucha (paging); un mensaje puede tener que esperar a la siguiente ventana.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        11,
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "psm-y-edrx"
+    }
+  ],
+  "options": [
+    {
+      "id": "la-entrega-espera-hasta-la-siguiente",
+      "text": "La entrega espera hasta la siguiente ventana de escucha.",
+      "explanation": "P. 12 y figura de la p. 11: «la recepción puede esperar al siguiente periodo de escucha»."
+    },
+    {
+      "id": "la-orden-se-pierde-y-la-aplicacion-debe",
+      "text": "La orden se pierde y la aplicación debe reenviarla.",
+      "explanation": "No se pierde: queda pendiente hasta que el dispositivo vuelve a escuchar."
+    },
+    {
+      "id": "se-entrega-de-inmediato-porque-edrx",
+      "text": "Se entrega de inmediato, porque eDRX mantiene la radio siempre encendida.",
+      "explanation": "eDRX apaga la radio entre ventanas; eso es lo que ahorra energía."
+    },
+    {
+      "id": "no-puede-recibirla-hasta-que-haga-un",
+      "text": "No puede recibirla hasta que haga un Tracking Area Update.",
+      "explanation": "Eso describe PSM, donde la red no puede despertar al dispositivo."
+    }
+  ],
+  "answer": "la-entrega-espera-hasta-la-siguiente"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-49",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones de la comparativa LoWPAN/LPWAN del tema NO es correcta?",
+  "explanation": "Según la infografía, LoWPAN tiene cobertura corta, mayor tasa y menor latencia; LPWAN, cobertura amplia, menor tasa y mayor latencia. Ambas tienen consumo muy bajo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "lpwan-mayor-tasa",
+      "text": "La LPWAN ofrece mayor tasa de datos que la LoWPAN, lo que compensa su mayor latencia.",
+      "explanation": "Es la que NO es correcta: la LPWAN tiene menor tasa que la LoWPAN (0,25–1 kbps típicos frente a cientos de kbps)."
+    },
+    {
+      "id": "lowpan-menor-latencia",
+      "text": "La LoWPAN tiene menor latencia que la LPWAN.",
+      "explanation": "Sí es correcta según la infografía."
+    },
+    {
+      "id": "ambas-consumo-muy-bajo",
+      "text": "Ambas tienen un consumo muy bajo.",
+      "explanation": "Sí es correcta: la infografía da consumo muy bajo para las dos."
+    },
+    {
+      "id": "lowpan-domotica",
+      "text": "La LoWPAN tiene como uso típico la domótica y los edificios inteligentes.",
+      "explanation": "Sí es correcta: es el uso típico que muestra la infografía."
+    }
+  ],
+  "answer": "lpwan-mayor-tasa"
+}

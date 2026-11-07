@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-66",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es el mecanismo habitual de OPC UA para transmitir datos binarios?",
+  "explanation": "Los datos binarios pueden enviarse sobre SOAP/HTTP (opción obsoleta) o directamente sobre UA nativo, que es el mecanismo habitual; para integrarse con plataformas web también pueden ir sobre HTTPS/WebSockets. Los mensajes XML se codifican con SOAP y se envían sobre HTTP/HTTPS.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "ua-nativo",
+      "text": "Directamente sobre UA nativo, sobre TCP.",
+      "explanation": "Es el mecanismo habitual según el tema."
+    },
+    {
+      "id": "soap-http",
+      "text": "Sobre SOAP/HTTP.",
+      "explanation": "Es posible, pero el tema lo marca como obsoleto."
+    },
+    {
+      "id": "xml-soap",
+      "text": "Codificados en XML con SOAP sobre HTTP/HTTPS.",
+      "explanation": "Así se transmiten los mensajes XML, no los binarios."
+    },
+    {
+      "id": "coap-udp",
+      "text": "Sobre CoAP/UDP.",
+      "explanation": "La pila de OPC UA no incluye CoAP."
+    }
+  ],
+  "answer": "ua-nativo"
+}

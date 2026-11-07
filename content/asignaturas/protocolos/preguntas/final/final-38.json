@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-38",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente CoAP envía una petición CON en t = 0 con una primera espera de 3 s, que se duplica en cada reintento. Se pierden la petición original y el primer reenvío; el ACK del segundo reenvío llega en t = 10 s. ¿Cuántas veces se transmitió la petición y en qué instante habría salido el siguiente reenvío si ese ACK no hubiera llegado?",
+  "explanation": "Transmisiones en t = 0, t = 3 (espera de 3 s) y t = 9 (espera de 6 s): 3 en total. La siguiente espera sería de 12 s, así que el tercer reenvío habría salido en t = 9 + 12 = 21 s.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "tipos-de-mensaje-y-fiabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "3-y-21",
+      "text": "3 transmisiones; el siguiente reenvío en t = 21 s.",
+      "explanation": "0, 3 y 9 s; la siguiente espera es de 12 s."
+    },
+    {
+      "id": "3-y-15",
+      "text": "3 transmisiones; el siguiente reenvío en t = 15 s.",
+      "explanation": "No duplica la última espera: repite 6 s en lugar de 12 s."
+    },
+    {
+      "id": "2-y-9",
+      "text": "2 transmisiones; el siguiente reenvío en t = 9 s.",
+      "explanation": "Cuenta solo los reenvíos perdidos y olvida que el segundo reenvío sale en t = 9 s y es el que se confirma."
+    },
+    {
+      "id": "3-y-18",
+      "text": "3 transmisiones; el siguiente reenvío en t = 18 s.",
+      "explanation": "Duplica el instante (9 → 18) en lugar de la espera entre reintentos."
+    }
+  ],
+  "answer": "3-y-21"
+}

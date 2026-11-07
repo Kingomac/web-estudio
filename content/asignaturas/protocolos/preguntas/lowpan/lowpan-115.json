@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-115",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Sobre IPv6 sobre Bluetooth LE (RFC 7668), ¿qué afirmación es correcta?",
+  "explanation": "RFC 7668 considera una estrella con el dispositivo central como 6LBR, comprime con RFC 6282, segmenta con L2CAP, forma la link-local con un IID derivado de la dirección BLE de 48 bits insertando FFFE y reutiliza RS–RA y el registro NS–NA con ARO.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        47
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "de-6lowpan-a-6lo-y-el-caso-ble"
+    }
+  ],
+  "options": [
+    {
+      "id": "iid-ble-48-fffe",
+      "text": "La link-local usa un IID de 64 bits derivado de la dirección BLE de 48 bits, insertando FFFE.",
+      "explanation": "Es la regla de direccionamiento del tema para BLE."
+    },
+    {
+      "id": "iid-corto-16",
+      "text": "La link-local usa el IID 0:ff:fe00:XXXX formado con una dirección corta de 16 bits.",
+      "explanation": "Ese patrón corresponde a las direcciones cortas de IEEE 802.15.4; BLE parte de una dirección de 48 bits."
+    },
+    {
+      "id": "malla-rpl",
+      "text": "El modelo es una malla en la que cada nodo BLE actúa como 6LR con RPL.",
+      "explanation": "El modelo considerado es una estrella, con el dispositivo central como 6LBR."
+    },
+    {
+      "id": "dad-multicast",
+      "text": "Los hosts no registran direcciones y resuelven vecinos con NS multicast tradicionales.",
+      "explanation": "Reutiliza el registro NS–NA con ARO de RFC 6775: los hosts registran sus direcciones no link-local en el 6LBR."
+    }
+  ],
+  "answer": "iid-ble-48-fffe"
+}

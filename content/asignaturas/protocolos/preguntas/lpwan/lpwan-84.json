@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-84",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué mecanismo de acceso al medio usa la capa MAC de LoRaWAN para los uplinks?",
+  "explanation": "Un mecanismo de tipo ALOHA, respetando las restricciones de uso del canal.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-mecanismo-de-tipo-aloha-respetando",
+      "text": "Un mecanismo de tipo ALOHA, respetando las restricciones de uso del canal.",
+      "explanation": "Primera función de la p. 38."
+    },
+    {
+      "id": "csma-ca-con-intercambio-rts-cts",
+      "text": "CSMA/CA con intercambio RTS/CTS.",
+      "explanation": "El tema no lo describe para LoRaWAN: el nodo transmite cuando lo necesita."
+    },
+    {
+      "id": "tdma-con-ranuras-asignadas-por-el",
+      "text": "TDMA con ranuras asignadas por el gateway.",
+      "explanation": "Los gateways no asignan ranuras; solo reenvían."
+    },
+    {
+      "id": "ping-slots-sincronizados-por-beacons",
+      "text": "Ping slots sincronizados por beacons.",
+      "explanation": "Son oportunidades de recepción de downlinks en clase B."
+    }
+  ],
+  "answer": "un-mecanismo-de-tipo-aloha-respetando"
+}

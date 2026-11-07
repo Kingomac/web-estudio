@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "En una nave de 300 m de largo, la pasarela de una LoWPAN está en un extremo y el sensor más lejano en el otro, en línea recta. Cada radio cubre como máximo los 100 m que da el tema para una LoWPAN. Además, la caída de un nodo intermedio no debe aislar a ningún sensor. ¿Qué diseño cumple ambos requisitos?",
+  "explanation": "Con 100 m por salto, cubrir 300 m exige al menos 300 / 100 = 3 saltos, así que no basta la estrella. El árbol multisalto extiende la cobertura, pero un único camino deja aislados a los nodos que dependen del repetidor caído. La malla añade caminos redundantes para mejorar la fiabilidad, y el tema dice que la cobertura de una LoWPAN se extiende de forma significativa con la malla.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12,
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "topologias"
+    }
+  ],
+  "options": [
+    {
+      "id": "malla-3-saltos",
+      "text": "Malla, con al menos 3 saltos hasta el sensor más lejano.",
+      "explanation": "Correcta: 300 m / 100 m = 3 saltos, y la redundancia de la malla evita que un fallo aísle sensores."
+    },
+    {
+      "id": "arbol-3-saltos",
+      "text": "Árbol multisalto, con al menos 3 saltos hasta el sensor más lejano.",
+      "explanation": "El número de saltos es correcto, pero el árbol tiene un único camino: si cae un repetidor, sus descendientes quedan aislados."
+    },
+    {
+      "id": "malla-2-saltos",
+      "text": "Malla, con al menos 2 saltos hasta el sensor más lejano.",
+      "explanation": "Cuenta los nodos intermedios en vez de los saltos: con dos repetidores hay 3 saltos de 100 m."
+    },
+    {
+      "id": "estrella-1-salto",
+      "text": "Estrella con un solo salto, porque una LoWPAN alcanza hasta ~2 Mbps.",
+      "explanation": "Confunde tasa con cobertura: ~2 Mbps es la tasa máxima, y la estrella exige que todos estén dentro del radio de la pasarela."
+    }
+  ],
+  "answer": "malla-3-saltos"
+}

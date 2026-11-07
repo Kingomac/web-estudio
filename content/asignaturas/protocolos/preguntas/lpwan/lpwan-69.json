@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-69",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En la p. 50, un uplink de 27 bytes con SF10 consume 0,411648 s de airtime. Si el nodo solo transmite en la subbanda de 868-868,6 MHz (duty cycle del 1 %), ¿cuántos mensajes como ese puede enviar como máximo en una hora?",
+  "explanation": "El 1 % de una hora son 36 s; 36 / 0,411648 ≈ 87,4, así que caben 87 mensajes completos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        29,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "87",
+      "text": "87.",
+      "explanation": "36 s / 0,411648 s, redondeando hacia abajo."
+    },
+    {
+      "id": "72",
+      "text": "72.",
+      "explanation": "Sale de aplicar 30 s: es la política diaria de TTN, no el duty cycle horario."
+    },
+    {
+      "id": "874",
+      "text": "874.",
+      "explanation": "Correspondería a un 10 % (360 s por hora)."
+    },
+    {
+      "id": "36",
+      "text": "36.",
+      "explanation": "Confunde los segundos disponibles con el número de mensajes."
+    }
+  ],
+  "answer": "87"
+}

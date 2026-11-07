@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-47",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En un sistema de publicación/suscripción, un sensor empieza a medir humedad y comunica que a partir de ahora habrá datos en un topic nuevo. ¿Qué operación del modelo realiza?",
+  "explanation": "El tema define advertise (el publicador anuncia un topic), unadvertise (lo revoca), subscribe y unsubscribe (la aplicación se suscribe o se da de baja), publish (el publicador publica datos) y notify (el broker envía los datos a los suscriptores).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "publicacion-suscripcion"
+    }
+  ],
+  "options": [
+    {
+      "id": "advertise",
+      "text": "advertise.",
+      "explanation": "Con advertise el publicador anuncia un nuevo topic."
+    },
+    {
+      "id": "publish",
+      "text": "publish.",
+      "explanation": "publish envía datos nuevos a un topic; anunciar el topic es una operación distinta."
+    },
+    {
+      "id": "subscribe",
+      "text": "subscribe.",
+      "explanation": "subscribe la realiza la aplicación interesada en un topic, no el publicador."
+    },
+    {
+      "id": "notify",
+      "text": "notify.",
+      "explanation": "notify la realiza el broker al enviar los datos publicados a los suscriptores."
+    }
+  ],
+  "answer": "advertise"
+}

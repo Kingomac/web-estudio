@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-121",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una empresa va a vender a varios ayuntamientos un servicio de sensores ambientales a pilas en un parque natural sin cobertura celular. Cada sensor envía una medida cada 15 minutos y la empresa no quiere pagar una suscripción por dispositivo. Solo hay acceso a Internet en el centro de visitantes. ¿Qué solución es coherente con el tema?",
+  "explanation": "Sin cobertura celular quedan descartadas NB-IoT y LTE-M, que además exigen contratar conectividad por dispositivo. Una red LoRaWAN propia (gateway en el centro de visitantes con salida a Internet y NS/AS propios o contratados) cubre kilómetros con nodos de muy bajo consumo y sin suscripción por dispositivo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        5,
+        23,
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "comparativa"
+    }
+  ],
+  "options": [
+    {
+      "id": "una-red-lorawan-propia-con-un-gateway",
+      "text": "Una red LoRaWAN propia, con un gateway conectado a Internet en el centro de visitantes.",
+      "explanation": "Arquitectura nodo → gateway → NS/AS de la p. 61, con infraestructura propia y sin suscripción por dispositivo."
+    },
+    {
+      "id": "nb-iot-en-modo-nidd-porque-evita-la-pila",
+      "text": "NB-IoT en modo NIDD, porque evita la pila IP y reduce el consumo.",
+      "explanation": "NIDD ahorra cabeceras, pero sigue dependiendo de la cobertura y la suscripción del operador, y aquí no hay cobertura."
+    },
+    {
+      "id": "lte-m-con-psm-porque-el-sensor-puede",
+      "text": "LTE-M con PSM, porque el sensor puede posponer las órdenes.",
+      "explanation": "PSM no resuelve la falta de cobertura celular ni el coste por dispositivo."
+    },
+    {
+      "id": "lorawan-sobre-ttn-sandbox-para-no",
+      "text": "LoRaWAN sobre TTN Sandbox, para no desplegar servidores.",
+      "explanation": "Sandbox es para aprendizaje y proyectos no comerciales, sin garantías (p. 23); además haría falta igualmente un gateway en el parque."
+    }
+  ],
+  "answer": "una-red-lorawan-propia-con-un-gateway"
+}

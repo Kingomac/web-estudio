@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-40",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una aplicación enciende un LED con un mensaje CoAP confirmable sin token, código 0.03, una única opción Uri-Path `led` (un byte de tipo/longitud más 3 bytes) y payload `on`. ¿Qué método es y cuántos bytes ocupa el mensaje?",
+  "explanation": "0.03 es PUT. Tamaño: cabecera fija de 4 bytes + 0 de token + 1 + 3 de la opción + 1 byte 0xFF antes del payload + 2 de payload = 11 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39,
+        41,
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "put-11",
+      "text": "PUT; 11 bytes.",
+      "explanation": "4 + 0 + 4 + 1 + 2 = 11."
+    },
+    {
+      "id": "put-10",
+      "text": "PUT; 10 bytes.",
+      "explanation": "Olvida el byte 0xFF que precede al payload."
+    },
+    {
+      "id": "post-11",
+      "text": "POST; 11 bytes.",
+      "explanation": "POST es 0.02; 0.03 es PUT."
+    },
+    {
+      "id": "put-12",
+      "text": "PUT; 12 bytes.",
+      "explanation": "Cuenta un byte de token, pero el mensaje no lleva token (TKL = 0)."
+    }
+  ],
+  "answer": "put-11"
+}

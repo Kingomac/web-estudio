@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-91",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El downlink de la p. 59 tiene un PHYPayload de 15 bytes. ¿Cuántos caracteres ocupa en `dnmsg.pdu` (Basics Station, hexadecimal) y en `txpk.data` (UDP forwarder, Base64)?",
+  "explanation": "En hexadecimal, 2 caracteres por byte: 30. En Base64, 15 bytes son 5 bloques de 3 bytes → 5 × 4 = 20 caracteres, sin «=» porque 15 es múltiplo de 3.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        36,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "json-y-base64"
+    }
+  ],
+  "options": [
+    {
+      "id": "30-en-hexadecimal-y-20-en-base64",
+      "text": "30 en hexadecimal y 20 en Base64.",
+      "explanation": "Como «6027A9FC…» y «YCep/CcAAQABqrsRIjNE»."
+    },
+    {
+      "id": "15-en-hexadecimal-y-20-en-base64",
+      "text": "15 en hexadecimal y 20 en Base64.",
+      "explanation": "En hexadecimal cada byte son dos caracteres."
+    },
+    {
+      "id": "30-en-hexadecimal-y-22-en-base64-con-dos",
+      "text": "30 en hexadecimal y 22 en Base64, con dos «=».",
+      "explanation": "Solo hay relleno cuando el número de bytes no es múltiplo de 3."
+    },
+    {
+      "id": "20-en-hexadecimal-y-30-en-base64",
+      "text": "20 en hexadecimal y 30 en Base64.",
+      "explanation": "Están invertidos: Base64 es más compacto que el hexadecimal."
+    }
+  ],
+  "answer": "30-en-hexadecimal-y-20-en-base64"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-129",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Con el payload decoder de la p. 53, llega un uplink con FPort 1 y bytes `15 17 41 00` (hexadecimal). ¿Qué devuelve `decoded_payload`?",
+  "explanation": "Rama de FPort 1: temperatura = (0x15 + 0x17) / 2 = (21 + 23) / 2 = 22; humedad = 0x41 = 65; alarma = msg[3] === 1 ? \"activa\" : \"inactiva\" → 0, inactiva.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "payload-decoder"
+    }
+  ],
+  "options": [
+    {
+      "id": "temperatura-22-humedad-65-y-alarma",
+      "text": "Temperatura 22, humedad 65 y alarma inactiva.",
+      "explanation": "Aplicación directa del código de la p. 53."
+    },
+    {
+      "id": "temperatura-44-humedad-65-y-alarma",
+      "text": "Temperatura 44, humedad 65 y alarma inactiva.",
+      "explanation": "Suma los dos bytes y olvida dividir entre 2."
+    },
+    {
+      "id": "temperatura-16-humedad-41-y-alarma",
+      "text": "Temperatura 16, humedad 41 y alarma inactiva.",
+      "explanation": "Lee los valores hexadecimales como si fueran decimales."
+    },
+    {
+      "id": "temperatura-22-humedad-65-y-alarma-2",
+      "text": "Temperatura 22, humedad 65 y alarma activa.",
+      "explanation": "La alarma solo está activa cuando el cuarto byte vale 1."
+    }
+  ],
+  "answer": "temperatura-22-humedad-65-y-alarma"
+}

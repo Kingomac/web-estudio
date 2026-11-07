@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lpwan-53",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Una empresa instala contadores de gas en sótanos de edificios. Cada contador envía un mensaje pequeño al día, no se mueve y debe durar años con su batería. ¿Qué tecnología celular y por qué?",
+  "explanation": "NB-IoT está orientada a sensores y contadores estáticos con mensajes pequeños, tiene penetración alta incluso en interiores profundos y su consumo es muy bajo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        7,
+        14,
+        15
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-frente-a-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "nb-iot-por-su-alta-penetracion-en",
+      "text": "NB-IoT, por su alta penetración en interiores profundos y su consumo muy bajo.",
+      "explanation": "Filas «Penetración interiores» y «Consumo energético» de la p. 14."
+    },
+    {
+      "id": "lte-m-por-su-baja-latencia-casi-en",
+      "text": "LTE-M, por su baja latencia, casi en tiempo real.",
+      "explanation": "La latencia no importa con un mensaje al día, y LTE-M tiene una penetración solo moderada."
+    },
+    {
+      "id": "nb-iot-porque-permite-handover-entre",
+      "text": "NB-IoT, porque permite handover entre celdas.",
+      "explanation": "La tecnología es la adecuada, pero el motivo es falso: NB-IoT no permite handover durante la conexión."
+    },
+    {
+      "id": "lte-m-porque-alcanza-hasta-128-kbit-s",
+      "text": "LTE-M, porque alcanza hasta 128 kbit/s.",
+      "explanation": "128 kbit/s es el límite de NB-IoT; LTE-M llega a ~1 Mbit/s, y la tasa no es lo que necesita este contador."
+    }
+  ],
+  "answer": "nb-iot-por-su-alta-penetracion-en"
+}

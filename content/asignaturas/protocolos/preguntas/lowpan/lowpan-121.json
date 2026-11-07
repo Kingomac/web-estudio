@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lowpan-121",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En Wi-SUN FAN, un contador LFN (nodo RUL) acaba de conectarse a su router padre FFN. ¿Cómo llega su dirección a la raíz para que esta pueda construir la ruta descendente hasta él?",
+  "explanation": "Los RUL no ejecutan RPL: registran su dirección en el padre con 6LoWPAN ND (NS–NA con ARO), y el padre anuncia su alcanzabilidad incluyéndola como Target en el DAO unicast que envía a la raíz en non-storing.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        81,
+        82,
+        87
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "rutas-descendentes-storing-y-non-storing"
+    }
+  ],
+  "options": [
+    {
+      "id": "ns-na-y-dao-del-padre",
+      "text": "El LFN registra su dirección en el padre con NS–NA y el padre la incluye como Target en su DAO hacia la raíz.",
+      "explanation": "Es el proceso del tema: el padre anuncia la alcanzabilidad en nombre de sus RUL."
+    },
+    {
+      "id": "dao-propio",
+      "text": "El LFN envía su propio DAO unicast a la raíz.",
+      "explanation": "Un LFN no ejecuta RPL, así que no genera DAO; en el ejemplo, L no genera DAO y lo anuncia C."
+    },
+    {
+      "id": "dio-rank-infinito",
+      "text": "El LFN envía DIO con Rank infinito para que la raíz lo descubra.",
+      "explanation": "Rank infinito lo anuncian los RAL al responder a un DIS; un RUL no envía mensajes RPL."
+    },
+    {
+      "id": "dio-del-padre",
+      "text": "El padre anuncia la dirección del LFN en sus DIO multicast.",
+      "explanation": "Los DIO anuncian el DODAG, la versión y el Rank, no destinos; los destinos van en los DAO."
+    }
+  ],
+  "answer": "ns-na-y-dao-del-padre"
+}

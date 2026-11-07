@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-148",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El uplink de la p. 45 lleva en Basics Station `\"FRMPayload\": \"0F3FBF620E1C8708DF70A334AD63\"`; el JSON NS→AS de la p. 50 lleva `\"frm_payload\": \"Dz+/Yg4chwjfcKM0rWM=\"`. ¿Qué relación hay entre ambos?",
+  "explanation": "Son los mismos 14 bytes cifrados con AppSKey: 28 caracteres en hexadecimal y 20 en Base64 (0x0F 0x3F 0xBF → «Dz+/»). El NS no descifra el payload; lo hace el AS, y su versión descifrada (p. 55) es otra: «EQEAAIBq4eQlgACAAGQ=».",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        36,
+        45,
+        50,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "json-y-base64"
+    }
+  ],
+  "options": [
+    {
+      "id": "son-los-mismos-14-bytes-cifrados-en",
+      "text": "Son los mismos 14 bytes cifrados, en hexadecimal en uno y en Base64 en el otro.",
+      "explanation": "Pp. 45 y 50."
+    },
+    {
+      "id": "el-de-la-p-50-es-el-payload-ya",
+      "text": "El de la p. 50 es el payload ya descifrado por el NS.",
+      "explanation": "El NS no tiene AppSKey; el descifrado aparece en la p. 55."
+    },
+    {
+      "id": "el-de-la-p-50-incluye-ademas-las",
+      "text": "El de la p. 50 incluye además las cabeceras MAC, por eso usa otra codificación.",
+      "explanation": "El NS ha eliminado las cabeceras: solo queda el frm_payload."
+    },
+    {
+      "id": "son-distintos-porque-el-ns-los-vuelve-a",
+      "text": "Son distintos porque el NS los vuelve a cifrar con NwkSKey.",
+      "explanation": "El NS no vuelve a cifrar el payload: lo entrega tal cual."
+    }
+  ],
+  "answer": "son-los-mismos-14-bytes-cifrados-en"
+}

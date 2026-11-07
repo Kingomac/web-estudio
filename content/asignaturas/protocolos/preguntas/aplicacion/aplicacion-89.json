@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-89",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En el esquema QoS 1 del tema, el publicador no recibe el PUBACK y reenvía el PUBLISH con DUP=1. El suscriptor recibe `I'm Bob` con Packet ID 100 y después con Packet ID 101. ¿Por qué?",
+  "explanation": "Como es imposible distinguir un duplicado de un mensaje nuevo que reutiliza el identificador, el broker trata todo PUBLISH con DUP=1 como mensaje nuevo y lo reenvía al suscriptor con un identificador propio (101). Por eso con QoS 1 los suscriptores pueden recibir duplicados.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        54,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "calidad-de-servicio-qos"
+    }
+  ],
+  "options": [
+    {
+      "id": "broker-lo-trata-como-nuevo",
+      "text": "El broker trata el PUBLISH con DUP=1 como un mensaje nuevo y lo reenvía con otro identificador.",
+      "explanation": "Es lo que muestra el esquema y explica los duplicados en el suscriptor."
+    },
+    {
+      "id": "broker-descarta",
+      "text": "El broker detecta el duplicado gracias a DUP=1 y lo descarta.",
+      "explanation": "Si lo descartara, el suscriptor no recibiría la segunda copia; el tema dice que DUP=1 no permite asumir que ya se recibió."
+    },
+    {
+      "id": "qos1-dos-copias",
+      "text": "Con QoS 1 el broker envía siempre dos copias de cada mensaje.",
+      "explanation": "El broker solo reenvía cuando le llega otro PUBLISH; sin pérdidas habría una sola copia."
+    },
+    {
+      "id": "mismo-id-extremo-a-extremo",
+      "text": "El Packet ID se conserva de extremo a extremo y el suscriptor lo ha cambiado.",
+      "explanation": "El Packet ID es de cada tramo: el publicador usa 1025 con el broker y el broker usa 100 y 101 con el suscriptor."
+    }
+  ],
+  "answer": "broker-lo-trata-como-nuevo"
+}

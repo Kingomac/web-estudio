@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un firewall corporativo solo permite tráfico saliente hacia el puerto 443, tanto TCP como UDP. Con los puertos estándar que da el tema, ¿cuál de estas comunicaciones NO podría establecerse?",
+  "explanation": "HTTP/3 va sobre QUIC/UDP 443, WebSocket con TLS sobre TCP 443 y OPC UA puede ir sobre HTTPS (443). MQTT sobre TLS/TCP usa el puerto 8883, que el firewall bloquea.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14,
+        23,
+        31,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "comparacion-final-y-datos-para-memorizar"
+    }
+  ],
+  "options": [
+    {
+      "id": "mqtt-tls",
+      "text": "MQTT sobre TLS/TCP.",
+      "explanation": "Usa el puerto 8883, no el 443."
+    },
+    {
+      "id": "http3",
+      "text": "HTTP/3.",
+      "explanation": "Va sobre QUIC/UDP en el puerto 443, que el firewall permite."
+    },
+    {
+      "id": "websocket-tls",
+      "text": "WebSocket sobre TLS/TCP.",
+      "explanation": "Usa el puerto 443."
+    },
+    {
+      "id": "opc-ua-https",
+      "text": "OPC UA sobre HTTPS.",
+      "explanation": "El tema da HTTPS (443) como uno de los transportes de OPC UA; lo que usaría otro puerto es OPC UA sobre TCP nativo (4840)."
+    }
+  ],
+  "answer": "mqtt-tls"
+}

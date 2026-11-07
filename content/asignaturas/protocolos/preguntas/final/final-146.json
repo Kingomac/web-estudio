@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-146",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "La app de configuración de la p. 32 muestra para un sensor OTAA: Device EUI `2CF7F1C064900BC4`, AppEUI `C920E730241AC9F4` y una AppKey. Al registrarlo en TTS, ¿qué es correcto?",
+  "explanation": "AppEUI es el nombre antiguo de JoinEUI, que identifica al Join Server. DevEUI y JoinEUI viajan en claro en el Join-request; la AppKey se preprovisiona en ambos extremos y nunca se transmite por radio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        32,
+        33,
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "pasos-en-ttn"
+    }
+  ],
+  "options": [
+    {
+      "id": "appeui-va-en-el-campo-joineui-deveui-y",
+      "text": "AppEUI va en el campo JoinEUI; DevEUI y JoinEUI viajan en el Join-request y la AppKey nunca se transmite.",
+      "explanation": "Pp. 32, 33 y paso 3 de la p. 54."
+    },
+    {
+      "id": "appeui-identifica-la-aplicacion-del-as-y",
+      "text": "AppEUI identifica la aplicación del AS y es lo que usa el NS para entregarle los uplinks.",
+      "explanation": "El NS obtiene la aplicación a partir de la DevAddr (p. 46); AppEUI/JoinEUI identifica al Join Server."
+    },
+    {
+      "id": "la-appkey-viaja-cifrada-en-el-join",
+      "text": "La AppKey viaja cifrada en el Join-request para que el Join Server la compruebe.",
+      "explanation": "El Join Server comprueba el MIC calculado con AppKey; la clave no se envía."
+    },
+    {
+      "id": "el-device-eui-es-la-devaddr-que-el",
+      "text": "El Device EUI es la DevAddr que el sensor usará en sus tramas de datos.",
+      "explanation": "La DevAddr (32 bits) llega en el Join-accept; el DevEUI es un identificador global de 64 bits."
+    }
+  ],
+  "answer": "appeui-va-en-el-campo-joineui-deveui-y"
+}

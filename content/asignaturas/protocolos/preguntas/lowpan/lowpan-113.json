@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-113",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un datagrama IPv6 de 1280 bytes sin comprimir (40 de IPv6, 8 de UDP y 1232 de datos) se fragmenta. FRAG1 lleva las cabeceras IPv6 y UDP comprimidas en 8 bytes y los primeros 64 bytes de datos. ¿Qué datagram_size y datagram_offset lleva el siguiente fragmento?",
+  "explanation": "datagram_size es el tamaño del datagrama sin comprimir (1280) y datagram_offset se mide en unidades de 8 bytes sobre el datagrama sin comprimir: FRAG1 cubre 48 + 64 = 112 bytes, y 112 / 8 = 14.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        28,
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragmentacion-y-reensamblado"
+    }
+  ],
+  "options": [
+    {
+      "id": "1280-y-14",
+      "text": "datagram_size = 1280 y datagram_offset = 14.",
+      "explanation": "Ambos campos se refieren al datagrama sin comprimir: FRAG1 cubre 112 bytes originales, que son 14 unidades de 8 bytes."
+    },
+    {
+      "id": "1240-y-9",
+      "text": "datagram_size = 1240 y datagram_offset = 9.",
+      "explanation": "Calcula ambos sobre el datagrama comprimido (1280 − 48 + 8 = 1240; 72 / 8 = 9); los dos campos se refieren al datagrama sin comprimir."
+    },
+    {
+      "id": "1280-y-112",
+      "text": "datagram_size = 1280 y datagram_offset = 112.",
+      "explanation": "112 es la posición en bytes; el campo la expresa en unidades de 8 bytes."
+    },
+    {
+      "id": "1280-y-9",
+      "text": "datagram_size = 1280 y datagram_offset = 9.",
+      "explanation": "9 sale de los 72 bytes transmitidos en FRAG1; el desplazamiento cuenta los 48 bytes de cabeceras sin comprimir, no los 8 comprimidos."
+    }
+  ],
+  "answer": "1280-y-14"
+}

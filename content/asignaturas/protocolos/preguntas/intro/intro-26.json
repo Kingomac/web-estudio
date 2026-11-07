@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-26",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un nodo de calidad del aire incorpora una pantalla OLED que muestra la última medida. ¿En qué bloque de la arquitectura típica del tema se clasifica la pantalla?",
+  "explanation": "La arquitectura del tema lista entre los actuadores los motores, los relés, los LEDs, el altavoz y las pantallas OLED/LCD: elementos que producen una salida.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        4
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "bloques-funcionales"
+    }
+  ],
+  "options": [
+    {
+      "id": "actuadores",
+      "text": "Actuadores.",
+      "explanation": "Correcta: las pantallas OLED/LCD aparecen en el bloque de actuadores junto a LEDs y altavoz."
+    },
+    {
+      "id": "sensores",
+      "text": "Sensores.",
+      "explanation": "El sensor es el de calidad del aire, que mide; la pantalla no mide nada, muestra información."
+    },
+    {
+      "id": "modulo-de-comunicaciones",
+      "text": "Módulo de comunicaciones y antena.",
+      "explanation": "Ese bloque agrupa WiFi, Bluetooth, LoRa o NB-IoT; una pantalla no transmite por radio."
+    },
+    {
+      "id": "gestion-de-energia",
+      "text": "Gestión de energía.",
+      "explanation": "Ese bloque contiene baterías, paneles solares, cargadores, reguladores y modos de bajo consumo."
+    }
+  ],
+  "answer": "actuadores"
+}

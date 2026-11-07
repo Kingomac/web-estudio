@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-57",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host envía un paquete IPv6 con Hop Limit = 3 hacia un destino situado detrás de tres routers en serie (R1, R2 y R3). ¿Qué ocurre?",
+  "explanation": "Cada router disminuye Hop Limit en 1 y el paquete se descarta al llegar a 0: R1 lo deja en 2 y lo reenvía, R2 en 1 y lo reenvía, y R3 en 0 y lo descarta. Como la cabecera IPv6 no tiene checksum, los routers no tienen que recalcular ningún checksum de cabecera al modificar el campo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "cabecera-ipv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "r3-descarta",
+      "text": "R3 lo descarta al quedar Hop Limit a 0; R1 y R2 no recalculan ningún checksum de cabecera.",
+      "explanation": "Aplica el decremento salto a salto y la ausencia de checksum de cabecera."
+    },
+    {
+      "id": "llega-0",
+      "text": "Llega al destino con Hop Limit = 0; ningún router recalcula checksum de cabecera.",
+      "explanation": "Un paquete que llega a 0 en un router se descarta allí, no se reenvía."
+    },
+    {
+      "id": "r2-descarta",
+      "text": "R2 lo descarta, porque tras dos saltos queda Hop Limit = 1.",
+      "explanation": "Con Hop Limit = 1 tras R2 el paquete aún puede reenviarse; es R3 quien lo deja a 0."
+    },
+    {
+      "id": "r3-checksum",
+      "text": "R3 lo descarta al quedar Hop Limit a 0; R1 y R2 recalculan el checksum de cabecera al cambiarlo.",
+      "explanation": "El descarte es correcto, pero IPv6 eliminó el checksum de cabecera."
+    }
+  ],
+  "answer": "r3-descarta"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-100",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un Application Server no tiene configurado ningún payload decoder. ¿Qué recibe y qué tiene que hacer la aplicación final?",
+  "explanation": "El AS descifra el FRMPayload con AppSKey y lo entrega; sin decoder, la aplicación final debe interpretar esos bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        51,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "application-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "recibe-el-frm-payload-ya-descifrado-y",
+      "text": "Recibe el frm_payload ya descifrado y debe interpretar ella misma los bytes.",
+      "explanation": "Pp. 51 y 55."
+    },
+    {
+      "id": "recibe-el-frm-payload-todavia-cifrado-y",
+      "text": "Recibe el frm_payload todavía cifrado y debe descifrarlo con NwkSKey.",
+      "explanation": "El AS descifra con AppSKey; NwkSKey no protege los datos de aplicación."
+    },
+    {
+      "id": "no-recibe-nada-el-as-descarta-los",
+      "text": "No recibe nada: el AS descarta los mensajes sin decoder.",
+      "explanation": "El decoder es opcional, salvo para integraciones como ThingsBoard (p. 54)."
+    },
+    {
+      "id": "recibe-el-decoded-payload-que-genera-el",
+      "text": "Recibe el decoded_payload que genera el Network Server.",
+      "explanation": "El NS no descifra ni decodifica."
+    }
+  ],
+  "answer": "recibe-el-frm-payload-ya-descifrado-y"
+}

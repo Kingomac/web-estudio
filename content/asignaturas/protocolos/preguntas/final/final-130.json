@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-130",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "La aplicación final pide enviar una orden confirmada a un nodo de clase A. ¿Qué descripción del recorrido es correcta?",
+  "explanation": "El AS cifra la orden con AppSKey y la entrega al NS; el NS construye el PHYPayload con MHDR 0xA0, la Frame Header con la DevAddr y el MIC con NwkSKey, y lo programa tras el siguiente uplink; el nodo verifica MIC y contador, descifra con AppSKey y, al ser confirmado, activa el bit ACK en su siguiente uplink.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "as-cifra-con-appskey-ns-pone-mhdr-0xa0-y",
+      "text": "AS cifra con AppSKey; NS pone MHDR 0xA0 y MIC con NwkSKey y lo envía tras el próximo uplink; el nodo confirma con ACK en su siguiente uplink.",
+      "explanation": "P. 57 completa."
+    },
+    {
+      "id": "as-cifra-con-appskey-ns-pone-mhdr-0x80-y",
+      "text": "AS cifra con AppSKey; NS pone MHDR 0x80 y MIC con NwkSKey y lo envía tras el próximo uplink; el nodo confirma con ACK en su siguiente uplink.",
+      "explanation": "0x80 es un uplink confirmado; un downlink confirmado es 0xA0."
+    },
+    {
+      "id": "as-cifra-con-appskey-el-gateway-calcula",
+      "text": "AS cifra con AppSKey; el gateway calcula el MIC y lo envía en el siguiente ping slot; el nodo confirma con ACK.",
+      "explanation": "El MIC lo genera el NS, y los ping slots son de la clase B."
+    },
+    {
+      "id": "as-cifra-con-appskey-ns-pone-mhdr-0xa0-y-2",
+      "text": "AS cifra con AppSKey; NS pone MHDR 0xA0 y MIC con NwkSKey; el nodo confirma de inmediato transmitiendo en RX2.",
+      "explanation": "RX2 es una ventana de recepción; el ACK va en el siguiente uplink."
+    }
+  ],
+  "answer": "as-cifra-con-appskey-ns-pone-mhdr-0xa0-y"
+}

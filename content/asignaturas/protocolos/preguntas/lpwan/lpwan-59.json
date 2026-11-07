@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-59",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué conjunto de valores corresponde a LoRa según el tema?",
+  "explanation": "Hasta 15 km en zonas rurales y 2-5 km en áreas urbanas, bandas ISM sub-GHz y una velocidad baja, de 0,3 a 50 kbps.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        14,
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "lora-y-lorawan"
+    }
+  ],
+  "options": [
+    {
+      "id": "hasta-15-km-en-zona-rural-2-5-km-en-zona",
+      "text": "Hasta 15 km en zona rural, 2-5 km en zona urbana y de 0,3 a 50 kbps.",
+      "explanation": "P. 18."
+    },
+    {
+      "id": "hasta-1-mbit-s-con-handover-entre-celdas",
+      "text": "Hasta ~1 Mbit/s con handover entre celdas.",
+      "explanation": "Es LTE-M (p. 14)."
+    },
+    {
+      "id": "banda-licenciada-del-operador-y-hasta",
+      "text": "Banda licenciada del operador y hasta 128 kbit/s.",
+      "explanation": "Es NB-IoT."
+    },
+    {
+      "id": "unos-cientos-de-metros-y-tasas-de-varios",
+      "text": "Unos cientos de metros y tasas de varios Mbit/s.",
+      "explanation": "LoRa sacrifica tasa para alcanzar varios kilómetros."
+    }
+  ],
+  "answer": "hasta-15-km-en-zona-rural-2-5-km-en-zona"
+}

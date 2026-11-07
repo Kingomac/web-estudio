@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-51",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "La conexión TCP con un servidor ya está abierta y un cliente necesita 4 recursos. El RTT es de 25 ms y los tiempos de transmisión y proceso son despreciables. ¿Cuánto tarda en recibirlos con HTTP/1.0 y con el pipelining de HTTP/1.1?",
+  "explanation": "En HTTP/1.0 el cliente espera la respuesta de cada petición antes de enviar la siguiente: 4 RTT = 100 ms. Con pipelining envía las cuatro peticiones seguidas y las respuestas llegan en un único RTT: 25 ms.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        16
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "transporte-y-versiones"
+    }
+  ],
+  "options": [
+    {
+      "id": "100-y-25",
+      "text": "100 ms con HTTP/1.0 y 25 ms con pipelining.",
+      "explanation": "HTTP/1.0 necesita un RTT por petición; con pipelining las cuatro comparten el mismo RTT."
+    },
+    {
+      "id": "100-en-ambos",
+      "text": "100 ms en ambos casos, porque el pipelining solo cambia el orden de las respuestas.",
+      "explanation": "El pipelining evita esperar cada respuesta antes de enviar la siguiente petición, así que sí reduce el tiempo."
+    },
+    {
+      "id": "200-y-50",
+      "text": "200 ms con HTTP/1.0 y 50 ms con pipelining.",
+      "explanation": "Suma un handshake TCP que no hace falta: el enunciado dice que la conexión ya está abierta."
+    },
+    {
+      "id": "25-y-100",
+      "text": "25 ms con HTTP/1.0 y 100 ms con pipelining.",
+      "explanation": "Invierte las versiones: es HTTP/1.0 la que espera cada respuesta."
+    }
+  ],
+  "answer": "100-y-25"
+}

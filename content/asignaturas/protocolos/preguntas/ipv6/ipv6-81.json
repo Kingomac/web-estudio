@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-81",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué secuencia describe el arranque de un nodo IPv6 con SLAAC según el ejemplo del tema?",
+  "explanation": "Primero el nodo genera su link-local y la comprueba con DAD. Después descubre el router (RS/RA o RA periódico), obtiene el prefijo y el router por defecto, forma su dirección global o ULA con SLAAC y le aplica DAD. Por último resuelve la MAC del siguiente salto si no la conoce y mantiene su alcanzabilidad con NUD.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "nud-comprobar-alcanzabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "orden-correcto",
+      "text": "Link-local y DAD → RS/RA → dirección global por SLAAC → DAD de esa dirección → MAC del siguiente salto y NUD.",
+      "explanation": "Sigue los cinco pasos del ejemplo del tema."
+    },
+    {
+      "id": "global-primero",
+      "text": "RS/RA → dirección global por SLAAC → link-local y DAD → MAC del siguiente salto y NUD.",
+      "explanation": "La link-local se genera primero: el router se descubre usando ya esa dirección del enlace."
+    },
+    {
+      "id": "sin-dad-global",
+      "text": "Link-local y DAD → RS/RA → dirección global por SLAAC usada de inmediato → MAC del siguiente salto y NUD.",
+      "explanation": "El tema aplica DAD también a la dirección global antes de usarla normalmente."
+    },
+    {
+      "id": "dhcpv6-primero",
+      "text": "Solicit DHCPv6 → link-local → RS/RA → DAD → NUD.",
+      "explanation": "En SLAAC no interviene DHCPv6, y el host no sabría si usarlo hasta recibir un RA."
+    }
+  ],
+  "answer": "orden-correcto"
+}

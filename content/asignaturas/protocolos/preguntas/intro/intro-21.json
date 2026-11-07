@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-21",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un collar para ganado alimentado por batería obtiene su posición GNSS y la envía por radio cada 5 minutos. Según el tema, ¿qué parte del funcionamiento concentra el mayor consumo energético?",
+  "explanation": "El tema indica que el mayor consumo corresponde a las comunicaciones (radio, GNSS); por eso interesa usar tasas bajas y mensajes cortos poco frecuentes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "como-es-un-nodo-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "las-comunicaciones-radio-y-gnss",
+      "text": "Las comunicaciones: la radio y el receptor GNSS.",
+      "explanation": "Correcta: la diapositiva atribuye el mayor consumo a las comunicaciones (radio, GNSS)."
+    },
+    {
+      "id": "el-procesado-de-la-cpu",
+      "text": "El procesado de la CPU de la MCU al preparar mensajes cortos.",
+      "explanation": "Preparar mensajes de pocos bytes exige poco procesado; el tema no sitúa ahí el mayor consumo, sino en las comunicaciones."
+    },
+    {
+      "id": "la-lectura-del-firmware-en-rom",
+      "text": "La lectura del firmware almacenado en la ROM.",
+      "explanation": "La ROM guarda el programa; leerla no es lo que agota la batería según el tema."
+    },
+    {
+      "id": "el-regulador-de-voltaje",
+      "text": "El regulador de voltaje del bloque de gestión de energía.",
+      "explanation": "El regulador forma parte de la gestión de energía; el tema no lo señala como el principal consumidor."
+    }
+  ],
+  "answer": "las-comunicaciones-radio-y-gnss"
+}

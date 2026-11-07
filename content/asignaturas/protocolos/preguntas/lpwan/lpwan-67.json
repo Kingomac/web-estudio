@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-67",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿En cuál de estos dispositivos resulta más adecuado activar ADR?",
+  "explanation": "ADR adapta DR y potencia según la calidad de los enlaces recientes, así que funciona mejor cuando las condiciones radio son estables, como en sensores fijos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "un-sensor-de-humedad-del-suelo-fijo-en",
+      "text": "Un sensor de humedad del suelo fijo en una parcela.",
+      "explanation": "Último punto de la p. 27: condiciones estables."
+    },
+    {
+      "id": "un-tracker-de-mercancias-que-viaja-en-un",
+      "text": "Un tracker de mercancías que viaja en un camión.",
+      "explanation": "Sus condiciones radio cambian continuamente, así que un ajuste basado en mensajes anteriores queda desfasado."
+    },
+    {
+      "id": "un-collar-para-ganado-en-extensivo-que",
+      "text": "Un collar para ganado en extensivo que se desplaza por el monte.",
+      "explanation": "También es móvil y la calidad del enlace varía."
+    },
+    {
+      "id": "un-dispositivo-portatil-que-se-lleva-de",
+      "text": "Un dispositivo portátil que se lleva de un edificio a otro.",
+      "explanation": "Mismo problema: el enlace no es estable."
+    }
+  ],
+  "answer": "un-sensor-de-humedad-del-suelo-fijo-en"
+}

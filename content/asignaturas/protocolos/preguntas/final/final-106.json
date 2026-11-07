@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-106",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un router RPL B, con Rank 768, recibe de un vecino un paquete cuya opción RPI indica sentido ascendente y Rank del emisor 640. ¿Qué concluye B?",
+  "explanation": "Los routers comprueban con la RPI que el paquete progresa de forma coherente: hacia Ranks menores al ascender y mayores al descender. Un paquete ascendente que pasa de Rank 640 a 768 se aleja de la raíz: es una inconsistencia, posible indicio de bucle.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        75,
+        85
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "reenvio-en-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "inconsistencia",
+      "text": "Hay una inconsistencia: al ascender, el paquete debería ir hacia Ranks menores y B tiene uno mayor que el emisor.",
+      "explanation": "Aplica la regla de coherencia de la RPI."
+    },
+    {
+      "id": "coherente-rank-crece",
+      "text": "Es coherente: el Rank aumenta al acercarse a la raíz.",
+      "explanation": "Es al revés: el Rank crece al alejarse de la raíz."
+    },
+    {
+      "id": "no-puede",
+      "text": "No puede comprobarlo, porque la RPI solo lleva la instancia RPL.",
+      "explanation": "La RPI lleva también el Rank del emisor del salto y el sentido."
+    },
+    {
+      "id": "solo-descendente",
+      "text": "Es coherente, porque la RPI solo se comprueba en los datagramas descendentes non-storing.",
+      "explanation": "En esos datagramas, precisamente, la RPI puede omitirse; entre routers RPL debe ir y comprobarse."
+    }
+  ],
+  "answer": "inconsistencia"
+}

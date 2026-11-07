@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-77",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host ha aprendido por RA dos routers, R1 y R2, y usa R1 como siguiente salto. La entrada de R1 en su caché de vecinos pasa a STALE y el host tiene paquetes que enviar. R1 se ha apagado. Según NUD, ¿qué secuencia es correcta?",
+  "explanation": "STALE indica que no hay confirmación reciente, pero la entrada puede seguir usándose mientras se inicia la comprobación. Sin confirmaciones de capas superiores, el host comprueba activamente a R1 con NS unicast y espera un NA solicitado. Si las comprobaciones fallan, deja de considerarlo válido y puede seleccionar otro router, aquí R2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        42,
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "nud-comprobar-alcanzabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "Sigue enviando a la MAC en caché de R1 mientras le envía NS unicast; al no recibir NA solicitado, deja de considerarlo válido y usa R2.",
+      "explanation": "Encadena el uso de STALE, la comprobación unicast y el cambio de router."
+    },
+    {
+      "id": "deja-de-usar",
+      "text": "Deja de enviar a R1 en cuanto la entrada pasa a STALE y espera al siguiente RA periódico para elegir router.",
+      "explanation": "Una entrada STALE puede seguir usándose mientras se comprueba."
+    },
+    {
+      "id": "ns-dad",
+      "text": "Envía a ff02::1:ff… de R1 un NS con origen ::, como en DAD, y si no hay respuesta cambia a R2.",
+      "explanation": "El origen :: y la comprobación de duplicados son de DAD; NUD comprueba al vecino con NS unicast."
+    },
+    {
+      "id": "dhcpv6",
+      "text": "Pide a un servidor DHCPv6 un nuevo router por defecto, porque R1 no responde.",
+      "explanation": "El router por defecto se aprende por RA, no por DHCPv6, y R2 ya es conocido."
+    }
+  ],
+  "answer": "correcta"
+}

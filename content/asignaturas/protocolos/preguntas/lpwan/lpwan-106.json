@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-106",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo envía un uplink confirmado y la aplicación no tiene nada que mandarle. ¿Cómo recibe el nodo la confirmación?",
+  "explanation": "El NS puede enviar un downlink con el bit ACK activado para confirmar un uplink confirmado, sin necesidad de datos de aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        56,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-ns-le-envia-un-downlink-con-el-bit",
+      "text": "El NS le envía un downlink con el bit ACK activado, sin datos de aplicación.",
+      "explanation": "Último punto de la p. 56."
+    },
+    {
+      "id": "el-as-le-envia-un-downlink-con-fport-0",
+      "text": "El AS le envía un downlink con FPort = 0.",
+      "explanation": "FPort = 0 es para comandos MAC del NS, y la confirmación es un bit de FCtrl."
+    },
+    {
+      "id": "no-la-recibe-la-confirmacion-solo-llega",
+      "text": "No la recibe: la confirmación solo llega al gateway por IP.",
+      "explanation": "La confirmación viaja en una trama LoRaWAN hacia el nodo."
+    },
+    {
+      "id": "el-ns-le-envia-un-linkadrreq-como-acuse",
+      "text": "El NS le envía un LinkADRReq como acuse.",
+      "explanation": "LinkADRReq ajusta DR y potencia; no es un acuse de recibo."
+    }
+  ],
+  "answer": "el-ns-le-envia-un-downlink-con-el-bit"
+}

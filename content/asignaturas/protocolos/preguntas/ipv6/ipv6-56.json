@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-56",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Según el formato general de las direcciones multicast IPv6 (prefijo 0xFF, flags 0RPT y scope), ¿qué indica la dirección `ff12::1:3`?",
+  "explanation": "Tras el octeto FF vienen 4 bits de flags (0RPT) y 4 de ámbito. En ff12 los flags valen 1 = 0001: T = 1 (temporal, no asignada permanentemente por IANA) y P = 0 (no basada en prefijo). El ámbito vale 2: link-local.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        20
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "multicast-solicited-node-y-direccion-mac-multicast"
+    }
+  ],
+  "options": [
+    {
+      "id": "temporal-link-local",
+      "text": "Un grupo temporal (T=1) de ámbito link-local (scope 2).",
+      "explanation": "Interpreta los flags 0001 y el ámbito 0x2."
+    },
+    {
+      "id": "permanente-link-local",
+      "text": "Un grupo permanente asignado por IANA de ámbito link-local.",
+      "explanation": "Los grupos permanentes, como ff02::1, tienen T = 0; aquí el flag T vale 1."
+    },
+    {
+      "id": "basado-en-prefijo",
+      "text": "Un grupo basado en el prefijo de red (P=1) de ámbito link-local.",
+      "explanation": "Con P = 1 y T = 0 los flags valdrían 0010 (ff22::…); aquí valen 0001."
+    },
+    {
+      "id": "unicast-link-local",
+      "text": "Una dirección unicast link-local del grupo de interfaces 1:3.",
+      "explanation": "Toda dirección que empieza por el octeto 0xFF es multicast; las unicast link-local están en fe80::/64."
+    }
+  ],
+  "answer": "temporal-link-local"
+}

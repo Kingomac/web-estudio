@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-52",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué categorías de dispositivo corresponden a NB-IoT?",
+  "explanation": "La p. 7 asocia Cat-NB1/Cat-NB2 a NB-IoT y Cat-M1/Cat-M2 a LTE-M.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-y-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "cat-nb1-y-cat-nb2",
+      "text": "Cat-NB1 y Cat-NB2.",
+      "explanation": "Categorías de dispositivo NB-IoT (p. 7)."
+    },
+    {
+      "id": "cat-m1-y-cat-m2",
+      "text": "Cat-M1 y Cat-M2.",
+      "explanation": "Son las de LTE-M."
+    },
+    {
+      "id": "clases-a-b-y-c",
+      "text": "Clases A, B y C.",
+      "explanation": "Son las clases de dispositivo de LoRaWAN, que se distinguen por cuándo reciben downlinks."
+    },
+    {
+      "id": "dr0-a-dr5",
+      "text": "DR0 a DR5.",
+      "explanation": "Son los Data Rates de LoRaWAN en EU868 con 125 kHz."
+    }
+  ],
+  "answer": "cat-nb1-y-cat-nb2"
+}

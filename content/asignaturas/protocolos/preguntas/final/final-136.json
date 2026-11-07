@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-136",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre la AppKey en OTAA es correcta?",
+  "explanation": "AppKey es la clave raíz preprovisionada en el dispositivo y en la plataforma: con ella se calcula el MIC del Join-request, se cifra y protege el Join-accept y se derivan NwkSKey y AppSKey. Nunca se transmite por radio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        32,
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "calcula-el-mic-del-join-request-protege",
+      "text": "Calcula el MIC del Join-request, protege el Join-accept y sirve para derivar las claves de sesión, sin viajar nunca por radio.",
+      "explanation": "Pp. 32-33."
+    },
+    {
+      "id": "calcula-el-mic-del-join-request-y",
+      "text": "Calcula el MIC del Join-request y protege el Join-accept, que la lleva cifrada para renovarla.",
+      "explanation": "Casi correcta, pero la AppKey nunca viaja por radio."
+    },
+    {
+      "id": "cifra-el-join-request-para-ocultar-el",
+      "text": "Cifra el Join-request para ocultar el DevEUI y el DevNonce.",
+      "explanation": "El Join-request no va cifrado: solo lleva un MIC."
+    },
+    {
+      "id": "una-vez-derivadas-las-claves-de-sesion",
+      "text": "Una vez derivadas las claves de sesión, el NS la usa para calcular el MIC de las tramas de datos.",
+      "explanation": "El MIC de las tramas de datos se calcula con NwkSKey."
+    }
+  ],
+  "answer": "calcula-el-mic-del-join-request-protege"
+}

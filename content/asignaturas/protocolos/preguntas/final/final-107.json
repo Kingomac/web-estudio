@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-107",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Se renueva la domótica de un piso: sensores a pilas, enchufes siempre alimentados e IPv6 extremo a extremo hasta el móvil a través de la wifi de casa, sin pasarelas de traducción. ¿Qué solución encaja con el tema?",
+  "explanation": "Thread es una malla IPv6 de bajo consumo para el hogar sobre 802.15.4 y 6LoWPAN: los dispositivos alimentados actúan como routers que mantienen la malla, los de pilas como dispositivos finales que duermen, y los border routers conectan con otras redes IPv6 como la wifi.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        9,
+        58,
+        59,
+        89
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "thread-organizacion-mle-y-reenvio"
+    }
+  ],
+  "options": [
+    {
+      "id": "thread",
+      "text": "Thread: enchufes como routers, sensores como dispositivos finales dormidos y un border router hacia la wifi.",
+      "explanation": "Cumple IPv6 extremo a extremo y reparte bien los papeles según la alimentación."
+    },
+    {
+      "id": "zigbee",
+      "text": "Zigbee, con un hub del mismo fabricante como coordinador.",
+      "explanation": "Zigbee no está basado en IP: el hub actuaría como pasarela, que es lo que se quiere evitar."
+    },
+    {
+      "id": "wi-sun",
+      "text": "Wi-SUN FAN, con los sensores como LFN.",
+      "explanation": "Wi-SUN FAN es IPv6, pero se orienta a infraestructuras urbanas con radio sub-GHz, no a un piso."
+    },
+    {
+      "id": "bluetooth-mesh",
+      "text": "Bluetooth Mesh, aprovechando la radio BLE del móvil.",
+      "explanation": "Bluetooth Mesh no usa IPv6 de forma nativa."
+    }
+  ],
+  "answer": "thread"
+}

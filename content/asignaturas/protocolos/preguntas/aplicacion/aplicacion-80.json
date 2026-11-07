@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-80",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "La respuesta del ejemplo es un ACK con código 2.05, el mismo token de 1 byte (0x20), ninguna opción y el payload `22.3 C` (6 bytes). ¿Cuántos bytes ocupa el mensaje CoAP?",
+  "explanation": "Cabecera fija de 4 bytes + 1 byte de token + 1 byte 0xFF (11111111) que precede al payload + 6 bytes de payload = 12 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        41,
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "doce",
+      "text": "12 bytes.",
+      "explanation": "4 + 1 + 1 + 6 = 12."
+    },
+    {
+      "id": "once",
+      "text": "11 bytes.",
+      "explanation": "Olvida el byte 11111111 que el formato coloca antes del payload."
+    },
+    {
+      "id": "diez",
+      "text": "10 bytes.",
+      "explanation": "Olvida el token y el byte que precede al payload."
+    },
+    {
+      "id": "diecisiete",
+      "text": "17 bytes.",
+      "explanation": "Es el tamaño de la petición, que lleva la opción Uri-Path; la respuesta no tiene opciones."
+    }
+  ],
+  "answer": "doce"
+}

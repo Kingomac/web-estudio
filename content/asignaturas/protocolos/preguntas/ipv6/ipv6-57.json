@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.ipv6-57",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo solo tiene la link-local automática derivada de su MAC Ethernet 00:1c:42:ab:cd:ef. Otro nodo del enlace, que no conoce esa MAC, envía un NS para resolverla. ¿Qué IPv6 destino y qué MAC destino lleva ese NS?",
+  "explanation": "La link-local es fe80::21c:42ff:feab:cdef. Su grupo solicited-node se forma con ff02::1:ff00:0/104 y sus últimos 24 bits (ab:cd:ef): ff02::1:ffab:cdef. En Ethernet, la MAC multicast es 33:33 seguido de los últimos 32 bits de esa IPv6: 33:33:ff:ab:cd:ef. Es la misma cadena que el ejemplo del tema 11:22:33:44:55:66 → FF02::1:FF44:5566 → 33:33:FF:44:55:66.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        17,
+        21,
+        37,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "multicast-solicited-node-y-direccion-mac-multicast"
+    }
+  ],
+  "options": [
+    {
+      "id": "solicited-y-3333ff",
+      "text": "IPv6 ff02::1:ffab:cdef; MAC 33:33:ff:ab:cd:ef.",
+      "explanation": "Aplica los 24 bits para el grupo y los 32 bits finales del grupo para la MAC."
+    },
+    {
+      "id": "mac-con-00",
+      "text": "IPv6 ff02::1:ffab:cdef; MAC 33:33:00:ab:cd:ef.",
+      "explanation": "La MAC copia los 32 últimos bits del grupo, que incluyen el octeto ff."
+    },
+    {
+      "id": "unicast-link-local",
+      "text": "IPv6 fe80::21c:42ff:feab:cdef; MAC 33:33:ff:ab:cd:ef.",
+      "explanation": "Sin conocer la MAC, el NS de resolución se envía al grupo solicited-node; la link-local va en el campo objetivo."
+    },
+    {
+      "id": "all-nodes-broadcast",
+      "text": "IPv6 ff02::1; MAC ff:ff:ff:ff:ff:ff.",
+      "explanation": "IPv6 no usa broadcast: NDP dirige la resolución al grupo solicited-node del objetivo."
+    }
+  ],
+  "answer": "solicited-y-3333ff"
+}

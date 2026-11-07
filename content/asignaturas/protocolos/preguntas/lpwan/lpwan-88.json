@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lpwan-88",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El NS quiere enviar un comando MAC aprovechando un downlink que ya lleva datos de aplicación con FPort = 3. ¿Dónde lo coloca?",
+  "explanation": "Los comandos MAC pueden ir en FOpts, de 0 a 15 bytes y sin cifrar; el NS puede aprovechar un downlink de aplicación para enviarlos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        56,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "en-fopts-hasta-15-bytes-sin-cifrar",
+      "text": "En FOpts, hasta 15 bytes, sin cifrar.",
+      "explanation": "P. 39, p. 56 y p. 57."
+    },
+    {
+      "id": "en-frmpayload-junto-a-los-datos-de",
+      "text": "En FRMPayload, junto a los datos de aplicación y con FPort = 0.",
+      "explanation": "Con FPort = 0 el FRMPayload solo lleva comandos MAC; aquí ya lleva datos con FPort = 3."
+    },
+    {
+      "id": "en-fopts-hasta-255-bytes-cifrados-con",
+      "text": "En FOpts, hasta 255 bytes, cifrados con AppSKey.",
+      "explanation": "FOpts llega a 15 bytes y AppSKey es para los datos de aplicación."
+    },
+    {
+      "id": "en-el-mhdr",
+      "text": "En el MHDR.",
+      "explanation": "El MHDR solo indica el tipo de mensaje."
+    }
+  ],
+  "answer": "en-fopts-hasta-15-bytes-sin-cifrar"
+}

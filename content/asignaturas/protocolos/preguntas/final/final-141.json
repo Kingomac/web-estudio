@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-141",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "La traza de una instalación muestra: un sensor sin dirección IP envía por radio a un equipo instalado por el cliente; ese equipo reenvía los mensajes por Ethernet a Internet y llegan a un servidor de red y después a uno de aplicación. ¿Qué tecnología es?",
+  "explanation": "Un equipo de cliente que recoge por radio y reenvía por IP a un NS y un AS, con un nodo sin IP, es la arquitectura nodo → gateway → NS/AS de LoRaWAN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        5,
+        34,
+        61
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "tecnologias-y-arquitecturas"
+    }
+  ],
+  "options": [
+    {
+      "id": "lorawan",
+      "text": "LoRaWAN.",
+      "explanation": "Pp. 5 y 61; LoRaWAN no usa IP en el nodo (p. 34)."
+    },
+    {
+      "id": "nb-iot-en-modo-nidd",
+      "text": "NB-IoT en modo NIDD.",
+      "explanation": "El nodo tampoco usa IP, pero habla directamente con la estación base del operador, sin equipo de cliente."
+    },
+    {
+      "id": "wi-sun-fan",
+      "text": "Wi-SUN FAN.",
+      "explanation": "Hay un equipo intermedio (border router), pero los nodos son IPv6 y se reenvían en malla."
+    },
+    {
+      "id": "lte-m-en-modo-ip",
+      "text": "LTE-M en modo IP.",
+      "explanation": "El nodo tendría IP y no habría equipo de cliente."
+    }
+  ],
+  "answer": "lorawan"
+}

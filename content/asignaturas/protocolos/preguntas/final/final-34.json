@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-34",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Respuesta del tema:\n`HTTP/1.1 200 OK`\n`Connection: keep-alive`\n`Content-Length: 6`\n`Content-Type: text/plain`\n`18.6 C`\n¿Cuál de estas afirmaciones sobre ella es FALSA?",
+  "explanation": "200 OK es un código de éxito (2xx), `Connection: keep-alive` mantiene la conexión TCP para más peticiones y Content-Length: 6 coincide con los 6 caracteres de `18.6 C`. Pero al ser HTTP/1.1 el mensaje va codificado en caracteres ASCII; el framing binario llega con HTTP/2 y HTTP/3.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        14,
+        17,
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "metodos-mensajes-y-respuestas"
+    }
+  ],
+  "options": [
+    {
+      "id": "binario",
+      "text": "Al ser HTTP/1.1, va codificado en binario para que quepa en una única trama de enlace.",
+      "explanation": "Es falsa: los mensajes HTTP/1.x usan caracteres ASCII y son demasiado grandes para una única trama."
+    },
+    {
+      "id": "exito",
+      "text": "El código 200 pertenece a la familia de éxito.",
+      "explanation": "Es verdadera: 2xx indica éxito."
+    },
+    {
+      "id": "keep-alive",
+      "text": "`Connection: keep-alive` permite reutilizar la conexión TCP para otras peticiones.",
+      "explanation": "Es verdadera: es la conexión persistente."
+    },
+    {
+      "id": "content-length",
+      "text": "`Content-Length: 6` corresponde a los 6 bytes de `18.6 C`.",
+      "explanation": "Es verdadera: cuatro caracteres del número, el espacio y la C."
+    }
+  ],
+  "answer": "binario"
+}

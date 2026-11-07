@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-55",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Una instalación IoT quiere un direccionamiento interno independiente de su proveedor y genera de forma pseudoaleatoria el Global ID de 40 bits 3a:5b7c:9d1e. ¿Qué prefijo ULA obtiene y cuántas subredes /64 puede numerar?",
+  "explanation": "La estructura de una ULA es FD (8 bits) + Global ID (40 bits) + ID de subred (16 bits) + IID (64 bits). FD y el Global ID forman el prefijo /48: fd3a:5b7c:9d1e::/48. Los 16 bits de ID de subred permiten 2^16 = 65 536 subredes /64. No hace falta solicitarlo a ningún ISP.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "globales-link-local-y-ula"
+    }
+  ],
+  "options": [
+    {
+      "id": "fd3a-48-65536",
+      "text": "fd3a:5b7c:9d1e::/48, con 65 536 subredes /64.",
+      "explanation": "Coloca FD en el primer octeto, el Global ID en los 40 bits siguientes y deja 16 bits de subred."
+    },
+    {
+      "id": "fd3a-48-256",
+      "text": "fd3a:5b7c:9d1e::/48, con 256 subredes /64.",
+      "explanation": "El prefijo es correcto, pero entre /48 y /64 hay 16 bits, no 8."
+    },
+    {
+      "id": "fd00-desplazado",
+      "text": "fd00:3a5b:7c9d::/48, con 65 536 subredes /64.",
+      "explanation": "Desplaza el Global ID un octeto: FD ocupa solo el primer octeto y el Global ID empieza inmediatamente después; además se pierde 1e."
+    },
+    {
+      "id": "pedir-isp",
+      "text": "Ninguno hasta que el ISP lo asigne: las ULA se solicitan al LIR como las globales.",
+      "explanation": "El Global ID se genera de forma pseudoaleatoria precisamente para no tener que pedirlo a un ISP."
+    }
+  ],
+  "answer": "fd3a-48-65536"
+}

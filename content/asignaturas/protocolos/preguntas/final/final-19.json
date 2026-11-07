@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Sobre el mismo recurso de un servidor CoAP, el cliente A registra dos observaciones (`Observe: 0`) con los tokens 0x21 y 0x22, y el cliente B registra una con el token 0x21. Después, A envía una petición con `Observe: 1` y el token 0x22. ¿Cuántas entradas quedan en la lista de observadores?",
+  "explanation": "El servidor guarda una entrada por cada pareja cliente/token: (A, 0x21), (A, 0x22) y (B, 0x21) son 3 entradas. Con Observe: 1, A da de baja la observación del token 0x22 y quedan 2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "multicast-y-observe"
+    }
+  ],
+  "options": [
+    {
+      "id": "dos",
+      "text": "2.",
+      "explanation": "3 entradas (una por cliente/token) menos la que A cancela."
+    },
+    {
+      "id": "uno",
+      "text": "1.",
+      "explanation": "Supone que la baja de A elimina todas sus observaciones; la entrada es por cliente/token y A conserva la del token 0x21."
+    },
+    {
+      "id": "tres",
+      "text": "3.",
+      "explanation": "Trata Observe: 1 como otro registro; el valor 1 sirve para darse de baja."
+    },
+    {
+      "id": "cero",
+      "text": "0.",
+      "explanation": "Supone que el valor 0x21 compartido hace que se cancelen todas; el token de B pertenece a otro cliente y no se ve afectado."
+    }
+  ],
+  "answer": "dos"
+}

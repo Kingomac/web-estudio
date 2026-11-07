@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-76",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En la misma red conviven un router Cisco IOS que usa EUI-64 modificado, un servidor Linux configurado con IID opacos estables (RFC 7217) y un portátil Windows con su configuración habitual. ¿Qué afirmación es correcta según el tema?",
+  "explanation": "El IID EUI-64 incorpora la MAC y no depende del prefijo. El RFC 7217 combina el prefijo, un identificador de la interfaz y otros parámetros con una clave secreta: el IID no revela la MAC, es estable mientras no cambien esos parámetros y puede ser distinto en cada red, sin renovación periódica. Windows usa IID aleatorizados y además admite direcciones temporales que se renuevan periódicamente (RFC 8981).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "iid-opacos-y-temporales"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "El IID del router deja ver su MAC y es igual con cualquier prefijo; el del Linux es estable en una red pero distinto entre redes; el Windows además usa direcciones temporales que renueva.",
+      "explanation": "Describe cada mecanismo sin mezclar estabilidad y renovación."
+    },
+    {
+      "id": "linux-renueva",
+      "text": "El IID del router deja ver su MAC; el del Linux se renueva periódicamente para evitar el seguimiento; el Windows usa EUI-64.",
+      "explanation": "Los IID del RFC 7217 no implican renovación periódica, y Windows no incorpora la MAC directamente."
+    },
+    {
+      "id": "linux-igual",
+      "text": "El IID del router deja ver su MAC; el del Linux es igual en todas las redes porque se calcula a partir de la MAC; el Windows usa direcciones temporales.",
+      "explanation": "El prefijo es una entrada del cálculo del RFC 7217: el IID puede cambiar de una red a otra."
+    },
+    {
+      "id": "cisco-prohibido",
+      "text": "El router no puede usar EUI-64 porque el RFC 8064 lo prohíbe; el Linux y el Windows usan IID opacos estables.",
+      "explanation": "El RFC 8064 recomienda los IID opacos, pero el tema señala que algunos equipos, como ciertos Cisco IOS, siguen usando EUI-64."
+    }
+  ],
+  "answer": "correcta"
+}

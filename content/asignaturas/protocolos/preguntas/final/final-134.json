@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-134",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un sensor fijo transmite con DR0 y sus uplinks llegan con SNR alta y estable. El NS le envía un LinkADRReq para pasar a DR5. ¿Qué afirmación sobre las consecuencias es correcta?",
+  "explanation": "Pasar de SF12 a SF7 multiplica la tasa (≈0,25 → ≈5,47 kbps): cada mensaje ocupa menos airtime y caben más en el duty cycle, a cambio de menos sensibilidad y alcance. El nodo responde con LinkADRAns.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        27,
+        28,
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "cada-mensaje-ocupa-menos-airtime-y-caben",
+      "text": "Cada mensaje ocupa menos airtime y caben más en el duty cycle; pierde sensibilidad, y el nodo responde con LinkADRAns.",
+      "explanation": "Pp. 27-29."
+    },
+    {
+      "id": "cada-mensaje-ocupa-mas-airtime-pero-gana",
+      "text": "Cada mensaje ocupa más airtime, pero gana alcance; el nodo responde con LinkADRAns.",
+      "explanation": "Es el efecto de bajar el DR, no de subirlo."
+    },
+    {
+      "id": "cada-mensaje-ocupa-menos-airtime-y-con",
+      "text": "Cada mensaje ocupa menos airtime y, con DR5, deja de aplicarse el duty cycle.",
+      "explanation": "El duty cycle limita el tiempo de transmisión en la subbanda con cualquier DR."
+    },
+    {
+      "id": "cada-mensaje-ocupa-menos-airtime-el-nodo",
+      "text": "Cada mensaje ocupa menos airtime; el nodo confirma el cambio con DevStatusAns.",
+      "explanation": "DevStatus pide batería y calidad del enlace; la respuesta a LinkADRReq es LinkADRAns."
+    }
+  ],
+  "answer": "cada-mensaje-ocupa-menos-airtime-y-caben"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-124",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo registrado en TTN Sandbox envía cada 30 minutos un uplink confirmado cuyo airtime es de 0,411648 s, y cada uplink recibe su downlink de confirmación. ¿Cumple la política de uso justo de TTN?",
+  "explanation": "Son 48 uplinks al día: 48 × 0,411648 ≈ 19,8 s, por debajo de los 30 s diarios. Pero cada confirmación necesita un downlink: 48 downlinks al día superan los 10 permitidos. Por eso el tema aconseja evitar confirmaciones innecesarias.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        23,
+        29,
+        50,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "cumple-el-limite-de-airtime-19-8-s-al",
+      "text": "Cumple el límite de airtime (≈19,8 s al día), pero no el de 10 downlinks diarios.",
+      "explanation": "Política de la p. 23 aplicada a los dos límites; el ACK viaja en un downlink (p. 56)."
+    },
+    {
+      "id": "cumple-los-dos-limites-solo-cuenta-el",
+      "text": "Cumple los dos límites: solo cuenta el tiempo de transmisión del nodo.",
+      "explanation": "La política de TTN también limita los mensajes descendentes a 10 al día."
+    },
+    {
+      "id": "no-cumple-el-limite-de-airtime-porque-48",
+      "text": "No cumple el límite de airtime, porque 48 × 0,411648 s supera los 30 s.",
+      "explanation": "Error de cálculo: son unos 19,8 s."
+    },
+    {
+      "id": "no-cumple-el-duty-cycle-del-1-porque-19",
+      "text": "No cumple el duty cycle del 1 %, porque 19,8 s superan los 36 s por hora.",
+      "explanation": "19,8 s son en todo un día; el límite del 1 % es de 36 s cada hora."
+    }
+  ],
+  "answer": "cumple-el-limite-de-airtime-19-8-s-al"
+}

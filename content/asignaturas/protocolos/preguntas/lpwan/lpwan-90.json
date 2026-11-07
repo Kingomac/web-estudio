@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-90",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo envía un uplink de datos con FPort = 5. ¿Con qué clave se cifra su FRMPayload y con cuál se calcula el MIC?",
+  "explanation": "Con FPort distinto de 0, el FRMPayload lleva datos de aplicación cifrados con AppSKey; el MIC se calcula siempre con NwkSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        34,
+        39
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "frmpayload-con-appskey-y-mic-con-nwkskey",
+      "text": "FRMPayload con AppSKey y MIC con NwkSKey.",
+      "explanation": "P. 39."
+    },
+    {
+      "id": "frmpayload-con-nwkskey-y-mic-con-appskey",
+      "text": "FRMPayload con NwkSKey y MIC con AppSKey.",
+      "explanation": "Está invertido; NwkSKey solo cifra el FRMPayload cuando FPort = 0."
+    },
+    {
+      "id": "ambos-con-appkey",
+      "text": "Ambos con AppKey.",
+      "explanation": "AppKey es la clave raíz de OTAA, no una clave de sesión."
+    },
+    {
+      "id": "ambos-con-appskey",
+      "text": "Ambos con AppSKey.",
+      "explanation": "El NS valida el MIC y no tiene AppSKey."
+    }
+  ],
+  "answer": "frmpayload-con-appskey-y-mic-con-nwkskey"
+}

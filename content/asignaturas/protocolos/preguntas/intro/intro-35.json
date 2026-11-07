@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-35",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un nodo dispone de 32 KB de RAM y 128 KB de ROM. Según la clasificación del tema, ¿qué clase le corresponde?",
+  "explanation": "Clase 0: menos de 10 KB de RAM y menos de 100 KB de ROM. Clase 2: más de 50 KB de RAM y más de 250 KB de ROM. Con 32 KB y 128 KB supera la clase 0 sin llegar a la clase 2: es clase 1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "clases-de-dispositivos-limitados"
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-1",
+      "text": "Clase 1: supera la clase 0, pero no llega a los umbrales de la clase 2; pila IP reducida.",
+      "explanation": "Correcta: 32 KB > 10 KB y 128 KB > 100 KB, pero 32 KB < 50 KB y 128 KB < 250 KB."
+    },
+    {
+      "id": "clase-0",
+      "text": "Clase 0: sin recursos para implementar una pila IP.",
+      "explanation": "La clase 0 está por debajo de 10 KB de RAM y 100 KB de ROM; este nodo supera ambos límites."
+    },
+    {
+      "id": "clase-2-por-la-ram",
+      "text": "Clase 2, porque su RAM supera los 10 KB.",
+      "explanation": "Superar 10 KB solo saca al nodo de la clase 0; la clase 2 exige más de 50 KB de RAM."
+    },
+    {
+      "id": "clase-2-por-la-rom",
+      "text": "Clase 2, porque su ROM supera los 100 KB.",
+      "explanation": "Superar 100 KB solo saca al nodo de la clase 0; la clase 2 exige más de 250 KB de ROM."
+    }
+  ],
+  "answer": "clase-1"
+}

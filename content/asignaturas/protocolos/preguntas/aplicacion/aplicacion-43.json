@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-43",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de los siguientes protocolos NO sigue el modelo cliente/servidor según el tema?",
+  "explanation": "El tema pone HTTP, CoAP y XMPP como ejemplos del modelo cliente/servidor (petición/respuesta), y MQTT y AMQP como ejemplos de publicación/suscripción a través de un broker.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        9,
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "cliente-servidor-y-rest"
+    }
+  ],
+  "options": [
+    {
+      "id": "http",
+      "text": "HTTP.",
+      "explanation": "HTTP aparece como ejemplo de cliente/servidor: el cliente pide y el servidor responde."
+    },
+    {
+      "id": "coap",
+      "text": "CoAP.",
+      "explanation": "CoAP es un protocolo cliente/servidor (RFC 7252), aunque con Observe pueda ofrecer suscripción a recursos."
+    },
+    {
+      "id": "xmpp",
+      "text": "XMPP.",
+      "explanation": "XMPP figura en la lista de protocolos cliente/servidor del tema."
+    },
+    {
+      "id": "mqtt",
+      "text": "MQTT.",
+      "explanation": "MQTT es un protocolo de publicación/suscripción: los datos pasan por un broker y se asocian a topics."
+    }
+  ],
+  "answer": "mqtt"
+}

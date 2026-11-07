@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-99",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En mesh-under, D recibe los fragmentos de un datagrama originado por S. Por un cambio de ruta, los primeros llegan en tramas con MAC origen B y los últimos con MAC origen F. Todos llevan cabecera Mesh con originador S y destino final D, y el mismo datagram_size y datagram_tag. ¿Qué hace D?",
+  "explanation": "El reensamblado identifica el datagrama por datagram_size, datagram_tag y las direcciones de enlace de origen y destino, o las de la cabecera Mesh si está presente. Aquí son S y D en todos los fragmentos, así que pertenecen al mismo datagrama.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        28,
+        34,
+        35
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragmentacion-y-reensamblado"
+    }
+  ],
+  "options": [
+    {
+      "id": "reensambla-juntos",
+      "text": "Los reensambla juntos, porque con cabecera Mesh la identificación usa el originador y el destino final de la Mesh.",
+      "explanation": "Las MAC de la trama cambian por salto; la Mesh conserva los extremos."
+    },
+    {
+      "id": "separa-por-mac",
+      "text": "Los trata como dos datagramas distintos, porque la MAC origen de la trama es diferente.",
+      "explanation": "Esa regla vale sin cabecera Mesh; con Mesh se usan sus direcciones, que coinciden."
+    },
+    {
+      "id": "descarta-colision",
+      "text": "Descarta todos los fragmentos por colisión de datagram_tag.",
+      "explanation": "No hay colisión: mismo originador, mismo tag y mismo tamaño identifican el mismo datagrama."
+    },
+    {
+      "id": "reinicia-temporizador",
+      "text": "Reinicia el reensamblado al llegar el primer fragmento desde F.",
+      "explanation": "El temporizador empieza con el primer fragmento recibido del datagrama y no se reinicia por cambiar de vecino."
+    }
+  ],
+  "answer": "reensambla-juntos"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un informe de despliegue dice: «SNR baja y variable en el polígono por interferencias; nodos con baterías que deben durar años; una lectura de 16 bytes cada 15 minutos; la pasarela publica los datos en un servidor de la nube a través de Internet». ¿Qué correspondencia con los conceptos del tema es correcta?",
+  "explanation": "La SNR baja por entornos radio adversos es «Lossy»; el bajo consumo para alargar las baterías es «Low-power»; los mensajes pequeños a grandes intervalos son los que hacen adecuadas las tasas bajas (low-rate); y el tramo pasarela–nube sobre Internet es la red troncal.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        10,
+        11
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lln-bajo-consumo-y-perdidas"
+    }
+  ],
+  "options": [
+    {
+      "id": "lossy-lowpower-lowrate-troncal",
+      "text": "SNR baja: Lossy; baterías: Low-power; 16 bytes cada 15 min: encaja con low-rate; pasarela–nube: red troncal.",
+      "explanation": "Correcta: cada hecho está asociado a su concepto."
+    },
+    {
+      "id": "snr-low-power",
+      "text": "SNR baja: Low-power; baterías: Lossy; 16 bytes cada 15 min: encaja con low-rate; pasarela–nube: red troncal.",
+      "explanation": "Intercambia Lossy y Low-power: Lossy son las pérdidas del enlace y Low-power, el bajo consumo."
+    },
+    {
+      "id": "pasarela-nube-acceso",
+      "text": "SNR baja: Lossy; baterías: Low-power; 16 bytes cada 15 min: encaja con low-rate; pasarela–nube: red de acceso.",
+      "explanation": "La red de acceso termina en la pasarela; el tramo hasta la nube sobre Internet es la troncal."
+    },
+    {
+      "id": "trafico-exige-tasa-alta",
+      "text": "SNR baja: Lossy; baterías: Low-power; 16 bytes cada 15 min: exige alta tasa para vaciar la cola; pasarela–nube: red troncal.",
+      "explanation": "Mensajes pequeños a grandes intervalos son justo el tráfico para el que bastan tasas bajas."
+    }
+  ],
+  "answer": "lossy-lowpower-lowrate-troncal"
+}

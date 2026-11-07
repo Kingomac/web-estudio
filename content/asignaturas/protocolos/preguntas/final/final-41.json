@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-41",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente se suscribe a `sala/temp`. Recibe enseguida 21 °C con el flag de retención activo y, unos segundos después, 22 °C sin ese flag. ¿Qué interpretación es correcta?",
+  "explanation": "Los mensajes retenidos se entregan a los nuevos suscriptores con el flag de retención activo, para que sepan que es un dato histórico y no un evento en tiempo real. 21 °C es el último valor retenido guardado por el broker; 22 °C es una publicación nueva que llega en tiempo real.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        57,
+        58
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mensajes-retenidos"
+    }
+  ],
+  "options": [
+    {
+      "id": "historico-y-tiempo-real",
+      "text": "21 °C es el último valor retenido (dato histórico) y 22 °C una publicación en tiempo real.",
+      "explanation": "El flag permite distinguir ambos casos."
+    },
+    {
+      "id": "21-mas-reciente",
+      "text": "21 °C es el valor más reciente, porque los retenidos tienen prioridad sobre las publicaciones normales.",
+      "explanation": "El retenido es lo que el broker tenía guardado de antes; 22 °C llegó después y es más reciente."
+    },
+    {
+      "id": "22-perdido",
+      "text": "22 °C llegó sin flag porque se perdió y el broker lo reenvió.",
+      "explanation": "El flag de retención no indica retransmisión; para eso está DUP."
+    },
+    {
+      "id": "21-lwt",
+      "text": "21 °C es el LWT del sensor, que avisa de que se ha desconectado.",
+      "explanation": "El LWT es un mensaje de testamento que se publica tras una desconexión inesperada; aquí es un valor de temperatura retenido."
+    }
+  ],
+  "answer": "historico-y-tiempo-real"
+}

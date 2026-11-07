@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-126",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Al registrar un dispositivo OTAA en TTS se copia mal un dígito de la AppKey; DevEUI y JoinEUI son correctos. El gateway está conectado. ¿Qué se verá?",
+  "explanation": "El Join-request lleva un MIC calculado con la AppKey del dispositivo. El Join Server lo comprueba con la AppKey registrada, que es distinta, así que la validación falla: no se devuelve Join-accept, el dispositivo no obtiene DevAddr ni deriva claves y no llegan datos de aplicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        32,
+        33,
+        48
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-join-server-rechaza-el-join-request",
+      "text": "El Join Server rechaza el Join-request por MIC inválido; no hay Join-accept ni datos de aplicación.",
+      "explanation": "P. 33: el Join Server valida la solicitud con el MIC calculado con AppKey."
+    },
+    {
+      "id": "el-join-se-completa-pero-el-as-no-puede",
+      "text": "El Join se completa, pero el AS no puede descifrar los datos con su AppSKey.",
+      "explanation": "No se llega a derivar ninguna sesión: el fallo aparece ya al validar el Join-request."
+    },
+    {
+      "id": "el-gateway-descarta-el-join-request",
+      "text": "El gateway descarta el Join-request porque no puede verificar su MIC.",
+      "explanation": "El gateway no tiene claves: reenvía las tramas sin validarlas."
+    },
+    {
+      "id": "el-join-request-viaja-cifrado-con-una",
+      "text": "El Join-request viaja cifrado con una AppKey errónea y el NS no puede leer el DevEUI.",
+      "explanation": "El Join-request no va cifrado; DevEUI y JoinEUI viajan en claro."
+    }
+  ],
+  "answer": "el-join-server-rechaza-el-join-request"
+}

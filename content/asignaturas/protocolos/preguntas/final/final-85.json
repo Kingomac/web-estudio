@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-85",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo ha recibido estos fragmentos de un datagrama con datagram_size = 400: FRAG1, que cubre los primeros 96 bytes del datagrama sin comprimir; un FRAGN con offset 12 que aporta 88 bytes, y un FRAGN con offset 34 que aporta 128 bytes. ¿Qué le falta?",
+  "explanation": "Offset 12 → byte 96, y 96 + 88 = 184. Offset 34 → byte 272, y 272 + 128 = 400, que es el final. Falta el tramo 184–271 (88 bytes), que empieza en 184 / 8 = 23. Si no llega antes de que venza el temporizador (máximo 60 s), se descarta todo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "fragmentacion-y-reensamblado"
+    }
+  ],
+  "options": [
+    {
+      "id": "offset-23",
+      "text": "Los bytes 184 a 271, que llegarían en un FRAGN con offset 23.",
+      "explanation": "Las posiciones se calculan multiplicando el offset por 8 sobre el datagrama sin comprimir."
+    },
+    {
+      "id": "offset-184",
+      "text": "Los bytes 184 a 271, que llegarían en un FRAGN con offset 184.",
+      "explanation": "El offset no se expresa en bytes sino en unidades de 8 bytes: 184 / 8 = 23."
+    },
+    {
+      "id": "completo",
+      "text": "Nada: con FRAG1 y dos FRAGN el datagrama está completo.",
+      "explanation": "96 + 88 + 128 = 312 bytes, menos que los 400 de datagram_size."
+    },
+    {
+      "id": "final-39",
+      "text": "Los últimos 88 bytes (312 a 399), en un FRAGN con offset 39.",
+      "explanation": "Supone que los fragmentos recibidos son consecutivos; el offset 34 sitúa el tercero en 272–399 y el hueco queda en medio."
+    }
+  ],
+  "answer": "offset-23"
+}

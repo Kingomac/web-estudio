@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-31",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Al conectarse, un sensor registra un LWT `offline` retenido en `dispositivos/s7/estado` y a continuación publica `online` con retención en ese mismo topic. Horas después se desconecta voluntariamente con DISCONNECT. Más tarde, un cliente nuevo se suscribe a `dispositivos/s7/estado`. ¿Qué recibe?",
+  "explanation": "Con un DISCONNECT voluntario, el broker elimina el LWT sin publicarlo, así que `offline` nunca llega a publicarse. El último mensaje retenido del topic sigue siendo `online`, y el broker se lo envía al nuevo suscriptor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        57,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "last-will-and-testament-lwt"
+    }
+  ],
+  "options": [
+    {
+      "id": "online",
+      "text": "`online`, el último mensaje retenido del topic.",
+      "explanation": "El LWT se borró sin publicarse y el retenido sigue siendo `online`."
+    },
+    {
+      "id": "offline",
+      "text": "`offline`, porque el broker publica el LWT cuando se cierra la conexión.",
+      "explanation": "El LWT solo se publica si la desconexión es inesperada; con DISCONNECT se elimina."
+    },
+    {
+      "id": "nada",
+      "text": "Nada, porque DISCONNECT borra también los mensajes retenidos del cliente.",
+      "explanation": "DISCONNECT solo afecta al LWT; el retenido lo guarda el broker hasta que otro retenido lo sobrescriba."
+    },
+    {
+      "id": "los-dos",
+      "text": "`online` y después `offline`.",
+      "explanation": "El broker solo guarda el último retenido de cada topic, y `offline` nunca se publicó."
+    }
+  ],
+  "answer": "online"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-110",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Tras la cabecera MAC de una trama 6LoWPAN, el primer byte de la cabecera de adaptación vale 0xE2. ¿Qué cabecera empieza ahí?",
+  "explanation": "0xE2 = 1110 0010. Sus cinco primeros bits, 11100, son el dispatch de FRAGN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        17,
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "apilamiento-y-dispatch"
+    }
+  ],
+  "options": [
+    {
+      "id": "fragn",
+      "text": "Una cabecera de fragmentación FRAGN (fragmento posterior al primero).",
+      "explanation": "Los bits 11100 identifican FRAGN, que lleva además datagram_offset."
+    },
+    {
+      "id": "frag1",
+      "text": "Una cabecera de fragmentación FRAG1.",
+      "explanation": "FRAG1 empieza por 11000 (0xC0–0xC7); 0xE2 tiene un 1 en el tercer bit."
+    },
+    {
+      "id": "mesh",
+      "text": "Una cabecera Mesh.",
+      "explanation": "La cabecera Mesh empieza por 10 (0x80–0xBF); 0xE2 empieza por 11."
+    },
+    {
+      "id": "iphc",
+      "text": "Una cabecera LOWPAN_IPHC.",
+      "explanation": "IPHC empieza por 011 (0x60–0x7F); 0xE2 empieza por 111."
+    }
+  ],
+  "answer": "fragn"
+}

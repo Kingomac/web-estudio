@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.final-47",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "En un router con `ipv6 unicast-routing` se ejecuta:\n`interface s0/0`\n` ipv6 enable`\n`interface g0/1`\n` ipv6 address 2001:db8:1::1/64`\n`ipv6 route 2001:db8:9::/64 2001:db8:7::1`\n`ipv6 route ::/0 s0/0`\nNo hay más configuración. ¿Qué afirmación sobre la tabla resultante es correcta?",
+  "explanation": "ipv6 address crea en g0/1 una entrada L (2001:db8:1::1/128) y una C (2001:db8:1::/64). La ruta ::/0 indica una interfaz punto a punto habilitada con ipv6 enable, así que se instala como ruta directa (G=0), con S. La ruta hacia 2001:db8:9::/64 es indirecta (G=1) y solo se instala si hay una ruta directa hacia su next-hop: no existe ninguna para 2001:db8:7::1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        19,
+        23,
+        24,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "Aparecen L 2001:db8:1::1/128, C 2001:db8:1::/64 y S ::/0 por s0/0; la ruta a 2001:db8:9::/64 no se instala.",
+      "explanation": "Aplica las condiciones de instalación de cada tipo de ruta."
+    },
+    {
+      "id": "s00-no",
+      "text": "Aparecen L y C de g0/1; ni S ::/0 (s0/0 no tiene dirección global) ni la ruta a 2001:db8:9::/64.",
+      "explanation": "Una ruta por interfaz se instala si la interfaz está habilitada, con ipv6 address o con ipv6 enable."
+    },
+    {
+      "id": "todas",
+      "text": "Aparecen L, C, S ::/0 y S 2001:db8:9::/64; esta última se reenvía por la ruta por defecto.",
+      "explanation": "El tema exige una ruta directa para el next-hop de una ruta G=1, no una ruta por defecto."
+    },
+    {
+      "id": "g1-por-defecto",
+      "text": "Aparecen L, C y S ::/0 como ruta indirecta (G=1); la ruta a 2001:db8:9::/64 no se instala.",
+      "explanation": "::/0 s0/0 no indica ningún router: es una ruta directa (G=0)."
+    }
+  ],
+  "answer": "correcta"
+}

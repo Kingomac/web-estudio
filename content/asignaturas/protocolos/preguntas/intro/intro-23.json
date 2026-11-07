@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Se planifica una red IoT de 400 nodos. Con el coste orientativo por nodo que da el tema, ¿qué presupuesto total de nodos es coherente?",
+  "explanation": "El tema sitúa el coste en unos 5–30 € por nodo: 400 × 5 € = 2 000 € y 400 × 30 € = 12 000 €.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "como-es-un-nodo-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "entre-2000-y-12000",
+      "text": "Entre 2 000 € y 12 000 €.",
+      "explanation": "Correcta: 400 × 5 € = 2 000 € y 400 × 30 € = 12 000 €."
+    },
+    {
+      "id": "entre-200-y-1200",
+      "text": "Entre 200 € y 1 200 €.",
+      "explanation": "Es un error de un factor 10: correspondería a 40 nodos, o a un coste de 0,5–3 € por nodo."
+    },
+    {
+      "id": "entre-20000-y-120000",
+      "text": "Entre 20 000 € y 120 000 €.",
+      "explanation": "Multiplica por 10 de más: equivaldría a 50–300 € por nodo, muy por encima del rango del tema."
+    },
+    {
+      "id": "entre-5-y-30",
+      "text": "Entre 5 € y 30 € en total.",
+      "explanation": "Confunde el coste por nodo con el coste total del despliegue."
+    }
+  ],
+  "answer": "entre-2000-y-12000"
+}

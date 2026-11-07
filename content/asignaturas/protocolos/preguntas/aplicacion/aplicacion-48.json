@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-48",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una planta con miles de sensores usa publicación/suscripción y teme que, si falla el broker, se pierda toda la comunicación. ¿Qué solución describe el tema?",
+  "explanation": "El modelo descentralizado usa una red de brokers que operan de forma coordinada, de modo que el broker no se convierte en un punto único de fallo ni en un cuello de botella.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "publicacion-suscripcion"
+    }
+  ],
+  "options": [
+    {
+      "id": "red-de-brokers-coordinados",
+      "text": "Un modelo descentralizado con una red de brokers que operan de forma coordinada.",
+      "explanation": "Es la solución del tema para evitar un punto único de fallo o cuello de botella."
+    },
+    {
+      "id": "conexion-directa-publicador-suscriptor",
+      "text": "Que cada suscriptor se conecte directamente a cada publicador.",
+      "explanation": "Eso elimina el broker y con él el desacoplamiento del modelo; el tema no lo propone."
+    },
+    {
+      "id": "qos-2-en-todo",
+      "text": "Publicar todos los mensajes con QoS 2.",
+      "explanation": "QoS 2 evita duplicados entre extremos y broker, pero no sirve de nada si el broker cae."
+    },
+    {
+      "id": "rest-con-cookies",
+      "text": "Pasar a una arquitectura REST que guarde el estado en cookies.",
+      "explanation": "Las cookies mantienen estado en HTTP; no resuelven la dependencia de un único broker."
+    }
+  ],
+  "answer": "red-de-brokers-coordinados"
+}

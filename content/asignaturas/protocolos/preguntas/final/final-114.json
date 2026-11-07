@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-114",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una 6LoWPAN mesh-under tiene un 6LBR y varios nodos FFD que reenvían tramas hacia hosts lejanos. ¿Qué afirmación es correcta?",
+  "explanation": "En mesh-under no hay 6LR: los FFD que reenvían son 6LN que actúan como bridges, todos los hosts están a un salto IP del 6LBR y se registran directamente en él, aunque los mensajes atraviesen varios saltos radio.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        31,
+        32,
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "nombres-de-nodos"
+    }
+  ],
+  "options": [
+    {
+      "id": "6ln-bridge-registro-6lbr",
+      "text": "Los FFD que reenvían son 6LN que actúan como bridges, y cada host registra su dirección directamente en el 6LBR.",
+      "explanation": "Combina los roles de mesh-under con el registro de 6LoWPAN ND."
+    },
+    {
+      "id": "6lr-dar",
+      "text": "Los FFD son 6LR y consultan al 6LBR con DAR antes de confirmar cada registro.",
+      "explanation": "En mesh-under no hay 6LR; el DAD multisalto con DAR/DAC es propio de route-over."
+    },
+    {
+      "id": "varios-saltos-ip",
+      "text": "Un host a tres saltos radio está a tres saltos IP del 6LBR.",
+      "explanation": "En mesh-under todos los hosts están a un salto IP del 6LBR."
+    },
+    {
+      "id": "descomprimen",
+      "text": "Los FFD descomprimen la cabecera IPv6 para decidir el siguiente salto.",
+      "explanation": "En mesh-under se reenvía en 6LoWPAN con direcciones de enlace, sin descomprimir IPv6."
+    }
+  ],
+  "answer": "6ln-bridge-registro-6lbr"
+}

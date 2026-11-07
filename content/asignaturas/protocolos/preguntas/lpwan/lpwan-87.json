@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-87",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un NS entrega a un gateway Basics Station el downlink `pdu: \"6027A9FC2700010001AABB11223344\"`. FCtrl vale 0x00, así que no hay FOpts. ¿Qué tipo de mensaje es y cuántos bytes de FRMPayload lleva?",
+  "explanation": "Son 15 bytes: MHDR 0x60 (downlink sin confirmación), DevAddr (4), FCtrl (1), FCnt (2), FPort 0x01, FRMPayload AA BB (2) y MIC 11 22 33 44 (4).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "capa-mac-y-trama"
+    }
+  ],
+  "options": [
+    {
+      "id": "downlink-de-datos-sin-confirmacion-con-2",
+      "text": "Downlink de datos sin confirmación, con 2 bytes de FRMPayload.",
+      "explanation": "MHDR 0x60 y 15 − 13 = 2 bytes."
+    },
+    {
+      "id": "downlink-de-datos-con-confirmacion-con-2",
+      "text": "Downlink de datos con confirmación, con 2 bytes de FRMPayload.",
+      "explanation": "Con confirmación el MHDR sería 0xA0."
+    },
+    {
+      "id": "downlink-de-datos-sin-confirmacion-con-6",
+      "text": "Downlink de datos sin confirmación, con 6 bytes de FRMPayload.",
+      "explanation": "Cuenta los 4 bytes finales como datos; son el MIC."
+    },
+    {
+      "id": "uplink-de-datos-sin-confirmacion-con-2",
+      "text": "Uplink de datos sin confirmación, con 2 bytes de FRMPayload.",
+      "explanation": "0x40 sería un uplink sin confirmación; 0x60 es descendente."
+    }
+  ],
+  "answer": "downlink-de-datos-sin-confirmacion-con-2"
+}

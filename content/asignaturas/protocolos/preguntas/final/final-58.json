@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-58",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un sensor tiene en su interfaz fe80::25/64, fd3a:5b7c:9d1e:1::25/64 y 2001:db8:40:1::25/64. Debe enviar datos a un concentrador de la misma organización situado en otra subred (fd3a:5b7c:9d1e:7::10), con un direccionamiento que no dependa del ISP, y también a un servicio en Internet. ¿Qué direcciones origen debe usar en cada caso?",
+  "explanation": "La link-local solo sirve dentro del enlace: no atraviesa routers. La ULA (fd00::/8) sí atraviesa routers dentro de la organización y es independiente del proveedor, pero no puede usarse para encaminar en Internet. Para Internet hace falta la unicast global. Una interfaz puede tener a la vez las tres.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        13,
+        17,
+        18
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "globales-link-local-y-ula"
+    }
+  ],
+  "options": [
+    {
+      "id": "ula-y-global",
+      "text": "fd3a:5b7c:9d1e:1::25 hacia el concentrador y 2001:db8:40:1::25 hacia Internet.",
+      "explanation": "Usa cada tipo de dirección dentro de su ámbito."
+    },
+    {
+      "id": "link-local-interna",
+      "text": "fe80::25 hacia el concentrador y 2001:db8:40:1::25 hacia Internet.",
+      "explanation": "El concentrador está en otra subred: una link-local no atraviesa routers."
+    },
+    {
+      "id": "ula-ambas",
+      "text": "fd3a:5b7c:9d1e:1::25 en los dos casos, porque el prefijo ULA es casi con certeza único.",
+      "explanation": "Las ULA no pueden usarse para encaminamiento en Internet."
+    },
+    {
+      "id": "global-ambas-isp",
+      "text": "2001:db8:40:1::25 en los dos casos; una ULA solo es válida dentro de su subred.",
+      "explanation": "La global funcionaría, pero dependería del ISP; y las ULA, a diferencia de las link-local, sí atraviesan routers."
+    }
+  ],
+  "answer": "ula-y-global"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-60",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En la petición del opening handshake de WebSocket, ¿qué cabeceras piden al servidor el cambio de protocolo?",
+  "explanation": "La petición incluye `Upgrade: websocket` y `Connection: Upgrade`; si el servidor acepta, responde `101 Switching Protocols` con las mismas cabeceras y `Sec-WebSocket-Accept`.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "websocket"
+    }
+  ],
+  "options": [
+    {
+      "id": "upgrade-y-connection-upgrade",
+      "text": "`Upgrade: websocket` y `Connection: Upgrade`.",
+      "explanation": "Son las cabeceras que solicitan el cambio de HTTP a WebSocket."
+    },
+    {
+      "id": "connection-keep-alive",
+      "text": "`Connection: keep-alive`.",
+      "explanation": "keep-alive pide una conexión HTTP persistente, no un cambio de protocolo."
+    },
+    {
+      "id": "if-modified-since",
+      "text": "`If-Modified-Since`.",
+      "explanation": "If-Modified-Since hace una petición condicional para validar una copia en caché."
+    },
+    {
+      "id": "content-type-json",
+      "text": "`Content-Type: application/json`.",
+      "explanation": "Indica el formato del cuerpo, como en el payload JSON de un webhook."
+    }
+  ],
+  "answer": "upgrade-y-connection-upgrade"
+}

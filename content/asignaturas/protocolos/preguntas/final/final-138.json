@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-138",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Comparando el `rxpk` de un uplink con el `txpk` de un downlink en el UDP Packet Forwarder, ¿qué es correcto sobre el `txpk`?",
+  "explanation": "En ambos sentidos se envía el PHYPayload completo en Base64. La diferencia es que el uplink añade metadatos de recepción (rssi, lsnr…) y el downlink indica cómo y cuándo transmitir: instante, frecuencia, datr, potencia, etc.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        40,
+        45,
+        59
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "no-lleva-rssi-ni-lsnr-indica-como-y",
+      "text": "No lleva rssi ni lsnr: indica cómo y cuándo transmitir, con el PHYPayload completo en Base64.",
+      "explanation": "P. 59."
+    },
+    {
+      "id": "solo-lleva-el-frmpayload-porque-las",
+      "text": "Solo lleva el FRMPayload, porque las cabeceras las añade el gateway.",
+      "explanation": "El NS genera la trama LoRaWAN completa y el gateway solo construye la trama física LoRa (p. 57)."
+    },
+    {
+      "id": "no-indica-frecuencia-el-gateway",
+      "text": "No indica frecuencia: el gateway reutiliza la del último uplink.",
+      "explanation": "El NS indica frecuencia, Data Rate y potencia (`freq`, `datr`, `powe`)."
+    },
+    {
+      "id": "lleva-el-payload-descifrado-para-que-el",
+      "text": "Lleva el payload descifrado para que el gateway lo module.",
+      "explanation": "El gateway nunca tiene los datos en claro."
+    }
+  ],
+  "answer": "no-lleva-rssi-ni-lsnr-indica-como-y"
+}

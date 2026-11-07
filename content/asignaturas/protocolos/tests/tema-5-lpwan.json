@@ -4,8 +4,8 @@
   "subjectId": "protocolos",
   "slug": "tema-5-lpwan",
   "title": "Test · Tema 5 · LPWAN y LoRaWAN",
-  "description": "48 preguntas del tema 5: LPWAN celulares, arquitectura y plataformas LoRaWAN, clases y activación, trama y procesado en gateway, NS y AS.",
-  "scope": "Tema 5 completo (61 páginas).",
+  "description": "109 preguntas sobre el tema 5 completo: LPWAN, NB-IoT y LTE-M, LoRaWAN (redes y plataformas, Data Rate y ADR, duty cycle y clases, activación, trama, gateway, NS, AS y downlinks) y comparativa final.",
+  "scope": "Tema 5 completo: material protocolos.materiales.tema-5-lpwan-lorawan, páginas 1-61 (61 páginas).",
   "tagIds": [
     "protocolos.tags.lpwan",
     "protocolos.tags.examen-final"
@@ -13,75 +13,178 @@
   "order": 190,
   "groups": [
     {
-      "id": "lpwan-y-celulares",
-      "title": "LPWAN, NB-IoT y LTE-M",
+      "id": "lpwan-y-tecnologias",
+      "title": "LPWAN: concepto, aplicaciones y tecnologías (pp. 2-5)",
       "questionIds": [
         "protocolos.preguntas.lpwan-1",
         "protocolos.preguntas.lpwan-2",
+        "protocolos.preguntas.lpwan-49",
         "protocolos.preguntas.lpwan-3",
-        "protocolos.preguntas.lpwan-4",
+        "protocolos.preguntas.lpwan-50",
+        "protocolos.preguntas.lpwan-51",
+        "protocolos.preguntas.lpwan-4"
+      ]
+    },
+    {
+      "id": "nb-iot-y-lte-m",
+      "title": "NB-IoT y LTE-M: arquitectura, modos, PSM/eDRX, OTA y costes (pp. 7-16)",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-52",
         "protocolos.preguntas.lpwan-5",
-        "protocolos.preguntas.lpwan-6",
-        "protocolos.preguntas.lpwan-7",
-        "protocolos.preguntas.lpwan-8",
+        "protocolos.preguntas.lpwan-54",
         "protocolos.preguntas.lpwan-9",
         "protocolos.preguntas.lpwan-10",
         "protocolos.preguntas.lpwan-11",
+        "protocolos.preguntas.lpwan-55",
+        "protocolos.preguntas.lpwan-56",
         "protocolos.preguntas.lpwan-12",
-        "protocolos.preguntas.lpwan-13"
+        "protocolos.preguntas.lpwan-13",
+        "protocolos.preguntas.lpwan-57",
+        "protocolos.preguntas.lpwan-6",
+        "protocolos.preguntas.lpwan-7",
+        "protocolos.preguntas.lpwan-53",
+        "protocolos.preguntas.lpwan-58"
       ]
     },
     {
-      "id": "lorawan-red-y-plataformas",
-      "title": "LoRaWAN: red, plataformas y Data Rate",
+      "id": "lorawan-redes-y-plataformas",
+      "title": "LoRa y LoRaWAN: arquitectura, tipos de red y plataformas (pp. 18-26)",
       "questionIds": [
         "protocolos.preguntas.lpwan-14",
         "protocolos.preguntas.lpwan-15",
+        "protocolos.preguntas.lpwan-59",
         "protocolos.preguntas.lpwan-16",
         "protocolos.preguntas.lpwan-17",
+        "protocolos.preguntas.lpwan-60",
         "protocolos.preguntas.lpwan-18",
+        "protocolos.preguntas.lpwan-61",
+        "protocolos.preguntas.lpwan-62",
         "protocolos.preguntas.lpwan-19",
+        "protocolos.preguntas.lpwan-63",
         "protocolos.preguntas.lpwan-20",
-        "protocolos.preguntas.lpwan-21",
-        "protocolos.preguntas.lpwan-22",
-        "protocolos.preguntas.lpwan-23",
-        "protocolos.preguntas.lpwan-24"
+        "protocolos.preguntas.lpwan-64",
+        "protocolos.preguntas.lpwan-65"
       ]
     },
     {
-      "id": "clases-y-activacion",
-      "title": "Duty cycle, clases y activación",
+      "id": "data-rate-y-adr",
+      "title": "Data Rate, Spreading Factor y ADR (pp. 27-28)",
       "questionIds": [
+        "protocolos.preguntas.lpwan-21",
+        "protocolos.preguntas.lpwan-22",
+        "protocolos.preguntas.lpwan-66",
+        "protocolos.preguntas.lpwan-23",
+        "protocolos.preguntas.lpwan-67",
+        "protocolos.preguntas.lpwan-68"
+      ]
+    },
+    {
+      "id": "duty-cycle-y-clases",
+      "title": "Airtime, duty cycle y clases A, B y C (pp. 29-30)",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-24",
+        "protocolos.preguntas.lpwan-72",
+        "protocolos.preguntas.lpwan-69",
+        "protocolos.preguntas.lpwan-70",
+        "protocolos.preguntas.lpwan-71",
         "protocolos.preguntas.lpwan-25",
         "protocolos.preguntas.lpwan-26",
         "protocolos.preguntas.lpwan-27",
         "protocolos.preguntas.lpwan-28",
+        "protocolos.preguntas.lpwan-73",
+        "protocolos.preguntas.lpwan-76",
         "protocolos.preguntas.lpwan-29",
+        "protocolos.preguntas.lpwan-74",
+        "protocolos.preguntas.lpwan-75"
+      ]
+    },
+    {
+      "id": "activacion-y-otaa",
+      "title": "Activación: identificadores, claves, ABP y OTAA (pp. 31-33)",
+      "questionIds": [
         "protocolos.preguntas.lpwan-30",
+        "protocolos.preguntas.lpwan-77",
         "protocolos.preguntas.lpwan-31",
+        "protocolos.preguntas.lpwan-78",
+        "protocolos.preguntas.lpwan-79",
         "protocolos.preguntas.lpwan-32",
+        "protocolos.preguntas.lpwan-82",
+        "protocolos.preguntas.lpwan-80",
+        "protocolos.preguntas.lpwan-81",
         "protocolos.preguntas.lpwan-33"
       ]
     },
     {
-      "id": "trama-y-procesado",
-      "title": "Trama, gateway, NS, AS y downlinks",
+      "id": "protocolos-json-y-trama",
+      "title": "Arquitectura de protocolos, JSON/Base64 y trama MAC (pp. 34-39)",
       "questionIds": [
         "protocolos.preguntas.lpwan-34",
+        "protocolos.preguntas.lpwan-83",
         "protocolos.preguntas.lpwan-35",
-        "protocolos.preguntas.lpwan-36",
-        "protocolos.preguntas.lpwan-37",
+        "protocolos.preguntas.lpwan-91",
+        "protocolos.preguntas.lpwan-84",
+        "protocolos.preguntas.lpwan-85",
         "protocolos.preguntas.lpwan-38",
-        "protocolos.preguntas.lpwan-39",
+        "protocolos.preguntas.lpwan-89",
+        "protocolos.preguntas.lpwan-86",
+        "protocolos.preguntas.lpwan-87",
+        "protocolos.preguntas.lpwan-37",
+        "protocolos.preguntas.lpwan-88",
+        "protocolos.preguntas.lpwan-90"
+      ]
+    },
+    {
+      "id": "gateway-y-network-server",
+      "title": "Gateway, forwarders y Network Server (pp. 40-50)",
+      "questionIds": [
         "protocolos.preguntas.lpwan-40",
-        "protocolos.preguntas.lpwan-41",
-        "protocolos.preguntas.lpwan-42",
+        "protocolos.preguntas.lpwan-39",
+        "protocolos.preguntas.lpwan-92",
+        "protocolos.preguntas.lpwan-93",
+        "protocolos.preguntas.lpwan-94",
+        "protocolos.preguntas.lpwan-95",
+        "protocolos.preguntas.lpwan-96",
+        "protocolos.preguntas.lpwan-97",
+        "protocolos.preguntas.lpwan-98"
+      ]
+    },
+    {
+      "id": "application-server-y-ttn",
+      "title": "Application Server, payload decoders y pasos en TTN (pp. 46-55)",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-99",
+        "protocolos.preguntas.lpwan-100",
         "protocolos.preguntas.lpwan-43",
+        "protocolos.preguntas.lpwan-41",
+        "protocolos.preguntas.lpwan-101",
+        "protocolos.preguntas.lpwan-42",
+        "protocolos.preguntas.lpwan-102",
+        "protocolos.preguntas.lpwan-103",
         "protocolos.preguntas.lpwan-44",
+        "protocolos.preguntas.lpwan-104"
+      ]
+    },
+    {
+      "id": "downlinks",
+      "title": "Downlinks: comandos MAC, recorrido y elección de gateway (pp. 56-60)",
+      "questionIds": [
         "protocolos.preguntas.lpwan-45",
-        "protocolos.preguntas.lpwan-46",
+        "protocolos.preguntas.lpwan-105",
+        "protocolos.preguntas.lpwan-106",
+        "protocolos.preguntas.lpwan-107",
+        "protocolos.preguntas.lpwan-108",
         "protocolos.preguntas.lpwan-47",
-        "protocolos.preguntas.lpwan-48"
+        "protocolos.preguntas.lpwan-46",
+        "protocolos.preguntas.lpwan-109"
+      ]
+    },
+    {
+      "id": "comparativa",
+      "title": "Comparativa de tecnologías LPWAN (p. 61)",
+      "questionIds": [
+        "protocolos.preguntas.lpwan-48",
+        "protocolos.preguntas.lpwan-110",
+        "protocolos.preguntas.lpwan-111"
       ]
     }
   ]

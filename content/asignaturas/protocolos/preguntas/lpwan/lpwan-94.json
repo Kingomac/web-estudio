@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-94",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Se va a poner en producción un gateway SenseCAP M2 conectado a The Things Stack. ¿Qué configuración recomienda el tema?",
+  "explanation": "En producción solo debe usarse Basics Station, con WebSockets seguros y autenticación mutua entre gateway y LNS; el UDP Packet Forwarder está en desuso por falta de seguridad.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        41,
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "basics-station-con-una-direccion-wss-con",
+      "text": "Basics Station con una dirección wss://, con TLS y autenticación mutua.",
+      "explanation": "P. 43; en el ejemplo, wss://eu1.cloud.thethings.network:8887."
+    },
+    {
+      "id": "udp-packet-forwarder-en-el-puerto-1700",
+      "text": "UDP Packet Forwarder en el puerto 1700, por ser más ligero.",
+      "explanation": "Es ligero pero no cifra ni autentica: está en desuso."
+    },
+    {
+      "id": "enviar-los-uplinks-por-mqtt-directamente",
+      "text": "Enviar los uplinks por MQTT directamente al Application Server.",
+      "explanation": "El gateway entrega las tramas al NS, no al AS."
+    },
+    {
+      "id": "packet-broker-que-cifra-el-tramo-gateway",
+      "text": "Packet Broker, que cifra el tramo gateway-NS.",
+      "explanation": "Packet Broker comparte cobertura entre redes; no es un forwarder."
+    }
+  ],
+  "answer": "basics-station-con-una-direccion-wss-con"
+}

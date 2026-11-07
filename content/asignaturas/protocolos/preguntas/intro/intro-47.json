@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-47",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Según la infografía comparativa del tema, ¿qué grupo contiene solo tecnologías LPWAN?",
+  "explanation": "La infografía clasifica LoRaWAN, NB-IoT y LTE-M como LPWAN, y IEEE 802.15.4, 6LoWPAN, Zigbee, Thread y Bluetooth Low Energy como LoWPAN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "lorawan-nbiot-ltem",
+      "text": "LoRaWAN, NB-IoT y LTE-M.",
+      "explanation": "Correcta: son las tres tecnologías LPWAN de la infografía."
+    },
+    {
+      "id": "zigbee-thread-6lowpan",
+      "text": "Zigbee, Thread y 6LoWPAN.",
+      "explanation": "Son tecnologías LoWPAN, de corto alcance."
+    },
+    {
+      "id": "802154-ble-lorawan",
+      "text": "IEEE 802.15.4, BLE y LoRaWAN.",
+      "explanation": "Mezcla: IEEE 802.15.4 y BLE son LoWPAN; solo LoRaWAN es LPWAN."
+    },
+    {
+      "id": "nbiot-zigbee-ble",
+      "text": "NB-IoT, Zigbee y BLE.",
+      "explanation": "Mezcla: Zigbee y BLE son LoWPAN; solo NB-IoT es LPWAN."
+    }
+  ],
+  "answer": "lorawan-nbiot-ltem"
+}

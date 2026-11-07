@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-144",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo pasa de transmitir con DR5 a hacerlo con DR0 (EU868, 125 kHz). Según la tabla de Data Rates, ¿aproximadamente cuántas veces menor es su tasa y qué consecuencia tiene?",
+  "explanation": "DR5 ≈ 5,47 kbps y DR0 ≈ 0,25 kbps: 5,47 / 0,25 ≈ 22. El mismo mensaje ocupa mucho más airtime, así que caben muchos menos en el duty cycle, a cambio de más sensibilidad y alcance.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        27,
+        28,
+        29
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "data-rate-y-adr"
+    }
+  ],
+  "options": [
+    {
+      "id": "unas-22-veces-cada-mensaje-ocupa-mucho",
+      "text": "Unas 22 veces; cada mensaje ocupa mucho más airtime y caben menos en el duty cycle.",
+      "explanation": "≈5,47 / ≈0,25."
+    },
+    {
+      "id": "5-veces-una-por-cada-paso-de-dr",
+      "text": "5 veces, una por cada paso de DR.",
+      "explanation": "Los DR son índices: no escalan la tasa linealmente."
+    },
+    {
+      "id": "unas-1-7-veces-la-relacion-entre-sf12-y",
+      "text": "Unas 1,7 veces, la relación entre SF12 y SF7.",
+      "explanation": "La tasa no es proporcional al SF: la tabla da ≈0,25 kbps frente a ≈5,47 kbps."
+    },
+    {
+      "id": "unas-22-veces-pero-el-airtime-no-cambia",
+      "text": "Unas 22 veces, pero el airtime no cambia porque el mensaje tiene el mismo tamaño.",
+      "explanation": "El airtime depende del tamaño y del DR (p. 29)."
+    }
+  ],
+  "answer": "unas-22-veces-cada-mensaje-ocupa-mucho"
+}

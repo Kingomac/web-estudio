@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.final-96",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo recién llegado envía una trama sin cabecera Mesh ni fragmentación cuya cabecera de adaptación es 7B 3B 3A 02. ¿Qué cabecera IPv6 reconstruye el receptor?",
+  "explanation": "0x7B = 011 11 0 11: TF = 11 (ceros), NH = 0 (Next Header en línea) y HLIM = 11 (255). 0x3B = 0 0 11 1 0 11: CID = 0, SAC = 0 y SAM = 11 (fe80:: + IID de la MAC origen), M = 1, DAC = 0 y DAM = 11 (ff02::00GG). En línea, por orden: Next Header 0x3A (58, ICMPv6) y grupo 0x02. Es un ICMPv6 a ff02::2 con Hop Limit 255, como un RS.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        19,
+        21,
+        23,
+        26,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "metodo-para-resolver-ejercicios-iphc"
+    }
+  ],
+  "options": [
+    {
+      "id": "rs",
+      "text": "Origen fe80:: con el IID de la MAC origen; destino ff02::2; Next Header 58 (ICMPv6); Hop Limit 255.",
+      "explanation": "Decodifica los códigos y lee los campos en línea en su orden."
+    },
+    {
+      "id": "orden-invertido",
+      "text": "Origen fe80:: con el IID de la MAC origen; destino ff02::3a; Next Header 2; Hop Limit 255.",
+      "explanation": "Invierte el orden de los campos en línea: Next Header va antes que la dirección destino."
+    },
+    {
+      "id": "hl-64",
+      "text": "Origen fe80:: con el IID de la MAC origen; destino ff02::2; Next Header 58; Hop Limit 64.",
+      "explanation": "HLIM = 11 reconstruye 255; 64 es HLIM = 10."
+    },
+    {
+      "id": "origen-sin-especificar",
+      "text": "Origen ::; destino ff02::2; Next Header 58; Hop Limit 255.",
+      "explanation": "La dirección sin especificar es SAC = 1 con SAM = 00; SAC = 0 con SAM = 11 es fe80:: con el IID de la MAC."
+    }
+  ],
+  "answer": "rs"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "protocolos.preguntas.final-54",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente consulta por mDNS PTR _coap._udp.local y obtiene:\n`PTR  _coap._udp.local → Invernadero._coap._udp.local`\n`SRV  Invernadero._coap._udp.local → nodo9.local · puerto 61620`\n`AAAA nodo9.local → fe80::9`\nDespués envía GET a /.well-known/core en ese servidor y recibe `</s/1>;rt=\"temperature-c\",</s/2>;rt=\"humidity\"`. ¿Qué URI usa para leer la temperatura?",
+  "explanation": "El SRV de la instancia da el host (nodo9.local) y el puerto (61620), y el AAAA permite resolver ese host. El descubrimiento CoAP devuelve el enlace /s/1 con rt = \"temperature-c\", una ruta desde la raíz del servidor. La URI combina esquema, host, puerto y ruta: coap://nodo9.local:61620/s/1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        48,
+        49,
+        50,
+        53
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "descubrimiento-de-recursos-coap-y-directorio"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "coap://nodo9.local:61620/s/1",
+      "explanation": "Usa host y puerto del SRV y la ruta del enlace con el rt deseado."
+    },
+    {
+      "id": "5683",
+      "text": "coap://nodo9.local:5683/s/1",
+      "explanation": "Ignora el puerto del SRV: la instancia está en el 61620."
+    },
+    {
+      "id": "instancia",
+      "text": "coap://Invernadero._coap._udp.local:61620/s/1",
+      "explanation": "El nombre de instancia no es un nombre de host; el host es el que indica el SRV."
+    },
+    {
+      "id": "5353",
+      "text": "coap://nodo9.local:5353/s/1",
+      "explanation": "5353 es el puerto de mDNS, usado para el descubrimiento, no el del servicio CoAP."
+    },
+    {
+      "id": "well-known",
+      "text": "coap://nodo9.local:61620/.well-known/core/s/1",
+      "explanation": "Los enlaces se resuelven desde la raíz del servidor, no bajo /.well-known/core."
+    }
+  ],
+  "answer": "correcta"
+}

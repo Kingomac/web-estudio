@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-27",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En la petición SOAP del tema:\n`<soap:Envelope …><soap:Body><getProductInfo xmlns=\"http://warehouse.example.com/ws\"><productId>827635</productId></getProductInfo></soap:Body></soap:Envelope>`\n¿Qué parte indica la operación que se solicita al servicio?",
+  "explanation": "Envelope es la raíz que identifica el mensaje SOAP y Body el elemento obligatorio que contiene el mensaje: dentro de él, `getProductInfo` es la operación solicitada y `productId` su parámetro. La respuesta lo refleja con `getProductInfoResult`. No hay Header, que es opcional.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        33,
+        34
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "getproductinfo",
+      "text": "El elemento `getProductInfo` dentro de Body.",
+      "explanation": "Es el contenido del mensaje: la operación con su parámetro."
+    },
+    {
+      "id": "envelope",
+      "text": "`soap:Envelope`, porque es el elemento raíz.",
+      "explanation": "Envelope identifica que es un mensaje SOAP, no qué operación se pide."
+    },
+    {
+      "id": "header",
+      "text": "Un Header obligatorio que aquí falta.",
+      "explanation": "Header es opcional y lleva información sobre cómo procesar el mensaje; su ausencia no invalida la petición."
+    },
+    {
+      "id": "productid",
+      "text": "`productId`, con el valor 827635.",
+      "explanation": "Es el parámetro de la operación, no la operación."
+    }
+  ],
+  "answer": "getproductinfo"
+}

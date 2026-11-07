@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-39",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un nodo CoAP envía lecturas de temperatura cada segundo, donde perder alguna no importa, y una alarma de incendio que debe llegar aunque haya pérdidas en la red. ¿Qué modos de operación encajan?",
+  "explanation": "En modo non-confirmable no hay ACK ni reintentos: adecuado para lecturas frecuentes cuya pérdida se tolera. En modo confirmable el receptor envía un ACK y, si no llega, el cliente reenvía hasta 4 veces con backoff exponencial: adecuado para la alarma.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "tipos-de-mensaje-y-fiabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "non-telemetria-con-alarma",
+      "text": "NON para la telemetría y CON para la alarma.",
+      "explanation": "La alarma se reenvía hasta 4 veces si no llega el ACK."
+    },
+    {
+      "id": "con-ambos",
+      "text": "CON para ambos, porque los mensajes NON no pueden llevar datos.",
+      "explanation": "Los mensajes NON sí llevan datos (en el esquema non-confirmable la respuesta trae la medida); simplemente no se confirman."
+    },
+    {
+      "id": "non-alarma",
+      "text": "NON para la alarma, porque llega antes al no esperar ACK.",
+      "explanation": "Sin ACK no hay reenvío: si la alarma se pierde, nadie lo detecta."
+    },
+    {
+      "id": "con-telemetria-non-alarma",
+      "text": "CON para la telemetría y NON multicast para la alarma.",
+      "explanation": "Invierte los requisitos: la fiabilidad la necesita la alarma, y NON no la da."
+    }
+  ],
+  "answer": "non-telemetria-con-alarma"
+}

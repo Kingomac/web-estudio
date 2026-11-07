@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-93",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Sobre IEEE 802.15.4 en la banda de 2,4 GHz usada por Zigbee y Thread, ¿cuál de estas afirmaciones NO es correcta?",
+  "explanation": "El tema subraya que no existe un alcance fijo garantizado por el estándar: suelen ser decenas de metros por salto en interiores y puede superar 100 m en exteriores según potencia, antenas y propagación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        7
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tecnologias-y-clasificacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "alcance-garantizado",
+      "text": "El estándar garantiza un alcance fijo de unos 100 m por salto en interiores.",
+      "explanation": "Es la falsa: no hay alcance garantizado, y en interiores suele ser de decenas de metros."
+    },
+    {
+      "id": "csma-ca",
+      "text": "Comparte el canal con CSMA/CA y usa confirmaciones y retransmisiones entre vecinos.",
+      "explanation": "Es correcta: así describe el tema el acceso y la fiabilidad."
+    },
+    {
+      "id": "dormir",
+      "text": "Los dispositivos finales pueden apagar la radio durante periodos de reposo.",
+      "explanation": "Es correcta: es una de las claves de su bajo consumo."
+    },
+    {
+      "id": "capas-superiores",
+      "text": "802.15.4 comunica vecinos y las capas superiores deciden cómo reenviar por la malla.",
+      "explanation": "Es correcta: Zigbee y Thread añaden el multisalto por encima."
+    }
+  ],
+  "answer": "alcance-garantizado"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-46",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un analizador muestra un vecino con la dirección link-local fe80::a8bb:ccff:fedd:eeff, formada automáticamente con EUI-64 modificado. ¿Cuál es la MAC Ethernet de su interfaz?",
+  "explanation": "Se deshace la construcción: se quitan los bytes FF:FE del centro del IID (a8bb:ccff:fedd:eeff → a8:bb:cc:dd:ee:ff) y se vuelve a invertir el bit U/L del primer octeto: a8 XOR 02 = aa. La MAC es aa:bb:cc:dd:ee:ff.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        15,
+        16,
+        17
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "desde-una-mac-de-48-bits"
+    }
+  ],
+  "options": [
+    {
+      "id": "aa",
+      "text": "aa:bb:cc:dd:ee:ff",
+      "explanation": "Quita FF:FE y deshace la inversión del bit U/L."
+    },
+    {
+      "id": "a8",
+      "text": "a8:bb:cc:dd:ee:ff",
+      "explanation": "Quita FF:FE pero no deshace la inversión del bit U/L."
+    },
+    {
+      "id": "con-fffe",
+      "text": "aa:bb:cc:ff:fe:dd",
+      "explanation": "Conserva FF:FE, que se insertaron para ampliar la MAC a 64 bits, y pierde los dos últimos octetos."
+    },
+    {
+      "id": "bit-equivocado",
+      "text": "a9:bb:cc:dd:ee:ff",
+      "explanation": "Invierte el bit menos significativo; el bit U/L es el segundo menos significativo (0x02)."
+    }
+  ],
+  "answer": "aa"
+}

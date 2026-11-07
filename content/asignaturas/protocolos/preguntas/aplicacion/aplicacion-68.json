@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-68",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes afirmaciones sobre OPC UA NO es correcta?",
+  "explanation": "OPC UA es una arquitectura cliente/servidor orientada a servicios, independiente del hardware y del sistema operativo, con cifrado, autenticación y auditoría y una capa de seguridad a nivel de sesión. Funciona sobre TCP (4840), HTTP (80) o HTTPS (443).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        31,
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "publicacion-suscripcion-udp",
+      "text": "Es un protocolo de publicación/suscripción que funciona sobre UDP.",
+      "explanation": "Es falsa: OPC UA es cliente/servidor y el tema lo sitúa sobre TCP, HTTP o HTTPS."
+    },
+    {
+      "id": "independiente-plataforma",
+      "text": "Es independiente de la plataforma hardware y del sistema operativo.",
+      "explanation": "Es correcta: así lo describe el tema."
+    },
+    {
+      "id": "seguridad-sesion",
+      "text": "Introduce una capa de seguridad a nivel de sesión.",
+      "explanation": "Es correcta: aparece en su pila de protocolos."
+    },
+    {
+      "id": "dos-codificaciones",
+      "text": "Define una codificación XML y otra binaria.",
+      "explanation": "Es correcta: XML legible pero ineficiente, binaria eficiente pero no legible."
+    }
+  ],
+  "answer": "publicacion-suscripcion-udp"
+}

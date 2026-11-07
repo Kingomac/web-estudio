@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-61",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una vez establecido un WebSocket, ¿cómo se intercambian los datos?",
+  "explanation": "Tras el handshake deja de usarse HTTP: cliente y servidor pueden enviarse datos en cualquier momento mediante frames con formato binario.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        24,
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "websocket"
+    }
+  ],
+  "options": [
+    {
+      "id": "frames-binarios-en-cualquier-momento",
+      "text": "Con frames binarios que cualquiera de los dos extremos envía en cualquier momento.",
+      "explanation": "Es lo que describe el tema: HTTP ya no interviene."
+    },
+    {
+      "id": "get-por-mensaje",
+      "text": "Cada mensaje del servidor responde a un GET previo del cliente.",
+      "explanation": "Eso sería sondeo HTTP; WebSocket permite que el servidor envíe datos sin que el cliente los pida."
+    },
+    {
+      "id": "post-por-frame",
+      "text": "Cada frame se encapsula en un HTTP POST.",
+      "explanation": "Un POST a una URL es el mecanismo de los webhooks; WebSocket deja de usar HTTP tras el handshake."
+    },
+    {
+      "id": "solo-el-cliente",
+      "text": "Solo el cliente envía frames; el servidor responde con 101 a cada uno.",
+      "explanation": "101 Switching Protocols solo aparece una vez, en el handshake; después ambos extremos envían frames."
+    }
+  ],
+  "answer": "frames-binarios-en-cualquier-momento"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-41",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Por qué el tema considera la topología en estrella eficiente desde el punto de vista energético?",
+  "explanation": "En estrella, todos los nodos están dentro del radio de la pasarela o router y solo encienden su radio cuando tienen algo que transmitir; no reenvían tráfico de otros.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "topologias"
+    }
+  ],
+  "options": [
+    {
+      "id": "radio-solo-al-transmitir",
+      "text": "Porque los nodos solo encienden la radio cuando tienen algo que transmitir.",
+      "explanation": "Correcta: es la razón que da el tema, junto con la simplicidad."
+    },
+    {
+      "id": "caminos-redundantes",
+      "text": "Porque ofrece caminos redundantes que evitan retransmisiones.",
+      "explanation": "Los caminos redundantes caracterizan la malla, no la estrella."
+    },
+    {
+      "id": "nodos-repetidores",
+      "text": "Porque los nodos actúan como repetidores y reparten el consumo.",
+      "explanation": "Los repetidores son propios del árbol; además, reenviar tráfico ajeno exige mantener la radio activa."
+    },
+    {
+      "id": "pasarela-dormida",
+      "text": "Porque la pasarela permanece dormida la mayor parte del tiempo.",
+      "explanation": "El ahorro se refiere a los nodos; la pasarela debe estar disponible para recibirlos."
+    }
+  ],
+  "answer": "radio-solo-al-transmitir"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-111",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Se quiere comprimir con IPHC (M = 1, DAC = 0) el destino multicast ff05::1:0:3 con la máxima compresión que lo reconstruya exactamente. ¿Qué DAM se usa?",
+  "explanation": "ff05::1:0:3 = ff05:0:0:0:0:0001:0000:0003. DAM = 11 solo vale para ff02::00GG. DAM = 10 (ffFS::00GG:GGGG) cubre solo los 32 bits finales y perdería el 0001. DAM = 01 (ffFS::00GG:GGGG:GGGG) sí lo reconstruye: 48 bits en línea.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        26
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccion-destino-m-dac-y-dam"
+    }
+  ],
+  "options": [
+    {
+      "id": "dam-01",
+      "text": "DAM = 01, con 48 bits en línea.",
+      "explanation": "Es la forma más corta que conserva los 40 bits de grupo necesarios."
+    },
+    {
+      "id": "dam-10",
+      "text": "DAM = 10, con 32 bits en línea.",
+      "explanation": "Reconstruiría ff05::3: el 1 del sexto grupo queda fuera de los 24 bits de grupo de esta forma."
+    },
+    {
+      "id": "dam-11",
+      "text": "DAM = 11, con 8 bits en línea.",
+      "explanation": "DAM = 11 solo representa direcciones ff02::00GG, y el ámbito aquí es 5."
+    },
+    {
+      "id": "dam-00",
+      "text": "DAM = 00, con 128 bits en línea.",
+      "explanation": "Es correcto, pero no es la máxima compresión."
+    }
+  ],
+  "answer": "dam-01"
+}

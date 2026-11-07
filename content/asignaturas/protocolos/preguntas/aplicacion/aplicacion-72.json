@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-72",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servidor CoAP recibe una petición non-confirmable (NON) que es incapaz de procesar. ¿Qué hace según el tema?",
+  "explanation": "Si el servidor es incapaz de procesar la petición envía un mensaje RST, tanto en modo confirmable como non-confirmable. En modo NON no se envía ACK.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "tipos-de-mensaje-y-fiabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "rst",
+      "text": "Envía un mensaje RST.",
+      "explanation": "El tema dice que el RST se envía en ambos modos cuando no se puede procesar la petición."
+    },
+    {
+      "id": "nada",
+      "text": "No envía nada, porque en modo NON no hay mensajes de vuelta.",
+      "explanation": "En modo NON no hay ACK, pero el RST se envía igualmente."
+    },
+    {
+      "id": "ack-vacio",
+      "text": "Envía un ACK vacío.",
+      "explanation": "En modo NON el servidor no envía ACK."
+    },
+    {
+      "id": "retransmite",
+      "text": "Pide al cliente que retransmita hasta 4 veces.",
+      "explanation": "Los reintentos son del cliente y solo en modo CON cuando no llega el ACK."
+    }
+  ],
+  "answer": "rst"
+}

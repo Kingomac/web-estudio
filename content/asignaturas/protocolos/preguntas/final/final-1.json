@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un nodo de riego funciona con batería recargada por un panel solar a través de un regulador de voltaje. Mide la humedad del suelo, abre una electroválvula, muestra el estado en una pantalla OLED, entra en Deep Sleep entre medidas y envía cada 5 minutos su posición GNSS y la humedad por LoRa. ¿Qué afirmación es correcta en todos sus detalles?",
+  "explanation": "Según la arquitectura del tema, la electroválvula y la pantalla OLED son actuadores; el panel solar, el regulador y el modo Deep Sleep forman la gestión de energía; y el mayor consumo de un nodo IoT corresponde a las comunicaciones (radio, GNSS).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2,
+        4,
+        5
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "bloques-funcionales"
+    }
+  ],
+  "options": [
+    {
+      "id": "actuadores-energia-y-comunicaciones",
+      "text": "La electroválvula y la pantalla OLED son actuadores; panel solar, regulador y Deep Sleep son gestión de energía; el mayor consumo corresponde a la radio y al GNSS.",
+      "explanation": "Correcta: cada elemento está en su bloque y el consumo se atribuye a las comunicaciones, como en la p. 2."
+    },
+    {
+      "id": "mayor-consumo-cpu",
+      "text": "La electroválvula y la pantalla OLED son actuadores; panel solar, regulador y Deep Sleep son gestión de energía; el mayor consumo corresponde a la CPU, que procesa cada medida.",
+      "explanation": "Un solo detalle falso: el tema atribuye el mayor consumo a las comunicaciones (radio, GNSS), no al procesado."
+    },
+    {
+      "id": "oled-sensor",
+      "text": "La pantalla OLED es un sensor porque presenta medidas; panel solar, regulador y Deep Sleep son gestión de energía; el mayor consumo corresponde a la radio y al GNSS.",
+      "explanation": "La pantalla muestra información, no mide: el tema la incluye entre los actuadores, junto a LEDs y altavoz."
+    },
+    {
+      "id": "deep-sleep-comunicaciones",
+      "text": "La electroválvula y la pantalla OLED son actuadores; Deep Sleep pertenece al módulo de comunicaciones porque apaga la radio; el mayor consumo corresponde a la radio y al GNSS.",
+      "explanation": "Deep Sleep es un modo de bajo consumo del bloque de gestión de energía, no parte del módulo de comunicaciones."
+    }
+  ],
+  "answer": "actuadores-energia-y-comunicaciones"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-88",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente MQTT que no tiene nada que publicar durante un rato quiere mantener viva su conexión con el broker. ¿Qué intercambio usa?",
+  "explanation": "En el esquema de conexión al broker, CONNECT/CONNACK establece la conexión, PINGREQ/PINGRESP la mantiene y DISCONNECT la termina. SUBSCRIBE/SUBACK y UNSUBSCRIBE/UNSUBACK gestionan las suscripciones.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "mensajes-basicos-y-formato"
+    }
+  ],
+  "options": [
+    {
+      "id": "pingreq-pingresp",
+      "text": "PINGREQ → PINGRESP.",
+      "explanation": "Es el intercambio que mantiene la conexión en el esquema del tema."
+    },
+    {
+      "id": "connect-connack",
+      "text": "CONNECT → CONNACK.",
+      "explanation": "Establece la conexión; no se repite para mantenerla."
+    },
+    {
+      "id": "ping-pong-websocket",
+      "text": "Ping → Pong.",
+      "explanation": "Son los mensajes de control de WebSocket, no de MQTT."
+    },
+    {
+      "id": "subscribe-suback",
+      "text": "SUBSCRIBE → SUBACK.",
+      "explanation": "Sirve para suscribirse a un topic, no para mantener la conexión."
+    }
+  ],
+  "answer": "pingreq-pingresp"
+}

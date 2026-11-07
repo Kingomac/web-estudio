@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.intro-48",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Una empresa tiene dos proyectos: domótica en un edificio, con dispositivos cercanos que necesitan menor latencia, y monitorización de sensores repartidos por fincas agrícolas a varios kilómetros. ¿Qué asignación es coherente con el tema?",
+  "explanation": "La infografía asocia LoWPAN a domótica y edificios inteligentes (cobertura corta, mayor tasa, menor latencia) y LPWAN a agricultura, smart city y telemetría (cobertura amplia, menor tasa, mayor latencia).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        13,
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "lowpan-frente-a-lpwan"
+    }
+  ],
+  "options": [
+    {
+      "id": "domotica-lowpan-agricultura-lpwan",
+      "text": "Domótica con LoWPAN; fincas con LPWAN.",
+      "explanation": "Correcta: cada proyecto coincide con el uso típico y la cobertura de cada tipo de red."
+    },
+    {
+      "id": "domotica-lpwan-agricultura-lowpan",
+      "text": "Domótica con LPWAN; fincas con LoWPAN.",
+      "explanation": "Invierte las asignaciones: la LoWPAN cubre metros a decenas de metros y la LPWAN kilómetros."
+    },
+    {
+      "id": "ambas-lpwan-por-latencia",
+      "text": "Ambas con LPWAN, porque ofrece menor latencia.",
+      "explanation": "La infografía atribuye menor latencia a LoWPAN; la LPWAN tiene mayor latencia."
+    },
+    {
+      "id": "ambas-lowpan-en-estrella",
+      "text": "Ambas con LoWPAN en estrella, que alcanza varios kilómetros.",
+      "explanation": "Una LoWPAN en estrella cubre 10–100 m; solo se extiende de forma significativa con malla."
+    }
+  ],
+  "answer": "domotica-lowpan-agricultura-lpwan"
+}

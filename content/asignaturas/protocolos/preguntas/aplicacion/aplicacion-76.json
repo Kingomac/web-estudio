@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.aplicacion-76",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "El código CoAP a.bb ocupa un byte: a en 3 bits y bb en 5 bits. En el ejemplo del tema, la respuesta 2.05 aparece como el valor 69. ¿Qué valor decimal tiene el byte de código de una respuesta 4.04?",
+  "explanation": "Con a en los 3 bits altos y bb en los 5 bajos, el byte vale a·32 + bb. Comprobación: 2.05 = 2·32 + 5 = 69. Para 4.04: 4·32 + 4 = 132 (0x84).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39,
+        41,
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "ciento-treinta-y-dos",
+      "text": "132.",
+      "explanation": "4·32 + 4 = 132."
+    },
+    {
+      "id": "cuatrocientos-cuatro",
+      "text": "404.",
+      "explanation": "Lee el código como un número HTTP; en CoAP se codifica en un solo byte."
+    },
+    {
+      "id": "sesenta-y-ocho",
+      "text": "68.",
+      "explanation": "Usa 4 bits para bb (4·16 + 4); bb ocupa 5 bits."
+    },
+    {
+      "id": "treinta-y-seis",
+      "text": "36.",
+      "explanation": "Desplaza a solo 3 bits (4·8 + 4); como bb ocupa 5 bits, a se multiplica por 32."
+    }
+  ],
+  "answer": "ciento-treinta-y-dos"
+}

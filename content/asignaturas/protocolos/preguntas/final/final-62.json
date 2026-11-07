@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-62",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Se configuran en un router:\n(1) `ipv6 route 2001:db8:77::/48 s0/0`\n(2) `ipv6 route 2001:db8:88::/48 2001:db8:1::2`\n(3) `ipv6 route 2001:db8:99::/48 g0/1 fe80::2`\nsiendo s0/0 punto a punto y 2001:db8:1::/64 la subred de g0/1. ¿Cómo las clasifica el tema y qué muestra `show ipv6 route` para cada una?",
+  "explanation": "(1) solo indica la interfaz: ruta directa (G=0), y se muestra solo la interfaz. (2) indica un router: ruta indirecta (G=1), y se muestra solo su IP; la interfaz se deduce de la ruta directa hacia 2001:db8:1::2. (3) también es indirecta (G=1), pero su next-hop es link-local, así que se muestran la IP y la interfaz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        23,
+        25,
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "configuracion-y-rutas-estaticas-en-cisco-ios"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcta",
+      "text": "(1) G=0, solo s0/0; (2) G=1, solo 2001:db8:1::2; (3) G=1, FE80::2 y g0/1.",
+      "explanation": "Aplica la regla de visualización de G=0, G=1 global y G=1 link-local."
+    },
+    {
+      "id": "2-con-interfaz",
+      "text": "(1) G=0, solo s0/0; (2) G=1, 2001:db8:1::2 y g0/1; (3) G=1, FE80::2 y g0/1.",
+      "explanation": "Con next-hop global se muestra solo la IP; la interfaz se añade únicamente para las link-local."
+    },
+    {
+      "id": "3-g0",
+      "text": "(1) G=0, solo s0/0; (2) G=1, solo 2001:db8:1::2; (3) G=0, solo g0/1.",
+      "explanation": "Indicar la interfaz junto a un next-hop no hace directa la ruta: sigue siendo G=1."
+    },
+    {
+      "id": "1-g1",
+      "text": "(1) G=1, vía el router del otro extremo de s0/0; (2) G=1, solo 2001:db8:1::2; (3) G=1, solo FE80::2.",
+      "explanation": "(1) no indica ningún router: es G=0. Y en (3) debe aparecer también la interfaz."
+    }
+  ],
+  "answer": "correcta"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-36",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un servicio necesita enterarse de un evento que ocurre de media 4 veces al día. Opción A: consultar a la fuente con un GET cada 30 s. Opción B: registrar un webhook. ¿Cuántas peticiones HTTP al día genera cada opción, de media?",
+  "explanation": "A: 86 400 s / 30 s = 2880 GET al día, aunque casi todos vuelvan sin novedades. B: el webhook envía un POST solo cuando ocurre el evento, es decir, 4 al día. Por eso el tema lo considera eficiente para notificaciones esporádicas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        28
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "webhook"
+    }
+  ],
+  "options": [
+    {
+      "id": "2880-y-4",
+      "text": "A: 2880; B: 4.",
+      "explanation": "Sondeo cada 30 s frente a un POST por evento."
+    },
+    {
+      "id": "2880-y-2880",
+      "text": "A: 2880; B: 2880.",
+      "explanation": "Supone que el webhook también es periódico; solo se activa cuando ocurre el evento."
+    },
+    {
+      "id": "1440-y-4",
+      "text": "A: 1440; B: 4.",
+      "explanation": "Calcula con un periodo de 60 s; 86 400 / 30 = 2880."
+    },
+    {
+      "id": "4-y-2880",
+      "text": "A: 4; B: 2880.",
+      "explanation": "Invierte los mecanismos: es el sondeo el que genera peticiones aunque no haya eventos."
+    }
+  ],
+  "answer": "2880-y-4"
+}

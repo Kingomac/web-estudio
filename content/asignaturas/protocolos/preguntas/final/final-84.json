@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-84",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un cliente envía un datagrama UDP desde el puerto 0xF0B5 al puerto 5683 (0x1633) con checksum. Se comprime con LOWPAN_NHC con la máxima compresión de puertos posible. ¿Cuántos bytes ocupa la cabecera UDP comprimida, incluido el octeto NHC?",
+  "explanation": "Solo el origen está en 0xF000–0xF0FF; el destino no, así que P = 10: 8 bits de origen y 16 de destino. Con C = 0 va el checksum (2 bytes) y la longitud siempre se omite: 1 + 1 + 2 + 2 = 6 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        27
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "compresion-de-cabeceras-siguientes-lowpan-nhc"
+    }
+  ],
+  "options": [
+    {
+      "id": "6",
+      "text": "6 bytes.",
+      "explanation": "NHC (1) + origen de 8 bits (1) + destino completo (2) + checksum (2)."
+    },
+    {
+      "id": "4",
+      "text": "4 bytes.",
+      "explanation": "Supone P = 11, pero eso exige que ambos puertos estén en 0xF0B0–0xF0BF y 5683 no lo está."
+    },
+    {
+      "id": "8",
+      "text": "8 bytes.",
+      "explanation": "Añade 2 bytes de Length, que LOWPAN_NHC siempre omite porque se deduce de las capas inferiores."
+    },
+    {
+      "id": "4-sin-checksum",
+      "text": "4 bytes sin checksum: 1 de NHC, 1 del origen y 2 del destino.",
+      "explanation": "El checksum se transmite: el enunciado lo incluye y C = 0 indica que va en línea."
+    }
+  ],
+  "answer": "6"
+}

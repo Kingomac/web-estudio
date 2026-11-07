@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-62",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre las plataformas software LoRaWAN es correcta?",
+  "explanation": "The Things Stack es la plataforma que usa TTN y tiene versión Open Source y servicios en la nube; ChirpStack es otra plataforma de código abierto.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        22
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "the-things-stack-es-la-plataforma-de-ttn",
+      "text": "The Things Stack es la plataforma de TTN y tiene una versión Open Source además de servicios en la nube.",
+      "explanation": "P. 22."
+    },
+    {
+      "id": "chirpstack-es-la-plataforma-que-utiliza",
+      "text": "ChirpStack es la plataforma que utiliza The Things Network.",
+      "explanation": "TTN usa The Things Stack; ChirpStack es otra plataforma independiente."
+    },
+    {
+      "id": "network-server-application-server-y-join",
+      "text": "Network Server, Application Server y Join Server deben ejecutarse en equipos distintos.",
+      "explanation": "Suelen integrarse en una misma plataforma, juntos o en distintos equipos."
+    },
+    {
+      "id": "la-plataforma-software-proporciona-la",
+      "text": "La plataforma software proporciona la cobertura radio.",
+      "explanation": "La cobertura la dan los gateways; el software gestiona la red."
+    }
+  ],
+  "answer": "the-things-stack-es-la-plataforma-de-ttn"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.final-97",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Una cabecera IPHC tiene CID = 1 con byte de contexto 0x01, SAC = 0 y SAM = 11, M = 0, DAC = 1 y DAM = 10, y los 16 bits en línea del destino son 0x00C3. El contexto 0 es 2001:db8::/64 y el contexto 1, 2001:db8:a::/64. ¿Qué direcciones reconstruye el receptor?",
+  "explanation": "El byte de contexto lleva SCI en el nibble alto y DCI en el bajo: SCI = 0 y DCI = 1. El origen no usa contexto (SAC = 0): fe80:: + IID de la MAC origen. El destino usa el contexto 1 (DAC = 1) con el IID 0:ff:fe00:00c3: 2001:db8:a::ff:fe00:c3.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        19,
+        22,
+        23,
+        24,
+        25
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "direccion-destino-m-dac-y-dam"
+    }
+  ],
+  "options": [
+    {
+      "id": "correcto",
+      "text": "Origen fe80:: con el IID de la MAC origen; destino 2001:db8:a::ff:fe00:c3.",
+      "explanation": "Aplica DCI = 1 solo al destino y la compresión sin estado al origen."
+    },
+    {
+      "id": "origen-contexto",
+      "text": "Origen 2001:db8:: con el IID de la MAC origen; destino 2001:db8:a::ff:fe00:c3.",
+      "explanation": "Con SAC = 0 el origen no usa contexto aunque SCI valga 0: su prefijo es fe80::/64."
+    },
+    {
+      "id": "dci-0",
+      "text": "Origen fe80:: con el IID de la MAC origen; destino 2001:db8::ff:fe00:c3.",
+      "explanation": "Toma el contexto 0 para el destino; DCI está en el nibble bajo del byte y vale 1."
+    },
+    {
+      "id": "destino-link-local",
+      "text": "Origen fe80:: con el IID de la MAC origen; destino fe80::ff:fe00:c3.",
+      "explanation": "Con DAC = 1 el prefijo del destino sale del contexto, no de fe80::/64."
+    }
+  ],
+  "answer": "correcto"
+}

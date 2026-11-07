@@ -4,55 +4,115 @@
   "subjectId": "protocolos",
   "slug": "tema-1-introduccion",
   "title": "Test · Introducción a IoT",
-  "description": "20 preguntas sobre dispositivos, modularidad, recursos y redes LLN.",
-  "scope": "Tema 1 completo (14 páginas).",
+  "description": "55 preguntas sobre dispositivos IoT, MCU, módulos, clases de nodos limitados, LLN, acceso y troncal, topologías y LoWPAN frente a LPWAN.",
+  "scope": "Tema 1 completo: Introducción a las redes IoT (material protocolos.materiales.tema-1-introduccion, 14 páginas).",
   "tagIds": [
-    "protocolos.tags.intro"
+    "protocolos.tags.intro",
+    "protocolos.tags.examen-final"
   ],
   "order": 150,
   "groups": [
     {
-      "id": "dispositivos",
-      "title": "Dispositivos",
+      "id": "caracteristicas",
+      "title": "Características de los dispositivos IoT (p. 2)",
       "questionIds": [
         "protocolos.preguntas.intro-1",
         "protocolos.preguntas.intro-2",
-        "protocolos.preguntas.intro-3",
-        "protocolos.preguntas.intro-4",
-        "protocolos.preguntas.intro-5",
-        "protocolos.preguntas.intro-6"
+        "protocolos.preguntas.parcial-1",
+        "protocolos.preguntas.intro-21",
+        "protocolos.preguntas.intro-22",
+        "protocolos.preguntas.intro-23"
       ]
     },
     {
-      "id": "modularidad",
-      "title": "Modularidad",
+      "id": "mcu-y-arquitectura",
+      "title": "Microcontrolador y arquitectura del nodo (pp. 3–4)",
       "questionIds": [
-        "protocolos.preguntas.intro-7",
+        "protocolos.preguntas.parcial-2",
+        "protocolos.preguntas.intro-24",
+        "protocolos.preguntas.intro-25",
+        "protocolos.preguntas.parcial-3",
+        "protocolos.preguntas.parcial-4",
+        "protocolos.preguntas.intro-26",
+        "protocolos.preguntas.intro-27",
+        "protocolos.preguntas.parcial-5"
+      ]
+    },
+    {
+      "id": "modulares",
+      "title": "Dispositivos modulares: WisBlock y Wio/Grove (pp. 5–7)",
+      "questionIds": [
+        "protocolos.preguntas.parcial-6",
+        "protocolos.preguntas.intro-28",
+        "protocolos.preguntas.intro-29",
+        "protocolos.preguntas.intro-30",
+        "protocolos.preguntas.intro-31",
         "protocolos.preguntas.intro-8",
-        "protocolos.preguntas.intro-9"
+        "protocolos.preguntas.parcial-7",
+        "protocolos.preguntas.intro-32",
+        "protocolos.preguntas.intro-33",
+        "protocolos.preguntas.parcial-8"
       ]
     },
     {
-      "id": "recursos",
-      "title": "Recursos",
+      "id": "clases",
+      "title": "Dispositivos limitados y clases del RFC 7228 (p. 9)",
       "questionIds": [
-        "protocolos.preguntas.intro-10",
+        "protocolos.preguntas.intro-37",
+        "protocolos.preguntas.intro-34",
+        "protocolos.preguntas.parcial-9",
+        "protocolos.preguntas.intro-35",
         "protocolos.preguntas.intro-11",
-        "protocolos.preguntas.intro-12",
+        "protocolos.preguntas.intro-36",
+        "protocolos.preguntas.parcial-10",
         "protocolos.preguntas.intro-13"
       ]
     },
     {
-      "id": "redes",
-      "title": "Redes",
+      "id": "lln",
+      "title": "LLN: bajo consumo, pérdidas y tasas bajas (p. 10)",
       "questionIds": [
-        "protocolos.preguntas.intro-14",
-        "protocolos.preguntas.intro-15",
-        "protocolos.preguntas.intro-16",
-        "protocolos.preguntas.intro-17",
-        "protocolos.preguntas.intro-18",
+        "protocolos.preguntas.parcial-11",
+        "protocolos.preguntas.intro-39",
+        "protocolos.preguntas.moovi-original-6",
+        "protocolos.preguntas.moovi40-1",
+        "protocolos.preguntas.intro-38",
+        "protocolos.preguntas.examen-parcial-12"
+      ]
+    },
+    {
+      "id": "acceso-troncal",
+      "title": "Red de acceso, red troncal y pasarela (p. 11)",
+      "questionIds": [
+        "protocolos.preguntas.parcial-12",
+        "protocolos.preguntas.intro-40",
+        "protocolos.preguntas.moovi-original-5",
+        "protocolos.preguntas.examen-parcial-14"
+      ]
+    },
+    {
+      "id": "topologias",
+      "title": "Topologías: estrella, árbol y malla (p. 12)",
+      "questionIds": [
+        "protocolos.preguntas.parcial-13",
+        "protocolos.preguntas.intro-41",
+        "protocolos.preguntas.intro-42",
+        "protocolos.preguntas.parcial-14"
+      ]
+    },
+    {
+      "id": "lowpan-lpwan",
+      "title": "LoWPAN frente a LPWAN (pp. 13–14)",
+      "questionIds": [
+        "protocolos.preguntas.intro-43",
         "protocolos.preguntas.intro-19",
-        "protocolos.preguntas.intro-20"
+        "protocolos.preguntas.intro-45",
+        "protocolos.preguntas.intro-46",
+        "protocolos.preguntas.moovi40-3",
+        "protocolos.preguntas.intro-44",
+        "protocolos.preguntas.intro-47",
+        "protocolos.preguntas.intro-48",
+        "protocolos.preguntas.intro-49"
       ]
     }
   ]

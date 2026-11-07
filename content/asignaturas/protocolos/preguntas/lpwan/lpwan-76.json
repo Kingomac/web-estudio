@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-76",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un contador de agua a pilas envía un uplink cada 12 horas, pero debe poder recibir cambios de configuración en un plazo acotado sin esperar a su siguiente uplink. ¿Qué clase LoRaWAN encaja mejor?",
+  "explanation": "La clase B añade ping slots periódicos sincronizados por beacons: permite downlinks sin uplink previo con consumo bajo o intermedio, para dispositivos a batería con latencia acotada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "clase-b",
+      "text": "Clase B.",
+      "explanation": "P. 30: «adecuado para dispositivos a batería que necesitan recibir órdenes con latencia acotada»."
+    },
+    {
+      "id": "clase-a",
+      "text": "Clase A.",
+      "explanation": "Solo recibiría tras su uplink: la orden podría esperar hasta 12 horas."
+    },
+    {
+      "id": "clase-c",
+      "text": "Clase C.",
+      "explanation": "Recibiría al momento, pero su consumo es alto: está pensada para dispositivos alimentados a red."
+    },
+    {
+      "id": "ninguna-lorawan-no-permite-downlinks-sin",
+      "text": "Ninguna: LoRaWAN no permite downlinks sin un uplink previo.",
+      "explanation": "Las clases B y C sí lo permiten."
+    }
+  ],
+  "answer": "clase-b"
+}

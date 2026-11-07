@@ -1,0 +1,55 @@
+{
+  "id": "protocolos.preguntas.aplicacion-81",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo del tema, tras la opción Uri-Path (tipo 11) va la opción Max-Age (tipo 14) con valor 3600 en 2 bytes. ¿Qué valores aparecen en los dos campos de 4 bits que preceden al valor de Max-Age?",
+  "explanation": "La figura del tema codifica Max-Age con 3 y 2 seguidos de 0x0E10 (3600). Las opciones van en orden y cada una indica su tipo como diferencia respecto a la anterior (14 − 11 = 3); el segundo campo es la longitud del valor (2 bytes).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        42,
+        43
+      ]
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "RFC 7252 · The Constrained Application Protocol (CoAP)",
+      "url": "https://www.rfc-editor.org/rfc/rfc7252"
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "tres-y-dos",
+      "text": "3 y 2.",
+      "explanation": "3 es la diferencia 14 − 11 respecto a Uri-Path y 2 la longitud del valor."
+    },
+    {
+      "id": "catorce-y-dos",
+      "text": "14 y 2.",
+      "explanation": "La figura no repite el tipo absoluto: Max-Age va después de Uri-Path y se codifica como 3."
+    },
+    {
+      "id": "tres-y-cuatro",
+      "text": "3 y 4.",
+      "explanation": "La longitud es 2 bytes (0x0E10), no 4."
+    },
+    {
+      "id": "catorce-y-tres-mil",
+      "text": "14 y 3600.",
+      "explanation": "Los campos de 4 bits no pueden valer 3600; el valor 3600 va después, en 2 bytes."
+    }
+  ],
+  "answer": "tres-y-dos"
+}

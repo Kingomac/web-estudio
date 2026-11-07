@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-58",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de los siguientes NO es un uso de las cookies citado en el tema?",
+  "explanation": "El tema cita tres usos de las cookies: validar al usuario para acceder a servicios, personalizar el aspecto o el contenido según sus preferencias y seguir su actividad. Las cookies son cadenas definidas por el servidor que el cliente devuelve sin modificar; no cifran nada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        19
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "cookies-y-proxies"
+    }
+  ],
+  "options": [
+    {
+      "id": "cifrar-la-conexion",
+      "text": "Cifrar la conexión TCP entre cliente y servidor.",
+      "explanation": "Las cookies son cadenas de caracteres que viajan en los mensajes HTTP; el cifrado lo aporta TLS (HTTPS)."
+    },
+    {
+      "id": "validacion",
+      "text": "Validar al usuario para acceder a determinados servicios.",
+      "explanation": "Es uno de los usos que cita el tema."
+    },
+    {
+      "id": "personalizacion",
+      "text": "Personalizar el aspecto o el contenido según las preferencias del usuario.",
+      "explanation": "Es uno de los usos que cita el tema."
+    },
+    {
+      "id": "seguimiento",
+      "text": "Seguir la actividad de los usuarios.",
+      "explanation": "Es uno de los usos que cita el tema."
+    }
+  ],
+  "answer": "cifrar-la-conexion"
+}

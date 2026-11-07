@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-67",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Una plataforma web quiere recibir datos binarios de OPC UA integrándolos con sus servicios web. ¿Qué transporte prevé el tema para ese caso?",
+  "explanation": "El tema indica que los datos binarios de OPC UA pueden ir sobre HTTPS/WebSockets para la integración con plataformas web; lo habitual en otros casos es UA nativo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        32
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "opc-ua-y-soap"
+    }
+  ],
+  "options": [
+    {
+      "id": "https-websockets",
+      "text": "HTTPS/WebSockets.",
+      "explanation": "Es la opción que el tema asocia a la integración con plataformas web."
+    },
+    {
+      "id": "mqtt-sn",
+      "text": "MQTT-SN sobre UDP.",
+      "explanation": "MQTT-SN es la variante de MQTT para redes de sensores; no forma parte de la pila de OPC UA."
+    },
+    {
+      "id": "coap-dtls",
+      "text": "CoAP sobre DTLS.",
+      "explanation": "CoAP protegido no aparece en la pila de OPC UA."
+    },
+    {
+      "id": "webhook",
+      "text": "Un webhook por cada dato.",
+      "explanation": "Los webhooks son notificaciones HTTP POST esporádicas, no un transporte de OPC UA."
+    }
+  ],
+  "answer": "https-websockets"
+}

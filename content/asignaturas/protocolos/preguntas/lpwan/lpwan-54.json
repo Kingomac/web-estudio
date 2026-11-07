@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lpwan-54",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un fabricante quiere usar en un módulo NB-IoT un microcontrolador muy limitado, sin pila IP, que solo envía mensajes cortos a un servidor. ¿Qué modo de comunicación encaja y cómo llegan los mensajes al servidor?",
+  "explanation": "En NIDD el dispositivo entrega mensajes sin cabeceras IP ni UDP/TCP; la red del operador actúa de gateway y los lleva al servidor de aplicación, típicamente por HTTP o MQTT.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        9,
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "modo-ip-y-nidd"
+    }
+  ],
+  "options": [
+    {
+      "id": "nidd-la-red-del-operador-recibe-los",
+      "text": "NIDD: la red del operador recibe los mensajes y los entrega al servidor, típicamente por HTTP o MQTT.",
+      "explanation": "P. 10: evita la pila IP en el dispositivo y simplifica su software."
+    },
+    {
+      "id": "modo-ip-con-coap-sobre-udp",
+      "text": "Modo IP con CoAP sobre UDP.",
+      "explanation": "CoAP sobre UDP exige justamente la pila IP que el dispositivo no tiene (p. 9)."
+    },
+    {
+      "id": "nidd-el-servidor-recibe-los-mensajes-por",
+      "text": "NIDD: el servidor recibe los mensajes por radio directamente del dispositivo, sin pasar por el operador.",
+      "explanation": "La red del operador es quien transporta y entrega los mensajes."
+    },
+    {
+      "id": "modo-ip-con-ipv6-global-que-evita-las",
+      "text": "Modo IP con IPv6 global, que evita las cabeceras IP.",
+      "explanation": "Con IPv6 global sigue habiendo cabeceras IP; solo cambia que el servidor pueda alcanzarlo."
+    }
+  ],
+  "answer": "nidd-la-red-del-operador-recibe-los"
+}

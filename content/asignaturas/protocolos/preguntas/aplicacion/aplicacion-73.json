@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-73",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un cliente CoAP envía una petición confirmable y nunca recibe el ACK. Según el tema, ¿cuántas veces se habrá transmitido el mensaje en total, como máximo?",
+  "explanation": "Sin ACK, el cliente reenvía el mensaje hasta 4 veces. Sumando la transmisión original, son 5 transmisiones en total.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        38
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "tipos-de-mensaje-y-fiabilidad"
+    }
+  ],
+  "options": [
+    {
+      "id": "cinco",
+      "text": "5.",
+      "explanation": "La transmisión original más 4 reenvíos."
+    },
+    {
+      "id": "cuatro",
+      "text": "4.",
+      "explanation": "Cuenta solo los reenvíos y olvida la transmisión original."
+    },
+    {
+      "id": "una",
+      "text": "1.",
+      "explanation": "Eso ocurre en modo NON; en modo CON sin ACK hay reenvíos."
+    },
+    {
+      "id": "ilimitadas",
+      "text": "Ilimitadas, hasta que llegue el ACK.",
+      "explanation": "El número de reenvíos está limitado a 4."
+    }
+  ],
+  "answer": "cinco"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-97",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Las tramas de datos LoRaWAN no llevan el DevEUI. ¿Cómo sabe el Network Server de qué dispositivo es un uplink?",
+  "explanation": "A partir del DevAddr localiza la sesión, la valida comprobando el MIC con la NwkSKey y así identifica el DevEUI y la aplicación asociada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        49
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "network-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "busca-la-sesion-por-devaddr-y-la-valida",
+      "text": "Busca la sesión por DevAddr y la valida comprobando el MIC con NwkSKey.",
+      "explanation": "Primer punto de la p. 49."
+    },
+    {
+      "id": "por-el-gateway-que-lo-ha-recibido",
+      "text": "Por el gateway que lo ha recibido.",
+      "explanation": "Un mismo nodo puede llegar por varios gateways, y uno recibe a muchos nodos."
+    },
+    {
+      "id": "descifra-el-frmpayload-con-appskey-y-lee",
+      "text": "Descifra el FRMPayload con AppSKey y lee el identificador.",
+      "explanation": "El NS no tiene AppSKey y el payload sigue cifrado."
+    },
+    {
+      "id": "por-el-fport-que-identifica-al",
+      "text": "Por el FPort, que identifica al dispositivo.",
+      "explanation": "FPort distingue tipos de mensaje, no dispositivos."
+    }
+  ],
+  "answer": "busca-la-sesion-por-devaddr-y-la-valida"
+}

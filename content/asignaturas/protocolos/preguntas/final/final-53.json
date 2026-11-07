@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-53",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "H1 (2001:db8:10::4, MAC 00:00:00:aa:aa:aa) envía su primer paquete a 2001:db8:20::9 a través de su router por defecto fe80::1 (MAC 00:00:00:bb:bb:bb). Su caché de vecinos está vacía. Tras el NS, el router responde con un NA. ¿Qué flags lleva ese NA y qué direcciones destino lleva la trama de datos que envía después H1?",
+  "explanation": "El NA responde a una solicitud y lo envía un router: flags R (Router) = 1 y S (Solicited) = 1. Con la MAC del router ya en caché, H1 envía la trama a 00:00:00:bb:bb:bb, pero el paquete IPv6 conserva como destino 2001:db8:20::9: la link-local del router solo sirve para resolver su MAC.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        38,
+        39,
+        40
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "resolucion-de-un-vecino"
+    }
+  ],
+  "options": [
+    {
+      "id": "r1-s1",
+      "text": "NA con R = 1 y S = 1; trama a la MAC 00:00:00:bb:bb:bb con IPv6 destino 2001:db8:20::9.",
+      "explanation": "Combina el significado de los flags con el reenvío por el siguiente salto."
+    },
+    {
+      "id": "ip-router",
+      "text": "NA con R = 0 y S = 1; trama a la MAC 00:00:00:bb:bb:bb con IPv6 destino fe80::1.",
+      "explanation": "El emisor es un router (R = 1), y el paquete no cambia su IPv6 destino por la del gateway."
+    },
+    {
+      "id": "no-solicitado",
+      "text": "NA con R = 1 y S = 0; trama a la MAC 00:00:00:bb:bb:bb con IPv6 destino 2001:db8:20::9.",
+      "explanation": "El NA responde al NS de H1: es solicitado (S = 1)."
+    },
+    {
+      "id": "mac-multicast",
+      "text": "NA con R = 1 y S = 1; trama a la MAC 33:33:ff:00:00:01 con IPv6 destino 2001:db8:20::9.",
+      "explanation": "La MAC multicast solo sirve para el NS; una vez resuelta, los datos van a la MAC unicast del router."
+    }
+  ],
+  "answer": "r1-s1"
+}

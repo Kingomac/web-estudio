@@ -4,81 +4,179 @@
   "subjectId": "protocolos",
   "slug": "tema-2-aplicacion",
   "title": "Test · Nivel de aplicación",
-  "description": "40 preguntas sobre arquitecturas, HTTP, WebSocket, webhooks, OPC UA, SOAP, CoAP y MQTT.",
-  "scope": "Documento de nivel de aplicación completo (61 páginas).",
+  "description": "113 preguntas sobre arquitecturas y modelos de comunicación, HTTP, WebSockets, webhooks, OPC UA y SOAP, CoAP y MQTT.",
+  "scope": "Tema 2 completo: documento «Nivel de aplicación» entero (61 páginas): arquitecturas, HTTP, WebSockets, webhooks, OPC UA y SOAP, CoAP y MQTT.",
   "tagIds": [
-    "protocolos.tags.aplicacion"
+    "protocolos.tags.aplicacion",
+    "protocolos.tags.examen-final"
   ],
   "order": 160,
   "groups": [
     {
       "id": "arquitecturas",
-      "title": "Arquitecturas",
+      "title": "Arquitecturas y modelos de comunicación",
       "questionIds": [
-        "protocolos.preguntas.aplicacion-1",
+        "protocolos.preguntas.examen-parcial-13",
+        "protocolos.preguntas.parcial-16",
+        "protocolos.preguntas.aplicacion-41",
+        "protocolos.preguntas.aplicacion-42",
         "protocolos.preguntas.aplicacion-2",
-        "protocolos.preguntas.aplicacion-3",
-        "protocolos.preguntas.aplicacion-4",
-        "protocolos.preguntas.aplicacion-5"
+        "protocolos.preguntas.examen-parcial-27",
+        "protocolos.preguntas.parcial-17",
+        "protocolos.preguntas.aplicacion-43",
+        "protocolos.preguntas.parcial-18",
+        "protocolos.preguntas.aplicacion-45",
+        "protocolos.preguntas.aplicacion-46",
+        "protocolos.preguntas.parcial-19",
+        "protocolos.preguntas.aplicacion-44",
+        "protocolos.preguntas.aplicacion-47",
+        "protocolos.preguntas.aplicacion-48"
       ]
     },
     {
-      "id": "http-y-web",
-      "title": "HTTP y Web",
+      "id": "http",
+      "title": "HTTP: versiones, mensajes, cookies y proxies",
       "questionIds": [
-        "protocolos.preguntas.aplicacion-6",
-        "protocolos.preguntas.aplicacion-7",
+        "protocolos.preguntas.parcial-20",
+        "protocolos.preguntas.aplicacion-49",
+        "protocolos.preguntas.examen-parcial-28",
+        "protocolos.preguntas.parcial-21",
+        "protocolos.preguntas.aplicacion-50",
         "protocolos.preguntas.aplicacion-8",
-        "protocolos.preguntas.aplicacion-9",
+        "protocolos.preguntas.aplicacion-51",
+        "protocolos.preguntas.aplicacion-52",
+        "protocolos.preguntas.aplicacion-56",
+        "protocolos.preguntas.aplicacion-53",
+        "protocolos.preguntas.parcial-22",
+        "protocolos.preguntas.aplicacion-54",
         "protocolos.preguntas.aplicacion-10",
-        "protocolos.preguntas.aplicacion-11",
-        "protocolos.preguntas.aplicacion-12",
-        "protocolos.preguntas.aplicacion-13",
-        "protocolos.preguntas.aplicacion-14",
+        "protocolos.preguntas.aplicacion-55",
+        "protocolos.preguntas.parcial-24",
+        "protocolos.preguntas.aplicacion-58",
+        "protocolos.preguntas.aplicacion-57",
+        "protocolos.preguntas.parcial-23"
+      ]
+    },
+    {
+      "id": "websockets-y-webhooks",
+      "title": "WebSockets y webhooks",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-6",
+        "protocolos.preguntas.aplicacion-59",
+        "protocolos.preguntas.aplicacion-61",
+        "protocolos.preguntas.aplicacion-60",
+        "protocolos.preguntas.parcial-25",
+        "protocolos.preguntas.aplicacion-62",
         "protocolos.preguntas.aplicacion-15",
-        "protocolos.preguntas.aplicacion-16"
+        "protocolos.preguntas.parcial-26",
+        "protocolos.preguntas.examen-parcial-1",
+        "protocolos.preguntas.aplicacion-63",
+        "protocolos.preguntas.aplicacion-64"
       ]
     },
     {
       "id": "opc-ua-y-soap",
       "title": "OPC UA y SOAP",
       "questionIds": [
-        "protocolos.preguntas.aplicacion-17",
+        "protocolos.preguntas.parcial-28",
+        "protocolos.preguntas.aplicacion-65",
+        "protocolos.preguntas.aplicacion-40",
         "protocolos.preguntas.aplicacion-18",
-        "protocolos.preguntas.aplicacion-19",
-        "protocolos.preguntas.aplicacion-40"
+        "protocolos.preguntas.aplicacion-68",
+        "protocolos.preguntas.aplicacion-66",
+        "protocolos.preguntas.aplicacion-67",
+        "protocolos.preguntas.aplicacion-69",
+        "protocolos.preguntas.parcial-29",
+        "protocolos.preguntas.aplicacion-70"
       ]
     },
     {
-      "id": "coap",
-      "title": "CoAP",
+      "id": "coap-transporte-y-fiabilidad",
+      "title": "CoAP: transporte, modos de operación y fiabilidad",
       "questionIds": [
-        "protocolos.preguntas.aplicacion-20",
+        "protocolos.preguntas.parcial-30",
+        "protocolos.preguntas.aplicacion-71",
+        "protocolos.preguntas.examen-parcial-22",
         "protocolos.preguntas.aplicacion-21",
-        "protocolos.preguntas.aplicacion-22",
+        "protocolos.preguntas.examen-parcial-18",
+        "protocolos.preguntas.parcial-31",
+        "protocolos.preguntas.aplicacion-73",
+        "protocolos.preguntas.aplicacion-74",
+        "protocolos.preguntas.aplicacion-72",
+        "protocolos.preguntas.parcial-32",
+        "protocolos.preguntas.aplicacion-75",
         "protocolos.preguntas.aplicacion-23",
-        "protocolos.preguntas.aplicacion-24",
-        "protocolos.preguntas.aplicacion-25",
-        "protocolos.preguntas.aplicacion-26",
-        "protocolos.preguntas.aplicacion-27",
-        "protocolos.preguntas.aplicacion-28",
-        "protocolos.preguntas.aplicacion-39"
+        "protocolos.preguntas.moovi40-37"
       ]
     },
     {
-      "id": "mqtt",
-      "title": "MQTT",
+      "id": "coap-formato-multicast-y-observe",
+      "title": "CoAP: formato de mensaje, multicast y Observe",
       "questionIds": [
-        "protocolos.preguntas.aplicacion-29",
-        "protocolos.preguntas.aplicacion-30",
+        "protocolos.preguntas.parcial-35",
+        "protocolos.preguntas.aplicacion-76",
+        "protocolos.preguntas.aplicacion-77",
+        "protocolos.preguntas.parcial-34",
+        "protocolos.preguntas.aplicacion-78",
+        "protocolos.preguntas.aplicacion-79",
+        "protocolos.preguntas.aplicacion-80",
+        "protocolos.preguntas.aplicacion-26",
+        "protocolos.preguntas.aplicacion-81",
+        "protocolos.preguntas.aplicacion-27",
+        "protocolos.preguntas.aplicacion-82",
+        "protocolos.preguntas.parcial-36",
+        "protocolos.preguntas.moovi40-38",
+        "protocolos.preguntas.aplicacion-83",
+        "protocolos.preguntas.aplicacion-84"
+      ]
+    },
+    {
+      "id": "mqtt-formato-y-qos",
+      "title": "MQTT: formato, conexión y niveles QoS",
+      "questionIds": [
+        "protocolos.preguntas.parcial-37",
+        "protocolos.preguntas.aplicacion-85",
+        "protocolos.preguntas.parcial-38",
+        "protocolos.preguntas.aplicacion-86",
+        "protocolos.preguntas.aplicacion-87",
         "protocolos.preguntas.aplicacion-31",
-        "protocolos.preguntas.aplicacion-32",
+        "protocolos.preguntas.aplicacion-88",
+        "protocolos.preguntas.examen-parcial-4",
+        "protocolos.preguntas.parcial-39",
+        "protocolos.preguntas.parcial-40",
         "protocolos.preguntas.aplicacion-33",
+        "protocolos.preguntas.aplicacion-89",
         "protocolos.preguntas.aplicacion-34",
-        "protocolos.preguntas.aplicacion-35",
+        "protocolos.preguntas.parcial-41",
+        "protocolos.preguntas.aplicacion-90"
+      ]
+    },
+    {
+      "id": "mqtt-retenidos-lwt-y-mqtt-sn",
+      "title": "MQTT: retenidos, LWT, petición/respuesta y MQTT-SN",
+      "questionIds": [
+        "protocolos.preguntas.parcial-42",
+        "protocolos.preguntas.examen-parcial-8",
+        "protocolos.preguntas.moovi40-39",
         "protocolos.preguntas.aplicacion-36",
-        "protocolos.preguntas.aplicacion-37",
-        "protocolos.preguntas.aplicacion-38"
+        "protocolos.preguntas.parcial-43",
+        "protocolos.preguntas.aplicacion-91",
+        "protocolos.preguntas.aplicacion-92",
+        "protocolos.preguntas.parcial-44",
+        "protocolos.preguntas.aplicacion-93",
+        "protocolos.preguntas.aplicacion-38",
+        "protocolos.preguntas.parcial-45",
+        "protocolos.preguntas.aplicacion-94"
+      ]
+    },
+    {
+      "id": "comparacion",
+      "title": "Comparación entre protocolos",
+      "questionIds": [
+        "protocolos.preguntas.examen-parcial-29",
+        "protocolos.preguntas.examen-parcial-26",
+        "protocolos.preguntas.aplicacion-95",
+        "protocolos.preguntas.aplicacion-96"
       ]
     }
   ]

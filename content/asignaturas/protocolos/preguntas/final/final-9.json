@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.final-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "Un sensor envía 20 bytes de datos cada minuto, el intervalo más corto que da el tema para muchas aplicaciones IoT. Sin cabeceras, ¿qué tasa media necesita y qué conclusión es coherente con el tema?",
+  "explanation": "20 bytes × 8 = 160 bits cada 60 s: unos 2,7 bit/s de media. Está muy por debajo incluso de la tasa típica más baja de una LPWAN (0,25 kbps). Como el mayor consumo corresponde a las comunicaciones, conviene una tasa baja y tener la radio activa el menor tiempo posible.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2,
+        13
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "como-es-un-nodo-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "2-7-bits-tasa-baja",
+      "text": "Unos 2,7 bit/s; basta una tasa muy baja, por debajo incluso de los 0,25 kbps típicos de una LPWAN.",
+      "explanation": "Correcta: 160 bits / 60 s ≈ 2,7 bit/s, coherente con la conclusión del tema de que bastan tasas muy bajas."
+    },
+    {
+      "id": "2-7-bits-maxima-tasa",
+      "text": "Unos 2,7 bit/s; aun así conviene elegir la mayor tasa disponible, porque el mayor consumo corresponde a la CPU.",
+      "explanation": "El cálculo es correcto, pero el tema atribuye el mayor consumo a las comunicaciones, no a la CPU."
+    },
+    {
+      "id": "0-33-bits",
+      "text": "Unos 0,33 bit/s; basta una tasa muy baja.",
+      "explanation": "No pasa bytes a bits: 20 / 60 ≈ 0,33."
+    },
+    {
+      "id": "2-7-kbits-lowpan",
+      "text": "Unos 2,7 kbit/s; supera la tasa típica de una LPWAN y obliga a una LoWPAN.",
+      "explanation": "Error de unidades: son 2,7 bit/s, no kbit/s."
+    }
+  ],
+  "answer": "2-7-bits-tasa-baja"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-93",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En el soporte petición/respuesta de MQTT v5, ¿a qué topic se suscribe cada parte?",
+  "explanation": "El cliente se suscribe a un topic propio privado (response topic) y el servidor a un topic público conocido. El cliente publica la petición en el topic del servidor con el response topic y la correlation data, y el servidor responde publicando en ese response topic.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "peticion-respuesta-en-mqtt-5"
+    }
+  ],
+  "options": [
+    {
+      "id": "cliente-privado-servidor-publico",
+      "text": "El cliente, a un topic privado de respuesta; el servidor, a un topic público conocido.",
+      "explanation": "Es el reparto que describe el tema."
+    },
+    {
+      "id": "invertido",
+      "text": "El cliente, a un topic público conocido; el servidor, al topic privado del cliente.",
+      "explanation": "Invierte los papeles: el topic privado es del cliente para recibir respuestas."
+    },
+    {
+      "id": "mismo-topic",
+      "text": "Ambos al mismo topic, y el servidor distingue las peticiones por el QoS.",
+      "explanation": "Las respuestas se asocian mediante correlation data, no por el nivel QoS."
+    },
+    {
+      "id": "sin-suscripcion",
+      "text": "Ninguno: el servidor responde directamente al cliente por su conexión TCP, sin pasar por topics.",
+      "explanation": "En MQTT todo pasa por el broker; la respuesta se publica en el response topic."
+    }
+  ],
+  "answer": "cliente-privado-servidor-publico"
+}

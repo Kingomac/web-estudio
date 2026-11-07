@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-83",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "En el ejemplo de Observe, el cliente se registra con `Observe: 0` y recibe notificaciones con `Observe: 9` y después `Observe: 16`. ¿Qué representan esos valores?",
+  "explanation": "En las respuestas, el valor de Observe es una referencia temporal que ordena las notificaciones con el valor actualizado del recurso. Observe: 0 en la petición registra al observador y Observe: 1 lo da de baja.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        46
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "multicast-y-observe"
+    }
+  ],
+  "options": [
+    {
+      "id": "referencia-temporal",
+      "text": "Una referencia temporal de cada notificación.",
+      "explanation": "Es como lo describe el tema."
+    },
+    {
+      "id": "numero-de-observadores",
+      "text": "El número de observadores registrados en el servidor.",
+      "explanation": "La lista de observadores la guarda el servidor; no se transmite en Observe."
+    },
+    {
+      "id": "message-id",
+      "text": "El Message ID de cada notificación.",
+      "explanation": "El Message ID es un campo de 16 bits de la cabecera, distinto de la opción Observe."
+    },
+    {
+      "id": "baja",
+      "text": "Peticiones de baja, porque son distintos de 0.",
+      "explanation": "La baja la pide el cliente con Observe: 1 en una petición; estos valores van en las notificaciones del servidor."
+    }
+  ],
+  "answer": "referencia-temporal"
+}

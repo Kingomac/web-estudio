@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-72",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un host debe usar DHCPv6 y todavía no conoce ningún servidor. ¿Qué mensaje envía primero al servidor, y a qué destino?",
+  "explanation": "En el intercambio del tema, el cliente comienza con un DHCPv6 SOLICIT para localizar servidores; el servidor responde con ADVERTISE, el cliente pide la configuración con REQUEST y recibe REPLY. DHCPv6 usa UDP (cliente 546, servidor 547) y los servidores escuchan en el grupo ff02::1:2.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        35,
+        36
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "dhcpv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "solicit-ff02-1-2",
+      "text": "Un SOLICIT dirigido al grupo ff02::1:2, puerto UDP 547.",
+      "explanation": "Es el primer mensaje del cliente y el grupo en el que escuchan los servidores."
+    },
+    {
+      "id": "request",
+      "text": "Un REQUEST dirigido al grupo ff02::1:2, puerto UDP 547.",
+      "explanation": "REQUEST se envía después de recibir el ADVERTISE de un servidor."
+    },
+    {
+      "id": "rs-ff02-2",
+      "text": "Un RS dirigido a ff02::2.",
+      "explanation": "El RS busca routers, no servidores DHCPv6; además el host ya ha recibido el RA que le indica usar DHCPv6."
+    },
+    {
+      "id": "solicit-ff02-1-546",
+      "text": "Un SOLICIT dirigido a ff02::1, puerto UDP 546.",
+      "explanation": "ff02::1 es all-nodes y 546 es el puerto del cliente; los servidores escuchan en ff02::1:2 y el puerto 547."
+    }
+  ],
+  "answer": "solicit-ff02-1-2"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.intro-22",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.intro"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de las siguientes NO es una de las razones que da el tema para que los dispositivos IoT sean habitualmente «limitados»?",
+  "explanation": "El tema da tres razones: alimentación por baterías, gran número de nodos con coste bajo por nodo y tráfico de mensajes cortos poco frecuentes que solo requiere tasas bajas.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-1-introduccion",
+      "pdfPages": [
+        2
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-1-introduccion",
+      "anchor": "como-es-un-nodo-iot"
+    }
+  ],
+  "options": [
+    {
+      "id": "ejecutar-un-so-de-escritorio",
+      "text": "La necesidad de ejecutar un sistema operativo de escritorio en cada nodo.",
+      "explanation": "Es la que NO es una razón: el tema dice además que una MCU puede funcionar incluso sin SO; nada obliga a un SO de escritorio."
+    },
+    {
+      "id": "alimentacion-por-baterias",
+      "text": "Casi siempre están alimentados por baterías y su consumo debe ser extremadamente bajo.",
+      "explanation": "Sí es una razón: hay que extender lo máximo posible la duración de las baterías."
+    },
+    {
+      "id": "muchos-nodos-y-coste-bajo",
+      "text": "Se despliegan cientos o miles de nodos, así que el hardware se reduce al mínimo viable.",
+      "explanation": "Sí es una razón: mantener un coste de unos 5–30 € por nodo obliga a un hardware mínimo."
+    },
+    {
+      "id": "mensajes-cortos-y-tasas-bajas",
+      "text": "Muchas aplicaciones envían mensajes cortos con poca frecuencia y bastan tasas muy bajas.",
+      "explanation": "Sí es una razón: con mensajes cada 1–5 minutos no se necesitan tasas altas."
+    }
+  ],
+  "answer": "ejecutar-un-so-de-escritorio"
+}

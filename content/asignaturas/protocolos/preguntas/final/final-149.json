@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-149",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estos datos NO puede aparecer en el JSON que el Network Server entrega al Application Server para un uplink?",
+  "explanation": "El NS identifica el dispositivo y la aplicación, conserva FPort, FCnt y los metadatos radio combinados de los gateways, pero entrega el payload todavía cifrado. El decoded_payload solo puede generarlo el AS tras descifrar con AppSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        49,
+        50,
+        51
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "network-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "el-decoded-payload-con-los-valores-ya",
+      "text": "El decoded_payload con los valores ya interpretados.",
+      "explanation": "Lo añade el AS (pp. 51 y 55)."
+    },
+    {
+      "id": "el-device-id-y-el-application-id",
+      "text": "El device_id y el application_id.",
+      "explanation": "Sí aparecen: el NS identifica el dispositivo y su aplicación (p. 50)."
+    },
+    {
+      "id": "el-f-port-y-el-f-cnt",
+      "text": "El f_port y el f_cnt.",
+      "explanation": "Sí aparecen."
+    },
+    {
+      "id": "los-rx-metadata-de-los-gateways-que",
+      "text": "Los rx_metadata de los gateways que recibieron el uplink.",
+      "explanation": "Sí aparecen: el NS combina los metadatos al eliminar duplicados (p. 49)."
+    }
+  ],
+  "answer": "el-decoded-payload-con-los-valores-ya"
+}

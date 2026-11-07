@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.lpwan-70",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo registrado en TTN Sandbox envía el mismo uplink de 0,411648 s de airtime. Para respetar la política de uso justo de TTN, ¿cada cuánto tiempo puede enviar, como mínimo, de media?",
+  "explanation": "TTN limita cada dispositivo a 30 s de transmisión al día: 30 / 0,411648 ≈ 72,9, es decir, 72 mensajes diarios, uno cada 1440 / 72 = 20 minutos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        23,
+        29,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "cada-20-minutos-aproximadamente",
+      "text": "Cada 20 minutos aproximadamente.",
+      "explanation": "72 mensajes al día (p. 23)."
+    },
+    {
+      "id": "cada-41-segundos-aproximadamente",
+      "text": "Cada 41 segundos aproximadamente.",
+      "explanation": "Es el límite del duty cycle del 1 % (87 por hora); TTN es mucho más restrictiva."
+    },
+    {
+      "id": "cada-15-minutos",
+      "text": "Cada 15 minutos.",
+      "explanation": "Serían 96 mensajes y unos 39,5 s diarios: supera los 30 s."
+    },
+    {
+      "id": "cada-2-minutos",
+      "text": "Cada 2 minutos.",
+      "explanation": "Serían 720 mensajes y casi 300 s diarios."
+    }
+  ],
+  "answer": "cada-20-minutos-aproximadamente"
+}

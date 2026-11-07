@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.lowpan-108",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un ayuntamiento quiere conectar contadores de agua, alumbrado público y sensores de aparcamiento repartidos por varios kilómetros con una malla IPv6 multisalto y saltos radio largos. ¿Qué tecnología encaja mejor con lo que presenta el tema?",
+  "explanation": "Wi-SUN FAN combina IEEE 802.15.4g (modalidades sub-GHz con saltos de cientos de metros o kilómetros), 6LoWPAN y RPL, y se orienta a servicios públicos y ciudades inteligentes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        10,
+        89
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "tecnologias-y-clasificacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "wi-sun-fan",
+      "text": "Wi-SUN FAN, sobre IEEE 802.15.4g sub-GHz con 6LoWPAN y RPL.",
+      "explanation": "Es la tecnología del tema para smart metering y smart cities: la radio sub-GHz de 802.15.4g alcanza saltos largos y RPL encamina la malla IPv6."
+    },
+    {
+      "id": "thread",
+      "text": "Thread, sobre IEEE 802.15.4 a 2,4 GHz con MLE.",
+      "explanation": "Thread es una malla IPv6, pero a 2,4 GHz y 250 kbit/s, con alcances de decenas de metros por salto; se orienta a hogares y edificios."
+    },
+    {
+      "id": "zigbee",
+      "text": "Zigbee, por ser la tecnología 802.15.4 más extendida.",
+      "explanation": "Zigbee es madura en smart home, pero no está basada en IP, y el enunciado pide una malla IPv6."
+    },
+    {
+      "id": "ble",
+      "text": "BLE con un smartphone como pasarela.",
+      "explanation": "BLE es una estrella de proximidad con alcance de decenas de metros y sin IPv6 en sus despliegues habituales."
+    }
+  ],
+  "answer": "wi-sun-fan"
+}

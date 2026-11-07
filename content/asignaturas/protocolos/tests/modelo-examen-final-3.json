@@ -1,0 +1,100 @@
+{
+  "id": "protocolos.tests.modelo-examen-final-3",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "modelo-examen-final-3",
+  "title": "Modelo de examen final 3",
+  "description": "50 preguntas inéditas de los cinco temas, con la dificultad de un examen final: escenarios, volcados y cálculos de varios pasos.",
+  "scope": "Toda la materia: temas 1, 2 y 3 completos, tema 4 completo (edición del 22/10, 89 páginas) y tema 5 completo. 4 preguntas del tema 1, 10 del tema 2, 12 del tema 3, 14 del tema 4 y 10 del tema 5, todas de respuesta única. Ninguna pregunta se repite en otro test.",
+  "tagIds": [
+    "protocolos.tags.intro",
+    "protocolos.tags.aplicacion",
+    "protocolos.tags.ipv6",
+    "protocolos.tags.lowpan",
+    "protocolos.tags.lpwan",
+    "protocolos.tags.examen-final"
+  ],
+  "order": 89,
+  "groups": [
+    {
+      "id": "tema-1",
+      "title": "Tema 1 · Introducción a IoT",
+      "questionIds": [
+        "protocolos.preguntas.final-9",
+        "protocolos.preguntas.final-10",
+        "protocolos.preguntas.final-11",
+        "protocolos.preguntas.final-12"
+      ]
+    },
+    {
+      "id": "tema-2",
+      "title": "Tema 2 · Nivel de aplicación",
+      "questionIds": [
+        "protocolos.preguntas.final-33",
+        "protocolos.preguntas.final-34",
+        "protocolos.preguntas.final-35",
+        "protocolos.preguntas.final-36",
+        "protocolos.preguntas.final-37",
+        "protocolos.preguntas.final-38",
+        "protocolos.preguntas.final-39",
+        "protocolos.preguntas.final-40",
+        "protocolos.preguntas.final-41",
+        "protocolos.preguntas.final-42"
+      ]
+    },
+    {
+      "id": "tema-3",
+      "title": "Tema 3 · IP en IoT",
+      "questionIds": [
+        "protocolos.preguntas.final-67",
+        "protocolos.preguntas.final-68",
+        "protocolos.preguntas.final-69",
+        "protocolos.preguntas.final-70",
+        "protocolos.preguntas.final-71",
+        "protocolos.preguntas.final-72",
+        "protocolos.preguntas.final-73",
+        "protocolos.preguntas.final-74",
+        "protocolos.preguntas.final-75",
+        "protocolos.preguntas.final-76",
+        "protocolos.preguntas.final-77",
+        "protocolos.preguntas.final-78"
+      ]
+    },
+    {
+      "id": "tema-4",
+      "title": "Tema 4 · Redes LoWPAN",
+      "questionIds": [
+        "protocolos.preguntas.final-107",
+        "protocolos.preguntas.final-108",
+        "protocolos.preguntas.final-109",
+        "protocolos.preguntas.final-110",
+        "protocolos.preguntas.final-111",
+        "protocolos.preguntas.final-112",
+        "protocolos.preguntas.final-113",
+        "protocolos.preguntas.final-114",
+        "protocolos.preguntas.final-115",
+        "protocolos.preguntas.final-116",
+        "protocolos.preguntas.final-117",
+        "protocolos.preguntas.final-118",
+        "protocolos.preguntas.final-119",
+        "protocolos.preguntas.final-120"
+      ]
+    },
+    {
+      "id": "tema-5",
+      "title": "Tema 5 · LPWAN y LoRaWAN",
+      "questionIds": [
+        "protocolos.preguntas.final-141",
+        "protocolos.preguntas.final-142",
+        "protocolos.preguntas.final-143",
+        "protocolos.preguntas.final-144",
+        "protocolos.preguntas.final-145",
+        "protocolos.preguntas.final-146",
+        "protocolos.preguntas.final-147",
+        "protocolos.preguntas.final-148",
+        "protocolos.preguntas.final-149",
+        "protocolos.preguntas.final-150"
+      ]
+    }
+  ]
+}

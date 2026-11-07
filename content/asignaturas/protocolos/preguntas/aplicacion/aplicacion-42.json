@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.aplicacion-42",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Según el tema, la capa de aplicación asume funciones que en otros modelos corresponden a capas propias. ¿Qué pareja recoge correctamente dos de ellas?",
+  "explanation": "La diapositiva incluye en la capa de aplicación la representación de los datos (capa de presentación) y la gestión de sesiones (capa de sesión), además de la identificación de recursos, el formato y orden de los mensajes y el modelo de comunicación.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        6
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "funcion-de-las-capas-y-modelos-de-comunicacion"
+    }
+  ],
+  "options": [
+    {
+      "id": "representacion-y-sesiones",
+      "text": "La representación de los datos (presentación) y la gestión de sesiones (sesión).",
+      "explanation": "Son las dos funciones que el tema marca entre paréntesis como capa de presentación y capa de sesión."
+    },
+    {
+      "id": "compresion-y-fragmentacion",
+      "text": "La compresión de cabeceras y la fragmentación de datagramas.",
+      "explanation": "Son funciones de la capa de adaptación (6LoWPAN), entre red y enlace."
+    },
+    {
+      "id": "encaminamiento-y-bits",
+      "text": "El encaminamiento de datagramas y la transmisión de bits.",
+      "explanation": "El encaminamiento es de la capa de red y la transmisión de bits, de la física."
+    },
+    {
+      "id": "entrega-a-la-aplicacion-y-tramas",
+      "text": "La entrega de datos a la aplicación destino y la entrega de tramas al siguiente nodo.",
+      "explanation": "Entregar datos a la aplicación destino es tarea del transporte, y entregar tramas al siguiente nodo, del enlace."
+    }
+  ],
+  "answer": "representacion-y-sesiones"
+}

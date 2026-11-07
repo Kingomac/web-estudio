@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-49",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Qué afirmación sobre los campos de la cabecera IPv6 es correcta?",
+  "explanation": "Entre los campos nuevos de IPv6, Traffic Class (8 bits) se usa para QoS y se divide en DSCP (6 bits) y ECN (2 bits); Flow Label (20 bits) se usa para ingeniería de tráfico. Payload Length no incluye la cabecera, Hop Limit se decrementa en cada router y la cabecera no lleva checksum.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "cabecera-ipv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "traffic-class-dscp-ecn",
+      "text": "Traffic Class se compone de DSCP (6 bits) y ECN (2 bits), y se usa para QoS.",
+      "explanation": "Es la descripción del tema para este campo nuevo."
+    },
+    {
+      "id": "flow-label-checksum",
+      "text": "Flow Label ocupa 8 bits y sustituye al checksum de la cabecera IPv4.",
+      "explanation": "Flow Label tiene 20 bits y sirve para ingeniería de tráfico; IPv6 simplemente elimina el checksum de cabecera."
+    },
+    {
+      "id": "hop-limit-incrementa",
+      "text": "Hop Limit se incrementa en cada router hasta un máximo, y entonces se descarta el paquete.",
+      "explanation": "Hop Limit disminuye en 1 en cada router y el paquete se descarta al llegar a 0."
+    },
+    {
+      "id": "payload-incluye-cabecera",
+      "text": "Payload Length indica el tamaño total del datagrama, incluidos los 40 bytes de cabecera.",
+      "explanation": "Payload Length indica solo el tamaño de los datos que siguen a la cabecera básica."
+    }
+  ],
+  "answer": "traffic-class-dscp-ecn"
+}

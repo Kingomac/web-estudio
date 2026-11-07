@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-23",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál de estas afirmaciones sobre los principios REST que recoge el tema NO es correcta?",
+  "explanation": "REST separa cliente y servidor, que se comunican por una interfaz bien definida y pueden evolucionar por separado; exige comunicación sin estado; permite cachés en clientes y proxies; y usa una arquitectura en capas jerárquicas con interfaces definidas pero sin una implementación formalmente especificada.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "cliente-servidor-y-rest"
+    }
+  ],
+  "options": [
+    {
+      "id": "capas-implementacion-especificada",
+      "text": "La arquitectura en capas exige que la implementación de cada capa esté formalmente especificada.",
+      "explanation": "Es falsa: las capas tienen interfaces definidas, pero sin una implementación formalmente especificada."
+    },
+    {
+      "id": "sin-estado",
+      "text": "Cada petición debe contener toda la información necesaria para que el servidor la procese.",
+      "explanation": "Es correcta: es la comunicación sin estado."
+    },
+    {
+      "id": "caches",
+      "text": "Las respuestas pueden almacenarse en la caché de clientes o proxies.",
+      "explanation": "Es correcta: reduce el consumo de recursos de red."
+    },
+    {
+      "id": "evolucion-independiente",
+      "text": "Cliente y servidor pueden evolucionar por separado si respetan la interfaz.",
+      "explanation": "Es correcta: es la separación cliente/servidor."
+    }
+  ],
+  "answer": "capas-implementacion-especificada"
+}

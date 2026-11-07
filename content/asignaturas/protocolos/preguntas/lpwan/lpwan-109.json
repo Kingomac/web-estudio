@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lpwan-109",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo de clase A ha sido oído por dos gateways. GW1 tiene mejor RSSI y SNR, pero ha agotado su duty cycle en esa subbanda para el instante de RX1; GW2 tiene algo peor señal, pero un enlace adecuado y está libre. ¿Qué hace el NS?",
+  "explanation": "El NS elige un gateway que pueda entregar el mensaje: con buena calidad de enlace, disponible y respetando el duty cycle, en la ventana del nodo. El de mejor señal no siempre puede transmitir cuando hace falta.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "envia-el-downlink-por-gw2",
+      "text": "Envía el downlink por GW2.",
+      "explanation": "P. 60: «el gateway con mejor señal no siempre es el que puede transmitir en el momento necesario»."
+    },
+    {
+      "id": "lo-envia-por-gw1-igualmente-porque-la",
+      "text": "Lo envía por GW1 igualmente, porque la calidad del enlace manda.",
+      "explanation": "Incumpliría el duty cycle, que el NS debe respetar."
+    },
+    {
+      "id": "lo-envia-por-los-dos-gateways-a-la-vez",
+      "text": "Lo envía por los dos gateways a la vez.",
+      "explanation": "El NS selecciona un gateway."
+    },
+    {
+      "id": "espera-a-que-el-nodo-pase-a-clase-c",
+      "text": "Espera a que el nodo pase a clase C.",
+      "explanation": "La clase no cambia por esto; basta con usar otro gateway."
+    }
+  ],
+  "answer": "envia-el-downlink-por-gw2"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.aplicacion-77",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un analizador muestra en una respuesta CoAP el byte de código 0x83 (binario 100 00011). ¿Qué indica?",
+  "explanation": "Los 3 bits altos (100) dan a = 4 y los 5 bajos (00011) dan bb = 03: es el código 4.03. La clase 4 indica error del cliente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        39,
+        41
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "formato-y-codigos"
+    }
+  ],
+  "options": [
+    {
+      "id": "error-del-cliente",
+      "text": "Un error del cliente (4.03).",
+      "explanation": "a = 4 es la clase de error del cliente."
+    },
+    {
+      "id": "put",
+      "text": "Una petición PUT (0.03).",
+      "explanation": "Toma solo los 5 bits bajos; con a = 0 sería PUT, pero aquí a = 4."
+    },
+    {
+      "id": "error-del-servidor",
+      "text": "Un error del servidor (5.03).",
+      "explanation": "Los 3 bits altos 100 valen 4, no 5."
+    },
+    {
+      "id": "exito",
+      "text": "Éxito (2.03).",
+      "explanation": "La clase de éxito es a = 2 (bits 010)."
+    }
+  ],
+  "answer": "error-del-cliente"
+}

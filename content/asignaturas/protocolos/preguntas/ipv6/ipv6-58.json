@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.ipv6-58",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un nodo envía un NS a ff02::1:ff00:7 dentro de una PAN IEEE 802.15.4. ¿Cómo se transporta en la capa MAC según el tema?",
+  "explanation": "IEEE 802.15.4 no soporta multicast nativo en la capa MAC. Los paquetes IPv6 multicast pueden transportarse en tramas broadcast con el PAN ID de destino y la dirección corta destino 0xFFFF; así la difusión se limita a los nodos de esa PAN que están dentro del alcance radio. Por eso el multicast de NDP resulta costoso en estas redes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        37,
+        44
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "multicast-solicited-node-y-direccion-mac-multicast"
+    }
+  ],
+  "options": [
+    {
+      "id": "broadcast-ffff",
+      "text": "En una trama broadcast con el PAN ID de destino y la dirección corta 0xFFFF.",
+      "explanation": "Es el mecanismo descrito para suplir la falta de multicast MAC en 802.15.4."
+    },
+    {
+      "id": "3333",
+      "text": "En una trama con MAC destino 33:33:ff:00:00:07.",
+      "explanation": "El prefijo 33:33 es el mapeo de Ethernet/WiFi, no de IEEE 802.15.4."
+    },
+    {
+      "id": "multicast-nativo",
+      "text": "Con una dirección MAC multicast nativa de 802.15.4 derivada de los 24 bits finales.",
+      "explanation": "El tema indica precisamente que 802.15.4 no soporta multicast nativo en la capa MAC."
+    },
+    {
+      "id": "toda-la-malla",
+      "text": "En una trama broadcast que el estándar garantiza que llega a todos los nodos de la malla.",
+      "explanation": "La difusión solo llega a los nodos de la PAN dentro del alcance radio; no garantiza cubrir una malla multisalto."
+    }
+  ],
+  "answer": "broadcast-ffff"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.ipv6-85",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "Un cliente consulta por mDNS PTR _ipp._tcp.local y recibe:\n`PTR  _ipp._tcp.local → ImpresoraSala._ipp._tcp.local`\n`SRV  ImpresoraSala._ipp._tcp.local → impresora.local · puerto 631`\n`TXT  ty=Impresora Sala; note=Planta 1`\n`AAAA impresora.local → fe80::45`\n¿A qué extremo debe conectarse para usar el servicio?",
+  "explanation": "El PTR da el nombre de la instancia, el SRV el host (impresora.local) y el puerto (631), y el AAAA la dirección IPv6 de ese host (fe80::45). El servicio es _tcp, así que el cliente abre una conexión TCP a fe80::45, puerto 631. El TXT solo aporta metadatos y 5353 es el puerto de mDNS.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        49,
+        50,
+        51
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "mdns-y-zeroconf"
+    }
+  ],
+  "options": [
+    {
+      "id": "tcp-631",
+      "text": "TCP al puerto 631 de fe80::45.",
+      "explanation": "Combina el puerto del SRV, la dirección del AAAA y el transporte de la etiqueta _tcp."
+    },
+    {
+      "id": "udp-5353",
+      "text": "UDP al puerto 5353 de fe80::45.",
+      "explanation": "5353 es el puerto de mDNS, usado para la consulta; el servicio está en el puerto 631 del SRV."
+    },
+    {
+      "id": "grupo-mdns",
+      "text": "TCP al puerto 631 de ff02::fb.",
+      "explanation": "ff02::fb es el grupo multicast de mDNS, no la dirección del host que ofrece el servicio."
+    },
+    {
+      "id": "falta-srv",
+      "text": "Ninguno todavía: falta consultar el SRV de la instancia.",
+      "explanation": "El SRV ya viene en la respuesta; los registros pueden incluirse en la misma respuesta."
+    }
+  ],
+  "answer": "tcp-631"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.final-48",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "La interfaz Ethernet de un host tiene tres direcciones unicast: fe80::21a:2bff:fe3c:4d5e, 2001:db8:1:0:21a:2bff:fe3c:4d5e (por SLAAC) y fd00:1::25. ¿A qué grupos solicited-node está suscrito automáticamente?",
+  "explanation": "El host se suscribe al grupo solicited-node de cada una de sus direcciones unicast: ff02::1:ff00:0/104 + sus 24 últimos bits. La link-local y la global comparten IID y, por tanto, los 24 últimos bits (3c:4d:5e): un solo grupo, ff02::1:ff3c:4d5e. La ULA termina en 00:00:25: ff02::1:ff00:25. Son dos grupos.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        21
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "multicast-solicited-node-y-direccion-mac-multicast"
+    }
+  ],
+  "options": [
+    {
+      "id": "dos",
+      "text": "A dos: ff02::1:ff3c:4d5e y ff02::1:ff00:25.",
+      "explanation": "Las dos direcciones con el mismo IID comparten grupo."
+    },
+    {
+      "id": "tres",
+      "text": "A tres, uno por dirección, porque sus prefijos son distintos.",
+      "explanation": "El grupo depende solo de los 24 últimos bits, no del prefijo."
+    },
+    {
+      "id": "uno",
+      "text": "Solo a ff02::1:ff3c:4d5e, porque las ULA no usan NDP.",
+      "explanation": "La suscripción se hace para cada dirección unicast, incluidas las ULA."
+    },
+    {
+      "id": "bits-equivocados",
+      "text": "A dos: ff02::1:ff3c:4d5e y ff02::1:ff00:1.",
+      "explanation": "Toma bits del prefijo de la ULA; deben usarse sus 24 últimos bits (00:00:25)."
+    }
+  ],
+  "answer": "dos"
+}

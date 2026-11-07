@@ -1,0 +1,53 @@
+{
+  "id": "protocolos.preguntas.final-112",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En route-over, el nodo 5 envía un datagrama UDP desde 2001:db8::ff:fe00:5 a 2001:db8::ff:fe00:1, y la trama va a su siguiente salto, el nodo 3 (direcciones cortas). Contexto 0 = 2001:db8::/64; Traffic Class y Flow Label a 0; Hop Limit 63; UDP del puerto 5683 al 5683 con checksum. ¿Cuántos bytes suman LOWPAN_IPHC y LOWPAN_NHC con sus campos en línea?",
+  "explanation": "IPHC: 2 bytes + Hop Limit en línea (1, porque 63 no tiene código) + SAM = 11 (0, origen = emisor de la trama) + DAM = 10 (2, el destino no es la MAC destino del salto) = 5. NHC: 1 + puertos sin comprimir (4) + checksum (2) = 7. Total: 12 bytes.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        19,
+        21,
+        24,
+        25,
+        27,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "metodo-para-resolver-ejercicios-iphc"
+    }
+  ],
+  "options": [
+    {
+      "id": "12",
+      "text": "12 bytes.",
+      "explanation": "5 de IPHC y 7 de NHC."
+    },
+    {
+      "id": "11",
+      "text": "11 bytes.",
+      "explanation": "Supone que Hop Limit 63 se codifica sin enviarlo; solo 1, 64 y 255 tienen código."
+    },
+    {
+      "id": "10",
+      "text": "10 bytes.",
+      "explanation": "Deduce el IID destino de la MAC destino de la trama, que es la del nodo 3, no la del destino."
+    },
+    {
+      "id": "18",
+      "text": "18 bytes.",
+      "explanation": "Envía el IID destino completo (DAM = 01), cuando tiene la forma 0:ff:fe00:XXXX y bastan 16 bits."
+    }
+  ],
+  "answer": "12"
+}

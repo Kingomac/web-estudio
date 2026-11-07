@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.final-89",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En Thread, el hijo 3 del router con Router ID 5 envía un paquete al hijo 2 del router con Router ID 3. Entre routers, la ruta es 5 → 4 → 3. ¿Qué direcciones lleva la trama en el salto del router 4 al router 3?",
+  "explanation": "RLOC16 = Router ID · 1024 + Child ID: origen 0x1403, destino 0x0C02, router 4 = 0x1000 y router 3 = 0x0C00. La cabecera 802.15.4 lleva los RLOC16 del salto y la cabecera Mesh conserva origen y destino final.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        61,
+        69,
+        70
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "entrega-de-un-paquete"
+    }
+  ],
+  "options": [
+    {
+      "id": "mac-1000-0c00-mesh-1403-0c02",
+      "text": "802.15.4: 0x1000 → 0x0C00; Mesh: 0x1403 → 0x0C02.",
+      "explanation": "Calcula bien los RLOC16 y separa el salto de los extremos."
+    },
+    {
+      "id": "mesh-routers",
+      "text": "802.15.4: 0x1000 → 0x0C00; Mesh: 0x1400 → 0x0C00.",
+      "explanation": "La cabecera Mesh lleva los RLOC16 de los dispositivos extremos, no los de sus routers padre."
+    },
+    {
+      "id": "intercambiado",
+      "text": "802.15.4: 0x1403 → 0x0C02; Mesh: 0x1000 → 0x0C00.",
+      "explanation": "Intercambia los papeles: los extremos van en Mesh y el salto en 802.15.4."
+    },
+    {
+      "id": "sin-desplazar",
+      "text": "802.15.4: 0x0004 → 0x0003; Mesh: 0x0503 → 0x0302.",
+      "explanation": "No desplaza el Router ID a los 6 bits altos; el Child ID ocupa los 10 bits bajos."
+    }
+  ],
+  "answer": "mac-1000-0c00-mesh-1403-0c02"
+}

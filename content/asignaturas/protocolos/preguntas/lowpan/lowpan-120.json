@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.lowpan-120",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Con MRHOF y ETX, un router se une a su padre preferido P, de Rank 768, a través de un enlace con ETX = 2,5. ¿Qué Rank calcula?",
+  "explanation": "Rank(i, p) = Rank(p) + max(256, 128 · ETX) = 768 + max(256, 320) = 768 + 320 = 1088.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        77
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mrhof-y-etx-calculo-del-material"
+    }
+  ],
+  "options": [
+    {
+      "id": "1088",
+      "text": "1088.",
+      "explanation": "Como 128 · 2,5 = 320 supera 256, el incremento es 320."
+    },
+    {
+      "id": "1024",
+      "text": "1024.",
+      "explanation": "Suma siempre 256; el incremento es el máximo entre 256 y 128 · ETX, y aquí gana 320."
+    },
+    {
+      "id": "1408",
+      "text": "1408.",
+      "explanation": "Multiplica 256 por el ETX (640); la fórmula usa 128 · ETX."
+    },
+    {
+      "id": "320",
+      "text": "320.",
+      "explanation": "Es solo el incremento; el Rank se obtiene sumándolo al Rank del padre."
+    }
+  ],
+  "answer": "1088"
+}

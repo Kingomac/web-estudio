@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.aplicacion-90",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.aplicacion"
+  ],
+  "type": "single",
+  "prompt": "Un sensor publica 10 mensajes en el broker con QoS 2 y no se pierde ningún paquete. ¿Cuántos paquetes MQTT de publicación y confirmación intercambia con el broker?",
+  "explanation": "Cada publicación QoS 2 usa cuatro paquetes: PUBLISH, PUBREC, PUBREL y PUBCOMP. 10 × 4 = 40. Con QoS 1 serían 20 (PUBLISH y PUBACK) y con QoS 0, 10.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.nivel-de-aplicacion",
+      "pdfPages": [
+        51,
+        52,
+        56
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-2-aplicacion",
+      "anchor": "calidad-de-servicio-qos"
+    }
+  ],
+  "options": [
+    {
+      "id": "cuarenta",
+      "text": "40.",
+      "explanation": "10 × 4 paquetes (PUBLISH, PUBREC, PUBREL, PUBCOMP)."
+    },
+    {
+      "id": "veinte",
+      "text": "20.",
+      "explanation": "Corresponde a QoS 1: PUBLISH y PUBACK."
+    },
+    {
+      "id": "diez",
+      "text": "10.",
+      "explanation": "Corresponde a QoS 0, sin confirmación."
+    },
+    {
+      "id": "treinta",
+      "text": "30.",
+      "explanation": "Cuenta tres paquetes por mensaje; QoS 2 confirma en dos pasos y necesita cuatro."
+    }
+  ],
+  "answer": "cuarenta"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.ipv6-45",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.ipv6"
+  ],
+  "type": "single",
+  "prompt": "¿Cuál es la forma simplificada de `2001:0db8:0000:0000:0000:00ab:0000:0001` según las reglas de notación del tema?",
+  "explanation": "Se eliminan los ceros a la izquierda de cada grupo (0db8 → db8, 00ab → ab, 0001 → 1) y se usa :: una sola vez, para el bloque mayor de grupos nulos: los tres ceros seguidos tras db8. El grupo nulo aislado se escribe como 0. Resultado: 2001:db8::ab:0:1.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-3-ip-en-iot",
+      "pdfPages": [
+        9
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-3-ip-en-iot",
+      "anchor": "direcciones-ipv6"
+    }
+  ],
+  "options": [
+    {
+      "id": "bloque-mayor",
+      "text": "2001:db8::ab:0:1",
+      "explanation": "Comprime con :: el bloque de tres grupos nulos y deja el grupo nulo aislado como 0."
+    },
+    {
+      "id": "bloque-menor",
+      "text": "2001:db8:0:0:0:ab::1",
+      "explanation": "Usa :: para el bloque de un solo grupo; el tema lo reserva para el bloque mayor de ceros."
+    },
+    {
+      "id": "dos-dobles-puntos",
+      "text": "2001:db8::ab::1",
+      "explanation": "Usar :: dos veces hace ambigua la dirección: no se sabría cuántos grupos sustituye cada uno."
+    },
+    {
+      "id": "pierde-un-grupo",
+      "text": "2001:db8::ab:1",
+      "explanation": "Al expandirla, :: rellenaría cuatro grupos nulos antes de ab: 2001:db8:0:0:0:0:ab:1, que es otra dirección."
+    }
+  ],
+  "answer": "bloque-mayor"
+}
