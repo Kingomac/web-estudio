@@ -33,7 +33,7 @@ const rows: Record<Props['set'], { title: string; intro: string; source: string;
 const data = rows[set];
 const used = [...new Set(data.rows.flatMap(r => r.parts.map(p => p[0])))];
 ---
-<LabFrame id={id} component="protocolos.lpwan-cronogramas" label="Figura · Cronograma" title={data.title} intro={data.intro}>
+<LabFrame id={id} component="protocolos.lpwan-cronogramas" label="Figura · Cronograma" title={data.title} intro={data.intro} print>
   <div class="timelines">
     {data.rows.map(row => (
       <figure class="timeline">

@@ -280,7 +280,7 @@ test('la impresión mantiene explicación estática y oculta controles', async (
   await expect(page.locator('.mobile-toc-toggle')).toBeHidden();
 });
 
-test('los laboratorios imprimen todos los casos y supuestos cerrados incluso sin JavaScript', async ({ browser, baseURL }) => {
+test('sin JavaScript los laboratorios muestran sus casos en pantalla y no se imprimen', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
@@ -289,19 +289,17 @@ test('los laboratorios imprimen todos los casos y supuestos cerrados incluso sin
       await page.goto(`${baseURL}${subject}apuntes/${path}/`);
       const details = page.locator('.lab details');
       expect(await details.count()).toBeGreaterThan(0);
-      // Count-based assertions: one retrying check per state instead of one per element keeps the test fast.
-      const contents = page.locator('.lab details > :not(summary)');
-      const total = await contents.count();
       await expect(page.locator('.lab details > :not(summary):visible')).toHaveCount(0);
-      // Preserve the reader's choice when returning from print to screen.
       await details.first().locator('summary').click();
+      await expect(details.first().locator(':scope > :not(summary)').first()).toBeVisible();
+      // Labs are web-only: nothing of them reaches paper, open or not.
       await page.emulateMedia({ media: 'print' });
-      await expect(page.locator('.lab details > :not(summary):visible')).toHaveCount(total);
-      await expect(page.locator('.lab :is(button, input, select):visible')).toHaveCount(0);
+      await expect(page.locator('.lab:visible')).toHaveCount(0);
+      await expect(page.locator('h2').first()).toBeVisible();
+      // Preserve the reader's choice when returning from print to screen.
       await page.emulateMedia({ media: 'screen' });
       await expect(details.first()).toHaveAttribute('open');
       await expect(page.locator('.lab details[open]')).toHaveCount(1);
-      await expect(page.locator('.lab details:not([open]) > :not(summary):visible')).toHaveCount(0);
     }
   } finally {
     await context.close();
@@ -348,8 +346,7 @@ test('puente de Wheatstone: casos, equilibrio, impresión y móvil', async ({ pa
   await lab.getByLabel('R2 (Ω)').fill('0');
   await expect(output.locator('.lab-error')).toBeVisible();
   await page.emulateMedia({ media: 'print' });
-  await expect(lab.locator('details > :not(summary):visible').first()).toBeVisible();
-  await expect(lab.locator(':is(button, input):visible')).toHaveCount(0);
+  await expect(lab).toBeHidden();
   await page.emulateMedia({ media: 'screen' });
   await page.setViewportSize({ width: 320, height: 800 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -371,8 +368,7 @@ test('amplificadores: montajes, superposición, saturación, impresión y móvil
   await lab.getByLabel('R1 (kΩ)').fill('0');
   await expect(output.locator('.lab-error')).toBeVisible();
   await page.emulateMedia({ media: 'print' });
-  await expect(lab.locator('details > :not(summary):visible').first()).toBeVisible();
-  await expect(lab.locator(':is(button, input, select):visible')).toHaveCount(0);
+  await expect(lab).toBeHidden();
   await page.emulateMedia({ media: 'screen' });
   await page.setViewportSize({ width: 320, height: 800 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -391,10 +387,18 @@ test('tema 6 desde cero: figuras SVG, diagrama de radiación, impresión y móvi
   await expect(output.locator('.metrics')).toContainText('9 (9,54 dBi)');
   await expect(lab.getByRole('button', { name: 'cos⁸ θ' })).toHaveAttribute('aria-pressed', 'true');
   await page.emulateMedia({ media: 'print' });
-  await expect(lab.locator('details > :not(summary):visible').first()).toBeVisible();
-  await expect(lab.locator(':is(button, input):visible')).toHaveCount(0);
+  await expect(lab).toBeHidden();
   await expect(page.locator('.radio-fig svg').first()).toBeVisible();
   await page.emulateMedia({ media: 'screen' });
   await page.setViewportSize({ width: 320, height: 800 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('al imprimir se omiten los laboratorios y se conservan las figuras estáticas', async ({ page }) => {
+  await page.goto('asignaturas/protocolos/apuntes/tema-5-lpwan/');
+  await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('#visual-trama')).toBeHidden();
+  await expect(page.locator('#visual-recorrido')).toBeHidden();
+  await expect(page.locator('#visual-psm-edrx .timeline').first()).toBeVisible();
+  await expect(page.locator('a[href="#visual-trama"]')).toBeHidden();
 });
