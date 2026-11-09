@@ -1,0 +1,257 @@
+---
+import { url } from '../../../../../src/lib/sitio.ts';
+const pdfUrl = url('materiales/protocolos/resumen-final-imprimible.pdf');
+---
+<p class="callout no-print">Para imprimir, <a href={pdfUrl} target="_blank" rel="noopener">abre el PDF compacto</a> o <a href={pdfUrl} download="resumen-protocolos-final.pdf">descárgalo</a>: tamaño real (100 %), doble cara, borde largo. Esta lectura tiene el mismo contenido adaptado a la pantalla; si la imprimes desde la web ocupa bastantes más páginas.</p>
+
+<h2 id="t1">T1 · Introducción a IoT</h2>
+<p class="fuente">Tema 1, pp. 2-13.</p>
+<p><strong>Objetivo:</strong> muchos nodos, poca energía, enlaces poco fiables y bajo coste. No se busca velocidad: mensajes cortos, radio apagada el mayor tiempo posible.</p>
+<p><strong>MCU:</strong> CPU + RAM + memoria de programa + E/S en un chip; puede ir sin SO. <strong>MPU:</strong> memoria y periféricos externos, suele llevar SO. <strong>SoC:</strong> sistema integrado en un chip. <strong>Modular:</strong> bloques sustituibles sin soldar. WisBlock: Base, Core, IO, Sensor, conector de 24 pines. Wio = MCU + conectividad; Grove = sensores por conector de 4 pines. IP65/IP67 = protección de la carcasa.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">Clase RFC 7228</th><th scope="col">Recursos (tema)</th><th scope="col">Pila</th></tr></thead>
+<tbody>
+<tr><td><strong>0</strong></td><td>&lt;10 KB RAM, &lt;100 KB ROM</td><td>Sin pila IP convencional.</td></tr>
+<tr><td><strong>1</strong> (RFD)</td><td>Más que 0, aún escasos</td><td>IP reducida; funcionamiento intermitente.</td></tr>
+<tr><td><strong>2</strong> (FFD)</td><td>&gt;50 KB RAM, &gt;250 KB ROM</td><td>IP más completa; reenvío y encaminamiento ligero.</td></tr>
+</tbody></table></div>
+<p><strong>LLN:</strong> low-power, lossy, low-rate. Poca tasa ≠ poca fiabilidad. A un nodo limitado pueden faltarle servicios L2 (broadcast/multicast). <strong>Acceso:</strong> nodos–borde. <strong>Troncal:</strong> borde–aplicación.</p>
+<p><strong>Estrella:</strong> simple, todos al alcance del centro. <strong>Árbol:</strong> multisalto; si cae un enlace se pierde la rama. <strong>Malla:</strong> caminos alternativos, requiere mantenerlos. Multisalto no implica redundancia.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">LoWPAN</th><th scope="col">LPWAN</th></tr></thead>
+<tbody>
+<tr><td>Alcance</td><td>10-100 m, ampliable con malla</td><td>~5 km urbano, ~15 km rural</td></tr>
+<tr><td>Tasa</td><td>Cientos kbit/s a ~2 Mbit/s</td><td>0,25-1 kbit/s (máx. 50)</td></tr>
+<tr><td>Topología / IP</td><td>Estrella o malla; IPv6 e2e posible</td><td>Estrella; nodo no IP + pasarela</td></tr>
+</tbody></table></div>
+<p>Valores orientativos con excepciones: Zigbee es LoWPAN no IP y Wi-SUN FAN es LPWAN en malla IPv6. LoWPAN (categoría) ≠ 6LoWPAN (adaptación de IPv6).</p>
+
+<h2 id="t2">T2 · Nivel de aplicación</h2>
+<p class="fuente">Nivel de aplicación, pp. 4-61.</p>
+<p><strong>JSON/XML:</strong> formatos de datos. <strong>REST:</strong> estilo, no protocolo: interfaz definida, sin estado de sesión entre peticiones, caché, capas, código bajo demanda opcional. <strong>Cliente/servidor</strong> son funciones: un sensor puede ser servidor. <strong>Pub/sub:</strong> el broker distribuye; asíncrono y desacoplado. Red de brokers: evita cuello de botella y punto único de fallo.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">HTTP</th><th scope="col">CoAP</th><th scope="col">MQTT</th></tr></thead>
+<tbody>
+<tr><td>Modelo</td><td>Pet./resp.</td><td>Pet./resp. + Observe</td><td>Pub/sub con broker</td></tr>
+<tr><td>Transporte</td><td>TCP/TLS; HTTP/3: QUIC</td><td>UDP/DTLS (también TCP/TLS)</td><td>TCP/TLS</td></tr>
+<tr><td>Puertos</td><td><strong>80 / 443</strong></td><td><strong>5683 / 5684</strong></td><td><strong>1883 / 8883</strong></td></tr>
+<tr><td>Se accede a</td><td>URI</td><td>URI</td><td>Topic</td></tr>
+<tr><td>Fiabilidad</td><td>Transporte</td><td>CON/ACK, MID</td><td>QoS 0/1/2</td></tr>
+<tr><td>Cabecera</td><td>1.x texto; 2 y 3 binario</td><td>Binaria, fija 4 B</td><td>Binaria, fija 2-5 B</td></tr>
+</tbody></table></div>
+<h3 id="t2-http">HTTP, WebSocket y webhooks</h3>
+<p><strong>1.0:</strong> espera cada respuesta. <strong>1.1:</strong> persistencia y <em>pipelining</em> (respuestas en orden). <strong>2:</strong> binario, multiplexa streams sobre TCP. <strong>3:</strong> QUIC sobre UDP 443. TCP + petición ≈ <strong>2 RTT</strong>. GET consulta, PUT establece, POST crea/procesa, DELETE elimina.</p>
+<p><strong>1xx</strong> info (101). <strong>2xx</strong> éxito. <strong>3xx</strong> redirección/caché (301; <strong>304</strong> tras <code>If-Modified-Since</code>: reutiliza la copia sin el cuerpo). <strong>4xx</strong> cliente (400, 404). <strong>5xx</strong> servidor (505). Cookies: estado; proxy: intermediario con caché.</p>
+<p><strong>WebSocket:</strong> canal persistente y bidireccional. <code>Upgrade: websocket</code> → <strong>101</strong>; sobre TCP o TLS. Texto UTF-8 o binario; Ping/Pong/Close <strong>no se fragmentan</strong>. <strong>Webhook:</strong> evento → HTTP (habitualmente POST) a una URL ya configurada; para avisos esporádicos.</p>
+<p><strong>OPC UA:</strong> cliente/servidor orientado a servicios, industrial; TCP <strong>4840</strong> o HTTP/S; XML o binario; cifrado, autenticación y auditoría. <strong>SOAP:</strong> XML. Envelope, Header (opcional), Body (obligatorio), Fault (error, dentro de Body).</p>
+<h3 id="t2-coap">CoAP</h3>
+<p><code>Ver(2) | Type(2) | TKL(4) | Code(8) | MID(16)</code> + Token 0-8 B + opciones TLV + <code>0xFF</code> + payload.</p>
+<p><strong>CON 0</strong> (exige ACK), <strong>NON 1</strong>, <strong>ACK 2</strong>, <strong>RST 3</strong> (no se puede procesar). Sin ACK: retroceso exponencial, <strong>hasta 4 retransmisiones</strong> además del envío inicial. Peticiones multicast: NON.</p>
+<p class="callout"><strong>MID:</strong> ACK/RST y duplicados. <strong>Token:</strong> une petición y respuesta. <strong>Piggyback:</strong> ACK + respuesta juntos. <strong>Separada:</strong> ACK vacío (mismo MID) y luego la respuesta con el mismo Token. ACK no significa operación terminada.</p>
+<p><strong>Code</strong> clase(3).detalle(5): GET 0.01, POST 0.02, PUT 0.03, DELETE 0.04; 2.xx, 4.xx, 5.xx; 7.xx señalización. 2.05 = 2×32+5 = 69 = <code>0x45</code>.</p>
+<p><strong>Opciones:</strong> If-Match 1, Uri-Host 3, ETag 4, If-None-Match 5, Location-Path 8, Uri-Path 11, Content-Format 12, Max-Age 14, Uri-Query 15, Accept 17, Location-Query 20, Proxy-Uri 35, Proxy-Scheme 39, Size1 60. <strong>Observe:</strong> GET con 0 registra (cliente + Token), con 1 cancela; sin broker.</p>
+<h3 id="t2-mqtt">MQTT</h3>
+<p>CONNECT→CONNACK · SUBSCRIBE→SUBACK · UNSUBSCRIBE→UNSUBACK · PINGREQ→PINGRESP · DISCONNECT. Cabecera fija: tipo/flags + Remaining Length de 1-4 B (bit alto = continuación), que mide cabecera variable + payload.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">QoS</th><th scope="col">Secuencia</th><th scope="col">Entrega</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>PUBLISH</td><td>Como mucho una.</td></tr>
+<tr><td>1</td><td>PUBLISH → PUBACK</td><td>Al menos una; duplicados posibles.</td></tr>
+<tr><td>2</td><td>PUBLISH → PUBREC → PUBREL → PUBCOMP</td><td>Exactamente una; más estado y latencia.</td></tr>
+</tbody></table></div>
+<p>TCP no hace inútil el QoS: la conexión puede romperse. <strong>DUP=1:</strong> reintento; no prueba recepción previa. <strong>RETAIN:</strong> el broker guarda el último por topic para nuevos suscriptores; no es historial y puede ser antiguo. <strong>LWT:</strong> se registra al conectar; el broker lo publica ante desconexión inesperada (DISCONNECT lo evita). <strong>MQTT 5:</strong> pet./resp. con Response Topic y Correlation Data. <strong>MQTT-SN:</strong> formato propio sobre UDP; gateway a MQTT <strong>transparente</strong> (cada cliente, su conexión) o <strong>agregador</strong> (conexión compartida).</p>
+
+<h2 id="t3">T3 · IP en IoT</h2>
+<p class="fuente">Tema 3, pp. 2-55.</p>
+<p><strong>Nodo IP:</strong> border router. <strong>Nodo no IP:</strong> gateway que hace de intermediario. IPv6: gran espacio, autoconfiguración, sin NAT por escasez. Bridge: reenvía por MAC. Router: por prefijo IPv6.</p>
+<h3 id="t3-direcciones">Direcciones</h3>
+<p><strong>128 bits, 8 hextetos.</strong> <code>::</code> solo una vez. No hay broadcast. Anycast: unicast compartida, se llega a uno. Una interfaz tiene varias direcciones.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">Prefijo</th><th scope="col">Significado</th></tr></thead>
+<tbody>
+<tr><td><code>::</code> / <code>::1</code></td><td>Sin especificar / loopback.</td></tr>
+<tr><td><code>2000::/3</code></td><td>Global (ejemplo: /32 ISP, /48 cliente, /64 subred).</td></tr>
+<tr><td><code>fe80::/10</code></td><td>Link-local (<code>fe80::/64</code> + IID). No cruza routers.</td></tr>
+<tr><td><code>fc00::/7</code></td><td>ULA, se usa <code>fd00::/8</code>: FD(8) + Global ID(40) + subred(16) + IID(64). Cruza routers internos, no Internet.</td></tr>
+<tr><td><code>ff00::/8</code></td><td>Multicast; scope 2 = enlace; flags P y T.</td></tr>
+<tr><td><code>ff02::1</code> / <code>::2</code></td><td>All-nodes / all-routers.</td></tr>
+<tr><td><code>ff02::1:2</code></td><td>Servidores y relays DHCPv6.</td></tr>
+<tr><td><code>ff02::fb</code> / <code>ff02::1a</code></td><td>mDNS / all-RPL-nodes.</td></tr>
+</tbody></table></div>
+<p class="callout"><strong>Solicited-node:</strong> <code>ff02::1:ff00:0/104</code> + últimos <strong>24 bits</strong>. <strong>MAC multicast:</strong> <code>33:33</code> + últimos <strong>32 bits</strong>. <code>fe80::1222:33ff:fe44:5566</code> → <code>ff02::1:ff44:5566</code> → <code>33:33:ff:44:55:66</code>.</p>
+<p><strong>EUI-64 desde MAC-48:</strong> insertar <code>ff:fe</code> en medio y XOR <code>02</code> al primer octeto (invierte U/L; no siempre suma 2). <code>10:22:33:44:55:66</code> → <code>1222:33ff:fe44:5566</code>. <strong>MAC-64:</strong> solo invertir U/L. <strong>Corta 16 bits:</strong> <code>PAN_ID:00ff:fe00:XXXX</code>, U/L=0. SLAAC admite también IID opacos (RFC 7217) y temporales.</p>
+<h3 id="t3-cabecera">Cabecera: 40 B fijos</h3>
+<p>Version 4 · Traffic Class 8 (DSCP 6 + ECN 2) · Flow Label 20 · Payload Length 16 (<strong>sin</strong> los 40 B) · Next Header 8 (TCP 6, UDP 17, ICMPv6 58, Routing 43) · Hop Limit 8 · Origen 128 · Destino 128. Sin checksum. Los routers no fragmentan IPv6 (6LoWPAN fragmenta por debajo).</p>
+<h3 id="t3-rutas">Rutas</h3>
+<p><strong>LPM:</strong> gana el prefijo coincidente más largo; <code>::/0</code> es el último. Sin ruta: descarte e ICMPv6 Destination Unreachable. <strong>RIB:</strong> todas las rutas conocidas. <strong>FIB:</strong> las mejores, consultadas al reenviar. <strong>G=0</strong> directa, <strong>G=1</strong> por gateway. <strong>Agregar:</strong> mismo next-hop, bloque contiguo y alineado (cuatro /64 consecutivos desde múltiplo de 4 → /62). Subredes /b dentro de /a: 2<sup>b−a</sup>.</p>
+<p><strong>Cisco:</strong> <code>ipv6 unicast-routing</code> (reenvío) · <code>ipv6 enable</code> (genera link-local) · <code>ipv6 address P/L eui-64</code> · <code>ipv6 route ::/0 f0/1 fe80::1</code>. Next-hop link-local: <strong>indicar interfaz</strong>. Null0 descarta. L local /128, C conectada, S estática, O OSPF.</p>
+<h3 id="t3-ndp">ICMPv6, NDP y configuración</h3>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">Tipo</th><th scope="col">Mensaje</th></tr></thead>
+<tbody>
+<tr><td>1 / 2 / 3</td><td>Destination Unreachable / Packet Too Big / Time Exceeded</td></tr>
+<tr><td>128 / 129</td><td>Echo Request / Reply</td></tr>
+<tr><td><strong>133 / 134</strong></td><td>RS (a <code>ff02::2</code>) / RA (periódico a <code>ff02::1</code>)</td></tr>
+<tr><td><strong>135 / 136</strong></td><td>NS (a solicited-node, con SLLAO tipo 1) / NA (TLLAO tipo 2)</td></tr>
+</tbody></table></div>
+<p>NDP: <strong>Hop Limit 255</strong>, entre vecinos. Destino remoto: se resuelve la MAC del <strong>router</strong>; el destino IPv6 no cambia. No descubre servicios.</p>
+<p><strong>SLAAC:</strong> link-local + DAD → RS/RA → prefijo apto + IID → DAD. Gateway: origen link-local del RA. <strong>Flags:</strong> A (en el prefijo) permite SLAAC; M=1 dirección por DHCPv6; O=1 otros datos por DHCPv6. <strong>DHCPv6:</strong> Solicit, Advertise, Request, Reply; UDP cliente <strong>546</strong>, servidor <strong>547</strong>; el gateway sale del RA.</p>
+<p><strong>DAD:</strong> NS con origen <code>::</code> y Target la dirección tentativa. <strong>NUD:</strong> confirmación de capas superiores o NS unicast → NA. STALE: falta confirmación reciente, no caída.</p>
+<h3 id="t3-descubrimiento">Identificar y descubrir</h3>
+<p>Para usar un nodo hace falta IP + transporte + puerto, qué recursos ofrece y cómo acceder. <strong>UUID:</strong> 128 bits; identifica pero no dice cómo llegar. <strong>DNS AAAA:</strong> nombre → IPv6.</p>
+<p><strong>DNS-SD</strong> (pregunta por tipo de servicio, <code>_ipp._tcp.local</code>): <strong>PTR</strong> → instancias; <strong>SRV</strong> → host y puerto; <strong>TXT</strong> → metadatos; <strong>AAAA</strong> → IPv6. <strong>mDNS:</strong> sin servidor, UDP <strong>5353</strong>, <code>ff02::fb</code> / 224.0.0.251, <code>.local</code>, misma subred; responde el propio dispositivo, y puede anunciarse sin que le pregunten (QR=1). <strong>Zeroconf:</strong> SLAAC + mDNS + DNS-SD (Avahi, Bonjour).</p>
+<p><strong>CoAP:</strong> <code>GET /.well-known/core</code> → enlaces CoRE Link Format; <code>rt</code> = tipo de recurso. Descubrir no es leer: el valor llega en otro GET. <strong>Resource Directory:</strong> los nodos registran y renuevan; estar registrado no implica estar despierto.</p>
+
+<h2 id="t4">T4 · LoWPAN</h2>
+<p class="fuente">Tema 4 (ed. 22/10), pp. 3-89.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">Tecnología</th><th scope="col">Base</th><th scope="col">IPv6</th></tr></thead>
+<tbody>
+<tr><td>BLE / Bluetooth Mesh</td><td>Central; 1-2 Mbit/s, 125-500 kbit/s largo alcance. Mesh: inundación controlada</td><td>No nativo</td></tr>
+<tr><td>Zigbee</td><td>802.15.4, 2,4 GHz, 250 kbit/s, red propia</td><td>No</td></tr>
+<tr><td>Thread</td><td>802.15.4, 2,4 GHz, 6LoWPAN, MLE</td><td>Malla IPv6</td></tr>
+<tr><td>Wi-SUN FAN</td><td>802.15.4g/SUN, sub-GHz, 6LoWPAN, RPL</td><td>Malla IPv6</td></tr>
+</tbody></table></div>
+<p>802.15.4 define PHY/MAC: CSMA/CA, ACK. <strong>Trama 127 B</strong>, FCS 2 B, MAC 16 o 64 bits, PAN ID 16 bits; sin multicast MAC: broadcast <code>0xffff</code>. IPv6 exige <strong>MTU 1280</strong>. Ejemplo: 127 − 23 MAC − 21 seguridad − 2 FCS = <strong>81 B</strong>; sin comprimir 81 − 40 − 8 = <strong>33 B</strong>; con cabeceras en 6 B, 75 B.</p>
+<p class="callout"><strong>Orden M → F → C:</strong> MAC | Mesh | Fragmentación | Compresión | datos. <strong>Dispatch:</strong> <code>00</code> NALP · <code>01000001</code> IPv6 sin comprimir · <code>011</code> IPHC · <code>10</code> Mesh · <code>11000</code> FRAG1 · <code>11100</code> FRAGN.</p>
+<h3 id="t4-iphc">IPHC (2 B + contexto + en línea)</h3>
+<p><code>011 | TF(2) | NH(1) | HLIM(2) | CID | SAC | SAM(2) | M | DAC | DAM(2)</code></p>
+<p><strong>TF:</strong> 00 = ECN+DSCP+Flow, 4 B · 01 = ECN+Flow, 3 B · 10 = ECN+DSCP, 1 B · 11 = nada, 0 B. <strong>NH:</strong> 0 = 1 B en línea; 1 = sigue NHC. <strong>HLIM:</strong> 00 en línea (1 B); 01 = 1; 10 = 64; 11 = 255. <strong>CID:</strong> 0 = sin byte extra (contexto 0 si se usa); 1 = byte SCI(4)+DCI(4).</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">SAM/DAM</th><th scope="col">AC=0 (prefijo fe80::/64)</th><th scope="col">AC=1 (contexto)</th></tr></thead>
+<tbody>
+<tr><td>00</td><td>128 bits en línea</td><td>SAC: <code>::</code> · DAC: reservado</td></tr>
+<tr><td>01</td><td>64 (IID)</td><td>64 (IID)</td></tr>
+<tr><td>10</td><td>16 (IID <code>0:ff:fe00:XXXX</code>)</td><td>16 (igual)</td></tr>
+<tr><td>11</td><td>0 (IID del enlace)</td><td>0 (IID del enlace)</td></tr>
+</tbody></table></div>
+<p><strong>M=1, DAC=0:</strong> DAM 00 = 128 · 01 = 48 <code>ffFS::00GG:GGGG:GGGG</code> · 10 = 32 <code>ffFS::00GG:GGGG</code> · 11 = 8 <code>ff02::00GG</code>. <strong>M=1, DAC=1:</strong> basada en contexto.</p>
+<p><strong>Total:</strong> 2 + CID + TF + NH + HLIM + direcciones + NHC y sus campos. La MAC del salto actual no siempre identifica al extremo IPv6.</p>
+<h3 id="t4-nhc">NHC</h3>
+<p><strong>UDP:</strong> <code>11110 | C | P(2)</code>. C=0: checksum 2 B; C=1: omitido. Length se deduce. <strong>P:</strong> 00 = 16+16 · 01 = 16+8 (destino <code>f000-f0ff</code>) · 10 = 8+16 (origen <code>f000-f0ff</code>) · 11 = 4+4 (ambos <code>f0b0-f0bf</code>). Con <code>f0b3/f0ba</code>, P=11, byte <code>3a</code>, C=0: 4 B; con IPHC de 2 B: <strong>6 B</strong>.</p>
+<p><strong>Extensiones:</strong> <code>1110 | EID(3) | NH</code>. EID <strong>0</strong> Hop-by-Hop, <strong>1</strong> Routing, <strong>7</strong> IPv6.</p>
+<h3 id="t4-frag">Fragmentación</h3>
+<p><strong>FRAG1 4 B</strong> (offset 0 implícito); <strong>FRAGN 5 B</strong>. <strong>size</strong> 11 bits (IPv6 sin comprimir), <strong>tag</strong> 16 bits, <strong>offset</strong> 8 bits en unidades de 8 B sobre el datagrama sin comprimir (12 → 96 B). Se identifica por size + tag + extremos de enlace (o Mesh). Temporizador desde el primer fragmento recibido, <strong>máx. 60 s</strong>.</p>
+<h3 id="t4-reenvio">Mesh-under, route-over y 6LFF</h3>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">Mesh-under</th><th scope="col">Route-over</th></tr></thead>
+<tbody>
+<tr><td>Reenvía</td><td>6LoWPAN, por MAC final</td><td>IPv6, por destino IP</td></tr>
+<tr><td>Intermedio</td><td>Bridge (FFD)</td><td>Router 6LR</td></tr>
+<tr><td>Saltos IP al 6LBR</td><td>Uno</td><td>Varios</td></tr>
+<tr><td>Reensamblado</td><td>En el extremo</td><td>En cada router</td></tr>
+<tr><td>Contador</td><td>Hops Left</td><td>Hop Limit</td></tr>
+<tr><td>Ejemplo</td><td>Thread</td><td>Wi-SUN FAN</td></tr>
+</tbody></table></div>
+<p><strong>Mesh:</strong> <code>10 | V | F | HopsLeft(4)</code> + origen y destino final. V/F: 0 = 64 bits, 1 = 16. Valor 15 → byte Deep Hops Left. La MAC cambia en cada salto; las direcciones Mesh, no. <strong>6LN</strong> nodo · <strong>6LR</strong> router (solo route-over) · <strong>6LBR</strong> borde.</p>
+<p><strong>6LFF (RFC 8930):</strong> descomprime el primer fragmento, decide con IPv6 y reenvía los demás por la misma tag, sin reensamblar; solo reensambla el destino. <strong>VRB:</strong> (MAC anterior, tag entrante) → (MAC siguiente, tag saliente) = 20 B con MAC-64. Menor latencia.</p>
+<p><strong>6lo:</strong> extiende a Z-Wave, BLE, DECT-ULE, PLC, NFC. <strong>IPv6/BLE (RFC 7668):</strong> estrella, central = 6LBR; IPHC/NHC; <strong>fragmenta L2CAP</strong>, no FRAG1/N.</p>
+<h3 id="t4-ndp">NDP optimizado (RFC 6775)</h3>
+<p>Sin multicast y con nodos dormidos: hosts piden con RS (sin RA periódicos hacia ellos) · sin DAD tradicional · hosts <strong>registran</strong> su dirección · RA lleva contextos.</p>
+<p><strong>RS</strong> a <code>ff02::2</code> → <strong>RA unicast</strong> con Router Lifetime (&gt;0: router por defecto), PIO (A=1), <strong>6CO</strong> (contexto 0-15 ↔ prefijo), <strong>ABRO</strong> (6LBR origen y versión). <strong>Registro:</strong> NS unicast con SLLAO + <strong>ARO</strong> (EUI-64 y Lifetime) → NA con ARO Status; renovar antes de expirar. <strong>DAD multisalto:</strong> NS/ARO → 6LR → <strong>DAR (157)</strong> → 6LBR → <strong>DAC (158)</strong> → 6LR → NA. En mesh-under se registra directamente en el 6LBR. Los 6LR repiten PIO/6CO y sí usan RA periódicos.</p>
+<p><strong>Ejemplo 5→3→1,</strong> contexto 0 = <code>2001:11::/64</code>, SAC=DAC=1: mesh-under SAM/DAM <strong>11/11</strong>; route-over 5→3 <strong>11/10</strong> (envía 0x0001); 3→1 <strong>10/11</strong> (envía 0x0005).</p>
+<h3 id="t4-thread">Thread</h3>
+<p>Mesh-under: un salto IPv6 al border router. <strong>Leader</strong> por partición (autoelegido) ≠ border router, aunque puede coincidir. El tráfico interno no necesita atravesar ninguno de los dos.</p>
+<p><strong>FTD:</strong> Router (reenvía), <strong>REED</strong> (promocionable; el Leader asigna Router ID), <strong>FED</strong>. <strong>MTD:</strong> <strong>MED</strong> (receptor activo), <strong>SED</strong> (duerme y sondea), <strong>SSED</strong> (ventanas sincronizadas). Los hijos no reenvían.</p>
+<p><strong>RLOC16</strong> = Router ID(6) | Child ID(10) = RID×0x400 + CID (router: CID 0); dirección corta 802.15.4; cambia al cambiar de padre. Router 3, hijo 3 = <code>0xC03</code>. <strong>ML-EID:</strong> Mesh-Local /64 ULA + IID aleatorio; no cambia con la topología. <strong>Anycast Leader:</strong> Mesh-Local + <code>0:ff:fe00:fc00</code>.</p>
+<p><strong>MLE:</strong> vector de distancias, UDP <strong>19788</strong>, Hop Limit 255, entre vecinos. Parent Request (a <code>ff02::2</code>) → Parent Response → Child ID Request → Child ID Response (Address16). Link Request → Accept and Request → Accept. Advertisement a <code>ff02::1</code> (Leader Data, Route TLV).</p>
+<p><strong>Coste</strong> por RSSI: 1 buena, 2 razonable, 4 pobre, ∞. Elegir menor coste total, no menos saltos. <strong>Reenvío:</strong> Address Query (<code>ff03::2</code>, sobre CoAP) resuelve ML-EID → RLOC16; Mesh lleva RLOC16 origen y final; se decide por Router ID.</p>
+<h3 id="t4-rpl">RPL y Wi-SUN FAN</h3>
+<p><strong>DODAG:</strong> grafo sin bucles hacia la raíz (border router). <strong>Router</strong> (RPL y reenvía), <strong>RAL</strong> (RPL, no se ofrece, genera DAO), <strong>RUL</strong> (no RPL; NS/NA con su padre). <strong>FFN:</strong> router o RAL. <strong>LFN</strong> (FAN 1.1): RUL dormida.</p>
+<p>ICMPv6 <strong>155</strong>: <strong>DIS 0</strong> pide · <strong>DIO 1</strong> informa (a <code>ff02::1a</code>, con Trickle; no se reenvía tal cual) · <strong>DAO 2</strong> anuncia destinos · <strong>DAO-ACK 3</strong>. DIO: InstanceID, DODAGID, Version (solo raíz; reparación global), Rank, MOP, DTSN (pide DAO), G, Prf.</p>
+<p class="callout"><strong>MRHOF, ETX = 1/PDR.</strong> Raíz: Rank 256. <strong>Coste</strong> = Rank(p) + 128·ETX → menor coste = padre preferido. <strong>Rank</strong> = Rank(p) + max(256, 128·ETX). A (ETX 1) = 512; B (ETX 3) = 640; C por B (ETX 1): coste 768, <strong>Rank 896</strong>.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">Storing</th><th scope="col">Non-storing (Wi-SUN)</th></tr></thead>
+<tbody>
+<tr><td>Rutas</td><td>Cada router, descendientes</td><td>La raíz, toda la red</td></tr>
+<tr><td>DAO</td><td>Al padre, que los procesa</td><td>Unicast a la raíz; intermedios no procesan</td></tr>
+<tr><td>A→L (L hoja de B, B hijo de A)</td><td>A → B → L</td><td>A → R → A → B → L</td></tr>
+</tbody></table></div>
+<p>DAO: <strong>Target</strong> (destino) y <strong>Transit</strong> (padre), con preferencia en Path Control. <strong>SRH:</strong> Next Header <strong>43</strong>, Routing Type <strong>3</strong>; Segments Left; CmprI/CmprE (bytes suprimidos). <strong>RPI:</strong> Hop-by-Hop con instancia, Rank y sentido; Rank menor al ascender. <strong>Cadena NHC continua:</strong> IPHC → NHC ext. → NHC UDP. RFC 8138: <strong>6LoRH</strong>.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">Thread</th><th scope="col">Wi-SUN FAN</th></tr></thead>
+<tbody>
+<tr><td>Uso / radio</td><td>Hogar, edificios; 2,4 GHz</td><td>Ciudad, suministros; SUN sub-GHz</td></tr>
+<tr><td>Encaminamiento</td><td>MLE, mesh-under</td><td>RPL, route-over non-storing</td></tr>
+<tr><td>Coordina</td><td>Leader por partición</td><td>Raíz del DODAG</td></tr>
+<tr><td>Caminos</td><td>Coste por RSSI (1/2/4/∞)</td><td>MRHOF: ETX y Rank</td></tr>
+<tr><td>Mantienen malla</td><td>Routers Thread</td><td>Routers FFN</td></tr>
+<tr><td>Duermen</td><td>SED, SSED</td><td>LFN</td></tr>
+</tbody></table></div>
+
+<h2 id="t5">T5 · LPWAN y LoRaWAN</h2>
+<p class="fuente">Tema 5, pp. 2-61.</p>
+<p><strong>LPWAN</strong> (RFC 8376): kilómetros, bajo consumo y coste; renuncia a tasa, frecuencia de envío y disponibilidad de recepción. <strong>Libres sub-GHz:</strong> LoRaWAN, Wi-SUN. <strong>3GPP licenciadas:</strong> NB-IoT, LTE-M (SIM/eSIM, directo a estación base, sin gateway).</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">NB-IoT (Cat-NB1)</th><th scope="col">LTE-M (Cat-M1)</th></tr></thead>
+<tbody>
+<tr><td>Tasa</td><td>Hasta 128 kbit/s</td><td>Hasta ~1 Mbit/s</td></tr>
+<tr><td>Latencia / movilidad</td><td>Segundos; <strong>sin handover</strong></td><td>Baja; <strong>con handover</strong></td></tr>
+<tr><td>Interiores / consumo</td><td>Alta / muy bajo</td><td>Moderada / bajo</td></tr>
+<tr><td>Usos</td><td>Contadores, agricultura</td><td>Transporte, wearables, salud</td></tr>
+</tbody></table></div>
+<p><strong>Modo IP:</strong> IPv4/IPv6 con CoAP, MQTT o HTTP. <strong>NIDD:</strong> sin cabeceras IP ni UDP/TCP; la red del operador entrega por HTTP o MQTT. <strong>PSM:</strong> sueño profundo con registro conservado; la red <strong>no puede</strong> despertarlo; despierta él (datos o TAU). <strong>eDRX:</strong> ventanas periódicas de paging; el mensaje espera a la siguiente. Combinables. <strong>OTA/FOTA:</strong> depende del dispositivo y su gestión, no lo da la red.</p>
+<h3 id="t5-lorawan">LoRaWAN: red</h3>
+<p><strong>LoRa:</strong> radio (868 MHz UE, 915 MHz EE. UU., 0,3-50 kbit/s). <strong>LoRaWAN:</strong> protocolo sobre ella; sin IP en radio; ALOHA.</p>
+<p><code>Nodo → gateway → NS ↔ AS → aplicación</code>, con <strong>Join Server</strong>. El gateway reenvía sin descifrar; <strong>el NS elimina duplicados</strong>. Redes privada, pública o comunitaria (TTN, Helium). <strong>TTS</strong>: Open Source, Enterprise, Cloud, Sandbox/TTN (<strong>30 s/día, 10 downlinks/día</strong>). ChirpStack: abierto. <strong>Packet Broker:</strong> intercambia tráfico entre redes. <strong>Helium:</strong> hotspots con recompensas; se paga con Data Credits.</p>
+<p><strong>DR↓ = SF↑:</strong> DR0 = SF12 (0,25 kbit/s), DR1 SF11, DR2 SF10, DR3 SF9, DR4 SF8, DR5 SF7 (5,47), todos a 125 kHz; DR6 = SF7/250 kHz (11); DR7 = FSK 50. Mayor SF: más alcance, menos tasa, más airtime. <strong>ADR:</strong> el NS decide por SNR: <code>LinkADRReq/Ans</code>; mejor en nodos fijos. <strong>Duty cycle EU868:</strong> 1 % = <strong>36 s/h</strong> en 868-868,6 MHz.</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">Clase</th><th scope="col">Recepción</th><th scope="col">Consumo</th></tr></thead>
+<tbody>
+<tr><td><strong>A</strong> (obligatoria)</td><td>Solo tras uplink: <strong>RX1</strong> ≈1 s (frec. del uplink, DR − RX1DROffset), <strong>RX2</strong> ≈2 s (869,525 MHz, DR0)</td><td>Muy bajo</td></tr>
+<tr><td><strong>B</strong></td><td>A + <strong>ping slots</strong> sincronizados por beacons cada 128 s</td><td>Bajo/medio</td></tr>
+<tr><td><strong>C</strong></td><td>A + <strong>RXC</strong> casi continua</td><td>Alto</td></tr>
+</tbody></table></div>
+<h3 id="t5-seguridad">Activación y claves</h3>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col">Elemento</th><th scope="col">Qué es</th></tr></thead>
+<tbody>
+<tr><td>DevEUI / JoinEUI</td><td>ID global de 64 bits / identifica al Join Server (antes AppEUI).</td></tr>
+<tr><td>AppKey</td><td>Clave raíz; <strong>nunca</strong> viaja por radio.</td></tr>
+<tr><td>DevAddr</td><td>32 bits, dirección de la sesión.</td></tr>
+<tr><td>NwkSKey</td><td>Sesión de red: MIC y comandos MAC.</td></tr>
+<tr><td>AppSKey</td><td>Sesión de aplicación: cifra datos nodo ↔ AS.</td></tr>
+</tbody></table></div>
+<p><strong>ABP:</strong> DevAddr y claves preconfiguradas. <strong>OTAA</strong> (recomendada): <strong>Join-request</strong> (DevEUI, JoinEUI, DevNonce; sin cifrar, con MIC de AppKey) → <strong>Join-accept</strong> (cifrado con AppKey, DevAddr) → cada extremo <strong>deriva</strong> las claves de sesión.</p>
+<h3 id="t5-trama">Trama</h3>
+<p><code>MHDR 1 | DevAddr 4 | FCtrl 1 | FCnt 2 | FOpts 0-15 | FPort 1 | FRMPayload | MIC 4</code> (FHDR = DevAddr…FOpts). Sin FOpts: <strong>13 B</strong> de sobrecarga.</p>
+<p><strong>MHDR:</strong> Join-request <code>00</code>, Join-accept <code>20</code>, datos up <code>40</code>, down <code>60</code>, confirmados <code>80</code>/<code>A0</code>. <strong>FCnt:</strong> por sentido. <strong>FPort=0:</strong> comandos MAC con NwkSKey; <strong>≠0:</strong> datos con AppSKey. <strong>FOpts:</strong> comandos MAC, sin cifrar.</p>
+<p><strong>Base64:</strong> 3 B → 4 caracteres; 27 B → 36; 14 B → 20 con <code>=</code>. Hex: 2 por byte. Duty: 36 / airtime = mensajes/hora (0,411648 s → 87).</p>
+<h3 id="t5-servidores">Gateway, NS y AS</h3>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">UDP Packet Forwarder</th><th scope="col">LoRa Basics Station</th></tr></thead>
+<tbody>
+<tr><td>Transporte</td><td>UDP 1700, sin cifrar</td><td>JSON sobre WSS (TLS), autenticable</td></tr>
+<tr><td>Uplink</td><td><code>rxpk.data</code>, PHYPayload Base64</td><td>Campos separados, FRMPayload hex</td></tr>
+<tr><td>Downlink</td><td><code>txpk.data</code> Base64</td><td><code>dnmsg.pdu</code> hex</td></tr>
+</tbody></table></div>
+<p><strong>NS:</strong> DevAddr → sesión, valida MIC, elimina duplicados, procesa comandos MAC y ADR, y entrega al AS el FRMPayload <strong>cifrado</strong>. <strong>AS:</strong> descifra con AppSKey, aplica el <strong>decoder</strong> y entrega por MQTT o webhook (<code>decoded_payload</code>). En TTS el decoder de dispositivo prevalece sobre el de aplicación; este recibe bytes y FPort, no la identidad.</p>
+<p><strong>Downlinks:</strong> NS (<code>LinkADRReq</code>, <code>DevStatusReq</code>, <code>RXParamSetupReq</code>, <code>DutyCycleReq</code>; FPort 0 o FOpts), AS (FPort ≠ 0). Gateway elegido por calidad, disponibilidad, duty cycle y ventana del nodo; el de mejor señal no siempre puede transmitir. SCHC (RFC 9011): IPv6 sobre LoRaWAN.</p>
+<p><strong>TTN:</strong> registrar gateway, crear aplicación, registrar dispositivo (región <code>EU_863_870</code>, OTAA), comprobar en Live Data, decoder opcional (obligatorio con ThingsBoard).</p>
+<div class="table-scroll"><table>
+<thead><tr><th scope="col"></th><th scope="col">NB-IoT / LTE-M</th><th scope="col">LoRaWAN</th><th scope="col">Wi-SUN FAN</th></tr></thead>
+<tbody>
+<tr><td>Espectro</td><td>Licenciado</td><td>Sin licencia</td><td>Sin licencia</td></tr>
+<tr><td>Arquitectura</td><td>Estación base, operador</td><td>Gateway, NS/AS</td><td>Malla, border router</td></tr>
+<tr><td>IP en nodo</td><td>IPv4/IPv6 o no IP</td><td>Habitualmente no</td><td>IPv6</td></tr>
+<tr><td>Recibir órdenes</td><td>Según PSM y eDRX</td><td>Según clase</td><td>Por la malla; según reposo</td></tr>
+</tbody></table></div>
+
+<h2 id="trampas">Trampas de test</h2>
+<ul>
+<li><strong>REST</strong> no es protocolo; <strong>JSON</strong> tampoco. <strong>Conexión persistente ≠ pipelining ≠ WebSocket.</strong></li>
+<li><strong>Observe</strong> no usa broker; <strong>RETAIN</strong> guarda solo el último; <strong>QoS 1</strong> admite duplicados.</li>
+<li><strong>ULA sí cruza routers</strong> internos; link-local no. Destino remoto: MAC del router.</li>
+<li><strong>NDP</strong> no descubre servicios ni recursos. <strong>DHCPv6</strong> no da el gateway.</li>
+<li><strong>Solicited-node 24 bits; MAC multicast 32.</strong></li>
+<li><strong>CID=0 sí admite contexto</strong> (contexto 0). DAC=1/DAM=00 está reservado; SAC=1/SAM=00 es <code>::</code>.</li>
+<li><strong>Offset ×8</strong> sobre el datagrama sin comprimir; FRAG1 4 B, FRAGN 5 B.</li>
+<li><strong>Payload Length</strong> no cuenta los 40 B; <strong>datagram_size</strong> es sin comprimir.</li>
+<li><strong>Malla no implica IPv6</strong> (Zigbee, Bluetooth Mesh). <strong>Route-over ≠ RPL, mesh-under ≠ Thread:</strong> 6LoWPAN no impone encaminamiento.</li>
+<li><strong>Router Thread</strong> reenvía en mesh-under; no hace route-over. RLOC16 cambia, ML-EID no.</li>
+<li><strong>Rank ≠ coste ≠ saltos:</strong> max(256, …) solo en Rank.</li>
+<li><strong>SRH:</strong> 43 cabecera, 3 tipo. <strong>RPL 155</strong> con Code; DAR/DAC 157/158.</li>
+<li><strong>LoRa ≠ LoRaWAN. AppKey ≠ AppSKey.</strong> El gateway no descifra ni valida MIC; el NS no ve los datos.</li>
+<li><strong>Join-request</strong> sin cifrar pero autenticado; <strong>Join-accept</strong> cifrado.</li>
+<li><strong>PSM:</strong> la red no despierta; <strong>eDRX:</strong> sí, en la siguiente ventana. <strong>NB-IoT</strong> sin handover.</li>
+</ul>

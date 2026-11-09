@@ -1,0 +1,22 @@
+{
+  "id": "protocolos.materiales.resumen-final-imprimible",
+  "kind": "material",
+  "subjectId": "protocolos",
+  "slug": "resumen-final-imprimible",
+  "title": "Toda la materia, en unas pocas hojas",
+  "description": "Resumen propio de toda la materia para imprimir a doble cara.",
+  "scope": "Resumen propio en 4 caras A4 de los temas 1 a 5 completos.",
+  "tagIds": [
+    "protocolos.tags.examen-final"
+  ],
+  "order": 80,
+  "file": "materiales/protocolos/resumen-final-imprimible.pdf",
+  "format": "pdf",
+  "providedName": "resumen-protocolos-final.pdf",
+  "origin": {
+    "label": "Elaborado para preparar el examen final"
+  },
+  "category": "resumen-propio",
+  "pageCount": 4,
+  "sha256": "4f104c939f534c1714225c86a62a80a22f4d963ebd77bd48f733bc47efe68553"
+}
