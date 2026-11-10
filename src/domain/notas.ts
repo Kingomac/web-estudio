@@ -21,11 +21,11 @@ export function markFromCounts(counts: GradeCounts, raw: Record<string, string>)
 
 export type GradeInputs = Record<string, number | undefined>;
 export interface GradeResult {
-  /** Weighted points out of 10 from the components entered so far. */
+  /** Points out of 10 from the components entered so far. A geometric mean only means something once complete. */
   points: number;
   contributions: Record<string, number>;
   missing: string[];
-  /** Components whose minimum is not reached. */
+  /** Components or joint minimums not reached. */
   failedMinimums: string[];
   /** Only when every component is entered. */
   final?: number;
@@ -50,24 +50,41 @@ export function computeGrade(modality: GradeModality, inputs: GradeInputs, passM
   const contributions: Record<string, number> = {};
   const missing: string[] = [];
   const failedMinimums: string[] = [];
-  let points = 0;
+  const geometric = modality.aggregation === 'geometric';
+  const scaled = (c: GradeModality['components'][number]) => inputs[c.id]! / c.max * 10;
+  const members = (joint: GradeModality['jointMinimums'][number]) => modality.components.filter(c => joint.componentIds.includes(c.id));
+  let points = geometric ? 1 : 0;
   for (const c of modality.components) {
     const value = inputs[c.id];
     if (value === undefined) { missing.push(c.id); continue; }
-    contributions[c.id] = c.weight * value / c.max * 10;
-    points += contributions[c.id];
+    contributions[c.id] = geometric ? scaled(c) ** c.weight : c.weight * scaled(c);
+    points = geometric ? points * contributions[c.id] : points + contributions[c.id];
     if (c.min !== undefined && value < c.min - EPSILON) failedMinimums.push(c.id);
+  }
+  for (const joint of modality.jointMinimums) {
+    const parts = members(joint);
+    if (parts.some(c => inputs[c.id] === undefined)) continue;
+    const average = parts.reduce((sum, c) => sum + c.weight * scaled(c), 0) / parts.reduce((sum, c) => sum + c.weight, 0);
+    if (average < joint.min - EPSILON) failedMinimums.push(joint.id);
   }
   const result: GradeResult = { points, contributions, missing, failedMinimums };
   if (!missing.length) {
     const reachesPass = points >= passMark - EPSILON;
-    const capped = failedMinimums.length > 0 || (modality.cap.belowPassMark && !reachesPass);
-    result.final = capped ? Math.min(points, modality.cap.value) : points;
-    result.capped = capped && points > modality.cap.value;
+    const failed = failedMinimums.length > 0;
+    const capped = (failed && (!modality.cap.onlyAbovePass || reachesPass)) || (modality.cap.belowPassMark && !reachesPass);
+    const replacement = failed ? modality.components.find(c => c.id === modality.failedMinimumMark) : undefined;
+    result.final = replacement ? scaled(replacement) : capped ? Math.min(points, modality.cap.value) : points;
+    result.capped = !replacement && capped && points > modality.cap.value;
     result.passed = !capped && reachesPass;
   } else if (missing.length === 1) {
     const component = modality.components.find(c => c.id === missing[0])!;
-    const required = Math.max((passMark - points) / component.weight * component.max / 10, component.min ?? 0, 0);
+    const toPass = geometric ? (points > 0 ? (passMark / points) ** (1 / component.weight) : Infinity) : (passMark - points) / component.weight;
+    const jointFloors = modality.jointMinimums.filter(joint => joint.componentIds.includes(component.id)).map(joint => {
+      const parts = members(joint);
+      const others = parts.filter(c => c !== component).reduce((sum, c) => sum + c.weight * scaled(c), 0);
+      return (joint.min * parts.reduce((sum, c) => sum + c.weight, 0) - others) / component.weight;
+    });
+    const required = Math.max(Math.max(toPass, ...jointFloors) * component.max / 10, component.min ?? 0, 0);
     // Round up to hundredths so the shown mark always passes.
     const value = Math.ceil(required * 100 - EPSILON) / 100;
     result.needed = { componentId: component.id, value: failedMinimums.length || value > component.max + EPSILON ? null : value };

@@ -20,6 +20,111 @@ test('todas las asignaturas del bimestre 1 tienen su evaluación transcrita', ()
   for (const subject of b1) assert.ok(subject.evaluation?.modalities.length, subject.id);
 });
 
+test('todas las asignaturas del bimestre 2 tienen su evaluación transcrita', () => {
+  const b2 = catalog.entries.filter((e): e is Subject => e.kind === 'asignatura' && e.bimesterId === 'b2');
+  assert.deepEqual(b2.map(s => s.id).sort(), ['arquitecturas', 'datos', 'innovacion', 'redes']);
+  for (const subject of b2) assert.ok(subject.evaluation?.modalities.length, subject.id);
+});
+
+test('Redes: media geométrica, un cero suspende y calcula la nota necesaria', () => {
+  const ac = modality('redes', 'continua');
+  close(computeGrade(ac, { preguntas: 6, informes: 8, trabajo: 7 }).final, 6 ** 0.4 * 8 ** 0.4 * 7 ** 0.2);
+  const zero = computeGrade(ac, { preguntas: 0, informes: 10, trabajo: 10 });
+  close(zero.final, 0);
+  assert.equal(zero.passed, false);
+  const needed = computeGrade(ac, { preguntas: 5, informes: 5 }).needed;
+  assert.deepEqual(needed, { componentId: 'trabajo', value: 5 });
+  assert.equal(computeGrade(ac, { preguntas: 0, informes: 10 }).needed?.value, null);
+  close(computeGrade(modality('redes', 'global'), { preguntas: 6, informes: 8, dossier: 5, trabajo: 7 }).final, 6 ** 0.4 * 8 ** 0.3 * 5 ** 0.1 * 7 ** 0.2);
+});
+
+test('Ingeniería de datos: mínimo conjunto de 4 en continua y trabajo tutelado', () => {
+  const ordinaria = modality('datos', 'ordinaria');
+  const low = computeGrade(ordinaria, { examen: 10, continua: 3, tutelado: 4 });
+  assert.deepEqual(low.failedMinimums, ['trabajos']);
+  assert.equal(low.passed, false);
+  // Un 2 compensado con un 6 alcanza justo la media conjunta de 4.
+  assert.deepEqual(computeGrade(ordinaria, { examen: 10, continua: 2, tutelado: 6 }).failedMinimums, []);
+  assert.equal(computeGrade(ordinaria, { examen: 10, continua: 2, tutelado: 6 }).passed, true);
+  // Con examen de 10 basta el 5 global, pero el mínimo conjunto exige 8 en tutelado.
+  assert.deepEqual(computeGrade(ordinaria, { examen: 10, continua: 0 }).needed, { componentId: 'tutelado', value: 8 });
+  assert.deepEqual(computeGrade(ordinaria, { examen: 3.9, continua: 10, tutelado: 10 }).failedMinimums, ['examen']);
+});
+
+test('Innovación: examen y trabajo práctico se superan por separado', () => {
+  const ordinaria = modality('innovacion', 'ordinaria');
+  close(computeGrade(ordinaria, { examen: 5, practico: 5, seguimiento: 0 }).final, 4);
+  const failed = computeGrade(ordinaria, { examen: 4.9, practico: 10, seguimiento: 10 });
+  assert.deepEqual(failed.failedMinimums, ['examen']);
+  assert.equal(failed.passed, false);
+  assert.equal(computeGrade(ordinaria, { examen: 5, practico: 5, seguimiento: 5 }).passed, true);
+});
+
+test('Nuevas arquitecturas: la segunda oportunidad depende de conservar notas', () => {
+  close(computeGrade(modality('arquitecturas', 'primera'), { practicas: 5, objetiva: 6, tutelado: 7 }).final, 2 + 2.4 + 1.4);
+  close(computeGrade(modality('arquitecturas', 'segunda-conservando'), { practicas: 5, mixta: 6, tutelado: 7 }).final, 2 + 2.4 + 1.4);
+  close(computeGrade(modality('arquitecturas', 'segunda-sin-conservar'), { mixta: 5, tutelado: 7 }).final, 3 + 2.8);
+});
+
+test('rechaza mínimos conjuntos sobre componentes inexistentes', () => {
+  const base = modality('datos', 'ordinaria');
+  const evaluation = { source: { label: 'x', consultedAt: '2026-11-09' }, modalities: [{ ...base, jointMinimums: [{ id: 'j', label: 'J', componentIds: ['examen', 'nada'], min: 4 }] }] };
+  assert.equal(evaluationSchema.safeParse(evaluation).success, false);
+});
+
+test('todas las asignaturas del bimestre 3 tienen su evaluación transcrita', () => {
+  const b3 = catalog.entries.filter((e): e is Subject => e.kind === 'asignatura' && e.bimesterId === 'b3');
+  assert.deepEqual(b3.map(s => s.id).sort(), ['aprendizaje', 'ciberseguridad', 'green', 'integracion']);
+  for (const subject of b3) assert.ok(subject.evaluation?.modalities.length, subject.id);
+});
+
+test('Aprendizaje automático: mínimo de 4 por parte con tope de 4 si falla', () => {
+  const ordinaria = modality('aprendizaje', 'ordinaria');
+  close(computeGrade(ordinaria, { examen: 6, practicas: 7, tutelado: 8 }).final, 2.4 + 2.45 + 2);
+  const capped = computeGrade(ordinaria, { examen: 3.9, practicas: 10, tutelado: 10 });
+  close(capped.final, 4);
+  assert.equal(capped.passed, false);
+  close(computeGrade(ordinaria, { examen: 3, practicas: 3, tutelado: 3 }).final, 3);
+});
+
+test('Ciberseguridad: sin el 4 en el examen, la nota final es la del examen', () => {
+  const primera = modality('ciberseguridad', 'primera');
+  close(computeGrade(primera, { seguimiento: 7, objetiva: 5, practica: 7, tutelados: 7 }).final, 1.4 + 2 + 1.4 + 1.4);
+  const failed = computeGrade(primera, { seguimiento: 10, objetiva: 3.5, practica: 10, tutelados: 10 });
+  close(failed.final, 3.5);
+  assert.equal(failed.passed, false);
+  assert.equal(failed.capped, false);
+  close(computeGrade(modality('ciberseguridad', 'segunda'), { objetiva: 2, practica: 10 }).final, 2);
+});
+
+test('Integración: el 4,5 solo se aplica si la suma habría aprobado', () => {
+  const primera = modality('integracion', 'primera');
+  const capped = computeGrade(primera, { tutelados: 10, objetiva: 4, practicas: 10 });
+  close(capped.points, 7.6);
+  close(capped.final, 4.5);
+  assert.equal(capped.passed, false);
+  const below = computeGrade(primera, { tutelados: 5, objetiva: 4, practicas: 5 });
+  close(below.final, 4.6);
+  assert.equal(below.passed, false);
+  close(computeGrade(modality('integracion', 'segunda'), { mixta: 6 }).final, 6);
+});
+
+test('Green IoT: segunda oportunidad conservando notas o no', () => {
+  close(computeGrade(modality('green', 'primera'), { practicas: 5, objetiva: 6, problemas: 7, tutelados: 8 }).final, 1 + 2.4 + 0.7 + 2.4);
+  close(computeGrade(modality('green', 'segunda-conservando'), { practicas: 5, mixta: 6, tutelados: 8 }).final, 1 + 3 + 2.4);
+  close(computeGrade(modality('green', 'segunda-sin-conservar'), { mixta: 5, tutelados: 8 }).final, 3.5 + 2.4);
+});
+
+test('Gemelos digitales: mínimo de 4 por parte con tope de 4 si falla', () => {
+  const ordinaria = modality('gemelos', 'ordinaria');
+  close(computeGrade(ordinaria, { mixta: 6, problemas: 7, tutelados: 8 }).final, 2.4 + 1.75 + 2.8);
+  const capped = computeGrade(ordinaria, { mixta: 10, problemas: 3.9, tutelados: 10 });
+  close(capped.final, 4);
+  assert.deepEqual(capped.failedMinimums, ['problemas']);
+  assert.equal(capped.passed, false);
+  close(computeGrade(ordinaria, { mixta: 3, problemas: 3, tutelados: 3 }).final, 3);
+});
+
 test('lee notas con coma o punto y rechaza valores fuera de escala', () => {
   assert.equal(parseMark('', 10), undefined);
   assert.equal(parseMark(' 7,5 ', 10), 7.5);

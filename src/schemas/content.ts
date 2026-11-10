@@ -132,13 +132,26 @@ const gradeComponent = z.strictObject({
 const gradeModality = z.strictObject({
   id, title: text, description: text.optional(),
   components: z.array(gradeComponent).min(1),
+  // `geometric` multiplies the marks raised to their weights: a zero in any part gives a zero.
+  aggregation: z.enum(['weighted', 'geometric']).default('weighted'),
+  // Minimum, out of 10, on the weighted average of several components taken together.
+  jointMinimums: z.array(z.strictObject({ id, label: text, componentIds: z.array(id).min(2), min: z.number().nonnegative().max(10) })).default([]),
   // Mark shown when a minimum fails; `belowPassMark` also applies it to any weighted grade under the pass mark.
-  cap: z.strictObject({ value: z.number().nonnegative(), belowPassMark: z.boolean() }),
+  // `onlyAbovePass` limits it to grades that would otherwise have passed.
+  cap: z.strictObject({ value: z.number().nonnegative(), belowPassMark: z.boolean(), onlyAbovePass: z.boolean().default(false) }),
+  // Component whose own mark, out of 10, becomes the final grade when a minimum fails.
+  failedMinimumMark: id.optional(),
   guideText: text,
 }).superRefine((m, ctx) => {
   if (new Set(m.components.map(c => c.id)).size !== m.components.length) ctx.addIssue({ code: 'custom', path: ['components'], message: 'IDs de componente duplicados.' });
   if (Math.abs(m.components.reduce((sum, c) => sum + c.weight, 0) - 1) > 1e-9) ctx.addIssue({ code: 'custom', path: ['components'], message: 'Los pesos deben sumar 1.' });
   m.components.forEach((c, i) => { if (c.min !== undefined && c.min > c.max) ctx.addIssue({ code: 'custom', path: ['components', i, 'min'], message: 'El mínimo supera la nota máxima.' }); });
+  const componentIds = new Set(m.components.map(c => c.id));
+  if (m.failedMinimumMark && !componentIds.has(m.failedMinimumMark)) ctx.addIssue({ code: 'custom', path: ['failedMinimumMark'], message: 'Componente inexistente.' });
+  m.jointMinimums.forEach((joint, i) => {
+    if (componentIds.has(joint.id)) ctx.addIssue({ code: 'custom', path: ['jointMinimums', i, 'id'], message: 'El ID coincide con el de un componente.' });
+    if (joint.componentIds.some(c => !componentIds.has(c))) ctx.addIssue({ code: 'custom', path: ['jointMinimums', i, 'componentIds'], message: 'Componente inexistente.' });
+  });
 });
 export const evaluationSchema = z.strictObject({
   source: z.strictObject({ label: text, consultedAt: z.iso.date() }),

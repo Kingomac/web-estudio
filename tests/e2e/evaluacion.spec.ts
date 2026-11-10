@@ -43,6 +43,17 @@ test('Protocolos admite puntos MooVi sobre 400 y Sistemas embebidos abre directa
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
+test('Redes usa media geométrica y no muestra puntos parciales', async ({ page }) => {
+  await page.goto('asignaturas/redes/');
+  await expect(page).toHaveURL(/\/asignaturas\/redes\/evaluacion\/$/);
+  const continua = page.getByRole('region', { name: 'Evaluación continua' });
+  await expect(continua).toContainText('exponente 0,4');
+  await continua.getByLabel('Prueba de preguntas objetivas').fill('5');
+  await expect(continua.locator('[data-final]')).toHaveText('—');
+  await continua.getByLabel('Informes de prácticas').fill('5');
+  await expect(continua.locator('[data-result]')).toContainText('al menos 5,00 sobre 10 en Trabajo tutelado (TT)');
+});
+
 test('sin JavaScript muestra pesos y mínimos con los campos desactivados', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
   const page = await context.newPage();
