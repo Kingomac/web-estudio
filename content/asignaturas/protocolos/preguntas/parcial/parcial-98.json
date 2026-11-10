@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué diferencia distingue al 6LR del 6LBR en las definiciones del tema?",
+  "prompt": "¿Qué diferencia distingue al 6LR del 6LBR?",
   "explanation": "Los 6LR son routers internos del modo route-over. El 6LBR está en la frontera de la LoWPAN, y puede haber más de uno. En mesh-under no hay 6LR internos.",
   "originalReferences": [
     {

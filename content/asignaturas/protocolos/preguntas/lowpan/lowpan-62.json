@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué es un 6LN según las definiciones del tema?",
+  "prompt": "¿Qué es un 6LN?",
   "explanation": "6LN es cualquier nodo que actúe como host o, si es FFD, como bridge en mesh-under.",
   "originalReferences": [
     {

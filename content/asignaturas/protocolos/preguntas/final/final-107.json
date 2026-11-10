@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "Se renueva la domótica de un piso: sensores a pilas, enchufes siempre alimentados e IPv6 extremo a extremo hasta el móvil a través de la wifi de casa, sin pasarelas de traducción. ¿Qué solución encaja con el tema?",
+  "prompt": "Se renueva la domótica de un piso: sensores a pilas, enchufes siempre alimentados e IPv6 extremo a extremo hasta el móvil a través de la wifi de casa, sin pasarelas de traducción. ¿Qué solución encaja mejor?",
   "explanation": "Thread es una malla IPv6 de bajo consumo para el hogar sobre 802.15.4 y 6LoWPAN: los dispositivos alimentados actúan como routers que mantienen la malla, los de pilas como dispositivos finales que duermen, y los border routers conectan con otras redes IPv6 como la wifi.",
   "originalReferences": [
     {

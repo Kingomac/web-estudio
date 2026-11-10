@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Según el tema, ¿por qué las LLN tienen además tasas de transmisión bajas (low-rate)?",
+  "prompt": "¿Por qué las LLN tienen además tasas de transmisión bajas (low-rate)?",
   "explanation": "El tema concluye que, por ambas razones (bajo consumo y enlaces con pérdidas y SNR baja), las redes tendrán tasas bajas, lo que encaja con mensajes pequeños enviados a grandes intervalos.",
   "originalReferences": [
     {

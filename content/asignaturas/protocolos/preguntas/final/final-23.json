@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Cuál de estas afirmaciones sobre los principios REST que recoge el tema NO es correcta?",
+  "prompt": "¿Cuál de estas afirmaciones sobre los principios de diseño REST NO es correcta?",
   "explanation": "REST separa cliente y servidor, que se comunican por una interfaz bien definida y pueden evolucionar por separado; exige comunicación sin estado; permite cachés en clientes y proxies; y usa una arquitectura en capas jerárquicas con interfaces definidas pero sin una implementación formalmente especificada.",
   "originalReferences": [
     {

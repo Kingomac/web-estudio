@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un nodo dispone de 8 KB de RAM y 64 KB de ROM. Según la clasificación simplificada del tema, ¿qué opción le corresponde?",
+  "prompt": "Un nodo dispone de 8 KB de RAM y 64 KB de ROM. Según la clasificación del RFC 7228, ¿qué opción le corresponde?",
   "explanation": "El tema sitúa la clase 0 por debajo de 10 KB de RAM y 100 KB de ROM. Le atribuye recursos demasiado reducidos para implementar la pila IP considerada.",
   "originalReferences": [
     {
@@ -24,7 +24,7 @@
   "options": [
     {
       "id": "clase-0-recursos-insuficientes-para",
-      "text": "Clase 0: recursos insuficientes para la pila IP presentada.",
+      "text": "Clase 0: recursos insuficientes para una pila IP.",
       "explanation": "8 KB de RAM y 64 KB de ROM quedan por debajo de 10 KB y 100 KB: clase 0, sin recursos para la pila IP."
     },
     {

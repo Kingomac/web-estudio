@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un servidor CoAP recibe una petición non-confirmable (NON) que es incapaz de procesar. ¿Qué hace según el tema?",
+  "prompt": "Un servidor CoAP recibe una petición non-confirmable (NON) que es incapaz de procesar. ¿Qué hace el servidor?",
   "explanation": "Si el servidor es incapaz de procesar la petición envía un mensaje RST, tanto en modo confirmable como non-confirmable. En modo NON no se envía ACK.",
   "originalReferences": [
     {

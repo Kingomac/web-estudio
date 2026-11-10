@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué secuencia describe el arranque de un nodo IPv6 con SLAAC según el ejemplo del tema?",
+  "prompt": "¿Qué secuencia describe el arranque de un nodo IPv6 con SLAAC?",
   "explanation": "Primero el nodo genera su link-local y la comprueba con DAD. Después descubre el router (RS/RA o RA periódico), obtiene el prefijo y el router por defecto, forma su dirección global o ULA con SLAAC y le aplica DAD. Por último resuelve la MAC del siguiente salto si no la conoce y mantiene su alcanzabilidad con NUD.",
   "originalReferences": [
     {

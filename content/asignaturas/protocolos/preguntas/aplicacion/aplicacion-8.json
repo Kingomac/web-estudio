@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué permite el pipelining de HTTP/1.1 descrito en el tema?",
+  "prompt": "¿Qué permite el pipelining de HTTP/1.1?",
   "explanation": "El tema contrasta el envío secuencial de HTTP/1.0 con la posibilidad de encadenar peticiones de HTTP/1.1.",
   "originalReferences": [
     {

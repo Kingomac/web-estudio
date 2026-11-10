@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "En el ejemplo del tema, el hijo con RLOC16 0x0401 pierde a su padre (router 1) y pasa a ser el hijo 3 del router 3. ¿Cuál es su nuevo RLOC16?",
+  "prompt": "En una red Thread, el hijo con RLOC16 0x0401 pierde a su padre (router 1) y pasa a ser el hijo 3 del router 3. ¿Cuál es su nuevo RLOC16?",
   "explanation": "Router ID 3 → 3 × 0x400 = 0x0C00; Child ID 3 → 0x0C03. Su ML-EID no cambia.",
   "originalReferences": [
     {

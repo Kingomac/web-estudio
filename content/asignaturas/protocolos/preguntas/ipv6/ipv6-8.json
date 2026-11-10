@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué condición describe el tema para agregar exactamente varias rutas?",
+  "prompt": "¿Qué condición debe cumplirse para agregar exactamente varias rutas?",
   "explanation": "La agregación reduce la tabla y los anuncios si los prefijos pueden resumirse de esa forma.",
   "originalReferences": [
     {

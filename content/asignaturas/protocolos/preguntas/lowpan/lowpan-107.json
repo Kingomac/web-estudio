@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "Un fabricante compara BLE y Bluetooth Mesh para sus productos. ¿Qué afirmación sobre estas tecnologías es correcta según el tema?",
+  "prompt": "Un fabricante compara BLE y Bluetooth Mesh para sus productos. ¿Qué afirmación sobre estas tecnologías es correcta?",
   "explanation": "BLE se pensó para estrella con una pasarela central y sus nodos no suelen usar IPv6; Bluetooth Mesh añade una malla sobre la radio BLE sin IPv6 nativo.",
   "originalReferences": [
     {

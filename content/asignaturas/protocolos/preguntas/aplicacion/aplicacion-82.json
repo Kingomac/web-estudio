@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Una aplicación envía `GET` (T = NON) con Uri-Path `temperature` a `ff02::1`. Hay tres dispositivos y uno de ellos no tiene ese recurso. ¿Qué recibe la aplicación según el esquema del tema?",
+  "prompt": "Una aplicación envía `GET` (T = NON) con Uri-Path `temperature` a `ff02::1`. Hay tres dispositivos, uno de ellos sin ese recurso, y todos contestan a la petición. ¿Qué recibe la aplicación?",
   "explanation": "En el esquema multicast cada dispositivo responde por separado con un mensaje NON: los que tienen el recurso envían 2.05 Content con su medida y el que no lo tiene envía 4.04 Not Found.",
   "originalReferences": [
     {

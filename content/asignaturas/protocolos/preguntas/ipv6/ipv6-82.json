@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Cuál de las siguientes **NO** es una de las dificultades de NDP en redes limitadas que enumera el tema?",
+  "prompt": "¿Cuál de las siguientes **NO** es una dificultad de NDP en redes limitadas?",
   "explanation": "El tema enumera el coste del multicast (transportado como broadcast en 802.15.4), los nodos dormidos que pierden anuncios o no responden, las pérdidas y las redes multisalto, y los recursos limitados para tráfico de control y mantenimiento de vecinos. IPv6 sí tiene descubrimiento de routers (RS/RA): no es una dificultad.",
   "originalReferences": [
     {

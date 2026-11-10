@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un campus combina contadores LoRaWAN repartidos por las calles y sensores Thread dentro de un edificio. ¿Qué descripción de ambas redes es correcta en todos sus detalles según el tema?",
+  "prompt": "Un campus combina contadores LoRaWAN repartidos por las calles y sensores Thread dentro de un edificio. ¿Qué descripción de ambas redes es correcta en todos sus detalles?",
   "explanation": "La infografía clasifica Thread como LoWPAN y LoRaWAN como LPWAN. Una LoWPAN usa estrella y malla, ofrece IP extremo a extremo en sus soluciones estándar y cubre 10–100 m. Una LPWAN usa estrella, tiene conectividad híbrida (dispositivos no IP, troncal IP) y alcanza hasta ~5 km urbanos.",
   "originalReferences": [
     {

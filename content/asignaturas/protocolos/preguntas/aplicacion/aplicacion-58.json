@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Cuál de los siguientes NO es un uso de las cookies citado en el tema?",
+  "prompt": "¿Cuál de los siguientes NO es un uso de las cookies?",
   "explanation": "El tema cita tres usos de las cookies: validar al usuario para acceder a servicios, personalizar el aspecto o el contenido según sus preferencias y seguir su actividad. Las cookies son cadenas definidas por el servidor que el cliente devuelve sin modificar; no cifran nada.",
   "originalReferences": [
     {

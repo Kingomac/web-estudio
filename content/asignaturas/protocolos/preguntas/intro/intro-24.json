@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Cuál de estas afirmaciones sobre MCU y MPU es correcta según el tema?",
+  "prompt": "¿Cuál de estas afirmaciones sobre MCU y MPU es correcta?",
   "explanation": "La MCU es un SoC con CPU, RAM, ROM y E/S, capaz de trabajar sola e incluso sin SO. La MPU, base de los ordenadores, solo contiene la CPU, necesita periféricos adicionales y requiere un SO.",
   "originalReferences": [
     {

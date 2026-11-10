@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Cuál de las siguientes NO es una ventaja de un proxy server según el tema?",
+  "prompt": "¿Cuál de las siguientes NO es una ventaja de un proxy server?",
   "explanation": "El tema cita como ventajas del proxy la reducción de los tiempos de acceso a los datos, la reducción de la carga en los servidores originales y el acceso anónimo a los recursos. Enviar datos al cliente sin petición previa es lo que aporta WebSocket.",
   "originalReferences": [
     {

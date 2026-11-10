@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un cliente HTTP del núcleo pide `GET /device999/temperature` a través del gateway HTTP–CoAP del tema. El gateway traduce la petición a CoAP y el dispositivo no tiene ese recurso. ¿Qué pareja de respuestas encaja?",
+  "prompt": "Un cliente HTTP del núcleo pide `GET /device999/temperature` a través de un gateway HTTP–CoAP. El gateway traduce la petición a CoAP y el dispositivo no tiene ese recurso. ¿Qué pareja de respuestas encaja?",
   "explanation": "El dispositivo responde 4.04 Not Found (clase 4, error del cliente), como en los esquemas del tema. El gateway traduce esa respuesta a HTTP: 404 Not Found, también de la familia 4xx de errores del cliente.",
   "originalReferences": [
     {

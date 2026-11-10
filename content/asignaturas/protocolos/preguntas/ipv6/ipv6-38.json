@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué combinación corresponde a mDNS IPv6 en el tema?",
+  "prompt": "¿Qué combinación corresponde a mDNS en IPv6?",
   "explanation": "mDNS permite resolución local sin servidor DNS; DNS-SD puede funcionar sobre mDNS o DNS convencional.",
   "originalReferences": [
     {

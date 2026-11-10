@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "En el modelo ETX=1/PDR del tema, ¿qué significa un ETX menor?",
+  "prompt": "En el modelo ETX=1/PDR, ¿qué significa un ETX menor?",
   "explanation": "ETX es una métrica de calidad de enlace expresada como número esperado de transmisiones.",
   "originalReferences": [
     {

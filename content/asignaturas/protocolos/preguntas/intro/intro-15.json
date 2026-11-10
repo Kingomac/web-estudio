@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué une la red de acceso en la arquitectura IoT del tema?",
+  "prompt": "¿Qué une la red de acceso en una arquitectura IoT?",
   "explanation": "La troncal permite después comunicar el equipo de borde con la aplicación a través de Internet.",
   "originalReferences": [
     {

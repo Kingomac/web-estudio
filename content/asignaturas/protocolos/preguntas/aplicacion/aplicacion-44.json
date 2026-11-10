@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué diferencia de sincronía señala el tema entre el modelo cliente/servidor y el de publicación/suscripción?",
+  "prompt": "¿Qué diferencia de sincronía hay entre el modelo cliente/servidor y el de publicación/suscripción?",
   "explanation": "Cliente/servidor es una comunicación síncrona iniciada por el cliente: cada petición genera una respuesta. Publicación/suscripción es asíncrona: el broker almacena temporalmente los datos publicados y, en algún momento, los hace llegar a los suscriptores.",
   "originalReferences": [
     {

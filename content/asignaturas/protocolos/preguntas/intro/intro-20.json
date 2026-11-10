@@ -6,8 +6,8 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "En el esquema de LPWAN de esta diapositiva, ¿cómo se integra la conectividad?",
-  "explanation": "La diapositiva presenta conectividad híbrida: nodos no IP y troncal IP. La pregunta se refiere a ese esquema.",
+  "prompt": "¿Cómo es la conectividad en una red LPWAN como LoRaWAN?",
+  "explanation": "La conectividad de una LPWAN es híbrida: nodos no IP y troncal IP.",
   "originalReferences": [
     {
       "materialId": "protocolos.materiales.tema-1-introduccion",

@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "¿Qué afirmación sobre OTA es correcta según el tema?",
+  "prompt": "¿Qué afirmación sobre las actualizaciones OTA es correcta?",
   "explanation": "OTA es una capacidad del dispositivo y de su sistema de gestión; NB-IoT o LTE-M no la proporcionan automáticamente.",
   "originalReferences": [
     {

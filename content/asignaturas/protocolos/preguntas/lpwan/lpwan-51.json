@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Una distribuidora eléctrica quiere una red de contadores en la que cada contador pueda reenviar el tráfico de sus vecinos hasta un border router, con IPv6 en los nodos. ¿Qué tecnología y protocolos propone el tema?",
+  "prompt": "Una distribuidora eléctrica quiere una red de contadores en la que cada contador pueda reenviar el tráfico de sus vecinos hasta un border router, con IPv6 en los nodos. ¿Qué tecnología y protocolos encajan?",
   "explanation": "Wi-SUN FAN es una red mallada IPv6 multisalto que utiliza 6LoWPAN y RPL, orientada a redes de suministros y ciudades inteligentes.",
   "originalReferences": [
     {

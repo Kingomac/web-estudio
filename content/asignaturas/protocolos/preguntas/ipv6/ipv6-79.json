@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un nodo termina el DAD de una dirección nueva sin recibir ninguna respuesta. Según el tema, ¿qué envía a continuación?",
+  "prompt": "Un nodo termina el DAD de una dirección nueva sin recibir ninguna respuesta. ¿Qué envía a continuación?",
   "explanation": "Si no hay respuesta, la dirección no está duplicada: el nodo se la queda y, para notificarlo, envía un NA no solicitado a all-nodes (ff02::1) con la nueva IP y su MAC. Así el resto de nodos pueden actualizar sus cachés.",
   "originalReferences": [
     {

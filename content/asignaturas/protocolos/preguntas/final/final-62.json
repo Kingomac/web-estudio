@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Se configuran en un router:\n(1) `ipv6 route 2001:db8:77::/48 s0/0`\n(2) `ipv6 route 2001:db8:88::/48 2001:db8:1::2`\n(3) `ipv6 route 2001:db8:99::/48 g0/1 fe80::2`\nsiendo s0/0 punto a punto y 2001:db8:1::/64 la subred de g0/1. ¿Cómo las clasifica el tema y qué muestra `show ipv6 route` para cada una?",
+  "prompt": "Se configuran en un router:\n(1) `ipv6 route 2001:db8:77::/48 s0/0`\n(2) `ipv6 route 2001:db8:88::/48 2001:db8:1::2`\n(3) `ipv6 route 2001:db8:99::/48 g0/1 fe80::2`\nsiendo s0/0 punto a punto y 2001:db8:1::/64 la subred de g0/1. ¿Cómo se clasifican según el flag G (G=0, directa; G=1, indirecta) y qué muestra `show ipv6 route` para cada una?",
   "explanation": "(1) solo indica la interfaz: ruta directa (G=0), y se muestra solo la interfaz. (2) indica un router: ruta indirecta (G=1), y se muestra solo su IP; la interfaz se deduce de la ruta directa hacia 2001:db8:1::2. (3) también es indirecta (G=1), pero su next-hop es link-local, así que se muestran la IP y la interfaz.",
   "originalReferences": [
     {

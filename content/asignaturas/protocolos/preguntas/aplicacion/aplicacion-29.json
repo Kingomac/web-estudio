@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué transporte y puertos corresponden a MQTT en el tema?",
+  "prompt": "¿Qué transporte y puertos corresponden a MQTT?",
   "explanation": "MQTT es el protocolo de publicación/suscripción ligero sobre TCP o TLS/TCP presentado.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Una cámara de vigilancia conectada a la red eléctrica envía vídeo a la nube. ¿Qué valoración es coherente con el tema?",
+  "prompt": "Una cámara de vigilancia conectada a la red eléctrica envía vídeo a la nube. ¿Qué valoración es correcta?",
   "explanation": "El tema admite que Wi-Fi y 4G/5G pueden usarse en nodos conectados a la red eléctrica; las LLN se diseñan para nodos limitados en CPU, memoria y batería.",
   "originalReferences": [
     {

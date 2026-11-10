@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué valores identifican la cabecera de encaminamiento de fuente RPL del tema?",
+  "prompt": "¿Qué valores identifican la cabecera de encaminamiento de fuente de RPL?",
   "explanation": "43 identifica Routing Header en IPv6; el campo Type de esa extensión vale 3 para el formato RPL mostrado.",
   "originalReferences": [
     {

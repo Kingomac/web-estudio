@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué mensajes WebSocket no se fragmentan, según el material?",
+  "prompt": "¿Qué mensajes WebSocket no se pueden fragmentar?",
   "explanation": "Los datos pueden fragmentarse; la diapositiva excluye esa posibilidad para los mensajes de control.",
   "originalReferences": [
     {

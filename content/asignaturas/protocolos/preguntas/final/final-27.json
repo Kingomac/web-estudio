@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "En la petición SOAP del tema:\n`<soap:Envelope …><soap:Body><getProductInfo xmlns=\"http://warehouse.example.com/ws\"><productId>827635</productId></getProductInfo></soap:Body></soap:Envelope>`\n¿Qué parte indica la operación que se solicita al servicio?",
+  "prompt": "Dada esta petición SOAP:\n`<soap:Envelope …><soap:Body><getProductInfo xmlns=\"http://warehouse.example.com/ws\"><productId>827635</productId></getProductInfo></soap:Body></soap:Envelope>`\n¿Qué parte indica la operación que se solicita al servicio?",
   "explanation": "Envelope es la raíz que identifica el mensaje SOAP y Body el elemento obligatorio que contiene el mensaje: dentro de él, `getProductInfo` es la operación solicitada y `productId` su parámetro. La respuesta lo refleja con `getProductInfoResult`. No hay Header, que es opcional.",
   "originalReferences": [
     {

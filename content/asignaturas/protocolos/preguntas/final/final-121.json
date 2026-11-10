@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Una empresa va a vender a varios ayuntamientos un servicio de sensores ambientales a pilas en un parque natural sin cobertura celular. Cada sensor envía una medida cada 15 minutos y la empresa no quiere pagar una suscripción por dispositivo. Solo hay acceso a Internet en el centro de visitantes. ¿Qué solución es coherente con el tema?",
+  "prompt": "Una empresa va a vender a varios ayuntamientos un servicio de sensores ambientales a pilas en un parque natural sin cobertura celular. Cada sensor envía una medida cada 15 minutos y la empresa no quiere pagar una suscripción por dispositivo. Solo hay acceso a Internet en el centro de visitantes. ¿Qué solución es la más adecuada?",
   "explanation": "Sin cobertura celular quedan descartadas NB-IoT y LTE-M, que además exigen contratar conectividad por dispositivo. Una red LoRaWAN propia (gateway en el centro de visitantes con salida a Internet y NS/AS propios o contratados) cubre kilómetros con nodos de muy bajo consumo y sin suscripción por dispositivo.",
   "originalReferences": [
     {

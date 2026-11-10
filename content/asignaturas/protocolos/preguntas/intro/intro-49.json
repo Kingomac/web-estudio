@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Cuál de estas afirmaciones de la comparativa LoWPAN/LPWAN del tema NO es correcta?",
+  "prompt": "¿Cuál de estas afirmaciones sobre las redes LoWPAN y LPWAN NO es correcta?",
   "explanation": "Según la infografía, LoWPAN tiene cobertura corta, mayor tasa y menor latencia; LPWAN, cobertura amplia, menor tasa y mayor latencia. Ambas tienen consumo muy bajo.",
   "originalReferences": [
     {

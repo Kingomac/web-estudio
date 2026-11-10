@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "¿Qué banda ISM usa LoRa en Europa según el tema?",
+  "prompt": "¿Qué banda ISM usa LoRa en Europa?",
   "explanation": "868 MHz (915 MHz en EE. UU.).",
   "originalReferences": [
     {

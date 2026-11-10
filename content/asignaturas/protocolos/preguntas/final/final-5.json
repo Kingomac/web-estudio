@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un integrador fabricará 500 nodos de batería con un firmware sencillo sin sistema operativo, y quiere poder cambiar en el futuro la radio LoRa por NB-IoT sin rediseñar el resto del nodo. ¿Qué elección es coherente con el tema?",
+  "prompt": "Un integrador fabricará 500 nodos de batería con un firmware sencillo sin sistema operativo, y quiere poder cambiar en el futuro la radio LoRa por NB-IoT sin rediseñar el resto del nodo. ¿Qué elección es la adecuada?",
   "explanation": "La MCU integra CPU, RAM, ROM y E/S en un SoC y puede operar sin SO; la MPU solo contiene la CPU, necesita periféricos y requiere un SO. Un dispositivo modular separa el módulo de comunicación (LoRa, NB-IoT…) en un bloque que se reemplaza sin soldar.",
   "originalReferences": [
     {

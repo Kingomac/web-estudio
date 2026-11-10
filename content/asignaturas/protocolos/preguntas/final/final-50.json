@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un router tiene 2001:db8:1::1/64 en su interfaz Ethernet g0/1 (multipunto) y IPv6 habilitado en la interfaz serie punto a punto s0/0. Según el tema, ¿cuál de estos comandos **NO** es correcto?",
+  "prompt": "Un router tiene 2001:db8:1::1/64 en su interfaz Ethernet g0/1 (multipunto) y IPv6 habilitado en la interfaz serie punto a punto s0/0. ¿Cuál de estos comandos **NO** es correcto?",
   "explanation": "Una ruta con next-hop link-local necesita indicar también la interfaz, porque fe80::/64 no identifica de forma única la interfaz del router vecino. ipv6 route 2001:db8:9::/48 fe80::1 omite la interfaz. Las demás formas son válidas: next-hop link-local con interfaz, interfaz punto a punto sola, next-hop global alcanzable por una ruta directa, y ruta sumidero a Null0.",
   "originalReferences": [
     {

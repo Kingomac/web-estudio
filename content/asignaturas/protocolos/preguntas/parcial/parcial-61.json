@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un router no encuentra ninguna ruta que coincida con el destino y tampoco tiene ruta por defecto. ¿Qué comportamiento describe el tema?",
+  "prompt": "Un router no encuentra ninguna ruta que coincida con el destino y tampoco tiene ruta por defecto. ¿Qué hace el router?",
   "explanation": "Sin una ruta coincidente, incluida ::/0, el router no dispone de siguiente salto. El tema indica el envío de un error ICMPv6 Destination Unreachable al origen.",
   "originalReferences": [
     {

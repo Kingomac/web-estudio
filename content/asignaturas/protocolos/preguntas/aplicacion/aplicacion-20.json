@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué pareja de puertos presenta el tema para CoAP sobre UDP y protegido con DTLS?",
+  "prompt": "¿Qué pareja de puertos corresponde a CoAP sobre UDP y a CoAP protegido con DTLS?",
   "explanation": "CoAP usa UDP 5683; el transporte protegido con DTLS utiliza 5684 en el material.",
   "originalReferences": [
     {

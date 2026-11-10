@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué dirección fuente utiliza el NS de DAD mostrado en el tema?",
+  "prompt": "¿Qué dirección fuente utiliza el NS de DAD?",
   "explanation": "DAD comprueba si la dirección obtenida está duplicada antes de utilizarla normalmente.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un LIR (ISP) ha recibido de su RIR el prefijo 2001:db8::/32. Según el reparto actual descrito en el tema, ¿qué prefijo es coherente para asignar a una red cliente?",
+  "prompt": "Un LIR (ISP) ha recibido de su RIR el prefijo 2001:db8::/32. Siguiendo el reparto habitual actual, ¿qué prefijo es coherente para asignar a una red cliente?",
   "explanation": "Los RIR asignan actualmente prefijos /32 a los LIR, y estos asignan a sus clientes prefijos más largos contenidos en los suyos, actualmente /48. Con ese /48 (prefijo de red), el cliente numera sus subredes con los 16 bits de ID de subred hasta llegar a /64.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Según la definición de nodo limitado que recoge el tema, ¿qué se convierte en requisito primordial de diseño?",
+  "prompt": "Según la definición de nodo limitado del RFC 7228, ¿qué se convierte en requisito primordial de diseño?",
   "explanation": "Los límites estrictos de potencia, memoria y CPU hacen que la optimización del uso de la energía y del ancho de banda de la red sea requisito primordial de diseño.",
   "originalReferences": [
     {

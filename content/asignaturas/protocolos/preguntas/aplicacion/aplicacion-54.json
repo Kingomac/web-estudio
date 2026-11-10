@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un dispositivo nuevo debe darse de alta en una plataforma IoT a través de su API HTTP. ¿Qué método corresponde según los ejemplos del tema?",
+  "prompt": "Un dispositivo nuevo debe darse de alta en una plataforma IoT a través de su API HTTP. ¿Qué método corresponde?",
   "explanation": "Los ejemplos del tema asocian GET con obtener una medida, PUT con actualizar el estado de un dispositivo, POST con crear un nuevo dispositivo y DELETE con eliminarlo.",
   "originalReferences": [
     {

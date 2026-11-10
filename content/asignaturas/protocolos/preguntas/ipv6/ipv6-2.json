@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué ventaja de IPv6 frente a IPv4 destaca el tema para IoT?",
+  "prompt": "¿Qué ventaja de IPv6 frente a IPv4 resulta relevante para IoT?",
   "explanation": "IPv6 permite direccionar muchos nodos y configurar direcciones sin asignación manual ni servidor DHCP mediante SLAAC.",
   "originalReferences": [
     {

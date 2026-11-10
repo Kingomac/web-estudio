@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "Un ayuntamiento quiere conectar contadores de agua, alumbrado público y sensores de aparcamiento repartidos por varios kilómetros con una malla IPv6 multisalto y saltos radio largos. ¿Qué tecnología encaja mejor con lo que presenta el tema?",
+  "prompt": "Un ayuntamiento quiere conectar contadores de agua, alumbrado público y sensores de aparcamiento repartidos por varios kilómetros con una malla IPv6 multisalto y saltos radio largos. ¿Qué tecnología encaja mejor?",
   "explanation": "Wi-SUN FAN combina IEEE 802.15.4g (modalidades sub-GHz con saltos de cientos de metros o kilómetros), 6LoWPAN y RPL, y se orienta a servicios públicos y ciudades inteligentes.",
   "originalReferences": [
     {

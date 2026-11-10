@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un sensor envía 20 bytes de datos cada minuto, el intervalo más corto que da el tema para muchas aplicaciones IoT. Sin cabeceras, ¿qué tasa media necesita y qué conclusión es coherente con el tema?",
+  "prompt": "Un sensor envía 20 bytes de datos cada minuto. Sin cabeceras, ¿qué tasa media necesita y qué conclusión es correcta?",
   "explanation": "20 bytes × 8 = 160 bits cada 60 s: unos 2,7 bit/s de media. Está muy por debajo incluso de la tasa típica más baja de una LPWAN (0,25 kbps). Como el mayor consumo corresponde a las comunicaciones, conviene una tasa baja y tener la radio activa el menor tiempo posible.",
   "originalReferences": [
     {

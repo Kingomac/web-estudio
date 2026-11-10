@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "En el esquema confirmable non-piggybacked del tema, el dispositivo no tiene la respuesta lista al recibir la petición. ¿Qué secuencia de mensajes aparece?",
+  "prompt": "En un intercambio CoAP confirmable non-piggybacked, el dispositivo no tiene la respuesta lista al recibir la petición. ¿Qué secuencia de mensajes aparece?",
   "explanation": "En la respuesta no piggybacked, el dispositivo confirma primero la petición con un ACK vacío y más tarde envía la respuesta 2.05 Content en un mensaje CON, que la aplicación confirma con otro ACK. El token (0x21) relaciona la respuesta con la petición.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "En la petición `GET /device101/temperature HTTP/1.1` del tema, ¿qué cabecera indica que el cliente quiere mantener abierta la conexión TCP para más peticiones?",
+  "prompt": "En la petición `GET /device101/temperature HTTP/1.1`, ¿qué cabecera indica que el cliente quiere mantener abierta la conexión TCP para más peticiones?",
   "explanation": "`Connection: keep-alive` pide una conexión persistente. `Host` identifica el servidor, `User-Agent` el software cliente y `Upgrade` se usa para cambiar de protocolo, como en el handshake de WebSocket.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "multiple",
-  "prompt": "¿Qué ejemplos de redes LoRaWAN comunitarias con cobertura en España cita el tema? (Elige DOS)",
+  "prompt": "¿Qué redes LoRaWAN comunitarias tienen cobertura en España? (Elige DOS)",
   "explanation": "The Things Network y Helium.",
   "originalReferences": [
     {

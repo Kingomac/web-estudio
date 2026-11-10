@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un nodo envía un NS a ff02::1:ff00:7 dentro de una PAN IEEE 802.15.4. ¿Cómo se transporta en la capa MAC según el tema?",
+  "prompt": "Un nodo envía un NS a ff02::1:ff00:7 dentro de una PAN IEEE 802.15.4. ¿Cómo se transporta en la capa MAC?",
   "explanation": "IEEE 802.15.4 no soporta multicast nativo en la capa MAC. Los paquetes IPv6 multicast pueden transportarse en tramas broadcast con el PAN ID de destino y la dirección corta destino 0xFFFF; así la difusión se limita a los nodos de esa PAN que están dentro del alcance radio. Por eso el multicast de NDP resulta costoso en estas redes.",
   "originalReferences": [
     {

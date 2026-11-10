@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "En el uplink Basics Station de la p. 45 aparece `\"DevAddr\": 670869799` y en el JSON que el NS entrega al AS (p. 50) aparece `\"dev_addr\": \"27FCA927\"`. ¿Qué se deduce?",
+  "prompt": "Al seguir un uplink LoRaWAN con FCnt 13 y FPort 5, el mensaje Basics Station del gateway al NS contiene `\"DevAddr\": 670869799` y el JSON que el NS entrega al AS contiene `\"dev_addr\": \"27FCA927\"`. ¿Qué se deduce?",
   "explanation": "0x27FCA927 = 670 869 799: es la misma dirección de 32 bits, representada en decimal por Basics Station y en hexadecimal por TTS. Es la DevAddr de la sesión, no el identificador global DevEUI (que en la p. 50 es 2CF7F1C064900BC4).",
   "originalReferences": [
     {

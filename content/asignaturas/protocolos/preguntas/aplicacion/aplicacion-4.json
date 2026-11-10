@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué significa comunicación sin estado en los principios REST del tema?",
+  "prompt": "¿Qué significa comunicación sin estado en los principios de diseño REST?",
   "explanation": "REST separa cliente y servidor y exige peticiones autosuficientes; también contempla cachés.",
   "originalReferences": [
     {

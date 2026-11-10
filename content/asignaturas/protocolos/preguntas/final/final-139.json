@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Una aplicación final propia se integra con TTS mediante webhooks: debe recibir los uplinks y además enviar órdenes a los nodos. Según el tema, ¿qué tiene que configurar?",
+  "prompt": "Una aplicación final propia se integra con TTS mediante webhooks: debe recibir los uplinks y además enviar órdenes a los nodos. ¿Qué tiene que configurar?",
   "explanation": "Con webhooks la aplicación expone un endpoint HTTP para recibir los mensajes y usa la API de TTS para enviar órdenes, con la autenticación necesaria. La alternativa es MQTT, con temas de suscripción y publicación.",
   "originalReferences": [
     {

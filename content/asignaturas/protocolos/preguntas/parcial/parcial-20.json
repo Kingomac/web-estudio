@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué combinación de versión HTTP y transporte coincide con el temario?",
+  "prompt": "¿Qué combinación de versión HTTP y transporte es correcta?",
   "explanation": "El material presenta HTTP/3 sobre QUIC/UDP, frente al transporte TCP utilizado por las versiones anteriores. El puerto indicado para HTTP sobre QUIC es 443.",
   "originalReferences": [
     {

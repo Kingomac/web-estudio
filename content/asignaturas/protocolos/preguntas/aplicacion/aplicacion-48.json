@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Una planta con miles de sensores usa publicación/suscripción y teme que, si falla el broker, se pierda toda la comunicación. ¿Qué solución describe el tema?",
+  "prompt": "Una planta con miles de sensores usa publicación/suscripción y teme que, si falla el broker, se pierda toda la comunicación. ¿Qué solución es la adecuada?",
   "explanation": "El modelo descentralizado usa una red de brokers que operan de forma coordinada, de modo que el broker no se convierte en un punto único de fallo ni en un cuello de botella.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué capacidad asigna el tema a los nodos de clase 1?",
+  "prompt": "¿Qué capacidad tienen los nodos de clase 1 en la clasificación del RFC 7228?",
   "explanation": "La clase 1 mejora la capacidad de la clase 0 y admite una pila reducida, con funcionamiento intermitente.",
   "originalReferences": [
     {

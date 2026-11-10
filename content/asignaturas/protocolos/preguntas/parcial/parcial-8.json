@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un kit Wio permite conectar sensores Grove sin soldar. ¿Qué característica física del ecosistema Grove se describe en el temario?",
+  "prompt": "Un kit Wio permite conectar sensores Grove sin soldar. ¿Qué característica física tiene el ecosistema Grove?",
   "explanation": "Grove utiliza conectores de cuatro pines. Los conectores de veinticuatro pines corresponden al sistema WisBlock descrito en la diapositiva anterior.",
   "originalReferences": [
     {

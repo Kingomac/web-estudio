@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un panel de control en el navegador debe mostrar las medidas que el servidor recibe cada segundo, sin que el navegador las pida una a una, y enviar órdenes al servidor por el mismo canal. ¿Qué mecanismo encaja con el tema?",
+  "prompt": "Un panel de control en el navegador debe mostrar las medidas que el servidor recibe cada segundo, sin que el navegador las pida una a una, y enviar órdenes al servidor por el mismo canal. ¿Qué mecanismo encaja mejor?",
   "explanation": "WebSocket mantiene una comunicación bidireccional interactiva sobre una conexión persistente: el servidor envía datos sin que el cliente los solicite y el cliente también puede enviar en cualquier momento. Los webhooks son unidireccionales y adecuados para notificaciones esporádicas; el pipelining y HTTP/2 siguen necesitando una petición por cada respuesta.",
   "originalReferences": [
     {

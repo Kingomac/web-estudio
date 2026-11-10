@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un cliente CoAP envía una petición CON y no recibe ACK. ¿Qué comportamiento de retransmisión describe el tema?",
+  "prompt": "Un cliente CoAP envía una petición CON y no recibe ACK. ¿Qué comportamiento de retransmisión sigue?",
   "explanation": "En el modo confirmable, la ausencia de ACK puede provocar hasta cuatro retransmisiones con exponential backoff. NON es el modo que no espera ese asentimiento.",
   "originalReferences": [
     {

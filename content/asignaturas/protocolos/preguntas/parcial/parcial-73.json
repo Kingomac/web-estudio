@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Una red local resuelve nombres terminados en .local sin disponer de servidor DNS. ¿Qué mecanismo del tema utiliza multicast y UDP 5353 para ello?",
+  "prompt": "Una red local resuelve nombres terminados en .local sin disponer de servidor DNS. ¿Qué mecanismo utiliza multicast y UDP 5353 para ello?",
   "explanation": "mDNS resuelve nombres locales usando multicast de ámbito de enlace y el puerto UDP 5353. Puede combinarse con DNS-SD para descubrir servicios.",
   "originalReferences": [
     {

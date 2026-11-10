@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Una empresa tiene dos proyectos: domótica en un edificio, con dispositivos cercanos que necesitan menor latencia, y monitorización de sensores repartidos por fincas agrícolas a varios kilómetros. ¿Qué asignación es coherente con el tema?",
+  "prompt": "Una empresa tiene dos proyectos: domótica en un edificio, con dispositivos cercanos que necesitan menor latencia, y monitorización de sensores repartidos por fincas agrícolas a varios kilómetros. ¿Qué asignación es la adecuada?",
   "explanation": "La infografía asocia LoWPAN a domótica y edificios inteligentes (cobertura corta, mayor tasa, menor latencia) y LPWAN a agricultura, smart city y telemetría (cobertura amplia, menor tasa, mayor latencia).",
   "originalReferences": [
     {

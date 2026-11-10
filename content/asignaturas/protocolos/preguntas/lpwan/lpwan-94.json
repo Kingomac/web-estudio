@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Se va a poner en producción un gateway SenseCAP M2 conectado a The Things Stack. ¿Qué configuración recomienda el tema?",
+  "prompt": "Se va a poner en producción un gateway SenseCAP M2 conectado a The Things Stack. ¿Qué configuración es la recomendable?",
   "explanation": "En producción solo debe usarse Basics Station, con WebSockets seguros y autenticación mutua entre gateway y LNS; el UDP Packet Forwarder está en desuso por falta de seguridad.",
   "originalReferences": [
     {

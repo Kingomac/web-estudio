@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Cuál de los siguientes protocolos NO sigue el modelo cliente/servidor según el tema?",
+  "prompt": "¿Cuál de los siguientes protocolos NO sigue el modelo cliente/servidor?",
   "explanation": "El tema pone HTTP, CoAP y XMPP como ejemplos del modelo cliente/servidor (petición/respuesta), y MQTT y AMQP como ejemplos de publicación/suscripción a través de un broker.",
   "originalReferences": [
     {

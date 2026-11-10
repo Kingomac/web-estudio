@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué significa C en show ipv6 route según las diapositivas?",
+  "prompt": "¿Qué significa la letra C en la salida de `show ipv6 route` en Cisco IOS?",
   "explanation": "El material distingue L local, C connected, S static y letras de protocolos como O para OSPF.",
   "originalReferences": [
     {

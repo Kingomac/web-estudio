@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un cliente OPC UA intercambia datos con la codificación XML. ¿Por qué pila de protocolos viajan sus mensajes según el tema?",
+  "prompt": "Un cliente OPC UA intercambia datos con la codificación XML. ¿Por qué pila de protocolos viajan sus mensajes?",
   "explanation": "En OPC UA, los mensajes XML se codifican con SOAP y se envían sobre HTTP o HTTPS (sobre TCP). Los datos binarios van habitualmente sobre UA nativo, o sobre HTTPS/WebSockets para integrarse en plataformas web.",
   "originalReferences": [
     {

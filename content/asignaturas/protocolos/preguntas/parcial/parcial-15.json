@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Para enviar medidas muy pequeñas desde sensores dispersos a varios kilómetros, ¿qué perfil de red del tema encaja mejor?",
+  "prompt": "Para enviar medidas muy pequeñas desde sensores dispersos a varios kilómetros, ¿qué perfil de red encaja mejor?",
   "explanation": "El tema contrapone el mayor alcance y las tasas muy bajas de LPWAN a la cobertura de corto o medio alcance de LoWPAN, que puede ampliarse mediante multisalto.",
   "originalReferences": [
     {

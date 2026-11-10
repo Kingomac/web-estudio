@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Cuál de las siguientes NO es una característica de las LoWPAN según el tema?",
+  "prompt": "¿Cuál de las siguientes NO es una característica de las LoWPAN?",
   "explanation": "Las LoWPAN usan estrella y malla centradas en pasarela o border router, ofrecen conectividad IP extremo a extremo en sus soluciones estándar, cubren 10–100 m (ampliables con malla) y alcanzan de cientos de kbps a ~2 Mbps. La conectividad híbrida es propia de las LPWAN.",
   "originalReferences": [
     {

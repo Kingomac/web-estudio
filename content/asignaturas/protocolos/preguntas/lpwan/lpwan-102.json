@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Con el decoder de la p. 53, llega un uplink con FPort 2 y bytes `64 64 28` (hexadecimal). ¿Qué devuelve?",
+  "prompt": "Un payload decoder de LoRaWAN tiene este código:\n`function decodeUplink(input) {`\n`  var msg = input.bytes;`\n`  if (input.fport == 1) return { data: {`\n`    temperatura: (msg[0] + msg[1]) / 2,`\n`    humedad: msg[2],`\n`    alarma: msg[3] === 1 ? \"activa\" : \"inactiva\" }};`\n`  if (input.fport == 2) return { data: {`\n`    luminosidad: msg[0],`\n`    aceleracion: msg[1] / 100,`\n`    bateria: msg[2] }};`\n`}`\nLlega un uplink con FPort 2 y bytes `64 64 28` (hexadecimal). ¿Qué devuelve?",
   "explanation": "Con FPort 2: luminosidad = msg[0] = 0x64 = 100; aceleración = msg[1] / 100 = 100 / 100 = 1; batería = msg[2] = 0x28 = 40.",
   "originalReferences": [
     {
@@ -26,7 +26,7 @@
     {
       "id": "luminosidad-100-aceleracion-1-y-bateria",
       "text": "Luminosidad 100, aceleración 1 y batería 40.",
-      "explanation": "Ejemplo de la p. 53."
+      "explanation": "Aplicación directa de la rama de FPort 2."
     },
     {
       "id": "luminosidad-100-aceleracion-100-y",

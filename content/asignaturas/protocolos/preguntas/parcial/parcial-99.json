@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "En el route-over básico descrito hasta la página 37, ¿qué hace un 6LR con los fragmentos de un datagrama antes de reenviarlo a nivel IPv6?",
+  "prompt": "En el modo route-over básico de 6LoWPAN, ¿qué hace un 6LR con los fragmentos de un datagrama antes de reenviarlo a nivel IPv6?",
   "explanation": "En este modo, cada nodo intermedio actúa como router IPv6. La adaptación reconstruye el datagrama para IPv6 y prepara después su transporte por el siguiente enlace.",
   "originalReferences": [
     {

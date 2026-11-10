@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué propiedad NO encaja con el perfil de LLN de bajo consumo descrito en el temario?",
+  "prompt": "¿Qué propiedad NO encaja con el perfil de una LLN de bajo consumo?",
   "explanation": "El perfil estudiado combina ahorro energético, enlaces con pérdidas y tasas reducidas. Una capacidad elevada y abundante no es una característica de ese perfil. LLN describe restricciones de energía y fiabilidad; no significa que toda red inalámbrica imaginable tenga exactamente las mismas prestaciones.",
   "originalReferences": [
     {

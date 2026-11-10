@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué correspondencia presenta la diapositiva entre clases y funciones IEEE 802.15.4?",
+  "prompt": "¿Qué correspondencia hay entre las clases de dispositivos limitados (0, 1 y 2) y las funciones de dispositivo de IEEE 802.15.4?",
   "explanation": "Es la correspondencia utilizada en el esquema docente: Reduced-Function Device y Full-Function Device.",
   "originalReferences": [
     {

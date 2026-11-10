@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "Según el resumen de modos de reenvío del tema, ¿qué relación tiene Zigbee con la cabecera Mesh de 6LoWPAN?",
+  "prompt": "¿Qué relación tiene Zigbee con la cabecera Mesh de 6LoWPAN?",
   "explanation": "Zigbee usa su propia capa de red y no la cabecera Mesh; Thread sí la usa, con su propio protocolo de vector de distancias.",
   "originalReferences": [
     {

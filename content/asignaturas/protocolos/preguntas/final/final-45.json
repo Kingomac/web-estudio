@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un nodo envía por Ethernet un NS de resolución que incluye la opción con su dirección MAC (T = 1, L = 1). No hay cabeceras de extensión. Con el formato de NS del tema, ¿qué valen Payload Length y el tamaño total del datagrama IPv6?",
+  "prompt": "Un nodo envía por Ethernet un NS de resolución que incluye la opción con su dirección MAC (T = 1, L = 1). No hay cabeceras de extensión. Con el formato estándar del mensaje NS, ¿qué valen Payload Length y el tamaño total del datagrama IPv6?",
   "explanation": "El mensaje NS ocupa 4 bytes de Tipo, Código y Checksum, 4 bytes de Reservado/Flags, 16 de la dirección objetivo y 8 de la opción (1 de tipo, 1 de longitud y 6 de MAC; L = 1 equivale a 48 bits de MAC en Ethernet): 32 bytes. Payload Length cuenta lo que sigue a la cabecera básica: 32. El datagrama completo suma los 40 bytes de cabecera: 72.",
   "originalReferences": [
     {

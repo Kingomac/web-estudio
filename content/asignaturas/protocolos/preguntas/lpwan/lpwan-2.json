@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "¿En qué documento y año se introdujeron las LPWAN según el tema?",
+  "prompt": "¿En qué documento y año se introdujeron las LPWAN en el IETF?",
   "explanation": "El RFC 8376, informativo, de 2018.",
   "originalReferences": [
     {

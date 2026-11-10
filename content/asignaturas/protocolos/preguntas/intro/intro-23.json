@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Se planifica una red IoT de 400 nodos. Con el coste orientativo por nodo que da el tema, ¿qué presupuesto total de nodos es coherente?",
+  "prompt": "Se planifica una red IoT de 400 nodos. Con el coste orientativo habitual de un nodo IoT, ¿qué presupuesto total de nodos es coherente?",
   "explanation": "El tema sitúa el coste en unos 5–30 € por nodo: 400 × 5 € = 2 000 € y 400 × 30 € = 12 000 €.",
   "originalReferences": [
     {

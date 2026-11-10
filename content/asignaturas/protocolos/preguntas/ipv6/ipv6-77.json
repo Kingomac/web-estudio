@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "En el ejemplo del tema, H1 (fe80::200:ff:fe11:1111, MAC 00:00:00:11:11:11) envía un NS para resolver fe80::200:ff:fe44:4444. ¿Qué IPv6 destino y MAC destino lleva el NA de respuesta?",
+  "prompt": "H1 (fe80::200:ff:fe11:1111, MAC 00:00:00:11:11:11) envía un NS para resolver fe80::200:ff:fe44:4444. ¿Qué IPv6 destino y MAC destino lleva el NA de respuesta?",
   "explanation": "El NS va al solicited-node del objetivo (ff02::1:ff44:4444, MAC 33:33:ff:44:44:44) e incluye la MAC de H1 (T = 1). El nodo que tiene la dirección objetivo responde a la fuente: el NA es unicast, con IPv6 destino fe80::200:ff:fe11:1111 y MAC destino 00:00:00:11:11:11, e incluye su propia MAC como objetivo (T = 2).",
   "originalReferences": [
     {

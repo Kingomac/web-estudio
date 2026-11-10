@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué versiones de HTTP usan framing binario según el tema?",
+  "prompt": "¿Qué versiones de HTTP usan framing binario?",
   "explanation": "Los mensajes HTTP/1.x se codifican con caracteres ASCII; HTTP/2 y HTTP/3 usan framing binario para optimizar el envío.",
   "originalReferences": [
     {

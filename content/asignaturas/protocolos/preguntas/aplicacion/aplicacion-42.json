@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Según el tema, la capa de aplicación asume funciones que en otros modelos corresponden a capas propias. ¿Qué pareja recoge correctamente dos de ellas?",
+  "prompt": "En la arquitectura TCP/IP, la capa de aplicación asume funciones que en otros modelos corresponden a capas propias. ¿Qué pareja recoge correctamente dos de ellas?",
   "explanation": "La diapositiva incluye en la capa de aplicación la representación de los datos (capa de presentación) y la gestión de sesiones (capa de sesión), además de la identificación de recursos, el formato y orden de los mensajes y el modelo de comunicación.",
   "originalReferences": [
     {

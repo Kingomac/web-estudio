@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un collar para ganado alimentado por batería obtiene su posición GNSS y la envía por radio cada 5 minutos. Según el tema, ¿qué parte del funcionamiento concentra el mayor consumo energético?",
+  "prompt": "Un collar para ganado alimentado por batería obtiene su posición GNSS y la envía por radio cada 5 minutos. ¿Qué parte del funcionamiento concentra el mayor consumo energético?",
   "explanation": "El tema indica que el mayor consumo corresponde a las comunicaciones (radio, GNSS); por eso interesa usar tasas bajas y mensajes cortos poco frecuentes.",
   "originalReferences": [
     {

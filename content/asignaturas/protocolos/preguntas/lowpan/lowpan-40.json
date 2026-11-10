@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué diferencia a SSED de SED según el tema?",
+  "prompt": "¿Qué diferencia a SSED de SED en Thread?",
   "explanation": "Ambos son dispositivos MTD que pueden dormir; cambia el modo de recibir los mensajes guardados por el padre.",
   "originalReferences": [
     {

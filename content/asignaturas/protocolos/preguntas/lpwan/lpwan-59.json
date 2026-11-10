@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "¿Qué conjunto de valores corresponde a LoRa según el tema?",
+  "prompt": "¿Qué conjunto de valores corresponde a LoRa?",
   "explanation": "Hasta 15 km en zonas rurales y 2-5 km en áreas urbanas, bandas ISM sub-GHz y una velocidad baja, de 0,3 a 50 kbps.",
   "originalReferences": [
     {

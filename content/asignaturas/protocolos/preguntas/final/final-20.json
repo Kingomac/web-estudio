@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Traza confirmable non-piggybacked del tema:\n`CON [0x4d45] GET /temperature (token 0x21)` →\n`ACK [0x4d45]` ←\n…\n`CON [0x4d45] 2.05 Content (token 0x21) \"20.1 C\"` ←\n`ACK [0x4d45]` →\n¿Por qué envía la aplicación el último ACK?",
+  "prompt": "Traza CoAP confirmable non-piggybacked:\n`CON [0x4d45] GET /temperature (token 0x21)` →\n`ACK [0x4d45]` ←\n…\n`CON [0x4d45] 2.05 Content (token 0x21) \"20.1 C\"` ←\n`ACK [0x4d45]` →\n¿Por qué envía la aplicación el último ACK?",
   "explanation": "La respuesta separada llega en un mensaje confirmable (CON), y en el modo confirmable el receptor debe asentirlo con un ACK; si no, el dispositivo la retransmitiría. El primer ACK, vacío, solo confirmaba la recepción de la petición.",
   "originalReferences": [
     {

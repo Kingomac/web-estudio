@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "En el ejemplo del tema, los routers anuncian 2001:11::/64 con A=1 y el IID se forma como 0000:00ff:fe00:XXXX a partir de la dirección corta. ¿Qué dirección configura el host con dirección corta 0x0005?",
+  "prompt": "En una red 6LoWPAN, los routers anuncian 2001:11::/64 con A=1 y el IID se forma como 0000:00ff:fe00:XXXX a partir de la dirección corta. ¿Qué dirección configura el host con dirección corta 0x0005?",
   "explanation": "Prefijo 2001:11::/64 + IID 0000:00ff:fe00:0005 = 2001:11::ff:fe00:5.",
   "originalReferences": [
     {

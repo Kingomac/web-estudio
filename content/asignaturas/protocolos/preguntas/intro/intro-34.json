@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Según la definición de nodo limitado del RFC 7228 que recoge el tema, además de los límites de potencia, memoria y CPU, ¿qué puede faltarle a estos nodos?",
+  "prompt": "Según la definición de nodo limitado del RFC 7228, además de los límites de potencia, memoria y CPU, ¿qué puede faltarle a estos nodos?",
   "explanation": "El tema añade que en los nodos limitados pueden faltar servicios de nivel 2 como la conectividad completa y la capacidad broadcast/multicast.",
   "originalReferences": [
     {

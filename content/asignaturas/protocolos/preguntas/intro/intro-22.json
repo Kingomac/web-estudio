@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Cuál de las siguientes NO es una de las razones que da el tema para que los dispositivos IoT sean habitualmente «limitados»?",
+  "prompt": "¿Cuál de las siguientes NO es una razón para que los dispositivos IoT sean habitualmente «limitados»?",
   "explanation": "El tema da tres razones: alimentación por baterías, gran número de nodos con coste bajo por nodo y tráfico de mensajes cortos poco frecuentes que solo requiere tasas bajas.",
   "originalReferences": [
     {

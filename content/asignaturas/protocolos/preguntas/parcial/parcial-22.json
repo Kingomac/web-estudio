@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Una API expone /valvula/estado y se desea actualizar el estado de ese recurso existente. ¿Qué método corresponde al uso presentado en las diapositivas?",
+  "prompt": "Una API REST expone `/valvula/estado` y se desea actualizar el estado de ese recurso, que ya existe. ¿Qué método HTTP corresponde?",
   "explanation": "El tema asocia PUT con actualizar el estado, GET con obtener datos, POST con crear y DELETE con eliminar. Aquí se actualiza un recurso que ya existe.",
   "originalReferences": [
     {

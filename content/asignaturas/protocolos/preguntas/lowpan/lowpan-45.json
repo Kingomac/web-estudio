@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué mecanismo propio resuelve la correspondencia de un destino a RLOC16 según el tema?",
+  "prompt": "¿Qué mecanismo propio de Thread resuelve la correspondencia de un destino a RLOC16?",
   "explanation": "La correspondencia se guarda en caché; los MTD delegan esta función en su padre.",
   "originalReferences": [
     {

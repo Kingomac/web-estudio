@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Cómo se transportan los mensajes MLE según el tema?",
+  "prompt": "¿Cómo se transportan los mensajes MLE?",
   "explanation": "MLE va en UDP, con puerto 19788 en origen y destino y Hop Limit 255, entre vecinos con direcciones de ámbito de enlace.",
   "originalReferences": [
     {

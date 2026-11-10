@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Un dispositivo NB-IoT consume 3 MB al mes y debe funcionar 10 años. Con los precios de la p. 16 —Movistar: SIM de 1 MB a 0,85 €/mes con excedente de 0,85 €/MB, SIM de 5 MB a 1,20 €/mes, alta de 55 €; 1NCE: 13 € de pago único por 500 MB durante 10 años—, ¿qué opción es la más barata y cubre el consumo?",
+  "prompt": "Un dispositivo NB-IoT consume 3 MB al mes y debe funcionar 10 años. Con estas tarifas —Movistar: SIM de 1 MB a 0,85 €/mes con excedente de 0,85 €/MB, SIM de 5 MB a 1,20 €/mes, alta de 55 €; 1NCE: 13 € de pago único por 500 MB durante 10 años—, ¿qué opción es la más barata y cubre el consumo?",
   "explanation": "En 10 años consume 3 × 120 = 360 MB, que caben en los 500 MB de 1NCE: 13 € en total. Con Movistar, la SIM de 5 MB cuesta 1,20 × 120 = 144 € más el alta, y la de 1 MB 0,85 + 2 × 0,85 = 2,55 €/mes.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué tipo utiliza la petición multicast CoAP del esquema del profesor?",
+  "prompt": "Una aplicación envía una petición `GET` CoAP al grupo multicast `ff02::1`. ¿De qué tipo debe ser ese mensaje?",
   "explanation": "La figura muestra GET con T=NON y respuestas de los dispositivos de forma individual.",
   "originalReferences": [
     {

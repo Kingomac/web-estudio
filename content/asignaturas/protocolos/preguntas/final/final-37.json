@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Una planta conecta sus PLC a un servidor OPC UA en la red local y quiere la máxima eficiencia. Además, un panel web debe recibir esos datos integrándose con la plataforma web corporativa. ¿Qué combinación es la que describe el tema?",
+  "prompt": "Una planta conecta sus PLC a un servidor OPC UA en la red local y quiere la máxima eficiencia. Además, un panel web debe recibir esos datos integrándose con la plataforma web corporativa. ¿Qué combinación es la adecuada?",
   "explanation": "La codificación binaria es la eficiente y lo habitual es enviarla directamente sobre UA nativo (TCP 4840). Para integrarse con plataformas web, los datos binarios pueden ir sobre HTTPS/WebSockets. La XML es legible pero ineficiente, y SOAP/HTTP para datos binarios está obsoleto.",
   "originalReferences": [
     {

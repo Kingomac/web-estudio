@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué combinación de función objetivo y métrica usa Wi-SUN FAN en el tema?",
+  "prompt": "¿Qué combinación de función objetivo y métrica usa Wi-SUN FAN?",
   "explanation": "El tema calcula costes a partir de Rank del padre y ETX del enlace, con histéresis.",
   "originalReferences": [
     {

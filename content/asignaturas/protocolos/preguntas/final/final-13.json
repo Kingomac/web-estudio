@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "En un sistema de publicación/suscripción ocurre lo siguiente con el topic `planta/caldera`: el sensor anuncia el nuevo topic; una aplicación se suscribe; el sensor envía una lectura; el broker hace llegar la lectura a la aplicación; la aplicación se da de baja; el sensor revoca el topic. ¿Qué secuencia de operaciones del tema corresponde a esa traza?",
+  "prompt": "En un sistema de publicación/suscripción ocurre lo siguiente con el topic `planta/caldera`: el sensor anuncia el nuevo topic; una aplicación se suscribe; el sensor envía una lectura; el broker hace llegar la lectura a la aplicación; la aplicación se da de baja; el sensor revoca el topic. ¿Qué secuencia de operaciones corresponde a esa traza?",
   "explanation": "El tema define advertise (el publicador anuncia un topic), subscribe (la aplicación se suscribe), publish (el publicador publica datos), notify (el broker envía los datos a los suscriptores), unsubscribe (la aplicación revoca su suscripción) y unadvertise (el publicador revoca el topic).",
   "originalReferences": [
     {

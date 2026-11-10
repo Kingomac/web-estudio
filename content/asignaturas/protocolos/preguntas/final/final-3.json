@@ -36,7 +36,7 @@
     },
     {
       "id": "sensores-tambien-4g",
-      "text": "Los sensores podrían usar 4G igual que la pasarela; el tema solo descarta 4G cuando falta cobertura.",
+      "text": "Los sensores podrían usar 4G igual que la pasarela; 4G solo se descarta cuando falta cobertura.",
       "explanation": "El tema reserva Wi-Fi y 4G/5G para nodos con alimentación de red; los nodos limitados en CPU, memoria y batería necesitan LLN."
     },
     {

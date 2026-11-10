@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un sensor aislado transmite 12 bytes cada hora y debe alcanzar una estación a varios kilómetros sin repetidores intermedios. ¿Qué perfil del temario se ajusta mejor?",
+  "prompt": "Un sensor aislado transmite 12 bytes cada hora y debe alcanzar una estación a varios kilómetros sin repetidores intermedios. ¿Qué perfil de red se ajusta mejor?",
   "explanation": "La cobertura de varios kilómetros con poco tráfico encaja con LPWAN. LoWPAN puede ampliar cobertura mediante multisalto, pero aquí se excluyen los nodos intermedios. El tamaño del mensaje no elimina las limitaciones de alcance radio.",
   "originalReferences": [
     {

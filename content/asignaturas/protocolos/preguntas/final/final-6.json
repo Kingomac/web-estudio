@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Se quiere usar, sin adaptar, un mecanismo de descubrimiento de vecinos basado en multicast en una red IEEE 802.15.4 de nodos de clase 1 que duermen buena parte del tiempo. ¿Qué valoración es coherente con el temario?",
+  "prompt": "Se quiere usar, sin adaptar, un mecanismo de descubrimiento de vecinos basado en multicast en una red IEEE 802.15.4 de nodos de clase 1 que duermen buena parte del tiempo. ¿Qué valoración es correcta?",
   "explanation": "El tema 1 recoge que a los nodos limitados pueden faltarles servicios de nivel 2 como la conectividad completa y el broadcast/multicast, y que deben optimizar energía y ancho de banda. El tema 3 añade que en IEEE 802.15.4 el multicast se transporta por broadcast y obliga a recibir y procesar mensajes a nodos que no los necesitan, y que los nodos dormidos pueden perder anuncios.",
   "originalReferences": [
     {

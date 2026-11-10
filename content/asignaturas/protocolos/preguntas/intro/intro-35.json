@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un nodo dispone de 32 KB de RAM y 128 KB de ROM. Según la clasificación del tema, ¿qué clase le corresponde?",
+  "prompt": "Un nodo dispone de 32 KB de RAM y 128 KB de ROM. Según la clasificación del RFC 7228, ¿qué clase le corresponde?",
   "explanation": "Clase 0: menos de 10 KB de RAM y menos de 100 KB de ROM. Clase 2: más de 50 KB de RAM y más de 250 KB de ROM. Con 32 KB y 128 KB supera la clase 0 sin llegar a la clase 2: es clase 1.",
   "originalReferences": [
     {

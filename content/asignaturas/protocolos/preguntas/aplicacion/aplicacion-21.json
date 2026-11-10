@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Si el acceso usa CoAP y la aplicación del núcleo usa HTTP, ¿qué muestra el escenario del tema?",
+  "prompt": "Una arquitectura IoT usa CoAP en la red de acceso y HTTP en el núcleo. ¿Qué elemento se necesita entre ambas partes?",
   "explanation": "El esquema de CoAP en acceso y HTTP en núcleo necesita traducción de mensajes.",
   "originalReferences": [
     {

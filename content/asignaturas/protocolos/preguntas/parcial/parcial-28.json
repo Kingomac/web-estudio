@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Una instalación industrial requiere intercambio de datos independiente del hardware y del sistema operativo, con cifrado, autenticación y auditoría. ¿Qué arquitectura del tema reúne esas características?",
+  "prompt": "Una instalación industrial requiere intercambio de datos independiente del hardware y del sistema operativo, con cifrado, autenticación y auditoría. ¿Qué arquitectura reúne esas características?",
   "explanation": "OPC UA es una arquitectura orientada a servicios para entornos industriales. El tema destaca su independencia de plataforma y los mecanismos de seguridad integrados.",
   "originalReferences": [
     {

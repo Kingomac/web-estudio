@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "En una red IEEE 802.15.4 hay tres modelos de nodo: X (8 KB de RAM, 64 KB de ROM), Y (32 KB de RAM, 192 KB de ROM) y Z (128 KB de RAM, 1 MB de ROM). ¿Qué asignación de papeles es coherente con la clasificación del tema?",
+  "prompt": "En una red IEEE 802.15.4 hay tres modelos de nodo: X (8 KB de RAM, 64 KB de ROM), Y (32 KB de RAM, 192 KB de ROM) y Z (128 KB de RAM, 1 MB de ROM). ¿Qué asignación de papeles es coherente con la clasificación del RFC 7228?",
   "explanation": "X es clase 0 (menos de 10 KB y 100 KB): no puede implementar una pila IP. Y supera la clase 0 sin llegar a la 2: clase 1, pila IP reducida, RFD. Z supera 50 KB y 250 KB: clase 2, FFD, pila IP completa, encaminamiento ligero y reenvío para otros nodos.",
   "originalReferences": [
     {

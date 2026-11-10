@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Con el decoder de la p. 53, ¿qué temperatura devuelve un uplink con FPort 1 y bytes 18 17 3C 01?",
+  "prompt": "Un payload decoder de LoRaWAN tiene este código:\n`function decodeUplink(input) {`\n`  var msg = input.bytes;`\n`  if (input.fport == 1) return { data: {`\n`    temperatura: (msg[0] + msg[1]) / 2,`\n`    humedad: msg[2],`\n`    alarma: msg[3] === 1 ? \"activa\" : \"inactiva\" }};`\n`  if (input.fport == 2) return { data: {`\n`    luminosidad: msg[0],`\n`    aceleracion: msg[1] / 100,`\n`    bateria: msg[2] }};`\n`}`\n¿Qué temperatura devuelve un uplink con FPort 1 y bytes `18 17 3C 01` (hexadecimal)?",
   "explanation": "(0x18 + 0x17) / 2 = (24 + 23) / 2 = 23,5.",
   "originalReferences": [
     {

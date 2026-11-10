@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "La FIB de un router solo contiene la ruta directa (G=0) 2001:db8:1::/64 por g0/0. El administrador añade una ruta para 2001:db8:9::/64 con G=1 y gateway 2001:db8:7::1. ¿Qué ocurre según el tema?",
+  "prompt": "La FIB de un router solo contiene la ruta directa (G=0) 2001:db8:1::/64 por g0/0. El administrador añade una ruta para 2001:db8:9::/64 con G=1 y gateway 2001:db8:7::1. ¿Qué ocurre?",
   "explanation": "Una ruta indirecta (G=1) indica en el campo Gateway la IP del router de siguiente salto, que debe estar a un salto: tiene que existir en la FIB una ruta directa (G=0) para su prefijo. Aquí no hay ruta directa para 2001:db8:7::/64, así que la ruta indirecta no se instala hasta que exista.",
   "originalReferences": [
     {

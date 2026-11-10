@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué describe una dirección anycast en el tema?",
+  "prompt": "¿Qué describe una dirección anycast?",
   "explanation": "Anycast usa direcciones unicast compartidas; multicast se dirige a los miembros de un grupo.",
   "originalReferences": [
     {

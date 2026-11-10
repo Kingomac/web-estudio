@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un nodo de calidad del aire incorpora una pantalla OLED que muestra la última medida. ¿En qué bloque de la arquitectura típica del tema se clasifica la pantalla?",
+  "prompt": "Un nodo de calidad del aire incorpora una pantalla OLED que muestra la última medida. ¿En qué bloque de la arquitectura típica de un dispositivo IoT se clasifica la pantalla?",
   "explanation": "La arquitectura del tema lista entre los actuadores los motores, los relés, los LEDs, el altavoz y las pantallas OLED/LCD: elementos que producen una salida.",
   "originalReferences": [
     {

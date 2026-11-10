@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "En el ejemplo del tema, tras la opción Uri-Path (tipo 11) va la opción Max-Age (tipo 14) con valor 3600 en 2 bytes. ¿Qué valores aparecen en los dos campos de 4 bits que preceden al valor de Max-Age?",
+  "prompt": "En un mensaje CoAP, tras la opción Uri-Path (tipo 11) va la opción Max-Age (tipo 14) con valor 3600 en 2 bytes. ¿Qué valores aparecen en los dos campos de 4 bits que preceden al valor de Max-Age?",
   "explanation": "La figura del tema codifica Max-Age con 3 y 2 seguidos de 0x0E10 (3600). Las opciones van en orden y cada una indica su tipo como diferencia respecto a la anterior (14 − 11 = 3); el segundo campo es la longitud del valor (2 bytes).",
   "originalReferences": [
     {

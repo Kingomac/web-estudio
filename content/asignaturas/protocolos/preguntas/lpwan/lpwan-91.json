@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "El downlink de la p. 59 tiene un PHYPayload de 15 bytes. ¿Cuántos caracteres ocupa en `dnmsg.pdu` (Basics Station, hexadecimal) y en `txpk.data` (UDP forwarder, Base64)?",
+  "prompt": "Un downlink LoRaWAN tiene un PHYPayload de 15 bytes. ¿Cuántos caracteres ocupa en `dnmsg.pdu` (Basics Station, hexadecimal) y en `txpk.data` (UDP forwarder, Base64)?",
   "explanation": "En hexadecimal, 2 caracteres por byte: 30. En Base64, 15 bytes son 5 bloques de 3 bytes → 5 × 4 = 20 caracteres, sin «=» porque 15 es múltiplo de 3.",
   "originalReferences": [
     {

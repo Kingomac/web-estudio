@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "En el ejemplo de SLAAC del tema, ¿qué información **NO** transporta el RA del router?",
+  "prompt": "En SLAAC, ¿qué información **NO** transporta el RA del router?",
   "explanation": "El RA contiene el prefijo de subred, la MTU, la dirección de enlace (MAC) del router y los flags M y O. El host construye su dirección concatenando el prefijo con su propio IID; el router no le asigna una dirección completa (eso lo haría un servidor DHCPv6).",
   "originalReferences": [
     {

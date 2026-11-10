@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un gateway envía una petición y recibe `505 HTTP Version Not Supported`. ¿Cómo clasifica el tema esta respuesta?",
+  "prompt": "Un gateway envía una petición y recibe `505 HTTP Version Not Supported`. ¿Cómo se clasifica esta respuesta?",
   "explanation": "Los códigos 5xx son errores del servidor; el tema pone 505 HTTP Version Not Supported como ejemplo. Los 4xx son errores del cliente (400, 404), los 3xx redirecciones (301, 304) y los 1xx información.",
   "originalReferences": [
     {

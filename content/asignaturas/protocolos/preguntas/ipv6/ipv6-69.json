@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un host recibe un RA con M = 0 y O = 0 que incluye el prefijo 2001:db8:c:1::/64. Según el esquema de flags del tema, ¿cómo completa su configuración?",
+  "prompt": "Un host recibe un RA con M = 0 y O = 0 que incluye el prefijo 2001:db8:c:1::/64. ¿Cómo completa su configuración?",
   "explanation": "Con M = 0 el host construye su dirección concatenando el prefijo del RA con su IID (SLAAC). Con O = 0 el RA envía también otra información, como los servidores DNS. El default gateway es la IP origen del RA, la link-local del router.",
   "originalReferences": [
     {

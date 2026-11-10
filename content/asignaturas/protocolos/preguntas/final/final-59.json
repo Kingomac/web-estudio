@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un router tiene `ipv6 address 2001:db8:1::1/64` en g0/0 y `ipv6 address 2001:db8:2::1/64` en g0/1, y `show ipv6 route` muestra las dos entradas C y las dos L. Los hosts de cada subred hacen ping a la dirección del router en su enlace, pero los de una subred no alcanzan a los de la otra. ¿Cuál es la causa más probable según el tema?",
+  "prompt": "Un router tiene `ipv6 address 2001:db8:1::1/64` en g0/0 y `ipv6 address 2001:db8:2::1/64` en g0/1, y `show ipv6 route` muestra las dos entradas C y las dos L. Los hosts de cada subred hacen ping a la dirección del router en su enlace, pero los de una subred no alcanzan a los de la otra. ¿Cuál es la causa más probable?",
   "explanation": "ipv6 address habilita IPv6 en cada interfaz y crea sus rutas directas, por eso aparecen las entradas C y L y el router responde en cada enlace. Pero para reenviar entre interfaces debe ejecutarse además ipv6 unicast-routing. No hacen falta rutas estáticas: las dos subredes están conectadas.",
   "originalReferences": [
     {

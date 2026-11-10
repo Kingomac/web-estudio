@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Una red de sensores IEEE 802.15.4 transporta datagramas IPv6 gracias a 6LoWPAN, que comprime cabeceras y fragmenta datagramas. ¿Dónde sitúa el tema esta función dentro de la arquitectura de red?",
+  "prompt": "Una red de sensores IEEE 802.15.4 transporta datagramas IPv6 gracias a 6LoWPAN, que comprime cabeceras y fragmenta datagramas. ¿Dónde se sitúa esta función dentro de la arquitectura de red?",
   "explanation": "El tema describe una capa de adaptación opcional, situada entre la capa de red y la de enlace, que comprime cabeceras y fragmenta datagramas; su ejemplo es 6LoWPAN.",
   "originalReferences": [
     {

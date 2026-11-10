@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un proveedor ofrece un nodo IEEE 802.15.4 con 48 KB de RAM y 512 KB de ROM y lo anuncia como apto para ser nodo intermedio de reenvío en un árbol. Según la clasificación del RFC 7228 que presenta el tema, ¿qué valoración es correcta?",
+  "prompt": "Un proveedor ofrece un nodo IEEE 802.15.4 con 48 KB de RAM y 512 KB de ROM y lo anuncia como apto para ser nodo intermedio de reenvío en un árbol. Según la clasificación del RFC 7228, ¿qué valoración es correcta?",
   "explanation": "La clase 2 exige más de 50 KB de RAM **y** más de 250 KB de ROM. Con 48 KB de RAM no la alcanza, aunque su ROM sí supere el umbral. Supera la clase 0 (menos de 10 KB y 100 KB), así que es clase 1: pila IP reducida, RFD en IEEE 802.15.4. El tema atribuye el encaminamiento ligero y el reenvío a la clase 2 (FFD).",
   "originalReferences": [
     {

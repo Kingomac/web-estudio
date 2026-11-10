@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué cobertura orientativa da el tema para una LPWAN desplegada en entorno rural?",
+  "prompt": "¿Qué cobertura orientativa tiene una LPWAN desplegada en entorno rural?",
   "explanation": "El tema indica una cobertura de hasta ~5 km en entorno urbano y ~15 km en rural para las LPWAN; las LoWPAN cubren 10–100 m.",
   "originalReferences": [
     {

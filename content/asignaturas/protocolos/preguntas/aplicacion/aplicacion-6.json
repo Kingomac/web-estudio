@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué transporte utiliza HTTP/3 según el material?",
+  "prompt": "¿Qué transporte utiliza HTTP/3?",
   "explanation": "La diapositiva distingue HTTP/3 sobre QUIC/UDP de las versiones anteriores sobre TCP.",
   "originalReferences": [
     {

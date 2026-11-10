@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué ventaja de WebSocket destaca el temario?",
+  "prompt": "¿Qué ventaja ofrece WebSocket?",
   "explanation": "Ambos extremos pueden enviar datos; esto evita el sondeo continuo del servidor.",
   "originalReferences": [
     {

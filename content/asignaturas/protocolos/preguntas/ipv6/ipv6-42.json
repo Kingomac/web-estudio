@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Según el RFC 4919 citado en el tema, ¿cuál de las siguientes afirmaciones **NO** es una ventaja de una arquitectura basada en nodos IP?",
+  "prompt": "Según el RFC 4919, ¿cuál de las siguientes afirmaciones **NO** es una ventaja de una arquitectura basada en nodos IP?",
   "explanation": "El tema recoge dos ventajas de los nodos IP (identificación con IP y puerto, y comunicación extremo a extremo por la infraestructura existente) y dos de IPv6 frente a IPv4 (más direcciones y SLAAC). La comunicación extremo a extremo sin pasarelas de traducción exige que los protocolos de aplicación sean compatibles: no elimina ese requisito.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué describe el uso de cookies HTTP que aparece en el temario?",
+  "prompt": "¿Cómo funcionan las cookies HTTP?",
   "explanation": "Las cookies permiten conservar información de estado en intercambios HTTP. Son cadenas definidas por el servidor que el cliente devuelve y pueden servir para sesiones o preferencias.",
   "originalReferences": [
     {

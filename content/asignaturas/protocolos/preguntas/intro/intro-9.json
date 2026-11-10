@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué característica destaca el tema del ecosistema Grove?",
+  "prompt": "¿Qué característica define al ecosistema Grove?",
   "explanation": "Wio integra MCU y conectividad, y su compatibilidad con Grove facilita conectar sensores y actuadores.",
   "originalReferences": [
     {

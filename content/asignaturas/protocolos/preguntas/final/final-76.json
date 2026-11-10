@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "En la misma red conviven un router Cisco IOS que usa EUI-64 modificado, un servidor Linux configurado con IID opacos estables (RFC 7217) y un portátil Windows con su configuración habitual. ¿Qué afirmación es correcta según el tema?",
+  "prompt": "En la misma red conviven un router Cisco IOS que usa EUI-64 modificado, un servidor Linux configurado con IID opacos estables (RFC 7217) y un portátil Windows con su configuración habitual. ¿Qué afirmación es correcta?",
   "explanation": "El IID EUI-64 incorpora la MAC y no depende del prefijo. El RFC 7217 combina el prefijo, un identificador de la interfaz y otros parámetros con una clave secreta: el IID no revela la MAC, es estable mientras no cambien esos parámetros y puede ser distinto en cada red, sin renovación periódica. Windows usa IID aleatorizados y además admite direcciones temporales que se renuevan periódicamente (RFC 8981).",
   "originalReferences": [
     {

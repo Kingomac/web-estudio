@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Una estación de riego modular se instalará a la intemperie, expuesta a lluvia y polvo. ¿Qué bloque atiende ese requisito según el tema?",
+  "prompt": "Una estación de riego modular se instalará a la intemperie, expuesta a lluvia y polvo. ¿Qué bloque atiende ese requisito?",
   "explanation": "Entre los bloques de un dispositivo modular, la caja o carcasa protege el conjunto y el tema la califica de imprescindible por su estanqueidad (IP65/IP67).",
   "originalReferences": [
     {

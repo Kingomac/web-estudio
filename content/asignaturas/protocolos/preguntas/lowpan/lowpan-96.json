@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "En el ejemplo non-storing del tema, L es un LFN hijo de C, y C tiene como padres A (preferido) y B (alternativo). ¿Qué ruta descendente reconstruye la raíz R hacia L?",
+  "prompt": "En una red RPL en modo non-storing, L es un LFN hijo de C, y C tiene como padres A (preferido) y B (alternativo). ¿Qué ruta descendente reconstruye la raíz R hacia L?",
   "explanation": "Con C→A preferido y L→C, la raíz construye R → A → C → L; R → B → C → L queda como alternativa.",
   "originalReferences": [
     {

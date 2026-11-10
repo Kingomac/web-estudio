@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Puede una interfaz disponer de varias direcciones IPv6 en el material?",
+  "prompt": "¿Puede una interfaz disponer de varias direcciones IPv6?",
   "explanation": "La subred puede tener varios prefijos y una interfaz varias direcciones.",
   "originalReferences": [
     {

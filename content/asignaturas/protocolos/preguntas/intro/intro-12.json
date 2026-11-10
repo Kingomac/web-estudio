@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué función adicional pueden realizar los nodos de clase 2 según el material?",
+  "prompt": "¿Qué función adicional pueden realizar los nodos de clase 2?",
   "explanation": "La clase 2 puede soportar una pila IP más completa y actuar como nodo intermedio de reenvío.",
   "originalReferences": [
     {

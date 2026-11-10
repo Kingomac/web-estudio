@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "En el route-over descrito en las diapositivas hasta la 37, un 6LR recibe un datagrama fragmentado destinado a otro nodo. ¿Qué secuencia corresponde al reenvío habitual?",
+  "prompt": "En el modo route-over de 6LoWPAN, un 6LR recibe un datagrama fragmentado destinado a otro nodo. ¿Qué secuencia corresponde al reenvío habitual?",
   "explanation": "En este modelo cada 6LR actúa como router: la adaptación reconstruye el paquete y lo entrega a IPv6 para decidir el siguiente salto. La salida vuelve a aplicar compresión y, si hace falta, fragmentación. El destino IPv6 sigue siendo el extremo final.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué pareja de transporte y puerto corresponde a MQTT con TLS según el tema?",
+  "prompt": "¿Qué pareja de transporte y puerto corresponde a MQTT con TLS?",
   "explanation": "MQTT se presenta sobre TCP en el puerto 1883 o sobre TLS/TCP en el 8883. MQTT-SN es la variante sobre UDP descrita al final del tema.",
   "originalReferences": [
     {

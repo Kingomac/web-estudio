@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un sensor IoT con pila IPv4 está detrás del router de una instalación que hace NAT. Una aplicación externa en Internet necesita **iniciar** la comunicación con el sensor. ¿Qué hace falta según el esquema de arquitectura con nodos IP del tema?",
+  "prompt": "Un sensor IoT con pila IPv4 está detrás del router de una instalación que hace NAT. Una aplicación externa en Internet necesita **iniciar** la comunicación con el sensor. ¿Qué hace falta?",
   "explanation": "En la arquitectura con nodos IP, el nodo se identifica con su IP y su puerto. Si hay NAT, la dirección privada del sensor no es alcanzable desde fuera: para que el exterior inicie la comunicación hay que redirigir un puerto del router hacia el sensor. IPv6 evita esta necesidad porque su espacio de direcciones hace innecesario el NAT por escasez.",
   "originalReferences": [
     {

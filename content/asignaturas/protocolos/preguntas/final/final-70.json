@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un nodo IEEE 802.15.4 usa la dirección corta 0x0012 en la PAN cuyo PAN ID es 0xabcd. Aplicando la estructura del tema para direcciones cortas y la regla del RFC 4944 sobre el bit U/L, ¿qué dirección link-local automática obtiene?",
+  "prompt": "Un nodo IEEE 802.15.4 usa la dirección corta 0x0012 en la PAN cuyo PAN ID es 0xabcd. Aplicando la construcción del IID para direcciones cortas de 16 bits y la regla del RFC 4944 sobre el bit U/L, ¿qué dirección link-local automática obtiene?",
   "explanation": "Para una dirección corta, el IID es PAN_ID : 00FF : FE00 : dirección_corta = abcd:00ff:fe00:0012. El tema indica que, según el RFC 4944, el bit U/L del IID resultante debe quedar a cero. En 0xab (1010 1011) ese bit, el segundo menos significativo, vale 1: al ponerlo a 0 queda 0xa9. Resultado: fe80::a9cd:ff:fe00:12.",
   "originalReferences": [
     {

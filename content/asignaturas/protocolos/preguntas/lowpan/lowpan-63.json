@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "multiple",
-  "prompt": "¿Para qué tecnologías cita el tema normas del grupo 6lo? Marca todas las correctas.",
+  "prompt": "¿Para qué tecnologías ha publicado normas el grupo 6lo del IETF? Marca todas las correctas.",
   "explanation": "La p. 46 cita Z-Wave, BLE, DECT-ULE, PLC y NFC.",
   "originalReferences": [
     {

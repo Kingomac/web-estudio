@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Se planifica una LPWAN para los contadores de un polígono industrial. ¿Qué topología y qué tipo de conectividad describe el tema para este tipo de red?",
+  "prompt": "Se planifica una LPWAN para los contadores de un polígono industrial. ¿Qué topología y qué tipo de conectividad son propias de este tipo de red?",
   "explanation": "Las LPWAN usan topología en estrella y conectividad híbrida: dispositivos no IP y red troncal IP.",
   "originalReferences": [
     {

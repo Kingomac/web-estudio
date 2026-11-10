@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "¿Qué dos modos de integración entre el Application Server y la aplicación final presenta el tema para TTS/TTN?",
+  "prompt": "¿Qué dos modos de integración entre el Application Server y la aplicación final ofrece TTS/TTN?",
   "explanation": "Webhook (la aplicación expone un endpoint HTTP y usa la API de TTS para enviar órdenes) o MQTT (temas de suscripción y publicación), siempre con autenticación.",
   "originalReferences": [
     {

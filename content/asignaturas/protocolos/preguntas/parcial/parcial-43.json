@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un cliente MQTT registró un LWT al conectarse y después envía un DISCONNECT normal. ¿Qué hace el broker con ese testamento en el caso descrito por el tema?",
+  "prompt": "Un cliente MQTT registró un LWT al conectarse y después envía un DISCONNECT normal. ¿Qué hace el broker con ese testamento?",
   "explanation": "El LWT está destinado a avisar de una desconexión inesperada. En el cierre voluntario mediante DISCONNECT presentado en las diapositivas, se elimina sin publicarse.",
   "originalReferences": [
     {

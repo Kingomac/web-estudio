@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "En la p. 50, un uplink de 27 bytes con SF10 consume 0,411648 s de airtime. Si el nodo solo transmite en la subbanda de 868-868,6 MHz (duty cycle del 1 %), ¿cuántos mensajes como ese puede enviar como máximo en una hora?",
+  "prompt": "Un uplink LoRaWAN de 27 bytes con SF10 consume 0,411648 s de airtime. Si el nodo solo transmite en la subbanda de 868-868,6 MHz (duty cycle del 1 %), ¿cuántos mensajes como ese puede enviar como máximo en una hora?",
   "explanation": "El 1 % de una hora son 36 s; 36 / 0,411648 ≈ 87,4, así que caben 87 mensajes completos.",
   "originalReferences": [
     {

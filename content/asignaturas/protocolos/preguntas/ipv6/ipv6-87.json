@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Según el tema, ¿qué mecanismos engloba Zeroconf en el caso de IPv6?",
+  "prompt": "¿Qué mecanismos engloba Zeroconf en el caso de IPv6?",
   "explanation": "Zeroconf es un conjunto de técnicas para crear automáticamente una red IP sin configuración ni servidores especiales. En IPv6 engloba la configuración automática de red (SLAAC) y la resolución local de nombres y el descubrimiento de servicios (mDNS y DNS-SD). Avahi y Bonjour lo implementan.",
   "originalReferences": [
     {

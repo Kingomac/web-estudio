@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un nodo IEEE 802.15.4 usa la dirección corta de 16 bits 0x0a1b en una PAN cuyo PAN ID es 0x0000. ¿Qué dirección link-local automática le corresponde según el tema?",
+  "prompt": "Un nodo IEEE 802.15.4 usa la dirección corta de 16 bits 0x0a1b en una PAN cuyo PAN ID es 0x0000. ¿Qué dirección link-local automática le corresponde?",
   "explanation": "Para direcciones cortas, el IID tiene la estructura PAN_ID : 00FF : FE00 : dirección_corta. Con PAN ID 0 queda 0000:00ff:fe00:0a1b y la link-local es fe80::ff:fe00:a1b. Según el RFC 4944, el bit U/L de este IID queda a cero (no se pone a 1). Este IID no garantiza unicidad global.",
   "originalReferences": [
     {

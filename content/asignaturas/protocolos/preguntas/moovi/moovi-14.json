@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Se configura ipv6 route ::/0 s0/0 en Cisco IOS; s0/0 es una interfaz punto a punto activa con IPv6 habilitado. Usando la convención G del tema, ¿qué pareja describe esta ruta estática sin dirección de siguiente salto explícita?",
+  "prompt": "Se configura ipv6 route ::/0 s0/0 en Cisco IOS; s0/0 es una interfaz punto a punto activa con IPv6 habilitado. Considerando el flag G de la FIB (G=0, ruta directa; G=1, ruta indirecta a través de un router), ¿qué pareja describe esta ruta estática sin dirección de siguiente salto explícita?",
   "explanation": "En la convención didáctica, indicar únicamente la interfaz de salida crea una ruta directa, G=0. Sigue siendo una ruta estática con distancia predeterminada 1. No se debe confundir «directa» en esta notación con una ruta conectada creada al configurar la dirección de una interfaz.",
   "originalReferences": [
     {

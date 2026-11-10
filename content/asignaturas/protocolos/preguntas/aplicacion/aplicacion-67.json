@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Una plataforma web quiere recibir datos binarios de OPC UA integrándolos con sus servicios web. ¿Qué transporte prevé el tema para ese caso?",
+  "prompt": "Una plataforma web quiere recibir datos binarios de OPC UA integrándolos con sus servicios web. ¿Qué transporte de OPC UA corresponde a ese caso?",
   "explanation": "El tema indica que los datos binarios de OPC UA pueden ir sobre HTTPS/WebSockets para la integración con plataformas web; lo habitual en otros casos es UA nativo.",
   "originalReferences": [
     {

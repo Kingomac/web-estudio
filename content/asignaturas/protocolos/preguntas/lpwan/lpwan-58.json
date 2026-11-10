@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Un dispositivo NB-IoT usa la tarjeta de 5 MB de Movistar de la p. 16 (1,20 €/mes y 0,27 € por MB extra). Un mes consume 7 MB. ¿Cuánto cuesta ese mes, sin contar el alta?",
+  "prompt": "Un dispositivo NB-IoT usa una tarjeta de Movistar con 5 MB incluidos por 1,20 €/mes y 0,27 € por cada MB extra. Un mes consume 7 MB. ¿Cuánto cuesta ese mes, sin contar el alta?",
   "explanation": "Se paga la cuota y solo los MB que exceden el plan: 1,20 + 2 × 0,27 = 1,74 €.",
   "originalReferences": [
     {

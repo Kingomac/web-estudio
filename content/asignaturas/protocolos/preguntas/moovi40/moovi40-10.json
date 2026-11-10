@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Se añade ipv6 route ::/0 f0/0 fe80::5, con interfaz activa y vecino alcanzable. Sin otra distancia configurada, ¿cómo se clasifica según la notación G del tema?",
+  "prompt": "Se añade ipv6 route ::/0 f0/0 fe80::5, con interfaz activa y vecino alcanzable. Sin otra distancia configurada, ¿qué valor del flag G de la FIB (G=0, directa; G=1, indirecta) y qué distancia administrativa tiene?",
   "explanation": "fe80::5 es el router siguiente salto, por lo que G=1. f0/0 identifica el enlace de esa dirección link-local. La ruta es estática y conserva la distancia predeterminada 1; no es una ruta conectada de distancia 0.",
   "originalReferences": [
     {

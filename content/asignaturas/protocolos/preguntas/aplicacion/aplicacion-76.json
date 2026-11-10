@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "El código CoAP a.bb ocupa un byte: a en 3 bits y bb en 5 bits. En el ejemplo del tema, la respuesta 2.05 aparece como el valor 69. ¿Qué valor decimal tiene el byte de código de una respuesta 4.04?",
+  "prompt": "El código CoAP a.bb ocupa un byte: a en 3 bits y bb en 5 bits. Por ejemplo, la respuesta 2.05 corresponde al valor 69. ¿Qué valor decimal tiene el byte de código de una respuesta 4.04?",
   "explanation": "Con a en los 3 bits altos y bb en los 5 bajos, el byte vale a·32 + bb. Comprobación: 2.05 = 2·32 + 5 = 69. Para 4.04: 4·32 + 4 = 132 (0x84).",
   "originalReferences": [
     {

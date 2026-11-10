@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "El uplink de la p. 45 lleva en Basics Station `\"FRMPayload\": \"0F3FBF620E1C8708DF70A334AD63\"`; el JSON NS→AS de la p. 50 lleva `\"frm_payload\": \"Dz+/Yg4chwjfcKM0rWM=\"`. ¿Qué relación hay entre ambos?",
+  "prompt": "En un uplink LoRaWAN, el mensaje Basics Station del gateway al NS lleva `\"FRMPayload\": \"0F3FBF620E1C8708DF70A334AD63\"` y el JSON que el NS entrega al AS lleva `\"frm_payload\": \"Dz+/Yg4chwjfcKM0rWM=\"`. ¿Qué relación hay entre ambos?",
   "explanation": "Son los mismos 14 bytes cifrados con AppSKey: 28 caracteres en hexadecimal y 20 en Base64 (0x0F 0x3F 0xBF → «Dz+/»). El NS no descifra el payload; lo hace el AS, y su versión descifrada (p. 55) es otra: «EQEAAIBq4eQlgACAAGQ=».",
   "originalReferences": [
     {
@@ -33,12 +33,12 @@
     },
     {
       "id": "el-de-la-p-50-es-el-payload-ya",
-      "text": "El de la p. 50 es el payload ya descifrado por el NS.",
+      "text": "El del JSON que recibe el AS es el payload ya descifrado por el NS.",
       "explanation": "El NS no tiene AppSKey; el descifrado aparece en la p. 55."
     },
     {
       "id": "el-de-la-p-50-incluye-ademas-las",
-      "text": "El de la p. 50 incluye además las cabeceras MAC, por eso usa otra codificación.",
+      "text": "El del JSON que recibe el AS incluye además las cabeceras MAC, por eso usa otra codificación.",
       "explanation": "El NS ha eliminado las cabeceras: solo queda el frm_payload."
     },
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "La app de configuración de la p. 32 muestra para un sensor OTAA: Device EUI `2CF7F1C064900BC4`, AppEUI `C920E730241AC9F4` y una AppKey. Al registrarlo en TTS, ¿qué es correcto?",
+  "prompt": "La app de configuración de un sensor OTAA muestra: Device EUI `2CF7F1C064900BC4`, AppEUI `C920E730241AC9F4` y una AppKey. Al registrarlo en TTS, ¿qué es correcto?",
   "explanation": "AppEUI es el nombre antiguo de JoinEUI, que identifica al Join Server. DevEUI y JoinEUI viajan en claro en el Join-request; la AppKey se preprovisiona en ambos extremos y nunca se transmite por radio.",
   "originalReferences": [
     {

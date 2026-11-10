@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Una aplicación de TTS tiene un decoder común para dos modelos de sensor con formatos distintos que usan el mismo FPort y no se distinguen por el contenido. ¿Qué solución propone el tema?",
+  "prompt": "Una aplicación de TTS tiene un decoder común para dos modelos de sensor con formatos distintos que usan el mismo FPort y no se distinguen por el contenido. ¿Qué solución es la adecuada?",
   "explanation": "El decoder de aplicación no recibe la identidad del dispositivo: usar decoders por dispositivo o decodificar en la aplicación final.",
   "originalReferences": [
     {

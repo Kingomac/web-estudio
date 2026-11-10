@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Las LLN (redes de bajo consumo y con pérdidas) dificultan el uso de una pila IP convencional en los nodos. ¿Qué dos alternativas ha motivado esta situación según el tema?",
+  "prompt": "Las LLN (redes de bajo consumo y con pérdidas) dificultan el uso de una pila IP convencional en los nodos. ¿Qué dos alternativas ha motivado esta situación?",
   "explanation": "Ante la autonomía limitada, los pocos recursos de los nodos y las restricciones del enlace, el tema presenta dos caminos: no usar IP en los nodos e integrarlos mediante pasarelas, o adaptar IPv6 para reducir su coste de comunicación y funcionamiento (lo que se desarrolla en el tema 4).",
   "originalReferences": [
     {

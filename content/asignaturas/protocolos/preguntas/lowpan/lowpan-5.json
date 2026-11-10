@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué pila caracteriza a Wi-SUN FAN en el material?",
+  "prompt": "¿Qué pila caracteriza a Wi-SUN FAN?",
   "explanation": "El tema la orienta a servicios públicos y ciudades, con malla IPv6 y encaminamiento RPL.",
   "originalReferences": [
     {

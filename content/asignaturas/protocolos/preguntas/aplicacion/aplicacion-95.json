@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Cuál de estas parejas protocolo–transporte es INCORRECTA según el tema?",
+  "prompt": "¿Cuál de estas parejas protocolo–transporte es INCORRECTA?",
   "explanation": "CoAP va sobre UDP 5683, MQTT sobre TCP 1883 y WebSocket sobre TCP 80 (o TLS/TCP 443). OPC UA usa el puerto 4840 pero sobre TCP, no sobre UDP.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "Con el payload decoder de la p. 53, llega un uplink con FPort 1 y bytes `15 17 41 00` (hexadecimal). ¿Qué devuelve `decoded_payload`?",
+  "prompt": "Un payload decoder de LoRaWAN tiene este código:\n`function decodeUplink(input) {`\n`  var msg = input.bytes;`\n`  if (input.fport == 1) return { data: {`\n`    temperatura: (msg[0] + msg[1]) / 2,`\n`    humedad: msg[2],`\n`    alarma: msg[3] === 1 ? \"activa\" : \"inactiva\" }};`\n`  if (input.fport == 2) return { data: {`\n`    luminosidad: msg[0],`\n`    aceleracion: msg[1] / 100,`\n`    bateria: msg[2] }};`\n`}`\nLlega un uplink con FPort 1 y bytes `15 17 41 00` (hexadecimal). ¿Qué devuelve `decoded_payload`?",
   "explanation": "Rama de FPort 1: temperatura = (0x15 + 0x17) / 2 = (21 + 23) / 2 = 22; humedad = 0x41 = 65; alarma = msg[3] === 1 ? \"activa\" : \"inactiva\" → 0, inactiva.",
   "originalReferences": [
     {
@@ -26,7 +26,7 @@
     {
       "id": "temperatura-22-humedad-65-y-alarma",
       "text": "Temperatura 22, humedad 65 y alarma inactiva.",
-      "explanation": "Aplicación directa del código de la p. 53."
+      "explanation": "Aplicación directa de la rama de FPort 1."
     },
     {
       "id": "temperatura-44-humedad-65-y-alarma",

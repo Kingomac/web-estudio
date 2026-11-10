@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Cuál de estas descripciones de Thread coincide con la introducción del tema?",
+  "prompt": "¿Cuál de estas descripciones de Thread es correcta?",
   "explanation": "Thread se presenta como una solución de red mallada IPv6 sobre IEEE 802.15.4 y 6LoWPAN. Esa descripción introductoria está dentro del alcance; los detalles posteriores de Thread quedan fuera.",
   "originalReferences": [
     {

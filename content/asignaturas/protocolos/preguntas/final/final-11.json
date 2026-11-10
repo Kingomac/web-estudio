@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un informe de despliegue dice: «SNR baja y variable en el polígono por interferencias; nodos con baterías que deben durar años; una lectura de 16 bytes cada 15 minutos; la pasarela publica los datos en un servidor de la nube a través de Internet». ¿Qué correspondencia con los conceptos del tema es correcta?",
+  "prompt": "Un informe de despliegue dice: «SNR baja y variable en el polígono por interferencias; nodos con baterías que deben durar años; una lectura de 16 bytes cada 15 minutos; la pasarela publica los datos en un servidor de la nube a través de Internet». ¿Qué correspondencia con los conceptos de LLN y de arquitectura IoT es correcta?",
   "explanation": "La SNR baja por entornos radio adversos es «Lossy»; el bajo consumo para alargar las baterías es «Low-power»; los mensajes pequeños a grandes intervalos son los que hacen adecuadas las tasas bajas (low-rate); y el tramo pasarela–nube sobre Internet es la red troncal.",
   "originalReferences": [
     {

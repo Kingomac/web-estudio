@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un sensor modular debe conservar sus medidas durante días si se queda sin cobertura. ¿Qué módulo de los descritos en el tema hay que añadir?",
+  "prompt": "Un sensor modular debe conservar sus medidas durante días si se queda sin cobertura. ¿Qué módulo hay que añadir?",
   "explanation": "El tema incluye un módulo de almacenamiento (SD, flash, etc.) entre los bloques combinables de un dispositivo modular.",
   "originalReferences": [
     {

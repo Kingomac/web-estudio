@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Una red tiene 300 sensores CoAP que pasan la mayor parte del tiempo dormidos. Un cliente necesita localizar los recursos con rt=\"temperature-c\" y leerlos. ¿Qué diseño es coherente con el tema?",
+  "prompt": "Una red tiene 300 sensores CoAP que pasan la mayor parte del tiempo dormidos. Un cliente necesita localizar los recursos con rt=\"temperature-c\" y leerlos. ¿Qué diseño es el adecuado?",
   "explanation": "El descubrimiento directo (GET a /.well-known/core en cada nodo) es costoso con muchos nodos y difícil con nodos dormidos. Es mejor un Resource Directory: los nodos registran sus enlaces y descripciones y los renuevan; el cliente consulta el directorio y después accede al recurso. La presencia de un registro no garantiza que el nodo esté accesible en ese instante. DNS-SD descubre instancias de servicios, no recursos con un rt.",
   "originalReferences": [
     {

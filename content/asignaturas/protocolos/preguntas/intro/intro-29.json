@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "En un dispositivo IoT modular, ¿qué función asigna el tema a la placa base?",
+  "prompt": "En un dispositivo IoT modular, ¿qué función tiene la placa base?",
   "explanation": "La placa base proporciona la conexión y la alimentación del resto de módulos (MCU, comunicación, sensores, actuadores, energía, almacenamiento).",
   "originalReferences": [
     {

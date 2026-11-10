@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Qué característica comparten CoAP y MQTT según el tema?",
+  "prompt": "¿Qué característica comparten CoAP y MQTT?",
   "explanation": "Ambos codifican sus mensajes como secuencias binarias pequeñas que caben en una única trama del nivel de enlace, lo que los hace adecuados para 6LoWPAN/IEEE 802.15.4. En cambio, CoAP es cliente/servidor sobre UDP y MQTT es publicación/suscripción sobre TCP.",
   "originalReferences": [
     {

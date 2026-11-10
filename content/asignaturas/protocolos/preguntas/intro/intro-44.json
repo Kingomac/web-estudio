@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un nodo LPWAN envía una carga útil de 30 bytes a 0,25 kbps, el extremo inferior de la tasa típica que da el tema. Sin contar cabeceras, ¿cuánto dura aproximadamente la transmisión?",
+  "prompt": "Un nodo LPWAN envía una carga útil de 30 bytes a 0,25 kbps. Sin contar cabeceras, ¿cuánto dura aproximadamente la transmisión?",
   "explanation": "30 bytes = 240 bits. A 0,25 kbps = 250 bit/s: 240 / 250 = 0,96 s.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "En el intercambio DHCPv6 del tema, el router envía un RA con M = 1 y O = 1. ¿Qué hace a continuación el host?",
+  "prompt": "En un intercambio DHCPv6, el router envía un RA con M = 1 y O = 1. ¿Qué hace a continuación el host?",
   "explanation": "Con M = 1 la dirección debe obtenerse mediante DHCPv6, y con O = 1 también la otra información. El cliente realiza el intercambio con el servidor DHCPv6 (Solicit, Advertise, Request, Reply), pero el default gateway lo sigue tomando de la dirección fuente del RA.",
   "originalReferences": [
     {

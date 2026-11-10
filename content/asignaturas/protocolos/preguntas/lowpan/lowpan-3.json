@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué radio usan Zigbee y Thread en el escenario presentado?",
+  "prompt": "¿Qué radio usan Zigbee y Thread?",
   "explanation": "La diapositiva sitúa ambas tecnologías sobre IEEE 802.15.4 en 2,4 GHz.",
   "originalReferences": [
     {

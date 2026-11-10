@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "En el esquema QoS 1 del tema, el publicador no recibe el PUBACK y reenvía el PUBLISH con DUP=1. El suscriptor recibe `I'm Bob` con Packet ID 100 y después con Packet ID 101. ¿Por qué?",
+  "prompt": "En un intercambio MQTT con QoS 1, el publicador no recibe el PUBACK y reenvía el PUBLISH con DUP=1. El suscriptor recibe `I'm Bob` con Packet ID 100 y después con Packet ID 101. ¿Por qué?",
   "explanation": "Como es imposible distinguir un duplicado de un mensaje nuevo que reutiliza el identificador, el broker trata todo PUBLISH con DUP=1 como mensaje nuevo y lo reenvía al suscriptor con un identificador propio (101). Por eso con QoS 1 los suscriptores pueden recibir duplicados.",
   "originalReferences": [
     {

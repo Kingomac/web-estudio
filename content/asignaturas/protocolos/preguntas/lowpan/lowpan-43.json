@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "Si un hijo cambia de padre dentro de la red Thread, ¿qué afirma el tema?",
+  "prompt": "Si un hijo cambia de padre dentro de la red Thread, ¿qué afirmación es correcta?",
   "explanation": "ML-EID identifica al nodo independientemente de la topología; RLOC16 refleja su posición.",
   "originalReferences": [
     {

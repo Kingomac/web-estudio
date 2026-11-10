@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué combinación de encaminamiento y modo de reenvío corresponde a cada tecnología en la comparación del tema?",
+  "prompt": "¿Qué combinación de encaminamiento y modo de reenvío corresponde a Thread y a Wi-SUN FAN?",
   "explanation": "Thread usa MLE con mesh-under; Wi-SUN FAN usa RPL con route-over.",
   "originalReferences": [
     {

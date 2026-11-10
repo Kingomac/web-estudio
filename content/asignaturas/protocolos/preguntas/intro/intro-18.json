@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué aporta la malla respecto al árbol en la explicación del tema?",
+  "prompt": "¿Qué aporta la malla respecto al árbol?",
   "explanation": "La malla añade alternativas de recorrido respecto a un árbol.",
   "originalReferences": [
     {

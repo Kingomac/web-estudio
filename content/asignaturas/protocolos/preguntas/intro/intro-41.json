@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Por qué el tema considera la topología en estrella eficiente desde el punto de vista energético?",
+  "prompt": "¿Por qué es eficiente la topología en estrella desde el punto de vista energético?",
   "explanation": "En estrella, todos los nodos están dentro del radio de la pasarela o router y solo encienden su radio cuando tienen algo que transmitir; no reenvían tráfico de otros.",
   "originalReferences": [
     {

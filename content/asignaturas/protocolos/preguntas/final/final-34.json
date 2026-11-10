@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Respuesta del tema:\n`HTTP/1.1 200 OK`\n`Connection: keep-alive`\n`Content-Length: 6`\n`Content-Type: text/plain`\n`18.6 C`\n¿Cuál de estas afirmaciones sobre ella es FALSA?",
+  "prompt": "Un servidor devuelve esta respuesta HTTP:\n`HTTP/1.1 200 OK`\n`Connection: keep-alive`\n`Content-Length: 6`\n`Content-Type: text/plain`\n`18.6 C`\n¿Cuál de estas afirmaciones sobre ella es FALSA?",
   "explanation": "200 OK es un código de éxito (2xx), `Connection: keep-alive` mantiene la conexión TCP para más peticiones y Content-Length: 6 coincide con los 6 caracteres de `18.6 C`. Pero al ser HTTP/1.1 el mensaje va codificado en caracteres ASCII; el framing binario llega con HTTP/2 y HTTP/3.",
   "originalReferences": [
     {

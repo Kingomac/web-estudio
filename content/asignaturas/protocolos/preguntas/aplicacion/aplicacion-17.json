@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿En qué contexto sitúa el tema a OPC UA?",
+  "prompt": "¿En qué contexto se utiliza OPC UA?",
   "explanation": "OPC UA se presenta como arquitectura orientada a servicios para industria e IIoT, independiente de plataforma.",
   "originalReferences": [
     {

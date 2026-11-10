@@ -6,7 +6,7 @@
     "protocolos.tags.lpwan"
   ],
   "type": "single",
-  "prompt": "¿Qué característica corresponde a NB-IoT y no a LTE-M según la comparativa del tema?",
+  "prompt": "¿Qué característica corresponde a NB-IoT y no a LTE-M?",
   "explanation": "Alta penetración en interiores profundos y con señal débil.",
   "originalReferences": [
     {

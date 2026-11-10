@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "¿Qué diferencia de red señala el tema entre Zigbee y Thread?",
+  "prompt": "¿Qué diferencia de red hay entre Zigbee y Thread?",
   "explanation": "Zigbee tiene su propia pila de red; Thread se basa en IEEE 802.15.4 y 6LoWPAN.",
   "originalReferences": [
     {

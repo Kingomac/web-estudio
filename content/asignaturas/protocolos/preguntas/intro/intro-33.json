@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué significa Wio y qué fabricante lo ofrece según el tema?",
+  "prompt": "¿Qué significa Wio y qué fabricante lo ofrece?",
   "explanation": "Wio (Wireless Input Output) es una línea de productos IoT modulares de Seeed Studio que integra conectividad inalámbrica con MCUs y es compatible con Grove.",
   "originalReferences": [
     {

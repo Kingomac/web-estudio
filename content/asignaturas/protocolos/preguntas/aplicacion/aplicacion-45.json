@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "¿Cuál de los principios de diseño REST que recoge el tema es opcional?",
+  "prompt": "¿Cuál de los principios de diseño REST es opcional?",
   "explanation": "El tema enumera separación cliente/servidor, comunicación sin estado, uso de cachés, arquitectura en capas y código bajo demanda; solo este último aparece marcado como opcional.",
   "originalReferences": [
     {

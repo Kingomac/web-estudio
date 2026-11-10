@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "En una nave de 300 m de largo, la pasarela de una LoWPAN está en un extremo y el sensor más lejano en el otro, en línea recta. Cada radio cubre como máximo los 100 m que da el tema para una LoWPAN. Además, la caída de un nodo intermedio no debe aislar a ningún sensor. ¿Qué diseño cumple ambos requisitos?",
+  "prompt": "En una nave de 300 m de largo, la pasarela de una LoWPAN está en un extremo y el sensor más lejano en el otro, en línea recta. Cada radio cubre como máximo 100 m. Además, la caída de un nodo intermedio no debe aislar a ningún sensor. ¿Qué diseño cumple ambos requisitos?",
   "explanation": "Con 100 m por salto, cubrir 300 m exige al menos 300 / 100 = 3 saltos, así que no basta la estrella. El árbol multisalto extiende la cobertura, pero un único camino deja aislados a los nodos que dependen del repetidor caído. La malla añade caminos redundantes para mejorar la fiabilidad, y el tema dice que la cobertura de una LoWPAN se extiende de forma significativa con la malla.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "Un host recibe un RA con M = 0 y O = 1. ¿Qué debe hacer según el tema?",
+  "prompt": "Un host recibe un RA con M = 0 y O = 1. ¿Qué debe hacer?",
   "explanation": "M = 0: la dirección se construye por SLAAC con el prefijo del RA y el IID. O = 1: la otra información de configuración, como los servidores DNS, debe obtenerse mediante DHCPv6. En ambos casos el gateway es el origen del RA.",
   "originalReferences": [
     {

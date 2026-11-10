@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Qué NO descubre NDP según el material?",
+  "prompt": "¿Qué NO descubre NDP?",
   "explanation": "Participar en la red no basta para saber qué servicio ofrece un dispositivo ni cómo consultar sus recursos.",
   "originalReferences": [
     {

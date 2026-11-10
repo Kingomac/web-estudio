@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "En Cisco IOS se configura ipv6 route ::/0 Serial0, sin indicar distancia, sobre una interfaz punto a punto habilitada. Según la convención G del tema, ¿qué pareja corresponde a esa ruta estática?",
+  "prompt": "En Cisco IOS se configura ipv6 route ::/0 Serial0, sin indicar distancia, sobre una interfaz punto a punto habilitada. Según el flag G de la FIB (G=0, directa; G=1, indirecta), ¿qué pareja corresponde a esa ruta estática?",
   "explanation": "La ruta especifica solo la interfaz de salida: G=0 en la convención didáctica del tema. Su origen sigue siendo estático y su distancia administrativa predeterminada es 1. La distancia 0 corresponde a rutas conectadas.",
   "originalReferences": [
     {

@@ -6,7 +6,7 @@
     "protocolos.tags.aplicacion"
   ],
   "type": "single",
-  "prompt": "Un cliente CoAP envía una petición confirmable y nunca recibe el ACK. Según el tema, ¿cuántas veces se habrá transmitido el mensaje en total, como máximo?",
+  "prompt": "Un cliente CoAP envía una petición confirmable y nunca recibe el ACK. Con la configuración por defecto de CoAP, ¿cuántas veces se habrá transmitido el mensaje en total, como máximo?",
   "explanation": "Sin ACK, el cliente reenvía el mensaje hasta 4 veces. Sumando la transmisión original, son 5 transmisiones en total.",
   "originalReferences": [
     {

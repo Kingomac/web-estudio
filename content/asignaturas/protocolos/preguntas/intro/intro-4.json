@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "¿Qué afirma el material sobre el sistema operativo de una MCU?",
+  "prompt": "¿Qué se puede afirmar sobre el sistema operativo de una MCU?",
   "explanation": "La necesidad de un SO depende de la complejidad y los requisitos de la aplicación.",
   "originalReferences": [
     {

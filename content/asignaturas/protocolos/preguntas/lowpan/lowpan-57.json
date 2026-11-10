@@ -6,7 +6,7 @@
     "protocolos.tags.lowpan"
   ],
   "type": "single",
-  "prompt": "Con direcciones de enlace de 64 bits y etiquetas datagram_tag de 16 bits, ¿cuánta memoria requiere cada entrada VRB según el tema?",
+  "prompt": "Con direcciones de enlace de 64 bits y etiquetas datagram_tag de 16 bits, ¿cuánta memoria requiere cada entrada VRB?",
   "explanation": "Una entrada tiene dos direcciones de enlace y dos etiquetas: 8 + 2 + 8 + 2 = 20 bytes.",
   "originalReferences": [
     {

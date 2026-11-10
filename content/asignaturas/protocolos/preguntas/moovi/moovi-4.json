@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "En Cisco IOS se configura ipv6 route ::/0 f0/1 fe80::22. La interfaz está activa y el siguiente salto es alcanzable. Usando G=1 para una ruta con router siguiente salto, como en el tema, ¿qué G y distancia administrativa tiene esta ruta estática por defecto?",
+  "prompt": "En Cisco IOS se configura ipv6 route ::/0 f0/1 fe80::22. La interfaz está activa y el siguiente salto es alcanzable. Usando G=1 para una ruta con router siguiente salto, ¿qué G y distancia administrativa tiene esta ruta estática por defecto?",
   "explanation": "Se indica un router siguiente salto, fe80::22: G=1 en la convención del tema. La interfaz delimita el enlace de esa dirección link-local. La distancia administrativa predeterminada de una ruta estática es 1; 0 corresponde a una ruta conectada. Indicar una interfaz no convierte esta ruta estática en conectada.",
   "originalReferences": [
     {

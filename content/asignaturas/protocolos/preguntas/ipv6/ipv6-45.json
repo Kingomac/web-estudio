@@ -6,7 +6,7 @@
     "protocolos.tags.ipv6"
   ],
   "type": "single",
-  "prompt": "¿Cuál es la forma simplificada de `2001:0db8:0000:0000:0000:00ab:0000:0001` según las reglas de notación del tema?",
+  "prompt": "¿Cuál es la forma simplificada de `2001:0db8:0000:0000:0000:00ab:0000:0001`?",
   "explanation": "Se eliminan los ceros a la izquierda de cada grupo (0db8 → db8, 00ab → ab, 0001 → 1) y se usa :: una sola vez, para el bloque mayor de grupos nulos: los tres ceros seguidos tras db8. El grupo nulo aislado se escribe como 0. Resultado: 2001:db8::ab:0:1.",
   "originalReferences": [
     {

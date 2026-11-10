@@ -6,7 +6,7 @@
     "protocolos.tags.intro"
   ],
   "type": "single",
-  "prompt": "Un nodo de una LPWAN transmite a 1 kbps, el extremo superior de la tasa típica que da el tema, y envía lecturas de 50 bytes. Por la calidad del enlace, cada lectura se transmite de media dos veces. Sin contar cabeceras, ¿cuánto tiempo de transmisión gasta por lectura y qué parte del término LLN explica las repeticiones?",
+  "prompt": "Un nodo de una LPWAN transmite a 1 kbps y envía lecturas de 50 bytes. Por la calidad del enlace, cada lectura se transmite de media dos veces. Sin contar cabeceras, ¿cuánto tiempo de transmisión gasta por lectura y qué parte del término LLN explica las repeticiones?",
   "explanation": "50 bytes = 400 bits; con dos transmisiones, 800 bits; a 1 000 bit/s, 0,8 s. Las repeticiones se deben a que el enlace sufre interferencias y variabilidad (SNR baja), que es lo que significa «Lossy».",
   "originalReferences": [
     {
