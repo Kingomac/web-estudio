@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.tarea-5-13",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Se diseña un equipo que debe mantener la conexión al desplazarse entre celdas, transferir más datos que un contador esporádico y admitir FOTA. Según los perfiles del tema, ¿qué decisión está mejor fundamentada?",
+  "explanation": "LTE-M permite handover entre celdas y mayores volúmenes de datos; NB-IoT no permite handover durante la conexión. Pero OTA (y FOTA) es una capacidad del dispositivo y de su sistema de gestión: disponer de NB-IoT o LTE-M no la proporciona automáticamente, y la recepción debe adaptarse a los periodos de disponibilidad.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        13,
+        14
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "nb-iot-frente-a-lte-m"
+    }
+  ],
+  "options": [
+    {
+      "id": "lte-m-comprobar-fota",
+      "text": "Elegir LTE-M y comprobar además el soporte de FOTA del equipo y de la plataforma, así como su disponibilidad para recibir.",
+      "explanation": "LTE-M cubre movilidad y volumen, y FOTA debe verificarse aparte, como indica el tema."
+    },
+    {
+      "id": "nb-iot-penetracion",
+      "text": "Elegir NB-IoT y confiar en que su mayor penetración garantiza handover durante la conexión y recepción de firmware en PSM.",
+      "explanation": "NB-IoT no permite handover durante la conexión, y en PSM el dispositivo no puede recibir nada."
+    },
+    {
+      "id": "nb-iot-nidd",
+      "text": "Elegir NB-IoT y usar NIDD para obtener continuidad entre celdas, porque eliminar IP habilita el handover durante la conexión.",
+      "explanation": "NIDD solo evita las cabeceras IP y UDP/TCP; no cambia el soporte de movilidad de NB-IoT."
+    },
+    {
+      "id": "lte-m-fota-incluida",
+      "text": "Elegir LTE-M y dar por disponible FOTA, porque el soporte de handover incorpora la gestión y la instalación del firmware.",
+      "explanation": "La tecnología es la adecuada, pero OTA no viene con la red: depende del dispositivo y de la plataforma de gestión."
+    }
+  ],
+  "answer": "lte-m-comprobar-fota"
+}

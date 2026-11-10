@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.tarea-5-8",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En el cálculo RPL de Wi-SUN FAN del tema, un nodo evalúa A con Rank=512 y PDR=0,5 y B con Rank=704 y PDR=1. No tiene padre previo ni otros candidatos. Use C(i,p)=Rank(p)+128·ETX y Rank(i,p)=Rank(p)+max(256,128·ETX), con ETX=1/PDR. ¿Qué resultado obtiene?",
+  "explanation": "Por A: ETX=1/0,5=2, coste 512+128·2=768. Por B: ETX=1, coste 704+128=832. A tiene menor coste y es el padre preferido. El Rank propio se calcula con ese padre: 512+max(256, 256)=768. El 960 de B sería 704+max(256, 128).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        77,
+        78
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "mrhof-y-etx-calculo-del-material"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-768-768",
+      "text": "Elige A: coste 768 y Rank propio 768.",
+      "explanation": "Coste por A 512+256=768, menor que 832 por B; Rank 512+max(256, 256)=768."
+    },
+    {
+      "id": "b-960-960",
+      "text": "Elige B: coste 960 y Rank propio 960.",
+      "explanation": "Confunde coste y Rank: el coste por B es 704+128·1=832, y 960 es su Rank. Además, 832 supera los 768 por A."
+    },
+    {
+      "id": "b-832-960",
+      "text": "Elige B: coste 832 y Rank propio 960.",
+      "explanation": "Los valores de B están bien calculados, pero su coste (832) es mayor que el de A (768), así que B no es el padre preferido."
+    },
+    {
+      "id": "a-768-1024",
+      "text": "Elige A: coste 768 y Rank propio 1024.",
+      "explanation": "El padre es correcto, pero el Rank usa max(256, 128·ETX)=256, no 512: 512+256=768."
+    }
+  ],
+  "answer": "a-768-768"
+}

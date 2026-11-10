@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.tarea-5-16",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Para una trama de datos, rxpk.data del UDP Packet Forwarder representa un PHYPayload de 30 bytes. Tras procesar la trama, el mensaje NS→AS representa en frm_payload solo los 12 bytes de aplicación todavía cifrados. Sin contar comillas ni otros campos JSON, ¿qué longitudes tienen esas dos cadenas Base64?",
+  "explanation": "Base64 convierte cada bloque de 3 bytes en 4 caracteres. 30 bytes son 10 bloques: 40 caracteres. 12 bytes son 4 bloques: 16 caracteres. Ambos son múltiplos de 3, así que no hay relleno con «=».",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        36,
+        45,
+        50
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "json-y-base64"
+    }
+  ],
+  "options": [
+    {
+      "id": "60-24",
+      "text": "60 y 24 caracteres, respectivamente.",
+      "explanation": "Es la longitud en hexadecimal (2 caracteres por byte), no en Base64."
+    },
+    {
+      "id": "40-40",
+      "text": "40 y 40 caracteres, respectivamente.",
+      "explanation": "El primer valor es correcto, pero frm_payload solo contiene los 12 bytes de aplicación, sin cabeceras ni MIC."
+    },
+    {
+      "id": "40-16",
+      "text": "40 y 16 caracteres, respectivamente.",
+      "explanation": "30/3·4 = 40 y 12/3·4 = 16, sin relleno."
+    },
+    {
+      "id": "30-12",
+      "text": "30 y 12 caracteres, respectivamente.",
+      "explanation": "Cuenta un carácter por byte; Base64 usa 4 caracteres por cada 3 bytes."
+    }
+  ],
+  "answer": "40-16"
+}

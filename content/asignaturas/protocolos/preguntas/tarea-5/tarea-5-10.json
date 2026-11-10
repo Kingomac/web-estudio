@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-10",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo LoRaWAN alimentado por batería debe recibir órdenes en oportunidades periódicas conocidas por el NS, aunque no haya enviado un uplink reciente. Se quiere evitar la escucha casi continua. ¿Qué funcionamiento satisface estos requisitos?",
+  "explanation": "La clase B añade a RX1 y RX2 ventanas de recepción periódicas (ping slots) conocidas por el NS y sincronizadas con beacons que los gateways envían cada 128 s. Permite downlinks sin uplink previo con consumo bajo o intermedio. La clase A solo escucha tras un uplink y la C escucha casi continuamente.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        30
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "limitaciones-y-clases"
+    }
+  ],
+  "options": [
+    {
+      "id": "a-adr",
+      "text": "Clase A, con ADR habilitado para que el NS abra ventanas bajo demanda.",
+      "explanation": "ADR ajusta Data Rate y potencia; no crea ventanas de recepción. En clase A solo hay RX1 y RX2 tras cada uplink."
+    },
+    {
+      "id": "a-periodicas",
+      "text": "Clase A, con RX1 y RX2 abiertas periódicamente aunque no haya uplink.",
+      "explanation": "RX1 y RX2 se abren unos 1 y 2 s después de cada uplink; sin uplink, un nodo de clase A no recibe."
+    },
+    {
+      "id": "b-ping-slots",
+      "text": "Clase B, con ping slots adicionales sincronizados mediante beacons.",
+      "explanation": "Ofrece oportunidades periódicas conocidas por el NS sin necesidad de uplink previo y sin escuchar de forma continua."
+    },
+    {
+      "id": "c-dormido",
+      "text": "Clase C, con el receptor dormido salvo en ping slots sincronizados.",
+      "explanation": "La clase C mantiene el receptor activo casi siempre (RXC); los ping slots son de clase B."
+    }
+  ],
+  "answer": "b-ping-slots"
+}

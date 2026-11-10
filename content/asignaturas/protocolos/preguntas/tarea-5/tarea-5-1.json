@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.tarea-5-1",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En RPL non-storing, un DAO de un router profundo atraviesa varios routers antes de llegar a la raíz. ¿Qué tratamiento y distribución de estado corresponden a este modo?",
+  "explanation": "En non-storing cada router envía un DAO unicast al border router (la raíz) con sus rutas y las de sus RUL; cada ruta lleva Target (destino) y Transit (padre o padres). Los routers intermedios solo lo reenvían por el camino ascendente, sin procesarlo, y la raíz combina los anuncios para construir los caminos descendentes: ella sola guarda la topología.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        80,
+        81
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "rutas-descendentes-storing-y-non-storing"
+    }
+  ],
+  "options": [
+    {
+      "id": "raiz-intermedios-instalan",
+      "text": "El DAO se dirige a la raíz; cada intermedio instala los destinos de Target; Transit se reserva para confirmar mediante DAO-ACK.",
+      "explanation": "Mezcla los dos modos: que los intermedios instalen rutas es propio de storing. Además, Transit indica el padre para alcanzar el destino; la confirmación es un mensaje aparte (DAO-ACK)."
+    },
+    {
+      "id": "raiz-sin-procesar",
+      "text": "El DAO se dirige a la raíz; los intermedios lo reenvían sin procesarlo para instalar rutas descendentes; la raíz combina Target y Transit.",
+      "explanation": "Es el procedimiento non-storing de la diapositiva: DAO unicast a la raíz, no procesado por los intermedios, y la raíz combina Target y Transit para formar las rutas descendentes."
+    },
+    {
+      "id": "padre-regenera",
+      "text": "El DAO se dirige al padre; cada intermedio instala sus destinos y genera otro DAO; la raíz combina Target y Transit.",
+      "explanation": "Enviar al padre, instalar rutas y generar nuevos DAO hacia arriba es el modo storing, en el que cada router guarda rutas a sus descendientes."
+    },
+    {
+      "id": "padre-dio-rank",
+      "text": "El DAO se dirige al padre; este responde con DIO y la raíz deduce la topología exclusivamente a partir de los Rank anunciados.",
+      "explanation": "El DIO anuncia el DODAG y el Rank para construir rutas ascendentes; el Rank no dice qué destinos hay debajo de cada router. Las rutas descendentes salen de los DAO."
+    }
+  ],
+  "answer": "raiz-sin-procesar"
+}

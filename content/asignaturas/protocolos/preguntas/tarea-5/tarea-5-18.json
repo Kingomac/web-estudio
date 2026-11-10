@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-18",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un gateway de una red LoRaWAN recibe una trama de un dispositivo registrado en otra red. Ambas redes autorizan la interconexión mediante Packet Broker. ¿Qué función cumple este mecanismo?",
+  "explanation": "Packet Broker encamina los mensajes recibidos por gateways de una red hacia la red en la que está registrado el dispositivo y, cuando las políticas lo autorizan, permite enviar downlinks por gateways de otras redes. Así se comparte cobertura sin trasladar el registro ni las claves del dispositivo.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        24
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "plataformas"
+    }
+  ],
+  "options": [
+    {
+      "id": "traslada-registro",
+      "text": "Traslada el registro del dispositivo a la red del gateway y sustituye sus claves por las de esa red antes del siguiente uplink.",
+      "explanation": "El dispositivo sigue registrado en su red; Packet Broker solo encamina los mensajes hacia ella."
+    },
+    {
+      "id": "as-temporal",
+      "text": "Convierte al gateway receptor en un AS temporal para descifrar y entregar el payload sin consultar la red de registro.",
+      "explanation": "Un gateway no descifra datos de aplicación; el mensaje se entrega a la red de registro, que tiene las claves."
+    },
+    {
+      "id": "ruta-rpl",
+      "text": "Hace que el gateway anuncie una ruta RPL hacia el dispositivo para que ambas redes formen una única malla IPv6.",
+      "explanation": "RPL es el encaminamiento de Wi-SUN FAN (tema 4); LoRaWAN no usa IP en el nodo ni forma mallas."
+    },
+    {
+      "id": "encamina",
+      "text": "Encamina el mensaje a la red de registro y puede habilitar downlinks por gateways ajenos conforme a las políticas acordadas.",
+      "explanation": "Recoge las dos funciones de Packet Broker descritas en el tema."
+    }
+  ],
+  "answer": "encamina"
+}

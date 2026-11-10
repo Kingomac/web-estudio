@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-7",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un host ha registrado su dirección con ARO y el registro sigue vigente. Un intercambio NUD confirma después que su router vecino es alcanzable. ¿Qué obligación de mantenimiento conserva el host?",
+  "explanation": "El registro NS–NA con ARO tiene un Registration Lifetime y el host debe renovarlo antes de que expire mediante un nuevo intercambio NS–NA. NUD solo comprueba la alcanzabilidad del router vecino; no prolonga el registro.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        52
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "registro-ns-na-con-aro"
+    }
+  ],
+  "options": [
+    {
+      "id": "ra-renueva",
+      "text": "Esperar un RA con el mismo PIO, que renueva automáticamente el Registration Lifetime.",
+      "explanation": "El RA y su PIO informan de prefijos; el Registration Lifetime pertenece al ARO y solo se renueva con otro NS–NA."
+    },
+    {
+      "id": "solo-si-cambia",
+      "text": "Renovar únicamente si cambia la dirección de enlace, porque NUD mantiene vigente el ARO.",
+      "explanation": "NUD comprueba que el router es alcanzable, pero no actúa sobre el registro: este caduca aunque nada cambie."
+    },
+    {
+      "id": "renovar-ns-na",
+      "text": "Renovar el registro mediante NS–NA antes de que venza su Registration Lifetime.",
+      "explanation": "Es la obligación que indica el tema, independiente de que NUD confirme la alcanzabilidad del router."
+    },
+    {
+      "id": "dar",
+      "text": "Enviar un DAR al 6LBR, pues NUD sustituye el registro local por un registro central.",
+      "explanation": "Quien envía el DAR es el 6LR, no el host, y solo cuando hace falta DAD multisalto. NUD no sustituye ningún registro."
+    }
+  ],
+  "answer": "renovar-ns-na"
+}

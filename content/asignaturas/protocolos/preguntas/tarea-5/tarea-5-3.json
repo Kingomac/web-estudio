@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-3",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En RPL non-storing, una petición de A a una hoja L siguió A → R → A → B → L, con R raíz, B padre de L y A padre de B. L responde a A con un nuevo paquete sin SRH. ¿Qué recorrido sigue la respuesta?",
+  "explanation": "Sin cabecera de encaminamiento de fuente, un nodo distinto de la raíz usa la ruta ascendente por defecto a través de su padre preferido; el tema precisa que esto se aplica también a las respuestas aunque la petición llevase SRH. L entrega a su padre B y B sube a su padre A, que ya es el destino: L → B → A. No hace falta pasar por la raíz.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        83
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "reenvio-en-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "por-raiz",
+      "text": "L → B → A → R → A.",
+      "explanation": "A es el destino: el paquete se entrega al llegar a A. Subir hasta R solo hace falta cuando el destino no está en el camino ascendente."
+    },
+    {
+      "id": "ascendente",
+      "text": "L → B → A.",
+      "explanation": "Cada nodo envía al padre preferido por la ruta ascendente por defecto, y A, padre de B, es el destino."
+    },
+    {
+      "id": "salta-a",
+      "text": "L → B → R → A.",
+      "explanation": "B no es hijo de R: su padre preferido es A, así que la ruta ascendente desde B pasa por A, que ya es el destino."
+    },
+    {
+      "id": "invierte-srh",
+      "text": "L → B → A → B → L → R → A.",
+      "explanation": "La respuesta no reutiliza ni invierte la SRH de la petición; además el recorrido vuelve a L y forma un bucle."
+    }
+  ],
+  "answer": "ascendente"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "protocolos.preguntas.tarea-5-17",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Se sigue un mismo uplink de aplicación: el gateway lo reenvía al NS; el NS lo entrega al AS; el AS lo reenvía mediante un webhook HTTPS. ¿Qué secuencia describe el estado de los bytes de aplicación, independientemente de si se representan en hexadecimal o Base64?",
+  "explanation": "El gateway reenvía la trama sin descifrar el Frame Payload, y el NS lo entrega al AS todavía cifrado. El AS lo descifra con AppSKey y lo envía a la aplicación ya descifrado (en Base64 y, si hay decoder, también como decoded_payload). HTTPS protege ese último tramo con TLS, no con AppSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        34,
+        40,
+        49,
+        51,
+        55
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "application-server"
+    }
+  ],
+  "options": [
+    {
+      "id": "hasta-as",
+      "text": "El cifrado con AppSKey se mantiene hasta el AS; este lo elimina y HTTPS protege mediante TLS el envío a la aplicación.",
+      "explanation": "Gateway y NS no tocan el cifrado, el AS descifra con AppSKey y HTTPS aporta su propia protección TLS."
+    },
+    {
+      "id": "ns-descifra",
+      "text": "El NS elimina el cifrado con AppSKey; el AS interpreta los datos y HTTPS vuelve a cifrarlos utilizando esa misma clave.",
+      "explanation": "El NS solo usa NwkSKey; AppSKey queda en el AS. HTTPS usa TLS, no la clave de sesión de LoRaWAN."
+    },
+    {
+      "id": "hasta-aplicacion",
+      "text": "El cifrado con AppSKey se mantiene hasta la aplicación final; el AS solo cambia su representación y HTTPS añade protección TLS.",
+      "explanation": "El AS descifra el Frame Payload: el frm_payload del webhook ya está descifrado, no solo recodificado."
+    },
+    {
+      "id": "gateway-descifra",
+      "text": "El gateway elimina el cifrado con AppSKey; el NS entrega los datos descifrados al AS y HTTPS protege su envío a la aplicación.",
+      "explanation": "El gateway recupera la trama sin descifrar los datos de aplicación y no conoce AppSKey."
+    }
+  ],
+  "answer": "hasta-as"
+}

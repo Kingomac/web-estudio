@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.tarea-5-4",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un host se incorpora a una LoWPAN route-over. ¿Qué comportamiento es compatible con la optimización NDP descrita, incluida la distribución de información entre routers?",
+  "explanation": "Al incorporarse, el nodo envía un RS a all-routers (ff02::2, broadcast MAC en 802.15.4) y cada router vecino responde con un RA unicast. Para llevar prefijos y contextos del 6LBR por la LoWPAN multisalto, los routers pueden usar además RA periódicos, no solo responder a RS.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        50,
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "paso-1-descubrir-router-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "rs-unicast",
+      "text": "El host envía RS unicast al 6LBR y recibe RA multicast; los routers distribuyen información solo en respuesta a RS.",
+      "explanation": "Invierte el patrón: el RS va a ff02::2 y el RA vuelve unicast. Además, en route-over los routers pueden enviar RA periódicos para la distribución multisalto."
+    },
+    {
+      "id": "rs-ff02-1a",
+      "text": "El host envía RS a ff02::1a y recibe RA unicast; los routers distribuyen los contextos mediante anuncios DIO.",
+      "explanation": "ff02::1a es all-RPL-nodes, el destino de los DIO de RPL. Los contextos de compresión se distribuyen en la 6CO de los RA, no en DIO."
+    },
+    {
+      "id": "ra-tras-aro",
+      "text": "El host envía RS a ff02::2 y recibe RA multicast; los routers deben esperar un registro ARO para anunciar prefijos.",
+      "explanation": "El RA de respuesta es unicast, y el registro ARO llega después del RA: el host necesita el prefijo para configurar la dirección que registra."
+    },
+    {
+      "id": "rs-ff02-2",
+      "text": "El host envía RS a ff02::2 y recibe RA unicast; los routers pueden además distribuir información mediante RA periódicos.",
+      "explanation": "Coincide con el tema: RS a all-routers, RA unicast de cada router vecino y RA periódicos para distribuir PIO y contextos en route-over."
+    }
+  ],
+  "answer": "rs-ff02-2"
+}

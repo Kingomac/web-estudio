@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.tarea-5-5",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un nodo RPL anuncia Rank=768 y tiene padre preferido de Rank=512. Quiere conservar además un padre alternativo de Rank=800. Sin cambiar los Rank de los candidatos, ¿qué restricción debe satisfacer el nuevo Rank anunciado?",
+  "explanation": "Un router puede mantener padres alternativos, pero todos deben tener menor Rank que él: el hijo debe tener mayor Rank que todos sus padres. Con un alternativo de 800, el Rank anunciado debe subir por encima de 800; el tema indica que en ese caso puede ajustarse al alza.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        75,
+        77
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "dio-y-formacion-del-dodag"
+    }
+  ],
+  "options": [
+    {
+      "id": "mayor-800",
+      "text": "Debe ser mayor que 800 para mantener a ambos como padres.",
+      "explanation": "Para conservar ambos padres, su Rank debe superar al mayor de ellos (800)."
+    },
+    {
+      "id": "igual-800",
+      "text": "Debe ser igual a 800 para que ambos pertenezcan al mismo nivel.",
+      "explanation": "Un Rank igual al del candidato lo pondría al mismo nivel, no por debajo; la regla exige ser estrictamente mayor que todos los padres."
+    },
+    {
+      "id": "sigue-768",
+      "text": "Puede seguir en 768 si solo usa el alternativo al fallar el preferido.",
+      "explanation": "La regla se aplica a todo padre que se mantenga, se use o no: con 768 el alternativo de 800 estaría por debajo y podría formarse un bucle."
+    },
+    {
+      "id": "menor-800",
+      "text": "Debe ser menor que 800 para evitar que el alternativo sea descendiente.",
+      "explanation": "Es al revés: con un Rank menor que 800, el candidato quedaría más lejos de la raíz que el propio nodo, como si fuese su descendiente."
+    }
+  ],
+  "answer": "mayor-800"
+}

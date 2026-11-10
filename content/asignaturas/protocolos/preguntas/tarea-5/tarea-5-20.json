@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.tarea-5-20",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El NS debe enviar una orden a un nodo clase A durante su RX1. G1 tiene el mejor SNR reciente, pero no puede transmitir en esa oportunidad por su presupuesto de duty cycle. G2 tiene enlace suficiente, está conectado y puede transmitir en RX1. ¿Qué decisión es compatible con el tema?",
+  "explanation": "Para elegir gateway el NS tiene en cuenta la calidad del enlace, la disponibilidad del gateway, los límites de duty cycle y la oportunidad de recepción del nodo (RX1/RX2 en clase A). El gateway con mejor señal no siempre puede transmitir en el momento necesario: G2 cumple todo y debe transmitir en RX1 con los parámetros que indique el NS.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        57,
+        60
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "g2-inmediato",
+      "text": "Elegir G2 y transmitir en cuanto llegue la orden, sin esperar RX1, porque el enlace es suficiente.",
+      "explanation": "Un nodo de clase A solo escucha en RX1 y RX2 tras un uplink; transmitir en otro momento no llega."
+    },
+    {
+      "id": "g1-supera-duty",
+      "text": "Elegir G1 porque el mejor SNR permite superar el presupuesto de duty cycle.",
+      "explanation": "El duty cycle es una restricción regulatoria; una buena señal no la anula."
+    },
+    {
+      "id": "g1-tras-rx2",
+      "text": "Elegir G1 y transmitir después de RX2, cuando el nodo siga escuchando por ser clase A.",
+      "explanation": "Tras RX2 un nodo de clase A duerme hasta su siguiente uplink; escuchar casi continuamente es propio de clase C."
+    },
+    {
+      "id": "g2-rx1",
+      "text": "Elegir G2 y programar la transmisión para RX1 con los parámetros adecuados.",
+      "explanation": "G2 tiene enlace suficiente, está disponible, respeta el duty cycle y puede usar la ventana de recepción del nodo."
+    }
+  ],
+  "answer": "g2-rx1"
+}

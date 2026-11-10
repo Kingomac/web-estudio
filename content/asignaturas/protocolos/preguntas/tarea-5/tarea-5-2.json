@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.tarea-5-2",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un 6LR recibe un RA con un prefijo nuevo, un contexto de compresión y una versión actualizada de la información del 6LBR. ¿Qué asociación de funciones permite interpretar correctamente ese RA?",
+  "explanation": "El RA lleva prefijos en PIO (Prefix Information Option), con los que se configuran direcciones; contextos de compresión en 6CO; y la ABRO (Authoritative Border Router Option), que identifica al 6LBR de origen y la versión de esa información para reconocer actualizaciones. ARO no va en el RA: es la opción de registro del NS–NA.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        50,
+        51,
+        54
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "distribucion-de-prefijos-y-contextos"
+    }
+  ],
+  "options": [
+    {
+      "id": "aro-6co-pio",
+      "text": "ARO permite configurar direcciones; 6CO aporta el contexto; PIO identifica el 6LBR de origen y la versión.",
+      "explanation": "ARO es la opción de registro de direcciones que viaja en NS–NA, no sirve para configurarlas; y PIO transporta prefijos, no el origen ni la versión."
+    },
+    {
+      "id": "pio-6co-abro",
+      "text": "PIO permite configurar direcciones; 6CO aporta el contexto; ABRO identifica el 6LBR de origen y la versión.",
+      "explanation": "Cada opción cumple la función que le atribuye el tema: prefijos en PIO, contextos en 6CO y origen y versión en ABRO."
+    },
+    {
+      "id": "pio-abro-aro",
+      "text": "PIO permite configurar direcciones; ABRO aporta el contexto; ARO identifica el 6LBR de origen y la versión.",
+      "explanation": "Intercambia funciones: el contexto viaja en 6CO, la ABRO identifica al 6LBR y su versión, y ARO solo aparece en el registro NS–NA."
+    },
+    {
+      "id": "6co-pio-abro",
+      "text": "6CO permite configurar direcciones; PIO aporta el contexto; ABRO identifica el 6LBR de origen y la versión.",
+      "explanation": "Invierte PIO y 6CO: las direcciones se configuran a partir del prefijo de PIO, y 6CO solo asocia un identificador de contexto a un prefijo para comprimir."
+    }
+  ],
+  "answer": "pio-6co-abro"
+}

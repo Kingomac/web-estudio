@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-19",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un dispositivo NB-IoT entrega medidas mediante NIDD y el servidor final las recibe por MQTT. ¿Qué conclusión permite extraer ese uso de MQTT?",
+  "explanation": "En NIDD el dispositivo entrega pequeños mensajes sin cabeceras IP ni UDP/TCP, y la red del operador actúa de gateway hasta el servidor de aplicación, típicamente por HTTP o MQTT. MQTT aparece solo en el tramo entre la red del operador y el servidor.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        10
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "modo-ip-y-nidd"
+    }
+  ],
+  "options": [
+    {
+      "id": "app-convierte",
+      "text": "La aplicación final debe convertir MQTT a datagramas IPv6 antes de que la red pueda entregar las medidas.",
+      "explanation": "Es la red del operador la que entrega los mensajes por MQTT a la aplicación; la aplicación no convierte nada para el dispositivo."
+    },
+    {
+      "id": "dispositivo-mqtt",
+      "text": "El dispositivo debe ejecutar MQTT sobre TCP, aunque NIDD suprima las cabeceras antes del enlace radio.",
+      "explanation": "NIDD permite que el dispositivo no tenga pila IP; MQTT lo usa la red del operador, no el dispositivo."
+    },
+    {
+      "id": "ip-publica",
+      "text": "El dispositivo dispone necesariamente de una dirección IP pública porque MQTT requiere acceso entrante.",
+      "explanation": "Con NIDD el dispositivo no necesita dirección IP; quien se comunica por MQTT es la red del operador."
+    },
+    {
+      "id": "operador-mqtt",
+      "text": "La red del operador puede entregar por MQTT mensajes que el dispositivo envió sin cabeceras IP ni UDP/TCP.",
+      "explanation": "Es el papel de la red del operador como gateway en NIDD."
+    }
+  ],
+  "answer": "operador-mqtt"
+}

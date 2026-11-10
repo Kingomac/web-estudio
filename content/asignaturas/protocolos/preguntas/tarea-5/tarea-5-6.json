@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-6",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "Un router de Rank=768 recibe un datagrama con RPI marcado como ascendente y Rank del emisor=512. ¿Qué interpretación corresponde a la comprobación de progreso indicada en el tema?",
+  "explanation": "La RPI lleva el Rank del emisor del salto y el sentido de avance. Los routers comprueban que el paquete progresa hacia Rank menores al ascender y mayores al descender. Aquí pasa de 512 a 768 marcado como ascendente: ha ido hacia un Rank mayor, lo que indica una inconsistencia de encaminamiento (posible bucle).",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        85
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "routing-header-de-rpl"
+    }
+  ],
+  "options": [
+    {
+      "id": "ascender-aumenta",
+      "text": "El progreso es coherente: un avance ascendente debería aumentar el Rank al alejarse de la raíz.",
+      "explanation": "Ascender es acercarse a la raíz, cuyo Rank es el mínimo; el Rank aumenta al alejarse de ella, es decir, al descender."
+    },
+    {
+      "id": "inconsistencia",
+      "text": "Existe una inconsistencia: un avance ascendente debería pasar de un Rank mayor a otro menor.",
+      "explanation": "Al ascender el Rank debe disminuir; pasar de 512 a 768 en sentido ascendente contradice esa regla."
+    },
+    {
+      "id": "basta-distintos",
+      "text": "El progreso es coherente: basta con que los dos Rank sean distintos para evitar bucles.",
+      "explanation": "La comprobación no se limita a que sean distintos: el sentido del cambio debe coincidir con el sentido marcado en la RPI."
+    },
+    {
+      "id": "segments-left",
+      "text": "Existe una inconsistencia únicamente si Segments Left también aumenta en una SRH.",
+      "explanation": "Segments Left pertenece a la SRH, que se usa en descendente en non-storing; la comprobación de la RPI depende solo del Rank y del sentido."
+    }
+  ],
+  "answer": "inconsistencia"
+}

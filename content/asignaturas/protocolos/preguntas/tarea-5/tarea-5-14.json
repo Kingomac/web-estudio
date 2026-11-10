@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.preguntas.tarea-5-14",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Se migra un gateway desde Semtech UDP Packet Forwarder a LoRa Basics Station, con LNS configurado para usar TLS y autenticación. ¿Qué cambio describe correctamente ese tramo de comunicación?",
+  "explanation": "El UDP Packet Forwarder usa UDP (puerto 1700) con cabecera binaria y mensajes JSON, sin cifrado ni autenticación del transporte. Basics Station usa el protocolo LNS: JSON sobre WebSocket con TLS (WSS), que protege la conexión y permite autenticar los extremos. El tramo gateway–NS sigue siendo IP y sigue transportando tramas LoRaWAN.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        41,
+        43
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "gateway"
+    }
+  ],
+  "options": [
+    {
+      "id": "ipv6-nativa",
+      "text": "Se pasa de una conexión sin IP a una conexión IPv6 nativa del nodo, y desaparece el reenvío de tramas LoRaWAN al NS.",
+      "explanation": "Ambos forwarders usan IP entre gateway y NS y ambos reenvían tramas LoRaWAN; el nodo sigue sin IP."
+    },
+    {
+      "id": "tcp-a-udp-tls",
+      "text": "Se pasa de TCP con JSON a UDP con TLS, y el gateway necesita AppSKey para autenticar al servidor mediante el MIC.",
+      "explanation": "Invierte el transporte: el forwarder clásico es UDP. El gateway nunca conoce AppSKey, y el MIC se calcula con NwkSKey."
+    },
+    {
+      "id": "websocket-sin-cifrar",
+      "text": "Se pasa de UDP cifrado con AppSKey a WebSocket sin cifrado, manteniendo la confidencialidad porque el MIC sustituye a TLS.",
+      "explanation": "El UDP forwarder no cifra el transporte y Basics Station usa WebSocket con TLS. El MIC aporta integridad, no confidencialidad."
+    },
+    {
+      "id": "udp-a-wss",
+      "text": "Se pasa de UDP con cabecera binaria y JSON sin protección propia del transporte a mensajes JSON sobre WebSocket seguro.",
+      "explanation": "Describe ambos extremos tal como los presenta el tema: UDP sin seguridad frente a JSON sobre WSS."
+    }
+  ],
+  "answer": "udp-a-wss"
+}

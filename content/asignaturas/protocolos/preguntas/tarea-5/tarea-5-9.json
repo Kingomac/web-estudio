@@ -1,0 +1,51 @@
+{
+  "id": "protocolos.preguntas.tarea-5-9",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lowpan"
+  ],
+  "type": "single",
+  "prompt": "En Wi-SUN FAN 1.1, un LFN dormido y un FFN configurado como RAL deben anunciar su alcanzabilidad a la raíz. ¿Qué reparto de tareas corresponde a sus funciones?",
+  "explanation": "Un LFN es una hoja RUL: no ejecuta RPL, registra su dirección en su padre con NS–NA (6LoWPAN ND) y el padre anuncia la alcanzabilidad en su nombre. Un FFN como RAL participa en RPL: genera DAO para anunciar su alcanzabilidad, pero no envía DIO para ofrecerse como router.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-4-lowpan-2026-10-22",
+      "pdfPages": [
+        74,
+        75,
+        81,
+        87
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-4-lowpan",
+      "anchor": "organizacion-de-una-fan"
+    }
+  ],
+  "options": [
+    {
+      "id": "lfn-dao",
+      "text": "El LFN genera DAO al despertar; el RAL registra su dirección con NS–NA para que el padre la anuncie en su nombre.",
+      "explanation": "Invierte los papeles: el LFN (RUL) no ejecuta RPL y es él quien se registra con NS–NA; el RAL sí genera DAO."
+    },
+    {
+      "id": "ambos-dao",
+      "text": "Ambos generan DAO, pero solo el LFN deja de generar DIO mientras mantiene el receptor apagado.",
+      "explanation": "El LFN no genera DAO porque no ejecuta RPL, y el RAL nunca genera DIO para ofrecerse como router, esté o no dormido."
+    },
+    {
+      "id": "ninguna-hoja-rpl",
+      "text": "Ambos registran sus direcciones con NS–NA y sus padres generan los DAO, porque ningún nodo hoja ejecuta RPL.",
+      "explanation": "Las hojas RAL sí participan en RPL: procesan DIO para elegir padre y generan sus propios DAO."
+    },
+    {
+      "id": "lfn-ns-na-ral-dao",
+      "text": "El LFN registra su dirección con NS–NA en el padre, que la anuncia; el RAL genera DAO, sin ofrecerse como router.",
+      "explanation": "Corresponde a un RUL (LFN) y a un RAL (FFN hoja) tal como los define el tema."
+    }
+  ],
+  "answer": "lfn-ns-na-ral-dao"
+}

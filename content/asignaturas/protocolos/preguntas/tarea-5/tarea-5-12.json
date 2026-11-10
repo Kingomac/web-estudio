@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-12",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "En el esquema LoRaWAN 1.0.4 del tema, un observador captura un Join-request válido. ¿Qué información y protección corresponden a ese mensaje?",
+  "explanation": "El Join-request lleva DevEUI, JoinEUI y DevNonce; no va cifrado, pero incluye un MIC calculado con AppKey para comprobar autenticidad e integridad. AppKey es la clave raíz preconfigurada y nunca se transmite. DevAddr y los datos para derivar las claves de sesión llegan después, en el Join-accept cifrado con AppKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        33
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "intercambio-otaa"
+    }
+  ],
+  "options": [
+    {
+      "id": "devaddr-claves",
+      "text": "Incluye DevAddr y ambas claves de sesión cifradas con AppKey, con un MIC calculado mediante AppSKey.",
+      "explanation": "Describe mal el Join-accept: este lleva DevAddr y datos para derivar las claves, no las claves en sí. El Join-request no lleva nada de eso, y AppSKey aún no existe."
+    },
+    {
+      "id": "en-claro-mic-appkey",
+      "text": "Incluye DevEUI, JoinEUI y DevNonce sin cifrar, con un MIC calculado mediante AppKey; la clave raíz no se transmite.",
+      "explanation": "Es la descripción del tema: campos en claro, MIC con AppKey y la clave raíz solo preconfigurada."
+    },
+    {
+      "id": "appkey-en-claro",
+      "text": "Incluye DevEUI, JoinEUI y AppKey sin cifrar, con un MIC calculado mediante NwkSKey; DevNonce se recibe en Join-accept.",
+      "explanation": "Enviar AppKey en claro anularía la seguridad; además DevNonce lo envía el dispositivo en el Join-request, y NwkSKey se deriva después."
+    },
+    {
+      "id": "cifrado-appskey",
+      "text": "Incluye DevEUI, JoinEUI y DevNonce cifrados con AppSKey, con un MIC calculado mediante NwkSKey.",
+      "explanation": "Los campos son correctos, pero el Join-request no va cifrado, y las claves de sesión AppSKey y NwkSKey se derivan tras el Join-accept."
+    }
+  ],
+  "answer": "en-claro-mic-appkey"
+}

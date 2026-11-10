@@ -1,0 +1,49 @@
+{
+  "id": "protocolos.tests.tarea-5-moovi-temas-4-5",
+  "kind": "test",
+  "subjectId": "protocolos",
+  "slug": "tarea-5-moovi-temas-4-5",
+  "title": "Tarea 5 de Moovi · Temas 4 y 5",
+  "description": "Las 20 preguntas del cuestionario de repaso del profesor sobre RPL, NDP optimizado, Wi-SUN FAN, NB-IoT/LTE-M y LoRaWAN, con explicaciones apoyadas en los temas.",
+  "scope": "Enunciados y alternativas literales de la Tarea 5 (cuestionario de los temas 4 y 5) revisada en Moovi: 9 preguntas del tema 4 (páginas 50–89 de la edición del 22/10) y 11 del tema 5. Moovi no mostraba la clave en la revisión; la respuesta de cada pregunta se ha deducido de las páginas citadas.",
+  "tagIds": [
+    "protocolos.tags.lowpan",
+    "protocolos.tags.lpwan",
+    "protocolos.tags.examen-final"
+  ],
+  "order": 125,
+  "groups": [
+    {
+      "id": "tema-4",
+      "title": "Tema 4 · NDP optimizado, RPL y Wi-SUN FAN",
+      "questionIds": [
+        "protocolos.preguntas.tarea-5-1",
+        "protocolos.preguntas.tarea-5-2",
+        "protocolos.preguntas.tarea-5-3",
+        "protocolos.preguntas.tarea-5-4",
+        "protocolos.preguntas.tarea-5-5",
+        "protocolos.preguntas.tarea-5-6",
+        "protocolos.preguntas.tarea-5-7",
+        "protocolos.preguntas.tarea-5-8",
+        "protocolos.preguntas.tarea-5-9"
+      ]
+    },
+    {
+      "id": "tema-5",
+      "title": "Tema 5 · NB-IoT, LTE-M y LoRaWAN",
+      "questionIds": [
+        "protocolos.preguntas.tarea-5-10",
+        "protocolos.preguntas.tarea-5-11",
+        "protocolos.preguntas.tarea-5-12",
+        "protocolos.preguntas.tarea-5-13",
+        "protocolos.preguntas.tarea-5-14",
+        "protocolos.preguntas.tarea-5-15",
+        "protocolos.preguntas.tarea-5-16",
+        "protocolos.preguntas.tarea-5-17",
+        "protocolos.preguntas.tarea-5-18",
+        "protocolos.preguntas.tarea-5-19",
+        "protocolos.preguntas.tarea-5-20"
+      ]
+    }
+  ]
+}

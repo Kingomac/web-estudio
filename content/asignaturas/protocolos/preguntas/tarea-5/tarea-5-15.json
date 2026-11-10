@@ -1,0 +1,50 @@
+{
+  "id": "protocolos.preguntas.tarea-5-15",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "El NS quiere añadir 8 bytes de comandos MAC a un downlink que ya contiene una orden de aplicación en FRMPayload con FPort=3. Según LoRaWAN 1.0.4 descrito en el tema, ¿qué combinación es correcta?",
+  "explanation": "FOpts admite de 0 a 15 bytes de comandos MAC, y el NS puede aprovechar un downlink de aplicación para enviarlos. En FOpts van sin cifrar. El FRMPayload con FPort distinto de 0 contiene datos de aplicación cifrados por el AS con AppSKey, y el MIC de toda la trama se calcula con NwkSKey.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        39,
+        56,
+        57
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "downlinks"
+    }
+  ],
+  "options": [
+    {
+      "id": "fopts-7",
+      "text": "Debe generar otro downlink porque FOpts admite como máximo 7 bytes; ambos mensajes deben usar MIC calculado con AppSKey.",
+      "explanation": "FOpts admite hasta 15 bytes, así que 8 caben. El MIC se calcula con NwkSKey."
+    },
+    {
+      "id": "fopts-cifra-appskey",
+      "text": "Puede usar FOpts y cifrar esos comandos con AppSKey; el payload de aplicación queda en claro porque FPort es distinto de cero.",
+      "explanation": "Invierte la protección: los comandos en FOpts van sin cifrar y el payload con FPort ≠ 0 es el que se cifra con AppSKey."
+    },
+    {
+      "id": "fport-0",
+      "text": "Debe cambiar a FPort=0 y cifrar toda la orden de aplicación con NwkSKey; FOpts solo admite comandos en uplink.",
+      "explanation": "FPort=0 indica que FRMPayload lleva solo comandos MAC; no puede contener la orden de aplicación. FOpts se usa en ambos sentidos."
+    },
+    {
+      "id": "fopts-claro",
+      "text": "Puede usar FOpts para esos comandos, sin cifrarlos; el payload de aplicación sigue cifrado con AppSKey y el MIC usa NwkSKey.",
+      "explanation": "Coincide con el tema: hasta 15 bytes en FOpts sin cifrar, FRMPayload cifrado con AppSKey y MIC con NwkSKey."
+    }
+  ],
+  "answer": "fopts-claro"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "protocolos.preguntas.tarea-5-11",
+  "kind": "pregunta",
+  "subjectId": "protocolos",
+  "tagIds": [
+    "protocolos.tags.lpwan"
+  ],
+  "type": "single",
+  "prompt": "Un sensor celular transmite una medida, permanece accesible mediante eDRX y después entra en PSM. Una orden llega cuando ya está en PSM. Sin esperar la actualización periódica de registro, ¿qué evento puede hacer que el sensor salga de ese reposo?",
+  "explanation": "En PSM la red no puede despertar al dispositivo ni este recibe mensajes. Solo sale del reposo cuando su aplicación necesita transmitir (por ejemplo, ante una alarma) o cuando toca la actualización periódica de registro (Tracking Area Update). La orden quedará pendiente hasta entonces.",
+  "originalReferences": [
+    {
+      "materialId": "protocolos.materiales.tema-5-lpwan-lorawan",
+      "pdfPages": [
+        12
+      ]
+    }
+  ],
+  "readingReferences": [
+    {
+      "resourceId": "protocolos.apuntes.tema-5-lpwan",
+      "anchor": "psm-y-edrx"
+    }
+  ],
+  "options": [
+    {
+      "id": "paging-edrx",
+      "text": "Un paging de la red, recibido en la siguiente ventana eDRX durante el PSM.",
+      "explanation": "Durante PSM no hay ventanas eDRX: el nodo dejó de escuchar al terminar el periodo eDRX."
+    },
+    {
+      "id": "ota-prioridad",
+      "text": "Una orden OTA de alta prioridad que fuerce la activación remota de su radio.",
+      "explanation": "En PSM la red no puede despertar al dispositivo, sea cual sea la prioridad; OTA también se adapta a sus periodos de disponibilidad."
+    },
+    {
+      "id": "alarma-local",
+      "text": "Una alarma local que obligue a la aplicación del sensor a transmitir.",
+      "explanation": "Que la aplicación necesite transmitir es uno de los dos motivos para salir de PSM que da el tema."
+    },
+    {
+      "id": "cambio-ip",
+      "text": "Un cambio de dirección IP que el servidor anuncie al sensor mediante paging.",
+      "explanation": "Un anuncio del servidor es tráfico de la red hacia el nodo, y en PSM no puede recibirlo."
+    }
+  ],
+  "answer": "alarma-local"
+}
