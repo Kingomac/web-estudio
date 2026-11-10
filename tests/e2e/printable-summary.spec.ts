@@ -3,21 +3,25 @@ import { test, expect } from '@playwright/test';
 const subject = 'asignaturas/protocolos/';
 const summary = `${subject}resumenes/parcial-en-pocas-hojas/`;
 
-test('el repaso completo se encuentra desde apuntes, tests y resúmenes y conserva su PDF', async ({ page, request }) => {
+test('el repaso completo se encuentra desde resúmenes y conserva su PDF', async ({ page, request }) => {
   for (const section of ['apuntes', 'tests']) {
     await page.goto(`${subject}${section}/`);
-    const highlight = page.getByRole('region', { name: 'Resumen imprimible: El parcial, en unas pocas hojas' });
-    const pdf = highlight.getByRole('link', { name: 'Abrir PDF para imprimir' });
-    await expect(pdf).toHaveAttribute('href', /\/web-estudio\/materiales\/protocolos\/resumen-parcial-imprimible\.pdf$/);
+    await expect(page.getByRole('region', { name: /^Resumen imprimible/ })).toHaveCount(0);
+  }
+  await page.goto(`${subject}resumenes/`);
+  for (const [title, file, download] of [
+    ['El parcial, en unas pocas hojas', 'resumen-parcial-imprimible', 'resumen-parcial-hasta-t4-37.pdf'],
+    ['Toda la materia, en unas pocas hojas', 'resumen-final-imprimible', 'resumen-protocolos-final.pdf'],
+  ] as const) {
+    const pdf = page.getByRole('link', { name: `Abrir PDF · 4 páginas de ${title}` });
+    await expect(pdf).toHaveAttribute('href', new RegExp(`/web-estudio/materiales/protocolos/${file}\\.pdf$`));
     const response = await request.get((await pdf.getAttribute('href'))!);
     expect(response.ok()).toBe(true);
     expect(response.headers()['content-type']).toContain('application/pdf');
-    await expect(highlight.getByRole('link', { name: 'Descargar PDF' })).toHaveAttribute('download', 'resumen-parcial-hasta-t4-37.pdf');
-    await highlight.getByRole('link', { name: 'Leer en la web' }).click();
-    await expect(page).toHaveURL(new RegExp(`${summary}$`));
+    await expect(page.getByRole('link', { name: `Descargar PDF de ${title}` })).toHaveAttribute('download', download);
   }
-  await page.goto(`${subject}resumenes/`);
   await page.getByRole('link', { name: 'El parcial, en unas pocas hojas', exact: true }).click();
+  await expect(page).toHaveURL(new RegExp(`${summary}$`));
   await expect(page.locator('.prose > h2')).toHaveText([
     'IPv6: direcciones, rutas y NDP', 'IPHC: la hoja de los bits',
     '6LoWPAN y redes de bajo consumo', 'Aplicación y descubrimiento',
