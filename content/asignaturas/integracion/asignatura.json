@@ -1,0 +1,76 @@
+{
+  "kind": "asignatura",
+  "id": "integracion",
+  "slug": "integracion",
+  "title": "Integración de sistemas en IIoT",
+  "bimesterId": "b3",
+  "order": 20,
+  "description": "Integración de sistemas IoT en procesos industriales con nodos basados en SBC y plataformas comerciales. De momento, criterios de evaluación y calculadora de nota.",
+  "teachingGuide": {
+    "url": "https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103632&_anoAcademico=2026&idiomaPais=gl.ES",
+    "title": "Guía docente de Integración de sistemas en IIoT · UDC · 2026/27",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UDC 2026/27, apartado «Avaliación».",
+      "consultedAt": "2026-11-09"
+    },
+    "modalities": [
+      {
+        "id": "primera",
+        "title": "Primera oportunidad",
+        "description": "La guía puntúa sobre 100 (40, 40 y 20). Aquí cada parte se escribe sobre 10.",
+        "components": [
+          {
+            "id": "tutelados",
+            "label": "Trabajos tutelados",
+            "description": "Al menos un trabajo, con defensa o presentación oral. Solo se entrega en la primera oportunidad.",
+            "weight": 0.4
+          },
+          {
+            "id": "objetiva",
+            "label": "Prueba objetiva",
+            "description": "Prueba escrita. Mínimo equivalente a 20 sobre 40.",
+            "weight": 0.4,
+            "min": 5
+          },
+          {
+            "id": "practicas",
+            "label": "Prácticas de laboratorio",
+            "description": "Trabajos prácticos, con posible presentación oral individual o en grupo.",
+            "weight": 0.2
+          }
+        ],
+        "cap": {
+          "value": 4.5,
+          "belowPassMark": false,
+          "onlyAbovePass": true
+        },
+        "guideText": "Para aprobar a materia hai que obter unha puntuación mínima de 50 puntos sobre 100. A nota final obterase sumando as puntuacións obtidas no Traballo tutelados, a Proba obxectiva e as Prácticas de Laboratorio, sempre e cando se cumpra a condición de que a nota da Proba obxectiva sexa maior ou igual que 20 sobre 40. No caso de que non se cumpran as condicións anteriores e a suma supere os 50 puntos, a nota final será un 45."
+      },
+      {
+        "id": "segunda",
+        "title": "Segunda oportunidad y adelantada",
+        "description": "Todo depende de una única prueba mixta.",
+        "components": [
+          {
+            "id": "mixta",
+            "label": "Prueba mixta",
+            "description": "Única nota de la convocatoria.",
+            "weight": 1
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "A puntuación da segunda oportunidade será a obtida únicamente nunha proba mixta."
+      }
+    ],
+    "notes": [
+      "Las notas de cada apartado solo valen en la primera oportunidad del curso en que se obtienen.",
+      "La guía sitúa la prueba objetiva en las convocatorias de enero y julio, pero el calendario del máster la fija el 6 de abril de 2027. Prevalece lo que confirme el profesorado."
+    ]
+  }
+}

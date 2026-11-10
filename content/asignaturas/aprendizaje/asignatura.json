@@ -1,0 +1,61 @@
+{
+  "kind": "asignatura",
+  "id": "aprendizaje",
+  "slug": "aprendizaje",
+  "title": "Aprendizaje automático",
+  "bimesterId": "b3",
+  "order": 10,
+  "description": "Aprendizaje supervisado, no supervisado y por refuerzo, redes neuronales y aprendizaje en el borde. De momento, criterios de evaluación y calculadora de nota.",
+  "teachingGuide": {
+    "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01201",
+    "title": "Guía docente · Aprendizaje automático",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UVigo 2026/27, apartado «Avaliación».",
+      "consultedAt": "2026-11-09"
+    },
+    "modalities": [
+      {
+        "id": "ordinaria",
+        "title": "Convocatorias ordinaria y extraordinaria",
+        "description": "En la extraordinaria se conservan las notas de prácticas y trabajo. Si suspendiste alguna actividad, puedes entregar otra similar antes del examen.",
+        "components": [
+          {
+            "id": "examen",
+            "label": "Examen de teoría",
+            "description": "Preguntas cortas o de opción múltiple y de desarrollo.",
+            "weight": 0.4,
+            "min": 4
+          },
+          {
+            "id": "practicas",
+            "label": "Prácticas de laboratorio",
+            "description": "Cuadernos individuales, con unos 14 días para cada entrega. Se exige un 4 en cada práctica: escribe la media solo si todas lo alcanzan.",
+            "weight": 0.35,
+            "min": 4
+          },
+          {
+            "id": "tutelado",
+            "label": "Trabajo tutelado",
+            "description": "En grupo, con presentación obligatoria y evaluable.",
+            "weight": 0.25,
+            "min": 4
+          }
+        ],
+        "cap": {
+          "value": 4,
+          "belowPassMark": false
+        },
+        "guideText": "Para iso será necesario obter unha nota igual ou superior a 5 na nota global. Ademais, requírese acadar polo menos un 4 en cada unha das partes (examen de teoría, cada práctica e o traballo tutelado) para que se poida promediar. Se non se acada esta cualificación mínima en ningunha das partes, a cualificación global será a cualificación ponderada se é inferior a 4, ou unha máxima de 4 se a cualificación ponderada é igual ou superior a esta cifra."
+      }
+    ],
+    "notes": [
+      "La entrega de los cuadernos es obligatoria y forma parte de la evaluación continua.",
+      "La guía sitúa la presentación del trabajo tutelado el día del examen final y su entrega al final del semestre.",
+      "No hay exámenes parciales. Figuras como «no presentado» solo si no haces el examen final.",
+      "Tras cualquier prueba, el profesorado puede convocar entrevistas orales de verificación, y la nota es provisional hasta que terminen. El plagio supone un suspenso (0)."
+    ]
+  }
+}

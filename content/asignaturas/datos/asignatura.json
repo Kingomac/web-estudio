@@ -1,0 +1,71 @@
+{
+  "kind": "asignatura",
+  "id": "datos",
+  "slug": "datos",
+  "title": "Ingeniería de datos para IoT",
+  "bimesterId": "b2",
+  "order": 40,
+  "description": "Gestión de datos en entornos IoT con SQL, NoSQL y datos espaciales y temporales. De momento, criterios de evaluación y calculadora de nota.",
+  "teachingGuide": {
+    "url": "https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103629&_anoAcademico=2026&idiomaPais=gl.ES",
+    "title": "Guía docente de Ingeniería de datos para IoT · UDC · 2026/27",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guías docentes UDC y USC 2026/27, apartados de evaluación, que coinciden en pesos y mínimos. La ficha de UVigo no incluye la evaluación y remite a ellas.",
+      "consultedAt": "2026-11-09"
+    },
+    "modalities": [
+      {
+        "id": "ordinaria",
+        "title": "Convocatorias ordinaria y extraordinaria",
+        "description": "Los porcentajes son los mismos en ambas. En la extraordinaria, la evaluación continua es una única prueba o entrega.",
+        "components": [
+          {
+            "id": "examen",
+            "label": "Examen",
+            "description": "Contenidos de teoría y prácticos, con nota individual. Mínimo del 40 %.",
+            "weight": 0.4,
+            "min": 4
+          },
+          {
+            "id": "continua",
+            "label": "Evaluación continua",
+            "description": "Problemas individuales, mediante pruebas o entregas pequeñas. Junto con el trabajo tutelado debe alcanzar una media de 4.",
+            "weight": 0.3
+          },
+          {
+            "id": "tutelado",
+            "label": "Trabajo tutelado",
+            "description": "Trabajo de mayor entidad, individual o en grupo. Junto con la evaluación continua debe alcanzar una media de 4.",
+            "weight": 0.3
+          }
+        ],
+        "jointMinimums": [
+          {
+            "id": "trabajos",
+            "label": "los trabajos prácticos (evaluación continua y trabajo tutelado)",
+            "componentIds": [
+              "continua",
+              "tutelado"
+            ],
+            "min": 4
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "Para superar a materia será necesario alcanzar como mínimo un 40% da puntuación total tanto avaliación de traballos prácticos (avaliación continua e traballo tutelado) como no exame, alcanzando ademais como mínimo un 5 sobre 10 na media das dúas partes."
+      }
+    ],
+    "notes": [
+      "Las tres partes son obligatorias, pero solo el examen final exige asistir a la sesión fijada en el calendario oficial. La asistencia a clase no puntúa.",
+      "En la extraordinaria, si te presentas a una parte la nueva nota sustituye a la anterior. Si no te presentas, se mantiene la anterior.",
+      "La guía no fija qué nota figura si no alcanzas un mínimo. La calculadora muestra la media y «Suspenso».",
+      "En la oportunidad adelantada de la UDC, una única prueba o entrega computa el 100 % de la nota.",
+      "Ninguna nota se conserva entre cursos, tampoco para repetidores."
+    ]
+  }
+}

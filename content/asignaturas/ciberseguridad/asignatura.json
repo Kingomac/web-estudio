@@ -1,0 +1,90 @@
+{
+  "kind": "asignatura",
+  "id": "ciberseguridad",
+  "slug": "ciberseguridad",
+  "title": "Ciberseguridad en IoT",
+  "bimesterId": "b3",
+  "order": 40,
+  "description": "Fundamentos de ciberseguridad, modelos de seguridad IoT, superficies de ataque, normativa y análisis de riesgos. De momento, criterios de evaluación y calculadora de nota.",
+  "teachingGuide": {
+    "url": "https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103631&_anoAcademico=2026&idiomaPais=gl.ES",
+    "title": "Guía docente de Ciberseguridad en IoT · UDC · 2026/27",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UDC 2026/27, apartado «Avaliación». La ficha de UVigo no incluye la evaluación y remite a la UDC.",
+      "consultedAt": "2026-11-09"
+    },
+    "modalities": [
+      {
+        "id": "primera",
+        "title": "Primera oportunidad",
+        "components": [
+          {
+            "id": "seguimiento",
+            "label": "Seguimiento de prácticas de laboratorio",
+            "description": "Trabajo continuado durante las prácticas y, si procede, defensa o presentación oral.",
+            "weight": 0.2
+          },
+          {
+            "id": "objetiva",
+            "label": "Prueba objetiva",
+            "description": "Examen final teórico y práctico, obligatorio. Por debajo de 4 suspendes con la nota de este examen.",
+            "weight": 0.4,
+            "min": 4
+          },
+          {
+            "id": "practica",
+            "label": "Prueba práctica",
+            "description": "Examen sobre los casos prácticos vistos en la materia.",
+            "weight": 0.2
+          },
+          {
+            "id": "tutelados",
+            "label": "Trabajos tutelados",
+            "description": "Entrega de una memoria en plazo. Cuentan la redacción y el contenido.",
+            "weight": 0.2
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "failedMinimumMark": "objetiva",
+        "guideText": "Para superar a materia, débese obter como mínimo un 5 sobre 10 na suma de tódalas partes da materia e obter un mínimo de 4 sobre 10 na proba obxectiva. No caso de non obter o mínimo nesta proba, a materia considérase como suspensa e a nota final é a obtida nesta proba obxectiva."
+      },
+      {
+        "id": "segunda",
+        "title": "Segunda oportunidad y adelantada",
+        "description": "Repites la prueba objetiva y mantienes la nota de prácticas o la sustituyes por una prueba práctica o nuevas entregas.",
+        "components": [
+          {
+            "id": "objetiva",
+            "label": "Prueba objetiva",
+            "description": "Obligatoria. Por debajo de 4 suspendes con la nota de este examen.",
+            "weight": 0.4,
+            "min": 4
+          },
+          {
+            "id": "practica",
+            "label": "Parte práctica",
+            "description": "Nota conservada o nueva. La calculadora le asigna el 60 % restante.",
+            "weight": 0.6
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "failedMinimumMark": "objetiva",
+        "guideText": "O estudantado terá que realizar a proba obxectiva e poderá optar por manter a nota de prácticas obtida durante o período de docencia da materia, ou descartar esta nota e avaliarse da parte práctica mediante unha proba práctica e/ou a entrega de prácticas. Para superar a materia, débese obter como mínimo un 5 sobre 10 na suma de tódalas partes da materia e obter un mínimo de 4 sobre 10 na proba obxectiva. No caso de non obter o mínimo nesta proba, a materia considérase como suspensa e a nota final é a obtida nesta proba obxectiva."
+      }
+    ],
+    "notes": [
+      "La guía no detalla cómo se reparte la «nota de prácticas» en la segunda oportunidad. La calculadora agrupa en una parte del 60 % el seguimiento, la prueba práctica y los trabajos. Confírmalo con el profesorado.",
+      "Quien no asista a prácticas por motivos justificados obtiene esa nota con una defensa o presentación oral.",
+      "Se permite usar IA para preparar la materia, pero está prohibido en cualquier prueba de evaluación salvo instrucción expresa del profesorado."
+    ]
+  }
+}

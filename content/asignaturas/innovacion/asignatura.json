@@ -1,0 +1,60 @@
+{
+  "kind": "asignatura",
+  "id": "innovacion",
+  "slug": "innovacion",
+  "title": "Innovación y emprendimiento tecnológico en IoT",
+  "bimesterId": "b2",
+  "order": 30,
+  "description": "Desarrollo de un proyecto innovador con tecnologías IoT hasta su modelo de negocio. De momento, criterios de evaluación y calculadora de nota.",
+  "teachingGuide": {
+    "url": "https://www.usc.gal/gl/estudos/masteres/enxenaria-arquitectura/master-universitario-internet-cousas-iot/20262027/innovacion-emprendemento-tecnoloxico-iot-19399-18493-2-103886",
+    "title": "Guía docente de Innovación y emprendimiento tecnológico en IoT · USC · 2026/27",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente USC 2026/27, apartado «Sistema de avaliación». La ficha de UVigo no incluye la evaluación y remite a la USC.",
+      "consultedAt": "2026-11-09"
+    },
+    "modalities": [
+      {
+        "id": "ordinaria",
+        "title": "Convocatorias ordinaria y extraordinaria",
+        "description": "En la extraordinaria solo repites la parte no superada y el seguimiento continuado mantiene la nota del bimestre.",
+        "components": [
+          {
+            "id": "examen",
+            "label": "Examen teórico",
+            "description": "Tipo test con 4 opciones y una sola válida. Escribe la nota ya descontados los errores.",
+            "weight": 0.4,
+            "min": 5
+          },
+          {
+            "id": "practico",
+            "label": "Trabajo práctico",
+            "description": "Proyecto en grupo. En la extraordinaria, un proyecto nuevo propuesto por el profesorado.",
+            "weight": 0.4,
+            "min": 5
+          },
+          {
+            "id": "seguimiento",
+            "label": "Seguimiento continuado",
+            "description": "Desarrollo del proyecto visible en Miro.",
+            "weight": 0.2
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "A nota final da materia estará formada pola media ponderada dos seguintes items: Exame teórico: 40%. Avaliación do traballo práctico: 40%. Seguimento continuado : 20%. Para superar a materia, o alumno deberá superar por separado tanto o exame teórico como a avaliación do traballo práctico."
+      }
+    ],
+    "notes": [
+      "Para poder presentarte al examen, tanto en la ordinaria como en la extraordinaria, debes asistir al 80 % de las clases prácticas. La calculadora no lo comprueba.",
+      "Cada pregunta errada del test resta 0,25. La guía dice que resta «da nota final», sin aclarar la escala. Para superar el examen hay que alcanzar el 50 % de la nota máxima posible.",
+      "La guía exige superar el trabajo práctico, sin dar una cifra: la calculadora lo interpreta como un mínimo de 5 sobre 10.",
+      "La guía no fija qué nota figura si no superas una de las partes. La calculadora muestra la media y «Suspenso»."
+    ]
+  }
+}

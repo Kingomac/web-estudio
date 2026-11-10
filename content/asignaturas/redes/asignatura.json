@@ -1,0 +1,103 @@
+{
+  "kind": "asignatura",
+  "id": "redes",
+  "slug": "redes",
+  "title": "Redes de comunicaciones en IoT",
+  "bimesterId": "b2",
+  "order": 10,
+  "description": "Tipos de redes IoT y tecnologías de red. De momento, criterios de evaluación y calculadora de nota.",
+  "teachingGuide": {
+    "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01103",
+    "title": "Guía docente · Redes de comunicaciones en IoT",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UVigo 2026/27, apartado «Avaliación».",
+      "consultedAt": "2026-11-09"
+    },
+    "modalities": [
+      {
+        "id": "continua",
+        "title": "Evaluación continua",
+        "description": "Oportunidad ordinaria. Es una media geométrica ponderada: un cero en cualquier parte deja la nota final en cero.",
+        "components": [
+          {
+            "id": "preguntas",
+            "symbol": "PO",
+            "label": "Prueba de preguntas objetivas",
+            "description": "Prueba individual sobre las sesiones magistrales.",
+            "weight": 0.4
+          },
+          {
+            "id": "informes",
+            "symbol": "IP",
+            "label": "Informes de prácticas",
+            "description": "Cuestionarios o informes individuales sobre la realización y comprensión de las prácticas.",
+            "weight": 0.4
+          },
+          {
+            "id": "trabajo",
+            "symbol": "TT",
+            "label": "Trabajo tutelado",
+            "description": "Trabajo individual con memoria escrita y presentación oral.",
+            "weight": 0.2
+          }
+        ],
+        "aggregation": "geometric",
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "NF = RP^0.4*IP^0.4*TT^0.2. Para superar o curso é preciso que NF sexa maior ou igual que 5. Ademais, como resultado da aplicación da media xeométrica ponderada, para poder superar a materia non se pode ter un cero en ningunha das partes."
+      },
+      {
+        "id": "global",
+        "title": "Evaluación global",
+        "description": "Ordinaria si eliges la global, extraordinaria y convocatoria de fin de carrera. Es una media geométrica ponderada: un cero en cualquier parte deja la nota final en cero.",
+        "components": [
+          {
+            "id": "preguntas",
+            "symbol": "PO",
+            "label": "Prueba de preguntas objetivas",
+            "description": "Prueba individual sobre las sesiones magistrales.",
+            "weight": 0.4
+          },
+          {
+            "id": "informes",
+            "symbol": "IP",
+            "label": "Informes de prácticas",
+            "description": "Cuestionarios o informes individuales sobre las prácticas.",
+            "weight": 0.3
+          },
+          {
+            "id": "dossier",
+            "symbol": "DT",
+            "label": "Dossier de tareas",
+            "description": "Detalle de la realización de las tareas, especialmente de las prácticas.",
+            "weight": 0.1
+          },
+          {
+            "id": "trabajo",
+            "symbol": "TT",
+            "label": "Trabajo tutelado",
+            "description": "Trabajo individual con memoria escrita y presentación oral.",
+            "weight": 0.2
+          }
+        ],
+        "aggregation": "geometric",
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "NF = PO^0.4*IP^0.3*DT^0.1*TT^0.2. Para superar o curso é preciso que NF sexa maior ou igual que 5. Ademais, como resultado da aplicación da media xeométrica ponderada, para poder superar a materia non se pode ter un cero en ningunha das partes."
+      }
+    ],
+    "notes": [
+      "Durante el primer mes hay que indicar si sigues la evaluación continua o la global. En continua, tras entregar el primer cuestionario o tarea ya no se puede figurar como «no presentado».",
+      "En la extraordinaria, quien siguió la continua puede mantener las notas de las partes superadas en la ordinaria o descartarlas.",
+      "La fórmula de la evaluación continua de la guía escribe «RP» donde el resto del texto llama PO a la prueba de preguntas objetivas. La calculadora la trata como PO.",
+      "Las puntuaciones solo valen para el curso en vigor. El plagio supone un suspenso (0) en la materia y se comunica a la dirección del centro."
+    ]
+  }
+}

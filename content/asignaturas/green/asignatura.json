@@ -1,0 +1,118 @@
+{
+  "kind": "asignatura",
+  "id": "green",
+  "slug": "green",
+  "title": "Green IoT",
+  "bimesterId": "b3",
+  "order": 30,
+  "description": "Eficiencia energética en hardware, software, comunicaciones y seguridad de sistemas IoT. De momento, criterios de evaluación y calculadora de nota.",
+  "teachingGuide": {
+    "url": "https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103633&_anoAcademico=2026&idiomaPais=gl.ES",
+    "title": "Guía docente de Green IoT · UDC · 2026/27",
+    "academicYear": "2026/27"
+  },
+  "evaluation": {
+    "source": {
+      "label": "Guía docente UDC 2026/27, apartado «Avaliación».",
+      "consultedAt": "2026-11-09"
+    },
+    "modalities": [
+      {
+        "id": "primera",
+        "title": "Primera oportunidad",
+        "description": "La guía no fija notas mínimas por parte.",
+        "components": [
+          {
+            "id": "practicas",
+            "label": "Prácticas a través de TIC",
+            "description": "Valoradas de forma continua al terminar cada plazo.",
+            "weight": 0.2
+          },
+          {
+            "id": "objetiva",
+            "label": "Prueba objetiva",
+            "description": "Una parte sobre los resultados de las prácticas y otra sobre conocimientos generales.",
+            "weight": 0.4
+          },
+          {
+            "id": "problemas",
+            "label": "Solución de problemas",
+            "description": "Problemas de contenido teórico o práctico.",
+            "weight": 0.1
+          },
+          {
+            "id": "tutelados",
+            "label": "Trabajos tutelados",
+            "description": "Trabajo autónomo sobre el contenido de la materia.",
+            "weight": 0.3
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "Prácticas a través de TIC: 20,00. Proba obxectiva: 40,00. Solución de problemas: 10,00. Traballos tutelados: 30,00."
+      },
+      {
+        "id": "segunda-conservando",
+        "title": "Segunda oportunidad · conservando notas",
+        "description": "Conservas las notas de prácticas y trabajos tutelados y haces una prueba mixta.",
+        "components": [
+          {
+            "id": "practicas",
+            "label": "Prácticas a través de TIC",
+            "description": "Nota conservada del curso.",
+            "weight": 0.2
+          },
+          {
+            "id": "mixta",
+            "label": "Prueba mixta",
+            "description": "La calculadora le asigna el 50 % restante (prueba objetiva y problemas).",
+            "weight": 0.5
+          },
+          {
+            "id": "tutelados",
+            "label": "Trabajos tutelados",
+            "description": "Nota conservada del curso.",
+            "weight": 0.3
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "Os alumnos terán a opción de conservar as notas de prácticas e/ou traballos tutelados obtidas durante o curso académico e terán que realizar unha proba mixta, establecéndose a nota nas mesmas porcentaxes aplicadas na primeira oportunidade."
+      },
+      {
+        "id": "segunda-sin-conservar",
+        "title": "Segunda oportunidad · sin conservar notas",
+        "description": "Resto del alumnado, incluido quien tiene dedicación a tiempo parcial o dispensa de asistencia.",
+        "components": [
+          {
+            "id": "mixta",
+            "label": "Prueba mixta",
+            "description": "Prueba de la segunda oportunidad.",
+            "weight": 0.7
+          },
+          {
+            "id": "tutelados",
+            "label": "Trabajo tutelado",
+            "description": "Trabajo que se entrega en la segunda oportunidad.",
+            "weight": 0.3
+          }
+        ],
+        "cap": {
+          "value": 10,
+          "belowPassMark": false
+        },
+        "guideText": "O resto do alumnado (incluido o alumnado con recoñecemento de dedicación a tempo parcial e dispensa académica de exención de asistencia) terá que realizar unha proba mixta (70% da nota) e entregar un traballo tutelado (30% da nota)."
+      }
+    ],
+    "notes": [
+      "La guía no reparte el peso de la prueba mixta si conservas notas. La calculadora le da el 50 % que suman la prueba objetiva y los problemas, y tampoco se detalla el cálculo si conservas solo una de las dos notas. Confírmalo con el profesorado.",
+      "La oportunidad adelantada sigue los mismos criterios que la segunda oportunidad.",
+      "Ninguna nota se conserva para cursos posteriores. El fraude en una prueba supone un suspenso (0) en esa convocatoria.",
+      "Ninguna actividad de asistencia obligatoria puede ser objeto de dispensa académica."
+    ]
+  }
+}
