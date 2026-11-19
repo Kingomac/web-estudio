@@ -1,0 +1,9 @@
+{
+  "id": "redes.tags.introduccion",
+  "kind": "tag",
+  "subjectId": "redes",
+  "slug": "introduccion",
+  "title": "Tema 1 · Introducción a las redes IoT",
+  "type": "topic",
+  "order": 10
+}

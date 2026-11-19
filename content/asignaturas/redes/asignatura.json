@@ -5,7 +5,7 @@
   "title": "Redes de comunicaciones en IoT",
   "bimesterId": "b2",
   "order": 10,
-  "description": "Tipos de redes IoT y tecnologías de red. De momento, criterios de evaluación y calculadora de nota.",
+  "description": "Tipos de redes IoT y tecnologías WPAN y LPWAN: Bluetooth LE, Thread, LoRa, NB-IoT y Wi-Fi HaLow.",
   "teachingGuide": {
     "url": "https://secretaria.uvigo.gal/docnet-nuevo/guia_docent/?centre=305&ensenyament=V05M200V01&assignatura=V05M200V01103",
     "title": "Guía docente · Redes de comunicaciones en IoT",

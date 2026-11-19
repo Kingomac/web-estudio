@@ -1,0 +1,182 @@
+<h2 id="idea-central">Idea central</h2>
+
+El **Internet de las Cosas (IoT)** es una red de objetos físicos (dispositivos, vehículos, electrodomésticos…) equipados con **sensores, software y conectividad** que les permite recoger y compartir datos. El tema no estudia aún ninguna tecnología concreta: da el vocabulario para **describir una red IoT** (qué piezas tiene y qué se le exige) y para **clasificar tecnologías** (por saltos, alcance, soporte IP y tasa). Ese vocabulario es el que pide el trabajo tutelado.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=2">T1, p. 2</a>.</p>
+
+<h2 id="requisitos">Requisitos de una red IoT</h2>
+
+Las diapositivas enumeran diez requisitos: **conectividad**, **seguridad y privacidad**, **escalabilidad**, **eficiencia energética**, **interoperabilidad**, **bajo coste**, **baja latencia**, **ancho de banda**, **gestión y análisis de datos** y **facilidad de implementación y uso**.
+
+No todos pesan lo mismo en cada aplicación: un sensor con batería prioriza la eficiencia energética; un sistema de control, la latencia. Por eso el tema pasa después a los compromisos entre ellos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=3">T1, p. 3</a>.</p>
+
+<h2 id="componentes">Componentes</h2>
+
+El diagrama del tema apila cinco capas, de abajo arriba, y dos funciones transversales que las atraviesan todas:
+
+```text
+┌──────────┬──────────────────────────────┬───────────┐
+│          │ Aplicaciones                 │           │
+│          │ Nube / centro de datos       │           │
+│ Gestión  │ Red                          │ Seguridad │
+│          │ Gateways (pasarelas)         │           │
+│          │ Dispositivos                 │           │
+└──────────┴──────────────────────────────┴───────────┘
+```
+
+<div class="table-scroll">
+
+| Componente | Qué es | Detalle del tema |
+| --- | --- | --- |
+| **Dispositivos** | Objetos físicos conectados que recogen y transmiten datos. | Sensores, electrodomésticos, vehículos… |
+| **Pasarelas** (*gateways*) | Intermediarios entre los dispositivos y la nube: reciben sus datos y los reenvían para su procesamiento. | Permiten que los dispositivos sigan siendo **pequeños, con pilas y baratos**. **No hacen falta** si el dispositivo se conecta directamente a Internet (LTE/NB-IoT, Thread). |
+| **Red de comunicación** | Medio por el que se comunican los dispositivos. | Wi-Fi, Bluetooth, Zigbee, celular 4G/5G y LPWAN como LoRaWAN. |
+| **Edge/Cloud** | Almacenamiento y procesado. | Recibe grandes volúmenes de datos vía pasarelas, los procesa y almacena, permite comunicarse con los dispositivos, **controla su registro** y ofrece supervisión y análisis. |
+| **Aplicaciones** | Interfaz para visualizar datos, recibir alertas y controlar dispositivos en remoto. | A veces con una capa de **presentación o inteligencia empresarial** (*business intelligence*): cuadros de mando e informes para usuarios no técnicos, estado de cada dispositivo, datos en tiempo real e históricos e integración con otros sistemas de la empresa. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=4">T1, pp. 4-9</a>.</p>
+
+<h3 id="gestion-y-seguridad">Gestión y seguridad</h3>
+
+Son transversales porque afectan a todas las capas.
+
+- **Gestión:** monitorización, activación/desactivación de funciones, contabilidad, rendimiento, fallos, configuración, detección de componentes frágiles y mantenimiento de actualizaciones.
+- **Seguridad:** autenticación y autorización (de dispositivos, datos y usuarios), control de acceso, gestión de identidades, confidencialidad (cifrado), mantenimiento de actualizaciones y protección del hardware.
+
+El **mantenimiento de actualizaciones** aparece en las dos listas: actualizar es una tarea de gestión y, a la vez, la forma de corregir vulnerabilidades.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=10">T1, pp. 10-11</a>.</p>
+
+<h2 id="eleccion">Qué tecnología utilizar</h2>
+
+La elección depende de seis factores, que son exactamente las columnas de la tabla del trabajo tutelado:
+
+<div class="table-scroll">
+
+| Factor | Pregunta |
+| --- | --- |
+| Alimentación | ¿Red eléctrica o batería? |
+| Ancho de banda | ¿Cuántos datos? |
+| Frecuencia de transferencia | ¿Con qué frecuencia se envían? |
+| Alcance | ¿A qué distancia? |
+| Tamaño físico | ¿Qué tamaño puede tener el dispositivo? |
+| Coste | ¿Cómo de caro? (incluye infraestructuras críticas y logística) |
+
+</div>
+
+Los factores **no se valoran por separado**: hay compromisos entre ellos.
+
+- **Coste puntual de despliegue frente a coste recurrente de suscripción** (una red propia frente a pagar a un operador).
+- **Tamaño reducido frente a duración de las baterías** (un dispositivo pequeño admite una batería pequeña).
+- **Alcance frente a duración de las baterías** (llegar más lejos exige más energía).
+- **Alcance frente a tasa de transmisión** (las tecnologías de largo alcance suelen ser lentas).
+
+La diapositiva 14 (de Rohde & Schwarz) lo ilustra con varios casos de uso (cubo de basura, contador, bicicleta, detector de humo, red eléctrica, farolas, cámaras, vehículo) puntuados en seis ejes: **latencia** (horas ↔ milisegundos), **duración de batería** (años ↔ alimentado), **fiabilidad** (dos nueves ↔ cinco nueves), **tasa** (bps ↔ Mbps), **cobertura** (profunda ↔ normal) y **movilidad** (estacionario ↔ 250 km/h). La idea: cada caso de uso traza un perfil distinto, así que **no hay una tecnología que sirva para todo**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=12">T1, pp. 12-14</a>.</p>
+
+<h2 id="tipos">Tipos de redes IoT</h2>
+
+<h3 id="saltos">Un salto o multisalto</h3>
+
+- **Un salto, topología en estrella:** cada dispositivo habla directamente con el nodo central.
+- **Multisalto, topología en malla:** los mensajes atraviesan nodos intermedios que los reenvían; se amplía la cobertura sin aumentar la potencia de cada nodo.
+
+<h3 id="alcance">Por alcance</h3>
+
+De menor a mayor: **NANO ⊂ BAN ⊂ PAN ⊂ LAN ⊂ MAN ⊂ WAN** (nano, área corporal, personal, local, metropolitana y amplia). El diagrama las dibuja como elipses anidadas.
+
+<h3 id="soporte-ip">Por soporte IP</h3>
+
+El diagrama compara dos arquitecturas, ambas con red de **acceso** (dispositivos → pasarela) y **troncal** (*core*: red IP → aplicación):
+
+- **WPAN:** dispositivos de corto alcance, que pueden reenviarse mensajes entre ellos, hasta una pasarela cercana; el tramo de acceso es corto y el IP llega hasta cerca de los dispositivos.
+- **LPWAN:** cada dispositivo llega directamente, a gran distancia, a la pasarela; el tramo de acceso es largo y el IP empieza en la pasarela.
+
+<h3 id="tasa-alcance">Por tasa y alcance</h3>
+
+La figura del libro de Herrero coloca las tecnologías en dos ejes, **throughput** (vertical) y **alcance** (horizontal):
+
+<div class="table-scroll">
+
+| Zona | Tecnologías |
+| --- | --- |
+| Poca tasa, poco alcance | RFID/NFC |
+| WPAN (tasa y alcance bajos o medios) | BLE, IEEE 802.15.4 |
+| Tasa media-alta, alcance medio | Wi-Fi 802.11a/b/g y n/ac |
+| Tasa media, alcance alto | IEEE 802.11ah |
+| Tasa y alcance altos | Móviles 3G/4G/5G |
+| **Poca tasa y mucho alcance** | **LPWAN** |
+
+</div>
+
+Una línea curva separa las LPWAN del resto, con flechas «IP» hacia las demás: es la frontera del soporte IP nativo que se explica en el apartado de LPWAN.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=15">T1, pp. 15-18</a>.</p>
+
+<h2 id="wsn">WSN, las predecesoras</h2>
+
+Las **WSN** (*Wireless Sensor Networks*) son las **predecesoras** de las redes IoT y ya tienen sus componentes básicos: activos con sensores/actuadores/controladores, red de comunicación, pasarelas y un procesador central que hace de aplicación. Se diferencian en que:
+
+- **No suelen seguir estándares**: usan mecanismos propietarios heredados que impiden aprovechar la información en un sentido amplio.
+- Los sensores y actuadores son inalámbricos y **solo hablan con pasarelas**, que recogen los paquetes, los agregan, transforman y reenvían al procesador central.
+- La arquitectura es **piramidal**: muchos dispositivos → varias pasarelas → **una única aplicación**. Se organiza en **clústeres** conectados mediante pasarelas que se comunican con otras pasarelas hasta llegar al procesador central.
+- El procesador central **no decide necesariamente en tiempo real**; a menudo almacena para procesar y visualizar fuera de línea, sobre todo en las WSN antiguas, anteriores al auge del aprendizaje automático y la minería de datos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=19">T1, pp. 19-21</a>.</p>
+
+<h2 id="wpan-lpwan">WPAN frente a LPWAN</h2>
+
+<div class="table-scroll">
+
+| | WPAN | LPWAN |
+| --- | --- | --- |
+| Cobertura | **No más de unos pocos metros.** | Mayor cobertura, a costa de una **SNR más baja**. |
+| Tasa | Del orden de **kbps, pudiendo llegar a Mbps**. | Aún menor que en WPAN, y con **MTU más pequeñas**. |
+| IPv6 | Bastante rápidas para **soportar IPv6**, a veces con una **capa de adaptación** adicional. | **No soportan plenamente IPv6** ni protocolos derivados como CoAP y RPL. |
+| Integración IP | IP cerca de los dispositivos. | Tecnologías **híbridas**: pila de acceso propietaria y **pasarelas IoT** que aportan el soporte IP. |
+| Tráfico típico | — | Paquetes **muy pequeños, pocas veces por hora, a larga distancia**. |
+| Ejemplos | IEEE 802.15.3, IEEE 802.15.4, Bluetooth Low Energy, ITU-T G.9959, DECT ULE, NFC, Thread. | IEEE 802.11ah, LoRa, Sigfox, D7AP, Weightless, NB-IoT, NB-Fi, IQRF, RPMA, Telensa, SNOW, Nwave, Qowisio, 802.15.4k y 4g, LTE-M, EC-GSM-IoT. |
+
+</div>
+
+La relación causal que conviene saber explicar: **más cobertura → menor SNR → menos tasa y MTU más pequeña → no cabe IPv6 completo → hace falta pasarela**.
+
+Las soluciones LPWAN se distinguen por ocho factores: (1) topología, (2) cobertura, (3) duración de la batería, (4) resistencia a interferencias, (5) densidad de nodos, (6) seguridad, (7) comunicación unidireccional o bidireccional y (8) naturaleza de las aplicaciones.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=22">T1, pp. 22-24</a>.</p>
+
+<h2 id="curso">Qué se estudia en el curso</h2>
+
+<div class="table-scroll">
+
+| Tipo | Tecnologías |
+| --- | --- |
+| WPAN | **Bluetooth Low Energy** y **Thread**, combinadas con el protocolo de aplicación **Matter** para hogares conectados (como ejemplo de redes de sensores). |
+| LPWAN | **LoRa**, **NB-IoT** y **Wi-Fi HaLow** (IEEE 802.11ah). |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=25">T1, p. 25</a>.</p>
+
+<h2 id="trabajo-tutelado">Trabajo tutelado</h2>
+
+En Moovi hay que completar una tabla con **tres casos de uso** de IoT valorando, para cada uno, las seis columnas del apartado [Qué tecnología utilizar](#eleccion): alimentación, ancho de banda, frecuencia de transmisión de datos, alcance, tamaño físico y coste.
+
+El ejemplo del tema: **seguimiento de animales salvajes en un parque natural** → batería de duración muy elevada, ancho de banda bajo, frecuencia de transmisión moderada, alcance muy alto, tamaño reducido y coste moderado. Ese perfil (poca tasa, mucho alcance, batería) apunta a una LPWAN.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-1-introduccion.pdf#page=26">T1, p. 26</a>.</p>
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Enumero los cinco componentes apilados y las dos funciones transversales.
+- ☐ Explico cuándo **no** hace falta una pasarela.
+- ☐ Digo los seis factores de elección y los cuatro compromisos.
+- ☐ Ordeno NANO, BAN, PAN, LAN, MAN y WAN.
+- ☐ Explico tres diferencias entre una WSN y una red IoT actual.
+- ☐ Razono por qué una LPWAN no soporta IPv6 completo y una WPAN sí.
+- ☐ Nombro las tecnologías WPAN y LPWAN del curso.

@@ -1,0 +1,22 @@
+{
+  "id": "redes.materiales.tema-1-introduccion",
+  "kind": "material",
+  "subjectId": "redes",
+  "slug": "tema-1-introduccion",
+  "title": "Tema 1 · Introducción a las redes IoT",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 1 (27 páginas): componentes, requisitos, elección de tecnología y tipos de redes IoT.",
+  "tagIds": [
+    "redes.tags.introduccion"
+  ],
+  "order": 10,
+  "file": "materiales/redes/tema-1-introduccion.pdf",
+  "format": "pdf",
+  "providedName": "T1-Introduccion.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 27,
+  "sha256": "ddf285dfd641141653bb3e9b3f4882ab90b03abde222fc148b2a276f98afd659"
+}

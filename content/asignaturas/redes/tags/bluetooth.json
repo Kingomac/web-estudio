@@ -1,0 +1,9 @@
+{
+  "id": "redes.tags.bluetooth",
+  "kind": "tag",
+  "subjectId": "redes",
+  "slug": "bluetooth",
+  "title": "Tema 2 · WPAN: Bluetooth LE",
+  "type": "topic",
+  "order": 20
+}

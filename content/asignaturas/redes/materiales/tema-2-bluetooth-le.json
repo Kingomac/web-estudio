@@ -1,0 +1,22 @@
+{
+  "id": "redes.materiales.tema-2-bluetooth-le",
+  "kind": "material",
+  "subjectId": "redes",
+  "slug": "tema-2-bluetooth-le",
+  "title": "Tema 2 · WPAN: Bluetooth LE",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 2 (109 páginas, en inglés): BLE, pila de protocolos, topología, Bluetooth 5, Bluetooth Mesh y casos de uso.",
+  "tagIds": [
+    "redes.tags.bluetooth"
+  ],
+  "order": 20,
+  "file": "materiales/redes/tema-2-bluetooth-le.pdf",
+  "format": "pdf",
+  "providedName": "T2-WPAN-Bluetooth.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 109,
+  "sha256": "83575a717bd4488bc2c6d174e9ec77feab738457ec49196a9b1f1f730fc37789"
+}

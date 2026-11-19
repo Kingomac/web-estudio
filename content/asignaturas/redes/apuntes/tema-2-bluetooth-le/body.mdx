@@ -1,0 +1,431 @@
+<h2 id="mapa">Mapa del tema</h2>
+
+Las diapositivas están en inglés; aquí se mantienen en inglés los nombres de capas, roles y paquetes para que coincidan con lo que verás en el examen y en las prácticas. El tema tiene cuatro bloques:
+
+1. **Bluetooth LE (4.0):** por qué consume tan poco, su pila de protocolos y los roles.
+2. **Bluetooth 5:** nuevas capas físicas y extensiones de *advertising*.
+3. **Bluetooth Mesh:** red mallada sobre BLE (inundación controlada, publicación/suscripción, *provisioning*).
+4. **Casos de uso.**
+
+Una **WPAN** (*Wireless Personal Area Network*) cubre el **POS** (*Personal Operating Space*): unos **10 m alrededor de una persona**, para comunicarla con los dispositivos de esa zona. Ejemplos: Bluetooth, ZigBee, Thread, RFID y NFC.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=3">T2, p. 3</a>.</p>
+
+<h2 id="historia">Historia y versiones</h2>
+
+- **1994:** proyecto *MC-link* de Ericsson. En **1999** se rebautiza «Bluetooth» por Harald «Blåtand», rey danés del siglo X.
+- **1998:** se funda el **SIG** (*Special Interest Group*) con Ericsson, Intel, IBM, Nokia y Toshiba (hoy más de 36 000 empresas). Mantiene una especificación y una certificación comunes: la **core specification** (protocolos básicos e interoperabilidad con otros protocolos) y las **profile specifications** (interoperabilidad entre aplicaciones). La versión 1.0 es de 1999.
+
+<div class="table-scroll">
+
+| Año | Versión | Novedad clave |
+| --- | --- | --- |
+| 2010 | **4.0** | **LE** (*Low Energy*, comercializado como *Bluetooth Smart*), 1 Mbps: conexión mucho más rápida, menos consumo, complejidad, coste y tasa. |
+| 2013 | 4.1 | Un dispositivo puede ser **Peripheral y Central a la vez**. |
+| 2014 | 4.2 | Conectividad **IP**, privacidad, velocidad y **LE Secure Connections**. |
+| 2016 | **5** | Orientado a IoT: **doble de velocidad** (a costa de alcance), **cuádruple de alcance** (a costa de tasa) y **ocho veces más capacidad de *broadcast*** (*advertising extensions*). |
+| 2017 | Mesh | **Bluetooth Mesh Profile**. |
+| 2019 | 5.1 | Localización: **direction finding** con precisión de centímetros. |
+| 2020 | 5.2 | **LE Audio**: más calidad y eficiencia. |
+| 2021 | 5.3 | Mejoras de *periodic advertising*, clasificación de canales y *connection subrating*. |
+| 2024 | 6 | **Channel Sounding** (medida de distancia fina y segura) y filtrado de *advertising* por decisión. |
+| 2025 | 6.1 | Actualización aleatorizada de las **RPA** (*Resolvable Private Address*). |
+| 2026 | 7.0 | **HDT** (*High Data Throughput*): BLE hasta **7,5 Mbps**. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=5">T2, pp. 5-9</a>.</p>
+
+<h2 id="ble">Bluetooth LE: diseñado para gastar poco</h2>
+
+BLE es un **diseño nuevo**, distinto de Bluetooth clásico (**BR/EDR**). Es abierto, ubicuo y está optimizado para **funcionar con una pila de botón**: pico de corriente **< 20 mA** y media **< 5 µA**.
+
+**Cómo ahorra:** usar la radio lo menos posible.
+
+- **Paquetes cortos:** menos memoria de *buffer*, menos pico de corriente al transmitir y menos tiempo recibiendo.
+- **Ventanas de TX y RX cortas.**
+- **Pocos canales de descubrimiento** (3), para descubrir y conectar rápido.
+- **Máquina de estados sencilla**, con poca información de estado.
+- Pensado para **trozos pequeños de datos**: 1 Mbps de radio, pero **no optimizado para transferir datos**.
+
+**Para qué sirve:** para **exponer estados** (23,2 °C, 60,5 km/h, «Gate 10 BOARDING», 3,2 kWh…). Los datos son pequeños, un cliente los puede **leer en cualquier momento** y su envío lo pueden **disparar eventos locales**. En la tabla comparativa, «State» significa datos de **poca tasa y baja latencia**: BLE y ZigBee/ANT los cubren; BLE además cubre audio con el códec **LC3** (LE Audio).
+
+<h3 id="ficha">Ficha técnica (diapositiva 15)</h3>
+
+<div class="table-scroll">
+
+| Parámetro | Valor |
+| --- | --- |
+| Alcance | ~150 m en campo abierto |
+| Potencia de salida | ~10 mW (10 dBm); la capa física admite hasta 20 dBm |
+| Corriente máxima | ~15 mA |
+| Corriente en reposo | ~1 µA |
+| Latencia | 3 ms |
+| Topología | *Piconet* / *scatternet* |
+| Modulación | **GFSK a 2,4 GHz** |
+| Robustez | **AFH**, *lazy acknowledgement*, **CRC de 24 bits**, comprobación de integridad de 32 bits |
+| Seguridad | **AES-CCM de 128 bits** |
+| Tamaño de paquete | 8-27 bytes |
+| Modos | Broadcast, conexión, modelos de datos por eventos, lecturas y escrituras |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=11">T2, pp. 11-15</a>.</p>
+
+<h2 id="pila">Pila de protocolos</h2>
+
+```text
+Profiles      Alert Notification · Blood Pressure · Glucose · Heart Rate · HID over GATT · Proximity · propietarios…
+            ┌───────────────┬──────────────┐
+Host        │ GATT          │ GAP          │
+            │ ATT  │  SMP   │              │
+            │ L2CAP                        │
+            ├──────────────────────────────┤
+            │ HCI  (Host Controller Interface)
+            ├──────────────────────────────┤
+Controller  │ Link Layer (LL)
+            │ Physical Layer (PHY)
+```
+
+<div class="table-scroll">
+
+| Capa | Grupo | Función |
+| --- | --- | --- |
+| **PHY** | Controller (*LE core*) | Interfaz radio: frecuencia, modulación, potencia. |
+| **Link Layer** | Controller (*LE core*) | Gestión de la conexión, estructura de paquetes, temporización, QoS. |
+| **HCI** | Común | Comunicación **estandarizada entre el host y el controlador**. |
+| **L2CAP** | Común | Varios **canales lógicos**, **segmentación** de mensajes y adaptación de las capas superiores al Link Layer. |
+| **ATT** | Host | Cómo se **representan** los datos en la base de datos de un servidor BLE y cómo se leen o escriben. |
+| **GATT** | Host | Transporte para **intercambiar** esos datos (jerarquía de servicios y características). |
+| **GAP** | Host | Interoperabilidad entre dispositivos: **descubrir**, **difundir (*advertising*)** y **establecer conexiones seguras**. |
+| **SM / SMP** | Host | *Security Manager*: emparejamiento y **distribución de claves** (autenticación) y funciones para conectar y cifrar (cifrado). |
+
+</div>
+
+**Perfiles.** Un perfil describe cómo dos o más dispositivos se descubren y comunican para **implementar una aplicación concreta**; puede ser estándar o propietario y cada uno tiene su especificación. Ejemplos: **Find Me** (hacer sonar una alerta en el otro dispositivo), **Proximity** (vigilar la distancia entre dos), **Heart Rate** (un colector lee un pulsómetro) y **Phone Alert** (estado de alerta del teléfono en el dispositivo BLE).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=16">T2, pp. 16-21</a>.</p>
+
+<h2 id="phy">Capa física</h2>
+
+- Banda **ISM de 2,4 GHz**, **GFSK a 1 Mbps** con un índice de modulación mayor que el de Bluetooth clásico (más alcance).
+- **40 canales separados 2 MHz** (2402-2480 MHz): **3 de *advertising*** (**37, 38 y 39**) y **37 de datos** (0-36).
+- Los canales de *advertising* están en **2402, 2426 y 2480 MHz**, colocados para **esquivar los canales Wi-Fi 1, 6 y 11**. Aun con esos tres Wi-Fi activos, quedan **9 canales de datos libres**.
+- **AFH** (*Adaptive Frequency Hopping*): se salta de canal según una secuencia y se **excluyen los canales con interferencias**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=22">T2, pp. 22-25</a>.</p>
+
+<h2 id="link-layer">Link Layer</h2>
+
+<h3 id="estados">Máquina de estados</h3>
+
+```text
+             Scanning
+                 ↕
+Advertising ↔ Standby ↔ Initiating
+      ↘          ↑          ↙
+   (slave)   Connection   (master)
+```
+
+Se llega a **Connection** por dos caminos: el que estaba en **Advertising** entra como **slave**; el que estaba en **Initiating** entra como **master**.
+
+**Por qué se anuncia un dispositivo:** para difundir datos a cualquiera, para enviar datos firmados a un dispositivo con el que ya se vinculó (*bonded*), para anunciar su presencia a quien quiera conectarse o para reconectarse de forma asíncrona por un evento local.
+
+<h3 id="adv">Tipos de paquete de *advertising*</h3>
+
+<div class="table-scroll">
+
+| Paquete | ¿Conectable? | ¿Escaneable? | ¿Dirigido? | Qué permite |
+| --- | --- | --- | --- | --- |
+| **ADV_IND** | Sí | Sí | No | Cualquiera puede enviar SCAN_REQ o CONNECT_REQ. |
+| **ADV_DIRECT_IND** | Sí | No | **Sí** | Solo un dispositivo concreto puede pedir conexión (no SCAN_REQ). |
+| **ADV_NONCONN_IND** | No | No | No | Todos escuchan, pero no se acepta ni SCAN_REQ ni CONNECT_REQ (balizas). |
+| **ADV_SCAN_IND** | No | Sí | No | Se puede enviar SCAN_REQ, pero no pedir conexión. |
+
+</div>
+
+Truco: **«NONCONN» y «SCAN» no son conectables**; **«DIRECT» es el único dirigido** y no admite SCAN_REQ.
+
+<h3 id="conexion">Transmisión de datos</h3>
+
+Una vez conectados, el **master** indica al slave la **secuencia de salto** y **cuándo despertar**. Todas las transacciones van por los **37 canales de datos**, pueden cifrarse y **ambos duermen** (*deep sleep*) entre transacciones.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=26">T2, pp. 26-29</a>.</p>
+
+<h2 id="att-gatt">ATT y GATT</h2>
+
+**ATT** es un protocolo **cliente/servidor sin estado** basado en atributos. El **cliente** descubre, lee y escribe atributos y pide datos; el **servidor** los contiene. Cada **atributo** tiene:
+
+- **Handle:** identificador para acceder a él.
+- **UUID:** tipo y naturaleza del valor.
+- **Permisos:** lectura, escritura, notificación, cifrado/autenticación/autorización requeridos…
+- **Valor.**
+
+**GATT** se construye sobre ATT y le añade **jerarquía y abstracción**: detalla cómo intercambiar los datos de perfil y de usuario. El **cliente** primero **descubre servicios**, luego lee y escribe atributos y recibe actualizaciones iniciadas por el servidor; el **servidor** almacena los datos organizados en atributos.
+
+```text
+Profile
+ └─ Service        (conjunto de datos y comportamientos para una función)
+     └─ Characteristic  (contenedor de datos de usuario)
+```
+
+<div class="table-scroll">
+
+| Propiedad de una característica | Quién inicia | Operación ATT |
+| --- | --- | --- |
+| **Broadcast** | — | El valor puede ir en paquetes de *advertising*. |
+| **Read** | Cliente | Lectura. |
+| **Write without response** | Cliente | *Write Command* (sin confirmación). |
+| **Write** | Cliente | *Write Request/Response*. |
+| **Notify** | **Servidor** | *Handle Value Notification* (sin confirmación). |
+| **Indicate** | **Servidor** | *Handle Value Indication/Confirmation* (con confirmación). |
+| **Signed Write Command** | Cliente | Escritura firmada. |
+
+</div>
+
+La diferencia que más se pregunta: **Notify** no se confirma; **Indicate** sí.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=30">T2, pp. 30-32</a>.</p>
+
+<h2 id="gap">GAP: roles y topología</h2>
+
+**GAP** dicta cómo interactúan los dispositivos a bajo nivel: **descubrimiento, conexiones y seguridad de la conexión**. Su perfil GATT incluye *Device Name*, *Appearance* (categoría: teléfono, ordenador, reloj…) y los parámetros de conexión preferidos del periférico (intervalo de conexión mínimo y máximo, *slave latency* y *supervision timeout*).
+
+<div class="table-scroll">
+
+| Rol GAP | Qué hace | Estado(s) del Link Layer |
+| --- | --- | --- |
+| **Broadcaster** | Envía *advertising* periódico con datos. | Advertising |
+| **Observer** | Recoge datos de los broadcasters. | Scanning |
+| **Peripheral** | Se anuncia para que un central lo encuentre y se conecte. | Advertising, Connection (**slave**) |
+| **Central** | Establece conexiones. | Scanning, Initiating, Connection (**master**) |
+
+</div>
+
+Todos pueden estar además en Standby. **Un Broadcaster no puede conectarse** y **un Observer no puede entrar en Initiating**: son los roles «sin conexión».
+
+**Topología.** Un central se conecta a **varios periféricos** (estrella). Desde 4.1, un dispositivo puede ser **Central + Peripheral (C+P)** a la vez, lo que permite encadenar conexiones. Ejemplo del tema:
+
+```text
+Teléfono (C)  ↔  Reloj deportivo (C+P)  ↔  Banda pectoral de pulso (P)
+```
+
+El reloj es periférico del teléfono y central de la banda.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=33">T2, pp. 33-45</a>.</p>
+
+<h2 id="seguridad">Security Manager y privacidad</h2>
+
+<div class="table-scroll">
+
+| Término | Significado |
+| --- | --- |
+| **Pairing** | Generar e intercambiar claves para **cifrar el enlace**. |
+| **Bonding** | **Guardar** esas claves en memoria no volátil para reutilizarlas en la siguiente conexión. |
+| **Association** | Método de emparejamiento elegido según las **capacidades de E/S** de ambos dispositivos. |
+| **Authentication** | Emparejamiento con un método de asociación que **protege frente a MITM**. |
+| **Authorization** | Verificación adicional **a nivel de aplicación**, además de la autenticación. |
+
+</div>
+
+Cada conexión **empieza sin seguridad**. Se sube de nivel con el **procedimiento de autenticación** (el tipo de emparejamiento fija el nivel) o con el **de cifrado** (se reutilizan claves ya guardadas por un *bonding* previo; el nivel lo fijó el emparejamiento original).
+
+**Fases del emparejamiento** (sobre una conexión LL ya establecida):
+
+1. **Pairing Feature Exchange:** (Security_Request opcional) Pairing_Request y Pairing_Response.
+2. **Generación de STK/LTK** (*Short/Long Term Key*) mediante *Legacy Pairing* o *LE Secure Connections*. Después se cifra la conexión con la clave de la fase 2.
+3. **Distribución de claves** específicas del transporte, ya sobre el enlace cifrado.
+
+**Métodos de asociación:**
+
+- **Just Works:** sin autenticación (sin protección MITM).
+- **Passkey Entry:** un dispositivo muestra un código de 6 dígitos y el otro lo introduce.
+- **Out-Of-Band:** las claves no viajan por el aire, sino por otro medio (puerto serie, NFC…).
+- **Numeric Comparison** (solo **LE Secure Connections**): ambos muestran un código de 6 dígitos y el usuario confirma si coinciden.
+
+**Privacidad LE:** el dispositivo **genera periódicamente una dirección nueva** para usar por el aire, lo que dificulta que un escáner lo rastree en el tiempo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=46">T2, pp. 46-50</a>.</p>
+
+<h2 id="bt5">Bluetooth 5</h2>
+
+<h3 id="bt5-phy">Nuevas capas físicas</h3>
+
+<div class="table-scroll">
+
+| | LE 1M | LE Coded S=2 | LE Coded S=8 | LE 2M |
+| --- | --- | --- | --- | --- |
+| Velocidad de símbolo | 1 Ms/s | 1 Ms/s | 1 Ms/s | 2 Ms/s |
+| Tasa de datos | 1 Mbit/s | 500 kbit/s | 125 kbit/s | 2 Mbit/s |
+| Detección de errores | CRC | CRC | CRC | CRC |
+| Corrección de errores | — | **FEC** | **FEC** | — |
+| Multiplicador de alcance | 1 | 2 | **4** | 0,8 |
+| En Bluetooth 5 | Obligatoria | Opcional | Opcional | Opcional |
+
+</div>
+
+- **LE 1M** es la capa física de BLE 4.x.
+- **LE Coded** (pensado para *smart home*) gana alcance añadiendo **codificación FEC** y un **pattern mapper** tras el cifrado, CRC y *whitening*: con S=8, cada bit de salida del FEC se convierte en 4 símbolos (0 → 0011, 1 → 1100); con S=2 no se expande. Mismo símbolo/s, menos bits útiles → más alcance.
+- **LE 2M** (pensado para *fitness*) dobla la velocidad a costa de alcance (×0,8).
+
+Así se entienden las cifras de la versión 5: **×2 velocidad** (2M) y **×4 alcance** (Coded S=8).
+
+<h3 id="bt5-adv">Extensiones de *advertising*</h3>
+
+- **Paquetes más grandes y *channel offload*:** el anuncio en el canal **primario** apunta a otro en un canal **secundario** (de datos) con hasta **255 bytes**. Útil para balizas con más datos contextuales.
+- **Encadenamiento** (*packet chaining*): varios paquetes de 255 bytes seguidos.
+- **Advertising sets:** varios conjuntos de datos de anuncio distintos, cada uno con sus parámetros (intervalo, tipo de PDU…).
+- **Periodic advertising:** anuncios periódicos y deterministas con los que los escáneres se **sincronizan**: más eficiente, con menos contención y ciclo de trabajo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=52">T2, pp. 52-55</a>.</p>
+
+<h2 id="mesh">Bluetooth Mesh</h2>
+
+<h3 id="mesh-diseno">Objetivos de diseño</h3>
+
+Comunicación **muchos a muchos**, retransmisión por otros nodos para ampliar el alcance, seguridad frente a escuchas, MITM, *replay*, *trash-can* y fuerza bruta, **funcionar en dispositivos ya existentes**, entrega a tiempo, tolerancia a nodos que se mueven o caen y compatibilidad hacia delante. Para lograrlo combina seis ideas:
+
+<div class="table-scroll">
+
+| Idea | En qué consiste |
+| --- | --- |
+| **Publicación/suscripción** | Quien genera un mensaje lo **publica** en una dirección; los interesados se **suscriben** a ella. Facilita direcciones flexibles y envío a grupos. |
+| **Seguridad en dos capas** | **NetKey** (capa de red): protege toda la comunicación de la malla. **AppKey**: confidencialidad y autenticación de los datos de aplicación entre los dispositivos implicados. Un nodo intermedio puede **autenticar y retransmitir sin leer ni cambiar** los datos: una bombilla no debe poder abrir puertas aunque el comando de la cerradura pase por ella. |
+| **Inundación con retransmisión restringida** | Los mensajes se difunden y los *relays* los reenvían, con reglas para no reenviar lo ya visto ni dar demasiados saltos. |
+| **Amistad** (*friendship*) | Un nodo de bajo consumo se asocia a un vecino siempre encendido que **guarda sus mensajes** y se los entrega cuando los pide; también le entrega las actualizaciones de seguridad. La inicia el nodo de bajo consumo. |
+| **Proxy** | Dispositivos como los móviles pueden no soportar el *advertising bearer* de la malla: un proxy intercambia los mensajes mesh con ellos mediante **conexiones BLE (GATT)**. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=57">T2, pp. 57-62</a>.</p>
+
+<h3 id="mesh-capas">Arquitectura en capas</h3>
+
+<div class="table-scroll">
+
+| Capa (de arriba abajo) | Función |
+| --- | --- |
+| **Model** | Define los modelos y, por tanto, la funcionalidad. |
+| **Foundation model** | Estados, mensajes y modelos para **configurar y gestionar** la red. |
+| **Access** | Formato de los datos de aplicación y su relación con el transporte superior. |
+| **Upper transport** | **Cifra, descifra y autentica** los datos de aplicación. |
+| **Lower transport** | **Segmenta y reensambla** los mensajes del transporte superior. |
+| **Network** | **Direccionamiento** de los mensajes hacia uno o más elementos. |
+| **Bearer** | Cómo viajan los mensajes de red entre nodos (*advertising* o GATT). |
+| Bluetooth LE core | Debajo: Mesh funciona sobre BLE. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=63">T2, p. 63</a>.</p>
+
+<h3 id="mesh-conceptos">Conceptos</h3>
+
+- **Dispositivo sin aprovisionar** (*unprovisioned device*) → tras el *provisioning*, **nodo**. El **provisioner** lo incorpora.
+- **Elemento:** entidad **direccionable** dentro de un nodo. Todo nodo tiene un **elemento primario** y puede tener secundarios. Si cambian el número o estructura de elementos (p. ej., por una actualización de *firmware*), **hay que reaprovisionar** el nodo.
+- **Estado:** valor que representa una condición de un elemento. Quien lo **expone** es **servidor**; quien lo **accede**, **cliente**. Los hay **compuestos** (varios valores) y **ligados** (*bound*: cambiar uno cambia otro).
+- **Mensajes:** toda la comunicación se hace con mensajes. **GET** pide un estado; **SET** lo cambia; **STATUS** responde a un GET o a un SET confirmado, o se envía por sí solo (p. ej., periódicamente).
+- **Modelo:** define la funcionalidad básica, los estados, los mensajes que actúan sobre ellos y el comportamiento asociado.
+  - **Server model:** uno o más estados en uno o más elementos.
+  - **Client model:** pide, cambia o consume estados de un servidor; **no tiene estado**.
+  - **Control model:** combina funcionalidad de cliente y de servidor y puede tener **lógica de control** que coordina otros modelos.
+
+**Ejemplo del tema:** una regleta inteligente con dos enchufes es **un nodo con dos elementos**, cada uno con su dirección unicast y su *Generic Power Level Server model*, con los estados *Generic Power Current*, *Generic Level* y *Generic Power Last*.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=64">T2, pp. 64-65 y 70-76</a>.</p>
+
+<h3 id="mesh-direcciones">Direcciones (16 bits)</h3>
+
+<div class="table-scroll">
+
+| Tipo | Bits | Cantidad | Uso |
+| --- | --- | --- | --- |
+| **Unassigned** | `0b0000000000000000` | 1 | Elemento sin configurar o sin dirección. |
+| **Unicast** | `0b0xxxxxxxxxxxxxxx` (salvo todo ceros) | **32 767** | Un único elemento de un nodo. |
+| **Virtual** | `0b10xxxxxxxxxxxxxx` | 16 384 *hashes* | Multicast ligado a un **Label UUID de 128 bits**; se usa su *hash* para ahorrar espacio. No se registra centralmente: el fabricante puede fijarla para direccionar su producto globalmente. |
+| **Group** | `0b11xxxxxxxxxxxxxx` | **16 384** | Multicast: **16 128 dinámicas** y **256 fijas**. |
+
+</div>
+
+Grupos fijos: 0xFF00-0xFFFB reservados, **0xFFFC all-proxies**, **0xFFFD all-friends**, **0xFFFE all-relays** y **0xFFFF all-nodes**.
+
+En origen **solo puede ir una dirección unicast**. En destino valen unicast, group y virtual; la virtual solo en mensajes de acceso, no de control.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=66">T2, pp. 66-69</a>.</p>
+
+<h3 id="mesh-inundacion">Inundación controlada</h3>
+
+Mesh es una red de **inundación gestionada** (*managed flood*): usa los canales de difusión y cualquier nodo puede recibir y retransmitir. Para limitar las retransmisiones:
+
+- **Heartbeats:** mensajes periódicos que indican que el nodo sigue activo y permiten saber **a cuántos saltos** está, lo que ayuda a ajustar el TTL.
+- **TTL:** cada mensaje lo lleva y **se decrementa en 1 en cada retransmisión**.
+- **Caché de mensajes:** si un nodo ya ha visto el mensaje, lo **descarta**.
+- **Subredes:** particionan la red, sobre todo por seguridad, y además los mensajes **no salen de su subred**, lo que ahorra energía.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=77">T2, pp. 77-79</a>.</p>
+
+<h3 id="provisioning">*Provisioning*</h3>
+
+Convierte un dispositivo sin aprovisionar en **nodo**: pasa a ser conocido por el provisioner y recibe la **NetKey** y una **dirección unicast**. Una red puede tener varias **subredes** (nodos que comparten una NetKey); un nodo puede estar en varias si conoce varias NetKeys.
+
+1. **Beaconing:** el dispositivo se anuncia con el tipo AD **Mesh Beacon**.
+2. **Invitation:** el provisioner lo invita; el dispositivo responde con sus capacidades (número de elementos, algoritmos y E/S).
+3. **Intercambio de claves públicas:** criptografía asimétrica de **curva elíptica FIPS P-256** para crear un canal seguro.
+4. **Autenticación:** el dispositivo muestra un valor aleatorio (parpadeos, pitidos…) tras una acción del usuario y ambos intercambian un *hash* derivado de él.
+5. **Distribución de datos:** cada uno deriva una **clave de sesión** (de su privada y la pública del otro) y con ella se envían la **NetKey** y la **dirección unicast**.
+
+Al final el nodo tiene **NetKey, device key y dirección unicast**. Si tiene varios elementos, el primario usa la primera dirección y los secundarios las siguientes.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=80">T2, pp. 80-86</a>.</p>
+
+<h3 id="mesh-features">Funciones de los nodos</h3>
+
+<div class="table-scroll">
+
+| Función | Qué hace |
+| --- | --- |
+| **Relay** | Recibe y retransmite por el *advertising bearer* para que los mensajes den varios saltos; **máximo 127 saltos**. Depende de la alimentación y capacidad del nodo. |
+| **Low Power Node (LPN)** | Nodo con energía limitada que reduce mucho el **ciclo de trabajo del receptor** gracias a un Friend. |
+| **Friend** | Guarda los mensajes destinados a su LPN y **solo se los entrega cuando el LPN los pide**. |
+| **Proxy** | Recibe por un *bearer* (advertising o GATT) y retransmite por el otro: permite que **dispositivos BLE sin mesh** participen. |
+
+</div>
+
+En el diagrama de ejemplo, los LPN solo hablan con su Friend, y los *relays* forman el esqueleto por el que circula la inundación.
+
+**Publicación y suscripción.** Publicar es enviar de un nodo a uno o más nodos: los mensajes no solicitados se publican a una dirección **unicast, group o virtual**; **las respuestas van siempre a la dirección de origen** del mensaje. Suscribirse es configurar qué recibe el nodo: sus direcciones están en la **Subscription List** del *Configuration Server Model* y sirven para filtrar los mensajes recibidos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=87">T2, pp. 87-93</a>.</p>
+
+<h2 id="casos">Casos de uso</h2>
+
+- **Aplicaciones:** sustitución de cables, puntos de acceso de datos y voz, intercambio y sincronización de ficheros, redes *ad hoc*, medicina, control de existencias, marketing, autenticación.
+- **Mercados:** automoción, balizas y comercio, electrónica de consumo, salud, telefonía, PC, deporte, hogar, *wearables* e industria (IIoT).
+- **IIoT, por qué encaja:** bajo consumo, inmune a interferencias, muchos dispositivos en el mismo espacio, detecta y corrige errores, emula puertos serie (*Serial Port Profile*), Mesh extiende el alcance y la seguridad es de diseño (**AFH** dificulta la interceptación; **LE Secure Connections** evita MITM).
+- **Ejemplos:** proximidad y presencia (abrir el garaje al llegar), localizar y alertar dispositivos, **Auracast** (audio en difusión), *direction finding*, domótica y ciudades (iluminación, climatización, acceso, presencia, alumbrado público), etiquetas electrónicas de estantería, *Ambient IoT*, actualización de *firmware* por el aire, seguimiento de activos, edificios conectados, control industrial en tiempo real y **redes de sensores capilares** (Mesh + pasarela).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/redes/tema-2-bluetooth-le.pdf#page=97">T2, pp. 97-107</a>.</p>
+
+<h2 id="confusiones">Confusiones que debes evitar</h2>
+
+- **BLE ≠ Bluetooth clásico:** es un diseño nuevo, no una versión rebajada de BR/EDR.
+- **Pairing ≠ bonding:** emparejar genera claves; vincular las guarda.
+- **Notify ≠ Indicate:** solo Indicate se confirma.
+- **Broadcaster/Observer ≠ Peripheral/Central:** los dos primeros nunca se conectan.
+- **Master/slave (LL) ≠ cliente/servidor (GATT):** un periférico (slave) suele ser el servidor GATT, pero son conceptos de capas distintas.
+- **Nodo ≠ elemento:** las direcciones unicast son de elementos, no de nodos.
+- **NetKey ≠ AppKey:** la primera deja retransmitir; solo la segunda deja leer los datos de aplicación.
+- **LE Coded ≠ más rápido:** gana alcance a costa de tasa; LE 2M hace lo contrario.
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Explico tres técnicas con las que BLE ahorra energía.
+- ☐ Dibujo la pila separando controller, HCI y host, y digo qué hace cada capa.
+- ☐ Sé cuántos canales hay, cuáles son de *advertising* y por qué están donde están.
+- ☐ Recorro la máquina de estados del LL y digo quién acaba como master y quién como slave.
+- ☐ Distingo los cuatro tipos de paquete de *advertising*.
+- ☐ Relaciono los cuatro roles GAP con sus estados del LL.
+- ☐ Explico las tres fases del emparejamiento y los cuatro métodos de asociación.
+- ☐ Comparo LE 1M, LE 2M y LE Coded.
+- ☐ Explico las cuatro técnicas que limitan la inundación en Mesh.
+- ☐ Describo el *provisioning* paso a paso y qué tiene el nodo al acabar.
+- ☐ Distingo los cuatro tipos de dirección Mesh y las cuatro funciones de nodo.
