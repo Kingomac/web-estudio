@@ -280,6 +280,20 @@ test('la impresión mantiene explicación estática y oculta controles', async (
   await expect(page.locator('.mobile-toc-toggle')).toBeHidden();
 });
 
+test('los bloques de código se imprimen en negro sobre blanco y conservan las negritas', async ({ page }) => {
+  await page.goto('asignaturas/datos/apuntes/mongodb/');
+  const block = page.locator('pre.astro-code').first();
+  const bold = page.locator('pre.astro-code span[style*="font-weight:bold"]').first();
+  await expect(block).toHaveCSS('background-color', 'rgb(36, 41, 46)');
+  await page.emulateMedia({ media: 'print' });
+  await expect(block).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  await expect(block).toHaveCSS('color', 'rgb(0, 0, 0)');
+  await expect(bold).toHaveCSS('color', 'rgb(0, 0, 0)');
+  await expect(bold).toHaveCSS('font-weight', '700');
+  const tokenColors = await page.locator('pre.astro-code span').evaluateAll((spans) => [...new Set(spans.map((span) => getComputedStyle(span).color))]);
+  expect(tokenColors).toEqual(['rgb(0, 0, 0)']);
+});
+
 test('sin JavaScript los laboratorios muestran sus casos en pantalla y no se imprimen', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
