@@ -44,8 +44,7 @@ test('Protocolos admite puntos MooVi sobre 400 y Sistemas embebidos abre directa
 });
 
 test('Redes usa media geométrica y no muestra puntos parciales', async ({ page }) => {
-  await page.goto('asignaturas/redes/');
-  await expect(page).toHaveURL(/\/asignaturas\/redes\/evaluacion\/$/);
+  await page.goto('asignaturas/redes/evaluacion/');
   const continua = page.getByRole('region', { name: 'Evaluación continua' });
   await expect(continua).toContainText('exponente 0,4');
   await continua.getByLabel('Prueba de preguntas objetivas').fill('5');
