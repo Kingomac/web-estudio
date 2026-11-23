@@ -1,0 +1,22 @@
+{
+  "id": "innovacion.materiales.tema-5-propiedad-intelectual",
+  "kind": "material",
+  "subjectId": "innovacion",
+  "slug": "tema-5-propiedad-intelectual",
+  "title": "Tema 5 · Protección de la propiedad intelectual e industrial",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 5 (9 páginas): registro intelectual del software, propiedad industrial y patentes.",
+  "tagIds": [
+    "innovacion.tags.propiedad"
+  ],
+  "order": 50,
+  "file": "materiales/innovacion/tema-5-propiedad-intelectual.pdf",
+  "format": "pdf",
+  "providedName": "Protección intelectual industrial.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 9,
+  "sha256": "43ac9bab939963d30a42a25405decfa5a53c93cd60f78d66b587fc71c9832f26"
+}

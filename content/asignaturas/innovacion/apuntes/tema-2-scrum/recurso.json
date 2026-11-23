@@ -1,0 +1,23 @@
+{
+  "kind": "apuntes",
+  "id": "innovacion.apuntes.tema-2-scrum",
+  "subjectId": "innovacion",
+  "slug": "tema-2-scrum",
+  "title": "Tema 2 · Gestión ágil de proyectos con SCRUM",
+  "description": "Manifiesto ágil (valores y doce principios), roles del equipo Scrum, historias de usuario y planning poker, product y sprint backlog, issues, el sprint y sus cuatro reuniones con duración, asistentes y resultado.",
+  "scope": "Tema 2 completo (diapositivas 2–51).",
+  "tagIds": [
+    "innovacion.tags.scrum"
+  ],
+  "order": 20,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "innovacion.materiales.tema-2-scrum",
+      "pdfPages": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51],
+      "label": "Diapositivas usadas"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "apuntes",
+  "id": "innovacion.apuntes.tema-4-lean-canvas",
+  "subjectId": "innovacion",
+  "slug": "tema-4-lean-canvas",
+  "title": "Tema 4 · Modelo de negocio con Lean Canvas",
+  "description": "Lean Canvas casilla a casilla y su orden de relleno, ejemplos (chatbot, cafetería y Uber), análisis de riesgos de producto, cliente y mercado, ciclo de vida ITIL y estimación del presupuesto con el ejemplo de DeepL: portafolio, SLA, demanda, capacidad, costes y precios.",
+  "scope": "Tema 4 completo (diapositivas 2–33).",
+  "tagIds": [
+    "innovacion.tags.lean-canvas"
+  ],
+  "order": 40,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "innovacion.materiales.tema-4-lean-canvas",
+      "pdfPages": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
+      "label": "Diapositivas usadas"
+    }
+  ]
+}

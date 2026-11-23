@@ -1,0 +1,22 @@
+{
+  "id": "innovacion.materiales.tema-1-design-thinking",
+  "kind": "material",
+  "subjectId": "innovacion",
+  "slug": "tema-1-design-thinking",
+  "title": "Tema 1 · Design Thinking",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 1 (30 páginas): qué es Design Thinking, sus cinco fases y las herramientas de cada una.",
+  "tagIds": [
+    "innovacion.tags.design-thinking"
+  ],
+  "order": 10,
+  "file": "materiales/innovacion/tema-1-design-thinking.pdf",
+  "format": "pdf",
+  "providedName": "IETIoT_Design Thinking26.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 30,
+  "sha256": "3a02e1634541a821c35ea0bc8eb44b648676823ef362a7ddfb7cf562a87c723e"
+}

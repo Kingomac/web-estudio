@@ -1,0 +1,280 @@
+<h2 id="idea-central">Idea central</h2>
+
+**Scrum** es una metodología **ágil** para desarrollar software: el trabajo se divide en iteraciones cortas (**sprints**), al final de cada una se entrega algo que funciona y se ajusta el plan con lo aprendido. El tema se organiza en cinco bloques: el **manifiesto ágil**, las **personas** (el equipo Scrum), los **artefactos** (historias de usuario, *product backlog*, *sprint backlog* e *issues*), el **sprint** y las **reuniones** (planificación, *daily*, revisión y retrospectiva).
+
+Las diapositivas están en inglés. Estos apuntes las explican en castellano y conservan los términos ingleses, que son los que se usan en las herramientas (Taiga, Miro).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=2">T2, pp. 2-3</a>.</p>
+
+<h2 id="manifiesto-agil">1. El manifiesto ágil</h2>
+
+<h3 id="cascada">El punto de partida: el ciclo en cascada</h3>
+
+El tema abre con el **ciclo de vida en cascada** (*waterfall*): requisitos, análisis, diseño, código, pruebas y mantenimiento, una fase detrás de otra, y pregunta por sus **problemas**. La respuesta implícita es la que dan los métodos ágiles: en cascada el cliente no ve nada hasta el final y cambiar un requisito obliga a deshacer fases ya cerradas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=4">T2, p. 4</a>.</p>
+
+<h3 id="que-es-agil">Qué es ágil</h3>
+
+Los procesos ágiles son una **familia de metodologías** de desarrollo de software que **producen software en iteraciones cortas** y **permiten más cambios y flexibilidad** en el diseño. Lo que significa «ágil», en seis puntos:
+
+1. **Iteraciones cortas:** dividir el trabajo en piezas pequeñas y entregar el software al cliente **tan a menudo como sea posible**.
+2. **Diseño incremental:** retrasar las decisiones de diseño todo lo posible y mejorar el diseño existente a medida que se sabe más.
+3. **Implicación del usuario:** en lugar de producir al principio estándares formales, completos e inmutables, pedir a los usuarios **retroalimentación constante**.
+4. **Documentación mínima:** solo la **cantidad necesaria**.
+5. **Comunicación informal:** constante, pero no necesariamente mediante documentos formales; las personas se comunican mejor de forma informal.
+6. **Adaptación al cambio:** asumir que los requisitos y el entorno **van a cambiar** y buscar buenas formas de afrontarlo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=5">T2, pp. 5-6</a>.</p>
+
+<h3 id="valores">Los cuatro valores</h3>
+
+El **Manifiesto para el desarrollo ágil de software** lo firmaron en **2001 Kent Beck y otros 16** autores (agilemanifesto.org). Dice que, a través de su trabajo, han aprendido a valorar:
+
+<div class="table-scroll">
+
+| Se valora más… | …que |
+| --- | --- |
+| **Individuos e interacciones** | procesos y herramientas |
+| **Software que funciona** | documentación exhaustiva |
+| **Colaboración con el cliente** | negociación de contratos |
+| **Respuesta ante el cambio** | seguir un plan |
+
+</div>
+
+La frase final es la que suele preguntarse: **aunque hay valor en los elementos de la derecha, se valoran más los de la izquierda**. El manifiesto no dice que la documentación o el plan sobren.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=7">T2, pp. 7-8</a>.</p>
+
+<h3 id="principios">Los doce principios</h3>
+
+La lámina de la Agile Alliance que reproduce el tema incluye también los doce principios:
+
+1. La máxima prioridad es **satisfacer al cliente** mediante la **entrega temprana y continua** de software con valor.
+2. **Aceptar cambios en los requisitos**, incluso en etapas tardías: los procesos ágiles aprovechan el cambio como ventaja competitiva del cliente.
+3. **Entregar software que funcione con frecuencia**, de un par de semanas a un par de meses, con preferencia por el plazo más corto.
+4. Las personas de negocio y los desarrolladores **trabajan juntos a diario** durante todo el proyecto.
+5. Construir los proyectos en torno a **personas motivadas**: darles el entorno y el apoyo que necesitan y confiar en ellas.
+6. El método más eficiente y eficaz de transmitir información al equipo y dentro de él es la **conversación cara a cara**.
+7. El **software que funciona es la medida principal de progreso**.
+8. Los procesos ágiles promueven el **desarrollo sostenible**: promotores, desarrolladores y usuarios deben poder mantener un **ritmo constante** indefinidamente.
+9. La atención continua a la **excelencia técnica** y al buen diseño mejora la agilidad.
+10. **Simplicidad**, el arte de maximizar la cantidad de trabajo **no** hecho, es esencial.
+11. Las mejores arquitecturas, requisitos y diseños surgen de **equipos autoorganizados**.
+12. A intervalos regulares, el equipo **reflexiona** sobre cómo ser más eficaz y **ajusta su comportamiento** en consecuencia.
+
+El principio 12 es el que da origen a la retrospectiva, y el 7 explica por qué cada sprint termina con un incremento que funciona.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=7">T2, p. 7</a>.</p>
+
+<h3 id="proceso">El proceso Scrum de un vistazo</h3>
+
+El diagrama del tema encadena las piezas que se estudian después:
+
+```text
+Visión → Historias de usuario → Product backlog
+   → (Sprint planning) → Selected product backlog → Sprint backlog
+   → Sprint de 2-4 semanas, con Daily Scrum cada 24 h
+   → Nueva funcionalidad → Sprint review → Retrospectiva → siguiente sprint
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=9">T2, p. 9</a>.</p>
+
+<h2 id="equipo">2. Las personas: el equipo Scrum</h2>
+
+El equipo Scrum tiene tres roles: **Product Owner**, **Scrum Master** y **equipo de desarrollo**. Es **autoorganizado**, tiene **entre 5 y 11 miembros** y debe ser **adaptable al cambio y muy flexible**. En el esquema del tema, el «tú» que queda fuera del equipo, junto a los *stakeholders*, es el **propietario del negocio (el cliente)**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=10">T2, p. 10</a>.</p>
+
+<h3 id="product-owner">Product Owner</h3>
+
+Es **responsable de maximizar el valor del producto** que resulta del trabajo del equipo. También responde de la **gestión eficaz del *product backlog***, que incluye:
+
+- Desarrollar y comunicar explícitamente el **objetivo del producto** (*Product Goal*).
+- **Crear y comunicar** con claridad los elementos del *backlog*.
+- **Ordenar** los elementos del *backlog*.
+- Asegurar que el *backlog* es **transparente, visible y comprendido**.
+
+Sus actividades clave: describir los elementos del *backlog* para construir una comprensión compartida del problema y la solución con el equipo; **decidir la prioridad** de los elementos para obtener el máximo resultado con el mínimo coste; **determinar si un elemento se ha entregado satisfactoriamente**; y dar transparencia al trabajo que viene.
+
+Tres reglas sobre el rol:
+
+- Puede hacer el trabajo o **delegarlo**, pero **sigue siendo el responsable**.
+- Toda la organización debe **respetar sus decisiones**, que se ven en el contenido y el orden del *backlog* y en el incremento que se inspecciona en la *sprint review*.
+- **Es una persona, no un comité.** Puede representar a muchos *stakeholders*, y quien quiera cambiar el *backlog* tiene que **convencer al Product Owner**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=11">T2, pp. 11-13</a>.</p>
+
+<h3 id="scrum-master">Scrum Master</h3>
+
+Es el rol responsable de que el equipo **viva los valores y principios ágiles** y siga los procesos y prácticas que acordó. Sus responsabilidades:
+
+- **Eliminar obstáculos.**
+- Crear un entorno en el que el equipo pueda ser eficaz.
+- Atender a la **dinámica del equipo**.
+- Asegurar una buena relación entre el equipo y el Product Owner, y con quienes están fuera del equipo.
+- **Proteger al equipo** de interrupciones y distracciones externas.
+
+Actúa como **facilitador**: asigna y delega tareas para que el trabajo se alinee con las prioridades y el calendario. Sirve a tres destinatarios:
+
+<div class="table-scroll">
+
+| Sirve a… | Cómo |
+| --- | --- |
+| **El equipo Scrum** | *Coaching* en autogestión y multifuncionalidad; ayuda a crear incrementos de alto valor que cumplan la **definición de hecho** (*Definition of Done*); hace que se eliminen los impedimentos; asegura que todos los eventos Scrum ocurren, son productivos y **respetan su tiempo máximo** (*timebox*). |
+| **El Product Owner** | Técnicas para definir el objetivo del producto y gestionar el *backlog*; ayuda a que el equipo entienda la necesidad de elementos claros y concisos; planificación empírica en entornos complejos; facilita la colaboración con los *stakeholders*. Trabaja con él para traducir épicas e historias en **tareas accionables** para los desarrolladores. |
+| **La organización** | Lidera, forma y asesora en la adopción de Scrum; planifica su implantación; ayuda a entender el enfoque empírico; elimina barreras entre *stakeholders* y equipos. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=15">T2, pp. 15-18</a>.</p>
+
+<h3 id="desarrollo">Equipo de desarrollo</h3>
+
+- Un equipo, en sentido ágil, es un **grupo pequeño** asignado al mismo proyecto (**entre 5 y 11 personas**).
+- **Responsabilidad compartida:** los resultados, buenos o malos, se atribuyen **a todo el equipo**, no a un individuo.
+- Es **funcional**: reúne todas las competencias necesarias, técnicas (programar, diseñar, probar) y de negocio (conocimiento del dominio, capacidad de decisión).
+- **Los roles importan menos que los resultados:** un desarrollador puede probar o analizar requisitos, y un analista puede sugerir ideas de implementación.
+
+Los desarrolladores son quienes se comprometen a crear el **incremento** en cada sprint, y siempre responden de: **crear el plan del sprint** (el *sprint backlog*), **asegurar la calidad** cumpliendo la *Definition of Done* y **adaptar su plan cada día** hacia el objetivo del sprint.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=20">T2, pp. 20-21</a>.</p>
+
+<h2 id="artefactos">3. Artefactos</h2>
+
+<h3 id="historias">Historias de usuario</h3>
+
+Una **historia de usuario** es una **unidad pequeña y autocontenida** de trabajo de desarrollo, pensada para lograr un objetivo concreto dentro de un producto. Se escribe desde el **punto de vista del usuario** con este formato:
+
+```text
+Como [descripción del usuario], quiero [funcionalidad] para [beneficio].
+As a [user role], I want to [goal], so I can [reason].
+```
+
+Ejemplos del tema:
+
+- Como **administrador de bases de datos**, quiero **combinar automáticamente conjuntos de datos de distintas fuentes** para **crear informes** para mis clientes internos con más facilidad.
+- Como **responsable de marca**, quiero **recibir alertas** cuando un revendedor anuncie nuestros productos por debajo del precio acordado para **proteger la marca** rápidamente.
+- Como **líder de un equipo remoto**, quiero que la aplicación de mensajería incluya **compartir y anotar archivos** para que el equipo **colabore en tiempo real** y guarde su trabajo en un único sitio.
+
+Cada historia lleva dos datos:
+
+- **Estimación de esfuerzo:** cantidad de trabajo necesaria para implementarla, en **puntos** que siguen la **serie de Fibonacci** o similar. El equipo debe **acordar qué significa 1 punto** (¿el trabajo de una persona en un día?). Se estima con ***planning poker*** (el tema usa scrumpoker.online y propone estimar la primera historia de ejemplo).
+- **Prioridad:** la fija el **Product Owner** ordenando las historias; **cuanto más arriba en la lista, más prioridad**.
+
+Usar Fibonacci (1, 2, 3, 5, 8, 13…) en vez de números consecutivos hace que, cuanto más grande es una historia, más gruesa sea la estimación: reconoce que no se puede distinguir entre 12 y 13 puntos, pero sí entre 8 y 13.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=23">T2, pp. 23-26</a>.</p>
+
+<h3 id="product-backlog">Product backlog</h3>
+
+Es una **lista ordenada** de lo que hace falta para crear o mejorar el producto: nuevas funcionalidades, cambios en las existentes, corrección de errores, cambios de infraestructura u otras actividades. Es la **única fuente de trabajo** del equipo Scrum, y sus elementos suelen ser **historias de usuario**. En **Taiga**, el *backlog* solo admite historias de usuario; el resto de trabajos va en otra lista, la de ***issues***.
+
+Reglas del *backlog*:
+
+- **Nada se hace si no está en el *backlog*.**
+- Pero estar en él **no garantiza que se haga**: es una **opción** del equipo para lograr un resultado, **no un compromiso**.
+- Los elementos varían en tamaño y detalle según **lo pronto que se vayan a trabajar**: los de arriba, más concretos.
+- El equipo puede fijar una **definición de preparado** (*Definition of Ready*): la información que quiere tener antes de empezar un elemento.
+- El *backlog* es **del equipo**, y el Product Owner tiene la responsabilidad principal de mantenerlo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=27">T2, pp. 27-28</a>.</p>
+
+<h3 id="refinamiento">Refinamiento del backlog</h3>
+
+El Product Owner y parte o todo el equipo revisan el *backlog* para asegurar que contiene los elementos adecuados, que están **priorizados** y que los de arriba están **listos para asignarse a un sprint**. Actividades:
+
+- **Eliminar** historias que ya no parecen relevantes.
+- **Crear** historias para necesidades nuevas.
+- **Revaluar la prioridad** relativa.
+- **Estimar** las historias que aún no tienen estimación y **corregir** estimaciones con información nueva.
+- **Dividir** historias de alta prioridad demasiado grandes para caber en la próxima iteración.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=29">T2, pp. 29-30</a>.</p>
+
+<h3 id="sprint-backlog">Sprint backlog</h3>
+
+Es el conjunto de elementos que el equipo **selecciona del *product backlog*** para trabajar en el **próximo sprint**. Es **más corto** que el *product backlog* y debe **mantenerse lo más fijo posible** durante el sprint. **Todo el equipo** (Scrum Master, Product Owner y desarrolladores) comparte su propiedad. La plantilla del tema descompone cada historia (o error) en **tareas**, con responsable, estado y horas estimadas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=31">T2, pp. 31-32</a>.</p>
+
+<h3 id="issues">Issues</h3>
+
+Un ***issue*** puede representar una historia, un error, una tarea u otro tipo de trabajo: cambio, ayuda informática, incidencia, nueva funcionalidad, problema, petición de servicio o soporte. En Taiga, un *issue* puede **promoverse a historia de usuario** o **asignarse a un sprint**, y entonces aparece en el *backlog* y en el tablero del sprint.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=33">T2, pp. 33-35</a>.</p>
+
+<h2 id="sprint">4. El sprint</h2>
+
+Un **sprint** es un periodo (por ejemplo, **14 días**) en el que el equipo completa una cantidad de trabajo fijada. El objetivo es llevar **nueva funcionalidad y mejoras a los clientes lo antes posible**. Un sprint:
+
+- **Empieza con una reunión de planificación** (*Sprint Planning*).
+- Tiene un conjunto de **objetivos** (*Sprint Goals*).
+- Tiene en el ***sprint backlog*** las tareas que se van a desarrollar.
+- **Rara vez** se modifican esas tareas durante el sprint.
+
+Los sprints se encadenan: cada uno recorre diseño, construcción, prueba y revisión, y termina en un **lanzamiento** (*launch*).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=36">T2, pp. 36-37</a>.</p>
+
+<h2 id="reuniones">5. Reuniones</h2>
+
+<div class="table-scroll">
+
+| Reunión | Cuándo | Duración | Quién | Resultado |
+| --- | --- | --- | --- | --- |
+| **Sprint Planning** | Al empezar el sprint. | **2 h por semana de sprint** (¿máximo 4 h?). | Todo el equipo Scrum; la **dirige el Product Owner**. | Objetivo del sprint y *sprint backlog*. |
+| **Daily Scrum** | Cada día del sprint. | **No más de 15 min.** | Product Owner, desarrolladores y Scrum Master. | Progreso y **bloqueos** a la vista. |
+| **Sprint Review** | Al final del sprint. | **Una hora por semana de sprint**, aproximadamente. | Equipo Scrum, dirección, *stakeholders* del negocio y cualquiera implicado. | *Feedback* sobre lo conseguido. |
+| **Retrospectiva** | Al final del sprint. | **No más de 4 h.** | **Scrum Master y equipo de desarrollo.** | **Acciones para mejorar** el rendimiento del equipo. |
+
+</div>
+
+<h3 id="sprint-planning">Sprint Planning</h3>
+
+Es el evento que **abre el sprint**: define **qué** se puede entregar y **cómo** se va a conseguir, en colaboración con todo el equipo.
+
+- **El qué:** el Product Owner describe el **objetivo del sprint** y qué elementos del *backlog* contribuyen a él; el equipo decide qué puede hacerse.
+- **El cómo:** el equipo de desarrollo planifica el trabajo necesario. El plan resultante es una **negociación** entre desarrolladores y Product Owner basada en **valor y esfuerzo**.
+- **El quién:** no se puede planificar **sin el Product Owner** (define el objetivo según el valor que busca) **ni sin el equipo de desarrollo** (sabe si puede cumplirlo).
+- **Entradas:** el *product backlog*, el trabajo ya hecho en el incremento y la **capacidad** del equipo.
+- **Salidas:** que el equipo sepa describir el **objetivo del sprint** y cómo empezará a trabajar en él, visible en el ***sprint backlog***.
+
+Para prepararla: el Product Owner la dirige, el *backlog* debe estar **actualizado y refinado**, se fija un **límite de tiempo** y se pone el foco en **los resultados, no en el trabajo**. El tema enlaza una plantilla de Miro.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=39">T2, pp. 39-43</a>.</p>
+
+<h3 id="daily">Daily Scrum</h3>
+
+Durante el sprint, el equipo comprueba cada día **cómo avanza el trabajo**. El objetivo es comentar el progreso y **sacar a la luz los bloqueos** que pondrían en riesgo el objetivo del sprint. Participa el equipo principal y dura **15 minutos como mucho**. Se estructura con tres preguntas:
+
+1. ¿En qué trabajé **ayer**?
+2. ¿En qué trabajo **hoy**?
+3. ¿Qué problemas **me bloquean**?
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=44">T2, pp. 44-46</a>.</p>
+
+<h3 id="sprint-review">Sprint Review</h3>
+
+Es una **reunión informal al final del sprint** en la que el equipo **muestra lo conseguido** y los *stakeholders* dan su opinión. Es una **sesión de trabajo colaborativa**, no una presentación en un solo sentido.
+
+Su herramienta es el **gráfico de quemado del sprint** (*sprint burndown chart*), que sigue cómo se completa el trabajo **comparando el tiempo con el trabajo pendiente**, medido en puntos de historia u horas. Tiene tres elementos: la **estadística de estimación** (el eje vertical: puntos u horas), el **trabajo total que queda** en el sprint (la línea real) y una **aproximación de dónde debería estar el equipo** (la línea ideal, que baja en recta hasta cero). Si la línea real queda por encima de la ideal, el equipo va con retraso.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=47">T2, pp. 47-49</a>.</p>
+
+<h3 id="retrospectiva">Retrospectiva</h3>
+
+Es una reunión para comentar **qué pasó durante el desarrollo y la entrega**, con el objetivo de **mejorar en el futuro** a partir de lo aprendido. Como mínimo, toda retrospectiva debe producir dos listas: **«lo que fue bien»** y **«lo que se puede mejorar»**. Se celebra al **final del sprint**, dura **4 horas como mucho**, asisten el **Scrum Master y el equipo de desarrollo** y su salida son **acciones para mejorar el rendimiento del equipo**.
+
+La diferencia con la *review* es el objeto: la *review* inspecciona **el producto** (con los *stakeholders*); la retrospectiva inspecciona **cómo trabaja el equipo**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/innovacion/tema-2-scrum.pdf#page=50">T2, pp. 50-51</a>.</p>
+
+<h2 id="repaso">Para repasar</h2>
+
+- Los **cuatro valores** del manifiesto (2001) y que lo de la derecha **también tiene valor**.
+- Tres roles: **Product Owner** (valor y *backlog*; una persona, no un comité), **Scrum Master** (facilitador, quita impedimentos) y **desarrolladores** (5-11, responsabilidad compartida).
+- Historia de usuario: «Como… quiero… para…», con **puntos Fibonacci** y **prioridad** del Product Owner.
+- *Product backlog* = opciones, no compromisos; *sprint backlog* = lo elegido para un sprint, lo más fijo posible.
+- *Timeboxes*: *planning* 2 h por semana de sprint, *daily* 15 min, *review* ~1 h por semana, retrospectiva hasta 4 h.
+- *Burndown*: trabajo pendiente frente a tiempo, comparado con la línea ideal.

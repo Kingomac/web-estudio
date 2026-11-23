@@ -1,0 +1,23 @@
+{
+  "kind": "apuntes",
+  "id": "innovacion.apuntes.tema-3-innovacion-emprendimiento",
+  "subjectId": "innovacion",
+  "slug": "tema-3-innovacion-emprendimiento",
+  "title": "Tema 3 · Aspectos básicos de innovación y emprendimiento",
+  "description": "Qué es emprender y el ejemplo de Spotify, startups y sus fuentes de financiación, spin-offs universitarias y la escala TRL, ejemplos de USC, UDC y UVigo, apoyo de la USC, Uninova y Unirisco, programas y claves para crear una spin-off.",
+  "scope": "Tema 3 completo (diapositivas 2–28).",
+  "tagIds": [
+    "innovacion.tags.emprendimiento"
+  ],
+  "order": 30,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "innovacion.materiales.tema-3-innovacion-emprendimiento",
+      "pdfPages": [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+      "label": "Diapositivas usadas"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "apuntes",
+  "id": "innovacion.apuntes.tema-1-design-thinking",
+  "subjectId": "innovacion",
+  "slug": "tema-1-design-thinking",
+  "title": "Tema 1 · Design Thinking",
+  "description": "Qué es Design Thinking y qué aporta, sus cinco fases (empatizar, definir, idear, prototipar y evaluar), la entrevista, el punto de vista, los 5 porqués, la matriz de estacionamiento, SCAMPER y el MVP de Dropbox.",
+  "scope": "Tema 1 completo (diapositivas 2–30).",
+  "tagIds": [
+    "innovacion.tags.design-thinking"
+  ],
+  "order": 10,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "innovacion.materiales.tema-1-design-thinking",
+      "pdfPages": [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 26, 27, 28, 30],
+      "label": "Diapositivas usadas"
+    }
+  ]
+}

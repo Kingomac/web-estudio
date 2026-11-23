@@ -1,0 +1,22 @@
+{
+  "id": "innovacion.materiales.tema-3-innovacion-emprendimiento",
+  "kind": "material",
+  "subjectId": "innovacion",
+  "slug": "tema-3-innovacion-emprendimiento",
+  "title": "Tema 3 · Aspectos básicos de innovación y emprendimiento",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 3 (28 páginas): emprendimiento, startups, spin-offs universitarias, escala TRL y ecosistema de apoyo.",
+  "tagIds": [
+    "innovacion.tags.emprendimiento"
+  ],
+  "order": 30,
+  "file": "materiales/innovacion/tema-3-innovacion-emprendimiento.pdf",
+  "format": "pdf",
+  "providedName": "IETIoT_Innovación-EmprendementoV1.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 28,
+  "sha256": "444d20031799ba4fe02def87d86abe5a1a92816cbf106bbc3f219257ad72fe85"
+}

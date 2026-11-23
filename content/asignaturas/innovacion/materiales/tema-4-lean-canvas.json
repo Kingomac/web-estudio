@@ -1,0 +1,22 @@
+{
+  "id": "innovacion.materiales.tema-4-lean-canvas",
+  "kind": "material",
+  "subjectId": "innovacion",
+  "slug": "tema-4-lean-canvas",
+  "title": "Tema 4 · Modelo de negocio: Lean Canvas",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 4 (33 páginas): Lean Canvas, análisis de riesgos, ciclo de vida ITIL y estimación del presupuesto.",
+  "tagIds": [
+    "innovacion.tags.lean-canvas"
+  ],
+  "order": 40,
+  "file": "materiales/innovacion/tema-4-lean-canvas.pdf",
+  "format": "pdf",
+  "providedName": "LeanCanvas_25.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 33,
+  "sha256": "50eb9d020385e1f0435a7d6e32e2fbc3018d34ebc8e876ee6bfe30717e3593d1"
+}

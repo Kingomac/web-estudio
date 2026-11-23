@@ -1,0 +1,22 @@
+{
+  "id": "innovacion.materiales.tema-2-scrum",
+  "kind": "material",
+  "subjectId": "innovacion",
+  "slug": "tema-2-scrum",
+  "title": "Tema 2 · SCRUM, una metodología ágil",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 2 (52 páginas): manifiesto ágil, equipo Scrum, artefactos, sprint y reuniones.",
+  "tagIds": [
+    "innovacion.tags.scrum"
+  ],
+  "order": 20,
+  "file": "materiales/innovacion/tema-2-scrum.pdf",
+  "format": "pdf",
+  "providedName": "IETIoT_SCRUM_V2.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 52,
+  "sha256": "0ea10eb1cae892b6b53dd43209311ee448f0be8c84005a4b12cb16a9f6883688"
+}

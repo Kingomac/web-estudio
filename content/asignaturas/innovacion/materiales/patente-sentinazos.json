@@ -1,0 +1,23 @@
+{
+  "id": "innovacion.materiales.patente-sentinazos",
+  "kind": "material",
+  "subjectId": "innovacion",
+  "slug": "patente-sentinazos",
+  "title": "Ejemplo de patente: Sentinazos (ES 2 392 411 A1)",
+  "description": "Ejemplo de patente citado en el tema 5: solicitud publicada por la OEPM.",
+  "scope": "Solicitud de patente completa (24 páginas): portada, descripción, reivindicaciones, figuras e informe sobre el estado de la técnica con opinión escrita.",
+  "tagIds": [
+    "innovacion.tags.propiedad"
+  ],
+  "order": 60,
+  "file": "materiales/innovacion/patente-sentinazos.pdf",
+  "format": "pdf",
+  "providedName": "Pat-Sentinazos-ES-2392411_A1.pdf",
+  "origin": {
+    "label": "Oficina Española de Patentes y Marcas (OEPM), enlazada desde el tema 5",
+    "url": "https://consultas2.oepm.es/pdf/ES/0000/000/02/39/24/ES2392411_A1.pdf"
+  },
+  "category": "ejemplo",
+  "pageCount": 24,
+  "sha256": "1b421b4abe0b8bc90b3fe2cce2a3e2ba8334514a3e39bd5d4ecf188edc5c37c0"
+}

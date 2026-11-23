@@ -1,0 +1,28 @@
+{
+  "kind": "apuntes",
+  "id": "innovacion.apuntes.tema-5-propiedad-intelectual",
+  "subjectId": "innovacion",
+  "slug": "tema-5-propiedad-intelectual",
+  "title": "Tema 5 · Protección de la propiedad intelectual e industrial",
+  "description": "Propiedad intelectual frente a industrial, registro del software (no patentable en España), patentes y sus tres requisitos, y lectura guiada de una patente real (Sentinazos): portada, descripción, reivindicaciones e informe de la OEPM.",
+  "scope": "Tema 5 completo (diapositivas 2–9) y la patente de ejemplo Sentinazos que enlaza el tema.",
+  "tagIds": [
+    "innovacion.tags.propiedad"
+  ],
+  "order": 50,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "innovacion.materiales.tema-5-propiedad-intelectual",
+      "pdfPages": [2, 3, 4, 5, 6, 7, 8, 9],
+      "label": "Diapositivas usadas"
+    },
+    {
+      "materialId": "innovacion.materiales.patente-sentinazos",
+      "pdfPages": [1, 2, 3, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24],
+      "label": "Páginas de la patente usadas"
+    }
+  ]
+}
