@@ -1,0 +1,22 @@
+{
+  "id": "arquitecturas.materiales.tema-1-introduccion",
+  "kind": "material",
+  "subjectId": "arquitecturas",
+  "slug": "tema-1-introduccion",
+  "title": "Tema 1 · Introducción a las nuevas arquitecturas IoT",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 1 (75 páginas): evolución de las arquitecturas IoT, componentes básicos, desafíos y casos de uso.",
+  "tagIds": [
+    "arquitecturas.tags.introduccion"
+  ],
+  "order": 10,
+  "file": "materiales/arquitecturas/tema-1-introduccion.pdf",
+  "format": "pdf",
+  "providedName": "1_NAPIoT_Intro_v3_20261115.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 75,
+  "sha256": "3eb760746911bafeea9cf6f1c8f757293174a5608763ebf99376df92f9be71a7"
+}

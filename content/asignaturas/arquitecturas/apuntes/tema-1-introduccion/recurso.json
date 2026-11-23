@@ -1,0 +1,23 @@
+{
+  "kind": "apuntes",
+  "id": "arquitecturas.apuntes.tema-1-introduccion",
+  "subjectId": "arquitecturas",
+  "slug": "tema-1-introduccion",
+  "title": "Tema 1 · Introducción a las nuevas arquitecturas IoT",
+  "description": "Historia del IoT desde el RFID, paradigmas Cloud, Edge, Fog, MEC y Mist, Industria 4.0 y 5.0 y tendencias, capas y componentes de una arquitectura, desafíos y casos de uso.",
+  "scope": "Tema 1 completo (diapositivas 2–75).",
+  "tagIds": [
+    "arquitecturas.tags.introduccion"
+  ],
+  "order": 10,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "arquitecturas.materiales.tema-1-introduccion",
+      "pdfPages": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75],
+      "label": "Diapositivas usadas"
+    }
+  ]
+}

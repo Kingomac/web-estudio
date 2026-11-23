@@ -1,0 +1,378 @@
+<h2 id="idea-central">Idea central</h2>
+
+El tema sitúa la asignatura en cuatro bloques: **cómo han evolucionado** las arquitecturas IoT (de los sistemas pre-IoT al Cloud y, después, a los paradigmas que acercan el cómputo a los dispositivos), **qué piezas** tiene una arquitectura IoT, **qué problemas** plantea (interoperabilidad, escala, eficiencia, ciberseguridad y privacidad) y **dónde se aplica**. El hilo conductor es el desplazamiento del procesamiento: primero todo va a la **nube**; las «nuevas arquitecturas» reparten parte de ese trabajo hacia el **borde** (*edge*), la **niebla** (*fog*) y los propios **nodos** (*mist*).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=2">T1, p. 2</a>.</p>
+
+<h2 id="historia">Historia: de los sistemas pre-IoT a la era IoT</h2>
+
+El término ***Internet of Things*** lo popularizó el **Auto-ID Lab del MIT a partir de 1999**, pero tiene raíces previas en el **RFID** (*Radio Frequency IDentification*), los dispositivos inteligentes e Internet. El tema separa dos líneas de desarrollos **pre-IoT**: los sistemas primitivos y de RFID, y los dispositivos inteligentes pre-Internet.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=3">T1, p. 3</a>.</p>
+
+<h3 id="rfid">Sistemas primitivos y RFID</h3>
+
+<div class="table-scroll">
+
+| Fecha | Hito | Por qué importa |
+| --- | --- | --- |
+| **1898** | **Teleautomaton**, sistema de actuación y control remoto. | Considerado el **primer dron marino**. |
+| **1935** | Primer **radar**. | Detecta aviones que se acercan, pero **no distingue propios de enemigos**. |
+| **1940s** | **IFF** (*Identify Friend or Foe*), británico, en la Segunda Guerra Mundial. | El avión lleva un transmisor que, al captar ciertas señales del radar en tierra, **difunde (broadcast) un identificador**. Es la idea de identificación remota. |
+| **1948** | Harry Stockman publica *Communication by Means of Reflected Power*. | Bases teóricas del **RFID moderno**. |
+| **1950s–1960s** | Primeros prototipos que usan energía de RF para identificar objetos a distancia. | — |
+| **1973** | Mario Cardullo patenta el **primer tag RFID activo con memoria programable**. | — |
+| **1970s–1980s** | Primeros sistemas RFID de **transporte** (peajes, seguimiento de camiones con materiales nucleares) y **control de acceso** (pacientes de hospital, empleados). | — |
+| **1990s** | IBM patenta el primer sistema comercial RFID en **UHF** (unos **12 m** de alcance). | **Poco éxito por ser demasiado caro.** |
+| **1999** | Uniform Code Council, EAN, Procter & Gamble y Gillette financian el **Auto-ID Center del MIT**. | Objetivo: tags RFID **de bajo coste** para seguir productos en la **cadena de suministro**; los datos asociados al **ID único** de cada tag irían a una **base de datos accesible por Internet**. |
+| **1999–2003** | El Auto-ID Center recibe el apoyo de grandes empresas, entidades públicas (como el DoD de EE. UU.) y proveedores de RFID. | — |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=4">T1, pp. 4-9</a>.</p>
+
+<h3 id="pre-internet">Dispositivos inteligentes pre-Internet y de los inicios de Internet</h3>
+
+<div class="table-scroll">
+
+| Fecha | Hito | Detalle |
+| --- | --- | --- |
+| **1969** | Se empiezan a conectar ordenadores a **ARPANET**. | Iniciativa del DoD de EE. UU. Hasta **1990** fue el *backbone* de Internet; después la ampliaron operadoras e ISP privados. |
+| **1973** | Máquina de *vending* **Prancing Pony** (Stanford AI Lab). | Su stock se consultaba desde un terminal remoto (un teletipo) por la red interna del campus. |
+| **1982** | Máquina de Coca-Cola de **Carnegie Mellon**, inspirada en la anterior. | Temperatura y stock consultables **a través de ARPANET**, que entonces unía menos de 300 ordenadores. Se considera el **primer dispositivo IoT moderno**. |
+| **1980s** | Computación **embebida** y primeras comunicaciones **M2M** (*Machine-to-Machine*). | Sobre todo en entornos industriales **SCADA** (*Supervisory Control and Data Acquisition*). |
+| **1985** | Peter T. Lewis menciona **por primera vez** el concepto de IoT en una conferencia. | No cuajó y quedó olvidado. |
+| **1990** | Tostadora de John Romkey y Simon Hackett conectada a Internet. | Controlada por **TCP/IP y SNMP**; un solo «comando», encender/apagar. En 1991 se le añadió una minigrúa robótica, controlada por Internet, que echaba el pan. |
+| **1991** | **Webcam de la cafetera** de la Trojan Room (Cambridge). | Imágenes en gris de 128×128 para vigilar la cafetera; en **1993** pasó a Internet como **primera webcam HTTP**. |
+| **1994** | **WearCam** de Steve Mann. | **Primer wearable IoT**: retransmitía por Internet lo que veía quien la llevaba. |
+
+</div>
+
+Los diagramas SCADA de la diapositiva 13 muestran la estructura típica: un **SCADA Master** con su **HMI** se comunica, a través de una red, con varias **RTU** (unidades remotas) conectadas a sensores y actuadores; en planta, los niveles se apilan como bus de planta, PLC, bus de campo y bus de sensores/actuadores.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=10">T1, pp. 10-16</a>.</p>
+
+<h3 id="era-iot">La era IoT</h3>
+
+- **1999: Kevin Ashton** habla de IoT en una presentación para Procter & Gamble. Para él, IoT **asocia RFID con Internet**; en realidad prefiere decir «*Internet **for** Things*». Después fue uno de los fundadores del Auto-ID Center del MIT.
+- **2003–2004:** el concepto se extiende y aparecen las primeras conferencias académicas.
+- **Desde 2005, y sobre todo tras 2010:** dispositivos IoT/IIoT comerciales **centrados en Cloud Computing**. Ejemplo: en 2005 empieza en el Interaction Design Institute de Ivrea (Italia) el proyecto **Arduino**, para usar *Wiring* sobre microcontroladores ATmega8. La figura muestra el patrón típico: dispositivos (Particle) → su nube → servicios de Google Cloud (Pub/Sub, Cloud Functions, Cloud SQL, Data Studio).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=17">T1, pp. 17-18</a>.</p>
+
+<h2 id="paradigmas">Paradigmas de cómputo: Cloud, Edge, Fog, MEC y Mist</h2>
+
+Es el núcleo de la asignatura. Cada paradigma responde a «**¿dónde se procesa?**».
+
+<div class="table-scroll">
+
+| Paradigma | Dónde se procesa | Definición del tema |
+| --- | --- | --- |
+| **Cloud computing** | Servidores remotos. | Se **delegan** en una infraestructura de servidores remotos ciertos servicios, las tareas computacionalmente intensivas y parte del almacenamiento. |
+| **Edge computing** | En el **límite** entre la infraestructura de red y los nodos hardware. | **Deslocaliza parte de la carga de la nube** hacia ese límite. |
+| **Cloudlets** (variante de Edge) | Dispositivos **de altas prestaciones** en el borde. | — |
+| **Fog computing** (variante de Edge) | Dispositivos **de bajas prestaciones** en el borde. | La figura coloca varios nodos *fog* entre la nube y los edificios/usuarios a los que sirven. |
+| **Mobile Edge Computing (MEC)** | Hardware desplegado en los **repetidores de telefonía móvil**. | Ejemplo: cámaras que envían vídeo a un servidor MEC junto a la antena, que gestiona y analiza el vídeo antes de pasar por la red troncal al almacenamiento. |
+| **Mist computing** | En los **propios nodos sensores/actuadores**. | Los nodos **cooperan entre ellos** para realizar tareas. |
+
+</div>
+
+Los **objetivos de Edge** son cuatro y conviene saberlos de memoria:
+
+1. **Reducir la latencia** de respuesta.
+2. Proveer **servicios en función de la localización**.
+3. **Disminuir la carga de procesado** de la nube.
+4. **Disminuir las transacciones** en la red.
+
+La figura de Mist muestra la jerarquía completa, de arriba abajo: **nube → nivel Edge → nivel Fog → nivel Mist**. Cuanto más abajo, más cerca del dato y menos capacidad por nodo.
+
+```text
+        Nube           servicios, cómputo intensivo, almacenamiento
+          │
+     Nivel Edge        límite red ↔ nodos  (cloudlets: alto rendimiento)
+          │
+     Nivel Fog         dispositivos de bajas prestaciones cerca de los nodos
+          │
+     Nivel Mist        los propios sensores/actuadores cooperan
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=19">T1, pp. 19-23</a>.</p>
+
+<h3 id="edge-ai">Edge AI</h3>
+
+**Edge AI** es aplicar **inteligencia artificial en el borde** para dar servicio a dispositivos IoT de **baja o media potencia**. La figura compara dos esquemas:
+
+<div class="table-scroll">
+
+| | Edge AI | Cloud AI |
+| --- | --- | --- |
+| Dónde se infiere | En los dispositivos del borde, con **modelos preentrenados**. | En el **servidor en la nube**, que también entrena. |
+| Qué viaja por la red | Solo **resultados de inferencia** (poco ancho de banda). | **Datos en bruto** hacia la nube (mucho ancho de banda) y resultados de vuelta. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=51">T1, p. 51</a>.</p>
+
+<h2 id="industria-4">Industria 4.0</h2>
+
+**Industria 4.0** es la evolución de las fábricas tradicionales hacia **fábricas inteligentes**, diseñadas para:
+
+- Ser **más eficientes** en la administración de recursos.
+- Tener **alta flexibilidad** para adaptarse a los cambios constantes de los requisitos de producción.
+
+El concepto *Industrie 4.0* lo definió oficialmente el **gobierno alemán en 2011**. La línea temporal de la diapositiva 25:
+
+<div class="table-scroll">
+
+| Revolución | Año | Rasgos |
+| --- | --- | --- |
+| Industria 1.0 | 1784 | Mecanización, vapor, telar. |
+| Industria 2.0 | 1870 | Producción en masa, cadena de montaje, energía eléctrica. |
+| Industria 3.0 | 1969 | Automatización, ordenadores y electrónica. |
+| **Industria 4.0** | Hoy | **Sistemas ciberfísicos, IoT y redes.** |
+
+</div>
+
+Las **tecnologías habilitadoras** del diagrama circular son nueve: robots autónomos, simulación, integración de sistemas, IoT, ciberseguridad, cloud computing, fabricación aditiva, realidad aumentada y big data.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=24">T1, pp. 24-26</a>.</p>
+
+<h3 id="smart-factories">Smart factories descentralizadas</h3>
+
+La **fabricación aditiva** es la **impresión 3D**: desde impresoras de sobremesa e industriales hasta impresoras de edificios. Junto a ella aparecen otras máquinas de fabricación digital: **tornos**, máquinas de fabricación de **PCB**, **fresadoras** (*milling machines*), grabadoras/cortadoras **láser** y **CNC**. Los ejemplos de fresado son de prototipado de coches en arcilla (Audi A7 2018).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=27">T1, pp. 27-31</a>.</p>
+
+<h3 id="conceptos-similares">Conceptos similares a Industria 4.0</h3>
+
+- **Advanced Manufacturing Partnership** (EE. UU., 2011): la diapositiva muestra el anuncio de la Casa Blanca, un esfuerzo nacional que une industria, universidades y gobierno federal para invertir en tecnologías emergentes de fabricación.
+- **IIoT** (*Industrial Internet of Things*): la figura lo contrapone al IoT de consumo. Industrial: maquinaria pesada, transporte, ciudades inteligentes, automatización, fábricas, sanidad. Consumo: *wearables*, móviles, televisores, electrodomésticos, monitorización y automatización del hogar.
+- **CPS** (*Cyber-Physical System*): sistema **controlado y monitorizado por algoritmos computacionales** y **completamente integrado con Internet y con los usuarios remotos**. Ejemplos: *smart grid*, monitorización médica remota, control robótico, conducción autónoma. Un CPS **abarca varios subsistemas** y los generaliza e interconecta, sobre todo, por Internet. Su figura apila: sistema físico/mecánico → sistema embebido → sensores y actuadores → hardware electrónico → software, con una **interfaz persona-máquina** y la **conexión con otros sistemas** por encima.
+- **Internet Plus** (China): la figura de la exposición de Foshan enumera nueve áreas, entre ellas fabricación inteligente, hogar inteligente, logística, finanzas por Internet, ciudad inteligente y robótica.
+- **Made in China 2025**: cuatro ventajas (mercado, empresas, estrategia, talento) y **diez sectores clave** (tecnologías de la información, control numérico, aeroespacial, barcos de alta tecnología, ferrocarril, ahorro energético, nuevos materiales, dispositivos médicos, maquinaria agrícola y equipos eléctricos).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=32">T1, pp. 32-37</a>.</p>
+
+<h2 id="industria-5">Industria 5.0</h2>
+
+- **Promovida por la Unión Europea desde 2021.**
+- Inspirada en la **Sociedad 5.0** japonesa, presentada por el gobierno de Japón en **2015**, que propone una evolución colectiva de la sociedad junto a la industria y la tecnología. Considera cinco sociedades: **cazadora, agraria, industrial, de la información** y la **«superinteligente»** (Sociedad 5.0).
+
+Es una **evolución de la Industria 4.0** para compensar sus limitaciones frente a cuatro tendencias sociales:
+
+<div class="table-scroll">
+
+| Tendencia | Limitación de la Industria 4.0 |
+| --- | --- |
+| **Globalización** | Contribuye a la globalización, que creó prosperidad pero también **aumentó la desigualdad**. |
+| **Sostenibilidad** | Algunas de sus tecnologías pueden suponer **riesgos para la salud humana y los ecosistemas**. |
+| **Eficiencia energética** | Debe adaptarse a la estrategia para una Europa **climáticamente neutra en 2050** (*European Green Deal*). |
+| **Evolución tecnológica** | Debe incorporar tecnologías **inmaduras en 2011**: DLT, IA generativa, computación cuántica. |
+
+</div>
+
+Sus **tres pilares**: **centrada en las personas**, **resiliencia** y **sostenibilidad**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=38">T1, pp. 38-40</a>.</p>
+
+<h2 id="realidad-extendida">Realidad extendida y metaverso</h2>
+
+<div class="table-scroll">
+
+| Concepto | Definición |
+| --- | --- |
+| **Realidad virtual (VR)** | Sistema **inmersivo** que recrea un entorno **completamente virtual**. |
+| **Realidad aumentada (AR)** | Sistema que **«aumenta» el entorno real** con información virtual. |
+| **Realidad mixta (MR)** | Entorno en el que **coexisten elementos reales y virtuales** con los que el usuario **puede interactuar**. |
+
+</div>
+
+La diferencia AR/MR está en la **interacción**: la AR superpone información; en la MR el usuario actúa sobre los elementos virtuales integrados con los reales.
+
+**Metaverso.** El término procede de la novela ***Snow Crash*** de **Neal Stephenson (1992)**: *meta* = «más allá» y *verso* de «universo». Describe un **universo virtual persistente** donde las personas pueden trabajar, comerciar o divertirse. En **2021 Facebook** anuncia que el metaverso será su futuro, **se renombra Meta** e invierte mucho, sobre todo en VR.
+
+- **Metaverso híbrido:** usa **dispositivos de realidad mixta** que **recogen datos e interactúan con el entorno**. La figura ordena la realidad extendida del mundo real al virtual: **AR** (apps de móvil/tableta, de proyección y de gafas inteligentes) → **MR** (las mismas tres familias) → **virtualidad aumentada y VR** → mundo virtual.
+- **Metaverso industrial:** la figura agrupa en una «metagalaxia industrial» los metaversos de varias empresas (Apple, NVIDIA Omniverse, AWS IoT TwinMaker, Meta, Google, Siemens), a los que accede un **meta-operario** con su avatar y perfil profesional.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=41">T1, pp. 41-47</a>.</p>
+
+<h2 id="dlt">DLT y blockchain</h2>
+
+- **DLT** = ***Distributed Ledger Technology***.
+- Permite **intercambiar transacciones entre entidades que no confían entre sí**.
+- En la práctica es una **base de datos redundante y distribuida** en la que la **validación de transacciones firmadas** se hace a través de una **red P2P**.
+- La DLT más conocida es **Blockchain**, originada por la criptomoneda **Bitcoin**.
+
+La figura coloca blockchain en el centro de la *smart factory* de la Industria 4.0, conectado con el resto de tecnologías: simulación, ciberseguridad, robots/UAV/AGV, integración de sistemas, realidad aumentada y virtual industrial, ICPS, IIoT, cloud y edge, big data y fabricación aditiva.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=48">T1, p. 48</a>.</p>
+
+<h2 id="integracion">Sistemas de interconexión vertical y horizontal</h2>
+
+Conjunto de sistemas que permite la comunicación en organizaciones industriales:
+
+- **Horizontal:** **dentro de una fábrica**, entre departamentos del **mismo nivel jerárquico**.
+- **Vertical:** con **proveedores, clientes** o con la **dirección ejecutiva**.
+
+Ejemplos: **MES** (*Manufacturing Execution System*), **ERP** (*Enterprise Resource Planning*), **PLM** (*Product Lifecycle Management*) y **plataformas IIoT**.
+
+La pirámide de la diapositiva 50 sube desde la **capa de máquinas** a **SCADA/HMI**, **MES** y **ERP (PLM, PP)**, con **OPC UA** como protocolo de enlace entre niveles y con la nube. Enumera cinco escenarios: del taller a la dirección (*shop floor to top floor*), máquina a máquina, integración con comercio electrónico, nube de máquinas/operaciones y reposición directa.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=49">T1, pp. 49-50</a>.</p>
+
+<h2 id="componentes">Componentes básicos de una arquitectura IoT</h2>
+
+<h3 id="capas">Capas</h3>
+
+El ejemplo es una **fábrica inteligente** y se lee de abajo arriba:
+
+```text
+  Nube ─────────────── servicios de automatización industrial
+    │  Internet o intranet
+  Gateway (pasarela)
+    │
+  Router inalámbrico
+    │
+  Capa de dispositivos IIoT ── módulos de sensado y brazos robóticos
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=52">T1, p. 52</a>.</p>
+
+<h3 id="nodos">Nodos IoT</h3>
+
+Los nodos van desde placas de desarrollo hasta equipos industriales encapsulados. Internamente, un **dispositivo IoT/IIoT** se organiza alrededor de un **subsistema de control**, donde corre el **firmware**, conectado con los demás subsistemas:
+
+- **Comunicaciones**, **sensado**, **actuación**.
+- **Identificación** y **posicionamiento**.
+- **Almacenamiento**, **alimentación** y **visualización**.
+
+El dispositivo se comunica con un **servidor remoto**, formado por un **subsistema de gestión** y una **base de datos**.
+
+Los **sensores y actuadores** se ilustran con un kit de módulos: pantalla LCD, pulsador, matriz LED, sensores de agua, humedad del suelo, pulso, tacto, ultrasonidos, gas, llama, relé, servomotor, etc.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=53">T1, pp. 53-55</a>.</p>
+
+<h3 id="redes">Redes de comunicaciones</h3>
+
+La figura sitúa las redes en dos ejes, **tasa de datos** y **alcance**:
+
+<div class="table-scroll">
+
+| Grupo | Tasa | Alcance | Ejemplos |
+| --- | --- | --- | --- |
+| Inalámbricas de corto alcance | Media | Corto | Bluetooth, Wi-Fi, Zigbee, NFC. |
+| Celulares | Alta | Largo | 2G, 3G, 4G, 5G. |
+| **LPWAN** | **Baja** | **Largo** | LoRa, NB-IoT, Sigfox. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=56">T1, p. 56</a>.</p>
+
+<h3 id="protocolos">Protocolos y pila de tecnologías</h3>
+
+El abanico de la diapositiva 57 recorre la pila desde las cosas (controladores, pasarelas, activos, dispositivos, productos) hasta los casos de uso, con **seguridad y privacidad** como capa transversal:
+
+<div class="table-scroll">
+
+| Capa | Ejemplos |
+| --- | --- |
+| Conectividad física | RJ45, USB, SPI, RS-485, RS-232, inalámbrica. |
+| Enlace | 2G–5G, LPWAN, Wi-Fi, Ethernet, Fieldbus, Zigbee, Bluetooth, RFID, Dash7. |
+| Red y transporte | IPv4, IPv6, 6TiSCH, 6LoWPAN, RPL, WoT, LwM2M. |
+| **Aplicación** | **CoAP, MQTT, DDS, XMPP, AMQP, HTTP, FTP.** |
+| Procesado y agregación | Spark, RabbitMQ, Flume, Kafka, Storm, ActiveMQ, Fluentd, HiveMQ. |
+| Almacenamiento | Hadoop, DynamoDB, Cosmos DB, Cassandra, MongoDB, HBase, Databricks, BigQuery, Snowflake, InfluxDB, SQLite. |
+| Analítica y casos de uso | Visualización, análisis de datos, IA, *machine learning*, *deep learning*; gestión de activos, mantenimiento predictivo, control de calidad, gestión energética, control remoto… |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=57">T1, p. 57</a>.</p>
+
+<h3 id="plataformas">Plataformas y servicios</h3>
+
+El mapa de proveedores se organiza en cuatro franjas: **aplicaciones** (acceso remoto a activos, AR/VR, gemelo digital), **middleware/plataformas** (plataformas IoT, gestión del edge, bases de datos, ingesta de datos, *brokers* de mensajes y conversores de protocolo), **dispositivos/edge** (sistemas operativos para dispositivos IoT) y, transversal, **seguridad**. Aparecen los grandes de cloud (AWS, Microsoft, Google, IBM, Oracle) junto a industriales como Siemens, ABB, Honeywell o Schneider.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=58">T1, p. 58</a>.</p>
+
+<h2 id="desafios">Desafíos y oportunidades</h2>
+
+<h3 id="interoperabilidad">Interoperabilidad y estandarización</h3>
+
+**Muchos fabricantes, protocolos diversos y estandarización limitada.** La figura llena el espacio entre B2C (mercado de consumo) y B2B (Internet industrial) con decenas de organismos y alianzas: IEEE, ISO, IEC, W3C, OASIS, OPC Foundation, oneM2M, Zigbee Alliance, KNX, Bluetooth, Wi-Fi, LoRa, NFC Forum, etc.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=59">T1, p. 59</a>.</p>
+
+<h3 id="escalabilidad">Escalabilidad</h3>
+
+Previsión de IoT Analytics (octubre de 2025) de conexiones IoT activas en el mundo: **11,3 mil millones en 2020**, **18,6 en 2024** (último dato real) y **55,0 previstos en 2035**. Las WLAN y las WPAN son las mayores porciones; el crecimiento anual compuesto previsto para 2025–2035 es de alrededor del **10 %** en total, con el **celular 5G/6G** como el tipo que más crece.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=60">T1, p. 60</a>.</p>
+
+<h3 id="eficiencia">Eficiencia</h3>
+
+Dos gráficas de 2015 a 2025: (a) **dispositivos IoT instalados**, que pasan de unos 2 a unos 14 mil millones, y (b) su **consumo energético**, de unos 25 a más de 150 TWh. Por categorías, las **bombillas inteligentes** dominan el consumo, seguidas de sensores, actuadores y cámaras IP. Más dispositivos implican más energía: la eficiencia es un desafío de escala.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=61">T1, p. 61</a>.</p>
+
+<h3 id="ciberseguridad">Ciberseguridad</h3>
+
+**Principales problemas:**
+
+- Los dispositivos IoT tradicionales tienen **poca potencia computacional**. Lo habitual: basados en **microcontrolador**, **< 100 MHz** (normalmente **8/16 MHz**), **< 32 KB de Flash** y **< 3 KB de SRAM**.
+- **Dependen de pilas y baterías.**
+
+Ambas cosas limitan la criptografía y las defensas que caben en el dispositivo. Hay **multitud de dispositivos inseguros**: webcams, televisores, routers/switches, juguetes, domótica… El ejemplo de «cómo **no** asegurar» es un reloj inteligente infantil que se comunica por HTTPS y MQTT con sus servidores y con AWS IoT Core.
+
+<div class="table-scroll">
+
+| Tipo | Ejemplos |
+| --- | --- |
+| Botnets | **Mirai**. |
+| DDoS | Ataques distribuidos de denegación de servicio (una botnet controlada por servidores de mando y control). |
+| Privacidad | Webcams, monitor cardíaco de bebés **Owlet**. |
+| Salud | **Marcapasos de St. Jude Medical**. |
+| Ataques físicos | **Inutilización** e **ingeniería inversa**. |
+| Sistemas sin parchear | Y la **imposibilidad de parchearlos**. |
+| Criptografía débil | Acceso gracias a ella. |
+| Robo de identidad de dispositivos IIoT | **Ataques Sybil**: un nodo malicioso se presenta con múltiples identidades falsas (nodos Sybil) para influir en la red de nodos honestos. |
+
+</div>
+
+**Las soluciones dependen del ataque.** Algunas habituales: **firewalls** tradicionales y específicos, **VPN**, **optimizaciones software**, **criptochips** y **nuevas arquitecturas IoT/IIoT**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=62">T1, pp. 62-67</a>.</p>
+
+<h3 id="privacidad">Privacidad de los datos</h3>
+
+La pregunta abierta: **¿cómo proteger la inmensa cantidad de datos que captan los sistemas IoT/IIoT** y que fluyen hacia la nube?
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=68">T1, p. 68</a>.</p>
+
+<h2 id="casos-de-uso">Casos de uso y aplicaciones</h2>
+
+<div class="table-scroll">
+
+| Ámbito | Ejemplos de las diapositivas |
+| --- | --- |
+| **Hogares inteligentes** | Sensores de gas, humo, cuerpo y viento/lluvia, cámaras IR, enchufes e interruptores, aire acondicionado, videoportero, botón SOS, servidor doméstico. |
+| **Ciudades inteligentes** | Gestión del tráfico, aparcamiento, alumbrado, residuos, calidad y fugas de agua, energía, recarga de vehículos eléctricos, contaminación, seguridad pública, datos abiertos. |
+| **e-Health** | *Wearables* en cabeza, oído, muñeca, dedo, muslo y tobillo; sensores de ritmo cardíaco, presión arterial, glucosa, temperatura, respiración, electromiografía y sueño; gafas, cinturón, calcetines y zapatillas inteligentes. |
+| **IIoT** | Monitorización de sensores en fábricas, **gemelos digitales**, **mantenimiento predictivo**, **trazabilidad**; automatización de tareas sistemáticas; **cobots** (*collaborative robots*), que ayudan a los operarios en tareas concretas; líneas de ensamblado, carga de materiales pesados, exoesqueletos, soldadura remota, pintado automatizado y *product picking*. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/arquitecturas/tema-1-introduccion.pdf#page=69">T1, pp. 69-75</a>.</p>
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Explico por qué la máquina de Coca-Cola de Carnegie Mellon (1982) se considera el primer dispositivo IoT moderno.
+- ☐ Sé qué relación ve Kevin Ashton entre RFID e Internet y qué objetivo tenía el Auto-ID Center.
+- ☐ Defino Cloud, Edge, Fog, Cloudlets, MEC y Mist, y los ordeno de la nube al nodo.
+- ☐ Digo los cuatro objetivos del Edge computing.
+- ☐ Distingo Edge AI de Cloud AI por lo que viaja por la red.
+- ☐ Sitúo Industria 4.0 (Alemania, 2011) e Industria 5.0 (UE, 2021) y nombro los tres pilares de la 5.0.
+- ☐ Defino CPS, DLT, VR, AR, MR y metaverso híbrido.
+- ☐ Diferencio integración horizontal y vertical y pongo ejemplos (MES, ERP, PLM).
+- ☐ Enumero los subsistemas de un nodo IoT y dónde corre el firmware.
+- ☐ Recuerdo los recursos típicos de un dispositivo IoT tradicional y por qué dificultan la seguridad.
+- ☐ Explico un ataque Sybil y cito cinco soluciones habituales de seguridad.
