@@ -5,6 +5,7 @@ const quizPath = `${subject}tests/repaso-ipv6/`;
 test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', async ({ page }) => {
   await page.goto('./');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Materiales del máster');
+  await page.getByRole('main').getByText('Bimestre 1', { exact: true }).click();
   await page.getByRole('main').getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();
   await expect(page).toHaveURL(/\/protocolos\/apuntes\/$/);
   await expect(page.getByRole('link', { name: 'Todos los recursos', exact: true })).toHaveCount(0);
@@ -31,12 +32,26 @@ test('navega desde el catálogo, filtra un tag y restaura el filtro al volver', 
   await expect(page).toHaveURL(/\/protocolos\/apuntes\/\?tag=ipv6$/);
   await filtered('ipv6');
 });
+test('en el inicio los bimestres se expanden y colapsan; el bimestre 1 empieza colapsado', async ({ page }) => {
+  await page.goto('./');
+  const b1 = page.locator('details.bimester').filter({ has: page.getByRole('heading', { name: 'Bimestre 1' }) });
+  const b2 = page.locator('details.bimester').filter({ has: page.getByRole('heading', { name: 'Bimestre 2' }) });
+  await expect(b1).not.toHaveAttribute('open');
+  await expect(b2).toHaveAttribute('open');
+  await expect(b1.getByRole('link', { name: 'Dispositivos IoT', exact: true })).toBeHidden();
+  await expect(b2.locator('.subject-row').first()).toBeVisible();
+  await b1.locator('summary').click();
+  await expect(b1.getByRole('link', { name: 'Dispositivos IoT', exact: true })).toBeVisible();
+  await b2.locator('summary').press('Enter');
+  await expect(b2.locator('.subject-row').first()).toBeHidden();
+});
+
 test('el menú móvil permite navegar por asignatura y sección sin desplazar el contenido inicial', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('./');
   const navigation = page.locator('.site-navigation');
   await expect(navigation).not.toHaveAttribute('open');
-  await expect(page.locator('.subject-row h3').first()).toBeInViewport();
+  await expect(page.locator('.subject-row h3:visible').first()).toBeInViewport();
   await navigation.locator('summary').focus();
   await page.keyboard.press('Enter');
   await navigation.getByRole('link', { name: 'Protocolos de comunicación para IoT', exact: true }).click();

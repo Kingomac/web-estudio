@@ -163,7 +163,7 @@ export type Evaluation = z.infer<typeof evaluationSchema>;
 export type GradeModality = Evaluation['modalities'][number];
 const lecture = <K extends 'apuntes' | 'resumen'>(kind: K) => z.strictObject({ ...resource, kind: z.literal(kind), body: z.enum(['body.mdx', 'body.astro']), printIntent: z.enum(['paper', 'screen']), componentIds: ids.default([]) });
 export const entrySchema = z.union([
-  z.strictObject({ ...identity, kind: z.literal('bimestre') }),
+  z.strictObject({ ...identity, kind: z.literal('bimestre'), collapsed: z.boolean().default(false) }),
   z.strictObject({ ...identity, kind: z.literal('asignatura'), slug, bimesterId: id, description: text, teachingGuide: z.strictObject({ url: httpUrl, title: text, academicYear: z.literal('2026/27') }), evaluation: evaluationSchema.optional() }),
   z.strictObject({ ...identity, kind: z.literal('tag'), subjectId: id, slug, type: z.enum(['topic', 'study']) }),
   lecture('apuntes'), lecture('resumen'), questionSchema,

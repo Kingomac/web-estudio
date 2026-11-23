@@ -2,7 +2,7 @@
 import Site from '../layouts/Site.astro';
 import PageHeader from '../components/ui/PageHeader.astro';
 import SubjectRow from '../components/SubjectRow.astro';
-import { siteCatalog, resourceUrl } from '../lib/sitio.ts';
+import { siteCatalog } from '../lib/sitio.ts';
 import { isResource } from '../lib/catalogo.ts';
 const catalog = await siteCatalog();
 const subjects = catalog.entries.filter(e => e.kind === 'asignatura');
@@ -14,17 +14,21 @@ const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : 
   <PageHeader eyebrow="Máster en Internet de las Cosas" title="Materiales del máster" description={`Curso 2026/27 · ${count(subjects.length, 'asignatura', 'asignaturas')} · ${count(resources.length, 'recurso', 'recursos')}`} />
   {bimesters.map(b => {
     const entries = subjects.filter(s => s.bimesterId === b.id);
-    return <section class="section bimester" aria-labelledby={`heading-${b.id}`}>
-      <div class="bimester-heading"><h2 id={`heading-${b.id}`} class="section-title"><a href={resourceUrl(b, catalog)}>{b.title}</a></h2><span class="meta">{entries.length ? count(entries.length, 'asignatura', 'asignaturas') : 'Sin materiales incorporados'}</span></div>
+    return <details class="section bimester" open={!b.collapsed}>
+      <summary class="bimester-heading"><h2 class="section-title">{b.title}</h2><span class="meta">{entries.length ? count(entries.length, 'asignatura', 'asignaturas') : 'Sin materiales incorporados'}</span></summary>
       {entries.length > 0 && <div class="subject-grid">{entries.map(entry => <SubjectRow entry={entry} catalog={catalog} heading="h3" />)}</div>}
-    </section>;
+    </details>;
   })}
 </Site>
 <style>
   .bimester { margin-top: var(--space-6); }
-  .bimester-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-1) var(--space-4); padding-bottom: var(--space-3); margin-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .bimester-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); min-height: var(--touch-target); padding-block: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); list-style: none; }
+  .bimester-heading::-webkit-details-marker { display: none; }
+  .bimester-heading::before { content: '▸'; display: inline-block; color: var(--color-text-muted); transition: transform var(--duration); }
+  .bimester[open] > .bimester-heading { margin-bottom: var(--space-4); }
+  .bimester[open] > .bimester-heading::before { transform: rotate(90deg); }
   .bimester-heading h2 { margin: 0; }
-  .bimester-heading a { color: inherit; text-decoration: none; }
-  .bimester-heading a:hover { color: var(--color-accent); text-decoration: underline; }
+  .bimester-heading:hover h2 { color: var(--color-accent); }
+  .bimester-heading .meta { margin-left: auto; }
   .subject-grid { display: grid; gap: var(--space-4); }
 </style>

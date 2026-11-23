@@ -45,6 +45,8 @@ Los esquemas están en `src/schemas/content.ts`; `content:check` añade las regl
 
 **Identidad.** Todas las entidades llevan `kind` e `id` global y estable, independiente de título y URL. Los slugs pueden repetirse entre asignaturas, pero no las rutas resultantes. Al cambiar un slug, añade la ruta anterior a `aliases` (completa, sin la base).
 
+**Bimestres.** En la página de inicio cada bimestre se expande o se colapsa. Por defecto se muestran abiertos; `"collapsed": true` los colapsa, y se marca así cada bimestre ya terminado para que el actual quede a mano.
+
 **Alcance y tags.** `scope` es obligatorio en recursos y delimita qué cubren («Temas 1–3 y tema 4 hasta la página 37»). Los tags son de tipo `topic` o `study`; clasifican, no expresan dependencias. Los tags de tema de un test deben ser la unión de los de sus preguntas.
 
 **Orden.** Cada listado de una asignatura (apuntes, resúmenes, materiales, ejercicios, tests) se ordena por `order` y, si hay empate, por título. Por eso dos recursos de la misma lista nunca comparten `order`. Antes de asignarlo, consulta los valores que ya existen en esa lista y coloca el recurso donde le corresponde:
