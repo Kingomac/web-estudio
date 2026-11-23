@@ -1,0 +1,22 @@
+{
+  "id": "datos.materiales.nosql",
+  "kind": "material",
+  "subjectId": "datos",
+  "slug": "nosql",
+  "title": "NoSQL",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento completo (22 páginas): origen de NoSQL, características generales, consistencia, ACID frente a BASE, teorema CAP, tipos de bases de datos NoSQL y MapReduce.",
+  "tagIds": [
+    "datos.tags.nosql"
+  ],
+  "order": 40,
+  "file": "materiales/datos/nosql.pdf",
+  "format": "pdf",
+  "providedName": "nosql_es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 22,
+  "sha256": "afb1f76c25bdcb9255d1ae96df35696cb23d97e34fb0cfdc3ebbdc18d99029b5"
+}

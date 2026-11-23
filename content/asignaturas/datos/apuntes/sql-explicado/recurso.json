@@ -1,0 +1,69 @@
+{
+  "kind": "apuntes",
+  "id": "datos.apuntes.sql-explicado",
+  "subjectId": "datos",
+  "slug": "sql-explicado",
+  "title": "SQL explicado con una red de sensores",
+  "description": "Explicación propia del tema 1 con estaciones, sensores y lecturas: restricciones con sentido, orden de evaluación, joins y filas sin pareja, lógica de tres valores y la trampa de NOT IN, agregación sin perder grupos, ventanas para series temporales y anomalías de concurrencia.",
+  "scope": "Tema 1: DDL y restricciones (pp. 6-7), sintaxis, joins y nulos (pp. 15-23), agregación y subconsultas (pp. 24-35), joins externos y ventanas (pp. 36-38) y transacciones (pp. 41-49). Sin álgebra ni cálculo relacional.",
+  "tagIds": [
+    "datos.tags.sql",
+    "datos.tags.explicado"
+  ],
+  "order": 110,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "datos.materiales.tema-1-relacionales-sql",
+      "pdfPages": [
+        6,
+        7,
+        15,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "label": "Páginas en las que se apoya"
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "PostgreSQL · Transaction Isolation",
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "title": "PostgreSQL · Window Functions",
+      "url": "https://www.postgresql.org/docs/current/tutorial-window.html"
+    }
+  ],
+  "relatedResourceIds": [
+    "datos.apuntes.tema-1-relacionales-sql"
+  ]
+}

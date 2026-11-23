@@ -1,0 +1,231 @@
+<p class="lead">Explicación propia del tema de almacenes de datos. En lugar de ventas de productos, construimos **el almacén de datos de la red de estaciones** de los demás apuntes explicados: de dónde salen los datos, cómo se limpian, qué es aquí un hecho y una dimensión, cómo queda la estrella y cómo se navega con OLAP. Los números del cubo son inventados, pero cuadran entre sí para que puedas comprobar cada operación. La versión fiel a las diapositivas está en los <a href="/web-estudio/asignaturas/datos/apuntes/almacenes-datos/">apuntes de almacenes de datos</a>.</p>
+
+<h2 id="dos-preguntas">Dos preguntas, dos bases de datos</h2>
+
+Compara dos preguntas sobre la misma red:
+
+1. **«¿Cuál es la última lectura del sensor 20?»** La hace el panel en directo cientos de veces por minuto. Lee una fila. Al lado, miles de sensores escriben sin parar.
+2. **«¿Ha bajado el NO2 en Vigo desde que se cerró el centro al tráfico, comparado con Lugo, donde no se cerró?»** La hace un técnico del ayuntamiento una vez al mes. Lee **años** de datos de muchas estaciones, los agrupa por mes y los compara. Y no escribe nada.
+
+<div class="table-scroll">
+
+| | Operacional (OLTP) | Analítico (DW) |
+| --- | --- | --- |
+| Pregunta típica | Última lectura del sensor 20 | Evolución del NO2 por mes y ciudad |
+| Filas por operación | Una o pocas | Millones |
+| Escrituras | Constantes | Solo en las cargas periódicas |
+| Historia | Lo actual (lo antiguo se borra o se archiva) | Años; el tiempo es una dimensión clave |
+| Diseño | Normalizado, para escribir sin anomalías | Desnormalizado, para leer y agregar rápido |
+| Transacciones | Imprescindibles | Innecesarias (solo lectura) |
+
+</div>
+
+Hacer la pregunta 2 sobre la base de datos de la pregunta 1 sería lento para el técnico y, peor, **frenaría la ingesta de los sensores**. Por eso se separan: la pregunta 2 va a un almacén de datos alimentado por un proceso ETL.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=5">AD, pp. 5-9</a>.</p>
+
+<h2 id="etl">ETL: lo que de verdad hay que limpiar</h2>
+
+La red tiene estaciones de dos generaciones y una fuente externa (datos de tráfico). Esto es lo que llega:
+
+<div class="table-scroll">
+
+| Fuente | Estación | Hora | Temperatura | Problema |
+| --- | --- | --- | --- | --- |
+| Generación antigua | `La Coruña-01` | `20/11/2026 10:00` (hora local) | `54.5` | Grados **Fahrenheit**; nombre antiguo; fecha local. |
+| Generación nueva | `A Coruña - Riazor` | `2026-11-20T09:00:00Z` | `12.5` | Ya está bien (UTC, °C). |
+| Generación nueva | `A Coruña - Riazor` | `2026-11-20T09:00:00Z` | `12.5` | **Duplicado** (reenvío del firmware). |
+| Generación antigua | `Lugo-03` | `20/11/2026 10:00` | `-999` | **Código de error** disfrazado de medida. |
+
+</div>
+
+Y esto es lo que hace cada paso del ETL:
+
+- **Extraer:** leer las dos bases de datos de sensores y la API de tráfico.
+- **Transformar:** pasar °F a °C ((54,5 − 32) / 1,8 = 12,5); convertir las horas locales a UTC; unificar «La Coruña», «Coruña» y «A Coruña» con una tabla de equivalencias.
+- **Depurar:** quitar el duplicado; convertir `-999` en «sin dato» (y nunca promediarlo como temperatura).
+- **Integrar:** asignar a cada lectura su estación, concello y provincia del catálogo común.
+- **Cargar:** insertar en el almacén, normalmente de noche o cada hora.
+
+Fíjate en que la conversión de unidades o el `-999` **solo los puede decidir alguien que conozca el negocio**: es lo que dice la diapositiva sobre conocer las reglas de negocio y el significado de los datos. Sin gobernanza de datos (quién define qué significa cada campo), el ETL se rompe la primera vez que alguien cambia el firmware.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=15">AD, pp. 15-16</a>.</p>
+
+<h2 id="inmon">Las cuatro características de Inmon, en la red</h2>
+
+<div class="table-scroll">
+
+| Característica | En el almacén de la red |
+| --- | --- |
+| **Orientado al tema** | Organizado alrededor de «calidad del aire y meteorología», no de «la aplicación de ingesta» o «el sistema de mantenimiento». |
+| **Integrado** | Las dos generaciones de estaciones y los datos de tráfico, con las mismas unidades, horas y nombres. |
+| **Dependiente del tiempo** | Guarda años de mediciones; cada hecho lleva su instante. |
+| **No volátil** | Una medición de 2024 no se modifica; solo se añaden cargas nuevas. |
+
+</div>
+
+Si solo el área de medio ambiente de un ayuntamiento lo usa, es un **data mart**. Si lo que necesitas es una pantalla con el estado de los últimos minutos para el operador de guardia, eso es un **operational data store**: casi tiempo real, análisis muy limitado.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=12">AD, pp. 12-13</a>.</p>
+
+<h2 id="hecho">El hecho, sus medidas y su granularidad</h2>
+
+**El hecho** es el suceso que quieres analizar: **una medición**. Antes de nada hay que decidir **la granularidad**, qué representa exactamente una fila:
+
+- **Opción fina:** una fila por lectura (cada minuto). Máximo detalle; 525 600 filas por sensor y año.
+- **Opción gruesa:** una fila **por sensor y hora**, con medidas resumidas. 60 veces menos filas.
+
+Si eliges la hora, **nunca podrás responder** «¿cuál fue el pico de 5 minutos del NO2?»: ese detalle no está en el almacén. Si eliges el minuto, todo es más grande y lento. Es la decisión de la diapositiva de granularidad: **las dimensiones y medidas que necesitas fuerzan el nivel mínimo**. Aquí elegimos la hora.
+
+**Medidas** de cada fila (sensor, hora): `valor_medio`, `valor_max`, `valor_min`, `n_lecturas` y `n_alarmas`.
+
+<div class="callout">
+
+**Cuidado con las medias al agregar.** Si una hora tiene 60 lecturas con media 10 y otra tiene 30 lecturas (por un corte) con media 20, la media de las dos horas **no es (10 + 20) / 2 = 15**, sino (60·10 + 30·20) / 90 = 13,3. Las medias no se pueden promediar sin más. La solución habitual es guardar `suma_valores` y `n_lecturas`, que sí se suman al agregar, y calcular la media al final. `n_lecturas` y `n_alarmas` se suman sin problema; `valor_max` se agrega con el máximo de los máximos; `valor_medio`, no.
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=26">AD, pp. 26-28</a> y <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=32">p. 32</a>.</p>
+
+<h2 id="dfm">El DFM de la red</h2>
+
+```text
+                                         provincia
+                                             │
+                                         concello ── comarca
+                                             │
+                                         estación ── altitud
+                                             │
+año ── trimestre ── mes ── día ── hora ── MEDICIÓN ── sensor ── modelo ── fabricante
+                            │                                  │
+                    día_semana, festivo                    magnitud ── tipo, unidad
+
+MEDICIÓN (medidas): suma_valores, n_lecturas, valor_max, valor_min, n_alarmas
+```
+
+- **Tres dimensiones:** Tiempo, Estación y Sensor (con su magnitud).
+- **Jerarquías:** hora → día → mes → trimestre → año; estación → concello → provincia.
+- **Atributos descriptivos** que no son niveles de agregación pero sirven para filtrar: `día_semana`, `festivo`, `altitud`. «¿Hay menos NO2 los festivos?» se responde gracias a `festivo`.
+- Si una estación también tuviese una rama estación → zona (costa o interior) → provincia, las dos ramas llegarían a provincia: una **convergencia**, como la de la diapositiva 34.
+
+Es el mismo esquema que el ejemplo CTD de las diapositivas (observación con temperatura y salinidad, dimensiones instante, estación → ría y ctd), con una dimensión más.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=31">AD, pp. 31-35</a>.</p>
+
+<h2 id="estrella">De DFM a estrella, y una consulta</h2>
+
+Las reglas de transformación dan una tabla de hechos y una tabla por dimensión, **con toda la jerarquía aplanada** en ella:
+
+```sql
+CREATE TABLE dim_tiempo   (id_tiempo int PRIMARY KEY, hora int, dia date, dia_semana text,
+                           festivo boolean, mes int, trimestre int, anio int);
+CREATE TABLE dim_estacion (id_estacion int PRIMARY KEY, nombre text, altitud int,
+                           concello text, comarca text, provincia text);
+CREATE TABLE dim_sensor   (id_sensor int PRIMARY KEY, modelo text, fabricante text,
+                           magnitud text, tipo text, unidad text);
+CREATE TABLE hecho_medicion (
+  id_tiempo   int REFERENCES dim_tiempo,
+  id_estacion int REFERENCES dim_estacion,
+  id_sensor   int REFERENCES dim_sensor,
+  suma_valores numeric, n_lecturas int, valor_max numeric, valor_min numeric, n_alarmas int,
+  PRIMARY KEY (id_tiempo, id_estacion, id_sensor));
+```
+
+Las claves son **subrogadas** (enteros sin significado), no el nombre de la estación: si una estación cambia de nombre, la tabla de hechos no se toca. Compara tamaños: unas 100 estaciones y 400 sensores en sus dimensiones; **3,5 millones de filas al año** en la de hechos (400 sensores × 8760 horas). Es la tabla de la diapositiva 40 con números: dimensiones anchas y pequeñas, hechos estrechos y enormes.
+
+La pregunta del técnico, en SQL sobre la estrella:
+
+```sql
+SELECT e.concello, t.anio, t.mes,
+       SUM(h.suma_valores) / SUM(h.n_lecturas) AS no2_medio
+FROM hecho_medicion h
+  JOIN dim_tiempo t   USING (id_tiempo)
+  JOIN dim_estacion e USING (id_estacion)
+  JOIN dim_sensor s   USING (id_sensor)
+WHERE s.magnitud = 'NO2' AND e.concello IN ('Vigo', 'Lugo')
+GROUP BY e.concello, t.anio, t.mes
+ORDER BY e.concello, t.anio, t.mes;
+```
+
+Siempre la misma forma: **filtros sobre las dimensiones, agregados sobre los hechos y un join por dimensión**. Por eso la estrella es tan cómoda para el análisis.
+
+**Copo de nieve:** sacar concello y provincia de `dim_estacion` a sus propias tablas (`dim_concello`, `dim_provincia`). Ahorra repetir «Pontevedra» en cada estación de la provincia, que en una dimensión de 100 filas es irrelevante, y añade dos joins a cada consulta. Con dimensiones pequeñas, **la estrella casi siempre gana**; el copo compensa cuando una dimensión es enorme y muy repetitiva.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=38">AD, pp. 38-42</a>.</p>
+
+<h2 id="olap">Los operadores OLAP sobre un cubo con números</h2>
+
+El cubo: **alarmas** por provincia, trimestre de 2026 y magnitud. Para NO2:
+
+<div class="table-scroll">
+
+| Provincia | T1 | T2 | T3 | T4 |
+| --- | --- | --- | --- | --- |
+| A Coruña | 4 | 2 | 1 | 3 |
+| Lugo | 1 | 0 | 0 | 2 |
+| Ourense | 0 | 1 | 3 | 1 |
+| Pontevedra | 6 | 4 | 2 | 5 |
+
+</div>
+
+Para temperatura:
+
+<div class="table-scroll">
+
+| Provincia | T1 | T2 | T3 | T4 |
+| --- | --- | --- | --- | --- |
+| A Coruña | 0 | 1 | 5 | 0 |
+| Lugo | 0 | 2 | 4 | 0 |
+| Ourense | 0 | 3 | 9 | 0 |
+| Pontevedra | 0 | 1 | 6 | 0 |
+
+</div>
+
+**Roll-up (subir en la jerarquía).** NO2 de trimestre a **año**: A Coruña 10, Lugo 3, Ourense 5, Pontevedra 17. Y además de provincia a **Galicia**: 35 alarmas. Se pierde detalle y se gana visión de conjunto.
+
+**Drill-down (bajar).** El camino inverso: de «Pontevedra, 17 en el año» a «6, 4, 2, 5 por trimestre», y de ahí a meses o a estaciones concretas. Solo se puede bajar **hasta la granularidad guardada**: con hechos por hora, el drill-down termina en la hora.
+
+**Slice (fijar un valor).** Fijar magnitud = temperatura **y** trimestre = T3 deja un vector: A Coruña 5, Lugo 4, Ourense 9, Pontevedra 6. Las alarmas de temperatura se concentran en verano, sobre todo en Ourense.
+
+**Dice (quedarse con un subcubo).** Provincias (A Coruña, Pontevedra) × trimestres (T1, T2) × magnitud (NO2): un bloque de 2 × 2 con 4, 2 / 6, 4. Es un slice generalizado: en lugar de un valor por dimensión, un subconjunto.
+
+**Pivot (rotar).** Los mismos números de NO2 con los trimestres en filas y las provincias en columnas. No cambia ningún dato, solo cómo los lees: por filas es fácil ver la **evolución** de una provincia; por columnas, **comparar** provincias en un trimestre.
+
+**Drill-across (cruzar cubos).** Si hay otro hecho, **incidencias de mantenimiento**, que comparte las dimensiones Tiempo y Estación, se pueden poner lado a lado alarmas e incidencias por estación y trimestre: «¿las estaciones con más alarmas son las que más se averían?». Solo funciona porque las dimensiones son **las mismas** en los dos cubos.
+
+**Y en SQL.** Un roll-up es quitar un nivel del `GROUP BY` (agrupar por `anio` en vez de por `anio, trimestre`); un drill-down, añadirlo; un slice o un dice, un `WHERE`; un pivot, cambiar qué columna va en filas. SQL incluso calcula varios niveles a la vez: `GROUP BY ROLLUP (provincia, trimestre)` devuelve los totales por provincia y trimestre, los subtotales por provincia y el total general. Es la «agregación avanzada y OLAP» que el tema 1 dejaba para después.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=49">AD, pp. 49-54</a> y <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=50">T1, p. 50</a>.</p>
+
+<h2 id="rolap-molap">ROLAP o MOLAP, en una imagen</h2>
+
+- **MOLAP** guarda el cubo como un **array** real: la celda (Pontevedra, T1, NO2) está en una posición calculable, y sumar una fila es recorrer memoria contigua. Rapidísimo, pero un array reserva sitio para **todas** las combinaciones: con 400 sensores × 8760 horas × varias medidas, y muchas combinaciones vacías, escala mal.
+- **ROLAP** guarda solo las filas que existen, en tablas como las de arriba, y calcula con SQL. Escala mucho mejor; para ir rápido usa **vistas materializadas** con agregados precalculados (por ejemplo, alarmas por provincia y mes).
+- **HOLAP**: los agregados más consultados en MOLAP y el detalle en ROLAP.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=37">AD, p. 37</a>.</p>
+
+<h2 id="explotacion">Informes, cuadros de mando y OLAP: quién usa qué</h2>
+
+<div class="table-scroll">
+
+| Usuario | Necesita | Herramienta |
+| --- | --- | --- |
+| Concejala de medio ambiente | «Calidad del aire del mes», igual todos los meses | **Informe** estático |
+| Operador de guardia | Ver de un vistazo qué estaciones están en alarma y reaccionar | **Cuadro de mando** operacional con alertas |
+| Técnico de calidad del aire | Responder preguntas nuevas: «¿y si lo miro por festivos?» | **OLAP** |
+| Científica de datos | Todos los datos para predecir episodios de contaminación | Acceso directo y **minería de datos** |
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=44">AD, pp. 44-48</a>.</p>
+
+<h2 id="chuleta">Chuleta final</h2>
+
+- OLTP: muchas operaciones pequeñas con escrituras. DW: pocas consultas enormes de solo lectura con historia.
+- ETL: extraer, transformar (unidades, horas, nombres), depurar (duplicados, códigos de error), integrar y cargar.
+- Inmon: orientado al tema, integrado, dependiente del tiempo, no volátil.
+- Lo primero es la granularidad: lo que no guardas no lo puedes consultar.
+- Medidas sumables (conteos, sumas) frente a no sumables (medias): guarda suma y conteo.
+- Estrella: hechos estrechos y enormes, dimensiones anchas y pequeñas, claves subrogadas.
+- Roll-up sube, drill-down baja, slice fija un valor, dice un subconjunto, pivot rota, drill-across cruza cubos.

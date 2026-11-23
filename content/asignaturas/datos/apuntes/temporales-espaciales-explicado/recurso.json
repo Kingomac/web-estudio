@@ -1,0 +1,59 @@
+{
+  "kind": "apuntes",
+  "id": "datos.apuntes.temporales-espaciales-explicado",
+  "subjectId": "datos",
+  "slug": "temporales-espaciales-explicado",
+  "title": "Tiempo y espacio explicados con sensores",
+  "description": "Explicación propia del tema 3: la hora que ocurre dos veces, validez y transacción con el traslado de un sensor, períodos semiabiertos, particionado por meses, por qué no se miden distancias en grados, relaciones topológicas, la curva Z paso a paso y K-D-Tree y R-Tree.",
+  "scope": "Tema 3: tipos temporales y zonas (pp. 3-4), períodos y SQL:2011 (pp. 5-13), indexación temporal (p. 6), modelado y SRC (pp. 14-17), SFC e índices espaciales (pp. 18-20) y SQL/MM (pp. 21-22).",
+  "tagIds": [
+    "datos.tags.temporales-espaciales",
+    "datos.tags.explicado"
+  ],
+  "order": 130,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "datos.materiales.tema-3-temporales-espaciales",
+      "pdfPages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "label": "Páginas en las que se apoya"
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "PostgreSQL · Table Partitioning",
+      "url": "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+    },
+    {
+      "title": "PostGIS · Spatial Relationships",
+      "url": "https://postgis.net/workshops/postgis-intro/spatial_relationships.html"
+    }
+  ],
+  "relatedResourceIds": [
+    "datos.apuntes.tema-3-temporales-espaciales",
+    "datos.apuntes.sql-explicado"
+  ]
+}

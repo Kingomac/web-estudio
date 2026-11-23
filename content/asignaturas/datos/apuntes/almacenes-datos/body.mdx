@@ -1,0 +1,333 @@
+<h2 id="idea-central">Idea central</h2>
+
+«**Datos + procesos frente a información + decisiones**.» Las bases de datos del **entorno operacional** registran lo que pasa (ventas, posiciones GPS, medidas de sensores); el **entorno analítico** convierte esos datos en información para decidir. Entre ambos está el proceso **ETL** (extracción, transformación, limpieza y carga), que alimenta una **base de datos analítica** (*data warehouse*, *data marts*…) explotada con informes, visualización, **OLAP** y minería de datos. El tema tiene cuatro partes: el contraste operacional/analítico, los almacenes de datos y el ETL, el **modelado multidimensional** (hechos, medidas, dimensiones, DFM, estrella y copo de nieve) y la **explotación con OLAP**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=2">AD, pp. 2-3</a>.</p>
+
+<h2 id="operacional-analitico">Entorno operacional y analítico</h2>
+
+<h3 id="objetivo">El problema</h3>
+
+Un SGBD del entorno operacional permite conocer los **datos operativos**: cada venta y quién fue el vendedor o cliente; posición, velocidad y altura en cada punto de una ruta GPS; calidad del aire en cada zona de la ciudad; dirección y velocidad actual del viento en un parque eólico. Pero **no necesariamente** permite obtener de forma simple información **analítica**:
+
+- ¿Cuáles fueron los productos más vendidos en cada trimestre?
+- ¿Qué regiones venden menos? Refinando: ¿qué tiendas de esa región?, ¿qué vendedores son menos «provechosos»?
+- ¿Funcionan las medidas tomadas para mejorar la calidad del aire?
+- ¿Funciona bien el parque eólico según las condiciones de viento?
+
+**Objetivo:** gestionar los datos para hacer análisis orientados a la toma de decisiones (***decision support systems***).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=5">AD, p. 5</a>.</p>
+
+<h3 id="entorno-operacional">Entorno operacional</h3>
+
+- **Sistemas de información operacionales:** orientados a **procesos concretos** (por ejemplo, una aplicación de registro de ventas); cada usuario solo es responsable de su proceso; **es difícil extraer conocimiento** para decidir.
+- **Bases de datos operacionales: OLTP** (*OnLine Transaction Processing*):
+  - **Gran cantidad de transacciones predefinidas** de lectura y escritura, con **requisitos de rendimiento** (registrar una compra para generar el ticket, guardar datos GPS de una ruta).
+  - **Cada transacción involucra pocos datos** (dar de alta un producto, almacenar una medida de temperatura).
+  - **Modificaciones frecuentes.**
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=6">AD, p. 6</a>.</p>
+
+<h3 id="problemas">Problemas para analizar sobre el entorno operacional</h3>
+
+- Con el tiempo surgen nuevas aplicaciones y datos: **múltiples BD, SGBD y sistemas**; los datos acaban **distribuidos en muchas fuentes y tecnologías**.
+- **Dificultad para consultar y filtrar:**
+  - **Formatos diferentes:** BD relacionales, repositorios NoSQL, datos semiestructurados (XML, JSON) y no estructurados (repositorios de documentos).
+  - Datos organizados según **necesidades operacionales, no de análisis**.
+  - **Calidad reducida** a veces: datos en bruto o sin estructura clara, más completos en un sitio que en otro, **inconsistencias** (actualizados en una BD y no del todo en otra).
+  - **Problemas de comprensión:** no hay una definición adecuada de significado, características y utilización.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=7">AD, p. 7</a>.</p>
+
+<h3 id="entorno-analitico">Estructura del entorno analítico</h3>
+
+```text
+BD operacionales                ETL                    BD analítica              Informes
+        +           ──▶  extracción, transformación, ──▶  (data warehouse,  ──▶  Visualización
+Otros datos internos       limpieza y carga             data marts…)             OLAP
+y externos                                                                       Minería de datos
+```
+
+**Características de la base de datos analítica:**
+
+- Tradicionalmente, una BD **corporativa** (*data warehouse*) o **departamental** (*data mart*).
+- Datos **veraces y consistentes**.
+- **Diseñada específicamente para el análisis:**
+  - **Solo lectura**, salvo la carga inicial y los refrescos periódicos: **no hacen falta transacciones**.
+  - **Algunas consultas pueden tardar un tiempo considerable.**
+
+**Proceso ETL:** **extracción** de datos de diversas fuentes; **transformación** para integrarlos, con **depuración o limpieza** (*cleansing*) para que sean correctos y estén integrados; y **carga** (*load*) en la BD analítica.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=8">AD, pp. 8-9</a>.</p>
+
+<h3 id="preguntas-analiticas">Preguntas analíticas</h3>
+
+«¿Por qué los resultados de ventas no siguen las previsiones?» **No se puede responder automáticamente**, pero sí con preguntas más concretas: previsión de ventas de cada producto en un año; productos con ventas por debajo de la previsión; cuota de mercado en esos productos y su variación en los últimos años; evolución de sus precios…
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=10">AD, p. 10</a>.</p>
+
+<h2 id="almacenes">Almacenes de datos</h2>
+
+<h3 id="definicion">Definición de Inmon</h3>
+
+De forma general, un *data warehouse* es **cualquier repositorio de datos orientado a soportar la toma de decisiones**. **W. H. Inmon** lo define como un conjunto de datos para la toma de decisiones con cuatro características:
+
+<div class="table-scroll">
+
+| Característica | Significado |
+| --- | --- |
+| **Orientado al tema** | Estructurado y organizado desde el punto de vista estratégico, orientado al análisis. |
+| **Integrado** | Procede de diversas fuentes, adecuadamente depuradas. |
+| **Dependiente del tiempo** | Se mantienen **datos históricos**; el tiempo es siempre una dimensión importante. |
+| **No volátil** | Los datos **no se modifican**, salvo en los refrescos periódicos. |
+
+</div>
+
+***Data warehousing*** es el **proceso de construir** un almacén de datos para tareas analíticas: recopilar datos internos y externos, depurarlos, transformarlos e integrarlos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=12">AD, p. 12</a>.</p>
+
+<h3 id="tipos-almacen">Tipos de bases de datos analíticas</h3>
+
+- ***Data warehouse*** (corporativo, *Enterprise Data Warehouse*): **todos los datos de la organización** y todas sus necesidades analíticas.
+- ***Data mart***: almacén **departamental** u orientado a pocas líneas estratégicas.
+- ***Operational Data Store* (ODS)**: para decisiones **a muy corto plazo**; se usa típicamente para **monitorizar y decidir en el entorno operacional**. El análisis es **muy limitado**, normalmente con informes elaborados. Los datos se integran con frecuencia (o con vistas que integran lo necesario) para una visión **casi en tiempo real**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=13">AD, p. 13</a>.</p>
+
+<h3 id="arquitectura">Proceso y arquitectura</h3>
+
+**Fuentes de datos** (BD operacionales, datos externos) → **ETL** con un **área de *staging*** intermedia → **data warehouse** → **herramientas de análisis** (visualización, informes, OLAP, minería de datos). Los **metadatos** acompañan a todo el proceso.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=14">AD, p. 14</a>.</p>
+
+<h3 id="etl">Proceso ETL</h3>
+
+Pasos: **seleccionar** (ver dónde están las fuentes necesarias), **extraer**, **transformar**, **depurar** (valores erróneos, duplicados, vacíos, inconsistentes, obsoletos…; es fundamental **conocer las reglas del negocio y definir claramente el significado de los datos**), **integrar** y **cargar**. La figura (Golfarelli) detalla la extracción, la limpieza, validación y filtrado, la transformación, la reconciliación de los datos y la carga en el *data warehouse*.
+
+**Problemas:**
+
+- **Datos erróneos:** por error humano al introducirlos, o inconsistentes o con formatos distintos entre sistemas: ¿moneda en dólares o euros?, ¿precios con IVA o sin él?, `edad_exacta = 21` frente a `rango_edad = adulto`, distancias de los camiones de reparto en millas, kilómetros o metros.
+- **Significado:** los datos significan cosas diferentes en distintos sistemas de origen; no hay estándares de nombres ni mecanismo de gestión.
+- **Mantenimiento:** cambia la estructura de las fuentes y cambian los datos operacionales, sin un mecanismo para comunicar los cambios.
+
+**Soluciones:** herramientas específicas y **gobernanza de datos**, políticas y procedimientos para gestionar los datos durante su ciclo de vida garantizando su calidad y precisión.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=15">AD, pp. 15-16</a>.</p>
+
+<h3 id="implementacion">Implementación y alternativas</h3>
+
+*Data warehouses* y *data marts* son las bases de datos analíticas clásicas. Implementaciones posibles:
+
+- **MOLAP:** bases de datos OLAP que almacenan **cubos multidimensionales**.
+- **ROLAP:** bases de datos **relacionales** estructuradas según un **esquema multidimensional**.
+- Bases de datos **de columnas** (por ejemplo, Cassandra).
+- Bases de datos **en memoria**.
+
+Alternativas a la filosofía clásica: ***Operational Data Stores*** (y BI embebido), **virtualización de datos** y ***data lakes***.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=17">AD, p. 17</a>.</p>
+
+<h2 id="modelado">Modelado multidimensional</h2>
+
+<h3 id="fases">Fases del diseño</h3>
+
+<div class="table-scroll">
+
+| Fase | Diseño de BD tradicional | Diseño multidimensional |
+| --- | --- | --- |
+| Requisitos | Expectativas de los usuarios y usos previstos de la BD. | Funcionamiento del **proceso de negocio** y necesidades de análisis: **hechos (y medidas) y dimensiones (y granularidad)**. |
+| Conceptual | Modelo **entidad-relación**. | ***Dimensional Fact Model* (DFM)**: hechos y dimensiones. |
+| Lógico | Esquema relacional: tablas y restricciones. | Esquema multidimensional: **MOLAP → cubo**; **ROLAP → esquema en estrella** (tablas). |
+| Físico | — | — |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=19">AD, p. 19</a>.</p>
+
+<h3 id="cubo">El modelo multidimensional</h3>
+
+El entorno analítico **almacena información diferente** (procesada, habitualmente **agrupada**) y la **usa de otra forma** (para responder consultas analíticas eficientemente), así que se diseña distinto. El esquema fundamental es el **modelo multidimensional**: los datos se dividen en **hechos (medidas)** y **dimensiones**, y se agrupan en un **hipercubo** o **cubo OLAP**.
+
+**Ejemplo clásico: ventas.** Datos relevantes: producto vendido, ubicación, fecha, cantidad, precio de venta, precio de coste. ¿Son relevantes la forma de pago, el código postal o el teléfono del cliente? Preguntas de interés: total vendido de un producto el año o trimestre pasado; beneficio en una zona (región, provincia, país) el último trimestre. Los datos caen de forma natural en dos categorías:
+
+- **Filtros** (producto, ubicación, fecha): son las **dimensiones**.
+- **Resultados** (cantidad, precio de venta, precio de coste): son **propiedades de los hechos (medidas)**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=20">AD, pp. 20-21</a>.</p>
+
+La figura pasa de las tablas operacionales (gestión de almacén y de ventas: producto, tienda, vendedor, forma de pago, momento del día…) mediante ETL a un cubo de **ventas agregadas por año, producto y zona**:
+
+<div class="table-scroll">
+
+| Producto | Zona | Tiempo | Cantidad | Precio coste | Precio venta |
+| --- | --- | --- | --- | --- | --- |
+| P1 | Noroeste | 2020 | 135 | 6.423 | 8.543 |
+| P1 | Noroeste | 2021 | 148 | 756 | 802 |
+| P1 | Sur | 2020 | 102 | 435 | 632 |
+| P3 | Sur | 2020 | 1490 | 8.432 | 12.679 |
+| … | … | … | … | … | … |
+
+</div>
+
+**Ventajas:**
+
+- **Análisis más intuitivo:** dimensiones = contexto o filtros; hechos = medidas o resultados.
+- **Consultas por múltiples dimensiones:** ventas totales; por producto; por producto y año.
+- **Facilidad para agregar o desagregar:** ventas de P1 en total, por zona (o en una concreta), por zona y año.
+- Se pueden aplicar **técnicas de optimización específicas**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=22">AD, pp. 22-25</a>.</p>
+
+<h3 id="hechos-dimensiones">Hechos, medidas y dimensiones</h3>
+
+- **Hecho:** **cualquier suceso o acción de interés para el análisis**; el **elemento central** del modelo. Ejemplos: una venta (de un producto, en un año, en una tienda); una observación de sensores (en un CTD, en un instante, en una estación).
+- **Medidas o métricas:** propiedades del hecho que permiten **medirlo**, incluidos indicadores relevantes (KPI). **Típicamente numéricas.** Ejemplos: número de unidades vendidas, precio de venta y de coste totales; temperatura y salinidad registradas.
+- **Dimensiones:** **circunstancias asociadas a los hechos**, con propiedades relevantes para analizarlos. Contienen atributos descriptivos organizados en **jerarquías** de granularidad más fina o más gruesa. Producto: nombre, tipo, fabricante…; Zona: provincia (A Coruña, Lugo, Ourense, Pontevedra), zona (Noroeste, Sur), país…; Tiempo: día, mes, trimestre (2020-T1…T4), año.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=26">AD, pp. 26-27</a>.</p>
+
+<h3 id="granularidad">Granularidad</h3>
+
+El mismo cubo puede guardarse a distinta granularidad. La figura compara la tabla por **producto, zona y año** (P1, Noroeste, 2020: 135 unidades) con otra mucho más fina por **producto, provincia, zona, trimestre y año** (P1, A Coruña, Noroeste, T1-2020: 2 unidades; T2: 22; T3: 35; T4: 1…). Con la fina se puede responder por trimestre y provincia; con la gruesa, no.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=28">AD, p. 28</a>.</p>
+
+<h3 id="dfm">Diseño conceptual: DFM</h3>
+
+El ***Dimensional Fact Model*** representa de forma natural hechos, dimensiones y medidas. Hacer primero el diseño conceptual con DFM (y transformarlo después en un esquema lógico con **reglas bien definidas**) es **más fiable** que intentar el esquema multidimensional directamente: permite detallar peculiaridades de las dimensiones y es **más flexible** para diseños complejos, sin entrar en cómo se implementarán.
+
+Se construye un **árbol de atributos dimensionales centrado en el hecho**: el hecho (caja **Venta** con las medidas *unidadesVendidas*, *precioUnitario* y *numeroVentas*) y, saliendo de él, **cada rama es una dimensión** (fecha, tienda, producto).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=29">AD, pp. 29-31</a>.</p>
+
+**Granularidad en el DFM.** Hay que fijar el **nivel mínimo de agregación**:
+
+- **Evento primario:** una ocurrencia del hecho, con un valor concreto para **cada medida** y para **cada dimensión**.
+- **Todas las dimensiones deben ser compatibles con la granularidad elegida.** Se parte de una **granularidad inicial** antes de seleccionar dimensiones y medidas, y las que se seleccionen **fuerzan la granularidad final**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=32">AD, p. 32</a>.</p>
+
+**Jerarquías.** Secuencias de atributos ligados por **dependencias funcionales**:
+
+- fecha (08/12/2023) → mes (12/2023) → trimestre (T4/2023) → año (2023).
+- De cada nivel cuelgan atributos descriptivos: fecha → día (08), nombre_día (viernes), mes; mes → num_mes (12), nombre_mes (diciembre), trimestre; trimestre → num_trim (4), nombre_tri (T4), año.
+
+En el DFM de ventas completo, la dimensión **tienda** sube por ciudad → provincia → país y, por otra rama, ciudad → zona → país: las dos ramas llegan al mismo atributo, una **convergencia**. La dimensión **producto** tiene fabricante, nombre y categoría.
+
+**Ejemplo IoT con sensores CTD** (*Conductivity-Temperature-Depth*): hecho **Observación** con medidas **temperatura** y **salinidad**; dimensiones **instante → fecha → mes → año**, **estación** (código y nombre; → ría, con código y nombre) y **ctd** (código, fabricante, nombre).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=33">AD, pp. 33-35</a>.</p>
+
+<h3 id="rolap-molap">Diseño lógico: ROLAP, MOLAP y HOLAP</h3>
+
+<div class="table-scroll">
+
+| Variante | Almacenamiento | Consulta | Características |
+| --- | --- | --- | --- |
+| **ROLAP** (*Relational OLAP*) | **Tablas relacionales.** | **SQL** y sus extensiones analíticas. | Necesita un diseño adecuado al entorno analítico: datos **agregados** según varios criterios (**vistas materializadas**) y optimización. **Generalmente muy escalable.** |
+| **MOLAP** (*Multidimensional OLAP*) | **Arrays multidimensionales** que replican el modelo conceptual. | Mecanismos **específicos**. | Puede dar **mejor rendimiento** y tener **problemas de escalabilidad**. |
+| **HOLAP** (*Hybrid OLAP*) | Parte MOLAP y parte ROLAP. | — | Combina ambos. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=37">AD, p. 37</a>.</p>
+
+<h3 id="estrella">Esquema en estrella</h3>
+
+En ROLAP, el cubo se representa con una **tabla de hechos** y una **tabla por dimensión**. Las **reglas de transformación** del DFM al esquema en estrella dan, para las ventas:
+
+```text
+Zona(Id_Zona, Ciudad, Provincia, Región, País)
+Producto(Id_Producto, Nombre, Tipo, Categoría, Departamento)
+Tiempo(Id_Tiempo, Fecha, Num_mes, Nombre_mes, Trimestre, Año)
+Ventas(Id_Producto, Id_Zona, Id_Tiempo, Cantidad, Precio_coste, Precio_venta)
+```
+
+<div class="table-scroll">
+
+| | Tablas de dimensión | Tablas de hechos |
+| --- | --- | --- |
+| Uso | **Criterios de búsqueda.** | **Resultados** de las consultas. |
+| Contenido | Identificador (típicamente **clave primaria subrogada**) y atributos **cualitativos**. | **Claves foráneas a todas las dimensiones** y atributos **cuantitativos**. |
+| Atributos | **Muchos.** | **Pocos.** |
+| Filas | **Pocas.** | **Muchas.** |
+| Crecimiento | **Mínimo.** | **Potencialmente muy grande.** |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=38">AD, pp. 38-40</a>.</p>
+
+<h3 id="copo-nieve">Estrella frente a copo de nieve</h3>
+
+- **Tabla única** con todo: **impracticable**, espacio excesivo.
+- **Esquema en estrella** (la alternativa típica): una tabla por dimensión, **completamente desnormalizada**.
+- **Esquema en copo de nieve:** algunas dimensiones **parcialmente normalizadas**. Por ejemplo, Producto referencia a Categoría (que referencia a Departamento) para no repetir el nombre y la descripción de la categoría en cada producto. **Menos redundancia = menos espacio, pero más joins → peor rendimiento.**
+
+En el ejemplo CTD, la estrella tiene OBSERVACION (id_ctd, id_estacion, id_tiempo, temperatura, salinidad) con TIEMPO, CTD y ESTACION (que incluye los datos de la ría). El copo de nieve saca la **ría** a su propia tabla RIA, referenciada desde ESTACION por `id_ria`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=41">AD, pp. 41-42</a>.</p>
+
+<h2 id="olap">Explotación: OLAP</h2>
+
+<h3 id="tecnicas">Técnicas de explotación</h3>
+
+Objetivo: **analizar los datos para obtener conocimiento para decidir**. Técnicas: **informes**, **visualización**, **OLAP**, **minería de datos**, analítica predictiva, optimización…
+
+Necesidades: la información debe ser **comprensible para el usuario final** (directivos, analistas, personal técnico), y el formato de acceso depende del usuario: unos hacen consultas analíticas directamente, otros necesitan todos los datos para procesarlos y otros, herramientas sencillas. El DW debe soportar todas las necesidades con flexibilidad.
+
+<div class="table-scroll">
+
+| Técnica | Características |
+| --- | --- |
+| **Informes** | Presentan **resultados predefinidos**; relativamente simples (tablas y gráficos); **estáticos, no interactivos**; útiles para información esencial. |
+| **Visualización** | Análisis visual intuitivo; **interactiva** (se accede a más detalle al interactuar); gran variedad de gráficos. Los ***dashboards*** o cuadros de mando muestran **indicadores** de forma sencilla, con **avisos o alertas** para identificar problemas y reaccionar a tiempo; los hay operacionales, tácticos y estratégicos. |
+| **OLAP** | Consulta **interactiva y a medida**: usuarios expertos responden preguntas **muy precisas**, agregando o desagregando eficientemente. Requiere conocer el **modelo multidimensional y sus operadores**. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=44">AD, pp. 44-48</a>.</p>
+
+<h3 id="operadores">Operadores OLAP</h3>
+
+Filtran los datos siguiendo el esquema multidimensional:
+
+<div class="table-scroll">
+
+| Operador | Qué hace | Ejemplo de las diapositivas |
+| --- | --- | --- |
+| **Roll-up** | **Agrega**: menos detalle en una dimensión. Puede usar todos los niveles de las jerarquías. | Pasar de trimestres a años; pasar de productos a «todos los productos». |
+| **Drill-down** | **Desagrega**: más detalle. Complementario del roll-up. | Pasar de años a trimestres; separar por producto. |
+| **Slice** | Selecciona **un valor** en una dimensión (o varias). | Quedarse con 2020-T2. Con el cubo de Golfarelli: store = 'Evermore'; añadiendo date = '4/5/08'; y añadiendo product = 'Shiny' (queda una celda). |
+| **Dice** | Selecciona **un subconjunto de valores en varias dimensiones** (generalización de slice). | Zonas Noroeste, Sur y Centro y trimestres T1–T3; o un subcubo por estado, categoría y mes. |
+| **Pivot** | **Rota** los datos: la misma información agrupada de otra forma. | De «trimestre, luego zona, luego producto» a «producto, luego zona, luego trimestre». |
+| **Drill-across** | Combina **varios hechos** (varios cubos) que comparten dimensiones. | — |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=49">AD, pp. 49-54</a>.</p>
+
+<h2 id="bibliografia">Bibliografía del tema</h2>
+
+Generales: Connolly y Begg, *Sistemas de bases de datos* (2005); Elmasri y Navathe, *Fundamentos de sistemas de bases de datos* (2007). Específicos: Golfarelli y Rizzi, *Data Warehouse Design* (2009); Inmon, *Building the Data Warehouse* (1992); Kimball y Ross, *The Data Warehouse Toolkit* (2002); Kimball y Caserta, *The Data Warehouse ETL Toolkit* (2004).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/almacenes-datos.pdf#page=55">AD, p. 55</a>.</p>
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Pongo dos preguntas analíticas que una BD operacional no responde de forma simple.
+- ☐ Enumero tres rasgos de OLTP y tres problemas de analizar sobre las fuentes operacionales.
+- ☐ Dibujo la estructura del entorno analítico y explico cada letra de ETL.
+- ☐ Digo las cuatro características de un DW según Inmon.
+- ☐ Distingo data warehouse, data mart y operational data store.
+- ☐ Pongo tres ejemplos de datos erróneos que el ETL debe resolver.
+- ☐ Comparo las fases del diseño tradicional y del multidimensional.
+- ☐ Defino hecho, medida y dimensión con un ejemplo de ventas y otro de sensores.
+- ☐ Explico qué es el evento primario y la granularidad.
+- ☐ Dibujo un DFM con jerarquías y señalo una convergencia.
+- ☐ Comparo ROLAP, MOLAP y HOLAP.
+- ☐ Escribo el esquema en estrella de un DFM y comparo tablas de hechos y de dimensión.
+- ☐ Explico cuándo conviene el copo de nieve y qué se pierde.
+- ☐ Distingo informes, visualización y OLAP.
+- ☐ Defino roll-up, drill-down, slice, dice, pivot y drill-across con un ejemplo.

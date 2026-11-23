@@ -1,0 +1,22 @@
+{
+  "id": "datos.materiales.tema-1-relacionales-sql",
+  "kind": "material",
+  "subjectId": "datos",
+  "slug": "tema-1-relacionales-sql",
+  "title": "Tema 1 · Bases de datos relacionales y SQL",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 1 (51 páginas): modelo relacional y DDL, álgebra y cálculo relacional, consultas SQL, nulos, agregación, subconsultas, operadores de conjunto, joins externos, funciones de ventana y transacciones.",
+  "tagIds": [
+    "datos.tags.sql"
+  ],
+  "order": 10,
+  "file": "materiales/datos/tema-1-relacionales-sql.pdf",
+  "format": "pdf",
+  "providedName": "1.-BDRelacionalesSQL.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 51,
+  "sha256": "4fa82b903ac00a33711e1fa10cdaa805d30606b7b7a04f22038ff89917399351"
+}

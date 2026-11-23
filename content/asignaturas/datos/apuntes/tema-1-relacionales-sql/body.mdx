@@ -1,0 +1,756 @@
+<h2 id="idea-central">Idea central</h2>
+
+El tema repasa el **modelo relacional** y el lenguaje **SQL** de principio a fin: cómo se define el esquema (DDL), qué lenguajes formales hay detrás de SQL (álgebra y cálculo relacional), cómo se escriben las consultas (selección, joins, nulos, agregación, subconsultas, operadores de conjunto, joins externos y funciones de ventana) y cómo garantiza el sistema la corrección de los datos con **transacciones ACID**. Todos los ejemplos usan la misma base de datos de una empresa: departamentos, empleados, proyectos y la participación de los empleados en los proyectos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=2">T1, p. 2</a>.</p>
+
+<h2 id="base-ejemplo">La base de datos de ejemplo</h2>
+
+Conviene tener estas cuatro tablas delante: casi todas las consultas del tema se resuelven sobre ellas.
+
+<div class="table-scroll">
+
+| depid | nom_dept |
+| --- | --- |
+| 1 | Marketing |
+| 2 | Ventas |
+| 3 | Compras |
+
+</div>
+
+<div class="table-scroll">
+
+| dni | nom_emp | salario | coste_hora | depid |
+| --- | --- | --- | --- | --- |
+| 23456238 | Alfredo | 35000 | 45 | 1 |
+| 25368964 | Sofía | 43000 | 60 | 1 |
+| 58325647 | Ricardo | 29500 | 30 | 2 |
+| 78878965 | Elena | 40500 | 55 | 2 |
+| 78532564 | Ernesto | 41000 | 56 | *(nulo)* |
+
+</div>
+
+<div class="table-scroll">
+
+| pid | nom_proy | presupuesto |
+| --- | --- | --- |
+| 1 | Tráfico | 198000 |
+| 2 | Jardinería | 97000 |
+| 3 | Fiestas | 86000 |
+
+</div>
+
+<div class="table-scroll">
+
+| empleado | proyecto | horas_previstas | horas_dedicadas |
+| --- | --- | --- | --- |
+| 23456238 | 1 | 1800 | 95 |
+| 25368964 | 1 | 800 | 30 |
+| 23456238 | 2 | 600 | 10 |
+| 78878965 | 2 | 800 | 5 |
+| 78532564 | 2 | 300 | 100 |
+
+</div>
+
+Tres detalles del ejemplo que explican resultados posteriores: **Ernesto no tiene departamento** (`depid` nulo), **Compras no tiene empleados**, **Ricardo no participa en ningún proyecto** y **Fiestas no tiene participantes**. Las diapositivas escriben a veces «Xardinería» y «Festas» (gallego) para los mismos proyectos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=3">T1, p. 3</a>.</p>
+
+<h2 id="modelo">Modelo relacional y creación del esquema</h2>
+
+<h3 id="tipos">Tipos de datos</h3>
+
+Los tipos de datos son **conjuntos finitos** de valores. Los habituales en SQL:
+
+- `char(n)`: cadena de **tamaño fijo**; `varchar(n)`: cadena de **tamaño variable**.
+- `int`, `smallint`: enteros.
+- `numeric(p, d)`: **punto fijo** (p dígitos, d decimales).
+- `real`, `double precision`: **punto flotante**; `float(n)`: precisión mínima de n dígitos.
+- `date`, `time`, `timestamp`, `interval`: tipos temporales (se amplían en el tema 3).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=4">T1, p. 4</a>.</p>
+
+<h3 id="relacion">Relación, esquema y contenido</h3>
+
+- El **esquema** de una relación es su **nombre más un conjunto de pares (nombre de atributo, tipo de datos)**: `NombreR (A1:T1, A2:T2, ..., AN:TN)`. Los tipos de los atributos no tienen por qué ser distintos.
+- El **contenido** es un **subconjunto del producto cartesiano** de los N tipos de datos: cada fila (tupla) toma un valor de cada tipo.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=5">T1, p. 5</a>.</p>
+
+<h3 id="ddl">Lenguaje de definición de datos (DDL)</h3>
+
+Sintaxis básica de `CREATE TABLE` con el ejemplo:
+
+```sql
+CREATE TABLE Departamento (
+  depid int primary key,
+  nom_dept varchar(500) NOT NULL
+);
+
+CREATE TABLE Empleado (
+  dni char(8),
+  nom_emp varchar(500) NOT NULL,
+  salario decimal(8,2),
+  coste_hora decimal(6,2) NOT NULL DEFAULT 40,
+  depid int references Departamento(depid),
+  primary key (dni));
+
+CREATE TABLE Proyecto(
+  pid int primary key,
+  nom_proy varchar(500) NOT NULL,
+  presupuesto decimal(12, 2));
+```
+
+- `primary key` declara la **clave primaria** (en línea o al final, si es compuesta).
+- `NOT NULL` impide valores nulos; `DEFAULT` da el valor si no se indica otro al insertar.
+- `references` declara una **clave foránea** hacia la clave de otra tabla.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=6">T1, p. 6</a>.</p>
+
+<h3 id="restricciones">Restricciones</h3>
+
+```sql
+CREATE TABLE participa (
+  empleado char(8),
+  proyecto int,
+  horas_previstas int NOT NULL,
+  horas_dedicadas int DEFAULT 0,
+  primary key (empleado, proyecto),
+  foreign key (empleado) references Empleado(dni)
+    on delete restrict
+    on update cascade,
+  foreign key (proyecto) references Proyecto(pid)
+    on delete cascade
+    on update cascade,
+  check (horas_previstas >= horas_dedicadas));
+```
+
+- **Clave primaria compuesta** `(empleado, proyecto)`: un empleado aparece una sola vez por proyecto.
+- `UNIQUE (a1, a2, ...)` define **otras claves candidatas**.
+- Las claves foráneas indican qué hacer cuando se borra (`on delete`) o se modifica (`on update`) la fila referenciada. Las cuatro acciones son **`restrict`**, **`cascade`**, **`set null`** y **`set default`**. En el ejemplo, no se puede borrar un empleado que participe en proyectos (`restrict`), pero borrar un proyecto borra sus participaciones (`cascade`).
+- `check` impone una condición sobre cada fila: aquí, no dedicar más horas de las previstas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=7">T1, p. 7</a>.</p>
+
+<h3 id="cambios-esquema">Cambios en el esquema</h3>
+
+```sql
+DROP TABLE participa;
+ALTER TABLE Empregado ADD email varchar(500);
+ALTER TABLE Empregado DROP COLUMN email;
+ALTER TABLE Empregado ALTER COLUMN dni TYPE int USING cast(dni as int);
+ALTER TABLE Empregado ALTER COLUMN coste_hora DROP DEFAULT;
+ALTER TABLE Empregado ADD PRIMARY KEY (dni);
+ALTER TABLE Empregado DROP PRIMARY KEY;
+ALTER TABLE Empregado ALTER salario SET NOT NULL;
+ALTER TABLE Empregado ALTER nome DROP NOT NULL;
+ALTER TABLE Empregado RENAME TO Empregado2025;
+ALTER TABLE Empregado RENAME depId TO departamento;
+```
+
+`DROP TABLE` elimina la tabla; `ALTER TABLE` añade o quita columnas, cambia tipos (con `USING` para convertir los valores existentes), quita valores por defecto, añade o quita claves, activa o desactiva `NOT NULL` y renombra tablas o columnas. (La diapositiva usa el nombre gallego `Empregado`.)
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=8">T1, p. 8</a>.</p>
+
+<h2 id="lenguajes-formales">Lenguajes formales: álgebra y cálculo relacional</h2>
+
+<h3 id="algebra">Álgebra relacional (lenguaje procedimental)</h3>
+
+Dice **cómo** obtener el resultado, como una secuencia de operaciones sobre relaciones.
+
+<div class="table-scroll">
+
+| Tipo | Operación | Notación |
+| --- | --- | --- |
+| Primitiva | Selección (filtra filas) | $\sigma_p(R)$ |
+| Primitiva | Proyección generalizada (elige o calcula columnas) | $\pi_{A_1, \dots, A_n}(R)$ |
+| Primitiva | Producto cartesiano | $R_1 \times R_2$ |
+| Primitiva | Unión | $R_1 \cup R_2$ |
+| Primitiva | Diferencia | $R_1 - R_2$ |
+| Derivada | Intersección | $R_1 \cap R_2$ |
+| Derivada | Theta join | $R_1 \bowtie_p R_2 \equiv \sigma_p(R_1 \times R_2)$ |
+| Derivada | Natural join | $R_1 \bowtie R_2$ |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=9">T1, p. 9</a>.</p>
+
+<h3 id="calculo">Cálculo de predicados y cálculo relacional de tuplas (lenguaje declarativo)</h3>
+
+Dice **qué** se quiere, no cómo obtenerlo. Parte del **cálculo de predicados**: constantes, variables, predicados y funciones; conectores $\lor, \land, \rightarrow, \leftrightarrow, \lnot$; cuantificadores $\forall, \exists$. Ejemplo: `numero(x) ∧ ¬(∃y(numero(y) ∧ mayor(x, y)))` describe el número que no es menor que ningún otro.
+
+El **cálculo relacional de tuplas** concreta esa lógica para bases de datos:
+
+- Expresiones de la forma `{ t | P(t) }`: «las tuplas t que cumplen P».
+- Las variables referencian **tuplas**; `t[A]` accede al valor del atributo A.
+- Las constantes son valores de los tipos de datos.
+- Predicados: las **relaciones** (`Empleado(t)`: t pertenece a Empleado) y los del sistema (`x > y`, `x = y`…).
+- Conectores y cuantificadores: `∃x(Empleado(x) ∧ x[salario] > y[salario])`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=10">T1, pp. 10-11</a>.</p>
+
+<h3 id="expresiones-seguras">Expresiones seguras</h3>
+
+Una expresión puede generar un **resultado infinito**: `{ t | ¬Empleado(t) }` son todas las tuplas posibles que no son empleados. El lenguaje debe impedir construirlas, por ejemplo **obligando a que cada variable aparezca dentro de un predicado de relación sin negar**: `{ t | ¬Empleado(t) ∧ cliente(t) }` sí es segura (clientes que no son empleados).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=12">T1, p. 12</a>.</p>
+
+<h3 id="procesamiento">Procesamiento de consultas</h3>
+
+La misma consulta se escribe en cálculo (declarativo) y se traduce a un **árbol de álgebra** (procedimental) que el sistema ejecuta.
+
+- Nombre de los empleados con salario mayor de 25000: `{ t[nome] | empleado(t) ∧ t[salario] > 25000 }` equivale a $\pi_{\mathrm{nombre}}(\sigma_{\mathrm{salario} > 25000}(\mathrm{Empleado}))$.
+- Proyectos en los que ha participado Elena: en cálculo, con la variable `e` libre o cuantificada con `∃e`. En álgebra admite **tres árboles equivalentes**: proyectar tras filtrar el producto cartesiano; proyectar tras un join `empleado = dni` y filtrar por nombre; o **filtrar primero `nombre = 'Elena'`** y después hacer el join, que trabaja con menos filas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=13">T1, pp. 13-14</a>.</p>
+
+<h2 id="sintaxis-basica">Sintaxis básica de SQL</h2>
+
+SQL ofrece una **sintaxis amigable** (parecida al inglés) para **expresiones seguras del cálculo de tuplas**, genera **árboles de ejecución basados en álgebra** y trabaja con **multiconjuntos** (admite filas repetidas) en lugar de conjuntos. Las cláusulas se evalúan en este orden:
+
+1. `FROM R1 as r1, ..., Rm as rm` → producto cartesiano $R_1 \times \dots \times R_m$.
+2. `WHERE p` → selección $\sigma_p$.
+3. `SELECT e1, ..., en` → proyección $\pi_{e_1, \dots, e_n}$.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=15">T1, p. 15</a>.</p>
+
+<h3 id="una-tabla">Consultas sobre una tabla</h3>
+
+Nombres de los empleados con salario mayor de 40000 (con o sin alias de tabla):
+
+```sql
+SELECT nom_emp
+FROM empleado as e
+WHERE e.salario > 40000
+```
+
+Resultado: Sofía, Elena y Ernesto.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=16">T1, p. 16</a>.</p>
+
+<h3 id="varias-tablas">Consultas sobre varias tablas</h3>
+
+Proyectos en los que participó Elena:
+
+```sql
+SELECT p.proyecto
+FROM empleado as e, participa as p
+WHERE e.dni=p.empleado and e.nom_emp='Elena'
+```
+
+El `FROM` forma el producto cartesiano empleado × participa (5 × 5 = 25 combinaciones); el `WHERE` se queda con las que casan por DNI y son de Elena. Resultado: proyecto 2.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=17">T1, p. 17</a>.</p>
+
+<h3 id="ordenacion">Ordenación</h3>
+
+Nombres y salarios de los empleados que ya dedicaron entre 20 y 40 horas al proyecto «Tráfico», por salario descendente y después por nombre ascendente:
+
+```sql
+SELECT e.nom_emp, e.salario
+FROM empleado as e, participa pa, proyecto pr
+WHERE e.dni=pa.empleado
+  and pr.pid=pa.proyecto
+  and pa.horas_dedicadas between 20 and 40
+  and pr.nom_proy = 'Tráfico'
+ORDER BY e.salario DESC, e.nom_emp ASC
+```
+
+`ORDER BY` se aplica en cuarto lugar, después del `SELECT`. **El resultado ya no es una relación, porque está ordenado** (una relación es un conjunto sin orden).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=18">T1, p. 18</a>.</p>
+
+<h3 id="distinct">Eliminación de duplicados</h3>
+
+Nombres de los empleados que participaron en algún proyecto con presupuesto de más de 90000: sin más, Alfredo sale **dos veces** (participa en Tráfico y en Jardinería). Con `SELECT DISTINCT e.nom_emp` se eliminan los duplicados: Alfredo, Sofía, Elena, Ernesto.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=19">T1, p. 19</a>.</p>
+
+<h3 id="joins-internos">Joins internos</h3>
+
+<div class="table-scroll">
+
+| Tipo | Sintaxis | Qué hace |
+| --- | --- | --- |
+| **Inner theta join** (cualquier predicado) | `FROM empleado e INNER JOIN departamento d ON (e.depid = d.depid)` | Equivale a `FROM empleado e, departamento d WHERE e.depid = d.depid`. `INNER` puede omitirse (es el tipo por defecto). La columna `depid` aparece **repetida**. |
+| **Inner equi join** (predicado =) | `FROM empleado e JOIN departamento d USING (depid)` | La columna debe **llamarse igual en ambas tablas**; elimina la columna repetida. |
+| **Inner natural join** | `FROM empleado e NATURAL JOIN departamento d` | Equi join por **todas** las columnas con el mismo nombre. |
+
+</div>
+
+En los tres casos, **Ernesto (sin departamento) y Compras (sin empleados) se pierden** del resultado. La diapositiva del natural join plantea la trampa: **¿y si `nom_emp` y `nom_dept` se llamasen ambos `Nombre`?** El natural join también exigiría que coincidiesen los nombres, y el resultado sería erróneo.
+
+Para unir columnas de nombre distinto con `USING` o `NATURAL`, se **renombran columnas en el `FROM`**. Número de proyectos en los que participó Alfredo:
+
+```sql
+SELECT count(*)
+FROM empleado e
+  JOIN Participa p(dni, proyecto, horas_previstas, horas_dedicadas)
+  USING (dni)
+WHERE e.nom_emp = 'Alfredo'
+```
+
+(Con `NATURAL JOIN` en lugar de `JOIN ... USING (dni)` funciona igual, porque tras el renombrado `dni` es la única columna común.)
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=20">T1, pp. 20-22</a>.</p>
+
+<h2 id="nulos">Valores nulos</h2>
+
+- Cada tipo de dato tiene un valor especial **NULL**: valor no conocido, todavía no insertado, etc.
+- El tipo **Boolean también tiene NULL**: `NULL = NULL` y `A = NULL` evalúan a **NULL**, no a verdadero.
+- La cláusula **`WHERE` solo devuelve las tuplas cuyo predicado evalúa a TRUE**.
+
+Por eso `WHERE depid = NULL` **devuelve una tabla vacía**; lo correcto es `WHERE depid IS NULL` (devuelve a Ernesto) o `WHERE depid IS NOT NULL` (los otros cuatro).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=23">T1, p. 23</a>.</p>
+
+<h2 id="agregacion">Agregación</h2>
+
+<h3 id="agregados">Cálculo de agregados</h3>
+
+Una **función de agregado** resume muchas filas en un valor:
+
+```sql
+SELECT AVG(salario) FROM empleado;   -- 37800
+SELECT AVG(salario), MIN(salario), MAX(Salario), COUNT(*), COUNT(DISTINCT coste_hora)
+FROM empleado;
+```
+
+La diapositiva muestra también `SELECT AVG(salario), nom_emp FROM empleado`, que **no es válida**: sin `GROUP BY`, no hay un único `nom_emp` que mostrar junto a la media de todos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=24">T1, p. 24</a>.</p>
+
+<h3 id="group-by">Agregados por grupo</h3>
+
+Nombre y número de empleados de cada proyecto:
+
+```sql
+SELECT pr.nom_proy, COUNT(*)          -- 4
+FROM proyecto pr, participa pa        -- 1
+WHERE pr.pid = pa.proyecto            -- 2
+GROUP BY pr.pid, pr.nom_proy          -- 3
+```
+
+Orden de evaluación: `FROM`, `WHERE`, `GROUP BY` y por último `SELECT`. Resultado: Tráfico 2, Jardinería 3 (Fiestas no aparece porque no tiene filas en participa).
+
+Suma de horas que cada empleado dedicó a sus proyectos:
+
+```sql
+SELECT e.dni, e.nom_emp, SUM(pa.horas_dedicadas)
+FROM empleado e, participa p
+WHERE e.dni = p.empleado
+GROUP BY e.dni
+```
+
+Resultado: Alfredo 105, Sofía 30, Elena 5, Ernesto 100. Se puede mostrar `e.nom_emp` agrupando solo por `e.dni` porque **dni es la clave**: cada grupo tiene un único nombre.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=25">T1, pp. 25-26</a>.</p>
+
+<h3 id="having">Filtrado de grupos con HAVING</h3>
+
+Para cada empleado que participe en dos o más proyectos, horas previstas de media por proyecto:
+
+```sql
+SELECT e.dni, e.nom_emp, AVG(horas_previstas) as horas   -- 5
+FROM empleado e, participa p                              -- 1
+WHERE e.dni = p.empleado                                  -- 2
+GROUP BY e.dni                                            -- 3
+HAVING count(*) >= 2                                      -- 4
+```
+
+`HAVING` filtra **grupos** (después de agrupar), igual que `WHERE` filtra filas. Resultado: Alfredo, 1200 horas.
+
+Para cada proyecto con más de dos empleados: identificador, nombre, presupuesto total, presupuesto previsto para personal y para otros gastos:
+
+```sql
+SELECT pr.pid, pr.nom_proy, pr.presupuesto,
+       SUM(pa.horas_previstas*e.coste_hora) AS personal,
+       pr.presupuesto - SUM(pa.horas_previstas*e.coste_hora) AS otros_gastos
+FROM proyecto pr, participa pa, empleado e
+WHERE pr.pid=pa.proyecto and e.dni=pa.empleado
+GROUP BY pr.pid
+HAVING count(*) > 2
+```
+
+Con los datos del ejemplo solo cumple Jardinería: personal = 600·45 + 800·55 + 300·56 = 87800 y otros gastos = 97000 − 87800 = 9200 (cálculo propio; la diapositiva no muestra el resultado).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=27">T1, pp. 27-28</a>.</p>
+
+<h2 id="subconsultas">Subconsultas</h2>
+
+<h3 id="subconsultas-from">En la cláusula FROM</h3>
+
+Una subconsulta en el `FROM` **devuelve una tabla** y permite estrategias de tipo **divide y vencerás**. Para cada proyecto, número de empleados con coste por hora mayor que 40 y menor o igual que 40:
+
+```sql
+SELECT p.pid, p.nom_proy, Tmas40.mas40, Tmenos40.menos40
+FROM proyecto p,
+  (SELECT p.proyecto, count(*) as mas40
+   FROM participa p, empleado e
+   WHERE p.empleado=e.dni and coste_hora > 40
+   GROUP BY p.proyecto) as Tmas40,
+  (SELECT p.proyecto, count(*) as menos40
+   FROM participa p, empleado e
+   WHERE p.empleado=e.dni and coste_hora <= 40
+   GROUP BY p.proyecto) as Tmenos40
+WHERE p.pid = Tmas40.proyecto and p.pid = Tmenos40.proyecto
+```
+
+La alternativa con **`WITH`** nombra las subconsultas antes de la consulta principal y la hace más legible:
+
+```sql
+WITH tmas40 as (
+  SELECT p.proyecto, count(*) as mas40
+  FROM participa p, empleado e
+  WHERE p.empleado=e.dni and coste_hora > 40
+  GROUP BY p.proyecto
+),
+tmenos40 as (
+  SELECT p.proyecto, count(*) as menos40
+  FROM participa p, empleado e
+  WHERE p.empleado=e.dni and coste_hora <= 40
+  GROUP BY p.proyecto
+)
+SELECT p.pid, p.nom_proy, Tmas40.mas40, Tmenos40.menos40
+FROM proyecto p, tmas40, tmenos40
+WHERE p.pid = tmas40.proyecto and p.pid = tmenos40.proyecto
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=29">T1, pp. 29-30</a>.</p>
+
+<h3 id="subconsultas-escalares">En otras cláusulas</h3>
+
+Una subconsulta puede ir en `SELECT`, `WHERE` o `HAVING`. Cuando se compara con `=` o `>` **tiene que devolver una tabla con una única fila y columna**. Empleado con el salario más grande:
+
+```sql
+SELECT *
+FROM empleado
+WHERE salario = (SELECT MAX(salario) FROM empleado)   -- MAX = 43000 → Sofía
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=31">T1, p. 31</a>.</p>
+
+<h3 id="cuantificadores">Predicados sobre conjuntos: IN, ANY/SOME/ALL y EXISTS</h3>
+
+En `WHERE` y `HAVING`, la subconsulta puede devolver un conjunto, que se usa con:
+
+- **`IN`**: el valor está en el conjunto.
+- **Modificadores de comparación** `ANY`, `SOME` (alguno) y `ALL` (todos).
+- **`EXISTS`**: el conjunto no está vacío.
+
+Empleados que participan en algún proyecto con presupuesto mayor de 90000, tres formas:
+
+```sql
+SELECT DISTINCT e.*
+FROM empleado e, participa pa, proyecto pr
+WHERE e.dni = pa.empleado and pr.pid = pa.proyecto and pr.presupuesto > 90000
+
+SELECT * FROM empleado
+WHERE dni IN (SELECT empleado FROM participa pa, proyecto pr
+              WHERE pa.proyecto=pr.pid and pr.presupuesto > 90000)
+
+SELECT * FROM empleado
+WHERE dni = ANY (SELECT empleado FROM participa pa, proyecto pr
+                 WHERE pa.proyecto=pr.pid and pr.presupuesto > 90000)
+```
+
+Las versiones con subconsulta **no necesitan eliminar duplicados**: cada empleado se evalúa una vez.
+
+Empleado con el mayor salario, tres formas:
+
+```sql
+SELECT * FROM empleado
+WHERE salario = (SELECT MAX(salario) FROM empleado)
+
+SELECT * FROM empleado
+WHERE salario >= ALL (SELECT salario FROM empleado)
+
+SELECT * FROM empleado e1
+WHERE NOT EXISTS (SELECT * FROM empleado e2 WHERE e1.salario < e2.salario)
+```
+
+La última es una **subconsulta correlacionada**: referencia una tabla de la consulta exterior (`e1`).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=32">T1, pp. 32-33</a>.</p>
+
+<h2 id="conjuntos">Operadores de conjunto</h2>
+
+`UNION`, `INTERSECT` y `EXCEPT` hacen la unión, intersección y diferencia de **multiconjuntos**. Las relaciones tienen que ser **compatibles** (mismo número de columnas y tipos compatibles) y **por defecto eliminan duplicados**; con `ALL` (`UNION ALL`, `EXCEPT ALL`…) los conservan. Un `ORDER BY` final ordena el resultado completo.
+
+Proyectos o departamentos con dos o más empleados:
+
+```sql
+SELECT nom_dept as nombre, 'Departamento' as tipo
+FROM departamento d, empleado e
+WHERE d.depid=e.depid
+GROUP BY d.depid
+HAVING count(*) >=2
+UNION ALL
+SELECT nom_proy, 'Proyecto' as tipo
+FROM proyecto p, participa pa
+WHERE p.pid = pa.proyecto
+GROUP BY p.pid
+HAVING count(*)>=2
+```
+
+Resultado: Marketing y Ventas (Departamento), Tráfico y Jardinería (Proyecto).
+
+DNI y nombre de los empleados que no participan en ningún proyecto (resultado: Ricardo):
+
+```sql
+SELECT dni, nom_emp FROM empleado
+EXCEPT ALL
+SELECT e.dni, e.nom_emp FROM empleado e, participa p WHERE e.dni = p.empleado
+
+SELECT dni, nom_emp FROM empleado
+WHERE dni NOT IN (SELECT empleado FROM participa)
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=34">T1, pp. 34-35</a>.</p>
+
+<h2 id="joins-externos">Joins externos (outer joins)</h2>
+
+Un join externo **conserva las filas sin pareja** y rellena con nulos las columnas de la otra tabla:
+
+<div class="table-scroll">
+
+| Consulta | Filas que añade al inner join |
+| --- | --- |
+| `empleado NATURAL LEFT OUTER JOIN departamento` | Ernesto, con `nom_dept` nulo. |
+| `empleado NATURAL RIGHT JOIN departamento` | Compras (depid 3), con las columnas de empleado nulas. |
+| `empleado NATURAL FULL JOIN departamento` | Ambas. |
+
+</div>
+
+Se pueden hacer joins externos con **todos los tipos de join** (`ON`, `USING`, `NATURAL`). La palabra `OUTER` es opcional.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=36">T1, p. 36</a>.</p>
+
+<h2 id="ventana">Funciones de ventana</h2>
+
+Permiten obtener **un valor para cada fila que depende de un conjunto de filas** de la misma tabla, sin colapsarlas en grupos. Los ejemplos usan una tabla `gastos(proyecto, mes, gastos)`:
+
+<div class="table-scroll">
+
+| proyecto | mes | gastos |
+| --- | --- | --- |
+| 1 | 1 | 3 |
+| 1 | 2 | 5 |
+| 1 | 4 | 2 |
+| 1 | 5 | 5 |
+| 1 | 6 | 7 |
+| 2 | 3 | 3 |
+| 2 | 4 | 2 |
+| 2 | 5 | 5 |
+| 2 | 6 | 3 |
+
+</div>
+
+<h3 id="ventana-particion">Ventanas por partición y con ordenación</h3>
+
+Porcentaje del gasto de cada mes respecto al total de su proyecto (la ventana es **todo el proyecto**):
+
+```sql
+SELECT p.nom_proy, g.mes,
+       g.gastos / sum(g.gastos) OVER (PARTITION BY g.proyecto) AS pgastos
+FROM proyecto p JOIN gastos g ON p.pid = g.proyecto
+```
+
+Gasto acumulado hasta cada mes (la ventana va **desde el principio hasta la fila actual**):
+
+```sql
+SELECT p.nom_proy, g.mes,
+       sum(g.gastos) OVER (PARTITION BY g.proyecto
+                           ORDER BY mes
+                           ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS gacum
+FROM proyecto p JOIN gastos g ON p.pid = g.proyecto
+```
+
+El marco se define en filas (`ROWS`) o por valores (`RANGE`), con los límites `UNBOUNDED PRECEDING`, `offset PRECEDING`, `CURRENT ROW`, `offset FOLLOWING` y `UNBOUNDED FOLLOWING`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=37">T1, p. 37</a>.</p>
+
+<h3 id="ranking">Ranking y acceso a filas vecinas</h3>
+
+Ranking de los meses de cada proyecto por gastos, percentil de cada mes y diferencia con el mes anterior:
+
+```sql
+SELECT p.nom_proy, g.mes, g.gastos,
+  rank()       OVER (PARTITION BY g.proyecto ORDER BY gastos DESC) AS r,
+  dense_rank() OVER (PARTITION BY g.proyecto ORDER BY gastos DESC) AS dr,
+  cume_dist()  OVER (PARTITION BY g.proyecto ORDER BY gastos) AS pctl,
+  gastos - lag(gastos) OVER (PARTITION BY g.proyecto ORDER BY mes) AS dif
+FROM proyecto p JOIN gastos g ON p.pid = g.proyecto
+ORDER BY p.nom_proy, g.gastos
+```
+
+(En la diapositiva falta la coma tras `g.gastos`.)
+
+<div class="table-scroll">
+
+| nom_proy | mes | gastos | r | dr | pctl (diapositiva) | dif |
+| --- | --- | --- | --- | --- | --- | --- |
+| Tráfico | 1 | 3 | 4 | 3 | 0,4 | *(nulo)* |
+| Tráfico | 2 | 5 | 2 | 2 | 0,6 | 2 |
+| Tráfico | 4 | 2 | 5 | 4 | 0,2 | −3 |
+| Tráfico | 5 | 5 | 2 | 2 | 0,6 | 3 |
+| Tráfico | 6 | 7 | 1 | 1 | 1 | 2 |
+| Jardinería | 3 | 3 | 2 | 2 | 0,5 | *(nulo)* |
+| Jardinería | 4 | 2 | 4 | 3 | 0,2 | −1 |
+| Jardinería | 5 | 5 | 1 | 1 | 1 | 3 |
+| Jardinería | 6 | 3 | 2 | 2 | 0,5 | −2 |
+
+</div>
+
+- **`rank()`** deja huecos tras un empate (dos segundos → el siguiente es cuarto); **`dense_rank()`** no los deja (el siguiente es tercero).
+- **`lag()`** devuelve el valor de la fila anterior según el orden de la ventana; en la primera fila es nulo.
+
+<div class="callout">
+
+**Ojo con la columna pctl.** `cume_dist()` es la fracción de filas de la partición con valor **menor o igual** que el de la fila. Con esa definición, los dos meses de 5 en Tráfico valen 4/5 = 0,8 (no 0,6), y en Jardinería (4 filas) el 2 vale 0,25 y los dos 3 valen 3/4 = 0,75. Los valores de `r`, `dr` y `dif` de la diapositiva sí son correctos.
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=38">T1, p. 38</a>.</p>
+
+<h2 id="modificacion">Inserción, borrado y modificación</h2>
+
+```sql
+INSERT INTO nombre_tabla (A1, A2, ..., An)
+VALUES (v11, v12, ..., v1n),
+       (v21, v22, ..., v2n),
+       (vm1, vm2, ..., vmn);
+```
+
+- Si no se especifican los atributos, se consideran **todos** los de la tabla.
+- Los no especificados reciben **el valor por defecto o un nulo**. Si no hay valor por defecto y no admiten nulos, **se genera una excepción**.
+
+Insertar el resultado de una consulta: `INSERT INTO nombre_tabla (A1, ..., An) SELECT ...` (SQL estándar). Crear una tabla nueva a partir de una consulta: `SELECT ... INTO nombre_tabla FROM ...` o `CREATE TABLE nombre_tabla AS SELECT ...` (PostgreSQL).
+
+```sql
+DELETE FROM nombre_tabla WHERE p;
+UPDATE nombre_tabla SET a1 = e1, a2 = e2, ..., an = en WHERE p;
+```
+
+Las expresiones de `SET` y `WHERE` pueden ser complejas e incluir subconsultas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=39">T1, pp. 39-40</a>.</p>
+
+<h2 id="transacciones">Transacciones</h2>
+
+<h3 id="definicion-transaccion">Qué es una transacción</h3>
+
+Una **transacción** es una **unidad de ejecución de un programa que accede y posiblemente modifica varios elementos de datos**. Va entre `Begin Transaction` y `End Transaction` y puede incluir muchas operaciones (y deshacerse).
+
+- Para el usuario es una **unidad simple e indivisible** (atomicidad), aunque internamente es compleja: datos en memoria y en disco.
+- Opera **sin interferencia** de las operaciones de otras transacciones (aislamiento).
+- Sus efectos **perduran a pesar de caídas** del sistema (durabilidad).
+- Su ejecución aislada y atómica deja la base de datos en un **estado consistente** (consistencia), que depende de la aplicación.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=41">T1, p. 41</a>.</p>
+
+<h3 id="acid">Propiedades ACID</h3>
+
+<div class="table-scroll">
+
+| Propiedad | Definición | Quién la garantiza |
+| --- | --- | --- |
+| **Atomicidad** | Se ejecutan **todas** las operaciones **o ninguna**. | El SGBD, con un **registro (log) de valores antiguos** para restaurarlos si hay fallo: **sistema de recuperación**. |
+| **Consistencia** | La ejecución aislada de una transacción **preserva la consistencia**. | El **programador**; las restricciones de integridad automáticas (PRIMARY KEY, FOREIGN KEY, CHECK…) ayudan. |
+| **Aislamiento** | Aunque se ejecuten de forma concurrente, para cada par Ti, Tj parece que Tj terminó antes de empezar Ti o empezó después de terminar Ti. | El SGBD, con el **sistema de control de concurrencia**. Puede tener **gran impacto en el rendimiento**; si hace falta, depende de la aplicación. |
+| **Durabilidad** | Tras terminar con éxito, los cambios **persisten aunque haya fallos**. | El SGBD: guarda en disco información suficiente de las modificaciones para reconstruirlas al reiniciar (**sistema de recuperación**, también responsable de la atomicidad). |
+
+</div>
+
+El ejemplo es una transferencia de 50 de A a B: `leer(A); A := A − 50; escribir(A); leer(B); B := B + 50; escribir(B)`.
+
+- **Consistencia:** la suma A + B no debe cambiar; T1 no debe crear ni destruir dinero.
+- **Atomicidad:** si hay un fallo entre `escribir(A)` y `escribir(B)`, el dinero desaparece. Ese estado inconsistente **no lo provoca el programador** y, si la ejecución es atómica, es solo **temporal**: el log permite restaurar A.
+- **Aislamiento:** si T2 calcula `S := A + B` entre la escritura de A y la de B, ve una suma con 50 de menos, y ese error **puede mantenerse tras terminar ambas**. Ejecutarlas una detrás de otra lo evita, pero es poco eficiente. La propiedad exige que la ejecución concurrente sea **equivalente a alguna ejecución secuencial**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=42">T1, pp. 42-45</a>.</p>
+
+<h3 id="estados">Estados de una transacción</h3>
+
+```text
+             (última instrucción)                (registro en disco)
+  Activa ──────────────────────▶ Parcialmente ──────────────────────▶ Comprometida
+     │                           comprometida
+     │ no puede continuar              │ falla antes de actualizar
+     ▼                                 ▼ los datos en disco
+  Fallida ◀────────────────────────────┘
+     │ retroceso (la BD vuelve al estado anterior)
+     ▼
+  Abortada ──▶ REINICIAR (si el fallo no depende de la lógica)
+           └─▶ CANCELAR  (si el fallo depende de la lógica)
+```
+
+- **Parcialmente comprometida:** se ejecutó la última instrucción, pero **todavía puede fallar**.
+- **Comprometida:** tras completarse correctamente; hay en disco información suficiente para reproducir los cambios tras un fallo (**registro**).
+- **Fallida:** tras descubrir que no puede continuar.
+- **Abortada:** después de haber sido retrocedida; la BD tiene el estado anterior.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=46">T1, p. 46</a>.</p>
+
+<h3 id="concurrencia">Por qué ejecutar transacciones en paralelo</h3>
+
+La ejecución concurrente puede generar inconsistencias, pero hay razones para no limitarse a la secuencial:
+
+- **Mejora del rendimiento y uso de los recursos:** E/S y CPU trabajan en paralelo; disminuye el tiempo total y aumenta el uso de CPU y E/S.
+- **Reducción del tiempo medio de respuesta:** las transacciones cortas no esperan a que termine una larga.
+
+Hacen falta **planificadores que garanticen el aislamiento**. Y aislamiento y atomicidad interactúan: si T falla, hay que deshacer sus efectos y también **cada Ti que haya leído datos escritos por T**, aunque no haya fallado; **si ya se comprometió, no se puede abortar**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=47">T1, p. 47</a>.</p>
+
+<h3 id="niveles">Niveles de aislamiento del estándar SQL</h3>
+
+<div class="table-scroll">
+
+| Nivel | Garantías |
+| --- | --- |
+| **Secuenciable** (*serializable*) | Normalmente asegura la ejecución secuenciable; algunos SGBD usan protocolos que no lo garantizan en todos los casos. |
+| **Lectura repetible** | Solo se leen datos comprometidos y, entre dos lecturas del mismo dato, otra transacción no puede modificarlo. **No garantiza la secuencialidad.** |
+| **Lectura comprometida** | Solo permite leer datos comprometidos. **No garantiza lecturas repetibles.** |
+| **Lectura no comprometida** | Permite leer datos no comprometidos, pero **nunca escrituras sucias** (escribir sobre un dato escrito por otra transacción no comprometida). |
+
+</div>
+
+El ejemplo del **fenómeno fantasma**: TI cuenta los empleados de Ventas (`SELECT count(*) FROM empleado WHERE dept = 'Ventas'`) y TJ inserta un empleado nuevo en Ventas. No actúan sobre los mismos elementos de datos (TJ crea una fila nueva), así que parece que no hay conflicto; **sin embargo, el orden importa: hay conflicto**. La lectura repetible no lo evita.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=48">T1, p. 48</a>.</p>
+
+<h3 id="protocolos">Protocolos de implementación del aislamiento</h3>
+
+- **Estrategias pesimistas:** fuerzan esperas o retrocesos como prevención.
+  - Basados en **bloqueos** (protocolo de **bloqueo en dos fases**).
+  - Basados en **marcas de tiempo**.
+- **Estrategias optimistas:** permiten la ejecución normal y **solo al final comprueban** si hay problemas.
+  - Basados en **validación**.
+  - Basados en **versiones múltiples**, como el **aislamiento de instantáneas** (*snapshot isolation*), que **no garantiza la secuencialidad**. Pueden ser necesarias medidas adicionales, como la cláusula **`FOR UPDATE`**, que trata las lecturas como escrituras.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=49">T1, p. 49</a>.</p>
+
+<h2 id="otras">Otras funcionalidades</h2>
+
+El tema enumera, sin desarrollarlas: **vistas** (`CREATE VIEW nombre_vista AS SELECT ...`), creación de **índices**, **tipos, funciones y procedimientos** definidos por el usuario, **disparadores**, **seguridad**, acceso a la base de datos **desde un lenguaje de programación**, **consultas recursivas** y **agregación avanzada y OLAP** (inteligencia de negocio, que se ve en el tema de almacenes de datos).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=50">T1, p. 50</a>.</p>
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Escribo el `CREATE TABLE` de participa con clave compuesta, dos claves foráneas con acciones distintas y un `check`.
+- ☐ Nombro las cuatro acciones referenciales y digo qué hace cada una.
+- ☐ Distingo lenguaje procedimental (álgebra) y declarativo (cálculo) y escribo las cinco operaciones primitivas.
+- ☐ Explico qué es una expresión insegura y cómo se evita.
+- ☐ Digo en qué orden se evalúan `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `SELECT` y `ORDER BY`.
+- ☐ Explico por qué `WHERE depid = NULL` devuelve una tabla vacía.
+- ☐ Diferencio `ON`, `USING` y `NATURAL` y el riesgo del natural join con columnas homónimas.
+- ☐ Resuelvo «el empleado de mayor salario» con `MAX`, con `ALL` y con `NOT EXISTS`.
+- ☐ Explico la diferencia entre `UNION` y `UNION ALL`.
+- ☐ Digo qué filas añade cada join externo en el ejemplo (Ernesto, Compras).
+- ☐ Explico `PARTITION BY`, el marco `ROWS BETWEEN`, `rank`/`dense_rank` y `lag`.
+- ☐ Defino las cuatro propiedades ACID y quién garantiza cada una.
+- ☐ Dibujo los cinco estados de una transacción.
+- ☐ Ordeno los cuatro niveles de aislamiento y explico el fenómeno fantasma.
+- ☐ Distingo estrategias pesimistas y optimistas de control de concurrencia.

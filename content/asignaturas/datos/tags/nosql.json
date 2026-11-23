@@ -1,0 +1,9 @@
+{
+  "id": "datos.tags.nosql",
+  "kind": "tag",
+  "subjectId": "datos",
+  "slug": "nosql",
+  "title": "NoSQL",
+  "type": "topic",
+  "order": 40
+}

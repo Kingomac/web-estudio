@@ -1,0 +1,22 @@
+{
+  "id": "datos.materiales.mongodb",
+  "kind": "material",
+  "subjectId": "datos",
+  "slug": "mongodb",
+  "title": "MongoDB",
+  "description": "Documento original de la asignatura.",
+  "scope": "Documento completo (112 páginas): instalación, documentos, operaciones CRUD, framework de agregación, replica sets, sharding, modelado de datos y anexos de validación y series temporales.",
+  "tagIds": [
+    "datos.tags.mongodb"
+  ],
+  "order": 50,
+  "file": "materiales/datos/mongodb.pdf",
+  "format": "pdf",
+  "providedName": "mongodb_es.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 112,
+  "sha256": "f58c41a7ed1ae70d11158e2e21f6d29d8dd929182c2be81f5477b6874c343f66"
+}

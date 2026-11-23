@@ -1,0 +1,9 @@
+{
+  "id": "datos.tags.explicado",
+  "kind": "tag",
+  "subjectId": "datos",
+  "slug": "explicado",
+  "title": "Explicado con ejemplos",
+  "type": "study",
+  "order": 100
+}

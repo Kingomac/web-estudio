@@ -1,0 +1,9 @@
+{
+  "id": "datos.tags.sql",
+  "kind": "tag",
+  "subjectId": "datos",
+  "slug": "sql",
+  "title": "Tema 1 · Bases de datos relacionales y SQL",
+  "type": "topic",
+  "order": 10
+}

@@ -1,0 +1,9 @@
+{
+  "id": "datos.tags.almacenes",
+  "kind": "tag",
+  "subjectId": "datos",
+  "slug": "almacenes",
+  "title": "Almacenes de datos",
+  "type": "topic",
+  "order": 60
+}

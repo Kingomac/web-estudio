@@ -1,0 +1,172 @@
+<p class="lead">Explicación propia del documento de NoSQL con la red de estaciones de sensores de los demás apuntes explicados. La idea que lo ordena todo: **NoSQL cambia flexibilidad de consulta y consistencia inmediata por escala y disponibilidad**, y cada concepto del tema es una cara de ese intercambio. La versión fiel al documento está en los <a href="/web-estudio/asignaturas/datos/apuntes/nosql/">apuntes de NoSQL</a>.</p>
+
+<h2 id="por-que">Por qué aparece NoSQL</h2>
+
+Imagina que la red crece a **100 000 sensores que envían una lectura por segundo**: 100 000 escrituras por segundo, sin parar. Con un relacional en un servidor tienes dos salidas:
+
+- **Escalar en vertical:** comprar un servidor más grande. Funciona hasta que no hay uno más grande, cuesta cada vez más por unidad de rendimiento y, si se rompe, se para todo.
+- **Escalar en horizontal:** repartir los datos entre muchos servidores normales. Pero entonces las cosas que el relacional da gratis en una máquina (joins entre cualquier tabla, claves foráneas, transacciones sobre todo) se vuelven caras, porque los datos relacionados pueden estar en máquinas distintas.
+
+Los sistemas NoSQL nacen diseñados para la segunda opción, y por eso **renuncian a parte de lo que es caro en un cluster**: esquema fijo, joins arbitrarios, consistencia inmediata entre copias.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/nosql.pdf#page=5">NoSQL, pp. 5-6</a> y <a href="/web-estudio/materiales/datos/nosql.pdf#page=9">p. 9</a>.</p>
+
+<h2 id="agregados">Agregados: guardar los datos como se usan</h2>
+
+En relacional, la estación Campus Vida está repartida en tres tablas (estación, sensor, configuración) y para pintar su ficha hay que juntarlas. Orientado a agregados, la ficha **es un documento**:
+
+```json
+{ "_id": "campus-vida",
+  "concello": "Santiago",
+  "sensores": [
+    { "id": 10, "magnitud": "temperatura", "umbral_alarma": 35 },
+    { "id": 11, "magnitud": "humedad", "rango": [0, 100] } ] }
+```
+
+- **Una lectura** trae todo lo que la pantalla necesita, sin joins.
+- El documento cabe **entero en un nodo**: es la unidad natural para repartir (*sharding*) y copiar (replicación). Por eso el documento dice que el agregado es la unidad natural de distribución.
+- **Sin esquema fijo:** el sensor de humedad tiene `rango` y el de temperatura `umbral_alarma`. En relacional, o columnas casi siempre vacías, o más tablas.
+- Desaparece el **desajuste de impedancias**: la aplicación trabaja con objetos anidados y la BD guarda objetos anidados, en lugar de traducir objetos a filas y viceversa.
+
+<div class="callout">
+
+**El precio: el agregado favorece una pregunta y perjudica otras.** «Ficha de la estación» es rapidísima. «Todos los sensores de temperatura de Galicia con umbral por encima de 30» obliga a abrir **todos** los documentos de estación. En relacional sería un `WHERE` sobre una tabla. Por eso el diseño NoSQL empieza por las preguntas (lo verás en el modelado de MongoDB).
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/nosql.pdf#page=7">NoSQL, pp. 7-8</a>.</p>
+
+<h2 id="sharding-replicacion">Sharding y replicación no son lo mismo</h2>
+
+Con cuatro estaciones (CV, PO, MU, FA) y tres nodos:
+
+```text
+Solo sharding (cada dato en UN nodo):     Solo replicación (TODO en cada nodo):
+  nodo 1: CV, PO                            nodo 1: CV, PO, MU, FA
+  nodo 2: MU                                nodo 2: CV, PO, MU, FA
+  nodo 3: FA                                nodo 3: CV, PO, MU, FA
+
+  → más capacidad total;                    → si cae un nodo, nada se pierde;
+    si cae el nodo 2, Muralla no existe       la capacidad no crece
+```
+
+En la práctica se combinan: cada fragmento se reparte y además se copia en varios nodos.
+
+- **Master-slave:** una copia acepta escrituras y las demás solo lecturas. Es sencillo, porque no hay escrituras contradictorias, pero si cae el maestro no se puede escribir hasta elegir otro.
+- **Peer-to-peer:** cualquier copia acepta escrituras. Ninguna caída para el sistema, pero dos técnicos pueden cambiar el mismo umbral en dos nodos a la vez: **conflicto de escritura** que alguien tendrá que resolver.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/nosql.pdf#page=9">NoSQL, p. 9</a>.</p>
+
+<h2 id="consistencia">Las inconsistencias, contadas como incidencias</h2>
+
+Cada tipo de inconsistencia del documento, como algo que te podría pasar con el panel de la red:
+
+<div class="table-scroll">
+
+| Tipo | Lo que pasa | Parecido relacional |
+| --- | --- | --- |
+| **Escritura (write-write)** | Ana pone el umbral a 30 en el nodo 1 y Brais a 32 en el nodo 2 al mismo tiempo. Al sincronizar, uno de los dos cambios se pierde. | Actualización perdida. |
+| **Lectura (read-write)** | Un informe lee la configuración de una estación a medio actualizar: el sensor 10 ya con el umbral nuevo, el 11 con el viejo. | Lectura inconsistente o no repetible. |
+| **Replicación** | Ana cambia el umbral en el nodo 1; durante unos segundos el nodo 3 sigue dando el valor antiguo. | — |
+| **Read-your-writes** | Ana guarda el cambio, recarga la página, la petición va a otro nodo y **ve su propio cambio deshecho**. Es la que más confunde a los usuarios. | — |
+
+</div>
+
+**Consistencia final** (*eventual consistency*) significa que, si se dejan de hacer cambios, **todas las copias acaban igual**; no dice cuándo. ¿Es aceptable? Depende del dato:
+
+- **El gráfico de temperatura del panel:** si tarda dos segundos en mostrar la última lectura, nadie lo nota. **BASE** es suficiente.
+- **El cobro a un ayuntamiento por el servicio:** cobrar dos veces o no cobrar no es aceptable. Ahí hace falta **ACID**.
+
+El documento lo dice a su manera: la mayoría de datos OLTP críticos necesitan ACID (la crítica de Stonebraker), pero un tweet que tarda en llegar a todos los nodos no hace daño.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/nosql.pdf#page=10">NoSQL, pp. 10-11</a> y <a href="/web-estudio/materiales/datos/nosql.pdf#page=21">p. 21</a>.</p>
+
+<h2 id="cap">El teorema CAP con un cable cortado</h2>
+
+La red tiene dos centros de datos, **Santiago y Vigo**, cada uno con una copia de la configuración. Una excavadora corta la fibra entre los dos: hay una **partición de red**. Un técnico en Vigo cambia el umbral de alarma, y un panel en Santiago pregunta por ese umbral. Santiago solo puede hacer una de dos cosas:
+
+<div class="table-scroll">
+
+| Elección | Qué hace Santiago | Qué sacrifica |
+| --- | --- | --- |
+| **CP** (consistencia) | Se niega a responder (o da error) hasta poder confirmar con Vigo. | **Disponibilidad:** el panel no funciona mientras dure el corte. |
+| **AP** (disponibilidad) | Responde con el umbral que tiene, que puede ser el viejo. | **Consistencia:** el panel puede mostrar un dato desfasado. |
+
+</div>
+
+No existe una tercera opción: sin comunicación, Santiago no puede saber lo que pasó en Vigo. Esa es la lectura del documento: **como las particiones pueden ocurrir y quieres que el sistema siga funcionando, eliges entre consistencia y disponibilidad**. Mientras el cable está bien, puedes tener ambas; la elección importa cuando falla.
+
+Fíjate en la definición de disponibilidad del documento: «si un nodo responde, puedo leer y escribir en él». No es «el servidor está encendido», sino que **cualquier nodo que funcione atiende peticiones**.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/nosql.pdf#page=11">NoSQL, p. 11</a>.</p>
+
+<h2 id="tipos">Qué tipo de NoSQL para qué problema IoT</h2>
+
+<div class="table-scroll">
+
+| Tipo | Problema IoT donde encaja | Por qué | Dónde se queda corto |
+| --- | --- | --- | --- |
+| **Clave-valor** | **Último estado de cada dispositivo**: `sensor:20` → `{"valor": 16.0, "bateria": 71}`. Cachés, sesiones. | Lectura y escritura por clave, rapidísimas. | El valor es opaco: no puedes preguntar «sensores con batería por debajo de 20» sin leerlos todos. |
+| **Documentos** | **Ficha de cada dispositivo** con configuración distinta según el modelo. | Esquema flexible y consultas **sobre el contenido** (`bateria < 20` sí se puede). | Relaciones entre documentos: joins limitados. |
+| **Familias de columnas** | **Series temporales masivas**: una fila por sensor y día, una columna por instante. | Escrituras muy rápidas, filas enormes y dispersas, acceso atómico por fila; reparto natural por clave de fila. | Consultas que no partan de la clave de fila. |
+| **Grafos** | **Topología de la red**: pasarela → nodos → sensores. «¿Qué sensores quedan incomunicados si cae esta pasarela?» | Recorrer relaciones es la operación básica; no hay que hacer joins encadenados. | Distribuir el grafo entre máquinas (el documento: no son apropiadas para distribuir). |
+
+</div>
+
+La diferencia entre clave-valor y documentos es la que señala el documento: en clave-valor **el sistema no mira dentro del valor**; en documentos **sí**, y por eso puede buscar y modificar partes.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/nosql.pdf#page=13">NoSQL, pp. 13-17</a>.</p>
+
+<h2 id="mapreduce">MapReduce con una traza completa</h2>
+
+Pregunta: **número de alarmas por estación**. Los datos están repartidos en dos nodos:
+
+```text
+Nodo A:  {est: "CV", alarma: true}   {est: "PO", alarma: false}   {est: "CV", alarma: true}
+Nodo B:  {est: "PO", alarma: true}   {est: "CV", alarma: false}   {est: "MU", alarma: true}
+```
+
+```text
+map(doc):  if doc.alarma: emit(doc.est, 1)
+reduce(est, unos):  emit(est, sum(unos))
+```
+
+Lo que pasa, paso a paso:
+
+<div class="table-scroll">
+
+| Fase | Quién la hace | Resultado |
+| --- | --- | --- |
+| **Map** | Cada nodo, en paralelo, sobre **sus** documentos. | Nodo A: (CV, 1), (CV, 1). Nodo B: (PO, 1), (MU, 1). |
+| **Agrupar** (*shuffle*) | El entorno (Hadoop…), sin código tuyo. | CV → [1, 1]; PO → [1]; MU → [1]. |
+| **Reduce** | Un reductor por clave, en paralelo. | (CV, 2), (PO, 1), (MU, 1). |
+
+</div>
+
+Lo que tú escribes son las dos funciones pequeñas; **mover datos entre nodos, ordenar y agrupar** lo hace el entorno. Por eso escala: añadir nodos reparte el trabajo de map y de reduce. Y por eso es para **procesos batch**: tiene un coste de arranque y de movimiento de datos que no compensa para una consulta interactiva. Es el mismo esquema que el total por concepto del documento: map emite (concepto, importe) por cada línea y reduce suma.
+
+En SQL sería `SELECT est, COUNT(*) FROM eventos WHERE alarma GROUP BY est`: **map hace de `WHERE` y de elegir la clave del `GROUP BY`; reduce hace de agregado**.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/nosql.pdf#page=19">NoSQL, p. 19</a>.</p>
+
+<h2 id="decidir">¿Relacional o NoSQL? Cómo razonarlo</h2>
+
+La conclusión del documento (NoSQL será una alternativa cuando el dominio lo aconseje) se puede convertir en preguntas:
+
+1. **¿Necesito consultas que no conozco de antemano?** (Un analista que cruza datos a su gusto.) → Relacional.
+2. **¿Los datos son críticos y deben estar siempre consistentes?** (Facturación, inventario.) → Relacional o un NoSQL con transacciones.
+3. **¿Escribo muchísimo, con patrones de acceso conocidos y por clave?** (Telemetría.) → NoSQL.
+4. **¿Cada registro tiene una estructura distinta?** (Dispositivos de muchos fabricantes.) → Documentos.
+5. **¿Lo importante son las relaciones?** (Topología, dependencias.) → Grafos.
+
+Muchos sistemas IoT reales combinan varias: un relacional para clientes y facturación, una base de series temporales o columnar para la telemetría, y una clave-valor para el estado actual.
+
+<h2 id="chuleta">Chuleta final</h2>
+
+- NoSQL = *Not Only SQL*: distribuido, sin esquema fijo, orientado a agregados.
+- Agregado = los datos juntos como los usa la aplicación; rápido para su pregunta, lento para las demás.
+- Sharding reparte (capacidad); replicación copia (tolerancia a fallos). Master-slave frente a peer-to-peer.
+- BASE = *Basically Available, Soft state, Eventual consistency*; relaja la C y la I de ACID.
+- CAP: con partición, elige consistencia o disponibilidad.
+- Clave-valor (valor opaco), documentos (valor consultable), columnas (filas anchas y dispersas), grafos (relaciones).
+- MapReduce: map emite pares, el entorno agrupa por clave, reduce agrega. Batch y paralelo.

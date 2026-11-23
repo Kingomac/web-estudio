@@ -1,0 +1,405 @@
+<p class="lead">Esta es una explicación propia del tema 1. En lugar de empleados y proyectos usa algo más cercano a la asignatura: **una red de estaciones con sensores que guardan lecturas**. Cada consulta lleva su resultado calculado a mano, y cada apartado señala la trampa que suele costar puntos. Para la versión fiel a las diapositivas, consulta los <a href="/web-estudio/asignaturas/datos/apuntes/tema-1-relacionales-sql/">apuntes del tema 1</a>.</p>
+
+<h2 id="escenario">El escenario: estaciones, sensores y lecturas</h2>
+
+Tres tablas, pequeñas a propósito para que puedas comprobar cada resultado con el dedo:
+
+<div class="table-scroll">
+
+| id | nombre | concello |
+| --- | --- | --- |
+| 1 | Campus Vida | Santiago |
+| 2 | Porto | Vigo |
+| 3 | Muralla | Lugo |
+| 4 | Faro | Ferrol |
+
+</div>
+
+<div class="table-scroll">
+
+| id | estacion_id | magnitud |
+| --- | --- | --- |
+| 10 | 1 | temperatura |
+| 11 | 1 | humedad |
+| 20 | 2 | temperatura |
+| 30 | 3 | temperatura |
+| 99 | *(nulo)* | temperatura |
+
+</div>
+
+<div class="table-scroll">
+
+| sensor_id | ts | valor |
+| --- | --- | --- |
+| 10 | 2026-11-20 10:00 | 12.5 |
+| 10 | 2026-11-20 11:00 | 13.0 |
+| 10 | 2026-11-20 12:00 | 14.5 |
+| 11 | 2026-11-20 10:00 | 81 |
+| 20 | 2026-11-20 10:00 | 15.0 |
+| 20 | 2026-11-20 11:00 | *(nulo)* |
+| 20 | 2026-11-20 12:00 | 16.0 |
+
+</div>
+
+Los «casos raros» están puestos a propósito, igual que Ernesto sin departamento en las diapositivas: **Faro no tiene sensores**, **el sensor 30 no ha enviado nada**, **el 99 está en el almacén** (sin estación) y **la lectura de las 11:00 del sensor 20 falló** (valor nulo). Casi todos los errores de SQL salen de filas así.
+
+<h2 id="esquema">El esquema: reglas que el sistema hace cumplir por ti</h2>
+
+```sql
+CREATE TABLE estacion (
+  id       int PRIMARY KEY,
+  nombre   varchar(100) NOT NULL,
+  concello varchar(100) NOT NULL
+);
+
+CREATE TABLE sensor (
+  id          int PRIMARY KEY,
+  estacion_id int REFERENCES estacion(id) ON DELETE SET NULL,
+  magnitud    varchar(30) NOT NULL
+              CHECK (magnitud IN ('temperatura', 'humedad', 'no2'))
+);
+
+CREATE TABLE lectura (
+  sensor_id int REFERENCES sensor(id) ON DELETE RESTRICT,
+  ts        timestamp,
+  valor     numeric(6,2),
+  PRIMARY KEY (sensor_id, ts)
+);
+```
+
+Lo importante es **por qué** cada regla, porque es lo que se pregunta:
+
+- **`PRIMARY KEY (sensor_id, ts)`**: un sensor no puede dar dos lecturas en el mismo instante. Si el firmware reenvía un mensaje duplicado, la base de datos lo rechaza sin que escribas código.
+- **`ON DELETE SET NULL`** en `sensor.estacion_id`: si se desmonta una estación, sus sensores **no desaparecen**, vuelven al almacén (como el 99).
+- **`ON DELETE RESTRICT`** en `lectura.sensor_id`: no se puede borrar un sensor con historial. Con **`CASCADE`** se borrarían también sus lecturas: cómodo, pero perderías los datos. **La acción referencial se elige por el significado de los datos**, no por costumbre.
+- **`CHECK`**: el sistema rechaza `'temperatuta'` con una errata. Es la «consistencia» de ACID que el SGBD ayuda a mantener.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=6">T1, pp. 6-7</a>.</p>
+
+<h2 id="orden">Cómo lee SQL una consulta</h2>
+
+Se escribe en un orden y se evalúa en otro. Memoriza el de evaluación:
+
+```text
+FROM / JOIN  →  WHERE  →  GROUP BY  →  HAVING  →  SELECT  →  ORDER BY
+ (qué filas)   (cuáles)   (en grupos)  (qué grupos) (qué columnas) (en qué orden)
+```
+
+Tres consecuencias que explican errores típicos:
+
+1. **`WHERE` no puede usar agregados** (`WHERE AVG(valor) > 14` falla): cuando se evalúa `WHERE` todavía no hay grupos. Para filtrar grupos está `HAVING`.
+2. **`WHERE` no puede usar alias del `SELECT`** en SQL estándar: el `SELECT` se evalúa después.
+3. **Con `GROUP BY`, en el `SELECT` solo puede haber** columnas agrupadas, agregados o columnas que dependan de la clave agrupada. `SELECT sensor_id, ts, AVG(valor) ... GROUP BY sensor_id` falla: ¿qué `ts` de los tres mostraría?
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=15">T1, p. 15</a> y <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=27">p. 27</a>.</p>
+
+<h2 id="joins">Joins: qué filas sobreviven</h2>
+
+Une estaciones y sensores por `sensor.estacion_id = estacion.id`. Lo único que cambia entre los tipos de join es **qué pasa con las filas sin pareja**: Faro (estación sin sensores) y el sensor 99 (sensor sin estación).
+
+<div class="table-scroll">
+
+| Join | Faro | Sensor 99 | Filas |
+| --- | --- | --- | --- |
+| `estacion JOIN sensor` (inner) | Se pierde | Se pierde | 4 |
+| `estacion LEFT JOIN sensor` | Sale con sensor nulo | Se pierde | 5 |
+| `estacion RIGHT JOIN sensor` | Se pierde | Sale con estación nula | 5 |
+| `estacion FULL JOIN sensor` | Sale | Sale | 6 |
+
+</div>
+
+La regla mnemotécnica: **LEFT conserva todo lo de la izquierda; RIGHT, todo lo de la derecha; FULL, todo**.
+
+<div class="callout">
+
+**Trampa: un `WHERE` sobre la tabla de la derecha anula el LEFT JOIN.**
+
+```sql
+SELECT e.nombre, s.id
+FROM estacion e LEFT JOIN sensor s ON s.estacion_id = e.id
+WHERE s.magnitud = 'temperatura';
+```
+
+Faro salía con `s.magnitud` nulo; `NULL = 'temperatura'` no es verdadero, así que el `WHERE` lo elimina y el resultado es el de un inner join. **Si la condición es sobre la tabla «opcional», va en el `ON`**: `LEFT JOIN sensor s ON s.estacion_id = e.id AND s.magnitud = 'temperatura'`.
+
+</div>
+
+Sobre `USING` y `NATURAL`: `NATURAL JOIN` une por **todas** las columnas que se llamen igual. Aquí `estacion` y `sensor` comparten `id`, que no significa lo mismo en las dos tablas: `estacion NATURAL JOIN sensor` compararía el id de la estación con el id del sensor y, como ninguno coincide, devolvería una tabla vacía sin dar ningún error. Es la trampa de la diapositiva de «¿y si se llaman Nombre?». **Prefiere `ON` siempre que dudes.**
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=20">T1, pp. 20-22</a> y <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=36">p. 36</a>.</p>
+
+<h2 id="nulos">NULL: la lógica de tres valores</h2>
+
+NULL significa «no sé». Por eso **cualquier comparación con NULL da NULL** (desconocido), no falso. SQL usa tres valores de verdad:
+
+<div class="table-scroll">
+
+| A | B | A AND B | A OR B | NOT A |
+| --- | --- | --- | --- | --- |
+| TRUE | NULL | NULL | TRUE | FALSE |
+| FALSE | NULL | FALSE | NULL | TRUE |
+| NULL | NULL | NULL | NULL | NULL |
+
+</div>
+
+Y `WHERE` solo deja pasar lo que es **TRUE**. Consecuencias con nuestros datos:
+
+- `WHERE valor > 14` no devuelve la lectura fallida de las 11:00, **pero `WHERE NOT (valor > 14)` tampoco**. Una fila con nulo puede desaparecer de una consulta y de su contraria.
+- `WHERE estacion_id = NULL` no devuelve nada; se escribe `WHERE estacion_id IS NULL` (sensor 99).
+
+**Los agregados ignoran los nulos** (salvo `COUNT(*)`): para el sensor 20, `COUNT(*) = 3`, `COUNT(valor) = 2`, `AVG(valor) = (15 + 16) / 2 = 15.5` (no 31/3). Si quisieras contar la lectura fallida como 0, tendrías que decirlo: `AVG(COALESCE(valor, 0)) = 10.33`. Que sea correcto o no depende del significado: una temperatura ausente **no es** 0 °C.
+
+<div class="callout">
+
+**La trampa de `NOT IN` con nulos.** Estaciones sin sensores:
+
+```sql
+SELECT nombre FROM estacion
+WHERE id NOT IN (SELECT estacion_id FROM sensor);
+```
+
+Esperas Faro, pero **devuelve cero filas**. La subconsulta devuelve `{1, 1, 2, 3, NULL}` (por el sensor 99). Para Faro, `4 NOT IN (1, 2, 3, NULL)` es `4<>1 AND 4<>2 AND 4<>3 AND 4<>NULL`, es decir `TRUE AND … AND NULL` = **NULL**, que no pasa el `WHERE`. Soluciones: `NOT EXISTS` (no le afectan los nulos) o filtrar `WHERE estacion_id IS NOT NULL` en la subconsulta. En el ejemplo de las diapositivas no pasa porque `participa.empleado` es parte de la clave primaria y nunca es nulo.
+
+</div>
+
+```sql
+SELECT nombre FROM estacion e
+WHERE NOT EXISTS (SELECT * FROM sensor s WHERE s.estacion_id = e.id);   -- Faro
+```
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=23">T1, p. 23</a> y <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=35">p. 35</a>.</p>
+
+<h2 id="agregacion">Agregación: resumir sin perder grupos</h2>
+
+Temperatura media y número de lecturas válidas por estación:
+
+```sql
+SELECT e.nombre, AVG(l.valor) AS media, COUNT(l.valor) AS n
+FROM estacion e
+  JOIN sensor s  ON s.estacion_id = e.id AND s.magnitud = 'temperatura'
+  JOIN lectura l ON l.sensor_id = s.id
+GROUP BY e.id, e.nombre;
+```
+
+<div class="table-scroll">
+
+| nombre | media | n |
+| --- | --- | --- |
+| Campus Vida | 13.33 | 3 |
+| Porto | 15.5 | 2 |
+
+</div>
+
+Muralla (sensor sin lecturas) y Faro (sin sensores) **han desaparecido**: el inner join las eliminó antes de agrupar. Si el informe debe listar todas las estaciones, cambia los dos `JOIN` por `LEFT JOIN`:
+
+<div class="table-scroll">
+
+| nombre | media | COUNT(l.valor) | COUNT(*) |
+| --- | --- | --- | --- |
+| Campus Vida | 13.33 | 3 | 3 |
+| Porto | 15.5 | 2 | 3 |
+| Muralla | *(nulo)* | 0 | **1** |
+| Faro | *(nulo)* | 0 | **1** |
+
+</div>
+
+Fíjate en la última columna: **con LEFT JOIN, `COUNT(*)` cuenta la fila de relleno** y dice que Muralla tiene una lectura. Cuenta siempre una columna de la tabla opcional.
+
+**WHERE frente a HAVING**, con un ejemplo de cada uno en la misma consulta:
+
+```sql
+SELECT s.id, AVG(l.valor) AS media
+FROM sensor s JOIN lectura l ON l.sensor_id = s.id
+WHERE s.magnitud = 'temperatura'      -- filtra FILAS antes de agrupar
+GROUP BY s.id
+HAVING COUNT(l.valor) >= 3;           -- filtra GRUPOS después
+-- resultado: sensor 10, media 13.33 (el 20 solo tiene 2 válidas)
+```
+
+<div class="callout">
+
+**El ejemplo de la diapositiva 29 devuelve una tabla vacía.** La consulta que cuenta, por proyecto, empleados con coste por hora mayor que 40 y menor o igual que 40 une `proyecto` con las dos subconsultas mediante inner join. Con los datos del tema, ningún participante en proyectos cuesta 40 o menos (Ricardo, el único, no participa en ninguno), así que `Tmenos40` está vacía y el join elimina todos los proyectos. La versión robusta usa `LEFT JOIN` y `COALESCE(Tmenos40.menos40, 0)`, o cuenta las dos cosas en un solo recorrido:
+
+```sql
+SELECT p.pid, p.nom_proy,
+       COUNT(*) FILTER (WHERE e.coste_hora > 40)  AS mas40,
+       COUNT(*) FILTER (WHERE e.coste_hora <= 40) AS menos40
+FROM proyecto p
+  JOIN participa pa ON pa.proyecto = p.pid
+  JOIN empleado e   ON e.dni = pa.empleado
+GROUP BY p.pid, p.nom_proy;
+-- Tráfico 2 y 0; Jardinería 3 y 0
+```
+
+`FILTER` es SQL estándar y lo admite PostgreSQL; con `SUM(CASE WHEN … THEN 1 ELSE 0 END)` funciona en cualquier sistema.
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=24">T1, pp. 24-29</a>.</p>
+
+<h2 id="subconsultas">Subconsultas: tres formas de la misma pregunta</h2>
+
+«Estaciones con algún sensor de humedad» (respuesta: Campus Vida):
+
+```sql
+-- 1. JOIN: puede duplicar filas si hay dos sensores de humedad → DISTINCT
+SELECT DISTINCT e.nombre FROM estacion e JOIN sensor s ON s.estacion_id = e.id
+WHERE s.magnitud = 'humedad';
+
+-- 2. IN: la subconsulta devuelve un conjunto de ids
+SELECT nombre FROM estacion
+WHERE id IN (SELECT estacion_id FROM sensor WHERE magnitud = 'humedad');
+
+-- 3. EXISTS correlacionado: «para cada estación, ¿existe…?»
+SELECT nombre FROM estacion e
+WHERE EXISTS (SELECT * FROM sensor s
+              WHERE s.estacion_id = e.id AND s.magnitud = 'humedad');
+```
+
+Cómo pensar `ALL` y `ANY`: `valor >= ALL (subconsulta)` es «mayor o igual que todos», o sea, el máximo; `valor > ANY (subconsulta)` es «mayor que alguno», o sea, que no es el mínimo. Ojo: `>= ALL` sobre una columna con nulos vuelve a dar NULL por la misma razón que `NOT IN`.
+
+**`WITH` para leer de arriba abajo.** Lecturas por encima de la media de su sensor:
+
+```sql
+WITH medias AS (
+  SELECT sensor_id, AVG(valor) AS media FROM lectura GROUP BY sensor_id
+)
+SELECT l.sensor_id, l.ts, l.valor
+FROM lectura l JOIN medias m ON m.sensor_id = l.sensor_id
+WHERE l.valor > m.media;
+-- sensor 10 a las 12:00 (14.5 > 13.33); sensor 20 a las 12:00 (16 > 15.5)
+```
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=29">T1, pp. 29-33</a>.</p>
+
+<h2 id="ventanas">Funciones de ventana: agregar sin colapsar</h2>
+
+La diferencia con `GROUP BY` en una frase: **`GROUP BY` convierte cada grupo en una fila; una ventana deja todas las filas y añade a cada una un cálculo sobre su grupo**. Es lo natural en series temporales de sensores.
+
+Para el sensor 10:
+
+```sql
+SELECT ts, valor,
+  valor - LAG(valor) OVER w                         AS salto,
+  AVG(valor) OVER (w ROWS BETWEEN 1 PRECEDING
+                       AND CURRENT ROW)             AS media_movil_2,
+  SUM(valor) OVER (w ROWS BETWEEN UNBOUNDED PRECEDING
+                       AND CURRENT ROW)             AS acumulado
+FROM lectura
+WHERE sensor_id = 10
+WINDOW w AS (PARTITION BY sensor_id ORDER BY ts);
+```
+
+<div class="table-scroll">
+
+| ts | valor | salto | media_movil_2 | acumulado |
+| --- | --- | --- | --- | --- |
+| 10:00 | 12.5 | *(nulo)* | 12.5 | 12.5 |
+| 11:00 | 13.0 | 0.5 | 12.75 | 25.5 |
+| 12:00 | 14.5 | 1.5 | 13.75 | 40.0 |
+
+</div>
+
+- **`LAG`** mira la fila anterior: ideal para detectar **saltos imposibles** (un sensor que sube 20 °C en una hora está roto).
+- **El marco** (`ROWS BETWEEN …`) decide qué filas entran en cada cálculo. Con `1 PRECEDING` es una media móvil de dos lecturas; con `UNBOUNDED PRECEDING`, un acumulado.
+- Si pones `ORDER BY` en la ventana sin marco, el marco por defecto ya es «desde el principio hasta la fila actual» (en modo `RANGE`, que incluye las filas empatadas con la actual). Por eso `SUM(...) OVER (PARTITION BY ... ORDER BY ...)` da un acumulado aunque no lo pidas.
+
+**Última lectura de cada sensor**, un clásico de IoT que con `GROUP BY` es incómodo:
+
+```sql
+SELECT sensor_id, ts, valor
+FROM (SELECT l.*, ROW_NUMBER() OVER (PARTITION BY sensor_id ORDER BY ts DESC) AS n
+      FROM lectura l) t
+WHERE n = 1;
+-- 10: 12:00, 14.5 · 11: 10:00, 81 · 20: 12:00, 16.0
+```
+
+**rank, dense_rank y row_number** ante un empate, con los valores 7, 5, 5, 3:
+
+<div class="table-scroll">
+
+| valor | ROW_NUMBER | RANK | DENSE_RANK | CUME_DIST (ascendente) |
+| --- | --- | --- | --- | --- |
+| 7 | 1 | 1 | 1 | 4/4 = 1 |
+| 5 | 2 | 2 | 2 | 3/4 = 0.75 |
+| 5 | 3 | 2 | 2 | 3/4 = 0.75 |
+| 3 | 4 | 4 | 3 | 1/4 = 0.25 |
+
+</div>
+
+`ROW_NUMBER` desempata arbitrariamente; `RANK` salta el 3; `DENSE_RANK` no salta. `CUME_DIST` es la fracción de filas **con valor menor o igual**, por eso los dos 5 comparten 0.75 (esto corrige la columna `pctl` de la diapositiva 38).
+
+<div class="callout">
+
+**Trampa de la división entera.** En la diapositiva 37, `g.gastos / sum(g.gastos) OVER (...)`: si `gastos` es entero, en PostgreSQL 3 / 22 da **0**, porque entero entre entero trunca. Escribe `g.gastos::numeric / sum(...)` o `100.0 * g.gastos / sum(...)` para obtener el porcentaje.
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=37">T1, pp. 37-38</a>.</p>
+
+<h2 id="conjuntos">Operadores de conjunto</h2>
+
+Sensores «activos» (con lecturas) frente a sensores instalados (con estación):
+
+```sql
+SELECT id FROM sensor WHERE estacion_id IS NOT NULL   -- {10, 11, 20, 30}
+EXCEPT
+SELECT sensor_id FROM lectura;                        -- {10, 11, 20}
+-- resultado: {30} → sensores instalados que no envían: avería o batería
+```
+
+`UNION` quita duplicados (y para ello ordena o usa hash: cuesta); `UNION ALL` no. Si sabes que no puede haber duplicados, o te dan igual, `UNION ALL` es más barato. Las dos consultas deben tener el mismo número de columnas y tipos compatibles.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=34">T1, pp. 34-35</a>.</p>
+
+<h2 id="transacciones">Transacciones: lo que puede salir mal con dos usuarios</h2>
+
+**Atomicidad con un ejemplo IoT.** Mover el sensor 20 de Porto a Muralla son dos pasos: actualizar `sensor.estacion_id` e insertar una fila de historial de instalación. Si el proceso muere entre los dos, el sensor queda movido sin historial. Dentro de una transacción, o se hacen los dos o ninguno:
+
+```sql
+BEGIN;
+UPDATE sensor SET estacion_id = 3 WHERE id = 20;
+INSERT INTO instalacion (sensor_id, estacion_id, desde) VALUES (20, 3, now());
+COMMIT;   -- si algo falla antes, ROLLBACK deja todo como estaba
+```
+
+**Las tres anomalías de concurrencia**, cada una con una cronología (T1 lee, T2 escribe):
+
+<div class="table-scroll">
+
+| Anomalía | Cronología | Qué ve T1 |
+| --- | --- | --- |
+| **Lectura sucia** | T2 cambia la lectura de 14.5 a 99 (sin confirmar) → T1 la lee → T2 hace ROLLBACK. | Un 99 que **nunca existió**. |
+| **Lectura no repetible** | T1 lee 14.5 → T2 lo cambia a 15 y confirma → T1 vuelve a leer. | **Dos valores distintos** de la misma fila. |
+| **Fantasma** | T1 cuenta los sensores de Campus Vida (2) → T2 inserta un sensor nuevo en Campus Vida y confirma → T1 vuelve a contar. | **3**: no cambió ninguna fila leída; **apareció una fila nueva**. |
+
+</div>
+
+Cada nivel de aislamiento del estándar SQL impide una anomalía más:
+
+<div class="table-scroll">
+
+| Nivel | Lectura sucia | No repetible | Fantasma |
+| --- | --- | --- | --- |
+| Read uncommitted | Posible | Posible | Posible |
+| Read committed | Imposible | Posible | Posible |
+| Repeatable read | Imposible | Imposible | Posible |
+| Serializable | Imposible | Imposible | Imposible |
+
+</div>
+
+Así se entiende la diapositiva del fantasma: «lectura repetible» protege **las filas que ya leíste**, pero el `INSERT` de T2 crea una fila que T1 no había leído. PostgreSQL trabaja por defecto en *read committed*, no en serializable; el documento de NoSQL recuerda que es lo habitual en los SGBD relacionales.
+
+**Pesimista frente a optimista**, como en la vida real: el pesimista **reserva** antes de usar (bloqueos: el otro espera); el optimista **trabaja sin reservar y comprueba al final** (validación o versiones: si hubo conflicto, uno repite). Con pocos conflictos gana el optimista; con muchos, el pesimista.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-1-relacionales-sql.pdf#page=41">T1, pp. 41-49</a>.</p>
+
+<h2 id="chuleta">Chuleta final</h2>
+
+- Orden de evaluación: **FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY**.
+- `WHERE` filtra filas; `HAVING`, grupos.
+- `= NULL` nunca es verdad: `IS NULL`. `NOT IN` con un nulo en la lista no devuelve nada: usa `NOT EXISTS`.
+- Los agregados ignoran nulos; `COUNT(*)` no. Con LEFT JOIN, cuenta una columna de la tabla opcional.
+- Condición sobre la tabla opcional de un LEFT JOIN: en el `ON`, no en el `WHERE`.
+- Ventana = agregado que no colapsa filas. `LAG` para diferencias, `ROW_NUMBER` para «el último de cada».
+- Anomalías: sucia → no repetible → fantasma; cada nivel de aislamiento elimina una más.

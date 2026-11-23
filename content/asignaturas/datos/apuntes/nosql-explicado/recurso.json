@@ -1,0 +1,42 @@
+{
+  "kind": "apuntes",
+  "id": "datos.apuntes.nosql-explicado",
+  "subjectId": "datos",
+  "slug": "nosql-explicado",
+  "title": "NoSQL explicado con una red de sensores",
+  "description": "Explicación propia del documento de NoSQL: por qué aparece, agregados y su precio, sharding frente a replicación, inconsistencias contadas como incidencias, CAP con un cable cortado, qué tipo de NoSQL para cada problema IoT y una traza completa de MapReduce.",
+  "scope": "Documento de NoSQL: características (pp. 5-9), consistencia, BASE y CAP (pp. 10-11), tipos (pp. 13-17), MapReduce (p. 19) y discusión final (p. 21). Sin la historia del término.",
+  "tagIds": [
+    "datos.tags.nosql",
+    "datos.tags.explicado"
+  ],
+  "order": 140,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "datos.materiales.nosql",
+      "pdfPages": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        21
+      ],
+      "label": "Páginas en las que se apoya"
+    }
+  ],
+  "relatedResourceIds": [
+    "datos.apuntes.nosql"
+  ]
+}

@@ -1,0 +1,304 @@
+<h2 id="idea-central">Idea central</h2>
+
+El tema tiene dos mitades paralelas. Para los **datos temporales** y para los **datos espaciales** recorre lo mismo: cómo se representan (tipos de datos), cómo se indexan y particionan para consultarlos rápido y qué ofrece el **SQL estándar** (SQL:2011 para el tiempo, SQL:2003 y SQL/MM para el espacio). En IoT casi todo dato lleva **cuándo** y muchos llevan **dónde**, así que ambas mitades son el día a día de una base de datos de sensores.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=2">T3, p. 2</a>.</p>
+
+<h2 id="temporales">Datos temporales</h2>
+
+<h3 id="zonas-horarias">Recta temporal y zonas horarias</h3>
+
+El tiempo es **más complejo de lo que parece (muchos casos especiales)**. La diapositiva dibuja dos rectas temporales, una por zona, con el origen **1970-01-01** desplazado entre ellas por un **offset**. Las zonas se identifican con la **base de datos IANA**: UTC, GMT o ZULU (offset 0); Europe/Lisbon y Europe/London; CET, Europe/Paris y Europe/Madrid. **El offset puede variar por los cambios de horario (verano/invierno).**
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=3">T3, p. 3</a>.</p>
+
+<h3 id="tipos-temporales">Tipos de dato temporales</h3>
+
+**Sin zona horaria** (se asume una zona por defecto):
+
+- `Time`: `'09:02:23.3456'`. Admite una precisión p, número de decimales de los segundos: `Time(p)`.
+- `Date`: `'2003-09-02'`.
+- `Timestamp`: `'2023-09-03 12:07:01.09'`, también con precisión: `Timestamp(p)`.
+
+**Con zona horaria:**
+
+- `Time with time zone`: `'09:05:02.234z'`, `'09:05:02.234 UTC'`, `'09:05:02.234 CET'`, `'2012-09-02 09:05:02.234z'`, `'2012-09-02 09:05:02.234 Europe/Madrid'`.
+- `Timestamp with time zone`: `'2012-09-02 09:05:02.234 CET'`.
+
+**Intervalos:** `'1 12:59:10'` es 1 día, 12 horas, 59 minutos y 10 segundos; `200-10-02` son 200 años, 10 meses y 2 días.
+
+<div class="callout">
+
+**El estándar SQL no considera los cambios de hora de verano/invierno, solo offsets.** El nombre de zona IANA (Europe/Madrid) sí los incluye; un offset fijo (+01) no.
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=4">T3, p. 4</a>.</p>
+
+<h3 id="periodos">Períodos de tiempo</h3>
+
+Habitualmente las implementaciones **no tienen un tipo primitivo para períodos**. La solución es **dos atributos, inicio y fin**, pero el sistema no facilita su gestión: **no hay predicados ni funciones incorporadas para períodos**. Desde **SQL:2011** el estándar los soporta, aunque **todavía no hay un uso generalizado**.
+
+Los datos tienen dos **dimensiones temporales**:
+
+<div class="table-scroll">
+
+| Dimensión | Qué indica | Quién la gestiona |
+| --- | --- | --- |
+| **Tiempo de validez** | Período durante el cual la tupla **refleja la realidad**. | El **usuario**. |
+| **Tiempo de transacción** | Período durante el cual la tupla **está almacenada en la base de datos**; son versiones de los datos proporcionadas por el sistema. | El **sistema, automáticamente**. |
+
+</div>
+
+El ejemplo de la diapositiva lo combina: «La población del municipio es 15000 entre 1997 y 1999. Este hecho se insertó en la base de datos en 2000 y se actualizó en 2016, donde se cambió el valor 1999 por 1998 para corregir un error». **1997–1999 (luego 1997–1998) es tiempo de validez; 2000 y 2016 son tiempo de transacción.**
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=5">T3, p. 5</a>.</p>
+
+<h3 id="indexacion-temporal">Indexación y particionamiento</h3>
+
+**Indexación con árboles B+.** Las claves (instantes t1, t2… t10) están ordenadas en las hojas, que se enlazan entre sí; los nodos internos (t7; t3, t5; t9) guían la búsqueda. Sirve tanto para buscar un instante como para recorrer un rango.
+
+**Particionamiento por rangos.** Las filas se reparten en particiones según en qué rango cae la clave. La figura usa las claves t2, t12, t5, t45, t36, t70, t18, t23 y los **bordes (t45, t70)**: Part 0 guarda las claves anteriores a t45, Part 1 las de t45 a t70 y Part 2 desde t70. (El dibujo coloca t36 en Part 1; con esos bordes le correspondería Part 0, junto a t2, t5, t12, t18 y t23.) Ventajas:
+
+- **Reemplaza los niveles superiores del índice**, lo que aumenta la probabilidad de que los nodos del índice estén en memoria.
+- **Mejora el rendimiento cuando se usan la mayoría de filas de una partición.**
+- **Facilita la inserción y el borrado.**
+- Permite **diferentes tipos de almacenamiento** para particiones distintas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=6">T3, p. 6</a>.</p>
+
+<h3 id="sql2011-validez">SQL:2011: tablas con tiempo de aplicación (validez)</h3>
+
+Tienen **pocas implementaciones y poco uso**. Se declara un período sobre dos columnas:
+
+```sql
+CREATE TABLE Empleado(
+  id INTEGER,
+  fecha_inicio DATE,
+  fecha_fin DATE,
+  nombre VARCHAR(30),
+  departamento INTEGER,
+  PERIOD FOR periodo_empleado (fecha_inicio, fecha_fin)
+)
+```
+
+**Modificación durante ciertos períodos de validez** con `FOR PORTION OF`:
+
+```sql
+UPDATE Empleado
+  FOR PORTION OF periodo_empleado
+  FROM DATE '2011-02-03' TO DATE '2011-09-10'
+SET departamento = 4
+WHERE id = 22217
+
+DELETE Empleado
+  FOR PORTION OF periodo_empleado
+  FROM DATE '2011-02-03' TO DATE '2011-09-10'
+WHERE id = 22217
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=7">T3, p. 7</a>.</p>
+
+**Claves primarias y foráneas temporales.** `WITHOUT OVERLAPS` impide que un mismo id tenga dos filas con períodos solapados; la clave foránea con `PERIOD` exige que el departamento exista durante todo el período del empleado:
+
+```sql
+ALTER TABLE Empleado
+  ADD PRIMARY KEY (id, periodo_empleado WITHOUT OVERLAPS)
+
+CREATE TABLE Departamento(
+  id INTEGER,
+  fecha_inicio DATE,
+  fecha_fin DATE,
+  nombre VARCHAR(30),
+  PERIOD FOR periodo_departamento (fecha_inicio, fecha_fin),
+  PRIMARY KEY (id, periodo_departamento WITHOUT OVERLAPS)
+)
+
+CREATE TABLE Empleado(
+  id INTEGER,
+  fecha_inicio DATE,
+  fecha_fin DATE,
+  departamento INTEGER,
+  PERIOD FOR periodo_empleado (fecha_inicio, fecha_fin),
+  PRIMARY KEY (id, periodo_empleado WITHOUT OVERLAPS),
+  FOREIGN KEY (departamento, PERIOD periodo_empleado)
+    REFERENCES Departamento (id, PERIOD periodo_departamento)
+)
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=8">T3, p. 8</a>.</p>
+
+**Consultas.** Predicados de período: **CONTAINS, OVERLAPS, EQUALS, PRECEDES, SUCCEEDS, IMMEDIATELY PRECEDES, IMMEDIATELY SUCCEEDS**.
+
+```sql
+SELECT nombre, departamento
+FROM Empleado
+WHERE id = 22217
+  AND periodo_empleado CONTAINS DATE '2011-01-02'
+
+SELECT nombre, departamento
+FROM Empleado
+WHERE id = 22217
+  AND periodo_empleado OVERLAPS PERIOD (DATE '2010-01-01', DATE '2011-01-01')
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=9">T3, p. 9</a>.</p>
+
+<h3 id="sql2011-sistema">SQL:2011: tablas con versiones del sistema (transacción)</h3>
+
+```sql
+CREATE TABLE Empleado (
+  id INTEGER,
+  inicio_version TIMESTAMP(12) GENERATED ALWAYS AS ROW START,
+  fin_version TIMESTAMP(12) GENERATED ALWAYS AS ROW END,
+  nombre VARCHAR(30),
+  departamento INTEGER,
+  PERIOD FOR SYSTEM_TIME (inicio_version, fin_version),
+  PRIMARY KEY (id),
+  FOREIGN KEY (departamento) REFERENCES Departamento (id)
+) WITH SYSTEM VERSIONING
+```
+
+- Los atributos generados se actualizan solos y **el usuario no puede modificarlos**.
+- **Al insertar:** inicio = tiempo actual; fin = **tiempo más alto representable**.
+- **Al modificar y borrar:** solo se opera sobre las **tuplas actuales**; se **mantiene la tupla antigua** (cerrando su período) y se **añade una tupla nueva**.
+- Las claves primaria y foránea **se comprueban siempre en las tuplas actuales**, las que contienen el instante actual en su período.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=10">T3, p. 10</a>.</p>
+
+**Consultas sobre versiones:**
+
+<div class="table-scroll">
+
+| Cláusula | Devuelve |
+| --- | --- |
+| `FROM Empleado FOR SYSTEM_TIME AS OF TIMESTAMP '2011-01-02 00:00:00'` | La versión que existía en ese **instante concreto**. |
+| `FOR SYSTEM_TIME FROM t1 TO t2` | Las versiones durante el período, **sin incluir las válidas en el instante final**. |
+| `FOR SYSTEM_TIME BETWEEN t1 AND t2` | Las versiones durante el período, **incluyendo el instante final**. |
+| `FROM Empleado` (sin cláusula) | **Solo la versión actual.** |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=11">T3, p. 11</a>.</p>
+
+<h3 id="bitemporales">Tablas bitemporales</h3>
+
+Combinan ambos tiempos: un `PERIOD FOR periodo_empleado` (validez, con clave `WITHOUT OVERLAPS` y clave foránea temporal) y un `PERIOD FOR SYSTEM_TIME` con `WITH SYSTEM VERSIONING` (transacción). La consulta puede fijar los dos:
+
+```sql
+SELECT id, departamento
+FROM Empleado FOR SYSTEM_TIME AS OF TIMESTAMP '2011-07-01 00:00:00'
+WHERE id = 22217
+  AND periodo_empleado CONTAINS DATE '2010-12-01'
+```
+
+Se lee así: **usando los datos que había en la tabla el 2011-07-01**, obtén los datos del empleado 22217 **válidos el 2010-12-01**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=12">T3, pp. 12-13</a>.</p>
+
+<h2 id="espaciales">Datos espaciales</h2>
+
+<h3 id="modelado-espacial">Modelado del espacio geográfico</h3>
+
+<div class="table-scroll">
+
+| Visión | Qué es | Dónde se guarda |
+| --- | --- | --- |
+| **Entidades** (objetos, *features*) espaciales | Localizadas en la superficie terrestre, **organizadas en tipos**, con propiedades «convencionales» y **propiedades geométricas** (puntos, líneas, superficies…). | **Almacenables en bases de datos.** |
+| **Campos** (coberturas) espaciales | **Colecciones de funciones** con **dominio espacial** y **rango numérico**. Son datos **multidimensionales** (dimensión espacial y temporal) que cambian en el espacio y en el tiempo, de forma **discreta** o **continua**. Ejemplos de la figura: un modelo de elevaciones de Galicia y un mapa de temperatura. | **Almacenados en archivos.** |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=14">T3, pp. 14-15</a>.</p>
+
+<h3 id="src">Sistemas de referencia de coordenadas (SRC)</h3>
+
+Un SRC **asigna coordenadas a cada punto del espacio**. Sus componentes son **datum + sistema de coordenadas**. Hay dos tipos: **geográficos** (latitud y longitud sobre el elipsoide) y **proyectados** (coordenadas planas). Las proyecciones pueden ser **cilíndricas, cónicas, planas**, etc.; la diapositiva destaca la **Universal Transverse Mercator (UTM)**, una proyección cilíndrica transversal por husos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=16">T3, p. 16</a>.</p>
+
+<h3 id="geometrias">Representación geométrica</h3>
+
+Los objetos geométricos representan las **propiedades geométricas de las entidades**: **puntos** (x, y), **polilíneas** y **polígonos**. También son los **elementos del dominio de las coberturas espaciales discretas**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=17">T3, p. 17</a>.</p>
+
+<h3 id="sfc">Curvas de relleno del espacio (SFC)</h3>
+
+Una **curva de relleno del espacio** recorre todas las celdas de una rejilla 2D en un orden, de modo que cada celda recibe un **número 1D**. La figura muestra varias: *row order*, *row prime*, **Morton / z-order**, **Peano-Hilbert**, Cantor-diagonal, espiral, Gray, Double-Gray y U-order.
+
+En la tabla de la derecha, la rejilla 8×8 tiene x e y de 3 bits, y el código z-order de cada celda **entrelaza los bits**: por ejemplo, x = 3 (`011`) e y = 1 (`001`) dan `000111`. Celdas cercanas en el plano tienden a recibir códigos cercanos, lo que permite indexar y particionar con estructuras 1D.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=18">T3, p. 18</a>.</p>
+
+<h3 id="indices-espaciales">Índices espaciales</h3>
+
+- **Grid Files:** rejilla de celdas.
+- **K-D-Tree:** árbol binario que divide alternando la coordenada (x, luego y, luego x…). Ejemplo: con los puntos (5,4), (2,3), (4,7), (8,1), (7,2), (9,6), la raíz es (7,2) por x; sus hijos (5,4) y (9,6) dividen por y; las hojas son (2,3), (4,7) y (8,1).
+- **QuadTree:** divide recursivamente cada celda en **cuatro** cuadrantes.
+- **R-Tree:** agrupa las geometrías en **rectángulos envolventes** (R1, R2…) que se anidan; cada nodo del árbol guarda los rectángulos de sus hijos, y las hojas apuntan a las geometrías.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=19">T3, p. 19</a>.</p>
+
+<h3 id="particionamiento-espacial">Particionamiento espacial</h3>
+
+- **SFC + rangos 1D:** la clave es **(nivel, SFC)**; cada geometría se asigna al nivel de rejilla en el que ocupa pocas celdas (**no más de 4 duplicados**), y al consultar **hay que buscar en cada nivel**.
+- **Índice espacial:** los **nodos hoja definen las particiones** (K-D-Tree, QuadTree o R-Tree), y las geometrías que **atraviesan bordes de partición deben duplicarse**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=20">T3, p. 20</a>.</p>
+
+<h3 id="sql-espacial">Soporte en SQL estándar</h3>
+
+**Tipos de dato** definidos por **ISO 13249-3:2003 SQL/MM Part 3: Spatial** y **OGC Simple Feature Access (SFA), ISO 19125** (Part 1: Core; Part 2: SQL Option). La jerarquía de la figura:
+
+```text
+ST_Geometry
+├── ST_Point
+├── ST_Curve ──────── ST_LineString, ST_CircularString, ST_CompoundCurve
+├── ST_Surface ────── ST_CurvePolygon ── ST_Polygon
+└── ST_GeomCollection
+     ├── ST_MultiPoint
+     ├── ST_MultiCurve ──── ST_MultiLineString
+     └── ST_MultiSurface ── ST_MultiPolygon
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=21">T3, p. 21</a>.</p>
+
+Las geometrías se escriben en **Well-Known Text (WKT)** o se transfieren en **Well-Known Binary (WKB)**:
+
+```text
+POINT (-8.435 42.234)
+LINESTRING (-8.345 42.235, -8.422 42.9873, -8.5213 42.997, ...)
+POLYGON ((exterior), (hole1), (hole2), ...)
+```
+
+Un polígono es un anillo exterior más cero o más **agujeros**. Operadores y funciones:
+
+<div class="table-scroll">
+
+| Grupo | Funciones |
+| --- | --- |
+| Características de las geometrías | Envelope, asText, asBinary, isEmpty, isSimple, boundary, geometryType, SRID… |
+| Filtrado con **relaciones topológicas** | equals, disjoint, intersects, touches, crosses, within, overlaps… |
+| **Análisis espacial** | distance, area, length, buffer, convexHull, intersection, union, difference, symDifference… |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=22">T3, p. 22</a>.</p>
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Explico por qué un offset fijo no basta para Europe/Madrid.
+- ☐ Distingo `timestamp` y `timestamp with time zone` y escribo un intervalo.
+- ☐ Defino tiempo de validez y tiempo de transacción y los identifico en el ejemplo del municipio.
+- ☐ Explico qué aporta el particionamiento por rangos frente a un solo árbol B+.
+- ☐ Escribo una tabla con `PERIOD FOR`, una clave `WITHOUT OVERLAPS` y un `UPDATE ... FOR PORTION OF`.
+- ☐ Explico qué hace el sistema al modificar una fila de una tabla `WITH SYSTEM VERSIONING`.
+- ☐ Diferencio `AS OF`, `FROM ... TO` y `BETWEEN ... AND` en `FOR SYSTEM_TIME`.
+- ☐ Leo una consulta bitemporal en voz alta.
+- ☐ Distingo entidades y campos espaciales y dónde se guarda cada uno.
+- ☐ Digo los componentes de un SRC y los dos tipos.
+- ☐ Calculo el código z-order de una celda entrelazando bits.
+- ☐ Describo K-D-Tree, QuadTree y R-Tree.
+- ☐ Explico por qué hay que duplicar geometrías al particionar con un índice espacial.
+- ☐ Escribo un punto y un polígono con agujero en WKT y nombro funciones topológicas y de análisis.

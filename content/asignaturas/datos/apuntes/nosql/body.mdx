@@ -1,0 +1,214 @@
+<h2 id="idea-central">Idea central</h2>
+
+**NoSQL** no es un modelo único, sino un conjunto de sistemas que renuncian a parte del modelo relacional (esquema fijo, normalización, consistencia fuerte) para ganar **escalabilidad horizontal, eficiencia con grandes volúmenes y flexibilidad**. El documento explica de dónde sale el término, qué características comparten estos sistemas, cómo tratan la **consistencia** (ACID frente a BASE, teorema CAP), los **cuatro tipos** principales (clave-valor, documentos, familias de columnas y grafos) y el paradigma de procesamiento **MapReduce**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=2">NoSQL, p. 2</a>.</p>
+
+<h2 id="historia">Origen del término</h2>
+
+- **1998:** Carlo Strozzi llama NoSQL a un sistema **relacional que no usaba SQL**. No está relacionado con el movimiento actual.
+- **2009:** Eric Evans propone «NoSQL» cuando Johan Oscarsson (Last.fm) quiere organizar un evento sobre **bases de datos distribuidas de código abierto**. «NoSQL meetup» era llamativo y cumplía los criterios de un buen hashtag de Twitter. Buscaban bases de datos **open source, distribuidas y no relacionales**.
+- Gran influencia de **BigTable** (Google) y **Dynamo** (Amazon) y, después, de **Cassandra** (Facebook).
+
+**Significado:** ¿«No SQL» como negación? Parece que no. La interpretación más admitida hoy es ***Not Only SQL***.
+
+**No hay una definición estándar** de sus características: hay necesidades que los nuevos sistemas de información deben satisfacer y características del modelo relacional que no se consideran apropiadas para ellas.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=3">NoSQL, p. 3</a>.</p>
+
+<h2 id="caracteristicas">Características generales</h2>
+
+Mayoritariamente compartidas por los sistemas NoSQL actuales:
+
+- **No relacionales.**
+- **Open source.**
+- ***Cluster friendly*** (modelo distribuido).
+- **Nacidos con la web.**
+- **Sin esquema fijo** (*schemaless* o *schema-free*).
+
+Los aspectos que hay detrás: gran volumen de datos (Big Data), eficiencia y tiempo de respuesta, orientación a agregados frente al modelo relacional, bases de datos sin esquema, modelo distribuido y consideraciones sobre la consistencia (teorema CAP).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=5">NoSQL, pp. 5-6</a>.</p>
+
+<h3 id="big-data">Big Data, eficiencia y tiempo de respuesta</h3>
+
+Aunque no está estrictamente ligado al modelo de datos, gran parte de los sistemas NoSQL se diseñaron para **grandes volúmenes**. Cifras orientativas del documento (recogidas de distintas páginas de Internet, sin verificar): Bolsa de Nueva York, 1 TB/día; Twitter, 12 TB/día; Facebook, más de 100 PB en fotos y vídeos y más de 500 TB/día; LHC, 90 PB/año.
+
+- **Alta eficiencia:** Google procesa 20 PB al día con MapReduce sobre BigTable (aunque el mismo artículo dice que las BD relacionales fueron más eficientes).
+- **Baja latencia:** según Lakshman, Cassandra escribe en un almacén de 50 GB **2500 veces más rápido** que MySQL; una consulta en Google puede tardar menos de 300 ms; **Amazon Dynamo garantiza que el 99,9 % de las peticiones se contestan en 300 ms o menos**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=6">NoSQL, p. 6</a>.</p>
+
+<h3 id="agregados">Modelo relacional frente a orientación a agregados</h3>
+
+<div class="table-scroll">
+
+| Modelo relacional | Orientación a agregados (NoSQL) |
+| --- | --- |
+| La BD **integra información para varias aplicaciones**. | BD **orientadas a aplicaciones**. |
+| Datos estructurados y relacionados; restricciones (PK, FK…); **normalización**. | **Se pierde la normalización**: los datos se guardan **en la forma en que la aplicación los usa**. |
+| **Consultas arbitrarias** (álgebra relacional, SQL). | Búsqueda **mayoritariamente por clave**. |
+| Problema: **desajuste de impedancias** con las aplicaciones. | — |
+
+</div>
+
+El ejemplo de agregado es un **cliente con sus facturas y, dentro de cada factura, sus líneas**, todo en un único documento JSON:
+
+```json
+{ "id": 1,
+  "timestamp": "2013.03.26-11.47.02.065",
+  "nif": "B1234455X",
+  "nombre": "Pepe Pagador",
+  "facturas": [
+    { "numero": 1, "fecha": "05/08/2019", "total": 6.98,
+      "lineas": [
+        { "numero": 1, "concepto": "Folios", "importe": 3.78 },
+        { "numero": 2, "concepto": "Carpeta", "importe": 3.20 } ] } ] }
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=7">NoSQL, p. 7</a>.</p>
+
+<h3 id="sin-esquema">Bases de datos sin esquema</h3>
+
+Llamadas *schema-free* o *schemaless*: permiten **colecciones heterogéneas**. En el ejemplo, la segunda línea tiene un campo `cantidad` que la primera no tiene:
+
+```json
+"lineas": [ {"numero": 1, "concepto": "Folios", "importe": 3.78},
+            {"numero": 2, "concepto": "Carpeta", "cantidad": 4, "importe": 12.80} ]
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=8">NoSQL, p. 8</a>.</p>
+
+<h3 id="distribuido">Modelo distribuido</h3>
+
+Aunque normalmente pueden ejecutarse en un solo nodo, están **diseñados para ser distribuidos** y operan en clusters de **hardware convencional** (*commodity hardware*).
+
+- **Escalabilidad horizontal** (*scale-out*): si un cluster de 10 PC no basta, se compran más PC.
+- **Escalabilidad vertical** (*scale-up*): si el gran servidor no basta, se compra uno más grande. Es **mucho más caro** y a veces no se consigue la eficiencia deseada.
+
+**El agregado parece la unidad natural para distribuir y replicar.**
+
+- **Sharding:** ubicar fragmentos de información (agregados) en distintos nodos. Se compara con la **fragmentación horizontal más ubicación** de las BD distribuidas. Puede ser **manual** (lo hace la aplicación) o **auto-sharding** (el propio gestor). Las restricciones son **locales al nodo**: no hay *cross-shard constraints*.
+- **Replicación:** ayuda a la escalabilidad y a no depender de un nodo central (**sin punto único de fallo**).
+  - **Master-slave:** una copia principal de lectura/escritura y copias esclavas de solo lectura.
+  - **Peer-to-peer:** todas las copias son de lectura/escritura.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=9">NoSQL, p. 9</a>.</p>
+
+<h2 id="consistencia">Consistencia</h2>
+
+<h3 id="tipos-inconsistencia">Tipos de (in)consistencia</h3>
+
+La crítica más común es que NoSQL no ofrece consistencia, pero **no es completamente cierto**: en general hay consistencia (incluso ACID) **dentro de una copia de un agregado**, y en las BD de grafos puede haber consistencia ACID. Con sharding y replicación aparecen varios tipos:
+
+- **De escritura** (conflicto *write-write*): parecido a la **actualización perdida** de las BD relacionales.
+- **De lectura** (conflicto *read-write*): parecido a la **lectura no repetible** o a las lecturas inconsistentes.
+- **Consistencia de sesión** o ***read-your-writes***.
+- **Actualizaciones condicionales.**
+- **De replicación:** al modificar una copia, ¿cómo se replican los cambios? Se pueden leer **versiones diferentes en distintos nodos**.
+- **Consistencia final** (*eventual consistency*): tras las actualizaciones, **en algún momento del futuro** los cambios se propagan a todas las copias.
+
+**¿Se puede relajar la consistencia?** Los SGBD relacionales ya lo hacen: su modo predeterminado es **read committed, no serializable**. MySQL tuvo un auge enorme en la web sin soportar transacciones entonces. ¿Pasa algo si las copias del estado de un usuario de Facebook no son totalmente consistentes, o si un tweet no llega a todos los nodos del planeta de forma síncrona?
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=10">NoSQL, p. 10</a>.</p>
+
+<h3 id="acid-base">ACID frente a BASE</h3>
+
+«NoSQL parece querer buscar el pH del sistema»: frente a **ACID** (*Atomicity, Consistency, Isolation, Durability*) propone **BASE** (*Basically Available, Soft state, Eventual consistency*).
+
+- **Modelo relacional: ACID.** La consistencia «fuerte» se llama ***hard state***.
+- **NoSQL: BASE.** Se **relajan (o pierden) la C y la I** de ACID; **prima la disponibilidad**.
+- ***Soft state*:** lo opuesto a *hard state*; el sistema **puede cambiar sin intervención de los usuarios** (normalmente por la consistencia final).
+- ***Eventual consistency*:** se garantiza que los cambios llegarán a todas las copias en algún momento; mientras tanto **se pueden servir respuestas desfasadas o aproximadas**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=11">NoSQL, p. 11</a>.</p>
+
+<h3 id="cap">Teorema CAP (teorema de Brewer)</h3>
+
+De estas tres propiedades:
+
+- **Consistencia** (*Consistency*),
+- **Disponibilidad** (*Availability*), con el significado de «**si un nodo responde, puedo leer y escribir en él**»,
+- **Tolerancia a particiones** de red (*Partition tolerance*),
+
+**solo es posible tener dos simultáneamente.** Se interpreta así: «**dado que la partición de la red puede suceder (y quiero que mi sistema siga funcionando), busca un compromiso entre consistencia y disponibilidad**».
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=11">NoSQL, p. 11</a>.</p>
+
+<h2 id="tipos">Tipos de bases de datos NoSQL</h2>
+
+Se suele hablar de «bases de datos» o «almacenes de datos» NoSQL. **No hay una clasificación universalmente aceptada** y una implementación puede caer en varios modelos. Los tipos más citados son **clave-valor, documentos, familias de columnas y grafos**; otros: BD orientadas a objetos, BD XML, BD multidimensionales…
+
+<div class="table-scroll">
+
+| Tipo | Modelo | Acceso | Ejemplos |
+| --- | --- | --- | --- |
+| **Clave-valor** | El más simple: una **tabla hash o diccionario**. Clave simple (normalmente un string); el **valor es opaco**, como un BLOB: el sistema no lo gestiona. | API simple: **acceso y modificación por clave**. | Berkeley DB (ahora de Oracle), Redis, Riak, Dynamo (Amazon, no libre) y su implementación libre Voldemort (LinkedIn), Cassandra. |
+| **Documentos** | **Evolución de clave-valor: el valor es consultable y modificable.** Es un documento examinable con estructura de árbol (XML, JSON…), con escalares, colecciones o documentos anidados. **Libre de esquema.** | Búsquedas que **examinan el contenido** de los documentos; puede modificar partes de un documento. | CouchDB (Apache; no permite anidar documentos), MongoDB (10gen, ahora MongoDB Inc.; usado en Sourceforge, New York Times o bit.ly). |
+| **Familias de columnas** | *A sparse, distributed, persistent multidimensional sorted map*, indexado por **clave de fila, clave de columna y timestamp**. Una **familia de columnas** agrupa datos relacionados que se acceden juntos; una **columna** tiene nombre, valor y timestamp; cada **fila** tiene una clave y columnas agrupadas en familias (como tablas anidadas). | **Acceso atómico por fila.** Las familias se definen antes de usar la colección; después se pueden añadir columnas arbitrariamente. | BigTable (Google), Cassandra, HBase (Hadoop). |
+| **Grafos** | Modelo distinto de los tres anteriores: **nodos** (entidades, con propiedades) y **arcos dirigidos** (relaciones, con propiedades). | **Recorridos** y explotación de relaciones de formas diferentes **sin cambiar el modelo** (frente a los agregados); caminos (Dijkstra). **Consistencia ACID** (Neo4j). **No son apropiadas para distribuir** (sí para replicar). | Neo4j, InfiniteGraph, OrientDB, FlockDB. |
+
+</div>
+
+La figura de grafos es un fragmento de la *movie database* de ejemplo de Neo4j.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=13">NoSQL, pp. 13-17</a>.</p>
+
+<h2 id="mapreduce">MapReduce</h2>
+
+Características básicas:
+
+- Paradigma basado en la **programación funcional**.
+- Aplicable a **procesos batch**.
+- Procesa **en paralelo** y **escala horizontalmente**.
+- Opera con **parejas clave-valor** (k, v). Hay que definir dos funciones:
+  - **map**: entrada `<k1, v1>`, salida `list(<k2, v2>)`.
+  - **reduce**: entrada `<k2, list(v2)>`, salida `<k3, v3>`.
+- El entorno (por ejemplo, **Hadoop**) se encarga de todo lo demás: transmisión de datos entre nodos, ordenación, etc.
+
+Ejemplo: documentos de clientes con facturas y líneas; se quiere el **total vendido de cada concepto**.
+
+```text
+map(String id, JSON cliente){
+  for f in cliente.facturas
+    for l in f.lineas
+      emit(l.concepto, l.importe)
+}
+
+reduce(String concepto, list<float> importes){
+  float total=0;
+  for i in importes
+    total += i
+  emit(concepto, total)
+}
+```
+
+`map` emite un par (concepto, importe) por cada línea de cada factura; el entorno agrupa todos los importes del mismo concepto y `reduce` los suma.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=19">NoSQL, p. 19</a>.</p>
+
+<h2 id="discusion">Discusión final</h2>
+
+**Críticas**, resumidas en una entrada de blog de **Stonebraker (2010)**, que puede haber perdido vigencia: NoSQL no interesa al 61 % de las empresas según un analista, porque…
+
+- ***No ACID equals No interest***: la mayoría de los datos son para OLTP, críticos, y sin ACID no sería viable manejarlos.
+- Usa **lenguajes de bajo nivel, no declarativos** como los de las BD relacionales.
+- ***NoSQL means No Standards***: cada una de las más de 200 implementaciones tiene su lenguaje o API; SQL es un estándar.
+
+**Conclusiones:** ningún modelo es del gusto de todos; NoSQL **no desbancará a los sistemas relacionales** (al menos inmediatamente), pero **tampoco va a desaparecer**. Será **una alternativa cuando el dominio o el uso de la información lo aconseje**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/nosql.pdf#page=21">NoSQL, p. 21</a>.</p>
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Explico qué significa hoy NoSQL y qué sistemas lo inspiraron.
+- ☐ Enumero las cinco características compartidas.
+- ☐ Contrasto modelo relacional y orientación a agregados en cuatro puntos.
+- ☐ Distingo escalado horizontal y vertical y por qué el agregado es la unidad natural de distribución.
+- ☐ Diferencio sharding y replicación, y master-slave de peer-to-peer.
+- ☐ Enumero los tipos de inconsistencia que aparecen con sharding y replicación.
+- ☐ Despliego las siglas ACID y BASE y explico *soft state* y *eventual consistency*.
+- ☐ Enuncio el teorema CAP con la definición de disponibilidad del documento.
+- ☐ Describo los cuatro tipos de BD NoSQL con un ejemplo de cada uno.
+- ☐ Escribo map y reduce para el total por concepto.
+- ☐ Resumo las tres críticas de Stonebraker.

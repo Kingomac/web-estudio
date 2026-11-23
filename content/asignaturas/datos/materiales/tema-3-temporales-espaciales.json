@@ -1,0 +1,22 @@
+{
+  "id": "datos.materiales.tema-3-temporales-espaciales",
+  "kind": "material",
+  "subjectId": "datos",
+  "slug": "tema-3-temporales-espaciales",
+  "title": "Tema 3 · Datos temporales y espaciales",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas del tema 3 (23 páginas): tipos temporales, períodos, indexación y SQL:2011; modelado espacial, tipos geométricos, indexación espacial y SQL:2003.",
+  "tagIds": [
+    "datos.tags.temporales-espaciales"
+  ],
+  "order": 30,
+  "file": "materiales/datos/tema-3-temporales-espaciales.pdf",
+  "format": "pdf",
+  "providedName": "3.-EspacialesTemporales.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 23,
+  "sha256": "36188b2216d4301eaaefe5007adff52ce119c6a5bd416dd0d1de2b62c3bf9255"
+}

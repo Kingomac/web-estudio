@@ -1,0 +1,76 @@
+{
+  "kind": "apuntes",
+  "id": "datos.apuntes.almacenes-explicado",
+  "subjectId": "datos",
+  "slug": "almacenes-explicado",
+  "title": "Almacenes de datos explicados con una red de sensores",
+  "description": "Explicación propia del tema: OLTP frente a almacén de datos, un ETL con los problemas reales de unidades, horas, duplicados y códigos de error, granularidad y medidas no sumables, el DFM y la estrella de la red y los operadores OLAP sobre un cubo con números.",
+  "scope": "Almacenes de datos: entorno operacional y analítico (pp. 5-9), Inmon y tipos (pp. 12-13), ETL (pp. 15-16), hechos, granularidad y DFM (pp. 26-35), ROLAP, estrella y copo (pp. 37-42) y explotación con OLAP (pp. 44-54). Apoyo puntual en T1, p. 50.",
+  "tagIds": [
+    "datos.tags.almacenes",
+    "datos.tags.explicado"
+  ],
+  "order": 160,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "datos.materiales.almacenes-datos",
+      "pdfPages": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        15,
+        16,
+        26,
+        27,
+        28,
+        31,
+        32,
+        33,
+        34,
+        35,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "label": "Páginas en las que se apoya"
+    },
+    {
+      "materialId": "datos.materiales.tema-1-relacionales-sql",
+      "pdfPages": [
+        50
+      ],
+      "label": "Páginas en las que se apoya"
+    }
+  ],
+  "externalReferences": [
+    {
+      "title": "PostgreSQL · GROUPING SETS, CUBE y ROLLUP",
+      "url": "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUPING-SETS"
+    }
+  ],
+  "relatedResourceIds": [
+    "datos.apuntes.almacenes-datos",
+    "datos.apuntes.sql-explicado"
+  ]
+}

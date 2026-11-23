@@ -1,0 +1,43 @@
+{
+  "kind": "apuntes",
+  "id": "datos.apuntes.nosql",
+  "subjectId": "datos",
+  "slug": "nosql",
+  "title": "NoSQL",
+  "description": "Origen del término, características de los sistemas NoSQL, orientación a agregados, sharding y replicación, tipos de inconsistencia, ACID frente a BASE, teorema CAP, clave-valor, documentos, familias de columnas, grafos y MapReduce.",
+  "scope": "Documento completo (pp. 2–21).",
+  "tagIds": [
+    "datos.tags.nosql"
+  ],
+  "order": 40,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "datos.materiales.nosql",
+      "pdfPages": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        21
+      ],
+      "label": "Páginas usadas"
+    }
+  ],
+  "relatedResourceIds": [
+    "datos.apuntes.nosql-explicado"
+  ]
+}

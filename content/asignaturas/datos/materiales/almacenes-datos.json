@@ -1,0 +1,22 @@
+{
+  "id": "datos.materiales.almacenes-datos",
+  "kind": "material",
+  "subjectId": "datos",
+  "slug": "almacenes-datos",
+  "title": "Almacenes de datos",
+  "description": "Documento original de la asignatura.",
+  "scope": "Diapositivas completas (55 páginas): entorno operacional y analítico, data warehouses y ETL, modelado multidimensional (DFM, estrella y copo de nieve) y explotación con OLAP.",
+  "tagIds": [
+    "datos.tags.almacenes"
+  ],
+  "order": 60,
+  "file": "materiales/datos/almacenes-datos.pdf",
+  "format": "pdf",
+  "providedName": "ED-IoT-AlmacenesDatos.pdf",
+  "origin": {
+    "label": "Material proporcionado en la asignatura"
+  },
+  "category": "apuntes-profesor",
+  "pageCount": 55,
+  "sha256": "bee889ee356d47b70bad4bc6fbd44af1957caa782c0f6a3e7c125ee0cd808535"
+}

@@ -1,0 +1,285 @@
+<p class="lead">Explicación propia del documento de MongoDB con la red de sensores de los demás apuntes explicados. Cada consulta lleva su resultado, el pipeline de agregación se sigue etapa a etapa y el modelado se decide con números. La versión fiel al documento está en los <a href="/web-estudio/asignaturas/datos/apuntes/mongodb/">apuntes de MongoDB</a>.</p>
+
+<h2 id="diccionario">Diccionario SQL → MongoDB</h2>
+
+Si sabes SQL, ya sabes la mitad. La otra mitad es lo que **no** tiene traducción directa.
+
+<div class="table-scroll">
+
+| SQL | MongoDB | Diferencia importante |
+| --- | --- | --- |
+| Tabla | Colección | Sin esquema fijo: cada documento puede tener campos distintos. |
+| Fila | Documento (BSON) | Puede anidar subdocumentos y arrays; máximo 16 MB. |
+| Clave primaria | `_id` | Obligatorio, único e inmutable; si no lo das, se genera un ObjectId. |
+| `WHERE` | Primer argumento de `find()`, o `$match` | Los campos que faltan no son NULL: simplemente no están. |
+| `SELECT col1, col2` | Segundo argumento de `find()`, o `$project` | — |
+| `GROUP BY` + agregados | `$group` | — |
+| `JOIN` | **Incrustar** o `$lookup` | Lo normal es no necesitar join, porque los datos ya van juntos. |
+| `FOREIGN KEY` | **Nada** | La integridad de las referencias es cosa de tu aplicación. |
+| Transacción | Atomicidad por documento | Hay transacciones multidocumento, pero no son la forma normal de trabajar. |
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=3">MongoDB, p. 3</a> y <a href="/web-estudio/materiales/datos/mongodb.pdf#page=14">pp. 14-15</a>.</p>
+
+<h2 id="coleccion">La colección de ejemplo: dispositivos</h2>
+
+```js
+{ _id: "s10", estacion: { nombre: "Campus Vida", concello: "Santiago" },
+  magnitudes: ["temperatura", "humedad"], bateria: 71,
+  revisiones: [ { tecnico: "Ana",   ok: true  },
+                { tecnico: "Brais", ok: false } ] }
+{ _id: "s20", estacion: { nombre: "Porto", concello: "Vigo" },
+  magnitudes: ["temperatura"], bateria: 15,
+  revisiones: [ { tecnico: "Ana",   ok: false },
+                { tecnico: "Brais", ok: true  } ] }
+{ _id: "s30", estacion: { nombre: "Muralla", concello: "Lugo" },
+  magnitudes: ["no2"], revisiones: [] }                 // a la red eléctrica: sin batería
+{ _id: "s99", magnitudes: ["temperatura"], bateria: 100 } // en el almacén: sin estación
+```
+
+Igual que en SQL, los documentos «raros» (s30 sin batería, s99 sin estación ni revisiones) son los que destapan los errores.
+
+<h2 id="consultas">Consultas: cada operador con su resultado</h2>
+
+<div class="table-scroll">
+
+| Consulta | Resultado | Por qué |
+| --- | --- | --- |
+| `find({bateria: {$lt: 20}})` | s20 | s30 no tiene `bateria`: una comparación sobre un campo ausente no se cumple. |
+| `find({bateria: {$ne: 100}})` | s10, s20, **s30** | `$ne` **sí** devuelve los documentos sin el campo. |
+| `find({bateria: null})` | s30 | `null` encuentra los que no tienen el campo o lo tienen a null. |
+| `find({bateria: {$exists: false}})` | s30 | Solo los que no tienen el campo. |
+| `find({"estacion.concello": "Vigo"})` | s20 | Notación con punto, entre comillas. |
+| `find({"estacion.concello": {$ne: "Vigo"}})` | s10, s30, **s99** | s99 no tiene estación y aun así sale. |
+| `find({magnitudes: "temperatura"})` | s10, s20, s99 | Igualdad sobre un array = «el array contiene ese valor». |
+| `find({magnitudes: {$all: ["temperatura", "humedad"]}})` | s10 | Contiene **todos**. |
+| `find({magnitudes: {$in: ["no2", "humedad"]}})` | s10, s30 | Contiene **alguno**. |
+
+</div>
+
+La lección de las filas en negrita es la misma que la trampa de `NOT IN` en SQL: **las negaciones arrastran a los documentos a los que les falta el campo**. Si no los quieres, añade `$exists: true`.
+
+<div class="callout">
+
+**`$elemMatch`: la condición tiene que cumplirla el mismo elemento.** «Dispositivos con una revisión de Ana que falló»:
+
+```js
+db.dispositivos.find({"revisiones.tecnico": "Ana", "revisiones.ok": false})
+// → s10 y s20  ✗
+db.dispositivos.find({revisiones: {$elemMatch: {tecnico: "Ana", ok: false}}})
+// → s20        ✓
+```
+
+En s10 hay una revisión de Ana (que salió bien) y una revisión que falló (la de Brais). Sin `$elemMatch`, cada condición se comprueba **por separado** sobre cualquier elemento del array, y s10 se cuela.
+
+</div>
+
+**Proyección.** `find({}, {_id: 0, "estacion.nombre": 1, bateria: 1})` devuelve solo esos campos. El `{}` del principio hace falta porque la proyección es el **segundo** argumento. No mezcles 1 y 0 salvo en `_id`: o dices qué campos quieres o cuáles no quieres.
+
+**Comparar dos campos** del mismo documento («más revisiones que magnitudes») no se hace con `find({revisiones: magnitudes})`, sino con `$expr`: `find({$expr: {$gt: [{$size: "$revisiones"}, {$size: "$magnitudes"}]}})` → s20 (2 > 1). Ojo: la consulta entera fallaría por s99, porque `$size` exige un array y s99 no tiene `revisiones`; en la práctica se protege con `{$size: {$ifNull: ["$revisiones", []]}}`.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=21">MongoDB, pp. 21-30</a>.</p>
+
+<h2 id="modificar">Modificar: el patrón de ingesta IoT</h2>
+
+Cada vez que llega una lectura, quieres guardar **el último estado** del dispositivo y contar los mensajes, aunque el dispositivo sea nuevo:
+
+```js
+db.estado.updateOne(
+  { _id: "s20" },
+  { $set: { ultimo: { valor: 16.0, ts: new Date("2026-11-20T12:00:00Z") } },
+    $inc: { mensajes: 1 } },
+  { upsert: true })
+```
+
+- Si `s20` existe, cambia `ultimo` y suma 1 a `mensajes`.
+- Si no existe, **`upsert` lo crea** con `_id: "s20"` (el criterio de igualdad se copia al documento nuevo), `ultimo` y `mensajes: 1` (`$inc` sobre un campo inexistente lo crea con ese valor).
+
+<div class="callout">
+
+**`replaceOne` no es `updateOne`.** `db.dispositivos.replaceOne({_id: "s20"}, {bateria: 90})` deja el documento como `{_id: "s20", bateria: 90}`: **se han perdido la estación, las magnitudes y las revisiones**. Para cambiar un campo, `updateOne` con `$set`. Y en un upsert, `replaceOne` **no** copia el criterio de igualdad al documento nuevo.
+
+</div>
+
+**Arrays**, sobre s10:
+
+```js
+// Añadir una revisión (siempre se añade)
+db.dispositivos.updateOne({_id: "s10"}, {$push: {revisiones: {tecnico: "Carme", ok: true}}})
+// Añadir una magnitud solo si no está ("humedad" ya está: no cambia nada)
+db.dispositivos.updateOne({_id: "s10"}, {$addToSet: {magnitudes: "humedad"}})
+// Marcar como correcta la revisión de Brais: $ es «el elemento que encontró el filtro»
+db.dispositivos.updateOne({_id: "s10", "revisiones.tecnico": "Brais"},
+                          {$set: {"revisiones.$.ok": true}})
+```
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=33">MongoDB, pp. 33-39</a>.</p>
+
+<h2 id="pipeline">Un pipeline seguido etapa a etapa</h2>
+
+Colección `lecturas`, una por documento:
+
+```js
+{ sensor: "s10", ts: ISODate("2026-11-20T10:00Z"), valor: 12.5 }
+{ sensor: "s10", ts: ISODate("2026-11-20T11:00Z"), valor: 13.0 }
+{ sensor: "s10", ts: ISODate("2026-11-20T12:00Z"), valor: 14.5 }
+{ sensor: "s20", ts: ISODate("2026-11-20T10:00Z"), valor: 15.0 }
+{ sensor: "s20", ts: ISODate("2026-11-20T11:00Z"), valor: null }
+{ sensor: "s20", ts: ISODate("2026-11-20T12:00Z"), valor: 16.0 }
+{ sensor: "s30", ts: ISODate("2026-11-20T10:00Z"), valor: 41 }   // NO2, µg/m³
+```
+
+Pregunta: **temperatura media por concello, solo concellos con al menos 3 lecturas válidas, de mayor a menor.**
+
+```js
+db.lecturas.aggregate([
+  { $match:  { valor: { $ne: null } } },                                    // 1
+  { $lookup: { from: "dispositivos", localField: "sensor",
+               foreignField: "_id", as: "disp" } },                         // 2
+  { $unwind: "$disp" },                                                     // 3
+  { $match:  { "disp.magnitudes": "temperatura" } },                        // 4
+  { $group:  { _id: "$disp.estacion.concello",
+               media: { $avg: "$valor" }, n: { $sum: 1 } } },               // 5
+  { $match:  { n: { $gte: 3 } } },                                          // 6
+  { $sort:   { media: -1 } }                                                // 7
+])
+```
+
+<div class="table-scroll">
+
+| Etapa | Documentos que salen | Qué ha pasado | En SQL |
+| --- | --- | --- | --- |
+| 1 `$match` | 6 | Fuera la lectura fallida de s20. | `WHERE valor IS NOT NULL` |
+| 2 `$lookup` | 6 | Cada lectura lleva `disp: [ {…dispositivo…} ]`, **un array**. | `LEFT JOIN dispositivos` |
+| 3 `$unwind` | 6 | El array de un elemento pasa a subdocumento. | — |
+| 4 `$match` | 5 | Fuera la lectura de NO2 de s30. | `AND 'temperatura' = ANY(magnitudes)` |
+| 5 `$group` | 2 | Santiago: media 13.33, n 3. Vigo: media 15.5, n 2. | `GROUP BY concello` |
+| 6 `$match` | 1 | Vigo no llega a 3. | `HAVING COUNT(*) >= 3` |
+| 7 `$sort` | 1 | Santiago, 13.33. | `ORDER BY media DESC` |
+
+</div>
+
+Tres cosas que este ejemplo enseña:
+
+- **Un mismo operador, `$match`, hace de `WHERE` o de `HAVING`** según vaya antes o después de `$group`.
+- **`$lookup` siempre devuelve un array**, aunque haya una sola coincidencia; por eso casi siempre va seguido de `$unwind`.
+- **Filtra lo antes posible:** la etapa 1 reduce el trabajo del `$lookup`, y un `$match` al principio del pipeline puede usar índices; en mitad del pipeline, normalmente no.
+
+<div class="callout">
+
+**El orden de `$unwind` y `$match` cambia el resultado.** Leire tiene tres teléfonos: móvil, fijo y móvil. Para contar móviles:
+
+- `$match` → `$unwind`: el `$match` deja pasar a Leire entera (tiene algún móvil) y el `$unwind` saca **3** documentos, **fijo incluido**. Cuenta mal.
+- `$unwind` → `$match`: primero 3 documentos de un teléfono cada uno; luego el `$match` deja los **2** móviles. Correcto.
+
+Es el «OJO a la ordenación» de la diapositiva del recuento de móviles. Regla: si la condición es sobre **cada elemento**, desanida antes de filtrar.
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=44">MongoDB, pp. 44-57</a>.</p>
+
+<h2 id="replica">Replica sets: qué pasa cuando algo se cae</h2>
+
+Tres nodos que votan: A (primario), B y C (secundarios).
+
+<div class="table-scroll">
+
+| Suceso | Votos disponibles | Resultado |
+| --- | --- | --- |
+| Cae C | 2 de 3 | Nada visible: A sigue de primario. |
+| Cae A | 2 de 3 (B y C) | Mayoría: eligen nuevo primario entre B y C. Unos segundos sin escrituras. |
+| Caen A y B | 1 de 3 | Sin mayoría: **no hay primario**, C solo puede servir lecturas. |
+| A vuelve | — | Entra **como secundario** y se resincroniza. |
+
+</div>
+
+**¿Por qué impar?** Con cuatro nodos y la red partida en 2 + 2, ningún lado tiene más del 50 % de los votos: **ninguno elige primario**. Si cada mitad eligiese el suyo, habría dos primarios aceptando escrituras contradictorias (*split-brain*). Cuatro nodos toleran la caída de uno, igual que tres; el cuarto no aporta tolerancia, solo coste. Si quieres el desempate sin pagar una tercera copia de los datos, añades un **árbitro**: vota, pero no guarda datos.
+
+**El write concern, con una caída a destiempo.** Un sensor envía una alarma y el primario A la confirma con `w: 1`. Un instante después, **antes de replicarla**, A se cae; B se convierte en primario **sin la alarma**. Cuando A vuelve, su escritura no está en el nuevo primario y se **deshace** (*rollback*). La alarma se ha perdido aunque el cliente recibió «OK». Con **`w: "majority"`**, A no confirma hasta que la alarma está en A y en B; cualquier primario que se elija después la tendrá. Por eso es la opción de casi todos los casos, y `w: 0` se deja para lo que de verdad no importa (un log de depuración).
+
+**Leer de un secundario** (`secondary`, `nearest`) reparte la carga, pero como la replicación es asíncrona **puedes leer el umbral de alarma de antes del último cambio**: es la consistencia final de NoSQL en carne y hueso.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=62">MongoDB, pp. 62-66</a>.</p>
+
+<h2 id="shard-key">Sharding: elegir la clave para la colección de lecturas</h2>
+
+La colección `lecturas` es la que crece: es la que hay que particionar. La consulta más frecuente es «lecturas del sensor X entre t1 y t2». Candidatas a clave:
+
+<div class="table-scroll">
+
+| Clave | Inserciones | «Sensor X entre t1 y t2» | Veredicto |
+| --- | --- | --- | --- |
+| `{ts: 1}` | **Todas al último chunk**: un shard trabaja y los demás miran. | Busca en todos los shards por sensor. | Mala: monótona. |
+| `{_id: 1}` (ObjectId) | Igual: el ObjectId empieza por un timestamp y crece. | Peor aún. | Mala: monótona. |
+| `{sensor: 1}` | Repartidas entre sensores. | Va a un solo shard. | Regular: todas las lecturas de un sensor caen en el mismo valor de clave y **ese chunk no se puede dividir** (*jumbo chunk*). |
+| `{sensor: "hashed"}` | Muy uniformes. | Va a un solo shard (igualdad sobre la clave). | Buena para repartir; malas consultas por rangos de sensores. |
+| `{sensor: 1, ts: 1}` | Repartidas entre sensores. | Va a un shard y recorre un rango contiguo. | **Buena:** cardinalidad alta y encaja con la consulta. |
+
+</div>
+
+**Cómo se ve el split.** Con la clave `{sensor: 1, ts: 1}`, al principio todo está en un chunk `[MinKey, MaxKey)`. Cuando supera los 128 MB, se divide en dos, por ejemplo `[MinKey, {sensor: "s20", ts: 2026-11-01})` y `[{sensor: "s20", ts: 2026-11-01}, MaxKey)`. Cuando un shard tiene bastantes más chunks que otro, el balanceador **mueve chunks enteros**, nunca documentos sueltos.
+
+**Zonas, con sentido en Galicia:** si los datos de las estaciones de Vigo se consultan sobre todo desde Vigo, se define una zona con los rangos de clave de esas estaciones y se asigna a los shards del centro de datos de Vigo. Sus chunks solo migrarán entre esos shards.
+
+Y la advertencia de la diapositiva 76: **un cluster de dos shards puede ir más lento que un solo servidor**. Particionar tiene un coste fijo (routers, servidores de configuración, migraciones) que solo compensa con mucho volumen.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=71">MongoDB, pp. 71-76</a>.</p>
+
+<h2 id="modelado">Modelado con números: ¿incrusto las lecturas en el dispositivo?</h2>
+
+Es la relación 1:N de manual: un dispositivo tiene muchas lecturas. ¿Cuántas? Con una lectura por minuto, **1440 al día y 525 600 al año**. Si cada lectura ocupa unos 50 bytes en BSON:
+
+$$
+\frac{16 \cdot 1024 \cdot 1024 \text{ B}}{50 \text{ B/lectura}} \approx 335\,000 \text{ lecturas} \approx 233 \text{ días}
+$$
+
+**En unos ocho meses el documento revienta el límite de 16 MB.** Y mucho antes ya es un problema: cada lectura nueva reescribe un documento enorme y la caché se llena con historiales que nadie consulta. Es el antipatrón ***unbounded array*** (y el documento resultante, un ***bloated document***). Las alternativas:
+
+<div class="table-scroll">
+
+| Diseño | Cómo es | Cuándo |
+| --- | --- | --- |
+| **Una lectura por documento**, con referencia `sensor: "s20"` | El enlace de la parte N a la parte 1. | Lo más simple; muchos documentos pequeños. |
+| **Cubos** (*bucket*, otro de los patrones conocidos) | Un documento por sensor y hora con un array de **60** lecturas. | Menos documentos e índices más pequeños; el array tiene tope. Es lo que hacen por dentro las colecciones de series temporales. |
+| **Subconjunto** (*subset*) | El dispositivo guarda solo sus **últimas 5 lecturas**; el resto, en `lecturas`. | Si la ficha del dispositivo muestra «últimas lecturas». |
+
+</div>
+
+Y los tres patrones del documento, sobre el mismo ejemplo:
+
+- **Campo calculado:** el panel muestra para cada dispositivo «alarmas este mes». En vez de contarlas en cada visita, se guarda `alarmas_mes` y se incrementa con `$inc` al registrar cada alarma. Muchas lecturas del panel, pocas alarmas: compensa.
+- **Referencia extendida:** cada lectura guarda `sensor: {_id: "s20", estacion: "Porto"}` en lugar de solo `"s20"`, porque la gráfica de lecturas siempre pone el nombre de la estación. Se evita un `$lookup` por lectura; el precio es que, si la estación cambia de nombre, hay que actualizar muchas lecturas (o aceptar que las antiguas conserven el nombre de entonces, que en datos históricos suele ser lo correcto).
+- **Polimorfismo:** sensores de temperatura, cámaras y estaciones de carga en una sola colección `dispositivos`, con `tipo` y un subdocumento por tipo. Encaja porque se consultan juntos («dispositivos con batería baja»); si cada tipo se consultase por separado, mejor una colección por tipo.
+
+La regla de fondo, que repite el documento: **«lo que se consulta junto se guarda junto», pero no todo lo relacionado se consulta junto.**
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=78">MongoDB, pp. 78-104</a>.</p>
+
+<h2 id="time-series">La colección de series temporales hace el trabajo por ti</h2>
+
+```js
+db.createCollection("lecturas_ts", {
+  timeseries: { timeField: "ts", metaField: "sensor", granularity: "minutes" },
+  expireAfterSeconds: 60 * 60 * 24 * 365 * 2 })
+```
+
+- `timeField`: el instante (obligatorio).
+- `metaField`: lo que identifica la serie (el sensor, su estación). Debe cambiar poco: MongoDB agrupa en el mismo cubo las medidas con el mismo metadato y tiempos cercanos.
+- `granularity: "minutes"` porque nuestros sensores miden cada minuto; con medidas cada segundo sería `"seconds"`.
+- `expireAfterSeconds`: borra solas las lecturas de más de dos años, el equivalente a soltar particiones antiguas que vimos en el tema 3.
+
+Es el patrón de cubos de la tabla anterior, pero **gestionado por el sistema**: tú insertas una lectura por documento y MongoDB las agrupa internamente.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=110">MongoDB, pp. 110-111</a>.</p>
+
+<h2 id="chuleta">Chuleta final</h2>
+
+- Negaciones (`$ne`, `$nin`, `$not`) incluyen documentos sin el campo.
+- Varias condiciones sobre el mismo elemento de un array: `$elemMatch`.
+- `updateOne` + `$set` cambia campos; `replaceOne` sustituye el documento entero.
+- Upsert + `$set` + `$inc`: el patrón de «último estado» de un dispositivo.
+- `$match` antes de `$group` es `WHERE`; después, `HAVING`. `$lookup` devuelve array → `$unwind`.
+- Votantes en número impar; `w: "majority"` para no perder escrituras confirmadas.
+- Clave de particionado: alta cardinalidad, no monótona, que encaje con la consulta principal (`{sensor, ts}`).
+- 1:N con N enorme: no incrustes; referencia, cubos o colección de series temporales.

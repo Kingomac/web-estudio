@@ -1,0 +1,233 @@
+<p class="lead">Explicación propia del tema 3 con la misma red de estaciones de los <a href="/web-estudio/asignaturas/datos/apuntes/sql-explicado/">apuntes de SQL explicado</a>. Cada concepto arranca de un problema concreto que tendrías con sensores reales: una hora que ocurre dos veces, un traslado registrado tarde, una distancia medida en grados. La versión fiel a las diapositivas está en los <a href="/web-estudio/asignaturas/datos/apuntes/tema-3-temporales-espaciales/">apuntes del tema 3</a>.</p>
+
+<h2 id="hora-doble">La hora que ocurre dos veces</h2>
+
+El 25 de octubre de 2026 (último domingo de octubre) España cambia al horario de invierno: a las **03:00 de verano** los relojes vuelven a las **02:00**. Un sensor de Vigo que guarda la hora local envía dos mensajes:
+
+```text
+2026-10-25 02:30   18.2 °C
+2026-10-25 02:30   17.9 °C
+```
+
+¿Son un duplicado o dos medidas separadas por una hora? Con hora local **no se puede saber**: entre las 02:00 y las 02:59 cada hora existe dos veces. Y en marzo pasa lo contrario: el 29 de marzo de 2026 se salta de las 02:00 a las 03:00, así que «02:30» **no existe**.
+
+La solución es la que sugiere la diapositiva de la recta temporal: un instante es **un punto en una única recta**, la de UTC; las zonas horarias son solo **formas de etiquetarlo**.
+
+<div class="table-scroll">
+
+| Instante (UTC) | Europe/Madrid | Offset | Atlantic/Canary |
+| --- | --- | --- | --- |
+| 2026-10-25 00:30 | 02:30 CEST | +02 | 01:30 |
+| 2026-10-25 01:30 | 02:30 CET | +01 | 01:30 |
+
+</div>
+
+Dos instantes distintos, la misma etiqueta local en Madrid (y otra que también coincide en Canarias). Por eso:
+
+- **Guarda instantes con zona** (`timestamp with time zone`). En PostgreSQL se almacena el instante normalizado a UTC y se muestra en la zona de la sesión.
+- **Usa nombres IANA** (`Europe/Madrid`), no offsets fijos (`+01`): el nombre sabe cuándo cambia el offset; el offset no. El estándar SQL solo maneja offsets, que es justo lo que advierte la diapositiva.
+- El origen **1970-01-01** de la figura es el *epoch* Unix: muchos sensores envían «segundos desde 1970 en UTC», que no tiene ambigüedad.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=3">T3, pp. 3-4</a>.</p>
+
+<h2 id="dos-tiempos">Dos relojes distintos: validez y transacción</h2>
+
+Historia real de un sensor:
+
+1. El sensor 20 estuvo en **Porto del 1 al 15 de marzo** y después se llevó a **Muralla**. Pero nadie lo anotó hasta el **20 de marzo**.
+2. El **2 de abril** el técnico revisa su parte de trabajo: el traslado fue el **12 de marzo**, no el 15. Se corrige.
+
+Hay **dos preguntas** distintas que mezclar sería un error:
+
+- **¿Dónde estaba el sensor el 13 de marzo?** → pregunta sobre la realidad: **tiempo de validez**.
+- **¿Qué decía la base de datos el 25 de marzo?** → pregunta sobre lo que sabíamos: **tiempo de transacción**. Importa si el 25 de marzo se publicó un informe de Porto con lecturas que eran de Muralla.
+
+Una tabla **bitemporal** guarda las dos. Así queda tras la corrección (∞ = «hasta nuevo aviso»):
+
+<div class="table-scroll">
+
+| sensor | estación | válido desde | válido hasta | registrado desde | registrado hasta |
+| --- | --- | --- | --- | --- | --- |
+| 20 | Porto | 03-01 | 03-15 | 03-20 | **04-02** |
+| 20 | Muralla | 03-15 | ∞ | 03-20 | **04-02** |
+| 20 | Porto | 03-01 | **03-12** | 04-02 | ∞ |
+| 20 | Muralla | **03-12** | ∞ | 04-02 | ∞ |
+
+</div>
+
+Las dos primeras filas no se borraron: el sistema **cerró su período de transacción** el 2 de abril y añadió las dos nuevas. Es exactamente lo que dice la diapositiva de `WITH SYSTEM VERSIONING`: al modificar, se mantiene la tupla antigua y se añade una nueva.
+
+```sql
+-- ¿Dónde estaba el 13 de marzo, según lo que sabemos hoy?
+SELECT estacion FROM ubicacion
+WHERE sensor = 20 AND periodo CONTAINS DATE '2026-03-13';           -- Muralla
+
+-- ¿Y según lo que sabíamos el 25 de marzo?
+SELECT estacion FROM ubicacion FOR SYSTEM_TIME AS OF TIMESTAMP '2026-03-25 00:00:00'
+WHERE sensor = 20 AND periodo CONTAINS DATE '2026-03-13';           -- Porto
+```
+
+Es la misma lectura que la consulta bitemporal de la diapositiva 13: «usando los datos que había en la tabla en t₁, dame lo válido en t₂». Y el ejemplo de la población del municipio es idéntico: 1997–1999 (luego 1998) es validez; 2000 y 2016 son transacción.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=5">T3, p. 5</a> y <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=10">pp. 10-13</a>.</p>
+
+<h2 id="periodos">Períodos: el extremo final no se incluye</h2>
+
+En SQL:2011 un período **incluye el inicio y excluye el fin**: [03-01, 03-12) termina justo antes del 12. Así dos períodos consecutivos **encajan sin solaparse ni dejar hueco**: [03-01, 03-12) y [03-12, ∞). Si el fin se incluyera, el 12 de marzo estaría en Porto y en Muralla a la vez, y la clave `WITHOUT OVERLAPS` lo rechazaría.
+
+Los predicados, sobre una recta con A = [1, 5):
+
+<div class="table-scroll">
+
+| B | Relación con A | Predicado verdadero |
+| --- | --- | --- |
+| [5, 8) | Empieza justo donde acaba A | `A IMMEDIATELY PRECEDES B` (y `A PRECEDES B`) |
+| [6, 8) | Empieza después, con hueco | `A PRECEDES B` |
+| [3, 7) | Comparten [3, 5) | `A OVERLAPS B` |
+| [2, 4) | Cae entera dentro de A | `A CONTAINS B` y `A OVERLAPS B` |
+| [1, 5) | Idéntico | `A EQUALS B` |
+
+</div>
+
+`FOR PORTION OF` corta los períodos por ti. Si el sensor 20 estuvo en mantenimiento del 5 al 8 de marzo, `UPDATE ubicacion FOR PORTION OF periodo FROM DATE '2026-03-05' TO DATE '2026-03-08' SET estacion = 'Taller'` parte la fila de Porto en tres: Porto [03-01, 03-05), Taller [03-05, 03-08) y Porto [03-08, 03-12).
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=7">T3, pp. 7-9</a>.</p>
+
+<h2 id="particiones">Particionar por tiempo: por qué en IoT es casi obligatorio</h2>
+
+Una red de 500 sensores que mide cada minuto genera unos 720 000 filas al día y 263 millones al año. Tres operaciones típicas:
+
+1. **«Lecturas de ayer»:** con un índice B+ sobre `ts`, se baja una vez por el árbol hasta la primera hoja de ayer y se recorren las hojas enlazadas hasta la última. Es el recorrido de la figura de la diapositiva 6.
+2. **«Borra lo de hace más de dos años»:** un `DELETE` de 263 millones de filas es lentísimo y deja huecos.
+3. **«Media de noviembre»:** lee casi todas las filas de un mes.
+
+Particionando por rangos de tiempo, cada mes es una tabla física:
+
+```sql
+CREATE TABLE lectura (sensor_id int, ts timestamptz, valor numeric)
+  PARTITION BY RANGE (ts);
+CREATE TABLE lectura_2026_11 PARTITION OF lectura
+  FOR VALUES FROM ('2026-11-01') TO ('2026-12-01');
+```
+
+(sintaxis de PostgreSQL). Cada ventaja de la diapositiva tiene aquí su traducción:
+
+<div class="table-scroll">
+
+| Ventaja (diapositiva) | En la red de sensores |
+| --- | --- |
+| Reemplaza los niveles superiores del índice | Saber que «noviembre está en `lectura_2026_11`» es gratis; cada partición tiene un índice más pequeño, que cabe en memoria. |
+| Mejor rendimiento si se usa casi toda una partición | La media de noviembre lee solo esa partición, entera y seguida. |
+| Facilita inserción y borrado | Todas las inserciones van a la partición del mes actual; borrar un año antiguo es **eliminar 12 tablas**, instantáneo. |
+| Almacenamiento distinto por partición | El mes actual en SSD; los años viejos en disco barato o comprimidos. |
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=6">T3, p. 6</a>.</p>
+
+<h2 id="entidades-campos">Espacio: una estación no es un mapa de temperatura</h2>
+
+- La **estación Campus Vida** es una **entidad**: tiene nombre, concello, fecha de alta y una **geometría** (un punto). Va en una tabla, como cualquier otra fila.
+- El **mapa de temperatura de Galicia** a las 12:00 es un **campo**: para *cada* punto del territorio hay un valor. No tiene «filas» naturales; es una función espacio → número, normalmente una rejilla (ráster) guardada en archivos, como el modelo de elevaciones de la diapositiva 15. Si además cambia cada hora, tiene dimensión temporal.
+
+Las estaciones **muestrean** el campo en unos pocos puntos; un modelo meteorológico lo **estima** en todos.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=14">T3, pp. 14-15</a>.</p>
+
+<h2 id="grados">Por qué no se miden distancias en grados</h2>
+
+Coordenadas aproximadas: Santiago (42.88° N, 8.54° O) y Lugo (43.01° N, 7.56° O). Con la geometría en latitud/longitud (SRC geográfico, EPSG:4326), la «distancia» euclídea es
+
+$$
+\sqrt{0{,}13^2 + 0{,}98^2} \approx 0{,}99 \text{ grados}
+$$
+
+¿Y eso cuántos kilómetros son? Depende de la dirección: un grado de latitud mide unos 111 km, pero uno de longitud se encoge con el coseno de la latitud (a 43° N, unos 81 km). Con esas coordenadas, la distancia real es de unos 80 km. **Un número en grados no es una distancia.**
+
+Por eso existen los **SRC proyectados**: la proyección UTM convierte el elipsoide en un plano por husos, y en el plano las coordenadas están en **metros**. Galicia cae en el **huso 29**, y el SRC oficial en España es **ETRS89 / UTM 29N (EPSG:25829)**. Allí `ST_Distance` devuelve metros.
+
+<div class="callout">
+
+**Trampa del orden de los ejes.** En WKT el punto se escribe **(x y)**, es decir **(longitud latitud)**: `POINT (-8.435 42.234)`, como en la diapositiva 22. Si lo escribes al revés, `POINT (42.234 -8.435)`, tu estación aparece en el océano Índico, frente a la costa de África oriental. Es de los errores más frecuentes.
+
+</div>
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=16">T3, pp. 16-17</a> y <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=22">p. 22</a>.</p>
+
+<h2 id="topologia">Relaciones topológicas con ejemplos gallegos</h2>
+
+<div class="table-scroll">
+
+| Predicado | Verdadero cuando… | Ejemplo |
+| --- | --- | --- |
+| `within(A, B)` | A está completamente dentro de B. | La estación Muralla dentro del concello de Lugo. |
+| `contains(B, A)` | Lo mismo visto desde B. | El concello de Lugo contiene la estación. |
+| `touches(A, B)` | Se tocan en el borde, sin compartir interior. | Santiago y Ames, concellos limítrofes. |
+| `crosses(A, B)` | Una línea atraviesa un polígono (o a otra línea). | El río Miño cruza el concello de Lugo. |
+| `overlaps(A, B)` | Comparten parte del interior, pero ninguno contiene al otro (misma dimensión). | La zona de cobertura de dos antenas. |
+| `intersects(A, B)` | Tienen **algún** punto común; lo contrario de `disjoint`. | Cualquiera de los anteriores. |
+
+</div>
+
+Consultas típicas (sintaxis PostGIS, con el prefijo `ST_` del estándar SQL/MM):
+
+```sql
+-- En qué concello está cada estación
+SELECT e.nombre, c.nombre
+FROM estacion e JOIN concello c ON ST_Within(e.geom, c.geom);
+
+-- Estaciones a menos de 500 m de una carretera (geometrías en EPSG:25829, en metros)
+SELECT DISTINCT e.nombre
+FROM estacion e JOIN carretera r ON ST_Intersects(ST_Buffer(e.geom, 500), r.geom);
+
+-- Superficie de cada concello en km²
+SELECT nombre, ST_Area(geom) / 1e6 FROM concello;
+```
+
+`buffer` construye el polígono de todos los puntos a menos de una distancia; `intersection`, `union` y `difference` operan con polígonos como con conjuntos; `convexHull` es la «goma elástica» que envuelve una geometría.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=21">T3, pp. 21-22</a>.</p>
+
+<h2 id="zorder">La curva Z, paso a paso</h2>
+
+Un índice B+ ordena valores en **una** dimensión. Para usarlo con puntos (x, y) hay que convertir cada celda de una rejilla en un número, de forma que **celdas cercanas tengan números cercanos**. La curva Z (Morton) lo hace **entrelazando los bits** de y y x.
+
+Celda **x = 5, y = 3** en la rejilla 8×8 de la diapositiva:
+
+```text
+x = 5 → 1 0 1        (x2 x1 x0)
+y = 3 → 0 1 1        (y2 y1 y0)
+
+z = y2 x2 y1 x1 y0 x0 = 0 1 1 0 1 1 = 011011 = 27
+```
+
+Coincide con la tabla de la diapositiva (fila 011, columna 101). Ahora la parte débil: la celda (3, 0) tiene código 000101 = **5** y su vecina (4, 0) tiene 010000 = **16**. **Son contiguas en el plano y están lejos en la curva**: la Z da «saltos» al pasar de un cuadrante a otro. Una consulta por rectángulo se convierte en **varios rangos** de códigos, no en uno. La curva de Hilbert salta menos, a cambio de un cálculo algo más complejo.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=18">T3, p. 18</a>.</p>
+
+<h2 id="kdtree">K-D-Tree y R-Tree con las manos</h2>
+
+**K-D-Tree.** Con los puntos de la diapositiva, (5,4), (2,3), (4,7), (8,1), (7,2), (9,6):
+
+1. Nivel 0, dividir por **x**: la mediana es (7,2). A la izquierda los de x menor que 7: (5,4), (2,3), (4,7). A la derecha: (8,1), (9,6).
+2. Nivel 1, dividir por **y**: a la izquierda, mediana (5,4); debajo (y menor que 4) queda (2,3), encima (4,7). A la derecha, (9,6) con (8,1) debajo.
+3. Nivel 2 volvería a dividir por x.
+
+Buscar (4,7): x = 4 < 7 → izquierda; y = 7 > 4 → arriba; encontrado. **Cada paso descarta la mitad del espacio**, alternando la coordenada.
+
+**R-Tree.** En vez de partir el espacio, **agrupa objetos**: cada grupo se resume en su **rectángulo envolvente** (MBR), y los grupos se agrupan en rectángulos mayores. Para «qué concellos contienen este punto», se baja solo por los rectángulos que contienen el punto. Como los rectángulos **pueden solaparse**, a veces hay que bajar por varias ramas; a cambio, funciona con polígonos y líneas, no solo con puntos. Es el índice espacial habitual en las bases de datos (en PostGIS se implementa sobre GiST).
+
+**Particionar con geometrías grandes.** Si las particiones son las hojas de un K-D-Tree y el río Miño atraviesa tres de ellas, el río se **duplica** en las tres (diapositiva 20). Las consultas que lo encuentren en varias particiones deben **eliminar duplicados** al juntar resultados.
+
+<p class="no-print">Base en el temario: <a href="/web-estudio/materiales/datos/tema-3-temporales-espaciales.pdf#page=19">T3, pp. 19-20</a>.</p>
+
+<h2 id="chuleta">Chuleta final</h2>
+
+- Guarda instantes en UTC (`timestamp with time zone`) y zonas IANA; la hora local puede repetirse o no existir.
+- **Validez** = cuándo fue verdad (lo pones tú). **Transacción** = cuándo lo supo la BD (lo pone el sistema). Bitemporal = las dos.
+- Períodos [inicio, fin): consecutivos encajan sin solaparse.
+- Particionar por tiempo: consultas por rango baratas, borrado de lo antiguo instantáneo.
+- Entidad (fila con geometría) frente a campo (valor en cada punto).
+- Grados no son distancias: proyecta (UTM 29N, EPSG:25829) o usa tipos geográficos. WKT es (lon lat).
+- Curva Z = entrelazar bits; vecinos casi siempre cercanos, con saltos entre cuadrantes.
+- K-D-Tree parte el espacio alternando ejes; R-Tree agrupa objetos en rectángulos que pueden solaparse.

@@ -5,7 +5,7 @@
   "title": "Ingeniería de datos para IoT",
   "bimesterId": "b2",
   "order": 40,
-  "description": "Gestión de datos en entornos IoT con SQL, NoSQL y datos espaciales y temporales. De momento, criterios de evaluación y calculadora de nota.",
+  "description": "Gestión de datos en entornos IoT: SQL y transacciones, datos temporales y espaciales, NoSQL y MongoDB, y almacenes de datos con OLAP. Apuntes fieles a las fuentes, explicaciones propias con una red de sensores y calculadora de nota.",
   "teachingGuide": {
     "url": "https://academica.udc.gal/doa/consultaPublica/look%5bconpub%5dMostrarPubGuiaDocAs?entradaPublica=true&_codAsignatura=103629&_anoAcademico=2026&idiomaPais=gl.ES",
     "title": "Guía docente de Ingeniería de datos para IoT · UDC · 2026/27",

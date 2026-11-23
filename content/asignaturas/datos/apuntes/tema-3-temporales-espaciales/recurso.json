@@ -1,0 +1,48 @@
+{
+  "kind": "apuntes",
+  "id": "datos.apuntes.tema-3-temporales-espaciales",
+  "subjectId": "datos",
+  "slug": "tema-3-temporales-espaciales",
+  "title": "Tema 3 · Datos temporales y espaciales",
+  "description": "Zonas horarias y tipos temporales, tiempo de validez y de transacción, índices y particiones por rangos, tablas temporales y bitemporales de SQL:2011; entidades y campos espaciales, SRC, geometrías, curvas de relleno, índices espaciales y SQL/MM.",
+  "scope": "Tema 3 completo (diapositivas 2–22).",
+  "tagIds": [
+    "datos.tags.temporales-espaciales"
+  ],
+  "order": 30,
+  "body": "body.mdx",
+  "printIntent": "paper",
+  "componentIds": [],
+  "sources": [
+    {
+      "materialId": "datos.materiales.tema-3-temporales-espaciales",
+      "pdfPages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "label": "Diapositivas usadas"
+    }
+  ],
+  "relatedResourceIds": [
+    "datos.apuntes.temporales-espaciales-explicado"
+  ]
+}

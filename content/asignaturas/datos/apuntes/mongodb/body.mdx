@@ -1,0 +1,885 @@
+<h2 id="idea-central">Idea central</h2>
+
+**MongoDB** es una base de datos NoSQL **de documentos** (JSON/BSON) de propósito general. El documento la recorre en seis bloques: qué es y cómo se instala, cómo son sus **documentos**, cómo se **consultan y modifican** (CRUD y framework de agregación), cómo ofrece **alta disponibilidad** (replica sets), cómo **escala horizontalmente** (sharding) y cómo se **modelan los datos** (incrustar o referenciar, patrones y antipatrones). Dos anexos tratan la validación de documentos y las colecciones de series temporales.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=2">MongoDB, p. 2</a>.</p>
+
+<h2 id="introduccion">Introducción</h2>
+
+<h3 id="caracteristicas">Características principales</h3>
+
+«*MongoDB is a powerful, flexible, and scalable general-purpose database*» (Chodorow). **No es un sistema relacional**:
+
+- **No tiene soporte completo de joins** (soporte parcial desde la v4.0).
+- **Limitaciones en transacciones:** atomicidad **a nivel de documento**; transacciones multidocumento desde la v4.0 y multi-shard desde la v4.2.
+- **No soporta restricciones** (claves foráneas, check). Es posible **validar** documentos, pero la validación puede saltarse.
+
+Sí ofrece:
+
+- Almacén **basado en documentos** (JSON/BSON): objetos complejos desde el punto de vista del desarrollador.
+- **Esquemas flexibles:** distintos tipos de documentos en la misma colección.
+- **Alta disponibilidad y tolerancia a fallos** (*replica sets*).
+- **Escalado horizontal** fácil (*sharding*).
+- **Alta eficiencia** como objetivo: **índices**, consultas complejas, **framework de agregación** y **optimizador de consultas**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=3">MongoDB, p. 3</a>.</p>
+
+<h3 id="instalacion">Instalación y ejecución</h3>
+
+Se descarga de la web de MongoDB (opción *On premises*, **MongoDB Community Edition**; versión 8.0.3 al escribir el documento), junto con **MongoDB Database Tools** y **MongoDB Shell**. En `tgz` o `zip` **no requiere instalación**: son binarios que se ejecutan directamente.
+
+<div class="table-scroll">
+
+| Binario | Función |
+| --- | --- |
+| `mongod` | **El servidor.** |
+| `mongos` | **Mongo Shard**: servicio de **enrutamiento** para *sharded clusters*. |
+| `mongosh` | **La shell**: cliente que además es un **intérprete completo de JavaScript**. |
+| `mongoimport`, `mongoexport`, `mongodump`, `mongorestore` | Exportar e importar datos. |
+
+</div>
+
+**Arranque de `mongod`.** Parámetros importantes: **puerto (27017)**, **directorio de datos** (`/data/db` o `C:\data\db`) y **fichero de log**.
+
+```text
+mongod --port 27017 --dbpath /home/user/data --logpath /home/user/logs/mongodb.log --fork
+```
+
+También con un **fichero de configuración YAML**, invocado con `mongod -f mongodb.conf`:
+
+```yaml
+storage:
+  dbPath: /home/user/data
+net:
+  port: 27017
+systemLog:
+  destination: file
+  path: /home/user/logs/mongodb.log
+  logAppend: true
+processManagement:
+  fork: true
+```
+
+**Alternativas:** instaladores oficiales (crean servicios que arrancan solos, con configuración predeterminada) o **Docker**:
+
+```text
+docker run --name mongo8 -d mongo:8.0.3      # crear el contenedor (una vez)
+docker start mongo8 / docker stop mongo8     # arrancar y parar
+docker exec -it mongo8 bash                  # entrar y ejecutar mongosh, mongoimport…
+docker cp contactos_es.json mongo8:/tmp      # copiar ficheros al contenedor
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=4">MongoDB, pp. 4-8</a>.</p>
+
+<h3 id="mongosh">El cliente mongosh</h3>
+
+```text
+mongosh                       -- localhost, puerto 27017, BD test
+mongosh bd1                   -- localhost, puerto 27017, BD bd1
+mongosh 127.0.1.14:27018/bd2  -- 127.0.1.14, puerto 27018, BD bd2
+
+> show databases              -- BD disponibles en el servidor
+> db                          -- nombre de la BD actual
+> use bd2                     -- cambia a la BD bd2
+> show collections            -- colecciones de la BD actual (alias: show tables)
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=9">MongoDB, p. 9</a>.</p>
+
+<h3 id="import-export">Importación y exportación</h3>
+
+`mongoimport` importa texto (JSON, CSV o TSV) a una colección; `mongoexport` exporta una colección a texto.
+
+```text
+mongoimport -d mai -c contactos contactos_es.json
+  # BD mai, colección contactos, formato JSON (predeterminado)
+mongoimport -d test -c col1 --type=CSV --headerline --drop datos.csv
+  # la primera línea son los nombres de campo; si la colección existe, se borra antes
+mongoimport productos.json
+  # BD test (predeterminada), colección productos (por el nombre del fichero)
+mongoexport -d bd3 -c col5 -o col5.json
+```
+
+`mongodump` y `mongorestore` exportan e importan en **binario (BSON)**, también para backups.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=10">MongoDB, p. 10</a>.</p>
+
+<h2 id="documentos">Documentos en MongoDB</h2>
+
+<h3 id="json">JSON</h3>
+
+**JSON** (*JavaScript Object Notation*) es un formato de intercambio de datos descrito en **ECMA-404**; deriva de JavaScript pero es independiente del lenguaje. El elemento principal es el **objeto**: conjunto desordenado de pares nombre:valor, donde el nombre es un string y el valor puede ser:
+
+- Un **string** (entre comillas).
+- Un **número** (sin comillas; **no hay subtipos** real, int…). **¡42 y "42" son distintos!**
+- Un **array**: colección **ordenada** de valores.
+- Un **objeto**.
+- Las constantes `true`, `false` y `null`.
+
+**Notación con punto** de MongoDB: `cliente.nombre` accede a un campo de un subdocumento; `lineas.0`, al primer elemento de un array; `array.$` es un caso especial de las actualizaciones.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=12">MongoDB, pp. 12-13</a>.</p>
+
+<h3 id="bson">Documentos, BSON y colecciones</h3>
+
+Un documento es básicamente un objeto JSON, con algunas diferencias:
+
+- Oficialmente es una colección **ordenada** de pares (los drivers pueden desordenarlos; no es muy relevante).
+- En `mongosh` **no hace falta entrecomillar los nombres** de campo si son nombres válidos de variable (sí los valores string): `{nombre : "Pepe"}`.
+- Se almacena y transfiere en **BSON** (*Binary JSON*), que **amplía los tipos** (21 en la v4.0, 5 obsoletos): Double, Date, ObjectId, Boolean, Binary Data, Regular Expression…
+- **Tamaño máximo de 16 MB por documento** (El Quijote de Proyecto Gutenberg ocupa 2,1 MB). Para objetos grandes, como multimedia, está **GridFS**.
+
+Los documentos se guardan en **colecciones** (análogas a una tabla) y las colecciones en **bases de datos**; una instancia gestiona varias bases de datos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=14">MongoDB, p. 14</a>.</p>
+
+<h3 id="id">El campo _id y los esquemas flexibles</h3>
+
+**Todo documento tiene un campo `_id`**:
+
+- **Único** dentro de la colección e **inmutable**.
+- De **cualquier tipo excepto array**, incluso un documento.
+- Por defecto, de tipo **ObjectId**: si no se indica, MongoDB lo asigna automáticamente.
+
+```js
+> var doc = { nombre : 'Pepe' }
+> db.prueba.insertOne(doc)
+{ acknowledged: true, insertedId: ObjectId(6101070b3f95d03444e58667) }
+> db.prueba.find()
+[ { _id: ObjectId(6101070b3f95d03444e58667), nombre: 'Pepe' } ]
+```
+
+**Esquemas flexibles:** una colección puede tener documentos con distintos esquemas, pero se puede **validar** con una sintaxis similar a la de las búsquedas: existencia de campos, tipos y restricciones adicionales.
+
+```js
+db.createCollection(emps, {
+  validator: {
+    nombre: {$type: string},
+    salario: {$gt: 950},
+    email: { $regex: /@empresa\.com$/ }
+  }
+})
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=15">MongoDB, p. 15</a>.</p>
+
+<h2 id="crud">Operaciones CRUD</h2>
+
+CRUD: ***Create, Read, Update, Delete***. Se invocan como `db.<colección>.<operación>(<parámetros>)`, donde `db` es la base de datos actual; los drivers de cada lenguaje ofrecen lo mismo con otra sintaxis.
+
+<div class="table-scroll">
+
+| Operación | Métodos |
+| --- | --- |
+| Inserción | `insertOne(doc)`, `insertMany(array)`; también actualizaciones con `{upsert: true}`. |
+| Consulta | `find()`, `findOne()`. |
+| Actualización | `updateOne()`, `updateMany()`, `replaceOne()`. |
+| Borrado | `deleteOne()`, `deleteMany()`; `drop()` elimina la colección. |
+
+</div>
+
+El **framework de agregación** permite consultas parecidas a las de SQL con `group by`, y se pueden crear **índices** sobre los campos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=17">MongoDB, p. 17</a>.</p>
+
+<h3 id="insercion">Inserción</h3>
+
+- `insertOne(<doc>)` inserta un documento; `insertMany(<array>)`, un array; `insert()` está **obsoleta**.
+- **Ni la base de datos ni la colección tienen que existir**: se crean al insertar. `db.createCollection()` sirve para colecciones especiales (como las *capped collections*) o para validar el esquema desde el inicio (desde la v3.2).
+- Si no se indica `_id`, se añade uno de tipo ObjectId.
+- Parámetros opcionales: `writeConcern` y `ordered`.
+
+```js
+db.usuarios.insertOne({ _id : "miguel.penabad",
+  nombre : "Miguel Rodríguez Penabad",
+  email : "miguel.penabad@udc.es",
+  roles : ["administrador", "profesor"]})
+db.usuarios.insertMany([ { nombre : "Pepe Gotera", fechanac: new Date("1966-04-02") },
+                         { nombre : "Otilio"} ])
+```
+
+Las fechas se insertan con `new Date("...")`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=18">MongoDB, pp. 18-19</a>.</p>
+
+<h3 id="find">Selección: find, findOne y proyección</h3>
+
+`db.<colección>.find(<criterios>, <proyección>)` **devuelve un cursor**: la shell muestra los 20 primeros documentos y `it` pide los siguientes; también se puede recorrer con JavaScript (`forEach`). `findOne()` devuelve **un solo documento** que cumple los criterios (no se sabe cuál). Ambos argumentos son documentos JSON opcionales.
+
+- Sin criterios, o con `{}`, se obtienen todos los documentos.
+- **Proyección** `{campo1:1, campo2:1, _id:0}` (1 o true = visible; 0 o false = invisible). Sin proyección se ven todos los campos; si se incluye, **`_id` está a 1 por defecto** y el resto a 0; con solo `{_id:0}` se ven todos los demás.
+- Para proyectar sin filtrar hay que pasar `{}` como criterio, porque la proyección es el **segundo** argumento: `db.usuarios.findOne({}, {_id:0, nombre:1})`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=20">MongoDB, pp. 20-21</a>.</p>
+
+<h3 id="contactos">Colección de ejemplo: contactos</h3>
+
+No todos los contactos tienen todos los campos. Uno típico:
+
+```js
+{ _id : ObjectId(562e6241bbc7db1bc09134a3),
+  nombre : "Leire", apellidos : "Ramos Posada", sexo : "M",
+  email : "lramos@gmail.com",
+  fechanac : ISODate("1982-09-14T00:00:00.000Z"),
+  direccion : { poblacion : "Barcelona", cp : "08493",
+                provincia : "Barcelona", calle : "Paseo Lagarella,159 2ºF" },
+  tels : [ { tipo : "móvil", numero : "620691334" },
+           { tipo : "fijo", numero : "939985342" },
+           { tipo : "móvil", numero : "627150926" } ],
+  llamadas : 35 }
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=22">MongoDB, p. 22</a>.</p>
+
+<h3 id="criterios">Criterios de selección</h3>
+
+Formato básico: `{campo: <constante>}` busca por **igualdad**; `{campo: <documento>}` aplica un **operador** o varias condiciones sobre el mismo campo (`{nombre: {$eq: "Leire"}}`).
+
+<div class="table-scroll">
+
+| Tipo | Ejemplo |
+| --- | --- |
+| Igualdad | `find({nombre:"Leire"})`, `find({llamadas:5})`, `find({fechanac:new Date("1982-09-14")})` |
+| Subdocumento (comillas obligatorias) | `find({"direccion.provincia":"Lugo"})` |
+| Dentro de un array | `find({"tels.tipo":"móvil"})`: busca en los elementos de `tels`. |
+| Existencia | `{llamadas:{$exists:1}}` (tiene el campo), `{llamadas:{$exists:0}}` (no lo tiene). `{llamadas:null}` devuelve los que **no tienen el campo o lo tienen a null**. |
+| Desigualdad | `$lt` (menor), `$lte` (menor o igual), `$gt` (mayor), `$gte` (mayor o igual), `$ne` (distinto). Entre 5 y 10 llamadas: `{llamadas:{$gte:5, $lte:10}}`. |
+| Expresiones regulares | `{email : /@gmail.com$/}` o `{email : {$regex:'@gmail.com$'}}`. Sintaxis PCRE. |
+
+</div>
+
+**Ojo:** `{"direccion.provincia":{$ne:"Ourense"}}` devuelve también a las personas **que no tienen** `direccion.provincia`.
+
+**Expresiones regulares.** `/patrón/opciones` o `{$regex:"patrón", $options:"opciones"}`; la opción más relevante es **`i`** (insensible a mayúsculas). Caracteres especiales: `^` inicio, `$` fin, `.` cualquier carácter, `( )` agrupar, `|` «o», `[ ]` conjunto (lista o rango), `?` cero o uno, `*` cero o más, `+` uno o más. Ejemplos:
+
+- Nombres que empiezan por A o S y acaban en a: `/^(A|S).*a$/`.
+- Emails que empiezan por d y son de hotmail.com o gmail.com: `/^d.*@(hotmail|gmail)\.com$/` (el `\.` es un punto literal).
+- Provincia de Lugo con cualquier combinación de mayúsculas: `/lugo/i` o `{$regex:"lugo",$options:"i"}`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=23">MongoDB, pp. 23-26</a>.</p>
+
+**Conectivas lógicas.** Varios criterios separados por comas son un **AND implícito**: `{email : /@gmail.com/, llamadas:{$gt:20}}`. `$and` y `$or` reciben un **array de criterios**, son **operadores de primer nivel** (no se aplican a un campo, como `$lt`) y pueden anidarse: `{$or:[{email : /@gmail.com/}, {llamadas:{$gt:20}}]}`. `$not` niega una expresión o una regex: `{email : {$not:/@gmail.com/}}`.
+
+**Arrays.**
+
+- Posición concreta (índice desde 0): `{"tels.0.tipo" : "fijo"}`.
+- **Varias condiciones sobre el mismo elemento: `$elemMatch`.** Con `{a:1, b:[{x:1,z:1},{x:2,z:4}]}` y `{a:2, b:[{x:1,z:2},{x:2,z:1}]}`, la consulta `{"b.x":1, "b.z":1}` **devuelve los dos** (cada condición la cumple algún elemento, no necesariamente el mismo); la correcta es `{ b : { $elemMatch : { x:1 , z:1} } }`.
+- **`$in` / `$nin`** como alternativa a `$or`: `{llamadas: {$in: [2, 4]}}`. `$nin` también devuelve los que no tienen el campo o lo tienen nulo.
+- **`$all`** como alternativa a `$and`: contactos con móvil y fijo, `{"tels.tipo":{$all:["móvil", "fijo"]}}`. **No vale** `{"tels.tipo":"móvil", "tels.tipo":"fijo"}`: si se repite una clave, MongoDB **solo considera la segunda**.
+
+**JavaScript con `$where`.** Algunas consultas no se pueden hacer directamente con `find()`, por ejemplo comparar dos campos del mismo documento: `find({a:b})` da error. `$where` acepta una expresión o función JavaScript (`{ $where: "this.a == this.b" }`); es muy flexible pero **muy ineficiente: nunca usa índices**. La alternativa correcta es **`$expr`**: `find({$expr: {$eq: ["$a", "$b"]}})`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=27">MongoDB, pp. 27-30</a>.</p>
+
+<h3 id="cursores">Cursores</h3>
+
+El cursor de `find()` permite **contar** (`count()`), **ordenar** (`sort({campo: 1|-1, ...})`, por varios campos; los nulos son «menores»; `$natural` ordena por orden de inserción), **saltar** (`skip(n)`) y **limitar** (`limit(n)`):
+
+```js
+db.contactos.find({sexo : "M"}).sort({fechanac:1}).skip(3).limit(5)
+```
+
+Y se puede recorrer con JavaScript (`forEach` o `while (cursor.hasNext()) { doc = cursor.next(); ... }`), por ejemplo dentro de una función que reciba la provincia.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=31">MongoDB, pp. 31-32</a>.</p>
+
+<h3 id="update">Modificación</h3>
+
+- `replaceOne(criterios, actualización, opciones)`: **reemplaza** el documento entero (excepto `_id`, inmutable).
+- `updateOne(...)` / `updateMany(...)`: **modifican** uno o varios documentos (añadir, cambiar o quitar campos).
+- `update()` está obsoleta. Opciones: **`upsert`** (por defecto false), `writeConcern` y `multi` (obsoleta).
+
+```js
+db.usuarios.replaceOne({_id:"usuario"}, {login:'usuario', clave:'secret'})
+// { _id: 'usuario', nombre: 'Usuario' } → { _id: 'usuario', login: 'usuario', clave: 'secret' }
+```
+
+**Operadores de modificación** (se pueden combinar):
+
+<div class="table-scroll">
+
+| Operador | Efecto |
+| --- | --- |
+| `$set: {campo: valor}` | Establece el valor, **creando el campo** si no existe. |
+| `$unset: {campo: ""}` | Elimina el campo (el valor da igual). |
+| `$rename: {campo: nuevo}` | Renombra. |
+| `$inc: {campo: n}` | Suma n; si no existe, lo crea con valor n. |
+| `$mul: {campo: n}` | Multiplica; si no existe, lo crea **con valor 0**. |
+
+</div>
+
+Partiendo de `{ b : 2, c : 2 }`: `$set: {c:3, d:1}` → `{b:2, c:3, d:1}`; `$unset: {c:'', x:3}` → `{b:2, d:1}` (x no existe, pero no da error); `$inc: {b:7, f:3}, $mul: {d:3, g:11}` → `{b:9, d:3, f:3, g:0}`; `$rename: {'f':'nuevoF'}` → `{b:9, d:3, g:0, nuevoF:3}`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=33">MongoDB, pp. 33-35</a>.</p>
+
+**Arrays:**
+
+- `$push: {array: elem}` añade siempre; `$addToSet` **solo si no está**. Si `elem` es un array, se añade como **un único elemento**; para añadir su contenido elemento a elemento se usa `{$each: [...]}`. Con `arr: [1,2]`: `$push: {arr: [3,4]}` → `[1, 2, [3, 4]]`; `$push: {arr: {$each:[3,4]}}` → `[1, 2, 3, 4]`.
+- `$pull: {array: elemento o condición}` elimina **todas** las ocurrencias.
+- **Notación posicional `$`:** el criterio localiza el elemento y `$set: {"array.$": valor}` lo cambia.
+
+```js
+// { frutas: ["pera", "manzana"], monedas: ["euro", "dólar"] }
+db.arrays.updateOne({}, { $push : {frutas: "pera"},
+  $addToSet: {monedas: {$each: ["dracma", "dinar", "euro"]}} })
+// frutas: [pera, manzana, pera]; monedas: [euro, dólar, dracma, dinar]
+db.arrays.updateOne({}, { $pull : {frutas: "pera"}})
+db.arrays.updateOne({}, { $pull : {monedas: {$in: ["dólar", "euro"]}} })
+// frutas: [manzana]; monedas: [dracma, dinar]
+db.arrays.updateOne({monedas:"dracma"}, { $set : {"monedas.$": "euro"} })
+// monedas: [euro, dinar]
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=36">MongoDB, pp. 36-37</a>.</p>
+
+**`{upsert: true}`** (en `replaceOne`, `updateOne` y `updateMany`): si el criterio no encuentra nada, **inserta** un documento con las modificaciones. Si el criterio es de **igualdad**, `updateOne` y `updateMany` **lo incluyen** en el documento nuevo; **`replaceOne` no**. Si el criterio no es de igualdad (`{a:{$gt:20}}`), **ninguna** lo incluye.
+
+```js
+db.testupsert.replaceOne({a:1}, {b:1}, {upsert:true})      // inserta { b: 1 }
+db.testupsert.updateOne({a:2}, {$set:{b:2}}, {upsert:true}) // inserta { a: 2, b: 2 }
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=38">MongoDB, pp. 38-39</a>.</p>
+
+<h3 id="delete">Borrado</h3>
+
+`deleteOne(<criterios>)` borra un documento que cumple los criterios; `deleteMany(<criterios>)`, todos. **Los criterios son obligatorios**: para todos, `{}`. La colección puede quedar vacía. `remove()` está obsoleta. `db.<colección>.drop()` **elimina la colección completa y sus índices** y devuelve true o false según existiera.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=40">MongoDB, p. 40</a>.</p>
+
+<h2 id="agregacion">Framework de agregación</h2>
+
+<h3 id="mapreduce">MapReduce y funciones simples</h3>
+
+Muchos NoSQL no permiten consultas de agregación directas y recurren a **MapReduce**. MongoDB lo implementa con `db.colección.mapReduce(map, reduce, opciones)` (opciones `out` y `query`), pero **desde la 5.0 es obsoleta**; se recomienda el framework de agregación. Total de llamadas por sexo:
+
+```js
+db.contactos.mapReduce(
+  function(){emit(this.sexo, this.llamadas)},
+  function(key, values) {return Array.sum(values)},
+  {out:"salida", query:{llamadas:{$exists:true}}} )
+// { _id: "H", value: 164 }, { _id: "M", value: 103 }
+```
+
+Sin el filtro, los 3 contactos sin llamadas harían que ambos totales fuesen `NaN`. Con el framework:
+
+```js
+db.contactos.aggregate([ { $group: {_id:"$sexo", suma: {$sum : "$llamadas"} } } ])
+db.contactos.distinct("sexo")              // [ "M", "H" ]
+db.contactos.countDocuments()              // 20 (count() está obsoleto)
+db.contactos.countDocuments({sexo:"M"})    // 9
+db.contactos.find().count()                // 20
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=42">MongoDB, pp. 42-43</a>.</p>
+
+<h3 id="pipeline">Pipelines y expresiones</h3>
+
+`aggregate([ {etapa 1}, {etapa 2}, ..., {etapa n} ])` procesa los datos en un **pipeline**: **la salida de una etapa es la entrada de la siguiente**, y el resultado es un cursor.
+
+Una **expresión** puede ser:
+
+- Un ***field path*** `"$<campo>"`: el valor del campo en el documento que entra a la etapa (`"$llamadas"`, `"$direccion.calle"`).
+- Un **literal** (`3`, `"A Coruña"`); si empieza por `$`, con `{$literal: "$27.05"}`.
+- Un **operador** `{<op>: <arg>}` o `{<op>: [<arg1>, ...]}`: matemáticos (`$add`, `$subtract`…), sobre arrays (`$size`, `$avg`…), comparaciones (`$eq`, `$gt`, `$expr`), condicionales (`$cond`), acumuladores, fechas (`$year`, `$month`, `$dayOfMonth`, `$dateToParts`), strings…
+- Un **objeto expresión** `{campo: <expresión>}`, para crear campos.
+
+```js
+// { _id: 1, a: 10, b: 5, arr: [2, 3, 4] }
+db.test.aggregate({$project: {
+  amayorb: { $cond: [{ $gt: ["$a", "$b"] }, "sí", "no"] },
+  sumaarray: {$sum: "$arr"}, tamanoarr: {$size:"$arr"}, mediaarr: {$avg:"$arr"} } })
+// { _id: 1, amayorb: 'sí', sumaarray: 9, tamanoarr: 3, mediaarr: 3 }
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=44">MongoDB, pp. 44-46</a>.</p>
+
+<h3 id="etapas">Etapas</h3>
+
+<div class="table-scroll">
+
+| Etapa | Equivalente SQL | Qué hace |
+| --- | --- | --- |
+| `$group` | `GROUP BY` | Agrupa por `_id` (obligatorio; un campo o un documento; con `_id: null` o una constante, un único grupo) y calcula acumuladores. |
+| `$match` | `WHERE` / `HAVING` | Filtra con la sintaxis de `find()`; admite `$expr` con field paths. |
+| `$project` | `SELECT` | Incluye o excluye campos y crea campos nuevos. |
+| `$addFields` / `$set` | — | Añade campos **manteniendo todos los demás**. |
+| `$unwind` | — | Desanida un array: **un documento por elemento**. |
+| `$lookup` | **Outer join** | Une con otra colección por igualdad. |
+| `$unionWith` | `UNION ALL` | Añade los documentos de otra colección. |
+| `$sort`, `$skip`, `$limit` | `ORDER BY`, `OFFSET`, `LIMIT` | Ordenar, saltar y limitar. |
+
+</div>
+
+**`$group`.** Acumuladores: `{$sum:"$fp"}` y `{$avg:"$fp"}` (**ignoran valores no numéricos**), `{$max}`, `{$min}`, contar con `{$count:{}}` o `{$sum:1}`, y construir arrays con duplicados (`$push`) o sin duplicados ni orden (`$addToSet`).
+
+```js
+db.contactos.aggregate([ { $group: {
+  _id: {prov:"$direccion.provincia", pob:"$direccion.poblacion"},
+  num_contactos: {$count:{}},
+  total_llamadas: {$sum:"$llamadas"},
+  nombres: {$addToSet:"$nombre"} } } ])
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=47">MongoDB, pp. 47-48</a>.</p>
+
+**`$match`.** Contactos con email y teléfonos cuyo número de llamadas sea igual al de teléfonos:
+
+```js
+db.contactos.aggregate([ { $match: {
+  email : {$exists:true}, tels: {$exists: true},
+  $expr: {$eq: ["$llamadas", {$size: "$tels"}]} } }])
+```
+
+`$expr` puede usarse en `$match` y alguna otra etapa, no en todas. Según su posición, `$match` hace de `WHERE` o de `HAVING`:
+
+```js
+db.contactos.aggregate([
+  { $match: { email : {$exists:true} } },                 // WHERE: filtra documentos
+  { $group: { _id: "$sexo", num_contactos: {$sum:1},
+              total_llamadas: {$sum:"$llamadas"} } },
+  { $match: { num_contactos:{$gt:5} } } ])                 // HAVING: filtra grupos
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=49">MongoDB, pp. 49-50</a>.</p>
+
+**`$project`.** `campo:1` incluye y `campo:0` excluye; `_id` va incluido por defecto. **Si se incluye explícitamente un campo, solo se ve ese (y `_id`)**; si se excluye uno, se ven los demás. Con `{ _id: 1, a: 2, b: 3, c: 4 }`: `{_id:0}` → `{a, b, c}`; `{a:0}` → `{_id, b, c}`; `{_id:1}` → `{_id}`; `{a:1}` → `{_id, a}`; `{_id:0, a:1}` → `{a}`.
+
+También **reestructura**: aplanar (`nuevocampo: "$subdoc.campo"`), crear subdocumentos (`"doc.nuevo": "$campo"` o `doc: {nuevo: "$campo"}`) y calcular campos (`$concat`, `$size`…):
+
+```js
+db.contactos.aggregate([ {$match: {tels: {$exists:true}}},
+  {$project: { _id:0,
+    apellidosynombre: {$concat: ["$apellidos", ", ", "$nombre"]},
+    "nombre.pila": "$nombre", "nombre.apellidos": "$apellidos",
+    email:1, provincia: "$direccion.provincia",
+    telefonos: { cantidad: {$size: "$tels"}, lista: "$tels" } }} ])
+```
+
+**`$addFields` (alias `$set`)** evita tener que listar a 1 todos los campos que se quieren conservar: `{ $addFields: {anonac: {$year:"$fechanac"}} }` devuelve el documento completo más `anonac`, mientras que el mismo cálculo en `$project` devolvería solo `_id` y `anonac`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=51">MongoDB, pp. 51-53</a>.</p>
+
+**`$unwind`.** `{ $unwind: "$tels" }` crea un documento por elemento del array, idénticos en el resto de campos. **No produce salida** si el array no existe, es nulo o está vacío; un valor **escalar se trata como array de un elemento**.
+
+```text
+{_id:1, a:1, v:["a","b","c"]}   →  {_id:1, a:1, v:"a"}, {..., v:"b"}, {..., v:"c"}
+{_id:2, a:4}                     →  (nada)
+{_id:3, a:5, v:[]}               →  (nada)
+{_id:4, a:6, v:"d"}              →  {_id:4, a:6, v:"d"}
+```
+
+¿Cuántos móviles hay en la colección? (**ojo al orden de `$unwind` y `$match`**):
+
+```js
+db.contactos.aggregate([ {$unwind: "$tels"}, {$match: {"tels.tipo":"móvil"}},
+  {$group: {_id:null, numero: {$count:{}}}} ])   // { _id: null, numero: 25 }
+```
+
+La versión completa admite `includeArrayIndex` (añade la posición) y `preserveNullAndEmptyArrays: true` (conserva los documentos sin array o con array vacío, con el índice nulo).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=54">MongoDB, pp. 54-55</a>.</p>
+
+**`$lookup`.** `{from, localField, foreignField, as}`: **join externo** por igualdad con otra colección (que **hasta la v5.1 no podía estar particionada**). Si los campos no existen, se tratan como null. El resultado va en el **array** `as` (sobrescribe el campo si ya existía). Las cláusulas `let` y `pipeline` se omiten.
+
+```js
+// emps: {_id:1, nomemp:"Pepe", salario:2000, dept:10}, {_id:2, nomemp:"Ana", ...dept:10},
+//       {_id:3, nomemp:"Suso", dept:20}
+// depts: {_id:10, nomdep:"Compras"}, {_id:20, nomdep:"Ventas"}
+db.depts.aggregate([ {$lookup: {from: "emps", localField: "_id",
+                                foreignField: "dept", as: "emps"}} ])
+// Compras con [Pepe, Ana]; Ventas con [Suso]
+db.emps.aggregate([
+  {$lookup: {from: "depts", localField: "dept", foreignField:"_id", as: "depto"}},
+  {$unwind: "$depto"},
+  {$project: {_id:0, nomemp: 1, salario: 1, nomdep: "$depto.nomdep"}} ])
+// { nomemp: "Pepe", salario: 2000, nomdep: "Compras" } ...
+```
+
+El `$unwind` posterior convierte el array de un elemento en un subdocumento para proyectar el nombre del departamento.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=56">MongoDB, pp. 56-57</a>.</p>
+
+**`$unionWith`.** `{coll, pipeline}` une al resultado los documentos de otra colección, opcionalmente filtrados o reformateados por su propio pipeline; en ciertos usos la colección unida no puede estar particionada.
+
+```js
+db.contactos.aggregate([
+  {$project: {_id:0, nombre:1, apellidos: 1, tipo: "Contacto"}},
+  {$unionWith: { coll: "emps",
+    pipeline: [ {$project: {_id:0, nombre:1, apellidos: 1, tipo: "Empleado"}} ] } } ])
+```
+
+**`$sort`, `$skip`, `$limit`.** Contactos por provincia, ordenados, saltando el primero (el grupo null) y tomando los dos siguientes:
+
+```js
+db.contactos.aggregate([ {$group: {_id:"$direccion.provincia", numero: {$count:{}}}},
+  {$sort: {_id:1}}, {$skip:1}, {$limit:2} ])
+// { _id: "A Coruña", numero: 4 }, { _id: "Almería", numero: 1 }
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=58">MongoDB, pp. 58-59</a>.</p>
+
+<h3 id="eficiencia">Una nota sobre eficiencia</h3>
+
+Si `aggregate()` no sirve (por la consulta, el esquema o la versión), se puede implementar la consulta **en el cliente** con JavaScript, pero **la diferencia de eficiencia es enorme**. Con la misma consulta (empleados con la comunidad de su provincia): `aggregate()` con `$lookup`, `$unwind`, `$project` y `$out` tarda **1,989 s**; un `forEach` con `findOne` por empleado e `insertOne` tarda **14,774 s**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=60">MongoDB, p. 60</a>.</p>
+
+<h2 id="replica-sets">Replicación: replica sets</h2>
+
+<h3 id="miembros">Miembros</h3>
+
+Un *replica set* ofrece **alta disponibilidad**: **tolerancia a fallos** con **recuperación automática** (*failover*) y, opcionalmente, más capacidad **solo de lectura**. Tiene **como máximo 50 miembros** (desde la v3.0), de los que **como máximo 7 votan**.
+
+<div class="table-scroll">
+
+| Miembro | Datos | Papel |
+| --- | --- | --- |
+| **Primario** | Sí | **Único que recibe escrituras.** Solo uno en cada instante. |
+| **Secundario** | Sí, replicados del primario | No recibe escrituras. Normalmente no se le consulta (se puede activar por sesión, pero la replicación no es síncrona). Útil para backups, recuperación de desastres, consultas analíticas… |
+| **Árbitro** | **No** | **Solo vota** en el failover. |
+
+</div>
+
+**Configuraciones habituales con 3 nodos** (se recomienda un número **impar** de votantes): un primario y dos secundarios (**3 copias** de cada dato), o un primario, un secundario (2 copias) y un **árbitro**. En la figura, las líneas continuas son replicación y las discontinuas, comprobaciones de disponibilidad (***heartbeat***).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=62">MongoDB, pp. 62-63</a>.</p>
+
+<h3 id="failover">Failover automático</h3>
+
+La caída de un secundario o de un árbitro **no tiene efecto automático**. La del primario impide escrituras (y en muchos casos lecturas). El proceso:
+
+1. Se detecta la caída por los *heartbeats*. Los nodos restantes **votan un nuevo primario entre los secundarios**; hace falta **mayoría (> 50 % de los votos)**. Por eso se recomienda un número impar: **evita el *split-brain***. Si no se quieren tantas réplicas, se usan árbitros.
+2. Con el nuevo primario, el replica set vuelve a ser completamente funcional.
+3. Si el antiguo primario se recupera, **pasa a ser secundario** y resincroniza sus datos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=64">MongoDB, p. 64</a>.</p>
+
+<h3 id="write-concern">Preferencias de escritura (write concern)</h3>
+
+`{ w: <valor>, j: <boolean>, wtimeout: <número> }`. `w` dice **a cuántos nodos debe propagarse la escritura** antes de confirmarla. Más alto = más disponibilidad y tolerancia a fallos, pero más errores si hay nodos caídos, lentos o con replicación retardada.
+
+<div class="table-scroll">
+
+| Valor | Significado | Uso |
+| --- | --- | --- |
+| `w: 0` | **Sin confirmación.** | Grabar un log (no se haría nada distinto si fallase). |
+| `w: 1` | Confirmada **en el primario**. | Datos no críticos; importa más la disponibilidad de escritura. |
+| `w: "majority"` | Confirmada en **más del 50 %** de los nodos. | **Casi todos los casos.** Equivale al nivel *quorum* de Cassandra. |
+| `w: n` | En n nodos. | Solo en replica set; n como mucho el número de nodos. |
+| `w: <tag>` | Según etiquetas de los servidores. | — |
+
+</div>
+
+`j` exige confirmación de escritura en el ***journal*** (usado para recuperar un nodo que aborta inesperadamente). `wtimeout` (para w > 1) es un timeout en milisegundos. Se puede fijar por operación o como valor por defecto del replica set.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=65">MongoDB, p. 65</a>.</p>
+
+<h3 id="read-preference">Preferencias de lectura</h3>
+
+Lo habitual es leer del primario. **La replicación es asíncrona**: al leer de un secundario se pueden obtener datos no actualizados (**consistencia final**).
+
+- `primary` (**por defecto**): solo el primario.
+- `primaryPreferred`: el primario; si no está disponible, un secundario.
+- `secondary`: solo un secundario.
+- `secondaryPreferred`: un secundario; si no hay, el primario.
+- `nearest`: el miembro con **menor latencia de red** en ese instante.
+
+***Read concern***: `local` lee el valor más reciente (en el primario); `majority` lee el valor más reciente **replicado en la mayoría** de nodos (requiere el motor WiredTiger y algún ajuste más).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=66">MongoDB, p. 66</a>.</p>
+
+<h2 id="sharding">Particionado y distribución: sharding</h2>
+
+<h3 id="escalado">Escalado vertical y horizontal</h3>
+
+<div class="table-scroll">
+
+| Vertical («compra un servidor más grande») | Horizontal («añade más servidores») |
+| --- | --- |
+| Hardware caro. | *Commodity hardware*. |
+| ¿Y si el más grande no basta o no se puede comprar? | Los datos se reparten en **shards**; su unión es la BD lógica completa. |
+| **Punto único de fallo** (SPOF). | Menos datos y operaciones por nodo. |
+| No favorece la naturaleza distribuida de ciertas aplicaciones; la latencia de red puede hacerlo inviable. | La capacidad crece de forma **aproximadamente lineal** con el número de servidores. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=68">MongoDB, p. 68</a>.</p>
+
+<h3 id="cluster">Elementos de un cluster</h3>
+
+- **Shards:** guardan los datos particionados. Lo habitual es que **cada shard sea un replica set**.
+- **Query routers (`mongos`):** los clientes se conectan a ellos; **redirigen cada operación a los shards adecuados** y, si hace falta, integran los resultados de varios. Puede haber tantos como se quiera; es común uno en el mismo servidor que la aplicación.
+- **Config servers:** guardan los **metadatos** del cluster, incluida la asignación de datos a shards. Desde la v3.2 forman un **replica set propio (CSRS)**: hasta 50 miembros, sin árbitros ni miembros retardados, escribe y lee con *majority*. Si no puede elegir primario, **los metadatos quedan de solo lectura**: se pueden leer y escribir datos, pero no hay *splits* ni migraciones de chunks.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=69">MongoDB, pp. 69-70</a>.</p>
+
+<h3 id="chunks">Particionado de colecciones y chunks</h3>
+
+MongoDB particiona **por colección**. **Crear un cluster no particiona nada**: hay que habilitarlo en la base de datos (`db.enableSharding("bd1")`) y particionar cada colección con su **clave de particionado** (`sh.shardCollection("bd1.coleccion1", <shard key>)`). Tipos: **autosharding por rangos** (lo habitual, con balanceo; combinable con preparticionado manual), **hash** y por **zonas** (*tags*).
+
+Cada documento está en un único shard según su clave. Los documentos se agrupan lógicamente en **chunks**: un chunk es el rango **[mín, máx)** de la clave (los documentos no tienen que estar contiguos físicamente), de **128 MB por defecto** (configurable), y es **la unidad de particionado y de movimiento** entre shards.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=71">MongoDB, p. 71</a>.</p>
+
+<h3 id="autosharding">Autosharding</h3>
+
+La figura lo muestra en tres pasos: el chunk [100, 200) supera el tamaño máximo y se divide en [100, 158) y [158, 200) (**AutoSplit**); los shards quedan desequilibrados; el balanceador **mueve un chunk** de un shard a otro (**autobalanceo**).
+
+- La **shard key debe estar indexada** (si no hay índice, se crea).
+- Los chunks son rangos **contiguos y ordenados** por la clave; su número depende de la cantidad y tamaño de los documentos.
+- Un chunk que supera el máximo **se divide en 2** (split automático). También se pueden crear rangos a mano con `splitAt()`, por ejemplo para **preparticionar**.
+- Se balancea **moviendo chunks, no documentos**, y se cuenta el **número de chunks**, no de documentos. El umbral de diferencia que dispara una migración depende del total de chunks.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=72">MongoDB, pp. 72-73</a>.</p>
+
+<h3 id="shard-key">Elegir la clave de particionado</h3>
+
+- **Inmutabilidad:** hasta la v5 no se podía cambiar ni el valor de la clave en un documento ni los campos de la clave. Desde la v5 sí: para cambiar el valor, el `updateOne`/`updateMany` debe **incluir la clave en el filtro**; cambiar los campos provoca un ***resharding***, una operación **costosísima**. (`_id` sigue siendo siempre inmutable.)
+- **Cardinalidad alta**, para crear suficientes chunks.
+- **Evitar claves monótonamente crecientes** (o decrecientes), como un `_id` autogenerado: **todas las inserciones van al shard del último chunk**, que es siempre el que se divide.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=74">MongoDB, p. 74</a>.</p>
+
+<h3 id="hash-zonas">Particionado hash y por zonas</h3>
+
+- **Hash:** aplica una función hash a la shard key (requiere un **índice hash**). Evita el problema de las claves monótonas (timestamps, ObjectIds) y reparte de forma **más uniforme**, pero **perjudica las consultas por rangos**: los rangos ya no están ordenados por la clave, así que una consulta no puede limitarse a parte de los shards.
+- **Zonas:** sirve, por ejemplo, para colocar los datos **geográficamente cerca** de donde se usan. Se definen zonas como rangos de la clave y se asocia cada shard a una o varias zonas; **los chunks solo migran entre shards de su zona**. Ejemplo con IP como clave: zona UDC 193.144.51.0–255, USC 193.144.75.0–255 y UVigo 193.146.32.0–255; shard1 en UDC, shard2 en UDC y USC, shard3 en USC y UVigo, shard4 en UVigo. Los datos de UDC se mueven entre los shards 1 y 2; los de USC, entre 2 y 3; los de UVigo, entre 3 y 4.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=75">MongoDB, p. 75</a>.</p>
+
+<h3 id="consideraciones-sharding">Consideraciones</h3>
+
+Se hace sharding para **aumentar la RAM y el disco disponibles, reducir la carga** de los servidores y obtener más rendimiento que con un solo `mongod`. Los shards se añaden o quitan **sin parar el cluster**. **Un cluster con muy pocos shards (2) puede ser menos eficiente que un único nodo** por la sobrecarga de gestión y movimiento de datos. Limitación actual (v8): **la unicidad se verifica por shard, no por colección**: una colección particionada solo garantiza la unicidad de `_id` dentro de cada shard (la aplicación debe controlarla para la colección completa).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=76">MongoDB, p. 76</a>.</p>
+
+<h2 id="modelado">Modelado de datos</h2>
+
+<h3 id="data-driven">Dirigido por los datos frente a dirigido por la aplicación</h3>
+
+<div class="table-scroll">
+
+| E-R y relacional: ***data-driven*** | MongoDB y otros NoSQL: ***application-driven*** |
+| --- | --- |
+| Importan los datos por sí mismos; se modela sin tener en cuenta las aplicaciones (luego se optimiza). | «**Una base de datos, una aplicación**». |
+| SQL permite consultas complejas vinculando tablas; potentes optimizadores. | Importan **las preguntas**: el uso de los datos desde la aplicación. |
+| — | Se modela con **agregados basados en esas preguntas**: es fundamental conocer los **patrones de acceso**. |
+
+</div>
+
+Características de MongoDB que influyen: documentos incrustados (**hasta 100 niveles** de anidamiento), **límite de 16 MB** por documento (GridFS para ficheros grandes), **atomicidad a nivel de documento**, transacciones disponibles pero **no obligatorias y con impacto negativo en el rendimiento**, y **ninguna clave foránea**: con referencias, la integridad la garantiza la aplicación.
+
+Las dos alternativas: **incrustar** (*embedding*: un documento o array dentro de otro) y **enlazar/referenciar** (*linking/referencing*: guardar la referencia a otro documento, normalmente su `_id`).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=78">MongoDB, pp. 78-79</a>.</p>
+
+<h3 id="incrustar-enlazar">Incrustar o enlazar</h3>
+
+<div class="table-scroll">
+
+| | Incrustar | Enlazar |
+| --- | --- | --- |
+| Lectura | Datos **preagregados**: lectura muy eficiente. | **Más compleja y lenta**: «joins» con `$lookup` o en la aplicación. |
+| Escritura | Escribir documentos internos puede ser ineficiente (leer el post, añadir el comentario, guardar el post completo). | **Normalmente más eficiente** (insertar un comentario en su colección). |
+| Integridad | La gestiona el usuario o la aplicación (p. ej., datos de autor repetidos en cada post). | La gestiona el usuario o la aplicación (no hay claves foráneas). |
+| Transacciones | **Atomicidad implícita** a nivel de documento. | Hay que considerar aspectos transaccionales. |
+| Otros | No se pueden superar los **16 MB**. | Flexible; permite «normalizar» al estilo relacional. |
+
+</div>
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=80">MongoDB, pp. 80-81</a>.</p>
+
+<h3 id="ejemplo-blog">Ejemplo de decisión: un blog</h3>
+
+Modelo conceptual: AUTOR (nickname, nombre, email) **escribe** POST (id, título, texto, tags), que **tiene** COMENTARIOS (número, texto, usuario, email). Patrones de acceso según el esbozo de la web:
+
+- La **lista de posts** muestra solo el título y el nickname del autor.
+- La **página de un post** muestra título, texto, tags y comentarios. No se accede a comentarios ni tags por separado (no hay «lista de tags»; sería complejo cambiar un tag en muchos posts). Todo lo necesario está en un documento: **una única lectura**, y no se espera superar 16 MB → **incrustar tags y comentarios**.
+- Los datos personales del autor no salen ni en la lista ni en el post; el nickname es un enlace a otra página → **referenciar el autor**. La página del autor no lista sus posts, así que no se añade nada más a autores.
+
+Resultado: colección `posts` con `autor: 'penabad'`, `tags` y `comentarios` incrustados, y colección `autores` cuyo **`_id` es el nickname**.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=82">MongoDB, pp. 82-84</a>.</p>
+
+<h3 id="metodologia">Metodología de diseño</h3>
+
+La clásica: **diseño conceptual** (diagramas EER, independiente del sistema), **lógico** (frecuentemente relacional) y **físico** (dónde se guardan los datos, tamaños, índices; en SQL).
+
+Para MongoDB, el principio es «***Data that is accessed together should be stored together***» y hay tres pasos:
+
+1. **Caracterizar la carga de trabajo:** identificar, cualificar (R/W) y cuantificar (frecuencia, latencia máxima…) las consultas.
+2. **Modelizar las relaciones** 1:1, 1:N y N:N: **incrustar o enlazar**.
+3. **Aplicar patrones de diseño** (polimorfismo, referencia extendida, versionado…; hay **12 recomendados**) y evitar **antipatrones**.
+
+No hay una separación clara entre modelo lógico y físico. Los índices son esenciales, pero no se tratan. Algunas comprobaciones (como las claves foráneas) se delegan en la aplicación.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=85">MongoDB, pp. 85-86</a>.</p>
+
+<h3 id="carga">Caracterizar la carga de trabajo</h3>
+
+Entradas: conocimiento del dominio (idealmente un modelo conceptual), **expertos** que describan escenarios de uso, **logs o estadísticas** si hay un sistema previo y el **tamaño de los datos**. Salida: las consultas más frecuentes descritas, cualificadas y cuantificadas (y opcionalmente *mockups*). En la asignatura basta una estimación general, ordenando las consultas por frecuencia o importancia o con porcentajes de uso.
+
+<div class="table-scroll">
+
+| Operación | Tipo | Información | Frecuencia | Tamaño |
+| --- | --- | --- | --- | --- |
+| Ver un post | R | Título, texto, nick del autor, tags, comentarios | 25/s | < 100 KB |
+| Añadir un post | W | Título, texto, nick del autor [, tags] | 1/min | < 100 KB |
+| Buscar información y posts de un usuario | R | Nick, nombre, email del autor, título del post | 50/min | 10 KB |
+
+</div>
+
+Tamaño del dataset del ejemplo: **2 000 000 posts** y **30 000 usuarios** (67 posts por usuario de media).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=87">MongoDB, pp. 87-89</a>.</p>
+
+<h3 id="relaciones">Modelizar las relaciones</h3>
+
+Se parte de diagramas E-R con relaciones **binarias**. Importan la **participación** (total o parcial) y la **cardinalidad**, que conviene expresar como **[mín, media, máx]** (un usuario crea [0, 67, 1000] posts). La carga de trabajo es **determinante**. La documentación de MongoDB suele **preferir incrustar**.
+
+**1:1 (EMPLEADO tiene CURRICULUM VITAE).**
+
+- **Incrustar el CV en el empleado:** si no se superan 16 MB y los patrones de acceso son similares; aumenta la integridad (atomicidad por documento).
+- **Incrustar el empleado en el CV: no**, porque la participación de Empleado es **parcial** (hay empleados sin CV).
+- **Enlazar** (en un sentido, en el otro o en ambos): obligatorio si se superan 16 MB; aconsejable si los patrones de acceso son distintos (se lee mucho el empleado y poco el CV, se modifica el CV y no el empleado…).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=90">MongoDB, pp. 90-91</a>.</p>
+
+**1:N (PERSONA vive en PAÍS, con cardinalidad muy alta).**
+
+- **Incrustar la parte 1 en cada documento de la parte N** (el país en cada persona): imposible si la participación es parcial (personas sin país en el ejemplo). Con participación total hay **duplicidad**: espacio y posibles inconsistencias al modificar (si cambia la población del país, hay que cambiar todas las copias). Si se omite la población, lo demás es casi estático. Es buena opción si una consulta importante es «personas con el nombre o la superficie de su país» (relacionado con el patrón **referencia extendida**).
+- **Incrustar la parte N como array en la parte 1** (personas en el país): solo con participación total, y buena idea si la relación es **«uno a pocos»** (comentarios de un post), **mala si es «uno a muchos»** (personas de un país). Relacionado con los antipatrones ***bloated document*** y ***unbounded array***. Además, si la parte N tiene sus propias relaciones, al incrustarla puede que no se pueda referenciar después.
+- **Enlazar la parte 1 desde la parte N** (cada persona referencia su país): lo habitual con cardinalidad alta; se recomiendan `_id` **representativos** en la parte 1 (el nombre del país, que es único).
+- **Array de referencias en la parte 1:** solo con cardinalidad baja (un usuario con un array de referencias a sus posts sería factible), aunque la consulta «buscar información y posts de un usuario» lo desaconseja.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=92">MongoDB, pp. 92-94</a>.</p>
+
+**N:N (AUTOR escribe LIBRO).**
+
+- **Incrustar:** aún más duplicidad. Interesa si se puede gastar el espacio, la aplicación garantiza la consistencia y los datos son **casi inmutables**. Atención a la participación (no se puede incrustar Libro en Autor) y a la cardinalidad. Si se busca normalmente por libro, con pocos autores por libro y datos de autor estables, **incrustar un array de autores en cada libro** puede ser buena idea.
+- **Enlazar:** con multiplicidades bajas, **arrays de referencias** en las dos colecciones o solo en una (si la consulta habitual es «autores de un libro», solo en Libros). Alternativa al estilo relacional: **una colección para la relación** (escribe) con referencias a libros y autores.
+- En todos los casos, **no hay claves foráneas**: la coherencia es responsabilidad de la aplicación.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=95">MongoDB, pp. 95-96</a>.</p>
+
+<h3 id="patrones">Patrones de diseño</h3>
+
+Un patrón de MongoDB es una **solución reutilizable** para casos frecuentes de diseño. Hay 12 bien conocidos; el documento se centra en tres.
+
+**Polimorfismo** (*inheritance, single collection*). Como las colecciones no tienen esquema fijo, una jerarquía de generalización/especialización puede ir en **una sola colección**: los datos de la subclase en un subdocumento y un atributo que indica la clase (un **array** si la especialización es solapada). Ejemplo: PERSONA especializada en CLIENTE (tipo) y EMPLEADO (salario, trabaja en DEPARTAMENTO):
+
+```js
+// PERSONAS
+{ _id:1, nombre: "Filemón Pi", direccion: "Rue del percebe, 13",
+  tipo: ['cliente', 'empleado'],
+  cliente: {tipo: 'VIP'},
+  empleado: {salario: 2000, departamento: 'I+D'} }
+// DEPARTAMENTOS
+{ _id: 'I+D', nombre: 'Investigación y Desarrollo' }
+```
+
+No siempre conviene: si las subclases tienen patrones de acceso distintos y la jerarquía es **total y disjunta**, puede ser mejor **una colección por subclase** (con la unicidad de `_id` controlada por la aplicación). Las **categorías** del EER (CLIENTE como unión de PERSONA y EMPRESA, titular de CUENTA) tienen poco sentido sin integridad referencial: la aplicación comprueba directamente las clases, y una cuenta referencia `persona: 1` o `empresa: 'B1534889K'`.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=97">MongoDB, pp. 97-99</a>.</p>
+
+**Campo calculado** (*computed*). Cuando hay **muchas más lecturas que escrituras** de un valor agregado (total de una factura, número de comentarios, valoración media), se guarda el valor ya calculado: sin él, cada lectura del total lee todas las líneas; con él, se lee un campo y cada escritura de línea actualiza también el total. **Implica escrituras adicionales pero acelera mucho las lecturas.** Se puede actualizar **síncronamente** o **periódicamente** (cada X inserciones, procesos batch), lo que admite datos obsoletos: inaceptable en una factura, poco importante en el número de comentarios. También es habitual en SQL (campos almacenados con triggers, vistas materializadas).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=100">MongoDB, p. 100</a>.</p>
+
+**Referencia extendida** (*extended reference*). Si «ver un post» necesita también el **nombre** del autor, el término medio entre incrustar y referenciar es **referenciar ampliando la referencia con los campos que pide la consulta habitual**:
+
+```js
+// POSTS
+{ _id: 1, titulo: 'Discusión sobre modelado',
+  autor: { _id: 'penabad', nombre: 'Miguel Rodríguez Penabad' }, ... }
+// AUTORES
+{ _id: 'penabad', nombre: 'Miguel Rodríguez Penabad', email: 'miguel.penabad@udc.es' }
+```
+
+Tiene las ventajas de incrustar (evita `$lookup`) y sus inconvenientes por duplicidad (espacio y coherencia de las copias).
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=101">MongoDB, p. 101</a>.</p>
+
+<h3 id="antipatrones">Antipatrones</h3>
+
+Errores comunes que **a menudo solo se detectan al escalar**.
+
+- ***Massive/Unbounded arrays*:** un documento con un array demasiado grande. Puede **superar 16 MB**, los **índices funcionan peor** y cada modificación del array obliga a **leer, modificar y guardar el documento completo**. Ejemplo: incrustar las personas en su país; solución: **incrustar el país en cada persona**.
+- ***Bloated documents*:** documentos **demasiado grandes** aunque no lleguen a 16 MB. «*Data that is accessed together should be stored together*», pero **no necesariamente todo lo relacionado**. Caben menos documentos en la caché (donde están los índices y los documentos más usados) y pueden aparecer problemas de split y balanceo (***jumbo chunks***). Se evita separando lo que no se usa a la vez y referenciando: 1:1 con accesos distintos (empleado y CV) o incluso atributos de una misma entidad (mover fecha de nacimiento y dirección a `detalles_contactos` con el mismo `_id`). El patrón ***Subset*** guarda en el post solo los **últimos 5 comentarios** y el resto en otra colección.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=102">MongoDB, pp. 102-104</a>.</p>
+
+<h2 id="anexos">Anexos</h2>
+
+<h3 id="validacion">Validación de documentos</h3>
+
+Permite cierto control dentro de una colección validando lo que se inserta o modifica. Se configura al crear la colección (`db.createCollection("<col>", { <validación> })`) o al modificarla (`db.runCommand({"collMod": "<col>", <validación>})`).
+
+- `validator`: restricciones con **`$jsonSchema`**, con **condiciones como las de `find()`** o con ambas.
+- `validationLevel`: `off` (no valida), **`strict`** (por defecto: toda inserción y update) o `moderate` (valida los documentos que ya eran válidos, no los que ya eran inválidos).
+- `validationAction`: **`error`** (por defecto) o `warn`.
+
+```js
+db.createCollection("autores", { validator: { $jsonSchema: {
+  bsonType: "object", title: "Autor Object Validation",
+  required: [ "nombre" ],
+  properties: {
+    nombre: { bsonType: "string", description: "'nombre' es requerido y debe ser un string" },
+    email: { bsonType: ["string"], pattern: "^\\S+@\\S+\\.\\S+$" } } } } })
+
+db.createCollection("emps", { validator: { $or:
+  [ {dni: {$type:"string"}}, {nss: {$type:"string"}} ] } })
+// insertOne({}) → MongoServerError: Document failed validation
+// insertOne({dni:"12345678Z"}) → acknowledged
+```
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=106">MongoDB, pp. 106-108</a>.</p>
+
+<h3 id="time-series">Colecciones de series temporales</h3>
+
+Para MongoDB, una serie temporal es una **secuencia de puntos en el tiempo con información asociada**. Tres componentes:
+
+- **Tiempo:** el instante.
+- **Metadatos** (`metaField`): identifican la procedencia (sensor, ubicación). Deben **cambiar raramente** y servir para **filtrar**.
+- **Medidas:** valores medidos a lo largo del tiempo (temperatura, salinidad, potencia, consumo…).
+
+Internamente usa ***bucketing*** para **reducir el espacio en disco y acelerar las consultas**.
+
+```js
+{ metadata: { sensorId: 5578, type: "temperature" },
+  timestamp: ISODate("2021-05-18T00:00:00.000Z"), temp: 12 }
+
+db.createCollection("weather", {
+  timeseries: { timeField: "timestamp", metaField: "metadata", granularity: "seconds" },
+  expireAfterSeconds: 86400 })
+```
+
+- `timeField` es **obligatorio**; `metaField`, opcional.
+- Granularidad: `granularity` (`"seconds"` por defecto, `"minutes"` u `"hours"`) o `bucketRoundingSeconds` y `bucketMaxSpanSeconds` (ambos con el mismo valor).
+- `expireAfterSeconds` **borra automáticamente** los documentos más antiguos que ese número de segundos.
+
+<p class="no-print">Fuente: <a href="/web-estudio/materiales/datos/mongodb.pdf#page=110">MongoDB, pp. 110-111</a>.</p>
+
+<h2 id="repaso">Repaso sin mirar</h2>
+
+- ☐ Digo tres cosas que MongoDB no tiene de un relacional y tres que sí ofrece.
+- ☐ Explico para qué sirven `mongod`, `mongos` y `mongosh`.
+- ☐ Enumero las propiedades de `_id` y el límite de tamaño de un documento.
+- ☐ Escribo una proyección que muestre solo `nombre` sin `_id`, y explico por qué hace falta `{}` delante.
+- ☐ Explico por qué `{"b.x":1, "b.z":1}` no equivale a `$elemMatch`.
+- ☐ Explico qué devuelven `{campo: null}`, `$ne` y `$nin` con documentos sin el campo.
+- ☐ Distingo `$push`, `$addToSet`, `$each`, `$pull` y la notación posicional.
+- ☐ Explico qué inserta un upsert con `replaceOne` y con `updateOne` según el criterio.
+- ☐ Relaciono cada etapa de agregación con su equivalente SQL y sé cuándo `$match` es `WHERE` o `HAVING`.
+- ☐ Explico qué hace `$unwind` con arrays vacíos y escalares, y por qué va antes del `$match` de los móviles.
+- ☐ Escribo un `$lookup` seguido de `$unwind` y `$project`.
+- ☐ Describo primario, secundario y árbitro, el failover y por qué se usa un número impar de votantes.
+- ☐ Diferencio `w: 0`, `w: 1` y `w: "majority"`, y las cinco preferencias de lectura.
+- ☐ Describo shards, `mongos` y config servers, y qué es un chunk.
+- ☐ Explico split y balanceo, y por qué una clave monótona es mala.
+- ☐ Comparo particionado por rangos, hash y zonas.
+- ☐ Comparo incrustar y enlazar en lectura, escritura, integridad y transacciones.
+- ☐ Decido cómo modelar 1:1, 1:N y N:N según participación, cardinalidad y carga.
+- ☐ Explico polimorfismo, campo calculado y referencia extendida, y los antipatrones de arrays sin límite y documentos hinchados.
+- ☐ Creo una colección de series temporales con caducidad.

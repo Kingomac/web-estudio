@@ -1,0 +1,9 @@
+{
+  "id": "datos.tags.mongodb",
+  "kind": "tag",
+  "subjectId": "datos",
+  "slug": "mongodb",
+  "title": "MongoDB",
+  "type": "topic",
+  "order": 50
+}
